@@ -3,11 +3,10 @@
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&tdisplay=swap');
-// Changed to ; for testing
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 /* ── Reset & Base ── */
-* , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --black:   #0d0d0d;
@@ -336,11 +335,7 @@ p  { color: #374151; }
 .form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
 
 /* ── Progress Bar ── */
-.progress-bar { background: #e5e7eb;
-  border-radius: 999px;
-  height: 8px;
-  overflow: hidden;
-}
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
 .progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
 .progress-fill.green { background: var(--green); }
 
@@ -378,7 +373,7 @@ p  { color: #374151; }
 /* ── Alert ── */
 .alert {
   padding: 14px 18px;
-  border-radius: var(---radius);
+  border-radius: var(--radius);
   font-size: 0.95rem;
   font-weight: 500;
   margin-bottom: 20px;
@@ -390,5 +385,13 @@ p  { color: #374151; }
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .hero { padding: 72px 24px; }
-  
- 
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
