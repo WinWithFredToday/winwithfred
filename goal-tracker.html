@@ -469,11 +469,6 @@ p  { color: #374151; }
 .loading-page p { color:#9ca3af; font-size:0.9rem; }
 @keyframes spin { to { transform:rotate(360deg); } }
 </style>
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="firebase-config.js"></script>
 </head>
 <body>
 
@@ -568,65 +563,59 @@ p  { color: #374151; }
 <script>
 
   let goals = [];
-  let currentUser = null;
   let activeFilter = 'all';
   let progressTimers = {};
 
-  requireAuth(user => {
-    currentUser = user;
+  function init() {
     document.getElementById('page-loading').style.display = 'none';
-    initAuthNavbar();
     loadGoals();
-  });
+  }
 
-  async function loadGoals() {
-    try {
-      const snap = await goalsRef(currentUser.uid).orderBy('created', 'desc').get();
-      goals = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    } catch(e) { goals = []; }
+  function loadGoals() {
+    try { goals = JSON.parse(localStorage.getItem('wwf_goals') || '[]'); }
+    catch(e) { goals = []; }
     render();
   }
 
-  async function addGoal() {
+  function saveGoals() {
+    localStorage.setItem('wwf_goals', JSON.stringify(goals));
+  }
+
+  function addGoal() {
     const title = document.getElementById('goal-title').value.trim();
     if (!title) { alert('Please enter a goal title.'); return; }
     const goal = {
+      id:       Date.now().toString(),
       title,
       desc:     document.getElementById('goal-desc').value.trim(),
       cat:      document.getElementById('goal-cat').value,
       deadline: document.getElementById('goal-deadline').value,
       progress: 0,
       completed: false,
-      created:  firebase.firestore.FieldValue.serverTimestamp()
+      created:  new Date().toISOString()
     };
-    try {
-      const ref = await goalsRef(currentUser.uid).add(goal);
-      goals.unshift({ id: ref.id, ...goal, created: new Date() });
-      document.getElementById('goal-title').value = '';
-      document.getElementById('goal-desc').value = '';
-      document.getElementById('goal-deadline').value = '';
-      render();
-    } catch(e) { alert('Could not save goal. Check your connection.'); }
+    goals.unshift(goal);
+    saveGoals();
+    document.getElementById('goal-title').value = '';
+    document.getElementById('goal-desc').value = '';
+    document.getElementById('goal-deadline').value = '';
+    render();
   }
 
-  async function deleteGoal(id) {
+  function deleteGoal(id) {
     if (!confirm("Delete this goal? This can't be undone.")) return;
-    try {
-      await goalsRef(currentUser.uid).doc(id).delete();
-      goals = goals.filter(g => g.id !== id);
-      render();
-    } catch(e) { alert('Error deleting goal.'); }
+    goals = goals.filter(g => g.id !== id);
+    saveGoals();
+    render();
   }
 
-  async function toggleComplete(id) {
+  function toggleComplete(id) {
     const g = goals.find(g => g.id === id);
     if (!g) return;
     g.completed = !g.completed;
     if (g.completed) g.progress = 100;
-    try {
-      await goalsRef(currentUser.uid).doc(id).update({ completed: g.completed, progress: g.progress });
-      render();
-    } catch(e) { alert('Error updating goal.'); }
+    saveGoals();
+    render();
   }
 
   function updateProgress(id, val) {
@@ -635,13 +624,8 @@ p  { color: #374151; }
     g.progress = parseInt(val);
     g.completed = g.progress === 100;
     render();
-    // Debounce Firestore write
     clearTimeout(progressTimers[id]);
-    progressTimers[id] = setTimeout(async () => {
-      try {
-        await goalsRef(currentUser.uid).doc(id).update({ progress: g.progress, completed: g.completed });
-      } catch(e) {}
-    }, 600);
+    progressTimers[id] = setTimeout(() => saveGoals(), 600);
   }
 
   function filterGoals(cat, btn) {
@@ -718,6 +702,8 @@ p  { color: #374151; }
   }
 
   document.getElementById('goal-title').addEventListener('keydown', e => { if (e.key === 'Enter') addGoal(); });
+
+  init();
 
 </script>
 
