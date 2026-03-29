@@ -480,11 +480,6 @@ p  { color: #374151; }
 .loading-page p { color:#9ca3af; font-size:0.9rem; }
 @keyframes spin { to { transform:rotate(360deg); } }
 </style>
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="firebase-config.js"></script>
 </head>
 <body>
 
@@ -578,63 +573,54 @@ p  { color: #374151; }
   const TODAY = new Date().toISOString().split('T')[0];
   const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   let habits = [];
-  let currentUser = null;
 
-  requireAuth(user => {
-    currentUser = user;
+  function init() {
     document.getElementById('page-loading').style.display = 'none';
-    initAuthNavbar();
     loadHabits();
-  });
+  }
 
-  async function loadHabits() {
-    try {
-      const snap = await habitsRef(currentUser.uid).orderBy('created', 'asc').get();
-      habits = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    } catch(e) { habits = []; }
+  function loadHabits() {
+    try { habits = JSON.parse(localStorage.getItem('wwf_habits') || '[]'); }
+    catch(e) { habits = []; }
     render();
   }
 
-  async function addHabit() {
+  function saveHabits() {
+    localStorage.setItem('wwf_habits', JSON.stringify(habits));
+  }
+
+  function addHabit() {
     const name = document.getElementById('habit-name').value.trim();
     if (!name) { alert('Please enter a habit name.'); return; }
     const habit = {
+      id:      Date.now().toString(),
       name,
       time:    document.getElementById('habit-time').value,
       emoji:   document.getElementById('habit-emoji').value.trim() || '⭐',
       history: {},
-      created: firebase.firestore.FieldValue.serverTimestamp()
+      created: new Date().toISOString()
     };
-    try {
-      const ref = await habitsRef(currentUser.uid).add(habit);
-      habits.push({ id: ref.id, ...habit, history: {}, created: new Date() });
-      document.getElementById('habit-name').value = '';
-      document.getElementById('habit-emoji').value = '';
-      render();
-    } catch(e) { alert('Could not save habit. Check your connection.'); }
+    habits.push(habit);
+    saveHabits();
+    document.getElementById('habit-name').value = '';
+    document.getElementById('habit-emoji').value = '';
+    render();
   }
 
-  async function deleteHabit(id) {
+  function deleteHabit(id) {
     if (!confirm('Delete this habit? All history will be lost.')) return;
-    try {
-      await habitsRef(currentUser.uid).doc(id).delete();
-      habits = habits.filter(h => h.id !== id);
-      render();
-    } catch(e) { alert('Error deleting habit.'); }
+    habits = habits.filter(h => h.id !== id);
+    saveHabits();
+    render();
   }
 
-  async function toggleHabit(id) {
+  function toggleHabit(id) {
     const h = habits.find(h => h.id === id);
     if (!h) return;
     if (!h.history) h.history = {};
-    const newVal = !h.history[TODAY];
-    h.history[TODAY] = newVal;
+    h.history[TODAY] = !h.history[TODAY];
+    saveHabits();
     render();
-    try {
-      await habitsRef(currentUser.uid).doc(id).update({
-        [`history.${TODAY}`]: newVal
-      });
-    } catch(e) { h.history[TODAY] = !newVal; render(); }
   }
 
   function getStreak(h) {
@@ -731,6 +717,8 @@ p  { color: #374151; }
   }
 
   document.getElementById('habit-name').addEventListener('keydown', e => { if (e.key === 'Enter') addHabit(); });
+
+  init();
 
 </script>
 
