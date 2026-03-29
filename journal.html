@@ -483,11 +483,6 @@ p  { color: #374151; }
 .loading-page p { color:#9ca3af; font-size:0.9rem; }
 @keyframes spin { to { transform:rotate(360deg); } }
 </style>
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="firebase-config.js"></script>
 </head>
 <body>
 
@@ -608,24 +603,22 @@ p  { color: #374151; }
 
   const TODAY_STR = new Date().toISOString().split('T')[0];
   let entries = [];
-  let currentUser = null;
   let currentPrompt = null;
 
-  requireAuth(user => {
-    currentUser = user;
+  function init() {
     document.getElementById('page-loading').style.display = 'none';
-    initAuthNavbar();
     newPrompt();
     loadEntries();
-  });
+  }
 
-  async function loadEntries() {
-    try {
-      const snap = await journalRef(currentUser.uid)
-        .orderBy('created', 'desc').limit(50).get();
-      entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    } catch(e) { entries = []; }
+  function loadEntries() {
+    try { entries = JSON.parse(localStorage.getItem('wwf_journal') || '[]'); }
+    catch(e) { entries = []; }
     renderStats();
+  }
+
+  function saveEntries() {
+    localStorage.setItem('wwf_journal', JSON.stringify(entries));
   }
 
   function newPrompt() {
@@ -641,24 +634,23 @@ p  { color: #374151; }
     document.getElementById('word-count').textContent = `${words} word${words !== 1 ? 's' : ''}`;
   }
 
-  async function saveEntry() {
+  function saveEntry() {
     const text = document.getElementById('entry-text').value.trim();
     if (!text) { alert('Write something first — even a few sentences.'); return; }
     const entry = {
+      id:      Date.now().toString(),
       date:    TODAY_STR,
       prompt:  currentPrompt ? currentPrompt.text : 'Free write',
       cat:     currentPrompt ? currentPrompt.cat  : 'General',
       text,
       words:   text.split(/\s+/).length,
-      created: firebase.firestore.FieldValue.serverTimestamp()
+      created: new Date().toISOString()
     };
-    try {
-      const ref = await journalRef(currentUser.uid).add(entry);
-      entries.unshift({ id: ref.id, ...entry, created: new Date() });
-      document.getElementById('save-alert').style.display = 'block';
-      setTimeout(() => document.getElementById('save-alert').style.display = 'none', 3000);
-      renderStats();
-    } catch(e) { alert('Error saving entry. Check your connection.'); }
+    entries.unshift(entry);
+    saveEntries();
+    document.getElementById('save-alert').style.display = 'block';
+    setTimeout(() => document.getElementById('save-alert').style.display = 'none', 3000);
+    renderStats();
   }
 
   function clearEntry() {
@@ -667,14 +659,12 @@ p  { color: #374151; }
     updateWordCount();
   }
 
-  async function deleteEntry(id) {
+  function deleteEntry(id) {
     if (!confirm('Delete this entry permanently?')) return;
-    try {
-      await journalRef(currentUser.uid).doc(id).delete();
-      entries = entries.filter(e => e.id !== id);
-      renderEntries();
-      renderStats();
-    } catch(e) { alert('Error deleting entry.'); }
+    entries = entries.filter(e => e.id !== id);
+    saveEntries();
+    renderEntries();
+    renderStats();
   }
 
   function switchTab(tab, btn) {
@@ -731,7 +721,7 @@ p  { color: #374151; }
     return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
   }
 
-  async function exportEntries() {
+  function exportEntries() {
     if (!entries.length) { alert('Nothing to export yet.'); return; }
     const txt = entries.map(e =>
       `Date: ${formatDate(e.date)}\nPrompt: ${e.prompt}\n\n${e.text}\n\n---\n`
@@ -747,6 +737,8 @@ p  { color: #374151; }
     if (!str) return '';
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+
+  init();
 
 </script>
 
