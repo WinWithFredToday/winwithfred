@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future Self Visualizer — WinWithFred</title>
+  <meta name="description" content="Tell us where you want to be in one year. We'll build your future — and show you the path that gets you there." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+/* ── Tool-Specific Styles: Future Self Visualizer ── */
+.form-container { display: none; }
+.form-container.active { display: block; }
+
+.results-container { display: none; }
+.results-container.active { display: block; }
+
+.step-progress {
+  background: #e5e7eb;
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.step-progress-fill {
+  height: 100%;
+  background: var(--orange);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.step-indicator {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.step-wrapper { display: none; }
+.step-wrapper.active { display: block; }
+
+.form-group-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 24px;
+}
+
+.radio-group, .button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option, .button-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.radio-option:hover, .button-option:hover {
+  border-color: var(--orange);
+  background: var(--orange-l);
+}
+
+.radio-option input, .button-option input {
+  cursor: pointer;
+}
+
+.radio-option.selected, .button-option.selected {
+  border-color: var(--orange);
+  background: var(--orange-l);
+  font-weight: 600;
+}
+
+.slider-container {
+  margin-top: 12px;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--orange);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+.slider-value {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.slider-label {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.slider-output {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.form-navigation {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+
+.form-navigation button {
+  flex: 1;
+}
+
+/* Results Report Styles */
+.result-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 40px 24px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  border-left: 4px solid var(--orange);
+}
+
+.result-header h2 {
+  color: var(--white);
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.result-header p {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.result-section {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.result-section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-section-content {
+  color: #374151;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.future-vision {
+  background: var(--orange-l);
+  border-left: 4px solid var(--orange);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-style: italic;
+  color: #374151;
+}
+
+.commitment-assessment {
+  padding: 12px 0;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 12px 0;
+}
+
+.phase-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.phase-list li {
+  padding: 12px 0 12px 28px;
+  position: relative;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.phase-list li:last-child {
+  border-bottom: none;
+}
+
+.phase-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.today-action-box {
+  background: var(--dark);
+  color: var(--white);
+  padding: 24px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--orange);
+  margin-top: 24px;
+}
+
+.today-action-label {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.today-action-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.action-button {
+  display: inline-block;
+  margin-top: 32px;
+}
+
+@media (max-width: 480px) {
+  .form-navigation {
+    flex-direction: column;
+  }
+  .radio-option, .button-option {
+    padding: 14px 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">🔭 Future Self Visualizer</div>
+    <h1>Meet the Person You Could Be.</h1>
+    <p>Tell us where you want to be in one year. We'll build your future — and show you the path that gets you there.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Form Container -->
+  <div id="form-container" class="form-container active">
+    <div class="step-progress">
+      <div id="step-progress-fill" class="step-progress-fill"></div>
+    </div>
+    <div class="step-indicator">
+      <span id="step-number">Step 1 of 5</span>
+    </div>
+
+    <!-- Step 1: The Basics -->
+    <div id="step-1" class="step-wrapper active">
+      <div class="form-group-title">The Basics</div>
+
+      <div class="form-group">
+        <label class="form-label">Current age</label>
+        <input type="number" id="age" class="form-input" placeholder="Your age" min="0">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Current situation</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="situation" value="Student"> Student
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="situation" value="Employed"> Employed
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="situation" value="Self-employed"> Self-employed
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="situation" value="Job-seeking"> Job-seeking
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="situation" value="Other"> Other
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What's your biggest frustration right now?</label>
+        <textarea id="frustration" class="form-textarea" placeholder="2-3 sentences about what's frustrating you..."></textarea>
+      </div>
+    </div>
+
+    <!-- Step 2: Income & Work -->
+    <div id="step-2" class="step-wrapper">
+      <div class="form-group-title">Your Vision — Income & Work</div>
+
+      <div class="form-group">
+        <label class="form-label">Where do you want to be financially in 1 year?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="financial" value="Same as now"> Same as now
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="financial" value="$10k-$20k more"> $10k-$20k more
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="financial" value="$20k-$50k more"> $20k-$50k more
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="financial" value="$50k+ more"> $50k+ more
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="financial" value="Money isn't my main goal"> Money isn't my main goal
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What kind of work do you want?</label>
+        <input type="text" id="work-type" class="form-input" placeholder="Running my own business / Senior manager role / Freelance / etc.">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">How many hours per week do you want to work?</label>
+        <div class="slider-container">
+          <input type="range" min="20" max="60" value="40" id="work-hours" class="slider" oninput="updateSliderValue('work-hours', 'work-hours-output')">
+          <div class="slider-value">
+            <span class="slider-label">Hours per week:</span>
+            <span class="slider-output" id="work-hours-output">40</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Health & Energy -->
+    <div id="step-3" class="step-wrapper">
+      <div class="form-group-title">Your Vision — Health & Energy</div>
+
+      <div class="form-group">
+        <label class="form-label">What's your health goal?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="health-goal" value="Lose weight"> Lose weight
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="health-goal" value="Build muscle"> Build muscle
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="health-goal" value="More energy"> More energy
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="health-goal" value="Better sleep"> Better sleep
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="health-goal" value="Just stay healthy"> Just stay healthy
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="health-goal" value="No specific goal"> No specific goal
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">How do you want to feel physically in 1 year?</label>
+        <textarea id="health-feel" class="form-textarea" placeholder="E.g. Strong enough to... / Energetic enough to..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Are you willing to exercise 4+ times per week?</label>
+        <div class="button-group">
+          <label class="button-option">
+            <input type="radio" name="exercise" value="Yes"> Yes
+          </label>
+          <label class="button-option">
+            <input type="radio" name="exercise" value="No"> No
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Relationships & Life -->
+    <div id="step-4" class="step-wrapper">
+      <div class="form-group-title">Your Vision — Relationships & Life</div>
+
+      <div class="form-group">
+        <label class="form-label">What do you want your relationships to look like?</label>
+        <textarea id="relationships" class="form-textarea" placeholder="Better relationship with partner / More meaningful friendships / etc."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What's one thing you want to quit in the next year?</label>
+        <input type="text" id="quit-thing" class="form-input" placeholder="E.g. social media, people-pleasing, toxic job...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What's one skill or habit you want to build?</label>
+        <input type="text" id="build-thing" class="form-input" placeholder="E.g. public speaking, meditation, journaling...">
+      </div>
+    </div>
+
+    <!-- Step 5: Honest Check-In -->
+    <div id="step-5" class="step-wrapper">
+      <div class="form-group-title">Your Path — Honest Check-In</div>
+
+      <div class="form-group">
+        <label class="form-label">On a scale of 1-10, how committed are you to making this change?</label>
+        <div class="slider-container">
+          <input type="range" min="1" max="10" value="5" id="commitment" class="slider" oninput="updateSliderValue('commitment', 'commitment-output')">
+          <div class="slider-value">
+            <span class="slider-label">Commitment level:</span>
+            <span class="slider-output" id="commitment-output">5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What's the one thing most likely to stop you?</label>
+        <input type="text" id="obstacle" class="form-input" placeholder="E.g. fear, busy schedule, lack of support...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">How many hours per week can you realistically dedicate to this?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="hours-available" value="1-2h"> 1-2 hours
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="hours-available" value="3-5h"> 3-5 hours
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="hours-available" value="5-10h"> 5-10 hours
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="hours-available" value="10h+"> 10+ hours
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-navigation">
+      <button id="prev-step-btn" class="btn btn-outline" style="display:none;">← Back</button>
+      <button id="next-step-btn" class="btn btn-primary">Next →</button>
+    </div>
+  </div>
+
+  <!-- Results Container -->
+  <div id="results-container" class="results-container">
+    <div class="result-header">
+      <h2>Your Future Self Report</h2>
+      <p>Based on your vision for the next year</p>
+    </div>
+
+    <div id="results-content"></div>
+
+    <button id="restart-form-btn" class="btn btn-primary action-button">Start Over</button>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="#">Habits</a></li>
+        <li><a href="#">Goals</a></li>
+        <li><a href="#">Mindset</a></li>
+        <li><a href="#">Productivity</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="#about">About Fred</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 WinWithFred.com — All rights reserved.</span>
+    <span>Built for people who get things done.</span>
+  </div>
+</footer>
+
+<script>
+let currentStep = 1;
+const totalSteps = 5;
+let formData = {};
+
+function initAuthNavbar() {
+  const authNav = document.getElementById('auth-nav');
+  if (authNav) {
+    authNav.innerHTML = '<span style="color:#d1d5db; font-size:0.9rem;">Welcome</span>';
+  }
+}
+
+function updateSliderValue(sliderId, outputId) {
+  const slider = document.getElementById(sliderId);
+  const output = document.getElementById(outputId);
+  output.textContent = slider.value;
+}
+
+function updateStepProgress() {
+  const percent = (currentStep / totalSteps) * 100;
+  document.getElementById('step-progress-fill').style.width = percent + '%';
+  document.getElementById('step-number').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('prev-step-btn').style.display = currentStep === 1 ? 'none' : 'block';
+  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next →';
+}
+
+function showStep(stepNum) {
+  document.querySelectorAll('.step-wrapper').forEach(s => s.classList.remove('active'));
+  document.getElementById(`step-${stepNum}`).classList.add('active');
+  updateStepProgress();
+}
+
+function captureFormData() {
+  formData = {
+    age: document.getElementById('age').value,
+    situation: document.querySelector('input[name="situation"]:checked')?.value || '',
+    frustration: document.getElementById('frustration').value,
+    financial: document.querySelector('input[name="financial"]:checked')?.value || '',
+    workType: document.getElementById('work-type').value,
+    workHours: document.getElementById('work-hours').value,
+    healthGoal: document.querySelector('input[name="health-goal"]:checked')?.value || '',
+    healthFeel: document.getElementById('health-feel').value,
+    exercise: document.querySelector('input[name="exercise"]:checked')?.value || '',
+    relationships: document.getElementById('relationships').value,
+    quitThing: document.getElementById('quit-thing').value,
+    buildThing: document.getElementById('build-thing').value,
+    commitment: parseInt(document.getElementById('commitment').value),
+    obstacle: document.getElementById('obstacle').value,
+    hoursAvailable: document.querySelector('input[name="hours-available"]:checked')?.value || ''
+  };
+}
+
+function nextStep() {
+  captureFormData();
+
+  if (currentStep === totalSteps) {
+    showResults();
+    return;
+  }
+
+  if (currentStep < totalSteps) {
+    currentStep++;
+    showStep(currentStep);
+    window.scrollTo(0, 0);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    showStep(currentStep);
+    window.scrollTo(0, 0);
+  }
+}
+
+function generateReport() {
+  const commitment = formData.commitment;
+  const commitmentText =
+    commitment <= 4 ? "At your current commitment level, you'll likely be in almost exactly the same place. Different year, same frustration." :
+    commitment <= 7 ? "You'll make some progress. But without a real system, you'll probably hit 40-60% of these goals." :
+    "You're in the zone where transformation actually happens. The gap between you and this future is a system, not willpower.";
+
+  const phases = {
+    1: {
+      title: "Phase 1 (Days 1-30): Foundation",
+      items: [
+        `Write down what you're quitting: "${formData.quitThing}"`,
+        `Define your first small win toward: "${formData.buildThing}"`,
+        `Block time this week to work on: "${formData.workType}"`
+      ]
+    },
+    2: {
+      title: "Phase 2 (Days 31-60): Momentum",
+      items: [
+        `Track 30 days of progress toward your health goal: ${formData.healthGoal}`,
+        `Have the hardest conversation about ${formData.relationships}`,
+        `Increase weekly hours dedicated to this from current to ${formData.hoursAvailable}`
+      ]
+    },
+    3: {
+      title: "Phase 3 (Days 61-90): Proof",
+      items: [
+        `Measure where you are on ${formData.workType} (hours, income, satisfaction)`,
+        `Revisit your biggest obstacle: "${formData.obstacle}" — what's changed?`,
+        `Write down 3 evidence points that you're becoming the person you want to be`
+      ]
+    }
+  };
+
+  const futureVision = `
+    In 12 months, you're ${formData.workType}. You're ${
+    formData.financial === "Money isn't my main goal" ? "making decisions based on freedom, not money." :
+    formData.financial === "Same as now" ? "at the same income level, but happier." :
+    `making ${formData.financial}.`
+    } You feel ${formData.healthFeel || "healthier and stronger"}. Your relationships are ${formData.relationships || "deeper and more meaningful"}.
+  `;
+
+  let html = `
+    <div class="result-section">
+      <div class="result-section-title">🔭 The Future You</div>
+      <div class="future-vision">${futureVision.trim()}</div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-title">🎯 Your Current Path</div>
+      <div class="result-section-content">
+        <div class="commitment-assessment">${commitmentText}</div>
+      </div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-title">🚧 The Gap</div>
+      <div class="result-section-content">
+        <p>The biggest thing standing in your way: <strong>${formData.obstacle}</strong></p>
+        <p style="margin-top:12px;">This isn't something to overcome. It's something to design around. If you're willing to dedicate ${formData.hoursAvailable || "a few hours"} per week, you have enough time. But only if you protect it.</p>
+      </div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-title">📋 Your 90-Day Launch Plan</div>
+      <div class="result-section-content">
+        ${Object.values(phases).map(phase => `
+          <div style="margin-bottom:20px;">
+            <strong style="color:var(--orange);">${phase.title}</strong>
+            <ul class="phase-list">
+              ${phase.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-title">✨ Today's One Action</div>
+      <div class="today-action-box">
+        <div class="today-action-label">Your Next Step</div>
+        <div class="today-action-text">Block 30 minutes this week to write down exactly what success looks like for you in 12 months. Be specific. Use that vision as your daily reminder.</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('results-content').innerHTML = html;
+  saveToLocalStorage();
+}
+
+function showResults() {
+  captureFormData();
+  generateReport();
+  document.getElementById('form-container').classList.remove('active');
+  document.getElementById('results-container').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function restartForm() {
+  currentStep = 1;
+  formData = {};
+  document.querySelectorAll('input[type="text"], textarea, input[type="number"]').forEach(el => el.value = '');
+  document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+  document.getElementById('work-hours').value = 40;
+  document.getElementById('commitment').value = 5;
+  updateSliderValue('work-hours', 'work-hours-output');
+  updateSliderValue('commitment', 'commitment-output');
+  document.getElementById('form-container').classList.add('active');
+  document.getElementById('results-container').classList.remove('active');
+  showStep(1);
+  window.scrollTo(0, 0);
+}
+
+function saveToLocalStorage() {
+  const data = {
+    formData,
+    timestamp: new Date().toISOString()
+  };
+  localStorage.setItem('wwf_future_self', JSON.stringify(data));
+}
+
+function loadFromLocalStorage() {
+  const saved = localStorage.getItem('wwf_future_self');
+  if (saved) {
+    const data = JSON.parse(saved);
+    // Could auto-populate previous data if desired
+  }
+}
+
+document.getElementById('next-step-btn').addEventListener('click', nextStep);
+document.getElementById('prev-step-btn').addEventListener('click', prevStep);
+document.getElementById('restart-form-btn').addEventListener('click', restartForm);
+
+// Handle radio button selection styling
+document.addEventListener('change', (e) => {
+  if (e.target.type === 'radio') {
+    const allOptions = e.target.closest('.radio-group, .button-group')?.querySelectorAll('.radio-option, .button-option');
+    if (allOptions) {
+      allOptions.forEach(opt => opt.classList.remove('selected'));
+      e.target.closest('.radio-option, .button-option')?.classList.add('selected');
+    }
+  }
+});
+
+showStep(1);
+loadFromLocalStorage();
+document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
+</script>
+
+</body>
+</html>
