@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reframe This Thought — WinWithFred</title>
+  <meta name="description" content="Turn a toxic thought into a useful one using CBT-inspired techniques." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+</style>
+  <style>
+    /* Tool-specific styles for Reframe Thought */
+
+    .disclaimer-box {
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+      color: #92400e;
+    }
+
+    .reframe-input-section {
+      margin-bottom: 32px;
+    }
+
+    .reframe-textarea {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: 1rem;
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .reframe-textarea:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+
+    .common-thoughts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .thought-chip {
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 999px;
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .thought-chip:hover {
+      border-color: var(--orange);
+      background: var(--orange-l);
+    }
+
+    .reframe-result {
+      display: none;
+      margin-top: 40px;
+    }
+
+    .reframe-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--muted);
+    }
+
+    .reframe-card.acknowledgment {
+      border-left-color: #3b82f6;
+      background: linear-gradient(to right, rgba(59,130,246,0.05), transparent);
+    }
+
+    .reframe-card.reframe {
+      border-left-color: var(--orange);
+      background: linear-gradient(to right, rgba(249,115,22,0.05), transparent);
+    }
+
+    .reframe-card.evidence {
+      border-left-color: var(--dark);
+    }
+
+    .reframe-card.action {
+      border-left-color: var(--green);
+      background: linear-gradient(to right, rgba(34,197,94,0.05), transparent);
+    }
+
+    .reframe-card-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: var(--muted);
+    }
+
+    .reframe-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+
+    .reframe-card-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    .reframe-card-text ul {
+      margin-left: 20px;
+      margin-top: 12px;
+    }
+
+    .reframe-card-text li {
+      margin-bottom: 8px;
+    }
+
+    .journal-section {
+      background: var(--orange-l);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 40px;
+    }
+
+    .journal-section h3 {
+      margin-bottom: 16px;
+    }
+
+    .journal-entry-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--orange);
+    }
+
+    .journal-entry-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .journal-entry-thought {
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-top: 6px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .support-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    /* Auth Navbar */
+    .nav-user { display:flex; align-items:center; gap:10px; }
+    .nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
+    .nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+    .nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">🔄 Reframe This Thought</div>
+    <h1>Turn a Toxic Thought Into a Useful One.</h1>
+    <p>Type a negative or inhelpful thought. Get an honest, grounded reframe — not toxic positivity. Inspired by CBT techniques used by psychologists.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <div class="disclaimer-box">
+    ⚠️ <strong>This tool is for self-reflection and is not a substitute for therapy or mental health treatment.</strong>
+  </div>
+
+  <!-- Input Section -->
+  <div class="reframe-input-section">
+    <label class="form-label" style="font-size:1rem; font-weight:600;">Type the thought that's bothering you:</label>
+    <textarea id="thought-input" class="reframe-textarea" placeholder="I'm a failure / I'll never be good enough / Nobody cares about me / I always mess up / I can't do this..."></textarea>
+
+    <p style="font-size:0.9rem; color:var(--muted); margin-top:16px; margin-bottom:12px;">Or pick a common one:</p>
+    <div class="common-thoughts">
+      <div class="thought-chip" onclick="selectThought('I\'m a failure')">I'm a failure</div>
+      <div class="thought-chip" onclick="selectThought('I\'ll never change')">I'll never change</div>
+      <div class="thought-chip" onclick="selectThought('Nobody cares about me')">Nobody cares</div>
+      <div class="thought-chip" onclick="selectThought('I\'m not smart enough')">Not smart enough</div>
+      <div class="thought-chip" onclick="selectThought('I always mess things up')">Always mess up</div>
+      <div class="thought-chip" onclick="selectThought('It\'s too late for me')">Too late for me</div>
+      <div class="thought-chip" onclick="selectThought('I\'m not worthy')">Not worthy</div>
+      <div class="thought-chip" onclick="selectThought('I can\'t do this')">Can't do this</div>
+    </div>
+
+    <div style="text-align:center; margin-top:32px;">
+      <button class="btn btn-primary btn-lg" onclick="reframeThought()">Reframe This Thought →</button>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div id="reframe-results" class="reframe-result">
+
+    <div class="reframe-card acknowledgment">
+      <div class="reframe-card-label">💙 I hear you</div>
+      <div class="reframe-card-title">Acknowledgment</div>
+      <div class="reframe-card-text" id="reframe-acknowledgment"></div>
+    </div>
+
+    <div class="reframe-card reframe">
+      <div class="reframe-card-label">🔄 A different angle</div>
+      <div class="reframe-card-title">Reframe</div>
+      <div class="reframe-card-text" id="reframe-text"></div>
+    </div>
+
+    <div class="reframe-card evidence">
+      <div class="reframe-card-label">📋 Challenge it</div>
+      <div class="reframe-card-title">Questions to find counter-evidence</div>
+      <div class="reframe-card-text" id="reframe-evidence"></div>
+    </div>
+
+    <div class="reframe-card action">
+      <div class="reframe-card-label">➡️ Next step</div>
+      <div class="reframe-card-title">One specific action</div>
+      <div class="reframe-card-text" id="reframe-action"></div>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-primary btn-sm" onclick="saveReframe()">Save This Reframe ↓</button>
+      <button class="btn btn-outline btn-sm" onclick="viewJournal()">View Thought Journal</button>
+      <button class="btn btn-dark btn-sm" onclick="resetForm()">Try Another Thought</button>
+    </div>
+
+  </div>
+
+  <!-- Thought Journal -->
+  <div id="journal-view" style="display:none;">
+    <div class="journal-section">
+      <h3>📔 Your Thought Journal</h3>
+      <p style="color:var(--muted); margin-bottom:20px;">Reframes you've saved. Notice the patterns.</p>
+      <div id="journal-list"></div>
+      <button class="btn btn-outline btn-sm" style="margin-top:20px;" onclick="closeJournal()">← Back</button>
+    </div>
+  </div>
+
+  <!-- Support Section -->
+  <div style="background:var(--orange-l); border-radius:var(--radius); padding:24px; margin-top:40px; text-align:center;">
+    <p style="margin-bottom:16px;"><strong>Need more support?</strong></p>
+    <div class="support-links">
+      <a href="instant-calm.html" class="btn btn-sm btn-dark">Instant Calm →</a>
+      <a href="mental-health-check.html" class="btn btn-sm btn-outline">Mental Health Check-In →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size: 0.9rem; margin-bottom: 16px;">Tools for people who want real change, not motivation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 WinWithFred. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+
+  const REFRAME_PATTERNS = {
+    'failure': {
+      acknowledgment: 'Feeling like a failure is painful — and it\'s a sign you care about doing well.',
+      reframe: 'Failing at something makes you someone who tried. That\'s not failure — that\'s data. What specifically failed? Was it the attempt, or the strategy?',
+      evidence: 'Name one thing you\'ve learned from a past failure. Name one small thing you\'ve actually succeeded at recently. Name one person who believes in you.',
+      action: 'Write down what you\'d tell a friend who came to you with this exact failure.'
+    },
+    'never': {
+      acknowledgment: 'When something goes wrong repeatedly, it feels permanent. That\'s a natural cognitive response.',
+      reframe: '"Never" and "always" are almost never literally true. Your brain is generalizing to protect you — but it\'s overcorrecting.',
+      evidence: 'Think of one time things DID work out. One time you DIDN\'T mess something up. The exceptions break the rule.',
+      action: 'Replace "I always..." with "I sometimes..." and see how the weight of it changes.'
+    },
+    'nobody': {
+      acknowledgment: 'Feeling unseen or uncared for is one of the loneliest feelings there is. You\'re not wrong to feel it.',
+      reframe: 'Loneliness often distorts perception. The question isn\'t whether people care — it\'s whether you\'ve shown people you need them.',
+      evidence: 'Name one person who has shown up for you, even once. Name one person who would notice if you disappeared. Have you told them how you\'re feeling?',
+      action: 'Reach out to one person today. Not a big conversation. Just: "Hey, been thinking of you."'
+    },
+    'capable': {
+      acknowledgment: 'Feeling like you don\'t measure up is exhausting — especially when you\'re comparing your insides to everyone else\'s outsides.',
+      reframe: '"Smart enough" for what? Most of what looks like intelligence is actually preparation, practice, and persistence. None of those require a different brain.',
+      evidence: 'What\'s something you\'ve gotten better at over time? What do people come to you for help with? What do you know that most people don\'t?',
+      action: 'List 3 things you\'re competent at. Not perfect — just competent. Notice how hard that is to do without dismissing each one.'
+    },
+    'late': {
+      acknowledgment: 'The feeling that you\'ve missed your window is genuinely painful — especially when you see others ahead of you.',
+      reframe: 'The only way it\'s actually too late is if you don\'t start. At any age, the person you are in 5 years is being built by decisions made right now.',
+      evidence: 'Name someone who made a major change after your current age. How would you feel in 5 years if you hadn\'t tried? What specifically do you think you\'ve missed?',
+      action: 'Write down what you would start today if you fully believed it wasn\'t too late.'
+    },
+    'worthy': {
+      acknowledgment: 'Feeling unworthy is one of the most painful experiences — and one of the most common. You\'re not alone in this.',
+      reframe: 'Worthiness isn\'t earned through achievement — it\'s a baseline. You were worthy before you did anything impressive, and you remain worthy when you fail.',
+      evidence: 'What are you hard on yourself about that you\'d forgive in someone you love? What would you say to a child who believed they were unworthy?',
+      action: 'Write down three things you\'d say to a close friend who told you they felt worthless. Then say those things to yourself.'
+    },
+    'default': {
+      acknowledgment: 'Whatever is weighing on you — your brain is telling you this matters. That\'s real.',
+      reframe: 'Our minds tend to treat uncomfortable thoughts as facts. But thoughts are not facts — they\'re interpretations. What\'s the most balanced interpretation of the situation?',
+      evidence: 'What evidence supports this thought? What evidence argues against it? What would a calm, trusted friend say about this?',
+      action: 'Write the thought on paper. Then write the opposite, as if you believed it fully. Notice how both feel when written down.'
+    }
+  };
+
+  let thoughtJournal = [];
+  let currentThought = '';
+
+  function init() {
+    loadJournal();
+  }
+
+  function selectThought(thought) {
+    document.getElementById('thought-input').value = thought;
+  }
+
+  function reframeThought() {
+    currentThought = document.getElementById('thought-input').value.trim();
+    if (!currentThought) {
+      alert('Type a thought first.');
+      return;
+    }
+
+    const reframe = findReframe(currentThought);
+    displayReframe(reframe);
+  }
+
+  function findReframe(thought) {
+    const lowerThought = thought.toLowerCase();
+
+    if (lowerThought.includes('failure') || lowerThought.includes('failed') || lowerThought.includes('can\'t') || lowerThought.includes('terrible')) {
+      return REFRAME_PATTERNS.failure;
+    }
+    if (lowerThought.includes('never') || lowerThought.includes('always') || lowerThought.includes('mess up') || lowerThought.includes('never work')) {
+      return REFRAME_PATTERNS.never;
+    }
+    if (lowerThought.includes('nobody') || lowerThought.includes('no one') || lowerThought.includes('cares') || lowerThought.includes('alone') || lowerThought.includes('lonely')) {
+      return REFRAME_PATTERNS.nobody;
+    }
+    if (lowerThought.includes('smart') || lowerThought.includes('good enough') || lowerThought.includes('capable') || lowerThought.includes('adequate')) {
+      return REFRAME_PATTERNS.capable;
+    }
+    if (lowerThought.includes('late') || lowerThought.includes('old') || lowerThought.includes('missed') || lowerThought.includes('behind')) {
+      return REFRAME_PATTERNS.late;
+    }
+    if (lowerThought.includes('worthy') || lowerThought.includes('deserve') || lowerThought.includes('worthless') || lowerThought.includes('burden')) {
+      return REFRAME_PATTERNS.worthy;
+    }
+
+    return REFRAME_PATTERNS.default;
+  }
+
+  function displayReframe(reframe) {
+    document.getElementById('thought-input').style.display = 'none';
+    document.querySelector('.common-thoughts').style.display = 'none';
+    document.querySelector('.reframe-input-section button').style.display = 'none';
+
+    document.getElementById('reframe-acknowledgment').textContent = reframe.acknowledgment;
+    document.getElementById('reframe-text').textContent = reframe.reframe;
+    document.getElementById('reframe-evidence').innerHTML = '<ul>' + reframe.evidence.split('. ').map(q => `<li>${q.replace(/\.$/,'')}.</li>`).join('') + '</ul>';
+    document.getElementById('reframe-action').textContent = reframe.action;
+
+    document.getElementById('reframe-results').style.display = 'block';
+  }
+
+  function saveReframe() {
+    const entry = {
+      id: Date.now().toString(),
+      date: new Date().toISOString().split('T')[0],
+      thought: currentThought,
+      timestamp: Date.now()
+    };
+    thoughtJournal.push(entry);
+    localStorage.setItem('wwf_thought_journal', JSON.stringify(thoughtJournal));
+    alert('Reframe saved to your thought journal!');
+  }
+
+  function loadJournal() {
+    try {
+      thoughtJournal = JSON.parse(localStorage.getItem('wwf_thought_journal') || '[]');
+    } catch (e) {
+      thoughtJournal = [];
+    }
+  }
+
+  function viewJournal() {
+    document.getElementById('reframe-results').style.display = 'none';
+    document.getElementById('journal-view').style.display = 'block';
+
+    if (thoughtJournal.length === 0) {
+      document.getElementById('journal-list').innerHTML = '<p style="color:var(--muted); text-align:center;">No reframes saved yet. When you save one, it will appear here.</p>';
+      return;
+    }
+
+    const sorted = thoughtJournal.slice().sort((a, b) => b.timestamp - a.timestamp);
+    document.getElementById('journal-list').innerHTML = sorted.map(entry => `
+      <div class="journal-entry-item">
+        <div class="journal-entry-date">${formatDate(entry.date)}</div>
+        <div class="journal-entry-thought">${escapeHtml(entry.thought)}</div>
+      </div>
+    `).join('');
+  }
+
+  function closeJournal() {
+    document.getElementById('journal-view').style.display = 'none';
+    document.getElementById('reframe-results').style.display = 'block';
+  }
+
+  function resetForm() {
+    document.getElementById('thought-input').style.display = 'block';
+    document.getElementById('thought-input').value = '';
+    document.querySelector('.common-thoughts').style.display = 'grid';
+    document.querySelector('.reframe-input-section button').style.display = 'block';
+    document.getElementById('reframe-results').style.display = 'none';
+    document.getElementById('journal-view').style.display = 'none';
+    document.getElementById('thought-input').focus();
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function escapeHtml(text) {
+    if (!text) return '';
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Auth navbar initialization
+  document.addEventListener('DOMContentLoaded', () => {
+    initAuthNavbar();
+    init();
+  });
+
+  function initAuthNavbar() {
+    const authNav = document.getElementById('auth-nav');
+    if (!authNav) return;
+    const user = JSON.parse(localStorage.getItem('wwf_user'));
+    if (user) {
+      const avatar = user.name ? user.name.charAt(0).toUpperCase() : '?';
+      authNav.innerHTML = `<div class="nav-user"><div class="nav-avatar">${avatar}</div><span class="nav-name">${user.name}</span><button class="nav-logout" onclick="logoutUser()">Logout</button></div>`;
+    }
+  }
+
+  function logoutUser() {
+    localStorage.removeItem('wwf_user');
+    location.reload();
+  }
+
+</script>
+
+</body>
+</html>
