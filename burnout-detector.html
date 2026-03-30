@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burnout Detector — WinWithFred</title>
+  <meta name="description" content="Burnout doesn't hit all at once — it creeps up. These 12 questions will tell you exactly where you stand and what to do about it." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+/* ── Auth Navbar ── */
+.nav-user { display:flex; align-items:center; gap:10px; }
+.nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
+.nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+.nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+
+/* ── Burnout Specific ── */
+.question-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px 36px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+.question-num {
+  font-size: 0.8rem; font-weight: 700; color: var(--orange);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+}
+.question-text { font-size: 1.25rem; font-weight: 700; color: var(--dark); line-height: 1.4; margin-bottom: 28px; }
+
+.answer-options { display: flex; flex-direction: column; gap: 10px; }
+.answer-option {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--white);
+  text-align: left;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--dark);
+  font-weight: 500;
+  width: 100%;
+}
+.answer-option:hover { border-color: var(--orange); background: var(--orange-l); }
+.answer-option.selected { border-color: var(--orange); background: var(--orange-l); color: var(--dark); }
+.answer-option .opt-circle {
+  width: 24px; height: 24px; min-width: 24px;
+  border-radius: 50%; border: 2px solid #e5e7eb;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.8rem; color: var(--white);
+  margin-top: 2px;
+}
+.answer-option.selected .opt-circle { border-color: var(--orange); background: var(--orange); }
+
+.result-hero {
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 48px 36px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.result-icon { font-size: 3rem; margin-bottom: 16px; }
+.result-label { color: var(--orange); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.result-title { color: var(--white); font-size: 1.8rem; font-weight: 900; margin-bottom: 16px; }
+.result-desc  { color: #9ca3af; font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto; }
+
+.score-bar-section { margin-bottom: 32px; }
+.score-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.score-bar-label { font-size: 0.85rem; font-weight: 600; width: 140px; color: var(--dark); }
+.score-bar-wrap  { flex: 1; background: #e5e7eb; border-radius: 999px; height: 10px; overflow: hidden; }
+.score-bar-fill  { height: 100%; background: var(--orange); border-radius: 999px; }
+.score-bar-val   { font-size: 0.8rem; font-weight: 700; color: var(--muted); width: 32px; text-align: right; }
+
+.recovery-card {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.recovery-card h4 { color: var(--dark); margin-bottom: 8px; font-size: 1rem; }
+.recovery-card p  { color: var(--muted); font-size: 0.95rem; }
+
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; gap: 16px; }
+.quiz-progress { background: #e5e7eb; border-radius: 999px; height: 6px; overflow: hidden; margin-bottom: 8px; }
+.quiz-progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.quiz-step-label { font-size: 0.85rem; color: var(--muted); margin-bottom: 32px; }
+
+.copy-btn { background: none; border: 1px solid var(--orange); color: var(--orange); padding: 10px 16px; border-radius: var(--radius); cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.15s; }
+.copy-btn:hover { background: var(--orange); color: var(--white); }
+.copy-btn.copied { background: var(--green); border-color: var(--green); color: var(--white); }
+
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label">🔥 Burnout Detector</div>
+    <h1>Are You Heading Toward Burnout?</h1>
+    <p>Burnout doesn't hit all at once — it creeps up. These 12 questions will tell you exactly where you stand and what to do about it.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Intro Screen -->
+  <div id="screen-intro">
+    <div class="card" style="text-align:center; padding:48px 36px;">
+      <div style="font-size:3rem; margin-bottom:20px;">🔥</div>
+      <h2 style="margin-bottom:16px;">The Burnout Detector</h2>
+      <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">Burnout develops across <strong>4 key dimensions:</strong></p>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:24px 0;">
+        <div style="padding:12px; background:var(--orange-l); border-radius:8px;"><strong>Exhaustion</strong><br><span style="font-size:0.85rem; color:var(--muted);">Physical & mental depletion</span></div>
+        <div style="padding:12px; background:var(--orange-l); border-radius:8px;"><strong>Cynicism</strong><br><span style="font-size:0.85rem; color:var(--muted);">Loss of engagement & meaning</span></div>
+        <div style="padding:12px; background:var(--orange-l); border-radius:8px;"><strong>Effectiveness</strong><br><span style="font-size:0.85rem; color:var(--muted);">Dropping performance & results</span></div>
+        <div style="padding:12px; background:var(--orange-l); border-radius:8px;"><strong>Recovery</strong><br><span style="font-size:0.85rem; color:var(--muted);">Inability to bounce back</span></div>
+      </div>
+      <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 4 minutes.</p>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start Detector →</button>
+    </div>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="screen-quiz" style="display:none;">
+    <div class="quiz-progress"><div class="quiz-progress-fill" id="progress-fill"></div></div>
+    <div class="quiz-step-label" id="step-label"></div>
+    <div id="quiz-container"></div>
+    <div class="quiz-nav">
+      <button class="btn btn-outline" onclick="prevQuestion()" id="btn-prev" style="display:none;">← Previous</button>
+      <button class="btn btn-primary" onclick="nextQuestion()" id="btn-next">Next →</button>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="screen-results" style="display:none;">
+    <div class="result-hero">
+      <div class="result-icon" id="result-icon"></div>
+      <div class="result-label" id="result-label"></div>
+      <h2 class="result-title" id="result-title"></h2>
+      <p class="result-desc" id="result-desc"></p>
+    </div>
+
+    <!-- Dimension Scores -->
+    <div style="background:var(--white); border-radius:var(--radius); padding:32px; margin-bottom:28px; border:1px solid #e5e7eb;">
+      <h3 style="margin-bottom:24px;">Your Burnout Profile</h3>
+      <div class="score-bar-section">
+        <div class="score-bar-row">
+          <div class="score-bar-label">Exhaustion</div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" id="bar-exhaustion"></div></div>
+          <div class="score-bar-val" id="val-exhaustion"></div>
+        </div>
+        <div class="score-bar-row">
+          <div class="score-bar-label">Cynicism</div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" id="bar-cynicism"></div></div>
+          <div class="score-bar-val" id="val-cynicism"></div>
+        </div>
+        <div class="score-bar-row">
+          <div class="score-bar-label">Effectiveness</div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" id="bar-effectiveness"></div></div>
+          <div class="score-bar-val" id="val-effectiveness"></div>
+        </div>
+        <div class="score-bar-row">
+          <div class="score-bar-label">Recovery</div>
+          <div class="score-bar-wrap"><div class="score-bar-fill" id="bar-recovery"></div></div>
+          <div class="score-bar-val" id="val-recovery"></div>
+        </div>
+      </div>
+      <div style="margin-top:16px; padding-top:16px; border-top:1px solid #e5e7eb;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-weight:600;">Total Score</span>
+          <span style="font-size:1.8rem; font-weight:900; color:var(--orange);" id="total-score"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recovery Plan -->
+    <div style="background:var(--white); border-radius:var(--radius); padding:32px; border:1px solid #e5e7eb; margin-bottom:28px;">
+      <h3 style="margin-bottom:24px;">Recovery Plan</h3>
+      <div id="recovery-plan"></div>
+    </div>
+
+    <!-- Previous Result -->
+    <div id="prev-result-box" style="display:none; background:#dbeafe; border:1px solid #bfdbfe; border-radius:var(--radius); padding:20px; margin-bottom:28px;">
+      <p style="color:#1d4ed8; font-size:0.95rem; margin:0;"><strong>vs Last Check:</strong> <span id="prev-compare"></span></p>
+    </div>
+
+    <!-- Share Button -->
+    <div style="text-align:center; margin:28px 0;">
+      <button class="copy-btn" onclick="copyShareMessage()" id="share-btn">Share with Your Manager</button>
+    </div>
+
+    <!-- Action -->
+    <div style="text-align:center; margin-top:32px;">
+      <button class="btn btn-primary" onclick="location.href='burnout-detector.html'">Retake Detector</button>
+      <a href="index.html" style="margin-left:12px;" class="btn btn-outline">Back to Tools</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; color:#9ca3af;">Practical tools for real life. No fluff, no nonsense.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 WinWithFred. Made with intent.</span>
+    <span>No trackers. No BS.</span>
+  </div>
+</footer>
+
+<script>
+
+// ── Auth Navbar ──
+function initAuthNavbar() {
+  const user = JSON.parse(localStorage.getItem('wwf_user') || 'null');
+  const navDiv = document.getElementById('auth-nav');
+  if (user) {
+    const first = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+    navDiv.innerHTML = `
+      <div class="nav-user">
+        <div class="nav-avatar">${first}</div>
+        <span class="nav-name">${user.name || 'User'}</span>
+        <button class="nav-logout" onclick="logout()">Logout</button>
+      </div>
+    `;
+  } else {
+    navDiv.innerHTML = '<a href="index.html" style="color:#d1d5db; font-weight:500; padding:8px 14px;">Login</a>';
+  }
+}
+
+function logout() { localStorage.removeItem('wwf_user'); location.href='index.html'; }
+
+// ── Questions ──
+const questions = [
+  { dim: 'exhaustion', text: 'How do you feel when you wake up on a typical morning?', opts: [
+    { text: 'Ready to go — I bounce back well', score: 0 },
+    { text: 'Tired but functional', score: 1 },
+    { text: 'Frequently exhausted before the day starts', score: 2 },
+    { text: 'Completely drained, dreading the day', score: 3 }
+  ]},
+  { dim: 'exhaustion', text: 'By the end of a typical workday, how depleted are you?', opts: [
+    { text: 'Fine — I still have energy left', score: 0 },
+    { text: 'A bit tired but okay', score: 1 },
+    { text: 'Running on empty most days', score: 2 },
+    { text: 'Completely wiped out, unable to do anything personal', score: 3 }
+  ]},
+  { dim: 'exhaustion', text: 'How often do you feel physically oremotionally burned out from your work?', opts: [
+    { text: 'Rarely', score: 0 },
+    { text: 'Occasionally', score: 1 },
+    { text: 'Several times a week', score: 2 },
+    { text: 'Almost every day', score: 3 }
+  ]},
+  { dim: 'cynicism', text: 'How do you feel about the people you work with or interact with daily?', opts: [
+    { text: 'Genuinely connected and engaged', score: 0 },
+    { text: 'Mostly fine, occasional frustration', score: 1 },
+    { text: 'Increasingly detached or irritated', score: 2 },
+    { text: 'I\'ve lost care for most people I work with', score: 3 }
+  ]},
+  { dim: 'cynicism', text: 'How meaningful does your work feel to you right now?', opts: [
+    { text: 'Very meaningful', score: 0 },
+    { text: 'Has good moments', score: 1 },
+    { text: 'Mostly feels like going through the motions', score: 2 },
+    { text: 'I can barely remember why I started this', score: 3 }
+  ]},
+  { dim: 'cynicism', text: 'When things go wrong at work, your reaction is:', opts: [
+    { text: 'I problem-solve and move on', score: 0 },
+    { text: 'I\'m frustrated but I get over it', score: 1 },
+    { text: 'Growing cynicism — I expect things to go wrong now', score: 2 },
+    { text: 'Nothing surprises me anymore, and I don\'t care either way', score: 3 }
+  ]},
+  { dim: 'effectiveness', text: 'How effective do you feel at your work right now compared to 6 months ago?', opts: [
+    { text: 'More effective', score: 0 },
+    { text: 'About the same', score: 1 },
+    { text: 'Noticeably less effective', score: 2 },
+    { text: 'Significantly underperforming compared to before', score: 3 }
+  ]},
+  { dim: 'effectiveness', text: 'How often do you struggle to concentrate or complete tasks that used to be easy?', opts: [
+    { text: 'Rarely', score: 0 },
+    { text: 'Sometimes', score: 1 },
+    { text: 'Often — I\'m slower and less focused', score: 2 },
+    { text: 'Almost every day — basic tasks take huge effort', score: 3 }
+  ]},
+  { dim: 'effectiveness', text: 'How would you rate your sense of accomplishment at work lately?', opts: [
+    { text: 'High — I feel proud of what I\'m doing', score: 0 },
+    { text: 'Average —"nothing notable', score: 1 },
+    { text: 'Low — I complete tasks but feel little satisfaction', score: 2 },
+    { text: 'Very low — I can barely remember my last real win', score: 3 }
+  ]},
+  { dim: 'recovery', text: 'How effective is your time off at restoring your energy?', opts: [
+    { text: 'I come back refreshed', score: 0 },
+    { text: 'Helps somewhat', score: 1 },
+    { text: 'I rest but still feel drained afterward', score: 2 },
+    { text: 'I can\'t seem to recover no matter how much I rest', score: 3 }
+  ]},
+  { dim: 'recovery', text: 'How often do you think about work during personal time or vacations?', opts: [
+    { text: 'Rarely — I disconnect well', score: 0 },
+    { text: 'Sometimes', score: 1 },
+    { text: 'Often — work follows me everywhere', score: 2 },
+    { text: 'Constantly — I can never fully switch off', score: 3 }
+  ]},
+  { dim: 'recovery', text: 'How are your sleep and physical health holding up?', opts: [
+    { text: 'Good — no major issues', score: 0 },
+    { text: 'Minor disruptions', score: 1 },
+    { text: 'Sleep is affected, energy is lower', score: 2 },
+    { text: 'Sleep is poor, physical symptoms appearing (stress, headaches, etc.)', score: 3 }
+  ]}
+];
+
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+
+function startQuiz() {
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-quiz').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  const progress = ((currentQ + 1) / questions.length) * 100;
+  document.getElementById('progress-fill').style.width = progress + '%';
+  document.getElementById('step-label').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+
+  let html = `
+    <div class="question-card">
+      <div class="question-num">Q$s{currentQ + 1}</div>
+      <div class="question-text">${escapeHtml(q.text)}</div>
+      <div class="answer-options">
+  `;
+
+  q.opts.forEach((opt, idx) => {
+    const sel = answers[currentQ] === idx ? 'selected' : '';
+    html += `
+      <div class="answer-option ${sel}" onclick="selectAnswer(${idx})">
+        <div class="opt-circle"></div>
+        <div>${escapeHtml(opt.text)}</div>
+      </div>
+    `;
+  });
+
+  html += '</div></div>';
+  document.getElementById('quiz-container').innerHTML = html;
+
+  document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-block' : 'none';
+  document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'See Results →' : 'Next →';
+}
+
+function selectAnswer(idx) {
+  answers[currentQ] = idx;
+  renderQuestion();
+}
+
+function nextQuestion() {
+  if (answers[currentQ] === null) { alert('Please select an answer'); return; }
+  if (currentQ < questions.length - 1) { currentQ++; renderQuestion(); }
+  else { showResults(); }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+}
+
+function showResults() {
+  document.getElementById('screen-quiz').style.display = 'none';
+  document.getElementById('screen-results').style.display = 'block';
+
+  const scores = { exhaustion: 0, cynicism: 0, effectiveness: 0, recovery: 0 };
+  answers.forEach((ans, idx) => { scores[questions[idx].dim] += questions[idx].opts[ans].score; });
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+
+  // Determine result tier
+  let tier, icon, label, title, desc;
+  if (total <= 8) {
+    tier = 1; icon = '✅'; label = 'SAFE'; title = "You're Not Burning Out — Keep It That Way";
+    desc = "You're managing well. These habits are what protect you in high-stress periods.";
+  } else if (total <= 16) {
+    tier = 2; icon = '⚠️'; label = 'WARNING'; title = "Watch Out — Early Warning Signs";
+    desc = "You're not burned out yet, but the warning signs are there. Ignored, this becomes serious within months.";
+  } else if (total <= 24) {
+    tier = 3; icon = '🔴'; label = 'URGENT'; title = "You're Approaching Burnout Fast";
+    desc = "This is serious. You are burning out. The question is whether you catch it now or wait until you crash.";
+  } else {
+    tier = 4; icon = '🆘'; label = 'CRITICAL'; title = "You're Already Burned Out";
+    desc = "Stop. You need rest — not more productivity tips. Burnout this severe requires real intervention.";
+  }
+
+  document.getElementById('result-icon').textContent = icon;
+  document.getElementById('result-label').textContent = label;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('total-score').textContent = total;
+
+  // Bars
+  ['exhaustion', 'cynicism', 'effectiveness', 'recovery'].forEach(dim => {
+    const pct = (scores[dim] / 9) * 100;
+    document.getElementById('bar-' + dim).style.width = pct + '%';
+    document.getElementById('val-' + dim).textContent = scores[dim] + '/9';
+  });
+
+  // Recovery Plan
+  let plan = '';
+  if (scores.exhaustion >= 5) plan += '<div class="recovery-card"><h4>High Exhaustion</h4><p>Take a real day off — no email, no productivity. Your brain needs genuine rest.</p></div>';
+  if (scores.cynicism >= 5) plan += '<div class="recovery-card"><h4>High Cynicism</h4><p>Reconnect with WHY you started. Talk to someone who energizes you.</p></div>';
+  if (scores.effectiveness < 4) plan += '<div class="recovery-card"><h4>Low Effectiveness</h4><p>Stop multi-tasking. Do one important thing per morning, that\'s it.</p></div>';
+  if (scores.recovery < 4) plan += '<div class="recovery-card"><h4>Poor Recovery</h4><p>No screens after 9pm for one week. No exceptions. Sleep is recovery.</p></div>';
+  document.getElementById('recovery-plan').innerHTML = plan || '<p style="color:var(--muted);">You\'re managing all dimensions well. Keep your current routine.</p>';
+
+  // Prev check
+  const prev = JSON.parse(localStorage.getItem('wwf_burnout') || 'null');
+  if (prev && prev.total) {
+    const diff = total - prev.total;
+    const arrow = diff > 0 ? '↑' : (diff < 0 ? '↓' : '→');
+    const color = diff > 0 ? 'color:var(--red)' : (diff < 0 ? 'color:var(--green)' : 'color:var(--muted)');
+    document.getElementById('prev-result-box').style.display = 'block';
+    document.getElementById('prev-compare').innerHTML = `<span style="${color}">${arrow} ${Math.abs(diff)} points</span> from your last check`;
+  }
+
+  localStorage.setItem('wwf_burnout', JSON.stringify({ total, scores, date: new Date().toISOString() }));
+}
+
+function copyShareMessage() {
+  const msg = "Hey, I just used the WinWithFred Burnout Detector and wanted to discuss my workload and stress levels. When you have a few minutes, can we talk about what might help?";
+  navigator.clipboard.writeText(msg).then(() => {
+    const btn = document.getElementById('share-btn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Share with Your Manager'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function escapeHtml(text) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
+
+</script>
+
+</body>
+</html>
