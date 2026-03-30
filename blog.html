@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Practical Self-Help That Actually Works | WinWithFred</title>
+  <meta name="description" content="Real talk on habits, goals, mindset, productivity, and overcoming adversity. No fluff. No gimmicks. Just articles you can actually use today." />
+  <meta name="author" content="Freddy Owen" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/blog.html" />
+  <meta property="og:title" content="Blog — Practical Self-Help That Actually Works | WinWithFred" />
+  <meta property="og:description" content="Real talk on habits, goals, mindset, productivity, and overcoming adversity. No fluff. No gimmicks. Just articles you can use today." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/blog.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "WinWithFred Blog",
+    "description": "Real talk on habits, goals, mindset, productivity, and overcoming adversity.",
+    "url": "https://winwithfred.com/blog.html",
+    "publisher": { "@type": "Person", "name": "Freddy Owen" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0d0d0d; --dark: #111827; --surface: #1f2937; --border: #374151;
+      --muted: #6b7280; --light: #f9fafb; --white: #ffffff;
+      --orange: #f97316; --orange-d: #ea6c0a; --orange-l: #fff7ed;
+      --radius: 10px; --shadow: 0 4px 24px rgba(0,0,0,0.08); --font: 'Inter', -apple-system, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.6; font-size: 16px; }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* Navbar */
+    .navbar { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .navbar-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .navbar-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+    .navbar-logo span { color: var(--orange); }
+    .navbar-logo:hover { text-decoration: none; }
+    .navbar-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .navbar-links a { color: #d1d5db; font-weight: 500; font-size: 0.95rem; padding: 8px 14px; border-radius: 8px; transition: all 0.15s; }
+    .navbar-links a:hover { color: #fff; background: var(--surface); text-decoration: none; }
+    .navbar-links a.active { color: var(--orange); }
+    .btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius); font-weight: 700; font-size: 1rem; cursor: pointer; border: 2px solid transparent; transition: all 0.18s; font-family: var(--font); line-height: 1; }
+    .btn-primary { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .btn-primary:hover { background: var(--orange-d); border-color: var(--orange-d); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--orange); border-color: var(--orange); }
+    .btn-outline:hover { background: var(--orange); color: #fff; text-decoration: none; }
+    .btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+
+    /* Hero */
+    .blog-hero { background: var(--dark); color: #fff; padding: 72px 24px 64px; text-align: center; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%); pointer-events: none; }
+    .blog-hero h1 { color: #fff; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .blog-hero h1 span { color: var(--orange); }
+    .blog-hero p { color: #9ca3af; font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
+    .section-label { display: inline-block; background: rgba(249,115,22,0.15); color: var(--orange); font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; margin-bottom: 16px; }
+
+    /* Filter bar */
+    .filter-bar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 16px 24px; }
+    .filter-bar-inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-bar span { color: var(--muted); font-size: 0.85rem; font-weight: 600; margin-right: 4px; }
+    .filter-pill { display: inline-block; padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; border: 2px solid #e5e7eb; color: var(--muted); background: #fff; cursor: pointer; transition: all 0.15s; text-decoration: none; }
+    .filter-pill:hover, .filter-pill.active { background: var(--orange); color: #fff; border-color: var(--orange); text-decoration: none; }
+
+    /* Blog Grid */
+    .blog-section { padding: 60px 0 80px; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+    /* Blog Card */
+    .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid #e5e7eb; transition: all 0.2s; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+    .blog-card-top { background: var(--dark); padding: 32px 28px 24px; }
+    .blog-tag { display: inline-block; background: rgba(249,115,22,0.15); color: var(--orange); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .blog-card-top h2 { color: #fff; font-size: 1.1rem; line-height: 1.4; margin: 0; }
+    .blog-card-body { padding: 20px 28px 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .blog-card-body p { color: var(--muted); font-size: 0.93rem; line-height: 1.6; margin-bottom: 16px; flex: 1; }
+    .blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+    .blog-read-link { color: var(--orange); font-weight: 700; font-size: 0.88rem; margin-top: 12px; display: inline-block; }
+
+    /* Featured post */
+    .featured-post { background: #fff; border-radius: var(--radius); border: 1px solid #e5e7eb; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; transition: all 0.2s; }
+    .featured-post:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+    .featured-left { background: var(--dark); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .featured-label { display: inline-block; background: var(--orange); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase; width: fit-content; }
+    .featured-left .blog-tag { background: rgba(249,115,22,0.2); }
+    .featured-left h2 { color: #fff; font-size: 1.5rem; line-height: 1.3; margin: 10px 0 16px; }
+    .featured-left p { color: #9ca3af; font-size: 0.95rem; line-height: 1.65; }
+    .featured-right { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .featured-right p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
+    .featured-meta { color: var(--muted); font-size: 0.85rem; }
+
+    /* CTA Banner */
+    .cta-banner { background: var(--orange); color: #fff; padding: 64px 24px; text-align: center; }
+    .cta-banner h2 { color: #fff; margin-bottom: 12px; font-size: 1.8rem; }
+    .cta-banner p { color: rgba(255,255,255,0.88); font-size: 1.05rem; margin-bottom: 28px; }
+    .btn-dark { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .btn-dark:hover { background: var(--surface); text-decoration: none; }
+
+    /* Footer */
+    .footer { background: var(--black); color: #9ca3af; padding: 48px 24px 32px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px; }
+    .footer-brand { max-width: 280px; }
+    .footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .footer-logo span { color: var(--orange); }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #9ca3af; font-size: 0.9rem; }
+    .footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+    .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-left, .featured-right { padding: 32px 24px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (max-width: 1000px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="blog-hero">
+  <div class="section-label">The WinWithFred Blog</div>
+  <h1>Real Talk. <span>Actionable Advice.</span></h1>
+  <p>No fluff. No gimmicks. Articles on habits, goals, mindset, and overcoming adversity that give you something you can use today.</p>
+</section>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <span>Filter:</span>
+    <a href="blog.html" class="filter-pill active">All Posts</a>
+    <a href="#" class="filter-pill">Habits</a>
+    <a href="#" class="filter-pill">Goals</a>
+    <a href="#" class="filter-pill">Mindset</a>
+    <a href="#" class="filter-pill">Productivity</a>
+    <a href="#" class="filter-pill">Adversity</a>
+  </div>
+</div>
+
+<!-- Blog Posts -->
+<section class="blog-section">
+  <div class="container">
+
+    <!-- Featured Post -->
+    <a href="blog-habits-why-fail.html" class="featured-post">
+      <div class="featured-left">
+        <span class="featured-label">Featured Post</span>
+        <span class="blog-tag">Habits</span>
+        <h2>Why You Keep Failing Your Habits (And What to Do About It)</h2>
+        <p>The problem is not your willpower. It is your system. Here is how to fix it in one afternoon and build habits that actually stick.</p>
+      </div>
+      <div class="featured-right">
+        <p>Most people make their habits too big, too fast. When life gets busy and they miss a day, they feel like a failure. Then they quit. This is not a discipline problem. It is a design problem. Once you understand how to build a habit the right way, everything changes.</p>
+        <div class="featured-meta">By Freddy Owen &nbsp;·&nbsp; January 6, 2025 &nbsp;·&nbsp; 6 min read</div>
+        <span class="blog-read-link" style="margin-top:20px;">Read the Article →</span>
+      </div>
+    </a>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid">
+
+      <a href="blog-goals-dont-stick.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Goals</span>
+          <h2>The Brutal Reason Your Goals Don't Stick (It's Not Motivation)</h2>
+        </div>
+        <div class="blog-card-body">
+          <p>Motivation is not the problem. Your goal itself is. Here is how to set goals that actually stick using one simple framework.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 7 &nbsp;·&nbsp; 7 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-stop-being-positive.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Mindset</span>
+          <h2>Stop Trying to Be Positive. Do This Instead.</h2>
+        </div>
+        <div class="blog-card-body">
+          <p>Toxic positivity makes things worse. Here is the mindset shift that actually builds real mental strength when life gets hard.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 8 &nbsp;·&nbsp; 6 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-one-percent-rule.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Productivity</span>
+          <h2>The 1% Rule: How Small Daily Wins Add Up to Big Results</h2>
+        </div>
+        <div class="blog-card-body">
+          <p>Getting 1% better every day sounds tiny. The math says you end up 37 times better in a year. Here is how to make it work for you.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 9 &nbsp;·&nbsp; 5 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-journaling-10-minutes.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Accountability</span>
+          <h2>10 Minutes a Day: The Journaling Habit That Changed How I Think</h2>
+        </div>
+        <div class="blog-card-body">
+          <p>I resisted journaling for years. Then I tried it for 30 days straight. Here is what happened and why you should try it too.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 10 &nbsp;·&nbsp; 5 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-better-decisions.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Mindset</span>
+          <h2>The One Question That Makes You a Better Decision Maker</h2>
+        </div>
+        <div class="blog-card-body">
+          <p>One question. Ask it before any important choice. Watch your decisions get sharper and your results improve across every area of your life.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 11 &nbsp;·&nbsp; 4 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="blog-overcoming-adversity.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Adversity</span>
+          <h2>How to Keep Going When Everything Goes Wrong</h2>
+        </div>
+        <div class="blog-card-body">
+          <p>Adversity hits everyone. What separates people who make it from people who quit is not talent. It is how they respond. Here is how to respond.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 12 &nbsp;·&nbsp; 6 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div style="max-width:600px; margin:0 auto;">
+    <h2>Put What You Read Into Action</h2>
+    <p>Reading is the first step. Use the free tools to turn the ideas into real daily habits, goals, and progress.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="goal-tracker.html" class="btn btn-dark">Set a Goal →</a>
+      <a href="quiz.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);color:#fff;">Take the Quiz →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem;line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="blog-habits-why-fail.html">Why Habits Fail</a></li>
+        <li><a href="blog-goals-dont-stick.html">Why Goals Don't Stick</a></li>
+        <li><a href="blog-stop-being-positive.html">Stop Being Positive</a></li>
+        <li><a href="blog-one-percent-rule.html">The 1% Rule</a></li>
+        <li><a href="blog-journaling-10-minutes.html">10-Minute Journaling</a></li>
+        <li><a href="blog-better-decisions.html">Better Decisions</a></li>
+        <li><a href="blog-overcoming-adversity.html">Overcoming Adversity</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="index.html#about">About Fred</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WinWithFred.com</span>
+    <span>No fluff. No gimmicks. Just results.</span>
+  </div>
+</footer>
+
+</body>
+</html>
