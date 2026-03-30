@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Wasted Calculator — WinWithFred</title>
+  <meta name="description" content="Find out exactly how much of your life you're trading for entertainment. Not to guilt-trip you — to give you a choice." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Auth Navbar ── */
+.nav-user { display:flex; align-items:center; gap:10px; }
+.nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
+.nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+.nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+</style>
+<style>
+  /* Time Wasted Tool Styles */
+  .slider-group {
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .slider-label strong {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .slider-value {
+    background: var(--orange-l);
+    color: var(--orange);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--orange);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--orange);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+  }
+
+  .calc-button {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--orange);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.18s;
+    margin-top: 16px;
+  }
+
+  .calc-button:hover {
+    background: var(--orange-d);
+    border-color: var(--orange-d);
+    transform: translateY(-2px);
+  }
+
+  .results-section {
+    display: none;
+    margin-top: 48px;
+  }
+
+  .results-section.show {
+    display: block;
+  }
+
+  .stat-card {
+    background: var(--dark);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .stat-card .category-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .stat-card .category-name {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-card .stat-big {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .stat-card .stat-label {
+    color: #9ca3af;
+    font-size: 0.9rem;
+  }
+
+  .total-card {
+    background: linear-gradient(135deg, var(--orange), var(--orange-d));
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 40px 28px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+  }
+
+  .total-card .total-label {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 8px;
+  }
+
+  .total-card .total-big {
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+
+  .comparison-section {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    margin-bottom: 32px;
+  }
+
+  .comparison-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 24px;
+    color: var(--dark);
+  }
+
+  .comparison-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .comparison-item:last-child {
+    border-bottom: none;
+  }
+
+  .comparison-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .comparison-text {
+    flex: 1;
+  }
+
+  .comparison-text .label {
+    color: var(--muted);
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .comparison-text .value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .good-news-section {
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+
+  .good-news-section h3 {
+    color: #15803d;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .good-news-section p {
+    color: #166534;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .recalc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .recalc-item {
+    background: var(--white);
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+
+  .recalc-label {
+    font-size: 0.8rem;
+    color: #166534;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .recalc-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #15803d;
+  }
+
+  .share-button {
+    display: inline-block;
+    background: var(--white);
+    color: var(--orange);
+    border: 2px solid var(--orange);
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s;
+    margin-right: 12px;
+    margin-bottom: 12px;
+  }
+
+  .share-button:hover {
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 32px 28px;
+    background: #f9fafb;
+    border-radius: var(--radius);
+    margin-top: 32px;
+  }
+
+  .cta-section h3 {
+    margin-bottom: 16px;
+  }
+
+  .cta-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-links a {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .cta-links a:hover {
+    background: var(--orange-d);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .recalc-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-links {
+      flex-direction: column;
+    }
+
+    .cta-links a {
+      display: block;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">⏱️ Time Wasted Calculator</div>
+    <h1>"You Spend 3.2 Years of Your Life Scrolling."</h1>
+    <p>Find out exactly how much of your life you're trading for entertainment. Not to guilt-trip you — to give you a choice.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Input Section -->
+  <form id="time-form">
+    <div class="slider-group">
+      <div class="slider-label">
+        <strong>📱 Hours/day on social media</strong>
+        <span class="slider-value" id="val-social">2.0h</span>
+      </div>
+      <input type="range" id="slider-social" min="0" max="8" step="0.5" value="2" oninput="updateSlider('social'); updateResults()">
+    </div>
+
+    <div class="slider-group">
+      <div class="slider-label">
+        <strong>📺 Hours/day watching TV/streaming</strong>
+        <span class="slider-value" id="val-tv">2.0h</span>
+      </div>
+      <input type="range" id="slider-tv" min="0" max="8" step="0.5" value="2" oninput="updateSlider('tv'); updateResults()">
+    </div>
+
+    <div class="slider-group">
+      <div class="slider-label">
+        <strong>▶️ Hours/day on YouTube/video browsing</strong>
+        <span class="slider-value" id="val-youtube">1.0h</span>
+      </div>
+      <input type="range" id="slider-youtube" min="0" max="8" step="0.5" value="1" oninput="updateSlider('youtube'); updateResults()">
+    </div>
+
+    <div class="slider-group">
+      <div class="slider-label">
+        <strong>🚗 Hours/week commuting</strong>
+        <span class="slider-value" id="val-commute">5.0h</span>
+      </div>
+      <input type="range" id="slider-commute" min="0" max="20" step="0.5" value="5" oninput="updateSlider('commute'); updateResults()">
+    </div>
+
+    <div class="slider-group">
+      <div class="slider-label">
+        <strong>📱 Hours/day misc phone use</strong>
+        <span class="slider-value" id="val-misc">1.0h</span>
+      </div>
+      <input type="range" id="slider-misc" min="0" max="6" step="0.5" value="1" oninput="updateSlider('misc'); updateResults()">
+    </div>
+  </form>
+
+  <!-- Results Section -->
+  <div class="results-section" id="results-section">
+    <div class="stat-card">
+      <div class="category-icon">📱</div>
+      <div class="category-name">Social Media</div>
+      <div class="stat-big" id="stat-social">2.0</div>
+      <div class="stat-label" id="stat-social-label">years over 50 years</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="category-icon">📺</div>
+      <div class="category-name">TV/Streaming</div>
+      <div class="stat-big" id="stat-tv">2.0</div>
+      <div class="stat-label" id="stat-tv-label">years over 50 years</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="category-icon">▶️</div>
+      <div class="category-name">YouTube/Video</div>
+      <div class="stat-big" id="stat-youtube">0.6</div>
+      <div class="stat-label" id="stat-youtube-label">years over 50 years</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="category-icon">🚗</div>
+      <div class="category-name">Commuting</div>
+      <div class="stat-big" id="stat-commute">2.5</div>
+      <div class="stat-label" id="stat-commute-label">years stuck in transit</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="category-icon">📱</div>
+      <div class="category-name">Misc Phone</div>
+      <div class="stat-big" id="stat-misc">0.6</div>
+      <div class="stat-label" id="stat-misc-label">years over 50 years</div>
+    </div>
+
+    <div class="total-card">
+      <div class="total-label">In total:</div>
+      <div class="total-big" id="total-display">7.7</div>
+      <div class="total-label">years of your life on these activities</div>
+    </div>
+
+    <div class="comparison-section">
+      <h3>What You Could Do Instead</h3>
+      <div class="comparison-item">
+        <div class="comparison-icon">📚</div>
+        <div class="comparison-text">
+          <span class="label">Books read</span>
+          <span class="value" id="comp-books">260</span>
+        </div>
+      </div>
+      <div class="comparison-item">
+        <div class="comparison-icon">🎓</div>
+        <div class="comparison-text">
+          <span class="label">New skills to intermediate level</span>
+          <span class="value" id="comp-skills">2.6</span>
+        </div>
+      </div>
+      <div class="comparison-item">
+        <div class="comparison-icon">💰</div>
+        <div class="comparison-text">
+          <span class="label">Potential side income</span>
+          <span class="value" id="comp-income">$10,400</span>
+        </div>
+      </div>
+      <div class="comparison-item">
+        <div class="comparison-icon">🏃</div>
+        <div class="comparison-text">
+          <span class="label">Years added to your life (via exercise)</span>
+          <span class="value" id="comp-lifespan">+1.0 yrs</span>
+        </div>
+      </div>
+      <div class="comparison-item">
+        <div class="comparison-icon">🌍</div>
+        <div class="comparison-text">
+          <span class="label">Countries you could visit</span>
+          <span class="value" id="comp-countries">30</span>
+        </div>
+      </div>
+      <div class="comparison-item">
+        <div class="comparison-icon">✍️</div>
+        <div class="comparison-text">
+          <span class="label">Blog posts / content pieces</span>
+          <span class="value" id="comp-content">346</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="good-news-section" id="good-news-section"></div>
+
+    <div style="text-align:center; margin-bottom:24px;">
+      <button class="share-button" onclick="shareResult()">📤 Share This Reality Check</button>
+      <button class="share-button" onclick="tagSomeone()">🏷️ Tag Someone Who Needs This</button>
+    </div>
+
+    <div class="cta-section">
+      <h3>Ready to Take Action?</h3>
+      <div class="cta-links">
+        <a href="habit-builder.html">Build Better Habits →</a>
+        <a href="quiz.html">Find Your Mindset Gaps →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; line-height:1.6;">Build better habits. Achieve better results. No fluff.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="mailto:contact@winwithfred.com">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 WinWithFred. All rights reserved.</div>
+    <div>Built with clarity. Designed for action.</div>
+  </div>
+</footer>
+
+<script>
+function initAuthNavbar() {
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const authNav = document.getElementById('auth-nav');
+  if (!authNav) return;
+
+  if (user) {
+    const avatar = user.email.charAt(0).toUpperCase();
+    authNav.innerHTML = `
+      <div class="nav-user">
+        <div class="nav-avatar">${avatar}</div>
+        <div class="nav-name">${user.name || user.email}</div>
+        <button class="nav-logout" onclick="logout()">Logout</button>
+      </div>
+    `;
+  } else {
+    authNav.innerHTML = `
+      <a href="auth.html" class="btn btn-outline btn-sm">Sign In</a>
+    `;
+  }
+}
+
+function logout() {
+  localStorage.removeItem('user');
+  window.location.href = 'index.html';
+}
+
+function updateSlider(category) {
+  const val = document.getElementById('slider-' + category).value;
+  document.getElementById('val-' + category).textContent = val + 'h';
+}
+
+function updateResults() {
+  const social = parseFloat(document.getElementById('slider-social').value);
+  const tv = parseFloat(document.getElementById('slider-tv').value);
+  const youtube = parseFloat(document.getElementById('slider-youtube').value);
+  const commute = parseFloat(document.getElementById('slider-commute').value) / 7; // convert weekly to daily
+  const misc = parseFloat(document.getElementById('slider-misc').value);
+
+  const lifetimeYears = 50;
+
+  // Calculate years for each category
+  const socialYears = (social * 365 * lifetimeYears) / 8760;
+  const tvYears = (tv * 365 * lifetimeYears) / 8760;
+  const youtubeYears = (youtube * 365 * lifetimeYears) / 8760;
+  const commuteYears = (commute * 365 * lifetimeYears) / 8760;
+  const miscYears = (misc * 365 * lifetimeYears) / 8760;
+
+  const totalYears = socialYears + tvYears + youtubeYears + commuteYears + miscYears;
+  const totalHours = totalYears * 8760;
+
+  // Display stats
+  document.getElementById('stat-social').textContent = socialYears.toFixed(1);
+  document.getElementById('stat-tv').textContent = tvYears.toFixed(1);
+  document.getElementById('stat-youtube').textContent = youtubeYears.toFixed(1);
+  document.getElementById('stat-commute').textContent = commuteYears.toFixed(1);
+  document.getElementById('stat-misc').textContent = miscYears.toFixed(1);
+
+  const totalMonths = Math.round((totalYears % 1) * 12);
+  document.getElementById('total-display').textContent = `${Math.floor(totalYears)}.${totalMonths} years`;
+
+  // Calculate comparison values
+  const hoursPerYear = (social + tv + youtube + commute + misc) * 365;
+  const books = Math.floor(hoursPerYear / 8);
+  const skills = Math.floor(hoursPerYear / 100);
+  const sideIncome = Math.floor((hoursPerYear / 15) * 52 * 25);
+  const lifeExpectancy = Math.floor(hoursPerYear / 7 / 24 * 10) / 10; // simplified: 1h exercise = 7h life
+  const countries = Math.floor(hoursPerYear / 40);
+  const content = Math.floor(hoursPerYear / 3);
+
+  document.getElementById('comp-books').textContent = books;
+  document.getElementById('comp-skills').textContent = skills.toFixed(1);
+  document.getElementById('comp-income').textContent = '$' + sideIncome.toLocaleString();
+  document.getElementById('comp-lifespan').textContent = '+' + lifeExpectancy.toFixed(1) + ' yrs';
+  document.getElementById('comp-countries').textContent = countries;
+  document.getElementById('comp-content').textContent = content;
+
+  // Generate good news section
+  const largestCategory = Math.max(social, tv, youtube, commute, misc);
+  let categoryName = '';
+  if (largestCategory === social) categoryName = 'social media';
+  else if (largestCategory === tv) categoryName = 'TV/streaming';
+  else if (largestCategory === youtube) categoryName = 'YouTube';
+  else if (largestCategory === commute) categoryName = 'commuting';
+  else if (largestCategory === misc) categoryName = 'misc phone use';
+
+  const cutHours = largestCategory * 0.5;
+  const freedHours = cutHours * 365;
+  const freedBooks = Math.floor(freedHours / 8);
+  const freedSkills = Math.floor(freedHours / 100);
+  const freedIncome = Math.floor((freedHours / 15) * 52 * 25);
+
+  const goodNewsHtml = `
+    <h3>The Good News</h3>
+    <p>Cutting ${cutHours.toFixed(1)} hours/day from ${categoryName} frees up <strong>${freedHours.toFixed(0)} hours/year</strong>.</p>
+    <p>In one year alone, you'd have enough time to:</p>
+    <div class="recalc-grid">
+      <div class="recalc-item">
+        <div class="recalc-label">Read</div>
+        <div class="recalc-value">${freedBooks} books</div>
+      </div>
+      <div class="recalc-item">
+        <div class="recalc-label">Learn</div>
+        <div class="recalc-value">${freedSkills} skills</div>
+      </div>
+      <div class="recalc-item">
+        <div class="recalc-label">Earn</div>
+        <div class="recalc-value">$${freedIncome.toLocaleString()}</div>
+      </div>
+      <div class="recalc-item">
+        <div class="recalc-label">Travel</div>
+        <div class="recalc-value">${Math.floor(freedHours / 40)} trips</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('good-news-section').innerHTML = goodNewsHtml;
+
+  document.getElementById('results-section').classList.add('show');
+}
+
+function shareResult() {
+  const social = document.getElementById('slider-social').value;
+  const tv = document.getElementById('slider-tv').value;
+  const youtube = document.getElementById('slider-youtube').value;
+  const total = document.getElementById('total-display').textContent;
+
+  const text = `I just discovered I spend ${total} of my life on screens (${social}h social, ${tv}h TV, ${youtube}h YouTube). This reality check on WinWithFred was eye-opening.
+
+Find out how much time you're actually trading: winwithfred.com/time-wasted`;
+
+  if (navigator.share) {
+    navigator.share({ title: 'Time Wasted Calculator', text });
+  } else {
+    navigator.clipboard.writeText(text);
+    alert('Result copied to clipboard!');
+  }
+}
+
+function tagSomeone() {
+  const text = 'Tag someone who needs to see this → winwithfred.com/time-wasted';
+  if (navigator.share) {
+    navigator.share({ title: 'Tag a Friend', text });
+  } else {
+    navigator.clipboard.writeText(text);
+    alert('Text copied to clipboard!');
+  }
+}
+
+// Initialize results on page load
+document.addEventListener('DOMContentLoaded', () => {
+  initAuthNavbar();
+  updateResults();
+});
+</script>
+
+</body>
+</html>
