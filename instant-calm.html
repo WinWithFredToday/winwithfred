@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Calm — WinWithFred</title>
+  <meta name="description" content="3 evidence-based techniques to calm anxiety in under 5 minutes." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+</style>
+  <style>
+    /* Tool-specific styles for Instant Calm */
+
+    .tool-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .tool-card-main {
+      background: var(--white);
+      border: 2px solid #e5e7eb;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tool-card-main:hover {
+      border-color: var(--orange);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .tool-card-main .tool-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .tool-card-main h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .tool-card-main p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Breathing Exercise */
+    .breathing-container {
+      display: none;
+      text-align: center;
+      padding: 60px 24px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark);
+      border-radius: var(--radius);
+      color: var(--white);
+    }
+
+    .breathing-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--orange-d));
+      margin: 0 auto 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      animation: breathe 19s infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.6); }
+      50% { transform: scale(1.6); }
+      75% { transform: scale(1); }
+    }
+
+    .breathing-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .breathing-round {
+      font-size: 1rem;
+      color: #9ca3af;
+      margin-bottom: 24px;
+    }
+
+    .breathing-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .breathing-option {
+      background: var(--surface);
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .breathing-option:hover {
+      border-color: var(--orange);
+    }
+
+    .breathing-option.active {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* Grounding Exercise */
+    .grounding-container {
+      display: none;
+    }
+
+    .grounding-step {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      margin-bottom: 24px;
+      border: 2px solid #e5e7eb;
+      display: none;
+    }
+
+    .grounding-step.active {
+      display: block;
+    }
+
+    .grounding-step-num {
+      font-size: 3rem;
+      color: var(--orange);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .grounding-instruction {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .grounding-timer {
+      font-size: 2rem;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .grounding-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      font-family: var(--font);
+    }
+
+    .grounding-progress {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .grounding-progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e5e7eb;
+      transition: background 0.3s;
+    }
+
+    .grounding-progress-dot.active {
+      background: var(--orange);
+    }
+
+    .grounding-progress-dot.done {
+      background: var(--green);
+    }
+
+    /* Affirmations Exercise */
+    .affirmations-container {
+      display: none;
+    }
+
+    .affirmations-setup {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .affirmations-setup h3 {
+      margin-bottom: 24px;
+      font-size: 1.3rem;
+    }
+
+    .emotion-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .emotion-btn {
+      padding: 16px 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: var(--radius);
+      background: var(--white);
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      font-family: var(--font);
+      font-weight: 500;
+    }
+
+    .emotion-btn:hover {
+      border-color: var(--orange);
+      background: var(--orange-l);
+    }
+
+    .emotion-btn.selected {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .affirmation-display {
+      background: var(--dark);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 60px 40px;
+      text-align: center;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .affirmation-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      color: var(--white);
+    }
+
+    .affirmation-progress {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .affirmation-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transition: background 0.3s;
+    }
+
+    .affirmation-dot.active {
+      background: var(--orange);
+    }
+
+    /* Support Links */
+    .support-section {
+      background: var(--orange-l);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .support-section p {
+      margin-bottom: 16px;
+    }
+
+    .support-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Auth Navbar */
+    .nav-user { display:flex; align-items:center; gap:10px; }
+    .nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
+    .nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+    .nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">🧘 Instant Calm</div>
+    <h1>Stop. Breathe. Reset.</h1>
+    <p>When anxiety hits or you need to decompress fast — this tool gives you 3 evidence-based techniques that work in under 5 minutes.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Initial Tool Selection -->
+  <div id="tool-selection">
+    <div class="tool-cards-grid">
+
+      <!-- Tool A: 4-7-8 Breathing -->
+      <div class="tool-card-main" onclick="startBreathing()">
+        <div class="tool-emoji">🫁</div>
+        <h3>4-7-8 Breathing</h3>
+        <p>The most effective. Slows your nervous system fast.</p>
+      </div>
+
+      <!-- Tool B: 5-4-3-2-1 Grounding -->
+      <div class="tool-card-main" onclick="startGrounding()">
+        <div class="tool-emoji">🌍</div>
+        <h3>5-4-3-2-1 Grounding</h3>
+        <p>Interrupts anxiety by anchoring you to now.</p>
+      </div>
+
+      <!-- Tool C: Quick Affirmations -->
+      <div class="tool-card-main" onclick="startAffirmations()">
+        <div class="tool-emoji">💭</div>
+        <h3>Quick Affirmations</h3>
+        <p>Counteract negative thoughts with what you need to hear.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BREATHING EXERCISE -->
+  <div id="breathing-section" class="breathing-container">
+    <div class="breathing-round" id="breathing-round-text">Round 1 of 4</div>
+    <div class="breathing-circle" id="breathing-circle"></div>
+    <div class="breathing-text" id="breathing-text">Breathe in...</div>
+
+    <div style="text-align:center; margin-top:20px;">
+      <p style="font-size:0.9rem; color:#9ca3af; margin-bottom:16px;">Choose your style:</p>
+      <div class="breathing-controls">
+        <div class="breathing-option active" onclick="setBreathingMode('4-7-8')">4-7-8 Breathing</div>
+        <div class="breathing-option" onclick="setBreathingMode('box')">Box Breathing</div>
+      </div>
+    </div>
+
+    <div class="breathing-controls" style="margin-top:40px;">
+      <button class="btn btn-outline btn-sm" onclick="backToMenu()">← Back</button>
+      <button class="btn btn-primary btn-sm" id="breathing-end-btn" onclick="endBreathing()" style="display:none;">I'm Good ✓</button>
+    </div>
+  </div>
+
+  <!-- GROUNDING EXERCISE -->
+  <div id="grounding-section" class="grounding-container">
+    <div style="margin-bottom:24px;">
+      <p style="font-size:1.1rem; color:var(--dark); font-weight:500;">This technique interrupts anxiety by forcing your brain to focus on the present.</p>
+    </div>
+
+    <div class="grounding-progress" id="grounding-progress"></div>
+
+    <div id="grounding-steps-container"></div>
+
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:24px;">
+      <button class="btn btn-outline btn-sm" onclick="backToMenu()">← Back</button>
+      <button class="btn btn-primary btn-sm" id="grounding-next-btn" onclick="nextGroundingStep()">Next →</button>
+    </div>
+
+    <div id="grounding-end-buttons" style="display:none; text-align:center; margin-top:40px;">
+      <p style="font-size:1.1rem; margin-bottom:24px; color:var(--dark); font-weight:600;">You're here. You're present. The anxiety is about the future or the past — not right now.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="backToMenu()">I feel better ✓</button>
+        <button class="btn btn-outline" onclick="restartGrounding()">I need more</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFFIRMATIONS EXERCISE -->
+  <div id="affirmations-section" class="affirmations-container">
+
+    <div id="affirmations-setup-screen" class="affirmations-setup">
+      <h3>What are you feeling right now?</h3>
+      <p style="color:var(--muted); margin-bottom:24px;">Tap to select (you can pick more than one):</p>
+      <div class="emotion-buttons">
+        <button class="emotion-btn" onclick="selectEmotion('anxious')">😟 Anxious</button>
+        <button class="emotion-btn" onclick="selectEmotion('sad')">😔 Sad</button>
+        <button class="emotion-btn" onclick="selectEmotion('angry')">😤 Angry</button>
+        <button class="emotion-btn" onclick="selectEmotion('overwhelmed')">😕 Overwhelmed</button>
+        <button class="emotion-btn" onclick="selectEmotion('defeated')">😴 Defeated</button>
+        <button class="emotion-btn" onclick="selectEmotion('scared')">😰 Scared</button>
+      </div>
+      <button class="btn btn-primary" id="affirmations-start-btn" onclick="startAffirmationDisplay()" style="margin-top:24px; display:none;">Show Me Affirmations →</button>
+    </div>
+
+    <div id="affirmations-display-screen" style="display:none;">
+      <div class="affirmation-display" id="affirmation-display-area">
+        <div class="affirmation-text" id="affirmation-text"></div>
+        <div class="affirmation-progress" id="affirmation-progress"></div>
+      </div>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-outline btn-sm" onclick="backToMenu()">← Back</button>
+        <button class="btn btn-primary btn-sm" onclick="nextAffirmation()">Next →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Support Section (visible on all tools) -->
+  <div class="support-section" id="support-section">
+    <p><strong>Need more than a breathing exercise?</strong></p>
+    <div class="support-links">
+      <a href="mental-health-check.html" class="btn btn-sm btn-dark">Mental Health Check-In →</a>
+      <a href="reframe-thought.html" class="btn btn-sm btn-outline">Reframe a Thought →</a>
+    </div>
+    <div style="margin-top:16px;">
+      <a href="sms:?body=Hey%2C%20I'm%20having%20a%20hard%20moment.%20Could%20we%20talk%3F" class="btn btn-sm btn-outline">Text a Friend 📱</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size: 0.9rem; margin-bottom: 16px;">Tools for people who want real change, not motivation.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 WinWithFred. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+
+  // State
+  let selectedEmotions = [];
+  let currentAffirmationIndex = 0;
+  let breathingCycles = 0;
+  let breathingMode = '4-7-8';
+  let isBreathing = false;
+  let groundingCurrentStep = 0;
+
+  const GROUNDING_STEPS = [
+    { sense: 'SEE', count: 5, timer: 45, hint: 'Look around slowly. Take it in.' },
+    { sense: 'TOUCH', count: 4, timer: 45, hint: 'Feel their texture. Notice temperature.' },
+    { sense: 'HEAR', count: 3, timer: 30, hint: 'Not music — natural sounds.' },
+    { sense: 'SMELL', count: 2, timer: 30, hint: 'If you can\'t smell anything, think of a favorite scent.' },
+    { sense: 'TASTE', count: 1, timer: 20, hint: 'Name one thing you can taste right now.' }
+  ];
+
+  const AFFIRMATIONS = {
+    anxious: [
+      "This feeling is temporary. It always passes. Always.",
+      "You've survived every difficult moment in your life so far. This one too.",
+      "Your body is trying to protect you. It's not your enemy.",
+      "Slow down. One breath. One moment. That's all.",
+      "You don't have to figure it all out right now."
+    ],
+    sad: [
+      "Feeling this doesn't mean something is permanently wrong.",
+      "You're allowed to feel this. You don't have to fix it immediately.",
+      "The people who love you are glad you exist.",
+      "Your sensitivity is a strength — even when it hurts.",
+      "Tomorrow will feel different. Not because you forced it. Just because time moves."
+    ],
+    angry: [
+      "Your anger is telling you something matters to you. That's useful information.",
+      "You don't have to act on this feeling. You can feel it and let it move through you.",
+      "What you do next is the part that matters.",
+      "You're more than your reaction.",
+      "This situation does not define you. Your response does."
+    ],
+    overwhelmed: [
+      "You don't have to do everything at once. Just one thing.",
+      "The list is long. The next step is just one thing.",
+      "You've carried heavy things before. You have the capacity.",
+      "It's okay to ask for help.",
+      "Take the next small step. That's it."
+    ],
+    defeated: [
+      "Setbacks are data, not verdicts.",
+      "The people you admire have failed more times than you know.",
+      "You're still here. That counts for something.",
+      "This is a chapter, not the whole story.",
+      "Rest is not the same as giving up."
+    ],
+    scared: [
+      "Fear usually means you care. That's a good sign.",
+      "You've walked into uncertainty before. You came out the other side.",
+      "The scary thing is rarely as bad as the fear of it.",
+      "You can do scared. Courage isn't the absence of fear.",
+      "Name the fear. Unnamed fears have more power."
+    ]
+  };
+
+  function showScreen(screenId) {
+    document.getElementById('tool-selection').style.display = 'none';
+    document.getElementById('breathing-section').style.display = 'none';
+    document.getElementById('grounding-section').style.display = 'none';
+    document.getElementById('affirmations-section').style.display = 'none';
+    document.getElementById('support-section').style.display = screenId ? 'none' : 'block';
+    if (screenId) {
+      document.getElementById(screenId).style.display = 'block';
+    }
+  }
+
+  function backToMenu() {
+    isBreathing = false;
+    showScreen(null);
+    document.getElementById('tool-selection').style.display = 'block';
+    document.getElementById('support-section').style.display = 'block';
+  }
+
+  // ============== BREATHING ==============
+  function startBreathing() {
+    showScreen('breathing-section');
+    breathingCycles = 0;
+    isBreathing = true;
+    setBreathingMode('4-7-8');
+  }
+
+  function setBreathingMode(mode) {
+    breathingMode = mode;
+    document.querySelectorAll('.breathing-option').forEach(el => el.classList.remove('active'));
+    event.target.classList.add('active');
+    breathingCycles = 0;
+    isBreathing = true;
+    performBreathingCycle();
+  }
+
+  function performBreathingCycle() {
+    if (!isBreathing) return;
+
+    if (breathingMode === '4-7-8') {
+      animateBreathing(4, 'Breathe in... ', 4, 7, 8);
+    } else {
+      animateBreathing(4, 'Breathe in... ', 4, 4, 4);
+    }
+
+    setTimeout(() => {
+      if (!isBreathing) return;
+      breathingCycles++;
+      document.getElementById('breathing-round-text').textContent = `Round ${breathingCycles} of 4`;
+      if (breathingCycles >= 4) {
+        endBreathingAutomatically();
+      } else {
+        setTimeout(performBreathingCycle, 500);
+      }
+    }, breathingMode === '4-7-8' ? 19000 : 16000);
+  }
+
+  function animateBreathing(inhaleTime, inhaleText, inhaleCount, holdTime, exhaleTime) {
+    const circle = document.getElementById('breathing-circle');
+    const text = document.getElementById('breathing-text');
+    let count = inhaleCount;
+
+    circle.style.animation = 'none';
+    circle.style.transform = 'scale(1)';
+    text.textContent = inhaleText + inhaleCount;
+
+    const inhaleInterval = setInterval(() => {
+      count--;
+      text.textContent = inhaleText + (count >= 0 ? count : 0);
+      if (count < 0) clearInterval(inhaleInterval);
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(inhaleInterval);
+      circle.style.transform = 'scale(1.6)';
+      let holdCount = holdTime;
+      text.textContent = 'Hold... ' + holdCount;
+      const holdInterval = setInterval(() => {
+        holdCount--;
+        text.textContent = 'Hold... ' + (holdCount >= 0 ? holdCount : 0);
+        if (holdCount < 0) clearInterval(holdInterval);
+      }, 1000);
+
+      setTimeout(() => {
+        clearInterval(holdInterval);
+        circle.style.transition = `transform ${exhaleTime}s ease-out`;
+        circle.style.transform = 'scale(1)';
+        let exhaleCount = exhaleTime;
+        text.textContent = 'Breathe out... ' + exhaleCount;
+        const exhaleInterval = setInterval(() => {
+          exhaleCount--;
+          text.textContent = 'Breathe out... ' + (exhaleCount >= 0 ? exhaleCount : 0);
+          if (exhaleCount < 0) clearInterval(exhaleInterval);
+        }, 1000);
+      }, holdTime * 1000);
+    }, inhaleTime * 1000);
+  }
+
+  function endBreathingAutomatically() {
+    isBreathing = false;
+    document.getElementById('breathing-circle').style.animation = 'none';
+    document.getElementById('breathing-text').textContent = 'Well done. Your nervous system has slowed down. How do you feel?';
+    document.getElementById('breathing-end-btn').style.display = 'inline-block';
+  }
+
+  function endBreathing() {
+    backToMenu();
+  }
+
+  // ============== GROUNDING ==============
+  function startGrounding() {
+    showScreen('grounding-section');
+    groundingCurrentStep = 0;
+    renderGroundingSteps();
+    showGroundingStep();
+  }
+
+  function renderGroundingSteps() {
+    const container = document.getElementById('grounding-steps-container');
+    const progress = document.getElementById('grounding-progress');
+
+    progress.innerHTML = GROUNDING_STEPS.map((_, i) =>
+      `<div class="grounding-progress-dot ${i === groundingCurrentStep ? 'active' : (i < groundingCurrentStep ? 'done' : '')}"></div>`
+    ).join('');
+
+    container.innerHTML = GROUNDING_STEPS.map((step, i) => `
+      <div class="grounding-step ${i === groundingCurrentStep ? 'active' : ''}">
+        <div class="grounding-step-num">${step.count}</div>
+        <div class="grounding-instruction">Name ${step.count} things you can <strong>${step.sense}</strong> right now. ${step.hint}</div>
+        <div class="grounding-timer" id="grounding-timer-${i}">${step.timer}s</div>
+        <input type="text" class="grounding-input" placeholder="Type them here (optional)..." />
+      </div>
+    `).join('');
+
+    startGroundingTimer(groundingCurrentStep);
+  }
+
+  function startGroundingTimer(stepIndex) {
+    const step = GROUNDING_STEPS[stepIndex];
+    let timeLeft = step.timer;
+    const timerEl = document.getElementById(`grounding-timer-${stepIndex}`);
+
+    const interval = setInterval(() => {
+      timeLeft--;
+      timerEl.textContent = timeLeft + 's';
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
+
+  function showGroundingStep() {
+    if (groundingCurrentStep >= GROUNDING_STEPS.length) {
+      document.querySelectorAll('.grounding-step').forEach(el => el.style.display = 'none');
+      document.getElementById('grounding-next-btn').style.display = 'none';
+      document.getElementById('grounding-end-buttons').style.display = 'block';
+    }
+  }
+
+  function nextGroundingStep() {
+    groundingCurrentStep++;
+    if (groundingCurrentStep < GROUNDING_STEPS.length) {
+      document.querySelectorAll('.grounding-step').forEach((el, i) => {
+        el.classList.toggle('active', i === groundingCurrentStep);
+      });
+      document.getElementById('grounding-progress').innerHTML = GROUNDING_STEPS.map((_, i) =>
+        `<div class="grounding-progress-dot ${i === groundingCurrentStep ? 'active' : (i < groundingCurrentStep ? 'done' : '')}"></div>`
+      ).join('');
+      startGroundingTimer(groundingCurrentStep);
+    } else {
+      showGroundingStep();
+    }
+  }
+
+  function restartGrounding() {
+    startGrounding();
+  }
+
+  // ============== AFFIRMATIONS ==============
+  function startAffirmations() {
+    showScreen('affirmations-section');
+    selectedEmotions = [];
+    document.getElementById('affirmations-setup-screen').style.display = 'block';
+    document.getElementById('affirmations-display-screen').style.display = 'none';
+  }
+
+  function selectEmotion(emotion) {
+    const btn = event.target;
+    btn.classList.toggle('selected');
+    if (selectedEmotions.includes(emotion)) {
+      selectedEmotions = selectedEmotions.filter(e => e !== emotion);
+    } else {
+      selectedEmotions.push(emotion);
+    }
+    document.getElementById('affirmations-start-btn').style.display = selectedEmotions.length > 0 ? 'inline-block' : 'none';
+  }
+
+  function startAffirmationDisplay() {
+    document.getElementById('affirmations-setup-screen').style.display = 'none';
+    document.getElementById('affirmations-display-screen').style.display = 'block';
+    currentAffirmationIndex = 0;
+    displayAffirmation();
+  }
+
+  function displayAffirmation() {
+    const allAffirmations = selectedEmotions.flatMap(e => AFFIRMATIONS[e] || []);
+    const affirmation = allAffirmations[currentAffirmationIndex % allAffirmations.length];
+    document.getElementById('affirmation-text').textContent = affirmation;
+
+    const progress = document.getElementById('affirmation-progress');
+    progress.innerHTML = Array.from({length: 5}, (_, i) =>
+      `<div class="affirmation-dot ${i === currentAffirmationIndex % 5 ? 'active' : ''}"></div>`
+    ).join('');
+  }
+
+  function nextAffirmation() {
+    currentAffirmationIndex++;
+    displayAffirmation();
+  }
+
+  // Auth navbar initialization
+  document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
+
+  function initAuthNavbar() {
+    const authNav = document.getElementById('auth-nav');
+    if (!authNav) return;
+    const user = JSON.parse(localStorage.getItem('wwf_user'));
+    if (user) {
+      const avatar = user.name ? user.name.charAt(0).toUpperCase() : '?';
+      authNav.innerHTML = `<div class="nav-user"><div class="nav-avatar">${avatar}</div><span class="nav-name">${user.name}</span><button class="nav-logout" onclick="logoutUser()">Logout</button></div>`;
+    }
+  }
+
+  function logoutUser() {
+    localStorage.removeItem('wwf_user');
+    location.reload();
+  }
+
+</script>
+
+</body>
+</html>
