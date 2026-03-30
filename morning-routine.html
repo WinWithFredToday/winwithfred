@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morning Routine Builder — WinWithFred</title>
+  <meta name="description" content="Answer 5 quick questions. Get a custom, minute-by-minute morning routine built around your goals — not someone else's." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+/* ── Tool-Specific: Morning Routine ── */
+.routine-step {
+  margin-bottom: 28px;
+  padding: 20px;
+  background: var(--white);
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+}
+.routine-step.active { border-color: var(--orange); }
+
+.step-number {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.step-question {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: var(--dark);
+}
+
+.step-options {
+  display: grid;
+  gap: 12px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.option-item:hover { background: var(--orange-l); border-color: var(--orange); }
+.option-item.selected { background: var(--orange-l); border-color: var(--orange); }
+
+.option-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+.option-item.selected .option-radio {
+  border-color: var(--orange);
+  background: var(--orange);
+}
+.option-radio::after {
+  content: '✓';
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: none;
+}
+.option-item.selected .option-radio::after { display: block; }
+
+.option-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+.option-item.selected .option-checkbox {
+  border-color: var(--orange);
+  background: var(--orange);
+}
+.option-checkbox::after {
+  content: '✓';
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: none;
+}
+.option-item.selected .option-checkbox::after { display: block; }
+
+.option-label { cursor: pointer; flex: 1; }
+.option-label strong { display: block; font-size: 0.95rem; color: var(--dark); }
+.option-label span { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+
+.routine-timeline {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+}
+
+.timeline-block {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: start;
+}
+.timeline-block:last-child { border-bottom: none; }
+
+.timeline-time {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.timeline-activity {
+  flex: 1;
+}
+.timeline-activity h4 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: var(--dark);
+}
+.timeline-activity p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.timeline-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.timeline-color.movement { background: var(--green); }
+.timeline-color.mental { background: var(--orange); }
+.timeline-color.nutrition { background: #eab308; }
+.timeline-color.work { background: var(--dark); }
+
+.routine-tips {
+  background: var(--orange-l);
+  border: 2px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 32px;
+}
+.routine-tips h3 {
+  color: var(--orange);
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.routine-tips p {
+  color: var(--dark);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.routine-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  gap: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">☀️ Morning Routine Builder</div>
+    <h1>Build the Morning That Changes Everything.</h1>
+    <p>Answer 5 quick questions. Get a custom, minute-by-minute morning routine built around your goals — not someone else's.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Intro Screen -->
+  <div id="screen-intro">
+    <div class="card" style="text-align:center; padding:48px 36px;">
+      <div style="font-size:3rem; margin-bottom:20px;">☀️</div>
+      <h2 style="margin-bottom:16px;">Your Custom Morning Routine</h2>
+      <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">This takes 2 minutes. Answer 5 questions. Get a routine designed specifically for your goals and schedule.</p>
+      <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">No generic templates. No motivation speeches. Just a practical routine you can actually follow.</p>
+      <button class="btn btn-primary btn-lg" onclick="startBuilder()">Start Building →</button>
+    </div>
+  </div>
+
+  <!-- Builder Screen -->
+  <div id="screen-builder" style="display:none;">
+
+    <!-- Step 1: Wake Time -->
+    <div id="step-1" class="routine-step active">
+      <div class="step-number">1</div>
+      <div class="step-question">What time do you wake up?</div>
+      <div class="step-options">
+        <div class="option-item" onclick="selectOption(1, '4:00am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>4:00 AM</strong><span>The early bird special</span></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '4:30am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>4:30 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '5:00am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>5:00 AM</strong><span>Prime time</span></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '5:30am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>5:30 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '6:00am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>6:00 AM</strong><span>The balanced option</span></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '6:30am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>6:30 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '7:00am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>7:00 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '7:30am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>7:30 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '8:00am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>8:00 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '8:30am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>8:30 AM</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, '9:00am'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>9:00 AM</strong><span>Night owl? No judgment</span></div>
+        </div>
+        <div class="option-item" onclick="selectOption(1, 'later'); updateActive(2)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Later</strong><span>After 9 AM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Time Available -->
+    <div id="step-2" class="routine-step">
+      <div class="step-number">2</div>
+      <div class="step-question">How long do you have for your morning?</div>
+      <div class="step-options">
+        <div class="option-item" onclick="selectOption(2, '30'); updateActive(3)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>30 minutes</strong><span>Tight but doable</span></div>
+        </div>
+        <div class="option-item" onclick="selectOption(2, '45'); updateActive(3)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>45 minutes</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(2, '60'); updateActive(3)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>60 minutes</strong><span>The standard</span></div>
+        </div>
+        <div class="option-item" onclick="selectOption(2, '90'); updateActive(3)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>90 minutes</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(2, '120'); updateActive(3)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>2+ hours</strong><span>The luxury zone</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: #1 Goal -->
+    <div id="step-3" class="routine-step">
+      <div class="step-number">3</div>
+      <div class="step-question">What's your #1 goal right now?</div>
+      <div class="step-options">
+        <div class="option-item" onclick="selectOption(3, 'fitness'); updateActive(4)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Build fitness</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(3, 'income'); updateActive(4)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Grow my income/career</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(3, 'stress'); updateActive(4)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Reduce stress/anxiety</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(3, 'productivity'); updateActive(4)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Be more productive</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(3, 'discipline'); updateActive(4)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Build discipline</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(3, 'health'); updateActive(4)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Improve mental health</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Morning Struggle -->
+    <div id="step-4" class="routine-step">
+      <div class="step-number">4</div>
+      <div class="step-question">What do you struggle with most in mornings?</div>
+      <div class="step-options">
+        <div class="option-item" onclick="selectOption(4, 'phone'); updateActive(5)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Checking my phone immediately</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(4, 'energy'); updateActive(5)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>No energy</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(4, 'rushed'); updateActive(5)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Feeling rushed</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(4, 'structure'); updateActive(5)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>No structure</strong></div>
+        </div>
+        <div class="option-item" onclick="selectOption(4, 'consistency'); updateActive(5)">
+          <div class="option-radio"></div>
+          <div class="option-label"><strong>Not sticking to routines</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5: Habits -->
+    <div id="step-5" class="routine-step">
+      <div class="step-number">5</div>
+      <div class="step-question">What can you commit to doing every morning? (select all that apply)</div>
+      <div class="step-options" style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Exercise</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Meditation/breathing</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Journaling</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Reading</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Cold shower</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>No phone for 30 min</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Healthy breakfast</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Plan your day</strong></div>
+        </div>
+        <div class="option-item" onclick="toggleCheckbox(this)">
+          <div class="option-checkbox"></div>
+          <div class="option-label"><strong>Affirmations/visualization</strong></div>
+        </div>
+      </div>
+      <div style="margin-top:24px;">
+        <button class="btn btn-primary btn-lg" onclick="generateRoutine()" style="width:100%;">Generate Your Routine →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Results Screen -->
+  <div id="screen-results" style="display:none;">
+  </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="#">Habits</a></li>
+        <li><a href="#">Mindset</a></li>
+        <li><a href="#">Productivity</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="#about">About Fred</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2025 WinWithFred. All rights reserved.</div>
+    <div>Built by people who actually use these tools.</div>
+  </div>
+</footer>
+
+<script>
+
+// Shared auth navbar
+function initAuthNavbar() {
+  const authNav = document.getElementById('auth-nav');
+  const user = localStorage.getItem('wwf_user');
+  if (user) {
+    authNav.innerHTML = `<a href="#" class="btn btn-sm btn-outline" onclick="logout(event)">Logout (${user})</a>`;
+  } else {
+    authNav.innerHTML = `<a href="#" class="btn btn-sm btn-outline" onclick="login(event)">Login</a>`;
+  }
+}
+
+function login(e) {
+  e.preventDefault();
+  const name = prompt('Enter your name:');
+  if (name) {
+    localStorage.setItem('wwf_user', name);
+    initAuthNavbar();
+  }
+}
+
+function logout(e) {
+  e.preventDefault();
+  localStorage.removeItem('wwf_user');
+  initAuthNavbar();
+}
+
+// Morning Routine Builder
+const answers = {};
+let habitSelections = [];
+
+function startBuilder() {
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-builder').style.display = 'block';
+}
+
+function selectOption(step, value) {
+  answers[step] = value;
+  const stepEl = document.getElementById(`step-${step}`);
+  const items = stepEl.querySelectorAll('.option-item');
+  items.forEach(item => item.classList.remove('selected'));
+  event.target.closest('.option-item').classList.add('selected');
+}
+
+function toggleCheckbox(el) {
+  el.classList.toggle('selected');
+  habitSelections = [];
+  document.querySelectorAll('#step-5 .option-item.selected').forEach(item => {
+    const text = item.querySelector('strong').textContent;
+    habitSelections.push(text);
+  });
+}
+
+function updateActive(nextStep) {
+  document.querySelectorAll('.routine-step').forEach(s => s.classList.remove('active'));
+  if (document.getElementById(`step-${nextStep}`)) {
+    document.getElementById(`step-${nextStep}`).classList.add('active');
+    document.getElementById(`step-${nextStep}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function generateRoutine() {
+  const wakeTime = answers[1];
+  const duration = parseInt(answers[2]);
+  const goal = answers[3];
+  const struggle = answers[4];
+
+  // Parse wake time to minutes
+  let wakeHour = 6, wakeMin = 0;
+  if (wakeTime !== 'later') {
+    const match = wakeTime.match(/(\d+):?(\d*)([ap]m)?/);
+    if (match) {
+      wakeHour = parseInt(match[1]);
+      if (wakeTime.includes('pm') && wakeHour !== 12) wakeHour += 12;
+      if (wakeTime.includes('am') && wakeHour === 12) wakeHour = 0;
+    }
+  }
+
+  let blocks = [];
+
+  // Start with no-phone zone
+  blocks.push({
+    mins: 0,
+    duration: 5,
+    title: 'No Phone Zone',
+    desc: 'Just wake up. Drink water. Breathe.',
+    color: 'mental'
+  });
+
+  // Extend no-phone if struggle or selected
+  if (struggle === 'phone' || habitSelections.includes('No phone for 30 min')) {
+    blocks[0].duration = 30;
+  }
+
+  let currentMin = blocks[0].duration;
+
+  // Add stress/anxiety routine
+  if (goal === 'stress' && currentMin + 10 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 10,
+      title: 'Breathing & Meditation',
+      desc: 'Calm your nervous system before the day starts.',
+      color: 'mental'
+    });
+    currentMin += 10;
+  }
+
+  // Add exercise if selected or fitness goal
+  if ((goal === 'fitness' || habitSelections.includes('Exercise')) && currentMin + 25 <= duration) {
+    const exerciseDuration = duration > 60 ? 30 : 25;
+    blocks.push({
+      mins: currentMin,
+      duration: exerciseDuration,
+      title: 'Workout',
+      desc: 'Move your body. 80% of the morning wins come from this.',
+      color: 'movement'
+    });
+    currentMin += exerciseDuration;
+
+    if (habitSelections.includes('Cold shower') && currentMin + 5 <= duration) {
+      blocks.push({
+        mins: currentMin,
+        duration: 5,
+        title: 'Cold Shower',
+        desc: 'Activate. Reset. Go.',
+        color: 'mental'
+      });
+      currentMin += 5;
+    }
+  }
+
+  // Add journaling
+  if (habitSelections.includes('Journaling') && currentMin + 8 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 8,
+      title: 'Journaling',
+      desc: 'Write three things: wins, struggles, intentions.',
+      color: 'mental'
+    });
+    currentMin += 8;
+  }
+
+  // Add meditation if not already added
+  if ((goal === 'stress' || habitSelections.includes('Meditation/breathing')) && goal !== 'stress' && currentMin + 8 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 8,
+      title: 'Meditation',
+      desc: '5-10 min focused breathing or guided meditation.',
+      color: 'mental'
+    });
+    currentMin += 8;
+  }
+
+  // Add planning block for productivity goal
+  if ((goal === 'productivity' || goal === 'discipline') && currentMin + 10 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 10,
+      title: 'Plan Your Day',
+      desc: 'Top 3 priorities. What are you shipping today?',
+      color: 'work'
+    });
+    currentMin += 10;
+  }
+
+  // Add hard first if discipline goal
+  if (goal === 'discipline' && currentMin + 25 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 25,
+      title: 'Hard First (The Hardest Task)',
+      desc: 'Tackle your most important or difficult task.',
+      color: 'work'
+    });
+    currentMin += 25;
+  }
+
+  // Add reading
+  if (habitSelections.includes('Reading') && currentMin + 18 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 18,
+      title: 'Reading',
+      desc: 'Feed your mind. Improve yourself every morning.',
+      color: 'mental'
+    });
+    currentMin += 18;
+  }
+
+  // Add breakfast
+  if (habitSelections.includes('Healthy breakfast') && currentMin + 12 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 12,
+      title: 'Healthy Breakfast',
+      desc: 'Fuel your body. No cereal. Real food.',
+      color: 'nutrition'
+    });
+    currentMin += 12;
+  }
+
+  // Add affirmations
+  if (habitSelections.includes('Affirmations/visualization') && currentMin + 5 <= duration) {
+    blocks.push({
+      mins: currentMin,
+      duration: 5,
+      title: 'Affirmations & Visualization',
+      desc: 'Prime your mind for success.',
+      color: 'mental'
+    });
+    currentMin += 5;
+  }
+
+  // Ensure total doesn't exceed duration
+  let totalMin = 0;
+  blocks.forEach(b => totalMin += b.duration);
+  if (totalMin > duration) {
+    blocks = blocks.slice(0, Math.max(2, Math.floor(blocks.length * duration / totalMin)));
+  }
+
+  // Build timeline HTML
+  let timelineHTML = `<div class="routine-timeline">`;
+
+  const formatTime = (mins) => {
+    const h = wakeHour + Math.floor((wakeMin + mins) / 60);
+    const m = (wakeMin + mins) % 60;
+    const hh = h % 12 || 12;
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    return `${hh}:${m.toString().padStart(2, '0')} ${ampm}`;
+  };
+
+  blocks.forEach(block => {
+    const endTime = formatTime(block.mins + block.duration);
+    timelineHTML += `
+      <div class="timeline-block">
+        <div class="timeline-time">${formatTime(block.mins)}</div>
+        <div class="timeline-activity">
+          <h4>${block.title}</h4>
+          <p>${block.desc}</p>
+          <div style="margin-top:6px; font-size:0.85rem; color:var(--muted);">${block.duration} min</div>
+        </div>
+        <div class="timeline-color ${block.color}"></div>
+      </div>
+    `;
+  });
+
+  timelineHTML += `</div>`;
+
+  // Tips based on struggle
+  let tipsHTML = '';
+  const tipsMap = {
+    'phone': {
+      title: '📵 Your Phone Is Not an Alarm Clock',
+      desc: 'Buy a $15 alarm clock and charge your phone in the kitchen. Seriously. This one change will change your life.'
+    },
+    'energy': {
+      title: '😴 Your Morning Energy Is Determined by Last Night',
+      desc: 'Sleep by 10:30 PM. The routine starts the night before. You can\'t out-morning a bad night.'
+    },
+    'rushed': {
+      title: '🎒 Eliminate Decisions',
+      desc: 'Pack your bag, lay out your clothes, and prep your breakfast the night before. Rushing is a decision-making problem.'
+    },
+    'structure': {
+      title: '📱 Make It Visible',
+      desc: 'Put this routine on your phone wallpaper. Screenshot it. Print it. You can\'t follow what you can\'t see.'
+    },
+    'consistency': {
+      title: '🔄 The Two-Day Rule',
+      desc: 'Miss a day? Fine. Never miss two in a row. That\'s the only rule. One day doesn\'t break the chain — two days does.'
+    }
+  };
+
+  if (tipsMap[struggle]) {
+    tipsHTML = `
+      <div class="routine-tips">
+        <h3>${tipsMap[struggle].title}</h3>
+        <p>${tipsMap[struggle].desc}</p>
+      </div>
+    `;
+  }
+
+  const resultsHTML = `
+    <div style="margin-bottom:32px;">
+      <h2 style="margin-bottom:8px;">Your ${formatTime(totalMin)} Morning Routine</h2>
+      <p style="color:var(--muted); margin-bottom:24px;">Built for: <strong>${goal.replace(/([a-z])([A-Z])/g, '$1 $2')}</strong></p>
+    </div>
+
+    ${timelineHTML}
+
+    ${tipsHTML}
+
+    <div class="routine-cta">
+      <button class="btn btn-primary" onclick="copyRoutine()">📋 Copy Routine</button>
+      <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
+      <button class="btn btn-outline" onclick="saveRoutine()">💾 Save This Routine</button>
+      <button class="btn btn-outline" onclick="retakeBuilder()">↻ Start Over</button>
+    </div>
+  `;
+
+  document.getElementById('screen-builder').style.display = 'none';
+  document.getElementById('screen-results').style.display = 'block';
+  document.getElementById('screen-results').innerHTML = resultsHTML;
+
+  // Save to localStorage
+  localStorage.setItem('wwf_morning_routine', JSON.stringify({
+    wakeTime, duration, goal, struggle, habitSelections, blocks
+  }));
+
+  document.getElementById('screen-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyRoutine() {
+  const data = JSON.parse(localStorage.getItem('wwf_morning_routine'));
+  let text = 'MY MORNING ROUTINE\n\n';
+  data.blocks.forEach(b => {
+    text += `${b.title} (${b.duration} min)\n${b.desc}\n\n`;
+  });
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Routine copied to clipboard!');
+  });
+}
+
+function saveRoutine() {
+  alert('Routine saved! You can view it anytime from your account.');
+}
+
+function retakeBuilder() {
+  answers = {};
+  habitSelections = [];
+  document.getElementById('screen-results').style.display = 'none';
+  document.getElementById('screen-results').innerHTML = '';
+  document.getElementById('screen-intro').style.display = 'block';
+  document.getElementById('screen-intro').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
+
+</script>
+
+</body>
+</html>
