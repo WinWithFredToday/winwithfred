@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix My Life Action Generator — WinWithFred</title>
+  <meta name="description" content="Tell us what's wrong. We'll build a specific, no-fluff 5-step action plan to get you moving today." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+ .empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+/* ── Auth Navbar ── */
+.nav-user { display:flex; align-items:center; gap:10px; }
+.nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
+.nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+.nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+
+/* ── Fix My Life Specific ── */
+.quick-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+.quick-tag {
+  background: var(--white);
+  border: 2px solid #e5e7eb;
+  color: var(--dark);
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+.quick-tag:hover { border-color: var(--orange); color: var(--orange); }
+.quick-tag.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
+.plan-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 28px;
+}
+.plan-name { font-size: 1.3rem; font-weight: 900; color: var(--dark); margin-bottom: 28px; text-align: center; }
+
+.step-card {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: var(--light);
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+  align-items: flex-start;
+  position: relative;
+}
+.step-num {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+.step-content { flex: 1; }
+.step-timeframe {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.step-text { color: var(--dark); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 10px; }
+.step-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.step-checkbox input { cursor: pointer; }
+.step-checkbox label { cursor: pointer; font-size: 0.9rem; color: var(--muted); }
+.step-checkbox input:checked ~ label { color: var(--green); font-weight: 600; }
+
+.related-tools { background: var(--white); border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 24px; margin-top: 28px; }
+.related-tools h4 { color: var(--dark); margin-bottom: 16px; }
+.related-tools a { color: var(--orange); text-decoration: none; font-weight: 600; display: inline-block; margin-right: 16px; font-size: 0.95rem; }
+.related-tools a:hover { text-decoration: underline; }
+
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label">🛠️ Fix My Life</div>
+    <h1>"I Feel Stuck." └ Here's Your Plan.</h1>
+    <p>Tell us what's wrong. We'll build a specific, no-fluff 5-step action plan to get you moving today.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Input Screen -->
+  <div id="screen-input">
+    <div class="card" style="padding: 36px;">
+      <h2 style="text-align: center; margin-bottom: 24px;">What's Going On?</h2>
+      <div class="form-group">
+        <label class="form-label">Describe what's going on (be honest):</label>
+        <textarea class="form-textarea" id="issue-textarea" placeholder="I feel stuck, broke, tired... | I have no motivation | I'm overwhelmed at work | I've been depressed for weeks | I want to change everything but don't know where to start"></textarea>
+      </div>
+
+      <div>
+        <p style="font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 12px;">Or click to add tags:</p>
+        <div class="quick-tags">
+          <button class="quick-tag" onclick="addTag(this, 'Feeling stuck')">Feeling stuck</button>
+          <button class="quick-tag" onclick="addTag(this, 'Money problems')">Money problems</button>
+          <button class="quick-tag" onclick="addTag(this, 'Health/fitness')">Health/fitness</button>
+          <button class="quick-tag" onclick="addTag(this, 'Relationships')">Relationships</button>
+          <button class="quick-tag" onclick="addTag(this, 'Career/work')">Career/work</button>
+          <button class="quick-tag" onclick="addTag(this, 'Low motivation')">Low motivation</button>
+          <button class="quick-tag" onclick="addTag(this, 'Anxiety/stress')">Anxiety/stress</button>
+          <button class="quick-tag" onclick="addTag(this, 'No direction')">No direction</button>
+          <button class="quick-tag" onclick="addTag(this, 'Tired all the time')">Tired all the time</button>
+          <button class="quick-tag" onclick="addTag(this, 'Procrastinating')">Procrastinating</button>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 28px;">
+        <button class="btn btn-primary btn-lg" onclick="generatePlan()">Build My Plan →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="screen-results" style="display: none;">
+    <div class="plan-card">
+      <div class="plan-name" id="plan-name"></div>
+      <div id="steps-container"></div>
+    </div>
+
+    <div class="related-tools">
+      <h4>Need more specific help? Try these tools:</h4>
+      <div id="related-links"></div>
+    </div>
+
+    <div style="text-align: center; margin-top: 32px;">
+      <button class="btn btn-primary" onclick="generateNewPlan()">Generate New Plan</button>
+      <a href="fix-my-life.html" class="btn btn-outline" style="margin-left: 12px;">Start Over</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; color:#9ca3af;">Practical tools for real life. No fluff, no nonsense.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 WinWithFred. Made with intent.</span>
+    <span>No trackers. No BS.</span>
+  </div>
+</footer>
+
+<script>
+
+// ── Auth Navbar ──
+function initAuthNavbar() {
+  const user = JSON.parse(localStorage.getItem('wwf_user') || 'null');
+  const navDiv = document.getElementById('auth-nav');
+  if (user) {
+    const first = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+    navDiv.innerHTML = `
+      <div class="nav-user">
+        <div class="nav-avatar">${first}</div>
+        <span class="nav-name">${user.name || 'User'}</span>
+        <button class="nav-logout" onclick="logout()">Logout</button>
+      </div>
+    `;
+  } else {
+    navDiv.innerHTML = '<a href="index.html" style="color:#d1d5db; font-weight:500; padding:8px 14px;">Login</a>';
+  }
+}
+
+function logout() { localStorage.removeItem('wwf_user'); location.href='index.html'; }
+
+// ── Plan Definitions ──
+const plans = {
+  stuck: {
+    name: 'Breaking Out of the Stuck Loop',
+    keywords: ['stuck', "don't know", 'lost', 'direction'],
+    steps: [
+      { time: 'TODAY', duration: '5 min', text: 'Write down the ONE thing you want most right now. Not a list. One thing.' },
+      { time: 'TODAY', duration: '20 min', text: 'Take one physical action toward it — even a tiny one. Google something. Send an email. Clean your desk.' },
+      { time: 'THIS WEEK', duration: '', text: 'Reduce your decision load. Remove 3 things from your mental plate. Delegate, drop, or defer.' },
+      { time: 'THIS WEEK', duration: '', text: 'Talk to one person who has done something you want to do. Pick their brain.' },
+      { time: 'THIS MONTH', duration: '', text: 'Set a 30-day micro-goal. Specific, measurable, achievable in 30 days.' }
+    ],
+    relatedTools: ['goal-tracker.html', 'journal.html']
+  },
+  financial: {
+    name: 'The Financial Triage Plan',
+    keywords: ['broke', 'money', 'debt', 'financial', 'poor'],
+    steps: [
+      { time: 'TODAY', duration: '30 min', text: 'List every single expense from last 30 days. No judgment. Just visibility.' },
+      { time: 'TODAY', duration: '', text: 'Identify one subscription or expense to cut immediately. Cancel it.' },
+      { time: 'THIS WEEK', duration: '', text: 'Identify one skill you have that someone would pay for. Offer it to one person.' },
+      { time: 'THIS WEEK', duration: '', text: 'Set a 7-day no-unnecessary-spending challenge. Cash only if needed.' },
+      { time: 'THIS MONTH', duration: '', text: 'Set up automatic savings — even $10/week. Automation beats willpower.' }
+    ],
+    relatedTools: ['goal-tracker.html']
+  },
+  energy: {
+    name: 'Energy Recovery Protocol',
+    keywords: ['tired', 'exhausted', 'no energy', 'sleep', 'fatigue'],
+    steps: [
+      { time: 'TONIGHT', duration: '', text: 'No screen after 9:30pm. Phone in another room. Sleep target: 7.5h.' },
+      { time: 'TOMORROW', duration: '', text: 'Drink 3 liters of water. Skip or reduce caffeine after 2pm.' },
+      { time: 'THIS WEEK', duration: '20 min', text: 'Add a 20-min walk every morning. Before email. Non-negotiable.' } },
+      { time: 'THIS WEEK', duration: '', text: 'Cut one thing from your schedule that\'s draining you without paying you back.' },
+      { time: 'THIS MONTH', duration: '', text: '30-day alcohol-free challenge, or cut to weekends only.' }
+    ],
+    relatedTools: ['habit-builder.html']
+  },
+  motivation: {
+    name: 'Reignite Your Drive',
+    keywords: ['motivation', 'unmotivated', 'lazy', "don't feel like", "can't be bothered"],
+    steps: [
+      { time: 'TODAY', duration: '25 min', text: 'Do the one task you\'ve been avoiding. Just 25 minutes. Set a timer.' },
+      { time: 'TODAY', duration: '', text: 'Write down 3 things that mattered to you 5 years ago. What happened to them?' },
+      { time: 'THIS WEEK', duration: '7 days', text: 'Remove 1 digital distraction for 7 days (one social app, or set screen time limits).' },
+      { time: 'THIS WEEK', duration: '', text: 'Do something physical you enjoy — not for fitness, just for the dopamine.' },
+      { time: 'THIS MONTH', duration: '', text: 'Commit to one project that will show you something completed. Small scope. Ship it.' }
+    ],
+    relatedTools: ['goal-tracker.html', 'habit-builder.html']
+  },
+  anxiety: {
+    name: 'Calm the System',
+    keywords: ['anxious', 'anxiety', 'overwhelmed', 'stress', 'stressed', 'panic'],
+    steps: [
+      { time: 'RIGHT NOW', duration: '2 min', text: '4-7-8 breathing. Inhale 4 counts, hold 7, exhale 8. Do 4 rounds.' },
+      { time: 'TODAY', duration: '', text: 'Write down every open loop in your head. Get it all out. Then pick just one to act on.' },
+      { time: 'THIS WEEK', duration: '30 min/day', text: 'Limit news and social media to 30 min/day total. Watch how much calmer you feel.' },
+      { time: 'THIS WEEK', duration: '20 min', text: 'Add 20 min of walking daily. This is not optional for anxiety management.' },
+      { time: 'THIS MONTH', duration: '', text: 'Talk to one trusted person about what you\'re carrying. Not therapy (though that helps) — just a human.' }
+    ],
+    relatedTools: ['journal.html']
+  },
+  relationships: {
+    name: 'Repair & Connect',
+    keywords: ['relationship', 'relationships', 'lonely', 'alone', 'partner', 'friends'],
+    steps: [
+      { time: 'TODAY', duration: '', text: 'Message one person you\'ve been meaning to reach out to. No big deal — just "Hey, been thinking of you."' },
+      { time: 'TODAY', duration: '', text: 'If there\'s a relationship that needs repair — write out what YOU contributed to the problem. Not what they did.' },
+      { time: 'THIS WEEK', duration: '', text: 'Plan one real social interaction — not digital. Coffee, walk, dinner.' },
+      { time: 'THIS WEEK', duration: '', text: 'If you\'re lonely: find one local group, class, or event aligned with your interests. Attend once.' },
+      { time: 'THIS MONTH', duration: '', text: 'Schedule recurring time with one person who matters to you. Put it in the calendar.' }
+    ],
+    relatedTools: ['journal.html', 'goal-tracker.html']
+  },
+  career: {
+    name: 'Career Reboot',
+    keywords: ['career', 'job', 'work', 'boss', 'unemployed', 'fired', 'quit', 'direction'],
+    steps: [
+      { time: 'TODAY', duration: '20 min', text: 'Write down what you\'re actually good at and what you actually enjoy. Venn diagram.' },
+      { time: 'TODAY', duration: '', text: 'Update your LinkedIn or resume. Even 1 section.' },
+      { time: 'THIS WEEK', duration: '', text: 'Reach out to 3 people in roles or industries you\'re interested in. Ask for a 15-min call.' },
+      { time: 'THIS WEEK', duration: '', text: 'Identify one skill gap between where you are and where you want to be. Find a free resource to start closing it.' },
+      { time: 'THIS MONTH', duration: '', text: 'Apply to 5 roles or clients, or hove 3 conversations. Take action before you feel ready.' }
+    ],
+    relatedTools: ['goal-tracker.html']
+  },
+  default: {
+    name: 'The Full Reset Protocol',
+    keywords: [],
+    steps: [
+      { time: 'TODAY', duration: '7+ hours', text: 'Sleep 7+ hours tonight. Stop underestimating how much this matters.' },
+      { time: 'TOMORROW', duration: '20 min', text: 'Morning walk before your phone. Every day this week.' },
+      { time: 'THIS WEEK', duration: '', text: 'Pick ONE thing to improve this month. Not ten things. One.' },
+      { time: 'THIS WEEK', duration: '', text: 'Write down what "a good week" looks like to you. Get specific.' },
+      { time: 'THIS MONTH', duration: '', text: 'Remove one habit that\'s clearly not serving you. Replace it with one that does.' }
+    ],
+    relatedTools: ['habit-builder.html', 'goal-tracker.html']
+  }
+};
+
+function addTag(btn, tag) {
+  btn.classList.toggle('active');
+  const textarea = document.getElementById('issue-textarea');
+  if (btn.classList.contains('active')) {
+    textarea.value += (textarea.value ? ' | ' : '') + tag;
+  } else {
+    textarea.value = textarea.value.replace(tag, '').replace(' | ', ' ').trim();
+  }
+}
+
+function generatePlan() {
+  const text = document.getElementById('issue-textarea').value.toLowerCase();
+  if (!text.trim()) { alert('Please describe what\'s going on'); return; }
+
+  let selectedPlan = null;
+  for (const [key, plan] of Object.entries(plans)) {
+    if (key === 'default') continue;
+    for (const keyword of plan.keywords) {
+      if (text.includes(keyword)) {
+        selectedPlan = plan;
+        break;
+      }
+    }
+    if (selectedPlan) break;
+  }
+  if (!selectedPlan) selectedPlan = plans.default;
+
+  displayPlan(selectedPlan, text);
+  localStorage.setItem('wwf_fix_plan', JSON.stringify({ plan: selectedPlan.name, date: new Date().toISOString() }));
+}
+
+function displayPlan(plan, input) {
+  document.getElementById('screen-input').style.display = 'none';
+  document.getElementById('screen-results').style.display = 'block';
+  document.getElementById('plan-name').textContent = plan.name;
+
+  let stepsHtml = '';
+  plan.steps.forEach((step, idx) => {
+    stepsHtml += `
+      <div class="step-card">
+        <div class="step-num">${idx + 1}</div>
+        <div class="step-content">
+          <div class="step-timeframe">${step.time}${step.duration ? ' · ' + step.duration : ''}</div>
+          <div class="step-text">${escapeHtml(step.text)}</div>
+          <div class="step-checkbox">
+            <input type="checkbox" id="step-${idx}" onchange="savePlanProgress()">
+            <label for="step-${idx}">Mark as done</label>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('steps-container').innerHTML = stepsHtml;
+
+  // Load progress
+  const saved = JSON.parse(localStorage.getItem('wwf_fix_plan_progress') || '{}');
+  Object.keys(saved).forEach(key => {
+    const el = document.getElementById(key);
+    if (el) el.checked = saved[key];
+  });
+
+  // Related tools
+  let toolsHtml = '';
+  const toolNames = { 'goal-tracker.html': 'Goal Tracker', 'habit-builder.html': 'Habit Builder', 'journal.html': 'Journal' };
+  for (const tool of plan.relatedTools) {
+    toolsHtml += `<a href="${tool}">→ ${toolNames[tool]}</a>`;
+  }
+  document.getElementById('related-links').innerHTML = toolsHtml;
+}
+
+function generateNewPlan() {
+  document.getElementById('screen-input').style.display = 'block';
+  document.getElementById('screen-results').style.display = 'none';
+  document.getElementById('issue-textarea').value = '';
+  document.querySelectorAll('.quick-tag.active').forEach(t => t.classList.remove('active'));
+}
+
+function savePlanProgress() {
+  const progress = {};
+  document.querySelectorAll('.step-checkbox input').forEach(cb => {
+    progress[cb.id] = cb.checked;
+  });
+  localStorage.setItem('wwf_fix_plan_progress', JSON.stringify(progress));
+}
+
+function escapeHtml(text) {
+  const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
+
+</script>
+
+</body>
+</html>
