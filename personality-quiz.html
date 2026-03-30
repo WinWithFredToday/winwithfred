@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personality & Discipline Quiz — WinWithFred</title>
+  <meta name="description" content="15 questions. No fluff. Understand exactly how your brain approaches work, goals, and change — so you can finally stop fighting yourself." />
+<style>
+/* ============================================
+   WinWithFred.com — Global Stylesheet
+   Tone: Practical. No-nonsense. Results-driven.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --green:   #22c55e;
+  --red:     #ef4444;
+  --radius:  10px;
+  --shadow:  0 4px 24px rgba(0,0,0,0.08);
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+.section-sm { padding: 48px 0; }
+
+/* ── Typography ── */
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.btn-primary:hover {
+  background: var(--orange-d);
+  border-color: var(--orange-d);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
+}
+.btn-outline:hover {
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+}
+.btn-dark {
+  background: var(--dark);
+  color: var(--white);
+  border-color: var(--dark);
+}
+.btn-dark:hover {
+  background: var(--surface);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* ── Navbar ── */
+.navbar {
+  background: var(--dark);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.navbar-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.navbar-links a {
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.navbar-links a:hover { color: var(--white); background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+.navbar-cta { margin-left: 8px; }
+
+/* ── Hero ── */
+.hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── Section Headers ── */
+.section-header { margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p  { color: var(--muted); font-size: 1.05rem; }
+.section-label {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* ── Tool Cards (Homepage) ── */
+.tool-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tool-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+.tool-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: var(--orange-l);
+}
+.tool-card h3 { color: var(--dark); margin-bottom: 8px; }
+.tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
+.tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
+
+/* ── Blog Cards ── */
+.blog-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-decoration: none; }
+.blog-card-body { padding: 24px; }
+.blog-tag {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.blog-card h3 { font-size: 1.1rem; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+.blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--dark);
+  color: var(--white);
+}
+.dark-section h2 { color: var(--white); }
+.dark-section p  { color: #9ca3af; }
+
+/* ── CTA Banner ── */
+.cta-banner {
+  background: var(--orange);
+  color: var(--white);
+  padding: 64px 24px;
+  text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 12px; }
+.cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
+
+/* ── Footer ── */
+.footer {
+  background: var(--black);
+  color: #9ca3af;
+  padding: 48px 24px 32px;
+}
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid #1f2937;
+  padding-top: 24px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── Tool Page Layout ── */
+.tool-page { min-height: calc(100vh - 64px); }
+.tool-header {
+  background: var(--dark);
+  color: var(--white);
+  padding: 48px 24px;
+}
+.tool-header-inner { max-width: 800px; margin: 0 auto; }
+.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
+.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
+.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Form Elements ── */
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+
+/* ── Progress Bar ── */
+.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
+.progress-fill.green { background: var(--green); }
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.badge-orange { background: var(--orange-l); color: var(--orange); }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-gray   { background: #f3f4f6; color: var(--muted); }
+
+/* ── Divider ── */
+.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+
+/* ── Stat Box ── */
+.stat-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+}
+.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
+.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── Empty State ── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+.empty-state p { font-size: 1rem; }
+
+/* ── Alert ── */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero { padding: 72px 24px; }
+  .section { padding: 56px 0; }
+  .navbar-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+/* ── Auth Navbar ── */
+.nav-user { display:flex; align-items:center; gap:10px; }
+.nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
+.nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+.nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+
+/* ── Personality Quiz Styles ── */
+.quiz-progress {
+  background: #e5e7eb;
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--orange);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.quiz-step-label { font-size: 0.85rem; color: var(--muted); margin-bottom: 32px; }
+
+.question-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px 36px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+.question-num {
+  font-size: 0.8rem; font-weight: 700; color: var(--orange);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+}
+.question-text { font-size: 1.25rem; font-weight: 700; color: var(--dark); line-height: 1.4; margin-bottom: 28px; }
+
+.answer-options { display: flex; flex-direction: column; gap: 10px; }
+.answer-option {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--white);
+  text-align: left;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--dark);
+  font-weight: 500;
+  width: 100%;
+}
+.answer-option:hover { border-color: var(--orange); background: var(--orange-l); }
+.answer-option.selected { border-color: var(--orange); background: var(--orange-l); color: var(--dark); }
+.answer-option .opt-letter {
+  width: 30px; height: 30px; min-width: 30px;
+  border-radius: 50%; background: #f3f4f6;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.8rem; color: var(--muted);
+  flex-shrink: 0;
+}
+.answer-option.selected .opt-letter { background: var(--orange); color: var(--white); }
+
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; }
+
+/* Results */
+.result-hero {
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 48px 36px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.result-type { font-size: 3rem; margin-bottom: 12px; }
+.result-label { color: var(--orange); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.result-title { color: var(--white); font-size: 1.8rem; font-weight: 900; margin-bottom: 16px; }
+.result-desc  { color: #9ca3af; font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto; }
+.result-score {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 2rem; font-weight: 900;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  line-height: 80px;
+  margin-bottom: 20px;
+}
+.action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
+.action-item {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.action-item h4 { font-size: 0.9rem; margin-bottom: 6px; color: var(--dark); font-weight: 700; }
+.action-item p  { font-size: 0.85rem; color: var(--muted); }
+
+.score-bar-section { margin-bottom: 28px; }
+.score-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.score-bar-label { font-size: 0.85rem; font-weight: 600; width: 140px; color: var(--dark); }
+.score-bar-wrap  { flex: 1; background: #e5e7eb; border-radius: 999px; height: 10px; overflow: hidden; }
+.score-bar-fill  { height: 100%; background: var(--orange); border-radius: 999px; }
+.score-bar-val   { font-size: 0.8rem; font-weight: 700; color: var(--muted); width: 32px; text-align: right; }
+
+.insight-box {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.insight-box h4 { color: var(--dark); margin-bottom: 8px; }
+.insight-box p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .action-grid { grid-template-columns: 1fr; }
+  .question-card { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#blog">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Tool Header ── -->
+<div class="tool-header">
+  <div class="tool-header-inner">
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">🧬 Personality & Discipline Quiz</div>
+    <h1>Find Out Your Discipline Type.</h1>
+    <p>15 questions. No fluff. Understand exactly how your brain approaches work, goals, and change — so you can finally stop fighting yourself.</p>
+  </div>
+</div>
+
+<!-- ── Tool Body ── -->
+<div class="tool-body">
+
+  <!-- Intro Screen -->
+  <div id="screen-intro">
+    <div class="card" style="text-align:center; padding:48px 36px;">
+      <div style="font-size:3rem; margin-bottom:20px;">🧬</div>
+      <h2 style="margin-bottom:16px;">The Discipline Type Assessment</h2>
+      <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">Discover your personality type: Overthinker, Starter, Avoider, Perfectionist, or Drifter.</p>
+      <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 5 minutes. You'll get a detailed breakdown of your strengths, blindspots, and a custom routine to work with your brain — not against it.</p>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz →</button>
+    </div>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="screen-quiz" style="display:none;">
+    <div class="quiz-progress">
+      <div class="quiz-progress-fill" id="progress-fill" style="width:0%;"></div>
+    </div>
+    <div class="quiz-step-label" id="quiz-step-label">Question 1 of 15</div>
+
+    <div id="questions-container"></div>
+
+    <div class="quiz-nav">
+      <button class="btn btn-outline btn-sm" onclick="prevQuestion()" id="btn-prev" style="display:none;">← Back</button>
+      <div></div>
+      <button class="btn btn-primary btn-sm" onclick="nextQuestion()" id="btn-next">Next →</button>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="screen-results" style="display:none;">
+    <div class="result-hero">
+      <div class="result-type" id="result-emoji"></div>
+      <div class="result-label" id="result-type-label"></div>
+      <div class="result-title" id="result-title"></div>
+      <div class="result-desc" id="result-desc"></div>
+    </div>
+
+    <div class="action-grid" id="action-grid"></div>
+
+    <div class="score-bar-section">
+      <h3 style="margin-bottom:16px;">Your Type Breakdown</h3>
+      <div id="score-bars"></div>
+    </div>
+
+    <div id="insights-section"></div>
+
+    <div class="button-group" style="margin-top:32px;">
+      <button class="btn btn-primary" onclick="saveResults()">Save My Results</button>
+      <button class="btn btn-outline" onclick="resetQuiz()">Start Over</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; color:#6b7280;">Tools to help you win at life.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 WinWithFred. All rights reserved.</div>
+    <div>Made with intent. No fluff.</div>
+  </div>
+</footer>
+
+<script>
+const TYPES = {
+  OVERTHINKER: { emoji: '🧠', label: 'THE OVERTHINKER', title: 'You have clarity without courage to act.', desc: 'Your problem isn\'t knowledge — it\'s execution.' },
+  STARTER: { emoji: '⚡', label: 'THE STARTER', title: 'Your energy and enthusiasm are real assets.', desc: 'Your enemy is the middle.' },
+  AVOIDER: { emoji: '🛡️', label: 'THE AVOIDER', title: 'You\'re not lazy. You\'re afraid.', desc: 'The avoidance is a protection mechanism — but it\'s costing you.' },
+  PERFECTIONIST: { emoji: '💎', label: 'THE PERFECTIONIST', title: 'You have extremely high standards.', desc: 'Perfect is the enemy of done — and done beats perfect every time.' },
+  DRIFTER: { emoji: '🌊', label: 'THE DRIFTER', title: 'You\'re not incapable — you\'re undirected.', desc: 'Without direction, you\'ll keep ending up somewhere you didn\'t choose.' }
+};
+
+const QUESTIONS = [
+  {
+    text: "You have a big task to do. What actually happens?",
+    answers: [
+      { text: "I research, plan, outline, create systems — but rarely actually start", type: 'OVERTHINKER' },
+      { text: "I dive in with excitement and usually lose steam halfway", type: 'STARTER' },
+      { text: "I find 10 other things to do first", type: 'AVOIDER' },
+      { text: "I wait until I can do it perfectly", type: 'PERFECTIONIST' },
+      { text: "I don't really have a plan, so it just doesn't happen", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "How do you feel about deadlines?",
+    answers: [
+      { text: "I set my own strict deadlines and overthink them", type: 'OVERTHINKER' },
+      { text: "I love the initial urgency but struggle near the end", type: 'STARTER' },
+      { text: "Deadlines stress me out and I avoid thinking about them", type: 'AVOIDER' },
+      { text: "I keep moving the deadline because it's not ready yet", type: 'PERFECTIONIST' },
+      { text: "I rarely set deadlines for myself", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "Your idea of a productive day looks like:",
+    answers: [
+      { text: "A perfectly planned day I mostly didn't execute", type: 'OVERTHINKER' },
+      { text: "Crushed the morning, faded by afternoon", type: 'STARTER' },
+      { text: "Stayed busy but avoided the one thing I needed to do", type: 'AVOIDER' },
+      { text: "Did one thing very well but didn't finish what I started", type: 'PERFECTIONIST' },
+      { text: "Responded to whatever came up", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "When you learn about a new productivity system or habit, you:",
+    answers: [
+      { text: "Add it to my growing list of systems I haven't implemented", type: 'OVERTHINKER' },
+      { text: "Try it for 3-4 days with great excitement, then stop", type: 'STARTER' },
+      { text: "Appreciate the idea but it feels too hard to start", type: 'AVOIDER' },
+      { text: "Adapt it until it's perfect before even trying it", type: 'PERFECTIONIST' },
+      { text: "Sounds cool. Move on", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "How do you handle criticism of your work?",
+    answers: [
+      { text: "I already knew the flaws — I was going to fix them", type: 'OVERTHINKER' },
+      { text: "Stings briefly but I get back up quickly", type: 'STARTER' },
+      { text: "I try to avoid situations where I might be criticized", type: 'AVOIDER' },
+      { text: "It confirms my fear that I should have worked more on it", type: 'PERFECTIONIST' },
+      { text: "Doesn't matter much — I wasn't that invested anyway", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "Pick the statement that sounds most like something you'd say:",
+    answers: [
+      { text: "I just need to think this through a bit more before I start", type: 'OVERTHINKER' },
+      { text: "I have so many great ideas — I just need to pick one and go for it!", type: 'STARTER' },
+      { text: "I'll do it when I feel more ready", type: 'AVOIDER' },
+      { text: "It's not good enough yet", type: 'PERFECTIONIST' },
+      { text: "I'll figure it out as I go", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "Your relationship with goals:",
+    answers: [
+      { text: "I have very detailed goals in my head. They rarely move to paper", type: 'OVERTHINKER' },
+      { text: "I set exciting goals. Abandon them when the spark dies", type: 'STARTER' },
+      { text: "Goals stress me out because they mean I might fail", type: 'AVOIDER' },
+      { text: "My goals are very specific — and I rarely feel I've met the bar", type: 'PERFECTIONIST' },
+      { text: "I don't think about goals much", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "When you start something new:",
+    answers: [
+      { text: "I outline everything before beginning", type: 'OVERTHINKER' },
+      { text: "I jump in and figure it out as I go", type: 'STARTER' },
+      { text: "I wait for the perfect time", type: 'AVOIDER' },
+      { text: "I want to be sure I'm doing it exactly right", type: 'PERFECTIONIST' },
+      { text: "If it happens, it happens", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "Your unfinished projects number:",
+    answers: [
+      { text: "Many — I plan them thoroughly and don't start", type: 'OVERTHINKER' },
+      { text: "Many — I start everything and finish little", type: 'STARTER' },
+      { text: "Few — I rarely start things", type: 'AVOIDER' },
+      { text: "A few — I can't finish because they're never good enough", type: 'PERFECTIONIST' },
+      { text: "I'm not sure — I don't track them", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "What gets in the way of your goals most?",
+    answers: [
+      { text: "Overthinking / analysis paralysis", type: 'OVERTHINKER' },
+      { text: "Losing momentum / motivation", type: 'STARTER' },
+      { text: "Fear, discomfort, avoidance", type: 'AVOIDER' },
+      { text: "Impossible standards I set for myself", type: 'PERFECTIONIST' },
+      { text: "Lack of direction or clarity", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "When something is uncomfortable but important:",
+    answers: [
+      { text: "I research how to make it less uncomfortable", type: 'OVERTHINKER' },
+      { text: "I start with energy then avoid the hard parts", type: 'STARTER' },
+      { text: "I avoid it until I absolutely must do it", type: 'AVOIDER' },
+      { text: "I try to do it perfectly the first time to avoid doing it again", type: 'PERFECTIONIST' },
+      { text: "I usually just don't do it", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "Your mornings typically look like:",
+    answers: [
+      { text: "Planned the night before, rarely executed as planned", type: 'OVERTHINKER' },
+      { text: "Great energy — until the afternoon", type: 'STARTER' },
+      { text: "Slow start, checking phone, avoiding the task list", type: 'AVOIDER' },
+      { text: "Carefully structured routine that I'm never quite satisfied with", type: 'PERFECTIONIST' },
+      { text: "Wake up and just react to whatever's there", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "How long does it take you to make big decisions?",
+    answers: [
+      { text: "A long time — I need all the information first", type: 'OVERTHINKER' },
+      { text: "Quickly — I'd rather try than analyze", type: 'STARTER' },
+      { text: "A long time — mostly because I'm nervous about getting it wrong", type: 'AVOIDER' },
+      { text: "A long time — I want to make the perfect decision", type: 'PERFECTIONIST' },
+      { text: "I avoid big decisions when I can", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "When you succeed at something, your first thought is:",
+    answers: [
+      { text: "That was lucky — now how do I replicate it systematically?", type: 'OVERTHINKER' },
+      { text: "That was great — what's next?!", type: 'STARTER' },
+      { text: "That worked out — thank goodness", type: 'AVOIDER' },
+      { text: "It was okay but I could have done better", type: 'PERFECTIONIST' },
+      { text: "Nice.", type: 'DRIFTER' }
+    ]
+  },
+  {
+    text: "In terms of self-discipline, you'd describe yourself as:",
+    answers: [
+      { text: "Disciplined in thinking, less so in doing", type: 'OVERTHINKER' },
+      { text: "Motivated in bursts, inconsistent overall", type: 'STARTER' },
+      { text: "Low — I know what to do but avoid doing it", type: 'AVOIDER' },
+      { text: "High standards, irregular follow-through", type: 'PERFECTIONIST' },
+      { text: "Reactive — going with the flow more than I'd like", type: 'DRIFTER' }
+    ]
+  }
+];
+
+const TYPE_DETAILS = {
+  OVERTHINKER: {
+    strengths: "Analytical, strategic, thorough",
+    blindspot: "You use planning as a shield from action",
+    routine: [
+      "Morning: 25-min 'action sprint' — no planning, just doing",
+      "Rule: '2-minute rule' — if you've thought about it twice, start it now",
+      "Weekly: Cap your planning to 30 min. Then act for 2 hours.",
+      "Remove: 'I'll plan this properly' from your vocabulary"
+    ]
+  },
+  STARTER: {
+    strengths: "Creative, energetic, action-oriented",
+    blindspot: "You treat every new thing as an escape from finishing the last thing",
+    routine: [
+      "Rule: Finish before starting. Close 1 loop before opening 3.",
+      "Morning: Review your open projects — commit to one for the day",
+      "Weekly: One 'completion day' — no new starts, only finishing",
+      "Mantra: 'Progress on this, not new things'"
+    ]
+  },
+  AVOIDER: {
+    strengths: "Thoughtful, empathetic, risk-aware",
+    blindspot: "Discomfort signals have too much power over your decisions",
+    routine: [
+      "Morning: Do the uncomfortable thing first — before email, before coffee if needed",
+      "Rule: 'Eat the frog' — whatever you're avoiding most, that's your first task",
+      "Weekly: Name one thing you're avoiding. Schedule it. Tell someone you did.",
+      "Challenge: Embrace micro-discomforts daily (cold water, hard conversation, hard task)"
+    ]
+  },
+  PERFECTIONIST: {
+    strengths: "Quality-focused, detail-oriented, ambitious",
+    blindspot: "Perfect is the enemy of done — and done beats perfect every time",
+    routine: [
+      "Rule: 'Good enough to send' — set a threshold and hit publish",
+      "Morning: Set a 'completion time' for each task. When the clock hits, it ships.",
+      "Weekly: Ship one thing you're not 100% happy with. Notice no one cares as much as you do.",
+      "Mantra: 'Done creates momentum. Perfect kills it.'"
+    ]
+  },
+  DRIFTER: {
+    strengths: "Adaptable, low stress, open to change",
+    blindspot: "Without direction, you'll keep ending up somewhere you didn't choose",
+    routine: [
+      "This week: Write one concrete goal for the next 90 days",
+      "Morning: Read your goal before checking your phone",
+      "Weekly: Review: did your week move you toward your goal?",
+      "System: Use a goal-tracking system to identify your next obstacle"
+    ]
+  }
+};
+
+let currentQuestion = 0;
+let answers = [];
+let typeCounts = {};
+
+function startQuiz() {
+  document.getElementById('screen-intro').style.display = 'none';
+  document.getElementById('screen-quiz').style.display = 'block';
+  answers = [];
+  typeCounts = { OVERTHINKER: 0, STARTER: 0, AVOIDER: 0, PERFECTIONIST: 0, DRIFTER: 0 };
+  currentQuestion = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = QUESTIONS[currentQuestion];
+  const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
+  document.getElementById('progress-fill').style.width = progress + '%';
+  document.getElementById('quiz-step-label').textContent = `Question ${currentQuestion + 1} of ${QUESTIONS.length}`;
+
+  let html = `
+    <div class="question-card">
+      <div class="question-num">Question ${currentQuestion + 1}</div>
+      <div class="question-text">${q.text}</div>
+      <div class="answer-options">
+  `;
+
+  const letters = ['A', 'B', 'C', 'D', 'E'];
+  q.answers.forEach((ans, i) => {
+    const sel = answers[currentQuestion] === i ? 'selected' : '';
+    html += `
+      <div class="answer-option ${sel}" onclick="selectAnswer(${i})">
+        <div class="opt-letter">${letters[i]}</div>
+        <span>${ans.text}</span>
+      </div>
+    `;
+  });
+
+  html += `</div></div>`;
+  document.getElementById('questions-container').innerHTML = html;
+
+  document.getElementById('btn-prev').style.display = currentQuestion > 0 ? 'block' : 'none';
+  document.getElementById('btn-next').textContent = currentQuestion === QUESTIONS.length - 1 ? 'See Results →' : 'Next →';
+}
+
+function selectAnswer(idx) {
+  answers[currentQuestion] = idx;
+  const type = QUESTIONS[currentQuestion].answers[idx].type;
+  typeCounts[type]++;
+  showQuestion();
+}
+
+function nextQuestion() {
+  if (answers[currentQuestion] === undefined) {
+    alert('Please select an answer.');
+    return;
+  }
+  if (currentQuestion < QUESTIONS.length - 1) {
+    currentQuestion++;
+    showQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    const oldType = QUESTIONS[currentQuestion].answers[answers[currentQuestion]].type;
+    typeCounts[oldType]--;
+    currentQuestion--;
+    showQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('screen-quiz').style.display = 'none';
+  document.getElementById('screen-results').style.display = 'block';
+
+  // Find dominant type
+  let dominant = 'OVERTHINKER';
+  let maxCount = 0;
+  for (let type in typeCounts) {
+    if (typeCounts[type] > maxCount) {
+      maxCount = typeCounts[type];
+      dominant = type;
+    }
+  }
+
+  const typeInfo = TYPES[dominant];
+  const details = TYPE_DETAILS[dominant];
+
+  document.getElementById('result-emoji').textContent = typeInfo.emoji;
+  document.getElementById('result-type-label').textContent = typeInfo.label;
+  document.getElementById('result-title').textContent = typeInfo.title;
+  document.getElementById('result-desc').textContent = typeInfo.desc;
+
+  // Action grid
+  const actionHtml = details.routine.map((r, i) => `
+    <div class="action-item">
+      <h4>${['Morning', 'Rule', 'Weekly', 'Challenge/System'][i] || 'Action'}</h4>
+      <p>${r}</p>
+    </div>
+  `).join('');
+  document.getElementById('action-grid').innerHTML = actionHtml;
+
+  // Score bars
+  const total = Object.values(typeCounts).reduce((a, b) => a + b, 0);
+  const barHtml = Object.keys(TYPES).map(type => {
+    const count = typeCounts[type];
+    const pct = Math.round((count / total) * 100);
+    return `
+      <div class="score-bar-row">
+        <div class="score-bar-label">${TYPES[type].label.replace('THE ', '')}</div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" style="width:${pct}%;"></div></div>
+        <div class="score-bar-val">${pct}%</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('score-bars').innerHTML = barHtml;
+
+  // Insights
+  const insightsHtml = `
+    <h3 style="margin-top:32px; margin-bottom:16px;">Your Profile</h3>
+    <div class="insight-box">
+      <h4>Strengths</h4>
+      <p>${details.strengths}</p>
+    </div>
+    <div class="insight-box">
+      <h4>Your Blindspot</h4>
+      <p>${details.blindspot}</p>
+    </div>
+    <div class="insight-box">
+      <h4>How to Work With Your Brain</h4>
+      <p>Your custom routine above is built for how you actually work — and not against it. Start with one practice this week.</p>
+    </div>
+  `;
+  document.getElementById('insights-section').innerHTML = insightsHtml;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function saveResults() {
+  let dominant = 'OVERTHINKER';
+  let maxCount = 0;
+  for (let type in typeCounts) {
+    if (typeCounts[type] > maxCount) {
+      maxCount = typeCounts[type];
+      dominant = type;
+    }
+  }
+
+  const data = {
+    date: new Date().toLocaleDateString(),
+    type: dominant,
+    scores: { ...typeCounts }
+  };
+  localStorage.setItem('wwf_personality', JSON.stringify(data));
+  alert('Results saved! You can refer back to your type and routine anytime.');
+}
+
+function resetQuiz() {
+  document.getElementById('screen-results').style.display = 'none';
+  document.getElementById('screen-intro').style.display = 'block';
+  currentQuestion = 0;
+  answers = [];
+  typeCounts = {};
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function initAuthNavbar() {
+  const authNav = document.getElementById('auth-nav');
+  if (authNav) {
+    authNav.innerHTML = '<button class="btn btn-sm btn-outline" style="color:#d1d5db; border-color:#6b7280;">Sign In</button>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initAuthNavbar();
+});
+</script>
+
+</body>
+</html>
