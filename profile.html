@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - WinWithFred</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark: #111827;
+      --surface: #1f2937;
+      --orange: #f97316;
+      --light: #f9fafb;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --accent: #d97706;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    #auth-nav {
+      background-color: var(--surface);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 1rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #auth-nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    #auth-nav a:hover {
+      color: var(--orange);
+    }
+
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    /* Loading Spinner */
+    #page-loading {
+      position: fixed;
+      inset: 0;
+      background-color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid var(--orange);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background-color: var(--surface);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .profile-info h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.25rem;
+      color: var(--white);
+    }
+
+    .profile-info p {
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .member-since {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background-color: var(--surface);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--orange);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .view-all {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+    }
+
+    .view-all:hover {
+      color: var(--accent);
+    }
+
+    /* Recent Goals */
+    .goals-list {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .goal-card {
+      background-color: var(--surface);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: border-color 0.3s;
+    }
+
+    .goal-card:hover {
+      border-color: var(--orange);
+    }
+
+    .goal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .goal-title {
+      font-weight: 600;
+      color: var(--white);
+      flex: 1;
+    }
+
+    .goal-category {
+      display: inline-block;
+      background-color: rgba(249, 115, 22, 0.2);
+      color: var(--orange);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      background-color: rgba(255, 255, 255, 0.1);
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, var(--orange), var(--accent));
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Recent Journal Entries */
+    .entries-grid {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .entry-card {
+      background-color: var(--surface);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: border-color 0.3s;
+    }
+
+    .entry-card:hover {
+      border-color: var(--orange);
+    }
+
+    .entry-date {
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-title {
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      word-break: break-word;
+    }
+
+    .entry-preview {
+      color: var(--muted);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .action-card {
+      background-color: var(--surface);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      text-decoration: none;
+      color: var(--light);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .action-card:hover {
+      background-color: rgba(249, 115, 22, 0.1);
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .action-icon {
+      font-size: 1.5rem;
+    }
+
+    .action-label {
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+
+    /* Account Section */
+    .account-section {
+      background-color: var(--surface);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .account-section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    .account-info {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .info-value {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--orange);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: rgba(249, 115, 22, 0.2);
+      color: var(--orange);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(249, 115, 22, 0.3);
+      border-color: var(--orange);
+    }
+
+    /* Empty States */
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+    }
+
+    .empty-state p {
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-info h1 {
+        font-size: 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="auth-nav"></div>
+
+  <!-- Loading Spinner -->
+  <div id="page-loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container" id="profile-content" style="display: none;">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-avatar" id="avatar"></div>
+      <div class="profile-info">
+        <h1 id="display-name">Loading...</h1>
+        <p id="user-email">user@example.com</p>
+        <p class="member-since">
+          Member since <span id="member-since">--</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="total-goals">0</div>
+        <div class="stat-label">Total Goals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="completed-goals">0</div>
+        <div class="stat-label">Goals Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="journal-entries">0</div>
+        <div class="stat-label">Journal Entries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="habit-streak">0</div>
+        <div class="stat-label">Current Streak</div>
+      </div>
+    </div>
+
+    <!-- Recent Goals -->
+    <div class="section-header">
+      <h2>Recent Goals</h2>
+      <a href="goal-tracker.html" class="view-all">View All →</a>
+    </div>
+    <div id="goals-container" class="goals-list"></div>
+
+    <!-- Recent Journal Entries -->
+    <div class="section-header">
+      <h2>Recent Journal Entries</h2>
+      <a href="journal.html" class="view-all">View All →</a>
+    </div>
+    <div id="entries-container" class="entries-grid"></div>
+
+    <!-- Quick Actions -->
+    <div class="section-header">
+      <h2>Quick Actions</h2>
+    </div>
+    <div class="quick-actions">
+      <a href="goal-tracker.html" class="action-card">
+        <div class="action-icon">🎯</div>
+        <div class="action-label">Goal Tracker</div>
+      </a>
+      <a href="journal.html" class="action-card">
+        <div class="action-icon">📓</div>
+        <div class="action-label">Journal</div>
+      </a>
+      <a href="habit-builder.html" class="action-card">
+        <div class="action-icon">🏆</div>
+        <div class="action-label">Habit Builder</div>
+      </a>
+      <a href="mood-tracker.html" class="action-card">
+        <div class="action-icon">😊</div>
+        <div class="action-label">Mood Tracker</div>
+      </a>
+      <a href="index.html#tools" class="action-card">
+        <div class="action-icon">🛠️</div>
+        <div class="action-label">All Tools</div>
+      </a>
+    </div>
+
+    <!-- Account Section -->
+    <div class="account-section">
+      <h2>Account</h2>
+      <div class="account-info">
+        <div class="info-row">
+          <span class="info-label">Email Address</span>
+          <span class="info-value" id="account-email">user@example.com</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Account Status</span>
+          <span class="info-value">Active</span>
+        </div>
+      </div>
+      <button class="btn btn-secondary" id="sign-out-btn">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initAuthNavbar();
+      requireAuth(user => {
+        document.getElementById('page-loading').style.display = 'none';
+        document.getElementById('profile-content').style.display = 'block';
+        loadProfile(user);
+      });
+    });
+
+    async function loadProfile(user) {
+      try {
+        // Set basic user info
+        const displayName = user.displayName || user.email.split('@')[0];
+        const initial = displayName.charAt(0).toUpperCase();
+
+        document.getElementById('avatar').textContent = initial;
+        document.getElementById('display-name').textContent = displayName;
+        document.getElementById('user-email').textContent = user.email;
+        document.getElementById('account-email').textContent = user.email;
+
+        // Format member since date
+        const createdDate = new Date(user.metadata.creationTime);
+        const monthYear = createdDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+        document.getElementById('member-since').textContent = monthYear;
+
+        // Load stats
+        await loadStats(user.uid);
+
+        // Load recent goals
+        await loadRecentGoals(user.uid);
+
+        // Load recent journal entries
+        await loadRecentEntries(user.uid);
+
+        // Sign out button
+        document.getElementById('sign-out-btn').addEventListener('click', () => {
+          if (confirm('Are you sure you want to sign out?')) {
+            auth.signOut().then(() => {
+              window.location.href = 'index.html';
+            });
+          }
+        });
+      } catch (error) {
+        console.error('Error loading profile:', error);
+        document.getElementById('profile-content').innerHTML = `
+          <div style="padding: 2rem; text-align: center; color: var(--muted);">
+            <p>Error loading profile. Please refresh the page.</p>
+          </div>
+        `;
+      }
+    }
+
+    async function loadStats(uid) {
+      try {
+        const goalsSnapshot = await goalsRef(uid).get();
+        const journalSnapshot = await journalRef(uid).get();
+        const habitsSnapshot = await habitsRef(uid).get();
+
+        let totalGoals = 0;
+        let completedGoals = 0;
+        let maxStreak = 0;
+
+        if (goalsSnapshot.exists) {
+          const goals = goalsSnapshot.val() || {};
+          totalGoals = Object.keys(goals).length;
+          Object.values(goals).forEach(goal => {
+            if (goal.completed) completedGoals++;
+          });
+        }
+
+        const journalCount = journalSnapshot.exists ? Object.keys(journalSnapshot.val() || {}).length : 0;
+
+        if (habitsSnapshot.exists) {
+          const habits = habitsSnapshot.val() || {};
+          Object.values(habits).forEach(habit => {
+            if (habit.currentStreak) {
+              maxStreak = Math.max(maxStreak, habit.currentStreak);
+            }
+          });
+        }
+
+        document.getElementById('total-goals').textContent = totalGoals;
+        document.getElementById('completed-goals').textContent = completedGoals;
+        document.getElementById('journal-entries').textContent = journalCount;
+        document.getElementById('habit-streak').textContent = maxStreak;
+      } catch (error) {
+        console.error('Error loading stats:', error);
+      }
+    }
+
+    async function loadRecentGoals(uid) {
+      try {
+        const snapshot = await goalsRef(uid).orderByChild('created').limitToLast(5).get();
+        const container = document.getElementById('goals-container');
+        container.innerHTML = '';
+
+        if (!snapshot.exists) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <p>No goals yet. <a href="goal-tracker.html" style="color: var(--orange);">Create one →</a></p>
+            </div>
+          `;
+          return;
+        }
+
+        const goals&� [];
+        snapshot.forEach(child => {
+          goals.unshift({ id: child.key, ...child.val() });
+        });
+
+        goals.slice(0, 5).forEach(goal => {
+          const progress = goal.progress || 0;
+          const category = goal.category || 'General';
+          const html = `
+            <div class="goal-card">
+              <div class="goal-header">
+                <span class="goal-title">${escapeHtml(goal.title)}</span>
+                <span class="goal-category">${escapeHtml(category)}</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: ${progress}%"></div>
+              </div>
+              <div class="progress-text">${progress}% complete</div>
+            </div>
+          `;
+          container.innerHTML += html;
+        });
+      } catch (error) {
+        console.error('Error loading goals:�, error);
+      }
+    }
+
+    async function loadRecentEntries(uid) {
+      try {
+        const snapshot = await journalRef(uid).orderByChild('created').limitToLast(3).get();
+        const container = document.getElementById('entries-container');
+        container.innerHTML = '';
+
+        if (!snapshot.exists) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <p>No journal entries yet. <a href="journal.html" style="color: var(--orange);">Start writing →</a></p>
+            </div>
+          `;
+          return;
+        }
+
+        const entries = [];
+        snapshot.forEach(child => {
+          entries.unshift({ id: child.key, ...child.val() });
+        });
+
+        entries.slice(0, 3).forEach(entry => {
+          const date = new Date(entry.created);
+          const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          const prompt = entry.promptTitle || 'Journal Entry';
+          const preview = (entry.content || '').substring(0, 100);
+          const html = `
+            <div class="entry-card">
+              <div class="entry-date">${dateStr}</div>
+              <div class="entry-title">${escapeHtml(prompt)}</div>
+              <div class="entry-preview">${escapeHtml(preview)}${preview.length >= 100 ? '...' : ''}</div>
+            </div>
+          `;
+          container.innerHTML += html;
+        });
+      } catch (error) {
+        console.error('Error loading entries:', error);
+      }
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+  </script>
+</body>
+</html>
