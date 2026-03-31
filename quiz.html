@@ -543,7 +543,30 @@ p  { color: #374151; }
     <div class="card" style="text-align:center; padding:48px 36px;">
       <div style="font-size:3rem; margin-bottom:20px;">🧠</div>
       <h2 style="margin-bottom:16px;">The WinWithFred Mindset Assessment</h2>
-      <p style="color:var(--muted); margin-bottom:1t>
+      <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">This quiz covers 5 key areas: <strong>Accountability, Growth Mindset, Focus, Resilience,</strong> and <strong>Self-Discipline.</strong></p>
+      <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. There are no "good" answers — only accurate ones. Takes about 3 minutes.</p>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz →</button>
+    </div>
+  </div>
+
+  <!-- Quiz Screen -->
+  <div id="screen-quiz" style="display:none;">
+    <div class="quiz-progress"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+    <div class="quiz-step-label" id="quiz-step-label">Question 1 of 10</div>
+    <div class="question-card" id="question-card"></div>
+    <div class="quiz-nav">
+      <button class="btn btn-outline btn-sm" id="btn-prev" onclick="prevQ()" style="display:none;">← Back</button>
+      <div></div>
+      <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Next →</button>
+    </div>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="screen-results" style="display:none;"></div>
+
+</div>
+
+<script>
 
   const QUESTIONS = [
     { cat:'accountability', text:"When something goes wrong in your life, what's your first instinct?", options:[
@@ -708,9 +731,10 @@ p  { color: #374151; }
 
     document.getElementById('screen-results').innerHTML = `
       <div class="result-hero">
-        <div class="result-score">${pct}</div>
+        <div class="result-score">${pct}%</div>
+        <div class="result-label">Overall Score</div>
+        <div class="result-type">${resultEmoji}</div>
         <div class="result-label">Your Mindset Type</div>
-        <div style="font-size:2.5rem;margin-bottom:8px;">${resultEmoji}</div>
         <div class="result-title">${resultType}</div>
         <div class="result-desc">${resultDesc}</div>
       </div>
