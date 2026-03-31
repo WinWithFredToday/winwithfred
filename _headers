@@ -1,0 +1,25 @@
+/*
+  # Security Headers — WinWithFred.com
+  # Applied to all pages by DigitalOcean App Platform
+
+  # Prevent clickjacking — site cannot be embedded in iframes
+  X-Frame-Options: DENY
+
+  # Prevent MIME-type sniffing attacks
+  X-Content-Type-Options: nosniff
+
+  # Enable browser XSS filter (legacy browsers)
+  X-XSS-Protection: 1; mode=block
+
+  # Control referrer information sent to other sites
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Restrict browser features/APIs
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), accelerometer=(), gyroscope=()
+
+  # Force HTTPS and trust for 1 year (HSTS)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+  # Content Security Policy
+  # Allows: Firebase, Google Auth, Google Fonts, self
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com; frame-src https://winwithfred-53df4.firebaseapp.com https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self';

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — WinWithFred</title>
+  <meta name="description" content="Privacy Policy for WinWithFred.com. Learn how we collect, use, and protect your personal information." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:#0d0d0d; --dark:#111827; --surface:#1f2937; --border:#374151;
+      --muted:#6b7280; --light:#f9fafb; --white:#ffffff;
+      --orange:#f97316; --orange-d:#ea6c0a; --orange-l:#fff7ed;
+      --radius:10px; --shadow:0 4px 24px rgba(0,0,0,0.08);
+      --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.6; font-size: 16px; }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    .navbar { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .navbar-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .navbar-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+    .navbar-logo span { color: var(--orange); }
+    .navbar-logo:hover { text-decoration: none; }
+    .navbar-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .navbar-links a { color: #d1d5db; font-weight: 500; font-size: 0.95rem; padding: 8px 14px; border-radius: 8px; transition: all 0.15s; }
+    .navbar-links a:hover { color: #fff; background: var(--surface); text-decoration: none; }
+    .btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius); font-weight: 700; font-size: 1rem; cursor: pointer; border: 2px solid transparent; transition: all 0.18s ease; font-family: var(--font); line-height: 1; }
+    .btn-primary { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .btn-primary:hover { background: var(--orange-d); border-color: var(--orange-d); text-decoration: none; }
+    .btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+    .nav-user { display:flex; align-items:center; gap:10px; }
+    .nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; }
+    .nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
+    .nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
+    .page-hero { background: var(--dark); color: #fff; padding: 64px 24px; text-align: center; }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: #9ca3af; font-size: 1rem; }
+    .legal-content { padding: 64px 24px; }
+    .legal-content h2 { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin: 40px 0 12px; padding-top: 8px; border-top: 1px solid #e5e7eb; }
+    .legal-content h2:first-child { margin-top: 0; border-top: none; }
+    .legal-content p { color: #374151; margin-bottom: 16px; line-height: 1.75; }
+    .legal-content ul { color: #374151; margin: 0 0 16px 24px; line-height: 1.75; }
+    .legal-content ul li { margin-bottom: 8px; }
+    .legal-content strong { color: var(--dark); }
+    .last-updated { display: inline-block; background: var(--orange-l); color: var(--orange); font-size: 0.85rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; margin-bottom: 32px; }
+    .footer { background: var(--dark); color: #9ca3af; padding: 56px 24px 0; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 48px; flex-wrap: wrap; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+    .footer-brand { max-width: 280px; }
+    .footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .footer-logo span { color: var(--orange); }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #9ca3af; font-size: 0.9rem; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+    .footer-bottom { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: 0.85rem; flex-wrap: wrap; gap: 8px; }
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .footer-inner { flex-direction: column; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li class="navbar-cta"><div id="auth-nav"></div></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p>Your privacy matters. Here's exactly what we collect and why.</p>
+  </div>
+</div>
+
+<div class="legal-content">
+  <div class="container">
+    <span class="last-updated">Last Updated: April 1, 2026</span>
+
+    <h2>1. Who We Are</h2>
+    <p>WinWithFred.com ("we," "us," or "our") is a personal development and self-help website operated by Freddy Owen. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
+    <p>If you have questions about this policy, contact us at <a href="mailto:freddyowenprivate@gmail.com">freddyowenprivate@gmail.com</a>.</p>
+
+    <h2>2. Information We Collect</h2>
+    <p><strong>Information you provide directly:</strong></p>
+    <ul>
+      <li><strong>Account information:</strong> When you register, we collect your email address, display name, and password (stored securely through Google Firebase Authentication — we never see your raw password).</li>
+      <li><strong>User-generated content:</strong> Goal entries, habit tracking data, journal entries, quiz results, and other content you create within the Site's tools.</li>
+      <li><strong>Google Sign-In:</strong> If you sign in with Google, we receive your name, email address, and profile picture from Google.</li>
+    </ul>
+    <p><strong>Information collected automatically:</strong></p>
+    <ul>
+      <li><strong>Usage data:</strong> Google Firebase may collect technical data such as your IP address, browser type, device type, pages visited, and time spent on pages for analytics and security purposes.</li>
+      <li><strong>Cookies:</strong> Firebase uses cookies and similar tracking technologies to maintain your authentication session.</li>
+    </ul>
+
+    <h2>3. How We Use Your Information</h2>
+    <p>We use the information we collect to:</p>
+    <ul>
+      <li>Provide, operate, and maintain the Site and its tools</li>
+      <li>Create and manage your user account</li>
+      <li>Save and retrieve your personal data (goals, habits, journal entries) across devices</li>
+      <li>Respond to your comments, questions, and requests</li>
+      <li>Detect and prevent fraud, abuse, and security incidents</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+    <p>We do <strong>not</strong> sell your personal information to third parties. We do <strong>not</strong> use your data for targeted advertising.</p>
+
+    <h2>4. How We Store and Protect Your Information</h2>
+    <p>Your data is stored on Google Firebase (Firestore database and Firebase Authentication), which is a Google Cloud service. Firebase employs industry-standard security measures including encryption in transit (TLS/HTTPS) and encryption at rest.</p>
+    <p>Access to your personal data is restricted by Firebase Security Rules, which means only you (as an authenticated user) can access your own data. We implement authentication to prevent unauthorized access.</p>
+    <p>Despite these measures, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security.</p>
+
+    <h2>5. Third-Party Service Providers</h2>
+    <p>We use the following third-party services that may process your data:</p>
+    <ul>
+      <li><strong>Google Firebase:</strong> Authentication, database storage, and hosting. Subject to <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase's Privacy Policy</a>.</li>
+      <li><strong>Google Fonts:</strong> Web fonts loaded from Google's servers. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+      <li><strong>DigitalOcean:</strong> Website hosting infrastructure. Subject to <a href="https://www.digitalocean.com/legal/privacy-policy/" target="_blank" rel="noopener">DigitalOcean's Privacy Policy</a>.</li>
+    </ul>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain your account and user-generated content for as long as your account is active. If you delete your account, we will delete your personal data from our systems within a reasonable time, subject to any legal obligations to retain certain records.</p>
+
+    <h2>7. Your Rights</h2>
+    <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+      <li><strong>Deletion:</strong> Request deletion of your personal data ("right to be forgotten").</li>
+      <li><strong>Portability:</strong> Request your data in a portable format.</li>
+      <li><strong>Objection:</strong> Object to certain types of processing.</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:freddyowenprivate@gmail.com">freddyowenprivate@gmail.com</a>. We will respond within 30 days.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>This Site is not directed at children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected information from a child under 13, please contact us immediately and we will take steps to delete that information.</p>
+
+    <h2>9. California Privacy Rights (CCPA)</h2>
+    <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information we collect, the right to delete your personal information, and the right to opt-out of the sale of personal information. <strong>We do not sell personal information.</strong> To exercise your CCPA rights, contact us at <a href="mailto:freddyowenprivate@gmail.com">freddyowenprivate@gmail.com</a>.</p>
+
+    <h2>10. International Visitors</h2>
+    <p>This Site is operated in the United States. If you are accessing the Site from outside the United States, please be aware that your information may be transferred to, stored, and processed in the United States where our servers are located. By using the Site, you consent to this transfer.</p>
+    <p>If you are located in the European Economic Area (EEA), our legal basis for processing your personal data is your consent (for optional features) and our legitimate interest in providing and improving the Site.</p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page. Your continued use of the Site after changes are posted constitutes acceptance of the updated policy. We encourage you to review this policy periodically.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>If you have questions, concerns, or requests related to this Privacy Policy, please contact:</p>
+    <p><strong>WinWithFred.com</strong><br>
+    Email: <a href="mailto:freddyowenprivate@gmail.com">freddyowenprivate@gmail.com</a></p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem; line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#about">About Fred</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 WinWithFred.com — All rights reserved.</span>
+    <span>For entertainment &amp; informational purposes only.</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
+</script>
+<script src="mobile-nav.js"></script>
+</body>
+</html>
