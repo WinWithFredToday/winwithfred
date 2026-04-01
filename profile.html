@@ -664,7 +664,7 @@
           return;
         }
 
-        const goals&� [];
+        const goals = [];
         snapshot.forEach(child => {
           goals.unshift({ id: child.key, ...child.val() });
         });
@@ -687,7 +687,7 @@
           container.innerHTML += html;
         });
       } catch (error) {
-        console.error('Error loading goals:�, error);
+        console.error('Error loading goals:', error);
       }
     }
 
