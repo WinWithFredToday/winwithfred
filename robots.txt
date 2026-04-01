@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /login.html
+Disallow: /profile.html
+
+Sitemap: https://winwithfred.com/sitemap.xml
