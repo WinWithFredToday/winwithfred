@@ -681,7 +681,7 @@ const questions = [
     { text: 'Running on empty most days', score: 2 },
     { text: 'Completely wiped out, unable to do anything personal', score: 3 }
   ]},
-  { dim: 'exhaustion', text: 'How often do you feel physically oremotionally burned out from your work?', opts: [
+  { dim: 'exhaustion', text: 'How often do you feel physically or emotionally burned out from your work?', opts: [
     { text: 'Rarely', score: 0 },
     { text: 'Occasionally', score: 1 },
     { text: 'Several times a week', score: 2 },
@@ -719,7 +719,7 @@ const questions = [
   ]},
   { dim: 'effectiveness', text: 'How would you rate your sense of accomplishment at work lately?', opts: [
     { text: 'High — I feel proud of what I\'m doing', score: 0 },
-    { text: 'Average —"nothing notable', score: 1 },
+    { text: 'Average — nothing notable', score: 1 },
     { text: 'Low — I complete tasks but feel little satisfaction', score: 2 },
     { text: 'Very low — I can barely remember my last real win', score: 3 }
   ]},
@@ -760,7 +760,7 @@ function renderQuestion() {
 
   let html = `
     <div class="question-card">
-      <div class="question-num">Q$s{currentQ + 1}</div>
+      <div class="question-num">Q${currentQ + 1}</div>
       <div class="question-text">${escapeHtml(q.text)}</div>
       <div class="answer-options">
   `;
