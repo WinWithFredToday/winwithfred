@@ -53,7 +53,7 @@ a:hover { text-decoration: underline; }
 .section    { padding: 80px 0; }
 .section-sm { padding: 48px 0; }
 
-/* ── Typography —─ */
+/* ── Typography ── */
 h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
@@ -480,6 +480,11 @@ p  { color: #374151; }
 .loading-page p { color:#9ca3af; font-size:0.9rem; }
 @keyframes spin { to { transform:rotate(360deg); } }
 </style>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 </head>
 <body>
 
@@ -568,11 +573,6 @@ p  { color: #374151; }
 
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="firebase-config.js"></script>
-
 <script>
 
   const TODAY = new Date().toISOString().split('T')[0];
@@ -580,91 +580,61 @@ p  { color: #374151; }
   let habits = [];
   let currentUser = null;
 
-  function init() {
-    auth.onAuthStateChanged(user => {
-      currentUser = user;
-      document.getElementById('page-loading').style.display = 'none';
-      loadHabits();
-      initAuthNavbar();
-    });
+  requireAuth(user => {
+    currentUser = user;
+    document.getElementById('page-loading').style.display = 'none';
+    initAuthNavbar();
+    loadHabits();
+  });
+
+  async function loadHabits() {
+    try {
+      const snap = await habitsRef(currentUser.uid).orderBy('created', 'asc').get();
+      habits = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    } catch(e) { habits = []; }
+    render();
   }
 
-  function loadHabits() {
-    if (currentUser) {
-      // Load from Firestore
-      habitsRef(currentUser.uid).get()
-        .then(snapshot => {
-          habits = [];
-          snapshot.forEach(doc => {
-            habits.push(doc.data());
-          });
-          render();
-        })
-        .catch(err => {
-          console.error('Error loading habits:', err);
-          habits = [];
-          render();
-        });
-    } else {
-      // Load from localStorage
-      try { habits = JSON.parse(localStorage.getItem('wwf_habits') || '[]'); }
-      catch(e) { habits = []; }
-      render();
-    }
-  }
-
-  function saveHabits() {
-    if (currentUser) {
-      // Save to Firestore
-      habits.forEach(habit => {
-        habitsRef(currentUser.uid).doc(habit.id).set(habit, { merge: true })
-          .catch(err => console.error('Error saving habit:', err));
-      });
-    } else {
-      // Save to localStorage
-      localStorage.setItem('wwf_habits', JSON.stringify(habits));
-    }
-  }
-
-  function addHabit() {
+  async function addHabit() {
     const name = document.getElementById('habit-name').value.trim();
     if (!name) { alert('Please enter a habit name.'); return; }
     const habit = {
-      id:      Date.now().toString(),
       name,
       time:    document.getElementById('habit-time').value,
       emoji:   document.getElementById('habit-emoji').value.trim() || '⭐',
       history: {},
-      created: new Date().toISOString()
+      created: firebase.firestore.FieldValue.serverTimestamp()
     };
-    habits.push(habit);
-    saveHabits();
-    document.getElementById('habit-name').value = '';
-    document.getElementById('habit-emoji').value = '';
-    render();
+    try {
+      const ref = await habitsRef(currentUser.uid).add(habit);
+      habits.push({ id: ref.id, ...habit, history: {}, created: new Date() });
+      document.getElementById('habit-name').value = '';
+      document.getElementById('habit-emoji').value = '';
+      render();
+    } catch(e) { alert('Could not save habit. Check your connection.'); }
   }
 
-  function deleteHabit(id) {
+  async function deleteHabit(id) {
     if (!confirm('Delete this habit? All history will be lost.')) return;
-    habits = habits.filter(h => h.id !== id);
-
-    if (currentUser) {
-      // Delete from Firestore
-      habitsRef(currentUser.uid).doc(id).delete()
-        .catch(err => console.error('Error deleting habit:', err));
-    }
-
-    saveHabits();
-    render();
+    try {
+      await habitsRef(currentUser.uid).doc(id).delete();
+      habits = habits.filter(h => h.id !== id);
+      render();
+    } catch(e) { alert('Error deleting habit.'); }
   }
 
-  function toggleHabit(id) {
+  async function toggleHabit(id) {
     const h = habits.find(h => h.id === id);
     if (!h) return;
     if (!h.history) h.history = {};
-    h.history[TODAY] = !h.history[TODAY];
-    saveHabits();
+    const newVal = !h.history[TODAY];
+    h.history[TODAY] = newVal;
     render();
+    try {
+      await habitsRef(currentUser.uid).doc(id).update({
+        [`history.${TODAY}`]: newVal
+      });
+    } catch(e) { h.history[TODAY] = !newVal; render(); }
   }
 
   function getStreak(h) {
@@ -761,8 +731,6 @@ p  { color: #374151; }
   }
 
   document.getElementById('habit-name').addEventListener('keydown', e => { if (e.key === 'Enter') addHabit(); });
-
-  document.addEventListener('DOMContentLoaded', init);
 
 </script>
 
