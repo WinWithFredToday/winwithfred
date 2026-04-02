@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Journal Prompts — WinWithFred</title>
+  <title>Journal Prompts &mdash; WinWithFred</title>
   <meta name="description" content="Curated journaling prompts to spark self-reflection and sharpen your thinking." />
 <style>
 /* ============================================
-   WinWithFred.com — Global Stylesheet
+   WinWithFred.com &mdash; Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
@@ -550,7 +550,7 @@ p  { color: #374151; }
       <textarea id="entry-text" class="form-textarea writing-area" placeholder="Start writing here. Don't think too much. Just let it out..." oninput="updateWordCount()"></textarea>
       <div class="word-count" id="word-count">0 words</div>
       <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="saveSingleEntry()">Save Entry →</button>
+        <button class="btn btn-primary" onclick="saveSingleEntry()">Save Entry &rarr;</button>
         <button class="btn btn-outline btn-sm" onclick="clearEntry()">Clear</button>
       </div>
     </div>
@@ -581,10 +581,10 @@ p  { color: #374151; }
   const PROMPTS = [
     { cat:'Mindset', text:"What belief do you hold about yourself that might not actually be true?", hint:"Challenge your assumptions. Be honest." },
     { cat:'Goals', text:"If you knew you couldn't fail, what would you go after right now?", hint:"Remove fear from the equation. What's left?" },
-    { cat:'Gratitude', text:"Name 3 things that went right today — no matter how small.", hint:"Specificity matters. 'Had a good day' doesn't count." },
+    { cat:'Gratitude', text:"Name 3 things that went right today &mdash; no matter how small.", hint:"Specificity matters. 'Had a good day' doesn't count." },
     { cat:'Self-Awareness', text:"In what area of your life are you making excuses instead of making progress?", hint:"Name it. Own it. Then decide what to do about it." },
     { cat:'Relationships', text:"Who in your life deserves more of your attention, and what's stopping you?", hint:"Think about actions, not just intentions." },
-    { cat:'Growth', text:"What's one thing you learned this week — about yourself or the world?", hint:"Even small lessons count. Write it down before you forget it." },
+    { cat:'Growth', text:"What's one thing you learned this week &mdash; about yourself or the world?", hint:"Even small lessons count. Write it down before you forget it." },
     { cat:'Fear', text:"What are you most afraid of right now, and is that fear rational?", hint:"Name the fear out loud. It loses power when it's named." },
     { cat:'Purpose', text:"If your life were a book, what would the theme of this chapter be?", hint:"No judgment. Just observe where you are right now." },
     { cat:'Habits', text:"What habit has had the biggest positive impact on your life? Why?", hint:"Think about what you'd tell a friend to start doing." },
@@ -593,14 +593,14 @@ p  { color: #374151; }
     { cat:'Vision', text:"Where do you want to be in exactly one year? Be specific.", hint:"Vague goals get vague results. Get specific." },
     { cat:'Energy', text:"What drains your energy, and what fills it up? Are you doing enough of the latter?", hint:"Energy management is as important as time management." },
     { cat:'Values', text:"What do you value most right now, and are your daily actions aligned with that?", hint:"The gap between values and actions is where stress lives." },
-    { cat:'Wins', text:"List every win from the past 30 days — big and small.", hint:"We're wired to remember failures. Counter that bias deliberately." },
+    { cat:'Wins', text:"List every win from the past 30 days &mdash; big and small.", hint:"We're wired to remember failures. Counter that bias deliberately." },
     { cat:'Mindset', text:"What would the most disciplined version of you do today?", hint:"Then do that thing. Start with one item." },
     { cat:'Self-Awareness', text:"What feedback have you received repeatedly that you've been ignoring?", hint:"Patterns in feedback are data. What's the data telling you?" },
     { cat:'Growth', text:"What skill do you wish you'd started building 5 years ago?", hint:"You can't go back. But you can start today." },
     { cat:'Focus', text:"If you could only work on ONE thing this week, what would create the most impact?", hint:"Everything else is a distraction from that one thing." },
     { cat:'Obstacles', text:"What's the #1 thing standing between you and your biggest goal right now?", hint:"Is it external or internal? Be honest." },
     { cat:'Gratitude', text:"Who has helped you get where you are, and have you thanked them properly?", hint:"Make a list. Then actually reach out to one of them." },
-    { cat:'Vision', text:"Describe your ideal day in 5 years — from morning to night.", hint:"Be specific. What do you see? Who are you with? How do you feel?" },
+    { cat:'Vision', text:"Describe your ideal day in 5 years &mdash; from morning to night.", hint:"Be specific. What do you see? Who are you with? How do you feel?" },
     { cat:'Mindset', text:"What are you tolerating in your life that you shouldn't be?", hint:"Tolerating bad situations slowly drains your energy and confidence." },
     { cat:'Purpose', text:"What would you do if money were no issue and status didn't matter?", hint:"Strip away external motivators. What's left?" },
     { cat:'Challenge', text:"When did you last do something that scared you? What happened?", hint:"Comfort zones are cages with open doors. When did you last walk out?" },
@@ -682,7 +682,7 @@ p  { color: #374151; }
 
   async function saveSingleEntry() {
     const text = document.getElementById('entry-text').value.trim();
-    if (!text) { alert('Write something first — even a few sentences.'); return; }
+    if (!text) { alert('Write something first &mdash; even a few sentences.'); return; }
     const entry = {
       id:      Date.now().toString(),
       date:    TODAY_STR,
