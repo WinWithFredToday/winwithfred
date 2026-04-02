@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Future Self Visualizer — WinWithFred</title>
-  <meta name="description" content="Tell us where you want to be in one year. We'll build your future — and show you the path that gets you there." />
+  <title>Future Self Visualizer &mdash; WinWithFred</title>
+  <meta name="description" content="Tell us where you want to be in one year. We'll build your future &mdash; and show you the path that gets you there." />
 <style>
 /* ============================================
-   WinWithFred.com — Global Stylesheet
+   WinWithFred.com &mdash; Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
@@ -629,7 +629,7 @@ p  { color: #374151; }
 }
 
 .phase-list li::before {
-  content: "→";
+  content: "&rarr;";
   position: absolute;
   left: 0;
   color: var(--orange);
@@ -695,7 +695,7 @@ p  { color: #374151; }
   <div class="tool-header-inner">
     <div class="section-label" style="background:rgba(249,115,22,0.15);">🔭 Future Self Visualizer</div>
     <h1>Meet the Person You Could Be.</h1>
-    <p>Tell us where you want to be in one year. We'll build your future — and show you the path that gets you there.</p>
+    <p>Tell us where you want to be in one year. We'll build your future &mdash; and show you the path that gets you there.</p>
   </div>
 </div>
 
@@ -749,7 +749,7 @@ p  { color: #374151; }
 
     <!-- Step 2: Income & Work -->
     <div id="step-2" class="step-wrapper">
-      <div class="form-group-title">Your Vision — Income & Work</div>
+      <div class="form-group-title">Your Vision &mdash; Income & Work</div>
 
       <div class="form-group">
         <label class="form-label">Where do you want to be financially in 1 year?</label>
@@ -791,7 +791,7 @@ p  { color: #374151; }
 
     <!-- Step 3: Health & Energy -->
     <div id="step-3" class="step-wrapper">
-      <div class="form-group-title">Your Vision — Health & Energy</div>
+      <div class="form-group-title">Your Vision &mdash; Health & Energy</div>
 
       <div class="form-group">
         <label class="form-label">What's your health goal?</label>
@@ -837,7 +837,7 @@ p  { color: #374151; }
 
     <!-- Step 4: Relationships & Life -->
     <div id="step-4" class="step-wrapper">
-      <div class="form-group-title">Your Vision — Relationships & Life</div>
+      <div class="form-group-title">Your Vision &mdash; Relationships & Life</div>
 
       <div class="form-group">
         <label class="form-label">What do you want your relationships to look like?</label>
@@ -857,7 +857,7 @@ p  { color: #374151; }
 
     <!-- Step 5: Honest Check-In -->
     <div id="step-5" class="step-wrapper">
-      <div class="form-group-title">Your Path — Honest Check-In</div>
+      <div class="form-group-title">Your Path &mdash; Honest Check-In</div>
 
       <div class="form-group">
         <label class="form-label">On a scale of 1-10, how committed are you to making this change?</label>
@@ -896,7 +896,7 @@ p  { color: #374151; }
 
     <div class="form-navigation">
       <button id="prev-step-btn" class="btn btn-outline" style="display:none;">← Back</button>
-      <button id="next-step-btn" class="btn btn-primary">Next →</button>
+      <button id="next-step-btn" class="btn btn-primary">Next &rarr;</button>
     </div>
   </div>
 
@@ -949,7 +949,7 @@ p  { color: #374151; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 WinWithFred.com — All rights reserved.</span>
+    <span>© 2026 WinWithFred.com &mdash; All rights reserved.</span>
     <span>Built for people who get things done.</span>
   </div>
 </footer>
@@ -977,7 +977,7 @@ function updateStepProgress() {
   document.getElementById('step-progress-fill').style.width = percent + '%';
   document.getElementById('step-number').textContent = `Step ${currentStep} of ${totalSteps}`;
   document.getElementById('prev-step-btn').style.display = currentStep === 1 ? 'none' : 'block';
-  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next →';
+  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next &rarr;';
 }
 
 function showStep(stepNum) {
@@ -1057,7 +1057,7 @@ function generateReport() {
       title: "Phase 3 (Days 61-90): Proof",
       items: [
         `Measure where you are on ${formData.workType} (hours, income, satisfaction)`,
-        `Revisit your biggest obstacle: "${formData.obstacle}" — what's changed?`,
+        `Revisit your biggest obstacle: "${formData.obstacle}" &mdash; what's changed?`,
         `Write down 3 evidence points that you're becoming the person you want to be`
       ]
     }

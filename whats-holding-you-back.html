@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What's Holding You Back — WinWithFred</title>
+  <title>What's Holding You Back &mdash; WinWithFred</title>
   <meta name="description" content="12 questions. 4 categories. One honest answer about what's actually standing between you and the life you want." />
 <style>
 /* ============================================
-   WinWithFred.com — Global Stylesheet
+   WinWithFred.com &mdash; Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
@@ -620,7 +620,7 @@ p  { color: #374151; }
 }
 
 .action-steps li::before {
-  content: "→ ";
+  content: "&rarr; ";
   color: var(--orange);
   font-weight: 700;
   margin-right: 8px;
@@ -738,7 +738,7 @@ p  { color: #374151; }
 <div class="tool-header">
   <div class="tool-header-inner">
     <div class="section-label" style="background:rgba(249,115,22,0.15);">🚧 What's Holding You Back?</div>
-    <h1>Your Biggest Blocker — Identified.</h1>
+    <h1>Your Biggest Blocker &mdash; Identified.</h1>
     <p>12 questions. 4 categories. One honest answer about what's actually standing between you and the life you want.</p>
   </div>
 </div>
@@ -759,7 +759,7 @@ p  { color: #374151; }
 
     <div class="quiz-navigation">
       <button id="prev-btn" class="btn btn-outline" style="display:none;">← Previous</button>
-      <button id="next-btn" class="btn btn-primary">Next →</button>
+      <button id="next-btn" class="btn btn-primary">Next &rarr;</button>
     </div>
   </div>
 
@@ -814,7 +814,7 @@ p  { color: #374151; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 WinWithFred.com — All rights reserved.</span>
+    <span>© 2026 WinWithFred.com &mdash; All rights reserved.</span>
     <span>Built for people who get things done.</span>
   </div>
 </footer>
@@ -836,10 +836,10 @@ const QUIZ_DATA = {
       category: 'Fear',
       text: "How often do you avoid starting things because you're not sure they'll work out?",
       answers: [
-        { text: "A: Rarely — I prefer to try and learn", score: 0 },
+        { text: "A: Rarely &mdash; I prefer to try and learn", score: 0 },
         { text: "B: Sometimes, if the stakes feel high", score: 1 },
-        { text: "C: Often — I overthink before acting", score: 2 },
-        { text: "D: Almost always — uncertainty stops me cold", score: 3 }
+        { text: "C: Often &mdash; I overthink before acting", score: 2 },
+        { text: "D: Almost always &mdash; uncertainty stops me cold", score: 3 }
       ]
     },
     {
@@ -866,9 +866,9 @@ const QUIZ_DATA = {
       category: 'Discipline',
       text: "On a typical day, how much time do you waste on things that don't matter?",
       answers: [
-        { text: "A: Very little — I'm fairly focused", score: 0 },
+        { text: "A: Very little &mdash; I'm fairly focused", score: 0 },
         { text: "B: An hour or two, but I catch it", score: 1 },
-        { text: "C: Several hours — distraction is a real problem", score: 2 },
+        { text: "C: Several hours &mdash; distraction is a real problem", score: 2 },
         { text: "D: Most of my day slips away without progress", score: 3 }
       ]
     },
@@ -886,9 +886,9 @@ const QUIZ_DATA = {
       category: 'Clarity',
       text: "How clearly can you describe what you want your life to look like in 2 years?",
       answers: [
-        { text: "A: Very clearly — I have specific goals", score: 0 },
+        { text: "A: Very clearly &mdash; I have specific goals", score: 0 },
         { text: "B: I have a general sense", score: 1 },
-        { text: "C: It's fuzzy — I know what I don't want more than what I do", score: 2 },
+        { text: "C: It's fuzzy &mdash; I know what I don't want more than what I do", score: 2 },
         { text: "D: I have no real idea", score: 3 }
       ]
     },
@@ -898,7 +898,7 @@ const QUIZ_DATA = {
       answers: [
         { text: "A: Confident I made the right call", score: 0 },
         { text: "B: Usually okay, occasionally second-guess", score: 1 },
-        { text: "C: Often uncertain — I wonder if I chose wrong", score: 2 },
+        { text: "C: Often uncertain &mdash; I wonder if I chose wrong", score: 2 },
         { text: "D: Frequently paralyzed by choices", score: 3 }
       ]
     },
@@ -908,7 +908,7 @@ const QUIZ_DATA = {
       answers: [
         { text: "A: Yes, and I act on them daily", score: 0 },
         { text: "B: I know them but don't always act on them", score: 1 },
-        { text: "C: They're blurry — I'm not sure what matters most", score: 2 },
+        { text: "C: They're blurry &mdash; I'm not sure what matters most", score: 2 },
         { text: "D: I don't have clear priorities", score: 3 }
       ]
     },
@@ -916,7 +916,7 @@ const QUIZ_DATA = {
       category: 'Environment',
       text: "Does the space you live and work in support your goals?",
       answers: [
-        { text: "A: Yes — it's set up for productivity", score: 0 },
+        { text: "A: Yes &mdash; it's set up for productivity", score: 0 },
         { text: "B: Mostly, with a few distractions", score: 1 },
         { text: "C: It's messy and hard to focus in", score: 2 },
         { text: "D: My environment actively works against me", score: 3 }
@@ -926,8 +926,8 @@ const QUIZ_DATA = {
       category: 'Environment',
       text: "Do the people around you lift you up or drag you down?",
       answers: [
-        { text: "A: Mostly lift me — strong circle", score: 0 },
-        { text: "B: Mixed bag — some good, some draining", score: 1 },
+        { text: "A: Mostly lift me &mdash; strong circle", score: 0 },
+        { text: "B: Mixed bag &mdash; some good, some draining", score: 1 },
         { text: "C: Mostly negative or unsupportive", score: 2 },
         { text: "D: My environment is toxic or deeply unsupportive", score: 3 }
       ]
@@ -936,10 +936,10 @@ const QUIZ_DATA = {
       category: 'Environment',
       text: "How often do external pressures derail your plans?",
       answers: [
-        { text: "A: Rarely — I protect my time", score: 0 },
+        { text: "A: Rarely &mdash; I protect my time", score: 0 },
         { text: "B: Sometimes but I course-correct", score: 1 },
-        { text: "C: Often — I'm reactive to everyone else's agenda", score: 2 },
-        { text: "D: Almost always — I have no control over my time", score: 3 }
+        { text: "C: Often &mdash; I'm reactive to everyone else's agenda", score: 2 },
+        { text: "D: Almost always &mdash; I have no control over my time", score: 3 }
       ]
     }
   ],
@@ -947,8 +947,8 @@ const QUIZ_DATA = {
     Fear: {
       name: "Fear",
       title: "Your biggest blocker is fear. Not laziness. Not circumstance. Fear.",
-      description: "You likely have the discipline and clarity to succeed — but fear of failure or judgment is keeping you stuck.",
-      insight: "You likely have the discipline and clarity to succeed — but fear of failure or judgment is keeping you stuck.",
+      description: "You likely have the discipline and clarity to succeed &mdash; but fear of failure or judgment is keeping you stuck.",
+      insight: "You likely have the discipline and clarity to succeed &mdash; but fear of failure or judgment is keeping you stuck.",
       actionTitle: "The 7-Day Fear Audit",
       actionSteps: [
         "Day 1: Email someone you've been avoiding",
@@ -957,13 +957,13 @@ const QUIZ_DATA = {
         "Day 4: Ask for something you want (raise, help, date, anything)",
         "Day 5: Do one thing in public you'd normally do in private",
         "Day 6: Admit one failure or mistake to someone you respect",
-        "Day 7: Write down the worst realistic outcome of your biggest fear — then write the plan to survive it"
+        "Day 7: Write down the worst realistic outcome of your biggest fear &mdash; then write the plan to survive it"
       ],
       nextStep: "Email someone you've been avoiding. Just one message. That's Day 1."
     },
     Discipline: {
       name: "Discipline",
-      title: "Your biggest blocker is discipline — specifically, execution.",
+      title: "Your biggest blocker is discipline &mdash; specifically, execution.",
       description: "You have ideas. You start things. But follow-through breaks down.",
       insight: "You have ideas. You start things. But follow-through breaks down. Here's the fix:",
       actionTitle: "The 7-Day Execution Reset",
@@ -980,7 +980,7 @@ const QUIZ_DATA = {
     },
     Clarity: {
       name: "Clarity",
-      title: "Your biggest blocker is clarity — you're working hard in the wrong direction.",
+      title: "Your biggest blocker is clarity &mdash; you're working hard in the wrong direction.",
       description: "Most people with clarity problems aren't lazy. They're confused. And confused people don't take action.",
       insight: "Most people with clarity problems aren't lazy. They're confused. And confused people don't take action.",
       actionTitle: "The 7-Day Clarity Sprint",
@@ -1005,10 +1005,10 @@ const QUIZ_DATA = {
         "Day 1: Identify and remove 3 distractions from your workspace",
         "Day 2: Have one honest conversation with a draining person (or create distance)",
         "Day 3: Set phone to grayscale + move social apps off home screen",
-        "Day 4: Redesign your morning — first 30 min belong to you, not your phone",
-        "Day 5: Find one person who is doing what you want to do — reach out",
+        "Day 4: Redesign your morning &mdash; first 30 min belong to you, not your phone",
+        "Day 5: Find one person who is doing what you want to do &mdash; reach out",
         "Day 6: Join one community, class, or group aligned with your goals",
-        "Day 7: Audit your commitments — drop one thing that isn't moving you forward"
+        "Day 7: Audit your commitments &mdash; drop one thing that isn't moving you forward"
       ],
       nextStep: "Remove 3 distractions from your workspace. Right now. Just 15 minutes."
     }
@@ -1053,7 +1053,7 @@ function renderQuestion() {
   document.getElementById('questions-wrapper').innerHTML = html;
 
   document.getElementById('prev-btn').style.display = currentQuestion === 0 ? 'none' : 'block';
-  document.getElementById('next-btn').textContent = currentQuestion === QUIZ_DATA.questions.length - 1 ? 'View Results' : 'Next →';
+  document.getElementById('next-btn').textContent = currentQuestion === QUIZ_DATA.questions.length - 1 ? 'View Results' : 'Next &rarr;';
 }
 
 function selectAnswer(answerIdx) {
@@ -1121,7 +1121,7 @@ function showResults() {
   // Insights & action plan
   let insightsHtml = `
     <div class="insight-section">
-      <div class="insight-title">${resultData.name} — The Real Problem</div>
+      <div class="insight-title">${resultData.name} &mdash; The Real Problem</div>
       <div class="insight-text">${resultData.insight}</div>
 
       <div class="action-plan">

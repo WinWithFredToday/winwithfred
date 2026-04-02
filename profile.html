@@ -497,14 +497,14 @@
     <!-- Recent Goals -->
     <div class="section-header">
       <h2>Recent Goals</h2>
-      <a href="goal-tracker.html" class="view-all">View All →</a>
+      <a href="goal-tracker.html" class="view-all">View All &rarr;</a>
     </div>
     <div id="goals-container" class="goals-list"></div>
 
     <!-- Recent Journal Entries -->
     <div class="section-header">
       <h2>Recent Journal Entries</h2>
-      <a href="journal.html" class="view-all">View All →</a>
+      <a href="journal.html" class="view-all">View All &rarr;</a>
     </div>
     <div id="entries-container" class="entries-grid"></div>
 
@@ -658,7 +658,7 @@
         if (!snapshot.exists) {
           container.innerHTML = `
             <div class="empty-state">
-              <p>No goals yet. <a href="goal-tracker.html" style="color: var(--orange);">Create one →</a></p>
+              <p>No goals yet. <a href="goal-tracker.html" style="color: var(--orange);">Create one &rarr;</a></p>
             </div>
           `;
           return;
@@ -700,7 +700,7 @@
         if (!snapshot.exists) {
           container.innerHTML = `
             <div class="empty-state">
-              <p>No journal entries yet. <a href="journal.html" style="color: var(--orange);">Start writing →</a></p>
+              <p>No journal entries yet. <a href="journal.html" style="color: var(--orange);">Start writing &rarr;</a></p>
             </div>
           `;
           return;

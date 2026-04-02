@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fix My Life Action Generator — WinWithFred</title>
+  <title>Fix My Life Action Generator &mdash; WinWithFred</title>
   <meta name="description" content="Tell us what's wrong. We'll build a specific, no-fluff 5-step action plan to get you moving today." />
 <style>
 /* ============================================
-   WinWithFred.com — Global Stylesheet
+   WinWithFred.com &mdash; Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
@@ -512,7 +512,7 @@ p  { color: #374151; }
 <div class="tool-header">
   <div class="tool-header-inner">
     <div class="section-label">🛠️ Fix My Life</div>
-    <h1>"I Feel Stuck." — Here's Your Plan.</h1>
+    <h1>"I Feel Stuck." &mdash; Here's Your Plan.</h1>
     <p>Tell us what's wrong. We'll build a specific, no-fluff 5-step action plan to get you moving today.</p>
   </div>
 </div>
@@ -546,7 +546,7 @@ p  { color: #374151; }
       </div>
 
       <div style="text-align: center; margin-top: 28px;">
-        <button class="btn btn-primary btn-lg" onclick="generatePlan()">Build My Plan →</button>
+        <button class="btn btn-primary btn-lg" onclick="generatePlan()">Build My Plan &rarr;</button>
       </div>
     </div>
   </div>
@@ -629,7 +629,7 @@ const plans = {
     keywords: ['stuck', "don't know", 'lost', 'direction'],
     steps: [
       { time: 'TODAY', duration: '5 min', text: 'Write down the ONE thing you want most right now. Not a list. One thing.' },
-      { time: 'TODAY', duration: '20 min', text: 'Take one physical action toward it — even a tiny one. Google something. Send an email. Clean your desk.' },
+      { time: 'TODAY', duration: '20 min', text: 'Take one physical action toward it &mdash; even a tiny one. Google something. Send an email. Clean your desk.' },
       { time: 'THIS WEEK', duration: '', text: 'Reduce your decision load. Remove 3 things from your mental plate. Delegate, drop, or defer.' },
       { time: 'THIS WEEK', duration: '', text: 'Talk to one person who has done something you want to do. Pick their brain.' },
       { time: 'THIS MONTH', duration: '', text: 'Set a 30-day micro-goal. Specific, measurable, achievable in 30 days.' }
@@ -644,7 +644,7 @@ const plans = {
       { time: 'TODAY', duration: '', text: 'Identify one subscription or expense to cut immediately. Cancel it.' },
       { time: 'THIS WEEK', duration: '', text: 'Identify one skill you have that someone would pay for. Offer it to one person.' },
       { time: 'THIS WEEK', duration: '', text: 'Set a 7-day no-unnecessary-spending challenge. Cash only if needed.' },
-      { time: 'THIS MONTH', duration: '', text: 'Set up automatic savings — even $10/week. Automation beats willpower.' }
+      { time: 'THIS MONTH', duration: '', text: 'Set up automatic savings &mdash; even $10/week. Automation beats willpower.' }
     ],
     relatedTools: ['goal-tracker.html']
   },
@@ -667,7 +667,7 @@ const plans = {
       { time: 'TODAY', duration: '25 min', text: 'Do the one task you\'ve been avoiding. Just 25 minutes. Set a timer.' },
       { time: 'TODAY', duration: '', text: 'Write down 3 things that mattered to you 5 years ago. What happened to them?' },
       { time: 'THIS WEEK', duration: '7 days', text: 'Remove 1 digital distraction for 7 days (one social app, or set screen time limits).' },
-      { time: 'THIS WEEK', duration: '', text: 'Do something physical you enjoy — not for fitness, just for the dopamine.' },
+      { time: 'THIS WEEK', duration: '', text: 'Do something physical you enjoy &mdash; not for fitness, just for the dopamine.' },
       { time: 'THIS MONTH', duration: '', text: 'Commit to one project that will show you something completed. Small scope. Ship it.' }
     ],
     relatedTools: ['goal-tracker.html', 'habit-builder.html']
@@ -680,7 +680,7 @@ const plans = {
       { time: 'TODAY', duration: '', text: 'Write down every open loop in your head. Get it all out. Then pick just one to act on.' },
       { time: 'THIS WEEK', duration: '30 min/day', text: 'Limit news and social media to 30 min/day total. Watch how much calmer you feel.' },
       { time: 'THIS WEEK', duration: '20 min', text: 'Add 20 min of walking daily. This is not optional for anxiety management.' },
-      { time: 'THIS MONTH', duration: '', text: 'Talk to one trusted person about what you\'re carrying. Not therapy (though that helps) — just a human.' }
+      { time: 'THIS MONTH', duration: '', text: 'Talk to one trusted person about what you\'re carrying. Not therapy (though that helps) &mdash; just a human.' }
     ],
     relatedTools: ['journal.html']
   },
@@ -688,9 +688,9 @@ const plans = {
     name: 'Repair & Connect',
     keywords: ['relationship', 'relationships', 'lonely', 'alone', 'partner', 'friends'],
     steps: [
-      { time: 'TODAY', duration: '', text: 'Message one person you\'ve been meaning to reach out to. No big deal — just "Hey, been thinking of you."' },
-      { time: 'TODAY', duration: '', text: 'If there\'s a relationship that needs repair — write out what YOU contributed to the problem. Not what they did.' },
-      { time: 'THIS WEEK', duration: '', text: 'Plan one real social interaction — not digital. Coffee, walk, dinner.' },
+      { time: 'TODAY', duration: '', text: 'Message one person you\'ve been meaning to reach out to. No big deal &mdash; just "Hey, been thinking of you."' },
+      { time: 'TODAY', duration: '', text: 'If there\'s a relationship that needs repair &mdash; write out what YOU contributed to the problem. Not what they did.' },
+      { time: 'THIS WEEK', duration: '', text: 'Plan one real social interaction &mdash; not digital. Coffee, walk, dinner.' },
       { time: 'THIS WEEK', duration: '', text: 'If you\'re lonely: find one local group, class, or event aligned with your interests. Attend once.' },
       { time: 'THIS MONTH', duration: '', text: 'Schedule recurring time with one person who matters to you. Put it in the calendar.' }
     ],
@@ -787,7 +787,7 @@ function displayPlan(plan, input) {
   let toolsHtml = '';
   const toolNames = { 'goal-tracker.html': 'Goal Tracker', 'habit-builder.html': 'Habit Builder', 'journal.html': 'Journal' };
   for (const tool of plan.relatedTools) {
-    toolsHtml += `<a href="${tool}">→ ${toolNames[tool]}</a>`;
+    toolsHtml += `<a href="${tool}">&rarr; ${toolNames[tool]}</a>`;
   }
   document.getElementById('related-links').innerHTML = toolsHtml;
 }

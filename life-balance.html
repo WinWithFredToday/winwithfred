@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Life Balance Wheel — WinWithFred</title>
-  <meta name="description" content="Rate each area of your life 1-10. The wheel doesn't lie — you'll instantly see where you're thriving and where you're coasting." />
+  <title>Life Balance Wheel &mdash; WinWithFred</title>
+  <meta name="description" content="Rate each area of your life 1-10. The wheel doesn't lie &mdash; you'll instantly see where you're thriving and where you're coasting." />
 <style>
 /* ============================================
-   WinWithFred.com — Global Stylesheet
+   WinWithFred.com &mdash; Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
@@ -531,7 +531,7 @@ p  { color: #374151; }
   <div class="tool-header-inner">
     <div class="section-label" style="background:rgba(249,115,22,0.15);">⚖️ Life Balance Wheel</div>
     <h1>See Where Your Life Is Out of Balance.</h1>
-    <p>Rate each area of your life 1-10. The wheel doesn't lie — you'll instantly see where you're thriving and where you're coasting.</p>
+    <p>Rate each area of your life 1-10. The wheel doesn't lie &mdash; you'll instantly see where you're thriving and where you're coasting.</p>
   </div>
 </div>
 
@@ -575,7 +575,7 @@ p  { color: #374151; }
           <div class="area-emoji">💞</div>
           <div class="area-name">Relationships</div>
         </div>
-        <div class="area-question">Quality of your close relationships — partner, family, friends?</div>
+        <div class="area-question">Quality of your close relationships &mdash; partner, family, friends?</div>
         <div class="slider-group">
           <input type="range" min="1" max="10" value="5" class="slider-input" data-area="relationships" />
           <span class="slider-value" data-area="relationships">5</span>
@@ -644,7 +644,7 @@ p  { color: #374151; }
     </div>
 
     <div style="text-align:center; margin-top:32px;">
-      <button class="btn btn-primary btn-lg" onclick="generateWheel()">See My Wheel →</button>
+      <button class="btn btn-primary btn-lg" onclick="generateWheel()">See My Wheel &rarr;</button>
     </div>
   </div>
 
@@ -795,8 +795,8 @@ function generateWheel() {
 
   // Update summary
   document.getElementById('overall-score').innerHTML = `<strong>Your Life Balance Score: ${avg}/10 average</strong>`;
-  document.getElementById('strongest-area').innerHTML = `<p style="margin-top:12px; color:var(--green);"><strong>Strongest area:</strong> ${strongest.emoji} ${strongest.label} — You're doing well here. Protect it.</p>`;
-  document.getElementById('weakest-area').innerHTML = `<p style="margin-top:8px; color:var(--red);"><strong>Weakest area:</strong> ${weakest.emoji} ${weakest.label} — This is dragging everything else down.</p>`;
+  document.getElementById('strongest-area').innerHTML = `<p style="margin-top:12px; color:var(--green);"><strong>Strongest area:</strong> ${strongest.emoji} ${strongest.label} &mdash; You're doing well here. Protect it.</p>`;
+  document.getElementById('weakest-area').innerHTML = `<p style="margin-top:8px; color:var(--red);"><strong>Weakest area:</strong> ${weakest.emoji} ${weakest.label} &mdash; This is dragging everything else down.</p>`;
 
   if (gap > 4) {
     document.getElementById('gap-warning').innerHTML = `<div class="gap-warning"><strong>⚠️ Warning:</strong> Your life is severely out of balance in at least one area. The gap between highest (${max}/10) and lowest (${min}/10) is ${gap} points.</div>`;
