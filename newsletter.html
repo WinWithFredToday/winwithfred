@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No BS Newsletter — WinWithFred</title>
+  <meta name="description" content="Straight talk, zero fluff. The No BS Newsletter from WinWithFred delivers actionable tips on habits, mindset, and goals — straight to your inbox." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #0d0d0d;
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --orange-l:#fff7ed;
+  --radius:  10px;
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.6; font-size: 16px; }
+img { max-width: 100%; display: block; }
+a  { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section    { padding: 80px 0; }
+
+h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.2rem; }
+p  { color: #374151; }
+
+.text-orange { color: var(--orange); }
+.text-muted  { color: var(--muted); font-size: 0.9rem; }
+.text-center { text-align: center; }
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.18s ease;
+  font-family: var(--font);
+  line-height: 1;
+}
+.btn-primary { background: var(--orange); color: var(--white); border-color: var(--orange); }
+.btn-primary:hover { background: var(--orange-d); border-color: var(--orange-d); text-decoration: none; transform: translateY(-1px); }
+.btn-dark { background: var(--dark); color: var(--white); border-color: var(--dark); }
+.btn-dark:hover { background: var(--surface); text-decoration: none; transform: translateY(-1px); }
+.btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+.btn-lg { padding: 18px 40px; font-size: 1.1rem; }
+
+/* Navbar */
+.navbar { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.navbar-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.navbar-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.navbar-links a { color: #d1d5db; font-weight: 500; font-size: 0.95rem; padding: 8px 14px; border-radius: 8px; transition: all 0.15s; }
+.navbar-links a:hover { color: #fff; background: var(--surface); text-decoration: none; }
+.navbar-links a.active { color: var(--orange); }
+
+/* Hero */
+.nl-hero {
+  background: var(--dark);
+  color: var(--white);
+  padding: 90px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.nl-hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.nl-hero .section-label {
+  display: inline-block;
+  background: rgba(249,115,22,0.15);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.nl-hero h1 { color: var(--white); margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.nl-hero h1 span { color: var(--orange); }
+.nl-hero .subtext { color: #9ca3af; font-size: 1.15rem; max-width: 580px; margin: 0 auto 16px; }
+.nl-hero .proof { color: #6b7280; font-size: 0.9rem; margin-bottom: 40px; }
+.nl-hero .proof strong { color: #d1d5db; }
+
+/* Signup Box */
+.signup-box {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 36px 40px;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left;
+}
+.signup-box h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 8px; }
+.signup-box p { color: #9ca3af; font-size: 0.9rem; margin-bottom: 20px; }
+
+/* Beehiiv embed placeholder */
+.beehiiv-embed-placeholder {
+  background: #111827;
+  border: 2px dashed #374151;
+  border-radius: 10px;
+  padding: 28px 24px;
+  text-align: center;
+}
+.beehiiv-embed-placeholder p {
+  color: #6b7280;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+/* Once you have your Beehiiv embed code, replace the .beehiiv-embed-placeholder div with it */
+
+.guarantee { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: #6b7280; font-size: 0.82rem; justify-content: center; }
+.guarantee span { font-size: 1rem; }
+
+/* What You Get */
+.what-you-get { background: var(--white); }
+.section-label-sm {
+  display: inline-block;
+  background: var(--orange-l);
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.perk-card {
+  background: var(--light);
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+}
+.perk-icon { font-size: 2rem; margin-bottom: 16px; }
+.perk-card h3 { margin-bottom: 10px; font-size: 1.05rem; }
+.perk-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
+.perk-card.pro {
+  background: var(--dark);
+  border-color: var(--orange);
+}
+.perk-card.pro h3 { color: var(--white); }
+.perk-card.pro p { color: #9ca3af; }
+.pro-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+/* Tiers */
+.tiers { background: var(--light); }
+.tiers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 820px;
+  margin: 48px auto 0;
+}
+.tier-card {
+  background: var(--white);
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 36px 32px;
+}
+.tier-card.featured {
+  border-color: var(--orange);
+  position: relative;
+}
+.tier-badge {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tier-name { font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.tier-price { font-size: 2.6rem; font-weight: 900; color: var(--dark); line-height: 1; margin-bottom: 6px; }
+.tier-price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+.tier-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e7eb; }
+.tier-features { list-style: none; margin-bottom: 28px; }
+.tier-features li { font-size: 0.92rem; color: #374151; padding: 7px 0; display: flex; align-items: flex-start; gap: 10px; }
+.tier-features li::before { content: '✓'; color: var(--orange); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+.tier-features li.no::before { content: '✕'; color: #d1d5db; }
+.tier-features li.no { color: #9ca3af; }
+
+/* Sample issue */
+.sample { background: var(--dark); color: var(--white); }
+.sample h2 { color: var(--white); }
+.sample .section-label-sm { background: rgba(249,115,22,0.15); color: var(--orange); }
+.issue-preview {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 40px 44px;
+  max-width: 680px;
+  margin: 48px auto 0;
+}
+.issue-header { border-bottom: 1px solid #374151; padding-bottom: 20px; margin-bottom: 28px; }
+.issue-label { font-size: 0.78rem; color: var(--orange); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.issue-title { font-size: 1.4rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+.issue-meta { font-size: 0.82rem; color: #6b7280; }
+.issue-tip {
+  background: rgba(249,115,22,0.1);
+  border-left: 3px solid var(--orange);
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+}
+.issue-tip p { color: #d1d5db; font-size: 0.93rem; }
+.issue-section-title { color: var(--orange); font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; margin-top: 24px; }
+.issue-body p { color: #9ca3af; font-size: 0.93rem; line-height: 1.75; margin-bottom: 14px; }
+.issue-cta { border-top: 1px solid #374151; padding-top: 20px; margin-top: 24px; text-align: center; }
+.issue-cta p { color: #6b7280; font-size: 0.85rem; }
+
+/* CTA Bottom */
+.nl-cta {
+  background: var(--orange);
+  padding: 80px 24px;
+  text-align: center;
+}
+.nl-cta h2 { color: var(--white); margin-bottom: 14px; }
+.nl-cta p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 500px; margin: 0 auto 36px; }
+.nl-cta .btn { background: var(--white); color: var(--orange); border-color: var(--white); }
+.nl-cta .btn:hover { background: var(--orange-l); text-decoration: none; transform: translateY(-1px); }
+
+/* Footer */
+.footer { background: var(--black); color: #9ca3af; padding: 48px 24px 32px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px; }
+.footer-brand { max-width: 280px; }
+.footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #9ca3af; font-size: 0.9rem; }
+.footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+.footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 768px) {
+  .navbar-links { display: none; }
+  .tiers-grid { grid-template-columns: 1fr; }
+  .signup-box { padding: 28px 24px; }
+  .issue-preview { padding: 28px 24px; }
+  .footer-inner { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="newsletter.html" class="active btn btn-primary btn-sm" style="margin-left:8px;">Newsletter</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="nl-hero">
+  <div class="section-label">Free to Join</div>
+  <h1>The <span>No BS</span> Newsletter</h1>
+  <p class="subtext">One email a week. Straight talk on habits, goals, and mindset — with zero filler and zero fluff.</p>
+  <p class="proof">Join readers who are done with motivational garbage and ready for stuff that <strong>actually works.</strong></p>
+
+  <div class="signup-box">
+    <h3>Get your first issue this week</h3>
+    <p>Drop your email below. No spam. Unsubscribe anytime. It's that simple.</p>
+
+    <!-- ============================================================
+         BEEHIIV EMBED: Replace this placeholder with your Beehiiv
+         embed code once your account is set up at beehiiv.com.
+         Go to: Grow → Forms → Embed → Copy embed code
+         Then paste it here in place of the div below.
+         ============================================================ -->
+    <div class="beehiiv-embed-placeholder">
+      <p>📬 Beehiiv signup form goes here.<br>Paste your embed code from Beehiiv → Grow → Forms → Embed.</p>
+    </div>
+
+    <div class="guarantee">
+      <span>🔒</span>
+      No spam. Your email stays with us. Unsubscribe with one click.
+    </div>
+  </div>
+</section>
+
+<!-- What You Get -->
+<section class="section what-you-get">
+  <div class="container text-center">
+    <div class="section-label-sm">What's Inside</div>
+    <h2>Not another newsletter you ignore.<br>This one you'll actually open.</h2>
+    <p style="color:var(--muted);max-width:580px;margin:12px auto 0;">Every issue is built around one idea you can use that week. No walls of text. No affiliate spam. Just signal.</p>
+
+    <div class="perks-grid">
+      <div class="perk-card">
+        <div class="perk-icon">🎯</div>
+        <h3>One Actionable Tip</h3>
+        <p>Every issue leads with one thing you can do this week — specific, tested, and explained in plain English.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🧠</div>
+        <h3>The Mindset Fix</h3>
+        <p>A quick reframe for one common mental block that's probably slowing you down right now.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📖</div>
+        <h3>What Fred's Reading</h3>
+        <p>One book, article, or idea worth your time — with an honest take, not a sponsored plug.</p>
+      </div>
+      <div class="perk-card pro">
+        <div class="pro-badge">Pro Only</div>
+        <div class="perk-icon">⚡</div>
+        <h3>Deep Dive</h3>
+        <p>Paid subscribers get a full breakdown — the full system, the full framework, the full playbook. Not the watered-down version.</p>
+      </div>
+      <div class="perk-card pro">
+        <div class="pro-badge">Pro Only</div>
+        <div class="perk-icon">💬</div>
+        <h3>Ask Fred Anything</h3>
+        <p>Paid subscribers can submit questions answered directly in the newsletter. Real talk, real answers.</p>
+      </div>
+      <div class="perk-card pro">
+        <div class="pro-badge">Pro Only</div>
+        <div class="perk-icon">📋</div>
+        <h3>Monthly Worksheet</h3>
+        <p>A printable worksheet built around that month's theme — something you can fill out and actually use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tiers -->
+<section class="section tiers">
+  <div class="container text-center">
+    <div class="section-label-sm">Pricing</div>
+    <h2>Free to start. Upgrade when you're ready.</h2>
+    <p style="color:var(--muted);max-width:500px;margin:12px auto 0;">The free tier is genuinely good. The pro tier is for people who want to go all in.</p>
+
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">$0 <span>/ month</span></div>
+        <p class="tier-desc">Everything you need to get started and start winning.</p>
+        <ul class="tier-features">
+          <li>Weekly No BS email</li>
+          <li>One actionable tip per issue</li>
+          <li>Mindset Fix section</li>
+          <li>What Fred's Reading pick</li>
+          <li class="no">Deep Dive breakdowns</li>
+          <li class="no">Ask Fred Anything</li>
+          <li class="no">Monthly worksheets</li>
+        </ul>
+        <a href="#signup" class="btn btn-dark" style="width:100%;text-align:center;">Start Free</a>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-name">Pro</div>
+        <div class="tier-price">$9 <span>/ month</span></div>
+        <p class="tier-desc">For people who want the full picture, not just the highlights.</p>
+        <ul class="tier-features">
+          <li>Everything in Free</li>
+          <li>Deep Dive breakdowns every issue</li>
+          <li>Ask Fred Anything (monthly)</li>
+          <li>Monthly printable worksheet</li>
+          <li>Early access to new tools</li>
+          <li>No ads, ever</li>
+        </ul>
+        <a href="#signup" class="btn btn-primary" style="width:100%;text-align:center;">Go Pro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sample Issue Preview -->
+<section class="section sample">
+  <div class="container text-center">
+    <div class="section-label-sm">Sample Issue</div>
+    <h2>Here's what lands in your inbox.</h2>
+    <p style="color:#9ca3af;max-width:500px;margin:12px auto 0;">This is a real excerpt. Judge for yourself.</p>
+
+    <div class="issue-preview">
+      <div class="issue-header">
+        <div class="issue-label">No BS Newsletter · Issue #3</div>
+        <div class="issue-title">The 2-Minute Rule Is Wrong. Here's What Actually Works.</div>
+        <div class="issue-meta">By Freddy Owen &nbsp;·&nbsp; 4 min read</div>
+      </div>
+      <div class="issue-body">
+        <div class="issue-section-title">This Week's Tip</div>
+        <p>You've heard the 2-minute rule: if something takes less than 2 minutes, do it now. It's fine advice. But it misses the real problem — which isn't that tasks are too long. It's that starting feels terrible.</p>
+        <div class="issue-tip">
+          <p><strong style="color:var(--orange);">The fix:</strong> Instead of a time threshold, use an entry threshold. Ask yourself, "What is the smallest possible first action?" Not "finish the report" — "open the doc." Not "work out" — "put on shoes." The bar is: can you do this in 30 seconds with zero willpower? If yes, that's your start.</p>
+        </div>
+        <p>Once you're in motion, momentum does the rest. The science on this is solid — it's called the Zeigarnik effect. Your brain hates unfinished things and will push you to complete them once started. Use it.</p>
+        <div class="issue-cta">
+          <p>🔒 The Deep Dive (Pro) breaks down the full Entry Threshold System with a 5-step daily protocol.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section id="signup" class="nl-cta">
+  <h2>Ready to cut the fluff?</h2>
+  <p>Join the No BS Newsletter and get straight talk that actually moves the needle — free, every week.</p>
+  <a href="#" class="btn btn-lg">Subscribe Free →</a>
+  <p style="margin-top:16px;color:rgba(255,255,255,0.6);font-size:0.85rem;">No spam. No gimmicks. Unsubscribe anytime.</p>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem;line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="blog-habits-why-fail.html">Why Habits Fail</a></li>
+        <li><a href="blog-goals-dont-stick.html">Why Goals Don't Stick</a></li>
+        <li><a href="blog-beat-procrastination.html">Beat Procrastination</a></li>
+        <li><a href="blog-one-percent-rule.html">The 1% Rule</a></li>
+        <li><a href="blog-overcoming-adversity.html">Overcoming Adversity</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="index.html#about">About Fred</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 WinWithFred.com</span>
+    <span>No fluff. No gimmicks. Just results.</span>
+  </div>
+</footer>
+
+<script src="mobile-nav.js"></script>
+</body>
+</html>
