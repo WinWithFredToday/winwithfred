@@ -123,20 +123,18 @@ p  { color: #374151; }
 .signup-box h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 8px; }
 .signup-box p { color: #9ca3af; font-size: 0.9rem; margin-bottom: 20px; }
 
-/* Beehiiv embed placeholder */
-.beehiiv-embed-placeholder {
-  background: #111827;
-  border: 2px dashed #374151;
+/* Substack embed */
+.substack-embed {
   border-radius: 10px;
-  padding: 28px 24px;
-  text-align: center;
+  overflow: hidden;
+  border: 1px solid #374151;
+  background: #fff;
 }
-.beehiiv-embed-placeholder p {
-  color: #6b7280;
-  font-size: 0.85rem;
-  font-style: italic;
+.substack-embed iframe {
+  display: block;
+  width: 100%;
+  border: none;
 }
-/* Once you have your Beehiiv embed code, replace the .beehiiv-embed-placeholder div with it */
 
 .guarantee { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: #6b7280; font-size: 0.82rem; justify-content: center; }
 .guarantee span { font-size: 1rem; }
@@ -289,7 +287,7 @@ p  { color: #374151; }
   .navbar-links { display: none; }
   .tiers-grid { grid-template-columns: 1fr; }
   .signup-box { padding: 28px 24px; }
-  .issue-preview { padding: 28px 24px; }
+  .issue-previer { padding: 28px 24px; }
   .footer-inner { flex-direction: column; }
 }
 </style>
@@ -321,14 +319,8 @@ p  { color: #374151; }
     <h3>Get your first issue this week</h3>
     <p>Drop your email below. No spam. Unsubscribe anytime. It's that simple.</p>
 
-    <!-- ============================================================
-         BEEHIIV EMBED: Replace this placeholder with your Beehiiv
-         embed code once your account is set up at beehiiv.com.
-         Go to: Grow &rarr; Forms &rarr; Embed &rarr; Copy embed code
-         Then paste it here in place of the div below.
-         ============================================================ -->
-    <div class="beehiiv-embed-placeholder">
-      <p>&#128236; Beehiiv signup form goes here.<br>Paste your embed code from Beehiiv &rarr; Grow &rarr; Forms &rarr; Embed.</p>
+    <div class="substack-embed">
+      <iframe src="https://thefunnelprodigy.substack.com/embed" width="480" height="320" frameborder="0" scrolling="no"></iframe>
     </div>
 
     <div class="guarantee">
