@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In — WinWithFred</title>
+  <title>Sign In &mdash; WinWithFred</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,7 +85,7 @@
 </head>
 <body>
 
-<!-- Loading overlay — shown briefly while checking if user is already logged in -->
+<!-- Loading overlay &mdash; shown briefly while checking if user is already logged in -->
 <div class="loading-overlay" id="loading-overlay">
   <div class="spinner"></div>
 </div>
@@ -103,7 +103,7 @@
 
     <div class="auth-logo">
       <div class="brand">Win<span>WithFred</span></div>
-      <p>Your goals. Your habits. Your progress — saved forever.</p>
+      <p>Your goals. Your habits. Your progress &mdash; saved forever.</p>
     </div>
 
     <!-- Tabs -->
@@ -143,7 +143,7 @@
         <label class="form-label">Password</label>
         <input id="input-password" class="form-input" type="password" placeholder="At least 6 characters" required />
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In →</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In &rarr;</button>
     </form>
 
     <div class="back-link">
@@ -176,7 +176,7 @@
     document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
     document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
     document.getElementById('name-group').style.display = mode === 'signup' ? 'block' : 'none';
-    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In →' : 'Create Account →';
+    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In &rarr;' : 'Create Account &rarr;';
     clearMessages();
   }
 
@@ -203,7 +203,7 @@
     if (loading) {
       btn.textContent = 'Please wait...';
     } else {
-      btn.textContent = mode === 'signin' ? 'Sign In →' : 'Create Account →';
+      btn.textContent = mode === 'signin' ? 'Sign In &rarr;' : 'Create Account &rarr;';
     }
   }
 
