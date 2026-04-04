@@ -571,10 +571,7 @@ p  { color: #374151; }
 
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="firebase-config.js"></script>
+<script src="wwf-auth.js"></script>
 
 <script>
 
@@ -624,47 +621,21 @@ p  { color: #374151; }
 
   // &#9472;&#9472; Load: Firestore if logged in, localStorage if not &#9472;&#9472;
   async function loadEntries() {
-    if (currentUser) {
-      try {
-        const snap = await journalRef(currentUser.uid).orderBy('created', 'desc').get();
-        entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      } catch(e) {
-        console.error('Firestore load error:', e);
-        entries = [];
-      }
-    } else {
-      try { entries = JSON.parse(localStorage.getItem('wwf_journal') || '[]'); }
-      catch(e) { entries = []; }
-    }
+    try {
+      entries = (window.WWF ? (await window.WWF.loadJournal()) : null) || JSON.parse(localStorage.getItem('wwf_journal') || '[]');
+    } catch(e) { entries = JSON.parse(localStorage.getItem('wwf_journal') || '[]'); }
     renderStats();
   }
 
   // &#9472;&#9472; Save: Firestore if logged in, localStorage if not &#9472;&#9472;
   async function saveEntry(entry) {
-    if (currentUser) {
-      try {
-        const ref = journalRef(currentUser.uid).doc(entry.id);
-        await ref.set({
-          date: entry.date,
-          prompt: entry.prompt,
-          cat: entry.cat,
-          text: entry.text,
-          words: entry.words,
-          created: entry.created
-        });
-      } catch(e) { console.error('Firestore save error:', e); }
-    } else {
-      localStorage.setItem('wwf_journal', JSON.stringify(entries));
-    }
+    localStorage.setItem('wwf_journal', JSON.stringify(entries));
+    if (window.WWF) window.WWF.saveJournal(entries);
   }
 
   async function deleteEntryFromDB(id) {
-    if (currentUser) {
-      try { await journalRef(currentUser.uid).doc(id).delete(); }
-      catch(e) { console.error('Firestore delete error:', e); }
-    } else {
-      localStorage.setItem('wwf_journal', JSON.stringify(entries));
-    }
+    localStorage.setItem('wwf_journal', JSON.stringify(entries));
+    if (window.WWF) window.WWF.saveJournal(entries);
   }
 
   function newPrompt() {
