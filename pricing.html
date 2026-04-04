@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Go Premium | WinWithFred</title>
+  <meta name="description" content="Upgrade to WinWithFred Premium and save all your journal entries, quiz results, goals, and habits forever — across every device." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark:    #111827;
+  --surface: #1f2937;
+  --border:  #374151;
+  --muted:   #6b7280;
+  --light:   #f9fafb;
+  --white:   #ffffff;
+  --orange:  #f97316;
+  --orange-d:#ea6c0a;
+  --green:   #22c55e;
+  --radius:  12px;
+  --font:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.6; font-size: 16px; }
+a { color: var(--orange); text-decoration: none; }
+
+.navbar { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.navbar-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.navbar-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+.navbar-logo span { color: var(--orange); }
+.navbar-logo:hover { text-decoration: none; }
+.navbar-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.navbar-links a { color: #d1d5db; font-weight: 500; font-size: 0.95rem; padding: 8px 14px; border-radius: 8px; transition: all 0.15s; }
+.navbar-links a:hover { color: #fff; background: var(--surface); text-decoration: none; }
+
+/* Hero */
+.hero { background: var(--dark); color: #fff; padding: 80px 24px 70px; text-align: center; }
+.hero-label { display: inline-block; background: rgba(249,115,22,0.15); color: var(--orange); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; margin-bottom: 20px; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+.hero h1 span { color: var(--orange); }
+.hero p { color: #9ca3af; font-size: 1.1rem; max-width: 540px; margin: 0 auto; }
+
+/* Pricing cards */
+.pricing-section { padding: 64px 24px; }
+.pricing-grid { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.plan-card { background: #fff; border: 2px solid #e5e7eb; border-radius: 16px; padding: 36px 32px; position: relative; }
+.plan-card.popular { border-color: var(--orange); }
+.popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #fff; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 4px 16px; border-radius: 999px; white-space: nowrap; }
+.plan-name { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; }
+.plan-price { font-size: 3rem; font-weight: 900; color: var(--dark); line-height: 1; margin-bottom: 4px; }
+.plan-price sup { font-size: 1.4rem; vertical-align: super; }
+.plan-period { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+.plan-equiv { color: #9ca3af; font-size: 0.8rem; margin-bottom: 28px; min-height: 18px; }
+.plan-btn { display: block; width: 100%; padding: 14px; text-align: center; border-radius: 10px; font-weight: 800; font-size: 1rem; cursor: pointer; border: none; transition: all 0.15s; text-decoration: none; }
+.plan-btn-primary { background: var(--orange); color: #fff; }
+.plan-btn-primary:hover { background: var(--orange-d); text-decoration: none; color: #fff; }
+.plan-btn-outline { background: #fff; color: var(--dark); border: 2px solid #e5e7eb; }
+.plan-btn-outline:hover { border-color: var(--dark); text-decoration: none; color: var(--dark); }
+.plan-features { margin-top: 28px; list-style: none; }
+.plan-features li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.9rem; color: #374151; }
+.plan-features li::before { content: '&#10003;'; color: var(--green); font-weight: 700; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+/* Features grid */
+.features-section { background: var(--dark); padding: 64px 24px; }
+.features-section h2 { color: #fff; font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 48px; }
+.features-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+.feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.feature-card h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.feature-card p { color: #9ca3af; font-size: 0.875rem; line-height: 1.6; }
+
+/* FAQ */
+.faq-section { padding: 64px 24px; max-width: 680px; margin: 0 auto; }
+.faq-section h2 { font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 40px; }
+.faq-item { border-bottom: 1px solid #e5e7eb; padding: 20px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 700; font-size: 0.95rem; color: var(--dark); margin-bottom: 8px; }
+.faq-a { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+/* Guarantee */
+.guarantee { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 16px; padding: 36px; max-width: 600px; margin: 0 auto 64px; text-align: center; }
+.guarantee h3 { font-size: 1.2rem; font-weight: 800; color: #14532d; margin-bottom: 10px; }
+.guarantee p { color: #166534; font-size: 0.9rem; line-height: 1.7; }
+
+/* Footer */
+.footer { background: #0d0d0d; color: #9ca3af; padding: 40px 24px; text-align: center; font-size: 0.875rem; }
+.footer a { color: #9ca3af; }
+.footer a:hover { color: var(--orange); }
+
+@media (max-width: 640px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .navbar-links { display: none; }
+  .hero { padding: 56px 24px 48px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script src="wwf-auth.js"></script>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label">&#11088; Premium Membership</div>
+  <h1>Your growth data,<br><span>saved forever.</span></h1>
+  <p>Every journal entry. Every quiz result. Every goal and habit — synced across all your devices, never lost.</p>
+</section>
+
+<!-- Pricing -->
+<section class="pricing-section">
+  <div class="pricing-grid">
+
+    <!-- Monthly -->
+    <div class="plan-card">
+      <div class="plan-name">Monthly</div>
+      <div class="plan-price"><sup>$</sup>5</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-equiv">&nbsp;</div>
+      <a id="btn-monthly" href="#" class="plan-btn plan-btn-outline" onclick="handleUpgrade('monthly'); return false;">Get Started</a>
+      <ul class="plan-features">
+        <li>Cloud sync across all devices</li>
+        <li>Journal entries saved forever</li>
+        <li>Quiz results &amp; history</li>
+        <li>Goals &amp; habit tracking</li>
+        <li>Cancel anytime, no questions</li>
+      </ul>
+    </div>
+
+    <!-- Yearly — popular -->
+    <div class="plan-card popular">
+      <div class="popular-badge">&#128293; Best Value — Save 35%</div>
+      <div class="plan-name">Annual</div>
+      <div class="plan-price"><sup>$</sup>39</div>
+      <div class="plan-period">per year</div>
+      <div class="plan-equiv">Just $3.25 / month</div>
+      <a id="btn-yearly" href="#" class="plan-btn plan-btn-primary" onclick="handleUpgrade('yearly'); return false;">Get Started</a>
+      <ul class="plan-features">
+        <li>Everything in Monthly</li>
+        <li>35% savings vs monthly billing</li>
+        <li>Priority email support</li>
+        <li>Early access to new tools</li>
+        <li>One full year, locked in</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;margin-top:28px;color:var(--muted);font-size:0.875rem;">
+    &#128274; Secure checkout via Stripe &bull; Cancel anytime &bull; Questions? <a href="mailto:fred@winwithfred.com">fred@winwithfred.com</a>
+  </p>
+</section>
+
+<!-- What gets saved -->
+<section class="features-section">
+  <h2>Everything synced. Nothing lost.</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">&#128221;</div>
+      <h3>Journal Entries</h3>
+      <p>Every prompt you write is stored securely. Access your full journal history from any device, any time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#129504;</div>
+      <h3>Mindset Quiz Results</h3>
+      <p>Track how your mindset evolves over time. See where you started and how far you've come.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#127919;</div>
+      <h3>Goals</h3>
+      <p>Your goals and progress steps sync instantly. Switch devices and pick up exactly where you left off.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#9889;</div>
+      <h3>Habit Streaks</h3>
+      <p>Never lose your streak history again. All your habit check-ins live in the cloud, permanently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Guarantee -->
+<section style="padding: 64px 24px 0;">
+  <div class="guarantee">
+    <h3>&#129303; No-Risk Guarantee</h3>
+    <p>If Premium isn't right for you, email <a href="mailto:fred@winwithfred.com" style="color:#166534;font-weight:600;">fred@winwithfred.com</a> within 7 days of your first payment and you'll get a full refund — no hassle, no questions asked.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2>Common questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Do I need an account to use the free tools?</div>
+    <div class="faq-a">No. All tools work without an account — your data just stays in your browser. Create a free account and upgrade to Premium to sync everything to the cloud.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What happens to my data if I cancel?</div>
+    <div class="faq-a">Your data stays in your account. You can still log in and read everything — you just won't sync new entries until you resubscribe.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can I switch from monthly to annual?</div>
+    <div class="faq-a">Yes. Email fred@winwithfred.com and we'll switch you over and credit any unused time.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is my payment information secure?</div>
+    <div class="faq-a">All payments are processed by Stripe — one of the world's most trusted payment platforms. WinWithFred never sees or stores your card details.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">How quickly does my account upgrade after payment?</div>
+    <div class="faq-a">Usually within a few minutes. If it takes longer, email fred@winwithfred.com and we'll sort it immediately.</div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>&#169; 2026 WinWithFred.com &bull; <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a> &bull; <a href="mailto:fred@winwithfred.com">Contact</a></p>
+</footer>
+
+<script>
+function handleUpgrade(plan) {
+  // If user is logged in, pre-fill their email on the Stripe payment page
+  const email = (window.WWF && window.WWF.user) ? encodeURIComponent(window.WWF.user.email) : '';
+  const links = {
+    monthly: 'STRIPE_MONTHLY_LINK',  // replace after Stripe setup
+    yearly:  'STRIPE_YEARLY_LINK'    // replace after Stripe setup
+  };
+  const base = links[plan];
+  if (base === 'STRIPE_MONTHLY_LINK' || base === 'STRIPE_YEARLY_LINK') {
+    // Stripe not wired yet — show auth modal to at least capture account
+    if (window.WWFAuth) {
+      window.WWFAuth.showUpgrade();
+    } else {
+      alert('Stripe payment links coming soon! Create a free account in the meantime.');
+    }
+    return;
+  }
+  const url = email ? `${base}?prefilled_email=${email}` : base;
+  window.open(url, '_blank');
+}
+
+// Pre-select plan from URL param e.g. pricing.html?plan=yearly
+const urlPlan = new URLSearchParams(window.location.search).get('plan');
+if (urlPlan) { setTimeout(() => handleUpgrade(urlPlan), 800); }
+</script>
+
+<script src="mobile-nav.js"></script>
+</body>
+</html>
