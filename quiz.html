@@ -672,6 +672,8 @@ p  { color: #374151; }
   function showResults() {
     document.getElementById('screen-quiz').style.display = 'none';
     document.getElementById('screen-results').style.display = 'block';
+    // Save result to cloud if premium
+    setTimeout(() => { if (window.WWF && typeof pct !== 'undefined') window.WWF.saveQuizResult({ type: 'mindset', score: pct, label: resultType, answers: answers, date: new Date().toISOString() }); }, 500);
 
     let total = 0;
     const catScores = { accountability:[], growth:[], focus:[], resilience:[], discipline:[] };
@@ -773,6 +775,7 @@ p  { color: #374151; }
 
 </script>
 
+<script src="wwf-auth.js"></script>
 <script src="mobile-nav.js"></script>
 </body>
 </html>
