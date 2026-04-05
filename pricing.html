@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Go Premium | WinWithFred</title>
-  <meta name="description" content="Upgrade to WinWithFred Premium and save all your journal entries, quiz results, goals, and habits forever — across every device." />
+  <meta name="description" content="Upgrade to WinWithFred Premium and save all your journal entries, quiz results, goals, and habits forever â across every device." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
@@ -116,7 +116,7 @@ a { color: var(--orange); text-decoration: none; }
 <section class="hero">
   <div class="hero-label">&#11088; Premium Membership</div>
   <h1>Your growth data,<br><span>saved forever.</span></h1>
-  <p>Every journal entry. Every quiz result. Every goal and habit — synced across all your devices, never lost.</p>
+  <p>Every journal entry. Every quiz result. Every goal and habit â synced across all your devices, never lost.</p>
 </section>
 
 <!-- Pricing -->
@@ -139,9 +139,9 @@ a { color: var(--orange); text-decoration: none; }
       </ul>
     </div>
 
-    <!-- Yearly — popular -->
+    <!-- Yearly â popular -->
     <div class="plan-card popular">
-      <div class="popular-badge">&#128293; Best Value — Save 35%</div>
+      <div class="popular-badge">&#128293; Best Value â Save 35%</div>
       <div class="plan-name">Annual</div>
       <div class="plan-price"><sup>$</sup>39</div>
       <div class="plan-period">per year</div>
@@ -194,7 +194,7 @@ a { color: var(--orange); text-decoration: none; }
 <section style="padding: 64px 24px 0;">
   <div class="guarantee">
     <h3>&#129303; No-Risk Guarantee</h3>
-    <p>If Premium isn't right for you, email <a href="mailto:fred@winwithfred.com" style="color:#166534;font-weight:600;">fred@winwithfred.com</a> within 7 days of your first payment and you'll get a full refund — no hassle, no questions asked.</p>
+    <p>If Premium isn't right for you, email <a href="mailto:fred@winwithfred.com" style="color:#166534;font-weight:600;">fred@winwithfred.com</a> within 7 days of your first payment and you'll get a full refund â no hassle, no questions asked.</p>
   </div>
 </section>
 
@@ -204,12 +204,12 @@ a { color: var(--orange); text-decoration: none; }
 
   <div class="faq-item">
     <div class="faq-q">Do I need an account to use the free tools?</div>
-    <div class="faq-a">No. All tools work without an account — your data just stays in your browser. Create a free account and upgrade to Premium to sync everything to the cloud.</div>
+    <div class="faq-a">No. All tools work without an account â your data just stays in your browser. Create a free account and upgrade to Premium to sync everything to the cloud.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q">What happens to my data if I cancel?</div>
-    <div class="faq-a">Your data stays in your account. You can still log in and read everything — you just won't sync new entries until you resubscribe.</div>
+    <div class="faq-a">Your data stays in your account. You can still log in and read everything â you just won't sync new entries until you resubscribe.</div>
   </div>
 
   <div class="faq-item">
@@ -219,7 +219,7 @@ a { color: var(--orange); text-decoration: none; }
 
   <div class="faq-item">
     <div class="faq-q">Is my payment information secure?</div>
-    <div class="faq-a">All payments are processed by Stripe — one of the world's most trusted payment platforms. WinWithFred never sees or stores your card details.</div>
+    <div class="faq-a">All payments are processed by Stripe â one of the world's most trusted payment platforms. WinWithFred never sees or stores your card details.</div>
   </div>
 
   <div class="faq-item">
@@ -238,12 +238,12 @@ function handleUpgrade(plan) {
   // If user is logged in, pre-fill their email on the Stripe payment page
   const email = (window.WWF && window.WWF.user) ? encodeURIComponent(window.WWF.user.email) : '';
   const links = {
-    monthly: 'STRIPE_MONTHLY_LINK',  // replace after Stripe setup
-    yearly:  'STRIPE_YEARLY_LINK'    // replace after Stripe setup
+    monthly: 'https://buy.stripe.com/eVqdR9gHVfDk9rg6MT33W00',  // replace after Stripe setup
+    yearly:  'https://buy.stripe.com/7sYeVd77l4YGgTI8V133W01'    // replace after Stripe setup
   };
   const base = links[plan];
-  if (base === 'STRIPE_MONTHLY_LINK' || base === 'STRIPE_YEARLY_LINK') {
-    // Stripe not wired yet — show auth modal to at least capture account
+  if (base === 'https://buy.stripe.com/eVqdR9gHVfDk9rg6MT33W00' || base === 'https://buy.stripe.com/7sYeVd77l4YGgTI8V133W01') {
+    // Stripe not wired yet â show auth modal to at least capture account
     if (window.WWFAuth) {
       window.WWFAuth.showUpgrade();
     } else {
