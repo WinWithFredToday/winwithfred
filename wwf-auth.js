@@ -1,17 +1,17 @@
 /* ============================================
-   WinWithFred — Auth + Premium Cloud Sync
+   WinWithFred â Auth + Premium Cloud Sync
    Supabase + Stripe powered membership
    ============================================ */
 
 (function () {
-  // ── Config ──────────────────────────────────
+  // ââ Config ââââââââââââââââââââââââââââââââââ
   const SB_URL  = 'https://qhwysokixisyxozuewgf.supabase.co';
   const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFod3lzb2tpeGlzeXhvenVld2dmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzMTE5MDAsImV4cCI6MjA5MDg4NzkwMH0.SegAjhK2NRCmE3LCU-b41fE7Ocjg52YZqkWOGQ04EIY';
-  // Stripe Payment Links — update after creating in Stripe dashboard
-  const STRIPE_MONTHLY = 'https://buy.stripe.com/MONTHLY_LINK_HERE';
-  const STRIPE_YEARLY  = 'https://buy.stripe.com/YEARLY_LINK_HERE';
+  // Stripe Payment Links â update after creating in Stripe dashboard
+  const STRIPE_MONTHLY = 'https://buy.stripe.com/eVqdR9gHVfDk9rg6MT33W00';
+  const STRIPE_YEARLY  = 'https://buy.stripe.com/7sYeVd77l4YGgTI8V133W01';
 
-  // ── Init Supabase ────────────────────────────
+  // ââ Init Supabase ââââââââââââââââââââââââââââ
   let sb = null;
   let currentUser = null;
   let isPremium = false;
@@ -51,7 +51,7 @@
     if (typeof window.onWWFAuth === 'function') window.onWWFAuth(user, isPremium);
   }
 
-  // ── Auth Bar ─────────────────────────────────
+  // ââ Auth Bar âââââââââââââââââââââââââââââââââ
   function injectAuthBar() {
     const existing = document.getElementById('wwf-auth-bar');
     if (existing) { renderAuthBar(); return; }
@@ -86,7 +86,7 @@
     }
   }
 
-  // ── Modal ────────────────────────────────────
+  // ââ Modal ââââââââââââââââââââââââââââââââââââ
   function injectModal() {
     if (document.getElementById('wwf-modal-overlay')) return;
     const overlay = document.createElement('div');
@@ -148,7 +148,7 @@
       <label class="wwf-label">Email</label>
       <input id="wwf-email" type="email" class="wwf-input" placeholder="you@example.com" required />
       <label class="wwf-label">Password</label>
-      <input id="wwf-password" type="password" class="wwf-input" placeholder="••••••••" required />
+      <input id="wwf-password" type="password" class="wwf-input" placeholder="â¢â¢â¢â¢â¢â¢â¢â¢" required />
       <button type="submit" class="wwf-submit">Sign In</button>
       <p style="text-align:center;margin-top:12px;font-size:0.85rem;color:#6b7280;">
         Forgot password? <a href="#" onclick="WWFAuth._resetPassword()">Reset it</a>
@@ -209,7 +209,7 @@
     el.className = 'wwf-auth-error' + (type === 'success' ? ' wwf-auth-success' : '');
   }
 
-  // ── Data Sync ────────────────────────────────
+  // ââ Data Sync ââââââââââââââââââââââââââââââââ
   window.WWF = window.WWF || {};
 
   window.WWF.saveJournal = async function(entries) {
@@ -278,7 +278,7 @@
     return data || [];
   };
 
-  // ── Styles ───────────────────────────────────
+  // ââ Styles âââââââââââââââââââââââââââââââââââ
   function injectStyles() {
     if (document.getElementById('wwf-auth-styles')) return;
     const style = document.createElement('style');
@@ -316,7 +316,7 @@
     document.head.appendChild(style);
   }
 
-  // ── Boot ─────────────────────────────────────
+  // ââ Boot âââââââââââââââââââââââââââââââââââââ
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSupabase);
   else initSupabase();
 
