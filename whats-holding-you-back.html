@@ -620,7 +620,7 @@ p  { color: #374151; }
 }
 
 .action-steps li::before {
-  content: "&rarr; ";
+  content: "→ ";
   color: var(--orange);
   font-weight: 700;
   margin-right: 8px;
@@ -759,7 +759,7 @@ p  { color: #374151; }
 
     <div class="quiz-navigation">
       <button id="prev-btn" class="btn btn-outline" style="display:none;">&#8592; Previous</button>
-      <button id="next-btn" class="btn btn-primary">Next &rarr;</button>
+      <button id="next-btn" class="btn btn-primary">Next →</button>
     </div>
   </div>
 
@@ -1053,7 +1053,7 @@ function renderQuestion() {
   document.getElementById('questions-wrapper').innerHTML = html;
 
   document.getElementById('prev-btn').style.display = currentQuestion === 0 ? 'none' : 'block';
-  document.getElementById('next-btn').textContent = currentQuestion === QUIZ_DATA.questions.length - 1 ? 'View Results' : 'Next &rarr;';
+  document.getElementById('next-btn').textContent = currentQuestion === QUIZ_DATA.questions.length - 1 ? 'View Results' : 'Next →';
 }
 
 function selectAnswer(answerIdx) {
