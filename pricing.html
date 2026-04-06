@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Go Premium | WinWithFred</title>
-  <meta name="description" content="Upgrade to WinWithFred Premium and save all your journal entries, quiz results, goals, and habits forever â across every device." />
+  <meta name="description" content="Upgrade to WinWithFred Premium and save all your journal entries, quiz results, goals, and habits forever — across every device." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
@@ -116,7 +116,7 @@ a { color: var(--orange); text-decoration: none; }
 <section class="hero">
   <div class="hero-label">&#11088; Premium Membership</div>
   <h1>Your growth data,<br><span>saved forever.</span></h1>
-  <p>Every journal entry. Every quiz result. Every goal and habit â synced across all your devices, never lost.</p>
+  <p>Every journal entry. Every quiz result. Every goal and habit — synced across all your devices, never lost.</p>
 </section>
 
 <!-- Pricing -->
@@ -139,9 +139,9 @@ a { color: var(--orange); text-decoration: none; }
       </ul>
     </div>
 
-    <!-- Yearly â popular -->
+    <!-- Yearly — popular -->
     <div class="plan-card popular">
-      <div class="popular-badge">&#128293; Best Value â Save 35%</div>
+      <div class="popular-badge">&#128293; Best Value — Save 35%</div>
       <div class="plan-name">Annual</div>
       <div class="plan-price"><sup>$</sup>39</div>
       <div class="plan-period">per year</div>
@@ -194,7 +194,7 @@ a { color: var(--orange); text-decoration: none; }
 <section style="padding: 64px 24px 0;">
   <div class="guarantee">
     <h3>&#129303; No-Risk Guarantee</h3>
-    <p>If Premium isn't right for you, email <a href="mailto:fred@winwithfred.com" style="color:#166534;font-weight:600;">fred@winwithfred.com</a> within 7 days of your first payment and you'll get a full refund â no hassle, no questions asked.</p>
+    <p>If Premium isn't right for you, email <a href="mailto:fred@winwithfred.com" style="color:#166534;font-weight:600;">fred@winwithfred.com</a> within 7 days of your first payment and you'll get a full refund — no hassle, no questions asked.</p>
   </div>
 </section>
 
@@ -204,12 +204,12 @@ a { color: var(--orange); text-decoration: none; }
 
   <div class="faq-item">
     <div class="faq-q">Do I need an account to use the free tools?</div>
-    <div class="faq-a">No. All tools work without an account â your data just stays in your browser. Create a free account and upgrade to Premium to sync everything to the cloud.</div>
+    <div class="faq-a">No. All tools work without an account — your data just stays in your browser. Create a free account and upgrade to Premium to sync everything to the cloud.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q">What happens to my data if I cancel?</div>
-    <div class="faq-a">Your data stays in your account. You can still log in and read everything â you just won't sync new entries until you resubscribe.</div>
+    <div class="faq-a">Your data stays in your account. You can still log in and read everything — you just won't sync new entries until you resubscribe.</div>
   </div>
 
   <div class="faq-item">
@@ -219,7 +219,7 @@ a { color: var(--orange); text-decoration: none; }
 
   <div class="faq-item">
     <div class="faq-q">Is my payment information secure?</div>
-    <div class="faq-a">All payments are processed by Stripe â one of the world's most trusted payment platforms. WinWithFred never sees or stores your card details.</div>
+    <div class="faq-a">All payments are processed by Stripe — one of the world's most trusted payment platforms. WinWithFred never sees or stores your card details.</div>
   </div>
 
   <div class="faq-item">
@@ -234,30 +234,39 @@ a { color: var(--orange); text-decoration: none; }
 </footer>
 
 <script>
+// Stripe Payment Link URLs -- paste your links from the Stripe Dashboard
+var WWF_STRIPE_LINKS = {
+  monthly: 'STRIPE_MONTHLY_PAYMENT_LINK',  // e.g. https://buy.stripe.com/xxxxxxxx
+  yearly:  'STRIPE_YEARLY_PAYMENT_LINK'    // e.g. https://buy.stripe.com/yyyyyyyy
+};
+
 function handleUpgrade(plan) {
-  // If user is logged in, pre-fill their email on the Stripe payment page
-  const email = (window.WWF && window.WWF.user) ? encodeURIComponent(window.WWF.user.email) : '';
-  const links = {
-    monthly: 'https://buy.stripe.com/eVqdR9gHVfDk9rg6MT33W00',  // replace after Stripe setup
-    yearly:  'https://buy.stripe.com/7sYeVd77l4YGgTI8V133W01'    // replace after Stripe setup
-  };
-  const base = links[plan];
-  if (base === 'https://buy.stripe.com/eVqdR9gHVfDk9rg6MT33W00' || base === 'https://buy.stripe.com/7sYeVd77l4YGgTI8V133W01') {
-    // Stripe not wired yet â show auth modal to at least capture account
-    if (window.WWFAuth) {
-      window.WWFAuth.showUpgrade();
-    } else {
-      alert('Stripe payment links coming soon! Create a free account in the meantime.');
-    }
+  var user = window.WWF && window.WWF.user;
+
+  // Require sign-in so we can attach the Firebase UID to the Stripe session
+  if (!user) {
+    window.location.href = 'login.html?redirect=pricing.html' + (plan ? '%3Fplan%3D' + plan : '');
     return;
   }
-  const url = email ? `${base}?prefilled_email=${email}` : base;
-  window.open(url, '_blank');
+
+  var base = WWF_STRIPE_LINKS[plan];
+  if (!base || base.indexOf('STRIPE_') === 0) {
+    alert('Checkout coming soon! We are finishing setup.');
+    return;
+  }
+
+  // Stripe Payment Links support client_reference_id and prefilled_email as
+  // query params -- the webhook reads client_reference_id to identify the user.
+  var params = new URLSearchParams();
+  params.set('client_reference_id', user.uid);
+  params.set('prefilled_email', user.email || '');
+  window.location.href = base + '?' + params.toString();
 }
 
 // Pre-select plan from URL param e.g. pricing.html?plan=yearly
-const urlPlan = new URLSearchParams(window.location.search).get('plan');
-if (urlPlan) { setTimeout(() => handleUpgrade(urlPlan), 800); }
+// Wait for wwf-auth.js to resolve the user before auto-redirecting
+var urlPlan = new URLSearchParams(window.location.search).get('plan');
+if (urlPlan) { setTimeout(function () { handleUpgrade(urlPlan); }, 1200); }
 </script>
 
 <script src="mobile-nav.js"></script>
