@@ -760,5 +760,14 @@ p  { color: #374151; }
 </script>
 
 <script src="mobile-nav.js"></script>
+<script>
+// Ensure loading overlay always hides — fallback for all auth states
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var el = document.getElementById('page-loading');
+    if (el) el.style.display = 'none';
+  }, 500);
+});
+</script>
 </body>
 </html>
