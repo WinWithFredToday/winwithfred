@@ -560,7 +560,7 @@ p  { color: #374151; }
       <h2 style="margin-bottom:16px;">The Discipline Type Assessment</h2>
       <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">Discover your personality type: Overthinker, Starter, Avoider, Perfectionist, or Drifter.</p>
       <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 5 minutes. You'll get a detailed breakdown of your strengths, blindspots, and a custom routine to work with your brain &mdash; not against it.</p>
-      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz &rarr;</button>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz →</button>
     </div>
   </div>
 
@@ -576,7 +576,7 @@ p  { color: #374151; }
     <div class="quiz-nav">
       <button class="btn btn-outline btn-sm" onclick="prevQuestion()" id="btn-prev" style="display:none;">&#8592; Back</button>
       <div></div>
-      <button class="btn btn-primary btn-sm" onclick="nextQuestion()" id="btn-next">Next &rarr;</button>
+      <button class="btn btn-primary btn-sm" onclick="nextQuestion()" id="btn-next">Next →</button>
     </div>
   </div>
 
@@ -892,7 +892,7 @@ function showQuestion() {
   document.getElementById('questions-container').innerHTML = html;
 
   document.getElementById('btn-prev').style.display = currentQuestion > 0 ? 'block' : 'none';
-  document.getElementById('btn-next').textContent = currentQuestion === QUESTIONS.length - 1 ? 'See Results &rarr;' : 'Next &rarr;';
+  document.getElementById('btn-next').textContent = currentQuestion === QUESTIONS.length - 1 ? 'See Results →' : 'Next →';
 }
 
 function selectAnswer(idx) {
