@@ -27,9 +27,13 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const auth           = firebase.auth();
-const db             = firebase.firestore();
-const googleProvider = new firebase.auth.GoogleAuthProvider();
+window.auth           = firebase.auth();
+window.db             = firebase.firestore();
+window.googleProvider = new firebase.auth.GoogleAuthProvider();
+// Also expose as bare names for legacy inline scripts
+var auth           = window.auth;
+var db             = window.db;
+var googleProvider = window.googleProvider;
 
 // ── Shared Auth Helpers ──────────────────────────────────────────
 
@@ -74,15 +78,3 @@ const goalsRef = (uid) => userRef(uid).collection('goals');
 const habitsRef = (uid) => userRef(uid).collection('habits');
 const journalRef = (uid) => userRef(uid).collection('journal');
 const quizRef = (uid) => userRef(uid).collection('quizResults');
-
-// ── Google Analytics 4 ──────────────────────────────────────────────
-(function(){
-  var s=document.createElement('script');
-  s.async=true;
-  s.src='https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2';
-  document.head.appendChild(s);
-})();
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-CX355GZZM2');
