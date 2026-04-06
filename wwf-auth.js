@@ -1,11 +1,8 @@
-// ================================================================
-// wwf-auth.js — WinWithFred Shared Auth & Cloud Sync
-// ================================================================
+// wwf-auth.js -- WinWithFred Shared Auth & Cloud Sync
 // Loaded by tool pages (goal-tracker, habit-builder, journal, quiz).
 // Dynamically loads the Firebase SDK if not already present, then
-// initialises auth, renders the navbar, and exposes window.WWF
-// with Firestore read/write helpers.
-// ================================================================
+// initialises auth, renders the navbar, exposes window.WWF with
+// Firestore helpers, and shows an upgrade banner to free users.
 
 (function () {
   'use strict';
@@ -13,7 +10,6 @@
   var FB_VER  = '10.7.1';
   var FB_BASE = 'https://www.gstatic.com/firebasejs/' + FB_VER + '/';
 
-  // ── Script loader ────────────────────────────────────────────
   function loadScript(src) {
     return new Promise(function (resolve, reject) {
       if (document.querySelector('script[src="' + src + '"]')) {
@@ -27,40 +23,32 @@
     });
   }
 
-  // ── Boot sequence ────────────────────────────────────────────
   async function boot() {
-    // 1. Ensure Firebase SDK is loaded
     if (typeof firebase === 'undefined') {
       await loadScript(FB_BASE + 'firebase-app-compat.js');
       await loadScript(FB_BASE + 'firebase-auth-compat.js');
       await loadScript(FB_BASE + 'firebase-firestore-compat.js');
     }
-
-    // 2. Initialise Firebase via firebase-config.js if not already done
     if (typeof firebase !== 'undefined' && !firebase.apps.length) {
       await loadScript('firebase-config.js');
-      // Allow the synchronous init code inside config to run
       await new Promise(function (r) { setTimeout(r, 80); });
     }
-
     setup();
   }
 
-  // ── Core setup ───────────────────────────────────────────────
   function setup() {
     var _auth = window.auth;
     var _db   = window.db;
 
     if (!_auth || !_db) {
       console.warn('WWF: Firebase not initialised.');
-      // Unblock any page waiting on onWWFAuth
       setTimeout(function () {
         if (typeof window.onWWFAuth === 'function') window.onWWFAuth(null, false);
       }, 0);
       return;
     }
 
-    // ── Firestore helpers ─────────────────────────────────────
+    // Firestore helpers
     function col(uid, name) {
       return _db.collection('users').doc(uid).collection(name);
     }
@@ -72,29 +60,21 @@
       });
     }
 
-    // Replace the entire collection with the provided items array
-    // (handles additions, updates, and deletions in one batch)
     async function saveCol(uid, name, items) {
       var ref  = col(uid, name);
       var snap = await ref.get();
-
       var newIds = new Set(items.map(function (i) { return i.id; }));
       var batch  = _db.batch();
-
-      // Delete docs that are no longer in the items array
       snap.docs.forEach(function (d) {
         if (!newIds.has(d.id)) batch.delete(d.ref);
       });
-
-      // Set / update every item
       items.forEach(function (item) {
         batch.set(ref.doc(item.id), item);
       });
-
       await batch.commit();
     }
 
-    // ── One-time localStorage → Firestore migration ───────────
+    // One-time localStorage -> Firestore migration
     async function migrateLocalStorage(uid) {
       var map = [
         { key: 'wwf_goals',   col: 'goals'   },
@@ -112,7 +92,7 @@
       }
     }
 
-    // ── Navbar renderer ───────────────────────────────────────
+    // Navbar renderer
     function renderNav(user) {
       var el = document.getElementById('auth-nav');
       if (!el) return;
@@ -122,8 +102,8 @@
         el.innerHTML =
           '<div class="nav-user">' +
             '<a href="profile.html" style="text-decoration:none;display:flex;align-items:center;gap:8px;">' +
-             '<div class="nav-avatar" title="' + (user.displayName || user.email) + '">' + initial + '</div>' +
-             '<span class="nav-name">' + name + '</span>' +
+              '<div class="nav-avatar" title="' + (user.displayName || user.email) + '">' + initial + '</div>' +
+              '<span class="nav-name">' + name + '</span>' +
             '</a>' +
             '<button class="nav-logout" onclick="window.auth.signOut().then(function(){window.location.href=\'index.html\';})">Sign Out</button>' +
           '</div>';
@@ -132,7 +112,25 @@
       }
     }
 
-    // ── window.WWF public API ─────────────────────────────────
+    // Upgrade banner for signed-in free users
+    function renderUpgradeBanner(user, isPremium) {
+      var existing = document.getElementById('wwf-upgrade-banner');
+      if (existing) existing.remove();
+      if (!user || isPremium) return;
+
+      var banner = document.createElement('div');
+      banner.id = 'wwf-upgrade-banner';
+      banner.innerHTML =
+        '<div style="background:linear-gradient(90deg,#166534,#15803d);color:#fff;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:16px;font-size:0.875rem;font-family:inherit;flex-wrap:wrap;position:relative;">' +
+          '<span>&#9889; Your data is saved locally. <strong>Go Premium</strong> to sync across all your devices \u2014 from just $3.25/mo.</span>' +
+          '<a href="pricing.html" style="background:#fff;color:#166534;font-weight:700;padding:6px 16px;border-radius:20px;text-decoration:none;font-size:0.8rem;white-space:nowrap;flex-shrink:0;">Upgrade Now \u2192</a>' +
+          '<button onclick="document.getElementById(\'wwf-upgrade-banner\').remove()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.7);font-size:1.1rem;cursor:pointer;line-height:1;padding:4px;" title="Dismiss">\u00d7</button>' +
+        '</div>';
+
+      document.body.insertBefore(banner, document.body.firstChild);
+    }
+
+    // window.WWF public API
     window.WWF = {
       user:      null,
       isPremium: false,
@@ -143,34 +141,31 @@
       saveGoals: function (items) {
         return window.WWF.user ? saveCol(window.WWF.user.uid, 'goals', items) : Promise.resolve();
       },
-
       loadHabits: function () {
         return window.WWF.user ? loadCol(window.WWF.user.uid, 'habits') : Promise.resolve([]);
       },
       saveHabits: function (items) {
         return window.WWF.user ? saveCol(window.WWF.user.uid, 'habits', items) : Promise.resolve();
       },
-
       loadJournal: function () {
         return window.WWF.user ? loadCol(window.WWF.user.uid, 'journal') : Promise.resolve([]);
       },
       saveJournal: function (items) {
         return window.WWF.user ? saveCol(window.WWF.user.uid, 'journal', items) : Promise.resolve();
       },
-
       saveQuizResult: function (result) {
         if (!window.WWF.user) return Promise.resolve();
         return col(window.WWF.user.uid, 'quizResults').add(result);
       }
     };
 
-    // ── Auth state listener ───────────────────────────────────
+    // Auth state listener
     _auth.onAuthStateChanged(async function (user) {
       window.WWF.user = user || null;
       renderNav(user);
+      renderUpgradeBanner(user, window.WWF.isPremium);
 
       if (user) {
-        // Silently migrate any localStorage data on first sign-in
         try { await migrateLocalStorage(user.uid); } catch (e) { /* non-fatal */ }
       }
 
@@ -180,7 +175,6 @@
     });
   }
 
-  // Kick off
   boot().catch(function (e) { console.error('WWF boot error:', e); });
 
 })();
