@@ -92,6 +92,16 @@
       }
     }
 
+    // Read premium status from Firestore user doc
+    async function checkPremium(uid) {
+      try {
+        var doc = await _db.collection('users').doc(uid).get();
+        return doc.exists && doc.data().premium === true;
+      } catch (e) {
+        return false;
+      }
+    }
+
     // Navbar renderer
     function renderNav(user) {
       var el = document.getElementById('auth-nav');
@@ -162,12 +172,17 @@
     // Auth state listener
     _auth.onAuthStateChanged(async function (user) {
       window.WWF.user = user || null;
-      renderNav(user);
-      renderUpgradeBanner(user, window.WWF.isPremium);
 
       if (user) {
+        // Check premium status from Firestore before rendering banner
+        window.WWF.isPremium = await checkPremium(user.uid);
         try { await migrateLocalStorage(user.uid); } catch (e) { /* non-fatal */ }
+      } else {
+        window.WWF.isPremium = false;
       }
+
+      renderNav(user);
+      renderUpgradeBanner(user, window.WWF.isPremium);
 
       if (typeof window.onWWFAuth === 'function') {
         window.onWWFAuth(user, window.WWF.isPremium);
