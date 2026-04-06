@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WinWithFred &#8212; Practical Self-Help That Actually Works</title>
+  <title>WinWithFred &mdash; Practical Self-Help That Actually Works</title>
   <meta name="description" content="No fluff. No gimmicks. Just proven tools and straight talk to help you hit your goals, build better habits, and win at life." />
 <style>
 /* ============================================
-   WinWithFred.com &#8212; Global Stylesheet
+   WinWithFred.com &mdash; Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
-   ============================================ 
+   ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -417,7 +417,10 @@ p  { color: #374151; }
 @keyframes spin { to { transform:rotate(360deg); } }
 </style>
 <!-- Firebase SDKs -->
-
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 </head>
 <body>
 
@@ -430,6 +433,7 @@ p  { color: #374151; }
       <li><a href="blog.html">Blog</a></li>
       <li><a href="#tools">Tools</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
       <li><a href="newsletter.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Newsletter</a></li>
       <li class="navbar-cta"><div id="auth-nav"></div></li>
     </ul>
@@ -441,9 +445,9 @@ p  { color: #374151; }
   <div class="container">
     <div class="section-label">Self-Help. No BS.</div>
     <h1>Stop Wishing.<br><span>Start Winning.</span></h1>
-    <p>Practical tools, real talk, and no-nonsense strategies to help you build habits, crush goals, and show up as your best self &#8212; every day.</p>
+    <p>Practical tools, real talk, and no-nonsense strategies to help you build habits, crush goals, and show up as your best self &mdash; every day.</p>
     <div class="hero-btns">
-      <a href="goal-tracker.html" class="btn btn-primary btn-lg">Set Your First Goal &#8594;</a>
+      <a href="goal-tracker.html" class="btn btn-primary btn-lg">Set Your First Goal &rarr;</a>
       <a href="#tools" class="btn btn-outline btn-lg">Explore Tools</a>
     </div>
   </div>
@@ -486,121 +490,121 @@ p  { color: #374151; }
         <div class="tool-icon">&#127919;</div>
         <h3>Goal Tracker</h3>
         <p>Set clear goals, track your progress, and hold yourself accountable every step of the way.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="habit-builder.html" class="tool-card">
         <div class="tool-icon">&#128293;</div>
         <h3>Habit Builder</h3>
         <p>Build the daily habits that compound into real results. Track your streaks and don't break the chain.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="journal.html" class="tool-card">
         <div class="tool-icon">&#128221;</div>
         <h3>Journal Prompts</h3>
         <p>Stop staring at a blank page. Curated prompts to spark self-reflection and push your thinking.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="quiz.html" class="tool-card">
         <div class="tool-icon">&#129504;</div>
         <h3>Mindset Quiz</h3>
         <p>Find out what's actually holding you back. A 10-question assessment with a real, honest result.</p>
-        <span class="tool-link">Take the Quiz &#8594;</span>
+        <span class="tool-link">Take the Quiz &rarr;</span>
       </a>
       <a href="instant-calm.html" class="tool-card">
         <div class="tool-icon">&#129496;</div>
         <h3>Instant Calm</h3>
         <p>Feeling overwhelmed? A step-by-step grounding exercise to bring you back to center in minutes.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="reframe-thought.html" class="tool-card">
         <div class="tool-icon">&#128260;</div>
         <h3>Reframe This Thought</h3>
         <p>Turn a toxic thought into a useful one using CBT-inspired techniques that actually work.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="burnout-detector.html" class="tool-card">
         <div class="tool-icon">&#9889;</div>
         <h3>Burnout Detector</h3>
         <p>Are you heading for burnout? Take the assessment and get a clear picture of where you stand.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="mental-health-check.html" class="tool-card">
         <div class="tool-icon">&#128154;</div>
         <h3>Mental Health Check-In</h3>
-        <p>A quick, honest check-in on how you're really doing &#8212; no fluff, just clarity.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <p>A quick, honest check-in on how you're really doing &mdash; no fluff, just clarity.</p>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="mood-tracker.html" class="tool-card">
         <div class="tool-icon">&#128202;</div>
         <h3>Mood Tracker</h3>
         <p>Log your mood daily and spot the patterns that are driving (or draining) your energy.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="morning-routine.html" class="tool-card">
         <div class="tool-icon">&#127749;</div>
         <h3>Morning Routine Builder</h3>
         <p>Design a morning routine you'll actually stick to. Start the day on your terms.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="weekly-reset.html" class="tool-card">
         <div class="tool-icon">&#128257;</div>
         <h3>Weekly Reset</h3>
         <p>End your week with intention. Review what happened and plan what matters next.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="habit-scorecard.html" class="tool-card">
         <div class="tool-icon">&#9989;</div>
         <h3>Habit Scorecard</h3>
-        <p>Audit your current habits &#8212; good, bad, and neutral &#8212; so you know exactly what to change.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <p>Audit your current habits &mdash; good, bad, and neutral &mdash; so you know exactly what to change.</p>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="life-balance.html" class="tool-card">
         <div class="tool-icon">&#9878;&#65039;</div>
         <h3>Life Balance Wheel</h3>
         <p>See which areas of your life need attention and which ones you're neglecting without realizing it.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="future-self.html" class="tool-card">
         <div class="tool-icon">&#128301;</div>
         <h3>Future Self Visualizer</h3>
         <p>Get specific about who you want to become. Clear vision drives real action.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="whats-holding-you-back.html" class="tool-card">
         <div class="tool-icon">&#128679;</div>
         <h3>What's Holding You Back</h3>
-        <p>Identify the real obstacles between you and your goals &#8212; fear, habits, or something else.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <p>Identify the real obstacles between you and your goals &mdash; fear, habits, or something else.</p>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="fix-my-life.html" class="tool-card">
         <div class="tool-icon">&#128736;&#65039;</div>
         <h3>Fix My Life</h3>
         <p>Overwhelmed and not sure where to start? This tool cuts through the noise and tells you exactly what to do first.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="time-wasted.html" class="tool-card">
         <div class="tool-icon">&#9201;&#65039;</div>
         <h3>Time Wasted Calculator</h3>
-        <p>See exactly how much time your habits are costing you &#8212; in hours, days, and years.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <p>See exactly how much time your habits are costing you &mdash; in hours, days, and years.</p>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="life-trajectory.html" class="tool-card">
         <div class="tool-icon">&#128200;</div>
         <h3>Life Trajectory</h3>
         <p>Project where your current habits and choices will take you in 1, 5, and 10 years.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="alcohol-assessment.html" class="tool-card">
         <div class="tool-icon">&#127866;</div>
         <h3>Alcohol Assessment</h3>
         <p>An honest, judgment-free look at your relationship with alcohol and what it's costing you.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
       <a href="personality-quiz.html" class="tool-card">
         <div class="tool-icon">&#129694;</div>
         <h3>Personality Quiz</h3>
-        <p>Understand your core tendencies and how they're shaping your results &#8212; for better or worse.</p>
-        <span class="tool-link">Open Tool &#8594;</span>
+        <p>Understand your core tendencies and how they're shaping your results &mdash; for better or worse.</p>
+        <span class="tool-link">Open Tool &rarr;</span>
       </a>
     </div>
   </div>
@@ -613,9 +617,9 @@ p  { color: #374151; }
       <div>
         <div class="section-label" style="background:rgba(249,115,22,0.15);">About Fred</div>
         <h2 style="color:#fff; margin-bottom:20px;">I'm not a guru.<br>I'm just someone <span class="text-orange">who figured it out.</span></h2>
-        <p style="color:#9ca3af; margin-bottom:16px; font-size:1.05rem;">I spent years reading self-help books that promised the world and delivered nothing. So I stopped reading and started testing &#8212; what actually changes behavior, what builds momentum, and what's just feel-good noise.</p>
+        <p style="color:#9ca3af; margin-bottom:16px; font-size:1.05rem;">I spent years reading self-help books that promised the world and delivered nothing. So I stopped reading and started testing &mdash; what actually changes behavior, what builds momentum, and what's just feel-good noise.</p>
         <p style="color:#9ca3af; margin-bottom:32px; font-size:1.05rem;">WinWithFred is where I share what works. No life coach certificate. No motivational posters. Just systems, tools, and straight talk that move the needle.</p>
-        <a href="blog.html" class="btn btn-primary">Read the Blog &#8594;</a>
+        <a href="blog.html" class="btn btn-primary">Read the Blog &rarr;</a>
       </div>
       <div class="grid-2" style="gap:16px;">
         <div class="stat-box" style="background:#1f2937; border-color:#374151;">
@@ -645,7 +649,7 @@ p  { color: #374151; }
     <div class="section-header">
       <div class="section-label">From the Blog</div>
       <h2>Real talk. <span class="text-orange">Actionable advice.</span></h2>
-      <p>Articles that get straight to the point &#8212; and give you something you can use today.</p>
+      <p>Articles that get straight to the point &mdash; and give you something you can use today.</p>
     </div>
     <div class="grid-3">
 
@@ -729,7 +733,7 @@ p  { color: #374151; }
 
     </div>
     <div style="text-align:center; margin-top:40px;">
-      <a href="blog.html" class="btn btn-outline">View All Posts &#8594;</a>
+      <a href="blog.html" class="btn btn-outline">View All Posts &rarr;</a>
     </div>
   </div>
 </section>
@@ -740,15 +744,24 @@ p  { color: #374151; }
     <h2>Ready to Stop Waiting and Start Winning?</h2>
     <p>Pick up one of the free tools and use it today. That's it. Just start.</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-      <a href="goal-tracker.html" class="btn btn-dark btn-lg">Set a Goal &#8594;</a>
-      <a href="habit-builder.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.6); color:#fff;">Build a Habit &#8594;</a>
+      <a href="goal-tracker.html" class="btn btn-dark btn-lg">Set a Goal &rarr;</a>
+      <a href="habit-builder.html" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.6); color:#fff;">Build a Habit &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- &#9472;&#9472; Footer &#9472;&#9472; -->
-<section style="background:#111827;padding:80px 24px;text-align:center;"><div style="max-width:640px;margin:0 auto;"><div style="display:inline-block;background:rgba(249,115,22,0.15);color:#f97316;font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:20px;">Free Weekly Newsletter</div><h2 style="color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:16px;">The <span style="color:#f97316;">No BS</span> Newsletter</h2><p style="color:#9ca3af;font-size:1.05rem;max-width:500px;margin:0 auto 32px;">One email a week. One actionable tip. Zero motivational fluff. Join readers who want real advice that actually moves the needle.</p><a href="newsletter.html" class="btn btn-primary btn-lg">Subscribe Free &rarr;</a><p style="color:#4b5563;font-size:0.82rem;margin-top:16px;">No spam. No gimmicks. Unsubscribe anytime.</p></div></section>
+<!-- &#9472;&#9472; Newsletter CTA &#9472;&#9472; -->
+<section style="background:var(--dark);padding:80px 24px;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <div style="display:inline-block;background:rgba(249,115,22,0.15);color:var(--orange);font-weight:700;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:20px;">Free Weekly Newsletter</div>
+    <h2 style="color:#fff;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:16px;">The <span style="color:var(--orange);">No BS</span> Newsletter</h2>
+    <p style="color:#9ca3af;font-size:1.05rem;max-width:500px;margin:0 auto 32px;">One email a week. One actionable tip. Zero motivational fluff. Join readers who want real advice that actually moves the needle.</p>
+    <a href="newsletter.html" class="btn btn-primary btn-lg">Subscribe Free &rarr;</a>
+    <p style="color:#4b5563;font-size:0.82rem;margin-top:16px;">No spam. No gimmicks. Unsubscribe anytime.</p>
+  </div>
+</section>
 
+<!-- &#9472;&#9472; Footer &#9472;&#9472; -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -784,7 +797,7 @@ p  { color: #374151; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2026 WinWithFred.com &#8212; All rights reserved.</span>
+    <span>&#169; 2026 WinWithFred.com &mdash; All rights reserved.</span>
     <span>Built for people who get things done.</span>
   </div>
 </footer>
