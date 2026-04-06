@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Premium | WinWithFred</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #f9fafb; color: #111827; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+    .card { background: #fff; border-radius: 20px; padding: 56px 48px; max-width: 480px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
+    .icon { font-size: 4rem; margin-bottom: 20px; }
+    h1 { font-size: 2rem; font-weight: 900; color: #111827; margin-bottom: 12px; }
+    .subtitle { color: #6b7280; font-size: 1rem; line-height: 1.6; margin-bottom: 32px; }
+    .badge { display: inline-block; background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; font-size: 0.8rem; font-weight: 700; padding: 6px 16px; border-radius: 999px; margin-bottom: 28px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .tool-link { display: flex; align-items: center; gap: 10px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; text-decoration: none; color: #111827; font-weight: 600; font-size: 0.9rem; transition: all 0.15s; }
+    .tool-link:hover { border-color: #166534; background: #f0fdf4; }
+    .tool-link span { font-size: 1.4rem; }
+    .note { color: #9ca3af; font-size: 0.8rem; line-height: 1.6; }
+    .note a { color: #166534; }
+    @media (max-width: 480px) { .card { padding: 40px 24px; } .tools { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="icon">&#127881;</div>
+  <div class="badge">&#9989; Premium Active</div>
+  <h1>You're in. Let's win.</h1>
+  <p class="subtitle">Your account is now Premium. All your data syncs across every device — nothing gets lost.</p>
+
+  <div class="tools">
+    <a href="goal-tracker.html" class="tool-link"><span>&#127919;</span> Goals</a>
+    <a href="habit-builder.html" class="tool-link"><span>&#9889;</span> Habits</a>
+    <a href="journal.html" class="tool-link"><span>&#128221;</span> Journal</a>
+    <a href="quiz.html" class="tool-link"><span>&#129504;</span> Mindset Quiz</a>
+  </div>
+
+  <p class="note">
+    If your Premium badge doesn't appear immediately, sign out and back in.<br>
+    Questions? <a href="mailto:fred@winwithfred.com">fred@winwithfred.com</a>
+  </p>
+</div>
+
+<script src="wwf-auth.js"></script>
+
+</body>
+</html>
