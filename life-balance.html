@@ -553,7 +553,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">How satisfied are you with your physical health, energy, and fitness?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="health" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="health" />
           <span class="slider-value" data-area="health">5</span>
         </div>
       </div>
@@ -565,7 +565,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">How in control do you feel of your finances and financial future?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="money" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="money" />
           <span class="slider-value" data-area="money">5</span>
         </div>
       </div>
@@ -577,7 +577,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">Quality of your close relationships &mdash; partner, family, friends?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="relationships" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="relationships" />
           <span class="slider-value" data-area="relationships">5</span>
         </div>
       </div>
@@ -589,7 +589,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">How much does your daily life feel meaningful and aligned with your values?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="purpose" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="purpose" />
           <span class="slider-value" data-area="purpose">5</span>
         </div>
       </div>
@@ -601,7 +601,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">How satisfied are you with your work, career trajectory, and impact?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="career" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="career" />
           <span class="slider-value" data-area="career">5</span>
         </div>
       </div>
@@ -613,7 +613,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">How often do you genuinely rest, play, and enjoy life?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="fun" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="fun" />
           <span class="slider-value" data-area="fun">5</span>
         </div>
       </div>
@@ -625,7 +625,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">Are you actively learning, improving, and becoming a better version of yourself?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="growth" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="growth" />
           <span class="slider-value" data-area="growth">5</span>
         </div>
       </div>
@@ -637,7 +637,7 @@ p  { color: #374151; }
         </div>
         <div class="area-question">Does your home, city, and daily routine support who you want to be?</div>
         <div class="slider-group">
-          <input type="range" min="1" max="10" value="5" class="slider-input" data-area="environment" />
+          <input type="range" min="1" max="10" value="5" class="slider-input" oninput="this.closest('.slider-group').querySelector('.slider-value').textContent=this.value; if(typeof updateChart==='function')updateChart(); if(typeof renderChart==='function')renderChart(); if(typeof calcScore==='function')calcScore();" data-area="environment" />
           <span class="slider-value" data-area="environment">5</span>
         </div>
       </div>
