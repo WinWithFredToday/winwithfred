@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | WinWithFred</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f0f;
+      color: #e5e5e5;
+      min-height: 100vh;
+    }
+
+    /* ── Loading overlay ── */
+    #loading-screen {
+      position: fixed; inset: 0;
+      background: #0f0f0f;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      z-index: 9999;
+    }
+    .loader-ring {
+      width: 48px; height: 48px;
+      border: 4px solid #2a2a2a;
+      border-top-color: #f97316;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loading-screen p { color: #888; font-size: 14px; }
+
+    /* ── Navbar ── */
+    nav {
+      background: #141414;
+      border-bottom: 1px solid #222;
+      padding: 0 24px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-brand {
+      font-size: 20px; font-weight: 800;
+      color: #f97316; text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-brand span { color: #e5e5e5; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px; color: #fff;
+      flex-shrink: 0;
+    }
+    .nav-user-info { display: flex; flex-direction: column; align-items: flex-end; }
+    .nav-user-name { font-size: 14px; font-weight: 600; color: #e5e5e5; }
+    .nav-badge {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: #f97316;
+    }
+    .btn-signout {
+      background: transparent;
+      border: 1px solid #333;
+      color: #888;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-signout:hover { border-color: #f97316; color: #f97316; }
+
+    /* ── Main layout ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* ── Welcome header ── */
+    .welcome-header {
+      margin-bottom: 36px;
+    }
+    .welcome-header h1 {
+      font-size: 32px; font-weight: 800;
+      color: #fff; line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .welcome-header h1 span { color: #f97316; }
+    .welcome-header p { color: #888; font-size: 15px; }
+    .premium-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: #f97316;
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 4px 10px; border-radius: 20px;
+      margin-top: 10px;
+    }
+    .premium-tag::before { content: "★"; }
+
+    /* ── Section title ── */
+    .section-title {
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #555; margin-bottom: 16px;
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: #1a1a1a;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .stat-label { font-size: 12px; color: #555; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .stat-value { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
+    .stat-sub { font-size: 12px; color: #666; margin-top: 4px; }
+    .stat-card.highlight { border-color: rgba(249,115,22,0.3); background: rgba(249,115,22,0.06); }
+    .stat-card.highlight .stat-value { color: #f97316; }
+
+    /* ── Tool grid ── */
+    .tools-section { margin-bottom: 40px; }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .tool-card {
+      background: #1a1a1a;
+      border: 1px solid #222;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex; flex-direction: column;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .tool-card:hover {
+      border-color: #f97316;
+      background: #1e1e1e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(249,115,22,0.1);
+    }
+    .tool-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 14px;
+    }
+    .tool-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+    .tool-desc { font-size: 13px; color: #666; line-height: 1.5; flex: 1; }
+    .tool-footer {
+      margin-top: 14px; padding-top: 14px;
+      border-top: 1px solid #222;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .tool-stat { font-size: 12px; color: #555; }
+    .tool-cta {
+      font-size: 12px; font-weight: 600; color: #f97316;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .tool-cta::after { content: "→"; }
+
+    /* ── Coaching hub ── */
+    .coaching-section { margin-bottom: 40px; }
+    .coaching-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #1e1208 100%);
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      flex-wrap: wrap;
+    }
+    .coaching-card h3 { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .coaching-card p { color: #888; font-size: 14px; line-height: 1.6; max-width: 500px; }
+    .btn-coach {
+      background: #f97316;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-coach:hover { background: #ea580c; }
+
+    /* ── Recent activity ── */
+    .activity-section { margin-bottom: 40px; }
+    .activity-list { display: flex; flex-direction: column; gap: 10px; }
+    .activity-item {
+      background: #1a1a1a;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .activity-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #f97316; flex-shrink: 0;
+    }
+    .activity-text { font-size: 14px; color: #ccc; flex: 1; }
+    .activity-time { font-size: 12px; color: #444; }
+    .empty-activity { font-size: 14px; color: #555; padding: 20px; text-align: center; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+      main { padding: 24px 16px 60px; }
+      .welcome-header h1 { font-size: 24px; }
+      .nav-user-info { display: none; }
+      .coaching-card { flex-direction: column; }
+      .btn-coach { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div id="loading-screen">
+    <div class="loader-ring"></div>
+    <p>Verifying your membership…</p>
+  </div>
+
+  <!-- Main app (hidden until auth verified) -->
+  <div id="app" style="display:none">
+
+    <!-- Navbar -->
+    <nav>
+      <a href="index.html" class="nav-brand">Win<span>WithFred</span></a>
+      <div class="nav-right">
+        <div class="nav-user-info">
+          <span class="nav-user-name" id="nav-name">Member</span>
+          <span class="nav-badge">Premium</span>
+        </div>
+        <div class="nav-avatar" id="nav-avatar">F</div>
+        <button class="btn-signout" id="sign-out-btn">Sign Out</button>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- Welcome -->
+      <div class="welcome-header">
+        <h1>Welcome back, <span id="display-name">Champion</span> 👊</h1>
+        <p>Your personal growth hub — everything in one place.</p>
+        <div class="premium-tag">Premium Member</div>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="section-title">Your Progress</div>
+      <div class="stats-strip" id="stats-strip">
+        <div class="stat-card highlight">
+          <div class="stat-label">Active Streaks</div>
+          <div class="stat-value" id="stat-streaks">—</div>
+          <div class="stat-sub">days in a row</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">30-Day Challenge</div>
+          <div class="stat-value" id="stat-c30">—</div>
+          <div class="stat-sub">days complete</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">90-Day Challenge</div>
+          <div class="stat-value" id="stat-c90">—</div>
+          <div class="stat-sub">% complete</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Journal Entries</div>
+          <div class="stat-value" id="stat-journal">—</div>
+          <div class="stat-sub">total entries</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Goals Set</div>
+          <div class="stat-value" id="stat-goals">—</div>
+          <div class="stat-sub">active goals</div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="tools-section">
+        <div class="section-title">Your Tools</div>
+        <div class="tool-grid" id="tool-grid">
+
+          <a class="tool-card" href="goal-tracker.html">
+            <div class="tool-icon" style="background:rgba(249,115,22,0.15)">🎯</div>
+            <div class="tool-name">Goal Tracker</div>
+            <div class="tool-desc">Set, track, and crush your most important goals with milestones and progress bars.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-goals">No goals yet</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="daily-habits.html">
+            <div class="tool-icon" style="background:rgba(34,197,94,0.12)">✅</div>
+            <div class="tool-name">Daily Habits</div>
+            <div class="tool-desc">Build unstoppable daily habits with check-off tracking and streak counters.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-habits">No habits yet</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="journal.html">
+            <div class="tool-icon" style="background:rgba(139,92,246,0.12)">📓</div>
+            <div class="tool-name">Journal</div>
+            <div class="tool-desc">Reflect and grow with prompted daily journaling designed for high performers.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-journal">No entries yet</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="values-quiz.html">
+            <div class="tool-icon" style="background:rgba(249,115,22,0.15)">🧭</div>
+            <div class="tool-name">Values Quiz</div>
+            <div class="tool-desc">Discover your core values and align your daily decisions with what matters most.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-values">Not taken yet</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="life-balance.html">
+            <div class="tool-icon" style="background:rgba(59,130,246,0.12)">⚖️</div>
+            <div class="tool-name">Life Balance</div>
+            <div class="tool-desc">Score the 8 key areas of your life and see exactly where to focus your energy.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-balance">Not assessed yet</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="eisenhower-matrix.html">
+            <div class="tool-icon" style="background:rgba(239,68,68,0.12)">🗂️</div>
+            <div class="tool-name">Eisenhower Matrix</div>
+            <div class="tool-desc">Prioritize ruthlessly. Sort tasks into Urgent/Important quadrants and eliminate the noise.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-matrix">No tasks yet</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="challenge-30.html">
+            <div class="tool-icon" style="background:rgba(249,115,22,0.15)">🔥</div>
+            <div class="tool-name">30-Day Challenge</div>
+            <div class="tool-desc">Pick one habit and commit to 30 consecutive days. Simple, powerful, life-changing.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-c30">No challenge active</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="challenge-90.html">
+            <div class="tool-icon" style="background:rgba(168,85,247,0.12)">🚀</div>
+            <div class="tool-name">90-Day Challenge</div>
+            <div class="tool-desc">3 phases. 90 days. Complete transformation. The serious upgrade to your 30-day challenge.</div>
+            <div class="tool-footer">
+              <span class="tool-stat" id="tstat-c90">No challenge active</span>
+              <span class="tool-cta">Open</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Coaching hub -->
+      <div class="coaching-section">
+        <div class="section-title">Coaching Hub</div>
+        <div class="coaching-card">
+          <div>
+            <h3>Ready for a breakthrough? 🔑</h3>
+            <p>As a premium member, you get access to direct coaching calls, exclusive video trainings, and a private community of winners. Let's accelerate your progress.</p>
+          </div>
+          <a href="https://calendly.com/winwithfred" target="_blank" class="btn-coach">Book a Call</a>
+        </div>
+      </div>
+
+      <!-- Recent activity -->
+      <div class="activity-section">
+        <div class="section-title">Recent Activity</div>
+        <div class="activity-list" id="activity-list">
+          <div class="empty-activity">Your activity will appear here as you use the tools.</div>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /#app -->
+
+  <script src="firebase-config.js"></script>
+  <script>
+    // firebase-config.js already calls initializeApp and sets window.auth / window.db
+    const auth = window.auth;
+    const db   = window.db;
+
+    // ── Auth gate ──────────────────────────────────────────────────
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // ── Premium check ──────────────────────────────────────────
+      try {
+        const snap = await db.collection('users').doc(user.uid).get();
+        const data = snap.data() || {};
+
+        if (!data.premium) {
+          window.location.href = 'pricing.html';
+          return;
+        }
+
+        // ── Show dashboard ─────────────────────────────────────
+        showDashboard(user, data);
+
+      } catch (err) {
+        console.error('Firestore error:', err);
+        // On error, allow access rather than blocking paying user
+        showDashboard(user, {});
+      }
+    });
+
+    // ── Populate UI ────────────────────────────────────────────────
+    function showDashboard(user, firestoreData) {
+      // User identity
+      const displayName = user.displayName || user.email.split('@')[0] || 'Champion';
+      const initials    = displayName.charAt(0).toUpperCase();
+
+      document.getElementById('display-name').textContent = displayName;
+      document.getElementById('nav-name').textContent     = displayName;
+      document.getElementById('nav-avatar').textContent   = initials;
+
+      // Load progress stats from localStorage
+      loadStats();
+
+      // Hide loader, show app
+      document.getElementById('loading-screen').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }
+
+    // ── Read localStorage stats ────────────────────────────────────
+    function loadStats() {
+      // 30-day challenge
+      try {
+        const c30 = JSON.parse(localStorage.getItem('wwf_challenge30') || 'null');
+        if (c30 && c30.days) {
+          const done = c30.days.filter(Boolean).length;
+          const streak = calcStreak(c30.days);
+          document.getElementById('stat-c30').textContent   = done;
+          document.getElementById('tstat-c30').textContent  = done + '/30 days done';
+          updateStreakStat(streak);
+        } else {
+          document.getElementById('stat-c30').textContent = '0';
+        }
+      } catch(e) { document.getElementById('stat-c30').textContent = '0'; }
+
+      // 90-day challenge
+      try {
+        const c90 = JSON.parse(localStorage.getItem('wwf_challenge90') || 'null');
+        if (c90 && c90.days) {
+          const done = c90.days.filter(Boolean).length;
+          const pct  = Math.round((done / 90) * 100);
+          document.getElementById('stat-c90').textContent   = pct + '%';
+          document.getElementById('tstat-c90').textContent  = done + '/90 days done';
+        } else {
+          document.getElementById('stat-c90').textContent = '0%';
+        }
+      } catch(e) { document.getElementById('stat-c90').textContent = '0%'; }
+
+      // Journal
+      try {
+        const journal = JSON.parse(localStorage.getItem('wwf_journal') || '[]');
+        const count = Array.isArray(journal) ? journal.length : 0;
+        document.getElementById('stat-journal').textContent  = count;
+        document.getElementById('tstat-journal').textContent = count + (count === 1 ? ' entry' : ' entries');
+      } catch(e) { document.getElementById('stat-journal').textContent = '0'; }
+
+      // Goals
+      try {
+        const goals = JSON.parse(localStorage.getItem('wwf_goals') || '[]');
+        const count = Array.isArray(goals) ? goals.length : 0;
+        document.getElementById('stat-goals').textContent  = count;
+        document.getElementById('tstat-goals').textContent = count + (count === 1 ? ' goal' : ' goals') + ' active';
+      } catch(e) { document.getElementById('stat-goals').textContent = '0'; }
+
+      // Habits
+      try {
+        const habits = JSON.parse(localStorage.getItem('wwf_habits') || 'null');
+        if (habits && habits.habits) {
+          const count = habits.habits.length;
+          document.getElementById('tstat-habits').textContent = count + (count === 1 ? ' habit' : ' habits') + ' tracked';
+        }
+      } catch(e) {}
+
+      // Matrix tasks
+      try {
+        const matrix = JSON.parse(localStorage.getItem('wwf_matrix') || 'null');
+        if (matrix) {
+          const total = Object.values(matrix).flat().length;
+          document.getElementById('tstat-matrix').textContent = total + (total === 1 ? ' task' : ' tasks');
+        }
+      } catch(e) {}
+
+      // Values quiz
+      try {
+        const quiz = localStorage.getItem('wwf_values_result');
+        if (quiz) {
+          document.getElementById('tstat-values').textContent = 'Quiz complete ✓';
+        }
+      } catch(e) {}
+
+      // Life balance
+      try {
+        const balance = localStorage.getItem('wwf_life_balance');
+        if (balance) {
+          document.getElementById('tstat-balance').textContent = 'Assessment done ✓';
+        }
+      } catch(e) {}
+
+      // Build activity feed
+      buildActivity();
+    }
+
+    // ── Streak helper ──────────────────────────────────────────────
+    let _topStreak = 0;
+    function updateStreakStat(streak) {
+      if (streak > _topStreak) {
+        _topStreak = streak;
+        document.getElementById('stat-streaks').textContent = streak;
+      }
+    }
+
+    function calcStreak(daysArr) {
+      // daysArr: boolean array, count consecutive trues from most recent
+      let streak = 0;
+      for (let i = daysArr.length - 1; i >= 0; i--) {
+        if (daysArr[i]) streak++;
+        else break;
+      }
+      return streak;
+    }
+
+    // ── Activity feed ──────────────────────────────────────────────
+    function buildActivity() {
+      const items = [];
+
+      try {
+        const c30 = JSON.parse(localStorage.getItem('wwf_challenge30') || 'null');
+        if (c30 && c30.name) {
+          const done = c30.days ? c30.days.filter(Boolean).length : 0;
+          if (done > 0) items.push({ text: '30-Day Challenge: ' + done + ' days complete on "' + c30.name + '"', time: 'Active' });
+        }
+      } catch(e) {}
+
+      try {
+        const c90 = JSON.parse(localStorage.getItem('wwf_challenge90') || 'null');
+        if (c90 && c90.name) {
+          const done = c90.days ? c90.days.filter(Boolean).length : 0;
+          if (done > 0) items.push({ text: '90-Day Challenge: ' + done + '/90 days done on "' + c90.name + '"', time: 'Active' });
+        }
+      } catch(e) {}
+
+      try {
+        const journal = JSON.parse(localStorage.getItem('wwf_journal') || '[]');
+        if (Array.isArray(journal) && journal.length > 0) {
+          const last = journal[journal.length - 1];
+          items.push({ text: 'Journal: Last entry — "' + (last.title || last.prompt || 'Untitled') + '"', time: last.date || 'Recent' });
+        }
+      } catch(e) {}
+
+      try {
+        const goals = JSON.parse(localStorage.getItem('wwf_goals') || '[]');
+        if (Array.isArray(goals) && goals.length > 0) {
+          items.push({ text: 'Goals: ' + goals.length + ' active goal' + (goals.length > 1 ? 's' : '') + ' in tracker', time: 'Ongoing' });
+        }
+      } catch(e) {}
+
+      const list = document.getElementById('activity-list');
+      if (items.length === 0) {
+        list.innerHTML = '<div class="empty-activity">Start using your tools to see activity here! 🚀</div>';
+      } else {
+        list.innerHTML = items.map(item => `
+          <div class="activity-item">
+            <div class="activity-dot"></div>
+            <div class="activity-text">${item.text}</div>
+            <div class="activity-time">${item.time}</div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // ── Sign out ───────────────────────────────────────────────────
+    document.getElementById('sign-out-btn').addEventListener('click', () => {
+      auth.signOut().then(() => { window.location.href = 'login.html'; });
+    });
+  </script>
+</body>
+</html>
