@@ -425,7 +425,19 @@
       // ── Auth state listener ───────────────────────────────────────
       auth.onAuthStateChanged(function(user) {
         if (!user) { show('screen-login'); return; }
-        renderDashboard(user);
+        // ── Premium check via Firestore ───────────────────────────────
+        firebase.firestore().collection('users').doc(user.uid).get()
+          .then(function(doc) {
+            if (doc.exists && doc.data().premium === true) {
+              renderDashboard(user);
+            } else {
+              show('screen-upgrade');
+            }
+          })
+          .catch(function() {
+            // Firestore unavailable — deny access
+            show('screen-upgrade');
+          });
       });
 
       // ── Email/password sign-in ────────────────────────────────────
