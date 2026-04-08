@@ -430,7 +430,7 @@
 
   <script>
     // ── Helpers ────────────────────────────────────────────────────
-    const show = (id) => {
+    const show = window.show = (id) => {
       ['screen-loading','screen-login','screen-upgrade','screen-dashboard'].forEach(s => {
         const el = document.getElementById(s);
         el.classList.remove('active');
@@ -493,7 +493,7 @@
     document.getElementById('btn-upgrade-signout').addEventListener('click', () => auth.signOut());
 
     // ── Render dashboard ───────────────────────────────────────────
-    function renderDashboard(user) {
+    const renderDashboard = window.renderDashboard = function(user) {
       const name     = user.displayName || user.email.split('@')[0] || 'Champion';
       const initials = name.charAt(0).toUpperCase();
       document.getElementById('display-name').textContent = name;
@@ -505,10 +505,10 @@
 
     // ── Stats from localStorage ────────────────────────────────────
     let _streak = 0;
-    function bumpStreak(n) { if (n > _streak) { _streak = n; document.getElementById('stat-streaks').textContent = n; } }
-    function streak(arr) { let s=0; for(let i=arr.length-1;i>=0;i--){ if(arr[i])s++; else break; } return s; }
+    const bumpStreak = window.bumpStreak = function(n) { if (n > _streak) { _streak = n; document.getElementById('stat-streaks').textContent = n; } }
+    const streak = window.streak = function(arr) { let s=0; for(let i=arr.length-1;i>=0;i--){ if(arr[i])s++; else break; } return s; }
 
-    function loadStats() {
+    const loadStats = window.loadStats = function() {
       // 30-day
       try {
         const c = JSON.parse(localStorage.getItem('wwf_challenge30') || 'null');
@@ -558,7 +558,7 @@
       buildActivity();
     }
 
-    function buildActivity() {
+    const buildActivity = window.buildActivity = function() {
       const items = [];
       try { const c=JSON.parse(localStorage.getItem('wwf_challenge30')||'null'); if(c?.name){ const d=c.days?.filter(Boolean).length||0; if(d>0) items.push({text:'30-Day Challenge: '+d+' days done on "'+c.name+'"',time:'Active'}); } } catch(e){}
       try { const c=JSON.parse(localStorage.getItem('wwf_challenge90')||'null'); if(c?.name){ const d=c.days?.filter(Boolean).length||0; if(d>0) items.push({text:'90-Day Challenge: '+d+'/90 days on "'+c.name+'"',time:'Active'}); } } catch(e){}
