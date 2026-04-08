@@ -400,144 +400,165 @@
   </div><!-- /#screen-dashboard -->
 
   <script>
-    // ── Helpers ────────────────────────────────────────────────────
-    const show = window.show = (id) => {
-      ['screen-loading','screen-login','screen-upgrade','screen-dashboard'].forEach(s => {
-        const el = document.getElementById(s);
-        el.classList.remove('active');
-        if (s === 'screen-dashboard') el.style.display = 'none';
+  (function() {
+    function init() {
+      // ── Helpers ──────────────────────────────────────────────────
+      function show(id) {
+        ['screen-loading','screen-login','screen-upgrade','screen-dashboard'].forEach(function(s) {
+          var el = document.getElementById(s);
+          if (!el) return;
+          el.classList.remove('active');
+          if (s === 'screen-dashboard') el.style.display = 'none';
+        });
+        var target = document.getElementById(id);
+        if (!target) return;
+        target.classList.add('active');
+        if (id === 'screen-dashboard') target.style.display = 'block';
+      }
+      window.show = show;
+
+      // ── Firebase auth ref ─────────────────────────────────────────
+      var auth = window.auth;
+      if (!auth && typeof firebase !== 'undefined') { auth = firebase.auth(); }
+      if (!auth) { show('screen-login'); return; }
+
+      // ── Auth state listener ───────────────────────────────────────
+      auth.onAuthStateChanged(function(user) {
+        if (!user) { show('screen-login'); return; }
+        renderDashboard(user);
       });
-      const target = document.getElementById(id);
-      target.classList.add('active');
-      if (id === 'screen-dashboard') target.style.display = 'block';
-    };
 
-    // ── Firebase refs (set by firebase-config.js) ──────────────────
-    const auth = window.auth;
-
-    // ── Auth state listener ────────────────────────────────────────
-    auth.onAuthStateChanged((user) => {
-      if (!user) { show('screen-login'); return; }
-      renderDashboard(user);
-    });
-
-    // ── Email/password sign-in ─────────────────────────────────────
-    document.getElementById('btn-email-login').addEventListener('click', async () => {
-      const email    = document.getElementById('login-email').value.trim();
-      const password = document.getElementById('login-password').value;
-      const errEl    = document.getElementById('login-error');
-      const btn      = document.getElementById('btn-email-login');
-      errEl.classList.remove('show');
-      if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; errEl.classList.add('show'); return; }
-      btn.disabled = true; btn.textContent = 'Signing in…';
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-      } catch (e) {
-        btn.disabled = false; btn.textContent = 'Sign In';
-        const msgs = { 'auth/user-not-found': 'No account found with that email.', 'auth/wrong-password': 'Incorrect password.', 'auth/invalid-email': 'Please enter a valid email.', 'auth/too-many-requests': 'Too many attempts. Try again later.' };
-        errEl.textContent = msgs[e.code] || 'Sign-in failed. Please try again.';
-        errEl.classList.add('show');
-      }
-    });
-
-    // Enter key on password field
-    document.getElementById('login-password').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') document.getElementById('btn-email-login').click();
-    });
-
-    // ── Google sign-in ─────────────────────────────────────────────
-    document.getElementById('btn-google-login').addEventListener('click', async () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      try {
-        await auth.signInWithPopup(provider);
-      } catch (e) {
-        const errEl = document.getElementById('login-error');
-        if (e.code !== 'auth/popup-closed-by-user') {
-          errEl.textContent = 'Google sign-in failed. Please try again.';
+      // ── Email/password sign-in ────────────────────────────────────
+      var emailBtn = document.getElementById('btn-email-login');
+      if (emailBtn) emailBtn.addEventListener('click', function() {
+        var email    = document.getElementById('login-email').value.trim();
+        var password = document.getElementById('login-password').value;
+        var errEl    = document.getElementById('login-error');
+        var btn      = document.getElementById('btn-email-login');
+        errEl.classList.remove('show');
+        if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; errEl.classList.add('show'); return; }
+        btn.disabled = true; btn.textContent = 'Signing in\u2026';
+        auth.signInWithEmailAndPassword(email, password).catch(function(e) {
+          btn.disabled = false; btn.textContent = 'Sign In';
+          var msgs = { 'auth/user-not-found': 'No account found with that email.', 'auth/wrong-password': 'Incorrect password.', 'auth/invalid-email': 'Please enter a valid email.', 'auth/too-many-requests': 'Too many attempts. Try again later.' };
+          errEl.textContent = msgs[e.code] || 'Sign-in failed. Please try again.';
           errEl.classList.add('show');
-        }
+        });
+      });
+
+      // Enter key on password field
+      var pwField = document.getElementById('login-password');
+      if (pwField) pwField.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') document.getElementById('btn-email-login').click();
+      });
+
+      // ── Google sign-in ────────────────────────────────────────────
+      var googleBtn = document.getElementById('btn-google-login');
+      if (googleBtn) googleBtn.addEventListener('click', function() {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider).catch(function(e) {
+          var errEl = document.getElementById('login-error');
+          if (e.code !== 'auth/popup-closed-by-user') {
+            errEl.textContent = 'Google sign-in failed. Please try again.';
+            errEl.classList.add('show');
+          }
+        });
+      });
+
+      // ── Sign out buttons ──────────────────────────────────────────
+      var soBtn = document.getElementById('sign-out-btn');
+      if (soBtn) soBtn.addEventListener('click', function() { auth.signOut(); });
+      var soBtn2 = document.getElementById('btn-upgrade-signout');
+      if (soBtn2) soBtn2.addEventListener('click', function() { auth.signOut(); });
+
+      // ── Render dashboard ──────────────────────────────────────────
+      function renderDashboard(user) {
+        var name     = user.displayName || user.email.split('@')[0] || 'Champion';
+        var initials = name.charAt(0).toUpperCase();
+        document.getElementById('display-name').textContent = name;
+        document.getElementById('nav-name').textContent     = name;
+        document.getElementById('nav-avatar').textContent   = initials;
+        loadStats();
+        show('screen-dashboard');
       }
-    });
+      window.renderDashboard = renderDashboard;
 
-    // ── Sign out buttons ───────────────────────────────────────────
-    document.getElementById('sign-out-btn').addEventListener('click', () => auth.signOut());
-    document.getElementById('btn-upgrade-signout').addEventListener('click', () => auth.signOut());
+      // ── Stats from localStorage ───────────────────────────────────
+      var _streak = 0;
+      function bumpStreak(n) { if (n > _streak) { _streak = n; document.getElementById('stat-streaks').textContent = n; } }
+      window.bumpStreak = bumpStreak;
+      function streak(arr) { var s=0; for(var i=arr.length-1;i>=0;i--){ if(arr[i])s++; else break; } return s; }
+      window.streak = streak;
 
-    // ── Render dashboard ───────────────────────────────────────────
-    const renderDashboard = window.renderDashboard = function(user) {
-      const name     = user.displayName || user.email.split('@')[0] || 'Champion';
-      const initials = name.charAt(0).toUpperCase();
-      document.getElementById('display-name').textContent = name;
-      document.getElementById('nav-name').textContent     = name;
-      document.getElementById('nav-avatar').textContent   = initials;
-      loadStats();
-      show('screen-dashboard');
+      function loadStats() {
+        // 30-day
+        try {
+          var c = JSON.parse(localStorage.getItem('wwf_challenge30') || 'null');
+          if (c && c.days) { var d=c.days.filter(Boolean).length; document.getElementById('stat-c30').textContent=d; document.getElementById('tstat-c30').textContent=d+'/30 days done'; bumpStreak(streak(c.days)); }
+          else document.getElementById('stat-c30').textContent='0';
+        } catch(e){ document.getElementById('stat-c30').textContent='0'; }
+
+        // 90-day
+        try {
+          var c2 = JSON.parse(localStorage.getItem('wwf_challenge90') || 'null');
+          if (c2 && c2.days) { var d2=c2.days.filter(Boolean).length; document.getElementById('stat-c90').textContent=Math.round(d2/90*100)+'%'; document.getElementById('tstat-c90').textContent=d2+'/90 days done'; }
+          else document.getElementById('stat-c90').textContent='0%';
+        } catch(e){ document.getElementById('stat-c90').textContent='0%'; }
+
+        // Journal
+        try {
+          var j=JSON.parse(localStorage.getItem('wwf_journal')||'[]');
+          var nj=Array.isArray(j)?j.length:0;
+          document.getElementById('stat-journal').textContent=nj;
+          document.getElementById('tstat-journal').textContent=nj+(nj===1?' entry':' entries');
+        } catch(e){ document.getElementById('stat-journal').textContent='0'; }
+
+        // Goals
+        try {
+          var g=JSON.parse(localStorage.getItem('wwf_goals')||'[]');
+          var ng=Array.isArray(g)?g.length:0;
+          document.getElementById('stat-goals').textContent=ng;
+          document.getElementById('tstat-goals').textContent=ng+(ng===1?' goal':' goals')+' active';
+        } catch(e){ document.getElementById('stat-goals').textContent='0'; }
+
+        // Habits
+        try {
+          var h=JSON.parse(localStorage.getItem('wwf_habits')||'null');
+          if(h && h.habits) document.getElementById('tstat-habits').textContent=h.habits.length+' habit'+(h.habits.length===1?'':'s')+' tracked';
+        } catch(e){}
+
+        // Matrix
+        try {
+          var m=JSON.parse(localStorage.getItem('wwf_matrix')||'null');
+          if(m){ var t=Object.values(m).flat().length; document.getElementById('tstat-matrix').textContent=t+' task'+(t===1?'':'s'); }
+        } catch(e){}
+
+        // Values / balance flags
+        try { if(localStorage.getItem('wwf_values_result')) document.getElementById('tstat-values').textContent='Quiz complete \u2713'; } catch(e){}
+        try { if(localStorage.getItem('wwf_life_balance')) document.getElementById('tstat-balance').textContent='Assessment done \u2713'; } catch(e){}
+
+        buildActivity();
+      }
+      window.loadStats = loadStats;
+
+      function buildActivity() {
+        var items = [];
+        try { var c=JSON.parse(localStorage.getItem('wwf_challenge30')||'null'); if(c && c.name){ var d=c.days ? c.days.filter(Boolean).length : 0; if(d>0) items.push({text:'30-Day Challenge: '+d+' days done on "'+c.name+'"',time:'Active'}); } } catch(e){}
+        try { var c=JSON.parse(localStorage.getItem('wwf_challenge90')||'null'); if(c && c.name){ var d=c.days ? c.days.filter(Boolean).length : 0; if(d>0) items.push({text:'90-Day Challenge: '+d+'/90 days on "'+c.name+'"',time:'Active'}); } } catch(e){}
+        try { var j=JSON.parse(localStorage.getItem('wwf_journal')||'[]'); if(Array.isArray(j)&&j.length){ var l=j[j.length-1]; items.push({text:'Journal: Last entry \u2014 "'+(l.title||l.prompt||'Untitled')+'"',time:l.date||'Recent'}); } } catch(e){}
+        try { var g=JSON.parse(localStorage.getItem('wwf_goals')||'[]'); if(Array.isArray(g)&&g.length) items.push({text:'Goals: '+g.length+' active goal'+(g.length>1?'s':'')+' in tracker',time:'Ongoing'}); } catch(e){}
+        var list = document.getElementById('activity-list');
+        if (list) list.innerHTML = items.length ? items.map(function(i){ return '<div class="activity-item"><div class="activity-dot"></div><div class="activity-text">'+i.text+'</div><div class="activity-time">'+i.time+'</div></div>'; }).join('') : '<div class="empty-state">Start using your tools \u2014 your activity will appear here \ud83d\ude80</div>';
+      }
+      window.buildActivity = buildActivity;
     }
 
-    // ── Stats from localStorage ────────────────────────────────────
-    let _streak = 0;
-    const bumpStreak = window.bumpStreak = function(n) { if (n > _streak) { _streak = n; document.getElementById('stat-streaks').textContent = n; } }
-    const streak = window.streak = function(arr) { let s=0; for(let i=arr.length-1;i>=0;i--){ if(arr[i])s++; else break; } return s; }
-
-    const loadStats = window.loadStats = function() {
-      // 30-day
-      try {
-        const c = JSON.parse(localStorage.getItem('wwf_challenge30') || 'null');
-        if (c?.days) { const d=c.days.filter(Boolean).length; document.getElementById('stat-c30').textContent=d; document.getElementById('tstat-c30').textContent=d+'/30 days done'; bumpStreak(streak(c.days)); }
-        else document.getElementById('stat-c30').textContent='0';
-      } catch(e){ document.getElementById('stat-c30').textContent='0'; }
-
-      // 90-day
-      try {
-        const c = JSON.parse(localStorage.getItem('wwf_challenge90') || 'null');
-        if (c?.days) { const d=c.days.filter(Boolean).length; document.getElementById('stat-c90').textContent=Math.round(d/90*100)+'%'; document.getElementById('tstat-c90').textContent=d+'/90 days done'; }
-        else document.getElementById('stat-c90').textContent='0%';
-      } catch(e){ document.getElementById('stat-c90').textContent='0%'; }
-
-      // Journal
-      try {
-        const j=JSON.parse(localStorage.getItem('wwf_journal')||'[]');
-        const n=Array.isArray(j)?j.length:0;
-        document.getElementById('stat-journal').textContent=n;
-        document.getElementById('tstat-journal').textContent=n+(n===1?' entry':' entries');
-      } catch(e){ document.getElementById('stat-journal').textContent='0'; }
-
-      // Goals
-      try {
-        const g=JSON.parse(localStorage.getItem('wwf_goals')||'[]');
-        const n=Array.isArray(g)?g.length:0;
-        document.getElementById('stat-goals').textContent=n;
-        document.getElementById('tstat-goals').textContent=n+(n===1?' goal':' goals')+' active';
-      } catch(e){ document.getElementById('stat-goals').textContent='0'; }
-
-      // Habits
-      try {
-        const h=JSON.parse(localStorage.getItem('wwf_habits')||'null');
-        if(h?.habits) document.getElementById('tstat-habits').textContent=h.habits.length+' habit'+(h.habits.length===1?'':'s')+' tracked';
-      } catch(e){}
-
-      // Matrix
-      try {
-        const m=JSON.parse(localStorage.getItem('wwf_matrix')||'null');
-        if(m){ const t=Object.values(m).flat().length; document.getElementById('tstat-matrix').textContent=t+' task'+(t===1?'':'s'); }
-      } catch(e){}
-
-      // Values / balance flags
-      try { if(localStorage.getItem('wwf_values_result')) document.getElementById('tstat-values').textContent='Quiz complete ✓'; } catch(e){}
-      try { if(localStorage.getItem('wwf_life_balance')) document.getElementById('tstat-balance').textContent='Assessment done ✓'; } catch(e){}
-
-      buildActivity();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
     }
-
-    const buildActivity = window.buildActivity = function() {
-      const items = [];
-      try { const c=JSON.parse(localStorage.getItem('wwf_challenge30')||'null'); if(c?.name){ const d=c.days?.filter(Boolean).length||0; if(d>0) items.push({text:'30-Day Challenge: '+d+' days done on "'+c.name+'"',time:'Active'}); } } catch(e){}
-      try { const c=JSON.parse(localStorage.getItem('wwf_challenge90')||'null'); if(c?.name){ const d=c.days?.filter(Boolean).length||0; if(d>0) items.push({text:'90-Day Challenge: '+d+'/90 days on "'+c.name+'"',time:'Active'}); } } catch(e){}
-      try { const j=JSON.parse(localStorage.getItem('wwf_journal')||'[]'); if(Array.isArray(j)&&j.length){ const l=j[j.length-1]; items.push({text:'Journal: Last entry — "'+(l.title||l.prompt||'Untitled')+'"',time:l.date||'Recent'}); } } catch(e){}
-      try { const g=JSON.parse(localStorage.getItem('wwf_goals')||'[]'); if(Array.isArray(g)&&g.length) items.push({text:'Goals: '+g.length+' active goal'+(g.length>1?'s':'')+' in tracker',time:'Ongoing'}); } catch(e){}
-      const list = document.getElementById('activity-list');
-      list.innerHTML = items.length ? items.map(i=>`<div class="activity-item"><div class="activity-dot"></div><div class="activity-text">${i.text}</div><div class="activity-time">${i.time}</div></div>`).join('') : '<div class="empty-state">Start using your tools — your activity will appear here 🚀</div>';
-    }
+  })();
   </script>
 </body>
 </html>
