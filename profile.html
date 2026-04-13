@@ -733,12 +733,15 @@
     }
   
 
-    // Auth init: firebase scripts loaded sync above, so firebase is ready
+    // Auth init diagnostic
+    console.log('WWF:authInit running');
     initAuthNavbar();
     firebase.auth().onAuthStateChanged(function(user) {
+      console.log('WWF:authCb fired user=' + (user ? user.email : 'null'));
       if (!user) { window.location.href = 'login.html'; return; }
       document.getElementById('page-loading').style.display = 'none';
       document.getElementById('profile-content').style.display = 'block';
+      console.log('WWF:spinnerDismissed');
       loadProfile(user);
     });
   </script>
