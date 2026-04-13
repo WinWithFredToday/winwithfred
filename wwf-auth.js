@@ -1,3 +1,12 @@
+// requireAuth polyfill — queues callbacks until firebase-config.js loads.
+// Since wwf-auth.js is loaded synchronously, this always runs before any
+// inline page scripts, ensuring requireAuth() is never undefined.
+window._wwfAuthQueue = window._wwfAuthQueue || [];
+if (typeof window.requireAuth !== "function") {
+  window.requireAuth = function(callback) {
+    window._wwfAuthQueue.push(callback);
+  };
+}
 // wwf-auth.js -- WinWithFred Shared Auth & Cloud Sync
 // Loaded by tool pages (goal-tracker, habit-builder, journal, quiz).
 // Dynamically loads the Firebase SDK if not already present, then
