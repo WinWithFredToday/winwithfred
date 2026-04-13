@@ -559,188 +559,120 @@
   <script src="firebase-config.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      initAuthNavbar();
-      requireAuth(user => {
-        document.getElementById('page-loading').style.display = 'none';
-        document.getElementById('profile-content').style.display = 'block';
-        loadProfile(user);
-      });
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) { window.location.href = 'login.html'; return; }
+  loadProfile(user);
+  loadStats(user);
+  loadRecentGoals(user);
+  loadRecentEntries(user);
+});
+
+function loadProfile(user) {
+  try {
+    const displayName = user.displayName || user.email.split('@')[0];
+    const initial = displayName.charAt(0).toUpperCase();
+    document.getElementById('avatar').textContent = initial;
+    document.getElementById('display-name').textContent = displayName;
+    document.getElementById('user-email').textContent = user.email;
+    document.getElementById('account-email').textContent = user.email;
+    const createdDate = new Date(user.metadata.creationTime);
+    const monthYear = createdDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    document.getElementById('member-since').textContent = monthYear;
+    document.getElementById('page-loading').style.display = 'none';
+    document.getElementById('profile-content').style.display = 'block';
+  } catch (error) {
+    console.error('Error loading profile:', error);
+    const el = document.getElementById('page-loading');
+    if (el) el.innerHTML = '<p style="color:#f97316;padding:40px;text-align:center">Error loading profile. Please refresh the page.</p>';
+  }
+}
+
+async function loadStats(user) {
+  try {
+    const uid = user.uid;
+    const [goalsSnap, journalSnap, habitsSnap] = await Promise.all([
+      db.collection('users').doc(uid).collection('goals').get(),
+      db.collection('users').doc(uid).collection('journal').get(),
+      db.collection('users').doc(uid).collection('habits').get()
+    ]);
+    let completedGoals = 0;
+    goalsSnap.forEach(doc => { if (doc.data().completed) completedGoals++; });
+    let maxStreak = 0;
+    habitsSnap.forEach(doc => { const s = doc.data().streak || 0; if (s > maxStreak) maxStreak = s; });
+    document.getElementById('total-goals').textContent = goalsSnap.size;
+    document.getElementById('completed-goals').textContent = completedGoals;
+    document.getElementById('journal-entries').textContent = journalSnap.size;
+    document.getElementById('habit-streak').textContent = maxStreak;
+  } catch (error) {
+    console.error('Error loading stats:', error);
+    ['total-goals','completed-goals','journal-entries','habit-streak'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.textContent = '0';
     });
+  }
+}
 
-    async function loadProfile(user) {
-      try {
-        // Set basic user info
-        const displayName = user.display.ame || user.email.split('@')[0];
-        const initial = displayName.charAt(0).toUpperCase();
-
-        document.getElementById('avatar').textContent = initial;
-        document.getElementById('display-name').textContent = displayName;
-        document.getElementById('user-email').textContent = user.email;
-        document.getElementById('account-email').textContent = user.email;
-
-        // Format member since date
-        const createdDate = new Date(user.metadata.creationTime);
-        const monthYear = createdDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-        document.getElementById('member-since').textContent = monthYear;
-
-        // Load stats
-        await loadStats(user.uid);
-
-        // Load recent goals
-        await loadRecentGoals(user.uid);
-
-        // Load recent journal entries
-        await loadRecentEntries(user.uid);
-
-        // Sign out button
-        document.getElementById('sign-out-btn').addEventListener('click', () => {
-          if (confirm('Are you sure you want to sign out?')) {
-            auth.signOut().then(() => {
-              window.location.href = 'index.html';
-            });
-          }
-        });
-      } catch (error) {
-        console.error('Error loading profile:', error);
-        document.getElementById('profile-content').innerHTML = `
-          <div style="padding: 2rem; text-align: center; color: var(--muted);">
-            <p>Error loading profile. Please refresh the page.</p>
-          </div>
-        `;
-      }
+async function loadRecentGoals(user) {
+  try {
+    const uid = user.uid;
+    const snap = await db.collection('users').doc(uid).collection('goals').orderBy('createdAt','desc').limit(3).get();
+    const container = document.getElementById('goals-container');
+    if (!container) return;
+    if (snap.empty) {
+      container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals yet. <a href="goal-tracker.html">Add your first goal</a>.</p>';
+      return;
     }
+    container.innerHTML = '';
+    snap.forEach(doc => {
+      const g = doc.data();
+      const div = document.createElement('div');
+      div.style.cssText = 'padding:12px 0;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;';
+      div.innerHTML = '<span style="font-weight:600;color:#111827">' + (g.title || g.name || 'Goal') + '</span>' +
+        '<span style="font-size:0.85rem;color:' + (g.completed ? '#10b981' : '#f97316') + '">' + (g.completed ? 'Done' : 'In progress') + '</span>';
+      container.appendChild(div);
+    });
+  } catch (error) {
+    console.error('Error loading goals:', error);
+    const c = document.getElementById('goals-container');
+    if (c) c.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals to show yet.</p>';
+  }
+}
 
-    async function loadStats(uid) {
-      try {
-        const goalsSnapshot = await goalsRef(uid).get();
-        const journalSnapshot = await journalRef(uid).get();
-        const habitsSnapshot = await habitsRef(uid).get();
-
-        let totalGoals = 0;
-        let completedGoals = 0;
-        let maxStreak = 0;
-
-        if (goalsSnapshot.exists) {
-          const goals = goalsSnapshot.val() || {};
-          totalGoals = Object.keys(goals).length;
-          Object.values(goals).forEach(goal => {
-            if (goal.completed) completedGoals++;
-          });
-        }
-
-        const journalCount = journalSnapshot.exists ? Object.keys(journalSnapshot.val() || {}).length : 0;
-
-        if (habitsSnapshot.exists) {
-          const habits = habitsSnapshot.val() || {};
-          Object.values(habits).forEach(habit => {
-            if (habit.currentStreak) {
-              maxStreak = Math.max(maxStreak, habit.currentStreak);
-            }
-          });
-        }
-
-        document.getElementById('total-goals').textContent = totalGoals;
-        document.getElementById('completed-goals').textContent = completedGoals;
-        document.getElementById('journal-entries').textContent = journalCount;
-        document.getElementById('habit-streak').textContent = maxStreak;
-      } catch (error) {
-        console.error('Error loading stats:', error);
-      }
+async function loadRecentEntries(user) {
+  try {
+    const uid = user.uid;
+    const snap = await db.collection('users').doc(uid).collection('journal').orderBy('createdAt','desc').limit(3).get();
+    const container = document.getElementById('entries-container');
+    if (!container) return;
+    if (snap.empty) {
+      container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries yet. <a href="journal.html">Write your first entry</a>.</p>';
+      return;
     }
+    container.innerHTML = '';
+    snap.forEach(doc => {
+      const e = doc.data();
+      const div = document.createElement('div');
+      div.style.cssText = 'padding:12px 0;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;';
+      const date = e.createdAt ? new Date(e.createdAt.seconds * 1000).toLocaleDateString() : '';
+      div.innerHTML = '<span style="font-weight:600;color:#111827">' + (e.prompt || e.title || 'Journal Entry') + '</span>' +
+        (date ? '<span style="font-size:0.85rem;color:#6b7280">' + date + '</span>' : '');
+      container.appendChild(div);
+    });
+  } catch (error) {
+    console.error('Error loading entries:', error);
+    const c = document.getElementById('entries-container');
+    if (c) c.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries to show yet.</p>';
+  }
+}
 
-    async function loadRecentGoals(uid) {
-      try {
-        const snapshot = await goalsRef(uid).orderByChild('created').limitToLast(5).get();
-        const container = document.getElementById('goals-container');
-        container.innerHTML = '';
-
-        if (!snapshot.exists) {
-          container.innerHTML = `
-            <div class="empty-state">
-              <p>No goals yet. <a href="goal-tracker.html" style="color: var(--orange);">Create one &rarr;</a></p>
-            </div>
-          `;
-          return;
-        }
-
-        const goals = [];
-        snapshot.forEach(child => {
-          goals.unshift({ id: child.key, ...child.val() });
-        });
-
-        goals.slice(0, 5).forEach(goal => {
-          const progress = goal.progress || 0;
-          const category = goal.category || 'General';
-          const html = `
-            <div class="goal-card">
-              <div class="goal-header">
-                <span class="goal-title">${escapeHtml(goal.title)}</span>
-                <span class="goal-category">${escapeHtml(category)}</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width: ${progress}%"></div>
-              </div>
-              <div class="progress-text">${progress}% complete</div>
-            </div>
-          `;
-          container.innerHTML += html;
-        });
-      } catch (error) {
-        console.error('Error loading goals:', error);
-      }
-    }
-
-    async function loadRecentEntries(uid) {
-      try {
-        const snapshot = await journalRef(uid).orderByChild('created').limitToLast(3).get();
-        const container = document.getElementById('entries-container');
-        container.innerHTML = '';
-
-        if (!snapshot.exists) {
-          container.innerHTML = `
-            <div class="empty-state">
-              <p>No journal entries yet. <a href="journal.html" style="color: var(--orange);">Start writing &rarr;</a></p>
-            </div>
-          `;
-          return;
-        }
-
-        const entries = [];
-        snapshot.forEach(child => {
-          entries.unshift({ id: child.key, ...child.val() });
-        });
-
-        entries.slice(0, 3).forEach(entry => {
-          const date = new Date(entry.created);
-          const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-          const prompt = entry.promptTitle || 'Journal Entry';
-          const preview = (entry.content || '').substring(0, 100);
-          const html = `
-            <div class="entry-card">
-              <div class="entry-date">${dateStr}</div>
-              <div class="entry-title">${escapeHtml(prompt)}</div>
-              <div class="entry-preview">${escapeHtml(preview)}${preview.length >= 100 ? '...' : ''}</div>
-            </div>
-          `;
-          container.innerHTML += html;
-        });
-      } catch (error) {
-        console.error('Error loading entries:', error);
-      }
-    }
-
-    function escapeHtml(text) {
-      const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      };
-      return text.replace(/[&<>"']/g, m => map[m]);
-    }
-  </script>
-<script src="mobile-nav.js"></script>
+document.addEventListener('DOMContentLoaded', function() {
+  const signOutBtn = document.getElementById('sign-out-btn');
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', function() {
+      firebase.auth().signOut().then(() => { window.location.href = 'index.html'; })
+        .catch(error => { console.error('Sign out error:', error); });
+    });
+  }
+});
+</script>
 </body>
 </html>
