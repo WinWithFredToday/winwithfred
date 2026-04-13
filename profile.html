@@ -559,13 +559,13 @@
   <script src="firebase-config.js"></script>
 
   <script>
-    window.addEventListener('load', function() {
-      initAuthNavbar();
-      requireAuth(user => {
-        document.getElementById('page-loading').style.display = 'none';
-        document.getElementById('profile-content').style.display = 'block';
-        loadProfile(user);
-      });
+    // Auth init — firebase scripts are sync so firebase is ready now
+    initAuthNavbar();
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) { window.location.href = 'login.html'; return; }
+      document.getElementById('page-loading').style.display = 'none';
+      document.getElementById('profile-content').style.display = 'block';
+      loadProfile(user);
     });
 
     async function loadProfile(user) {
