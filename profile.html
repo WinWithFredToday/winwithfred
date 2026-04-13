@@ -559,6 +559,15 @@
   <script src="firebase-config.js"></script>
 
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initAuthNavbar();
+      requireAuth(user => {
+        document.getElementById('page-loading').style.display = 'none';
+        document.getElementById('profile-content').style.display = 'block';
+        loadProfile(user);
+      });
+    });
+
     async function loadProfile(user) {
       try {
         // Set basic user info
@@ -678,7 +687,7 @@
           container.innerHTML += html;
         });
       } catch (error) {
-        console.error('Error loading goals:/, error);
+        console.error('Error loading goals:', error);
       }
     }
 
@@ -731,22 +740,6 @@
       };
       return text.replace(/[&<>"']/g, m => map[m]);
     }
-  
-
-    // Auth init: skip null callbacks (Firebase fires null before restoring session)
-    initAuthNavbar();
-    var _profAuthDone = false;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (_profAuthDone) return;
-      if (!user) return; // Null fires first during session restore — ignore
-      _profAuthDone = true;
-      document.getElementById('page-loading').style.display = 'none';
-      document.getElementById('profile-content').style.display = 'block';
-      loadProfile(user);
-    });
-    setTimeout(function() {
-      if (!_profAuthDone && !firebase.auth().currentUser) window.location.href = 'login.html';
-    }, 8000);
   </script>
 <script src="mobile-nav.js"></script>
 </body>
