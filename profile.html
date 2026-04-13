@@ -733,17 +733,20 @@
     }
   
 
-    // Auth init diagnostic
-    console.log('WWF:authInit running');
+    // Auth init: skip null callbacks (Firebase fires null before restoring session)
     initAuthNavbar();
+    var _profAuthDone = false;
     firebase.auth().onAuthStateChanged(function(user) {
-      console.log('WWF:authCb fired user=' + (user ? user.email : 'null'));
-      if (!user) { window.location.href = 'login.html'; return; }
+      if (_profAuthDone) return;
+      if (!user) return; // Null fires first during session restore — ignore
+      _profAuthDone = true;
       document.getElementById('page-loading').style.display = 'none';
       document.getElementById('profile-content').style.display = 'block';
-      console.log('WWF:spinnerDismissed');
       loadProfile(user);
     });
+    setTimeout(function() {
+      if (!_profAuthDone && !firebase.auth().currentUser) window.location.href = 'login.html';
+    }, 8000);
   </script>
 <script src="mobile-nav.js"></script>
 </body>
