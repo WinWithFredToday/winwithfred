@@ -39,15 +39,19 @@ var googleProvider = window.googleProvider;
 
 // Call this on any page that requires login. If not authenticated,
 // redirects to login.html. If authenticated, calls callback(user).
-function requireAuth(callback) {
-  auth.onAuthStateChanged(user => {
+// Drains any callbacks queued before this file finished loading.
+var _wwfQ = window._wwfAuthQueue || [];
+window._wwfAuthQueue = null;
+window.requireAuth = function(callback) {
+  auth.onAuthStateChanged(function(user) {
     if (!user) {
       window.location.href = 'login.html';
     } else {
       callback(user);
     }
   });
-}
+};
+_wwfQ.forEach(function(cb) { window.requireAuth(cb); });
 
 // Renders the user section of the navbar.
 // Call after DOMContentLoaded on every page that has a navbar.
