@@ -260,4 +260,23 @@
     <lastmod>2026-04-07</lastmod>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://winwithfred.com/blog-set-boundaries.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://winwithfred.com/blog-bounce-back-from-failure.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://winwithfred.com/blog-stop-wasting-time.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
