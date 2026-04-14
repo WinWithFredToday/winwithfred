@@ -449,143 +449,333 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+  
+  .profile-avatar-wrap { position:relative; display:inline-block; }
+  .avatar-upload-btn { position:absolute; bottom:0; right:0; background:var(--orange); color:#fff; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:background 0.2s; }
+  .avatar-upload-btn:hover { background:var(--orange-d); }
+  .avatar-upload-btn svg { pointer-events:none; }
+  .profile-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
+  .edit-card { background:#fff; border-radius:12px; padding:32px; margin-bottom:28px; box-shadow:0 2px 12px rgba(0,0,0,0.07); }
+  .edit-title { font-size:1.25rem; font-weight:800; color:var(--dark); margin-bottom:24px; }
+  .edit-field { margin-bottom:18px; }
+  .edit-field label { display:flex; align-items:center; gap:6px; font-size:0.88rem; font-weight:600; color:#374151; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.4px; }
+  .edit-field input, .edit-field textarea { width:100%; padding:10px 14px; border:1.5px solid #e5e7eb; border-radius:8px; font-size:0.97rem; font-family:var(--font); color:var(--dark); background:#f9fafb; transition:border 0.2s; resize:vertical; }
+  .edit-field input:focus, .edit-field textarea:focus { outline:none; border-color:var(--orange); background:#fff; }
+  .edit-section-label { font-size:0.88rem; font-weight:700; color:#374151; text-transform:uppercase; letter-spacing:0.5px; margin:28px 0 14px; padding-top:20px; border-top:1px solid #f3f4f6; }
+  .social-inputs { display:grid; grid-template-columns:1fr 1fr; gap:4px 20px; }
+  .social-field label { color:#6b7280; }
+  .social-field label svg { flex-shrink:0; }
+  .edit-actions { display:flex; gap:12px; margin-top:24px; }
+  #save-status { margin-top:14px; padding:10px 16px; border-radius:8px; font-size:0.92rem; font-weight:600; }
+  #save-status.success { background:#ecfdf5; color:#065f46; }
+  #save-status.error { background:#fef2f2; color:#991b1b; }
+  .section-card { background:#fff; border-radius:12px; padding:28px 32px; margin-bottom:28px; box-shadow:0 2px 12px rgba(0,0,0,0.07); }
+  .social-links-display { display:flex; flex-wrap:wrap; gap:12px; margin-top:4px; }
+  .social-link-chip { display:flex; align-items:center; gap:8px; padding:8px 16px; background:#f3f4f6; border-radius:30px; color:var(--dark); font-size:0.9rem; font-weight:600; text-decoration:none; transition:background 0.2s,color 0.2s; }
+  .social-link-chip:hover { background:var(--orange); color:#fff; text-decoration:none; }
+  .social-link-chip svg { flex-shrink:0; }
+  @media(max-width:600px) { .social-inputs { grid-template-columns:1fr; } .edit-actions { flex-direction:column; } }
+
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <div id="auth-nav"></div>
 
-  <!-- Loading Spinner -->
-  <div id="page-loading">
-    <div class="spinner"></div>
+<div id="wwf-mobile-nav-styles"></div>
+<div id="auth-nav"></div>
+
+<div id="page-loading" style="display:flex;align-items:center;justify-content:center;min-height:80vh;">
+  <div class="spinner"></div>
+</div>
+
+<div id="profile-content" class="container" style="display:none">
+
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar" id="avatar"></div>
+      <label class="avatar-upload-btn" title="Change photo">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <input type="file" id="avatar-upload" accept="image/*" style="display:none">
+      </label>
+    </div>
+    <div class="profile-info">
+      <h1 id="display-name">Loading...</h1>
+      <p id="user-email"></p>
+      <p class="member-since">Member since <span id="member-since"></span></p>
+    </div>
+    <button class="btn btn-outline btn-sm" id="edit-btn" onclick="toggleEdit()">Edit Profile</button>
   </div>
 
-  <!-- Main Content -->
-  <div class="container" id="profile-content" style="display: none;">
-    <!-- Profile Header -->
-    <div class="profile-header">
-      <div class="profile-avatar" id="avatar"></div>
-      <div class="profile-info">
-        <h1 id="display-name">Loading...</h1>
-        <p id="user-email">user@example.com</p>
-        <p class="member-since">
-          Member since <span id="member-since">--</span>
-        </p>
+  <!-- Edit Panel -->
+  <div id="edit-panel" style="display:none">
+    <div class="edit-card">
+      <h3 class="edit-title">Edit Profile</h3>
+      <div class="edit-field">
+        <label>Display Name</label>
+        <input type="text" id="edit-name" placeholder="Your name">
       </div>
+      <div class="edit-field">
+        <label>About Me</label>
+        <textarea id="edit-about" rows="4" placeholder="Tell people a bit about yourself..."></textarea>
+      </div>
+      <div class="edit-section-label">Social Profiles</div>
+      <div class="social-inputs">
+        <div class="edit-field social-field">
+          <label><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X / Twitter</label>
+          <input type="text" id="social-twitter" placeholder="https://x.com/yourhandle">
+        </div>
+        <div class="edit-field social-field">
+          <label><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</label>
+          <input type="text" id="social-instagram" placeholder="https://instagram.com/yourhandle">
+        </div>
+        <div class="edit-field social-field">
+          <label><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</label>
+          <input type="text" id="social-linkedin" placeholder="https://linkedin.com/in/yourname">
+        </div>
+        <div class="edit-field social-field">
+          <label><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.83 1.55V6.79a4.85 4.85 0 01-1.06-.1z"/></svg> TikTok</label>
+          <input type="text" id="social-tiktok" placeholder="https://tiktok.com/@yourhandle">
+        </div>
+        <div class="edit-field social-field">
+          <label><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg> YouTube</label>
+          <input type="text" id="social-youtube" placeholder="https://youtube.com/@yourchannel">
+        </div>
+      </div>
+      <div class="edit-actions">
+        <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+        <button class="btn btn-outline" onclick="toggleEdit()">Cancel</button>
+      </div>
+      <div id="save-status" style="display:none"></div>
     </div>
+  </div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value" id="total-goals">0</div>
-        <div class="stat-label">Total Goals</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="completed-goals">0</div>
-        <div class="stat-label">Goals Completed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="journal-entries">0</div>
-        <div class="stat-label">Journal Entries</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="habit-streak">0</div>
-        <div class="stat-label">Current Streak</div>
-      </div>
+  <!-- About Me (shown when set) -->
+  <div id="about-section" style="display:none">
+    <div class="section-card">
+      <div class="section-header"><h2>About Me</h2></div>
+      <p id="about-text" style="color:#374151;line-height:1.8;font-size:1rem"></p>
     </div>
+  </div>
 
-    <!-- Recent Goals -->
+  <!-- Social Links (shown when set) -->
+  <div id="social-section" style="display:none">
+    <div class="section-card">
+      <div class="section-header"><h2>Social Profiles</h2></div>
+      <div id="social-links" class="social-links-display"></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-value" id="total-goals">0</div><div class="stat-label">Total Goals</div></div>
+    <div class="stat-card"><div class="stat-value" id="completed-goals">0</div><div class="stat-label">Goals Completed</div></div>
+    <div class="stat-card"><div class="stat-value" id="journal-entries">0</div><div class="stat-label">Journal Entries</div></div>
+    <div class="stat-card"><div class="stat-value" id="habit-streak">0</div><div class="stat-label">Current Streak</div></div>
+  </div>
+
+  <!-- Recent Goals -->
+  <div class="section-card">
     <div class="section-header">
       <h2>Recent Goals</h2>
       <a href="goal-tracker.html" class="view-all">View All &rarr;</a>
     </div>
     <div id="goals-container" class="goals-list"></div>
+  </div>
 
-    <!-- Recent Journal Entries -->
+  <!-- Recent Journal Entries -->
+  <div class="section-card">
     <div class="section-header">
       <h2>Recent Journal Entries</h2>
       <a href="journal.html" class="view-all">View All &rarr;</a>
     </div>
-    <div id="entries-container" class="entries-grid"></div>
+    <div id="entries-container"></div>
+  </div>
 
-    <!-- Quick Actions -->
-    <div class="section-header">
-      <h2>Quick Actions</h2>
-    </div>
+  <!-- Quick Actions -->
+  <div class="section-card">
+    <div class="section-header"><h2>Quick Actions</h2></div>
     <div class="quick-actions">
-      <a href="goal-tracker.html" class="action-card">
-        <div class="action-icon">&#127919;</div>
-        <div class="action-label">Goal Tracker</div>
-      </a>
-      <a href="journal.html" class="action-card">
-        <div class="action-icon">&#128211;</div>
-        <div class="action-label">Journal</div>
-      </a>
-      <a href="habit-builder.html" class="action-card">
-        <div class="action-icon">&#127942;</div>
-        <div class="action-label">Habit Builder</div>
-      </a>
-      <a href="mood-tracker.html" class="action-card">
-        <div class="action-icon">&#128522;</div>
-        <div class="action-label">Mood Tracker</div>
-      </a>
-      <a href="index.html#tools" class="action-card">
-        <div class="action-icon">&#128736;&#65039;</div>
-        <div class="action-label">All Tools</div>
-      </a>
-    </div>
-
-    <!-- Account Section -->
-    <div class="account-section">
-      <h2>Account</h2>
-      <div class="account-info">
-        <div class="info-row">
-          <span class="info-label">Email Address</span>
-          <span class="info-value" id="account-email">user@example.com</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Account Status</span>
-          <span class="info-value">Active</span>
-        </div>
-      </div>
-      <button class="btn btn-secondary" id="sign-out-btn">Sign Out</button>
+      <a href="goal-tracker.html" class="quick-action"><span>🎯</span><span>Goal Tracker</span></a>
+      <a href="journal.html" class="quick-action"><span>📓</span><span>Journal</span></a>
+      <a href="habit-builder.html" class="quick-action"><span>🏆</span><span>Habit Builder</span></a>
+      <a href="mood-tracker.html" class="quick-action"><span>😊</span><span>Mood Tracker</span></a>
+      <a href="index.html#tools" class="quick-action"><span>🛠️</span><span>All Tools</span></a>
     </div>
   </div>
 
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
+  <!-- Account -->
+  <div class="section-card">
+    <div class="section-header"><h2>Account</h2></div>
+    <div class="account-row"><span class="account-label">Email Address</span><span id="account-email" class="account-value"></span></div>
+    <div class="account-row" style="margin-top:20px">
+      <button class="btn btn-outline btn-sm" id="sign-out-btn">Sign Out</button>
+    </div>
+  </div>
 
-  <script>
+</div>
+
+<script src="wwf-auth.js"></script>
+<script src="mobile-nav.js"></script>
+<script>
+const SOCIAL_META = {
+  twitter:   { label:'X / Twitter', svg:'<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>' },
+  instagram: { label:'Instagram',   svg:'<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>' },
+  linkedin:  { label:'LinkedIn',    svg:'<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>' },
+  tiktok:    { label:'TikTok',      svg:'<path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.24 8.24 0 004.83 1.55V6.79a4.85 4.85 0 01-1.06-.1z"/>' },
+  youtube:   { label:'YouTube',     svg:'<path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>' }
+};
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (!user) { window.location.href = 'login.html'; return; }
   loadProfile(user);
   loadStats(user);
   loadRecentGoals(user);
   loadRecentEntries(user);
+  document.getElementById('sign-out-btn').addEventListener('click', () => {
+    firebase.auth().signOut().then(() => { window.location.href = 'index.html'; });
+  });
 });
 
-function loadProfile(user) {
+async function loadProfile(user) {
   try {
     const displayName = user.displayName || user.email.split('@')[0];
     const initial = displayName.charAt(0).toUpperCase();
-    document.getElementById('avatar').textContent = initial;
     document.getElementById('display-name').textContent = displayName;
     document.getElementById('user-email').textContent = user.email;
     document.getElementById('account-email').textContent = user.email;
     const createdDate = new Date(user.metadata.creationTime);
-    const monthYear = createdDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-    document.getElementById('member-since').textContent = monthYear;
+    document.getElementById('member-since').textContent = createdDate.toLocaleDateString('en-US', { month:'long', year:'numeric' });
     document.getElementById('page-loading').style.display = 'none';
     document.getElementById('profile-content').style.display = 'block';
-  } catch (error) {
-    console.error('Error loading profile:', error);
-    const el = document.getElementById('page-loading');
-    if (el) el.innerHTML = '<p style="color:#f97316;padding:40px;text-align:center">Error loading profile. Please refresh the page.</p>';
+    // Load extra profile data from Firestore
+    try {
+      const snap = await db.collection('users').doc(user.uid).get();
+      const data = snap.exists() ? snap.data() : {};
+      // Avatar
+      const avatarEl = document.getElementById('avatar');
+      if (data.photoURL) {
+        avatarEl.innerHTML = '<img src="' + data.photoURL + '" alt="Profile photo">';
+      } else {
+        avatarEl.textContent = initial;
+      }
+      // About Me
+      if (data.about) {
+        document.getElementById('about-text').textContent = data.about;
+        document.getElementById('about-section').style.display = 'block';
+      } else { document.getElementById('avatar').textContent || (avatarEl.textContent = initial); }
+      // Social links
+      const socials = data.socials || {};
+      const linksHtml = Object.entries(SOCIAL_META).filter(([k]) => socials[k]).map(([k, meta]) =>
+        '<a href="' + socials[k] + '" target="_blank" rel="noopener" class="social-link-chip">' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' + meta.svg + '</svg>' +
+        meta.label + '</a>'
+      ).join('');
+      if (linksHtml) {
+        document.getElementById('social-links').innerHTML = linksHtml;
+        document.getElementById('social-section').style.display = 'block';
+      }
+      // Pre-fill edit form
+      document.getElementById('edit-name').value = data.displayName || user.displayName || '';
+      document.getElementById('edit-about').value = data.about || '';
+      ['twitter','instagram','linkedin','tiktok','youtube'].forEach(k => {
+        const el = document.getElementById('social-' + k);
+        if (el) el.value = (socials[k] || '');
+      });
+    } catch(e) {
+      document.getElementById('avatar').textContent = initial;
+    }
+  } catch (err) {
+    console.error('Error loading profile:', err);
+    document.getElementById('page-loading').innerHTML = '<p style="color:#f97316;padding:40px;text-align:center">Error loading profile. Please refresh.</p>';
   }
 }
+
+function toggleEdit() {
+  const panel = document.getElementById('edit-panel');
+  const btn = document.getElementById('edit-btn');
+  const isOpen = panel.style.display !== 'none';
+  panel.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Edit Profile' : 'Cancel';
+  document.getElementById('save-status').style.display = 'none';
+}
+
+async function saveProfile() {
+  const user = firebase.auth().currentUser;
+  if (!user) return;
+  const btn = document.querySelector('#edit-panel .btn-primary');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+  try {
+    const name = document.getElementById('edit-name').value.trim();
+    const about = document.getElementById('edit-about').value.trim();
+    const socials = {};
+    ['twitter','instagram','linkedin','tiktok','youtube'].forEach(k => {
+      const v = (document.getElementById('social-' + k).value || '').trim();
+      if (v) socials[k] = v;
+    });
+    const updateData = { displayName: name || user.displayName, about, socials, updatedAt: new Date().toISOString() };
+    // Include photo if changed
+    if (window.__pendingPhotoURL) { updateData.photoURL = window.__pendingPhotoURL; }
+    await db.collection('users').doc(user.uid).set(updateData, { merge: true });
+    // Update display
+    if (name) document.getElementById('display-name').textContent = name;
+    if (about) {
+      document.getElementById('about-text').textContent = about;
+      document.getElementById('about-section').style.display = 'block';
+    } else { document.getElementById('about-section').style.display = 'none'; }
+    const linksHtml = Object.entries(SOCIAL_META).filter(([k]) => socials[k]).map(([k, meta]) =>
+      '<a href="' + socials[k] + '" target="_blank" rel="noopener" class="social-link-chip">' +
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' + meta.svg + '</svg>' +
+      meta.label + '</a>'
+    ).join('');
+    if (linksHtml) {
+      document.getElementById('social-links').innerHTML = linksHtml;
+      document.getElementById('social-section').style.display = 'block';
+    } else { document.getElementById('social-section').style.display = 'none'; }
+    if (window.__pendingPhotoURL) {
+      document.getElementById('avatar').innerHTML = '<img src="' + window.__pendingPhotoURL + '" alt="Profile photo">';
+      window.__pendingPhotoURL = null;
+    }
+    const status = document.getElementById('save-status');
+    status.className = 'success'; status.textContent = 'Profile saved!'; status.style.display = 'block';
+    setTimeout(() => { toggleEdit(); }, 1200);
+  } catch(err) {
+    console.error('Save error:', err);
+    const status = document.getElementById('save-status');
+    status.className = 'error'; status.textContent = 'Error saving. Please try again.'; status.style.display = 'block';
+  }
+  btn.textContent = 'Save Changes'; btn.disabled = false;
+}
+
+// Avatar upload handler
+document.addEventListener('DOMContentLoaded', function() {
+  const upload = document.getElementById('avatar-upload');
+  if (upload) {
+    upload.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        // Resize to max 300x300
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const MAX = 300;
+          let w = img.width, h = img.height;
+          if (w > h) { if (w > MAX) { h = h * MAX / w; w = MAX; } }
+          else { if (h > MAX) { w = w * MAX / h; h = MAX; } }
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+          window.__pendingPhotoURL = dataURL;
+          document.getElementById('avatar').innerHTML = '<img src="' + dataURL + '" alt="Profile photo">';
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+});
 
 async function loadStats(user) {
   try {
@@ -603,8 +793,7 @@ async function loadStats(user) {
     document.getElementById('completed-goals').textContent = completedGoals;
     document.getElementById('journal-entries').textContent = journalSnap.size;
     document.getElementById('habit-streak').textContent = maxStreak;
-  } catch (error) {
-    console.error('Error loading stats:', error);
+  } catch (err) {
     ['total-goals','completed-goals','journal-entries','habit-streak'].forEach(id => {
       const el = document.getElementById(id); if (el) el.textContent = '0';
     });
@@ -612,67 +801,37 @@ async function loadStats(user) {
 }
 
 async function loadRecentGoals(user) {
+  const container = document.getElementById('goals-container');
   try {
-    const uid = user.uid;
-    const snap = await db.collection('users').doc(uid).collection('goals').orderBy('createdAt','desc').limit(3).get();
-    const container = document.getElementById('goals-container');
-    if (!container) return;
-    if (snap.empty) {
-      container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals yet. <a href="goal-tracker.html">Add your first goal</a>.</p>';
-      return;
-    }
+    const snap = await db.collection('users').doc(user.uid).collection('goals').orderBy('createdAt','desc').limit(3).get();
+    if (snap.empty) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals yet. <a href="goal-tracker.html">Add your first goal</a>.</p>'; return; }
     container.innerHTML = '';
     snap.forEach(doc => {
       const g = doc.data();
       const div = document.createElement('div');
       div.style.cssText = 'padding:12px 0;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;';
-      div.innerHTML = '<span style="font-weight:600;color:#111827">' + (g.title || g.name || 'Goal') + '</span>' +
-        '<span style="font-size:0.85rem;color:' + (g.completed ? '#10b981' : '#f97316') + '">' + (g.completed ? 'Done' : 'In progress') + '</span>';
+      div.innerHTML = '<span style="font-weight:600;color:#111827">' + (g.title || g.name || 'Goal') + '</span><span style="font-size:0.85rem;color:' + (g.completed ? '#10b981' : '#f97316') + '">' + (g.completed ? 'Done' : 'In progress') + '</span>';
       container.appendChild(div);
     });
-  } catch (error) {
-    console.error('Error loading goals:', error);
-    const c = document.getElementById('goals-container');
-    if (c) c.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals to show yet.</p>';
-  }
+  } catch (err) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals to show yet.</p>'; }
 }
 
 async function loadRecentEntries(user) {
+  const container = document.getElementById('entries-container');
   try {
-    const uid = user.uid;
-    const snap = await db.collection('users').doc(uid).collection('journal').orderBy('createdAt','desc').limit(3).get();
-    const container = document.getElementById('entries-container');
-    if (!container) return;
-    if (snap.empty) {
-      container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries yet. <a href="journal.html">Write your first entry</a>.</p>';
-      return;
-    }
+    const snap = await db.collection('users').doc(user.uid).collection('journal').orderBy('createdAt','desc').limit(3).get();
+    if (snap.empty) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries yet. <a href="journal.html">Write your first entry</a>.</p>'; return; }
     container.innerHTML = '';
     snap.forEach(doc => {
       const e = doc.data();
       const div = document.createElement('div');
       div.style.cssText = 'padding:12px 0;border-bottom:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;';
       const date = e.createdAt ? new Date(e.createdAt.seconds * 1000).toLocaleDateString() : '';
-      div.innerHTML = '<span style="font-weight:600;color:#111827">' + (e.prompt || e.title || 'Journal Entry') + '</span>' +
-        (date ? '<span style="font-size:0.85rem;color:#6b7280">' + date + '</span>' : '');
+      div.innerHTML = '<span style="font-weight:600;color:#111827">' + (e.prompt || e.title || 'Journal Entry') + '</span>' + (date ? '<span style="font-size:0.85rem;color:#6b7280">' + date + '</span>' : '');
       container.appendChild(div);
     });
-  } catch (error) {
-    console.error('Error loading entries:', error);
-    const c = document.getElementById('entries-container');
-    if (c) c.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries to show yet.</p>';
-  }
+  } catch (err) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries to show yet.</p>'; }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  const signOutBtn = document.getElementById('sign-out-btn');
-  if (signOutBtn) {
-    signOutBtn.addEventListener('click', function() {
-      firebase.auth().signOut().then(() => { window.location.href = 'index.html'; })
-        .catch(error => { console.error('Sign out error:', error); });
-    });
-  }
-});
 </script>
 </body>
 </html>
