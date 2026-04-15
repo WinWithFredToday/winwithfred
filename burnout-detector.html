@@ -492,6 +492,31 @@ p  { color: #374151; }
 .copy-btn.copied { background: var(--green); border-color: var(--green); color: var(--white); }
 
 </style>
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/burnout-detector.html" />
+  <meta property="og:title" content="Burnout Detector Quiz | WinWithFred" />
+  <meta property="og:description" content="Find out if you are burned out with this free burnout detector. Get your score and practical steps to recover." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/burnout-detector.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Burnout Detector Quiz | WinWithFred" />
+  <meta name="twitter:description" content="Find out if you are burned out with this free burnout detector. Get your score and practical steps to recover." />
+  <meta name="keywords" content="burnout detector, burnout quiz, am I burned out, burnout symptoms" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Burnout Detector Quiz",
+    "description": "Find out if you are burned out with this free burnout detector. Get your score and practical steps to recover.",
+    "url": "https://winwithfred.com/burnout-detector.html",
+    "applicationCategory": "LifestyleApplication",
+    "author": { "@type": "Person", "name": "Freddy Owen" },
+    "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
 
@@ -534,7 +559,7 @@ p  { color: #374151; }
         <div style="padding:12px; background:var(--orange-l); border-radius:8px;"><strong>Recovery</strong><br><span style="font-size:0.85rem; color:var(--muted);">Inability to bounce back</span></div>
       </div>
       <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 4 minutes.</p>
-      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start Detector →</button>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start Detector â</button>
     </div>
   </div>
 
@@ -545,7 +570,7 @@ p  { color: #374151; }
     <div id="quiz-container"></div>
     <div class="quiz-nav">
       <button class="btn btn-outline" onclick="prevQuestion()" id="btn-prev" style="display:none;">&#8592; Previous</button>
-      <button class="btn btn-primary" onclick="nextQuestion()" id="btn-next">Next →</button>
+      <button class="btn btn-primary" onclick="nextQuestion()" id="btn-next">Next â</button>
     </div>
   </div>
 
@@ -779,7 +804,7 @@ function renderQuestion() {
   document.getElementById('quiz-container').innerHTML = html;
 
   document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-block' : 'none';
-  document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'See Results →' : 'Next →';
+  document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'See Results â' : 'Next â';
 }
 
 function selectAnswer(idx) {
@@ -846,7 +871,7 @@ function showResults() {
   const prev = JSON.parse(localStorage.getItem('wwf_burnout') || 'null');
   if (prev && prev.total) {
     const diff = total - prev.total;
-    const arrow = diff > 0 ? '&#8593;' : (diff < 0 ? '&#8595;' : '→');
+    const arrow = diff > 0 ? '&#8593;' : (diff < 0 ? '&#8595;' : 'â');
     const color = diff > 0 ? 'color:var(--red)' : (diff < 0 ? 'color:var(--green)' : 'color:var(--muted)');
     document.getElementById('prev-result-box').style.display = 'block';
     document.getElementById('prev-compare').innerHTML = `<span style="${color}">${arrow} ${Math.abs(diff)} points</span> from your last check`;
