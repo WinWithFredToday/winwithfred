@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | WinWithFred</title>
+  <meta name="description" content="Get in touch with Freddy Owen at WinWithFred. Questions, feedback, or just want to share what's working for you — reach out here." />
+  <meta name="author" content="Freddy Owen" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/contact.html" />
+  <meta property="og:title" content="Contact | WinWithFred" />
+  <meta property="og:description" content="Get in touch with Freddy Owen at WinWithFred. Questions, feedback, or just want to share what's working for you." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/contact.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Contact | WinWithFred" />
+  <meta name="twitter:description" content="Get in touch with Freddy Owen at WinWithFred." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --dark: #111827; --muted: #6b7280; --light: #f9fafb; --orange: #f97316; --orange-d: #ea6c0a; --radius: 10px; --font: 'Inter', -apple-system, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.7; font-size: 17px; }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .navbar { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .navbar-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .navbar-logo { font-weight: 900; color: #fff; letter-spacing: -0.5px; font-size: 1.2rem; }
+    .navbar-logo span { color: var(--orange); }
+    .navbar-logo:hover { text-decoration: none; }
+    .navbar-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .navbar-links a { color: #d1d5db; font-size: 0.95rem; padding: 6px 12px; border-radius: var(--radius); }
+    .navbar-links a:hover, .navbar-links a.active { color: #fff; text-decoration: none; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: var(--radius); font-weight: 700; font-size: 1rem; cursor: pointer; border: 2px solid transparent; transition: all 0.2s; text-align: center; }
+    .btn-primary { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .btn-primary:hover { background: var(--orange-d); border-color: var(--orange-d); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--orange); border-color: var(--orange); }
+    .btn-outline:hover { background: var(--orange); color: #fff; text-decoration: none; }
+    .btn-sm { padding: 10px 20px; font-size: 0.9rem; }
+    .page-hero { background: var(--dark); color: #fff; padding: 72px 24px 64px; text-align: center; }
+    .page-hero h1 { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 14px; }
+    .page-hero p { color: #d1d5db; font-size: 1.1rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .contact-wrap { max-width: 680px; margin: 0 auto; padding: 64px 24px 80px; }
+    .contact-card { background: #fff; border-radius: 14px; padding: 40px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); border: 1px solid #e5e7eb; }
+    .form-group { margin-bottom: 22px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 700; color: #374151; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 0.97rem; font-family: var(--font); color: var(--dark); background: #f9fafb; transition: border 0.2s; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--orange); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    #contact-submit { width: 100%; padding: 14px; font-size: 1rem; margin-top: 8px; }
+    #contact-submit:disabled { background: #d1d5db; border-color: #d1d5db; cursor: not-allowed; }
+    #form-status { margin-top: 16px; padding: 14px 18px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; display: none; }
+    #form-status.success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    #form-status.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .contact-alt { margin-top: 40px; text-align: center; }
+    .contact-alt h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .contact-alt p { color: var(--muted); font-size: 0.95rem; }
+    .footer { background: var(--dark); color: #9ca3af; padding: 56px 24px 32px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .footer-logo span { color: var(--orange); }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #9ca3af; font-size: 0.9rem; }
+    .footer-col ul li a:hover { color: #fff; text-decoration: none; }
+    .footer-bottom { max-width: 1120px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid #374151; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 12px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } .footer-inner { grid-template-columns: 1fr 1fr; } .page-hero h1 { font-size: 1.9rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html" class="btn btn-sm btn-outline">Log In</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Get In Touch</h1>
+  <p>Questions, feedback, or just want to share what's been working for you. I read every message.</p>
+</section>
+
+<div class="contact-wrap">
+  <div class="contact-card">
+    <form id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="Freddy Owen" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email Address</label>
+          <input type="email" id="contact-email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contact-subject">Subject</label>
+        <select id="contact-subject" name="subject">
+          <option value="general">General Question</option>
+          <option value="feedback">Site Feedback</option>
+          <option value="tool">Tool Issue or Request</option>
+          <option value="content">Content / Blog</option>
+          <option value="other">Something Else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button type="submit" id="contact-submit" class="btn btn-primary">Send Message</button>
+      <div id="form-status"></div>
+    </form>
+  </div>
+
+  <div class="contact-alt">
+    <h3>Prefer email?</h3>
+    <p>Reach us directly at <a href="mailto:hello@winwithfred.com">hello@winwithfred.com</a></p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem;line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="blog.html">All Posts</a></li>
+        <li><a href="blog-complete-guide-to-building-habits.html">Habits Guide</a></li>
+        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
+        <li><a href="blog-discipline-beats-motivation.html">Mindset</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="about.html">About Fred</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2025 WinWithFred.com</span>
+    <span>No fluff. No gimmicks. Just results.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contact-submit');
+  const status = document.getElementById('form-status');
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value;
+  const message = document.getElementById('contact-message').value.trim();
+
+  if (!name || !email || !message) { return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  status.style.display = 'none';
+
+  try {
+    // Save to Firestore contacts collection
+    if (window.db) {
+      await window.db.collection('contact_messages').add({
+        name, email, subject, message,
+        createdAt: new Date(),
+        read: false
+      });
+    }
+    status.className = 'success';
+    status.textContent = 'Message sent! I will get back to you within a few days.';
+    status.style.display = 'block';
+    this.reset();
+  } catch(err) {
+    status.className = 'error';
+    status.textContent = 'Something went wrong. Please email hello@winwithfred.com directly.';
+    status.style.display = 'block';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Send Message';
+});
+</script>
+<script src="wwf-auth.js"></script>
+</body>
+</html>
