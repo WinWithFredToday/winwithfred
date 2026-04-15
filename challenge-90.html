@@ -97,7 +97,7 @@ a:hover { text-decoration:underline; }
 .day-cell.today-p3 { border-color:var(--p3); color:var(--p3); background:var(--p3-bg); font-weight:800; }
 .day-cell.missed { background:#f3f4f6; border-color:#e5e7eb; color:#d1d5db; }
 .day-cell.future { opacity:0.35; }
-.day-cell.done-p1::after, .day-cell.done-p2::after, .day-cell.done-p3::after { content:'✓'; font-size:0.8rem; font-weight:900; }
+.day-cell.done-p1::after, .day-cell.done-p2::after, .day-cell.done-p3::after { content:'â'; font-size:0.8rem; font-weight:900; }
 
 /* QUOTE CARD */
 .quote-card { background:var(--dark); color:var(--white); border-radius:14px; padding:24px 28px; margin-bottom:24px; }
@@ -118,6 +118,31 @@ a:hover { text-decoration:underline; }
   .action-row { flex-direction:column; }
 }
 </style>
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/challenge-90.html" />
+  <meta property="og:title" content="90-Day Challenge Tracker | WinWithFred" />
+  <meta property="og:description" content="Commit to a 90-day challenge and track your progress. Build a powerful habit over three months." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/challenge-90.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="90-Day Challenge Tracker | WinWithFred" />
+  <meta name="twitter:description" content="Commit to a 90-day challenge and track your progress. Build a powerful habit over three months." />
+  <meta name="keywords" content="90 day challenge, 90 day tracker, quarterly challenge, 3 month goal" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "90-Day Challenge Tracker",
+    "description": "Commit to a 90-day challenge and track your progress. Build a powerful habit over three months.",
+    "url": "https://winwithfred.com/challenge-90.html",
+    "applicationCategory": "LifestyleApplication",
+    "author": { "@type": "Person", "name": "Freddy Owen" },
+    "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
 
@@ -145,7 +170,7 @@ a:hover { text-decoration:underline; }
   <div id="setup-screen">
     <div class="setup-card">
       <div class="setup-title">What are you committing to for 90 days?</div>
-      <div class="setup-sub">Pick a preset or write your own. No one's watching — be real with yourself.</div>
+      <div class="setup-sub">Pick a preset or write your own. No one's watching â be real with yourself.</div>
       <div class="preset-grid" id="preset-grid">
         <button class="preset-btn" onclick="selectPreset(this, 'Work out every day')">&#127947; Work out every day</button>
         <button class="preset-btn" onclick="selectPreset(this, 'Build my business')">&#128640; Build my business</button>
@@ -161,17 +186,17 @@ a:hover { text-decoration:underline; }
         <div class="setup-sub" style="margin-bottom:14px;">Give each 30-day block a theme to stay focused.</div>
         <div class="phase-row">
           <div class="phase-dot p1"></div>
-          <span class="phase-label" style="color:var(--p1);">Days 1–30</span>
+          <span class="phase-label" style="color:var(--p1);">Days 1â30</span>
           <input class="phase-input" id="p1-name" type="text" placeholder="e.g. Foundation" maxlength="30" />
         </div>
         <div class="phase-row">
           <div class="phase-dot p2"></div>
-          <span class="phase-label" style="color:var(--p2);">Days 31–60</span>
+          <span class="phase-label" style="color:var(--p2);">Days 31â60</span>
           <input class="phase-input" id="p2-name" type="text" placeholder="e.g. Momentum" maxlength="30" />
         </div>
         <div class="phase-row">
           <div class="phase-dot p3"></div>
-          <span class="phase-label" style="color:var(--p3);">Days 61–90</span>
+          <span class="phase-label" style="color:var(--p3);">Days 61â90</span>
           <input class="phase-input" id="p3-name" type="text" placeholder="e.g. Mastery" maxlength="30" />
         </div>
       </div>
