@@ -509,6 +509,31 @@ p  { color: #374151; }
 .nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
 .save-result-btn { margin-top:20px; }
 </style>
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/quiz.html" />
+  <meta property="og:title" content="Mindset Quiz — How Strong Is Your Mindset? | WinWithFred" />
+  <meta property="og:description" content="Take the free Mindset Quiz and get an honest assessment of your mindset. Two minutes, real answers, no fluff." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/quiz.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mindset Quiz — How Strong Is Your Mindset? | WinWithFred" />
+  <meta name="twitter:description" content="Take the free Mindset Quiz and get an honest assessment of your mindset. Two minutes, real answers, no fluff." />
+  <meta name="keywords" content="mindset quiz, mindset test, growth mindset, how strong is my mindset" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "Mindset Quiz — How Strong Is Your Mindset?",
+    "description": "Take the free Mindset Quiz and get an honest assessment of your mindset. Two minutes, real answers, no fluff.",
+    "url": "https://winwithfred.com/quiz.html",
+    "applicationCategory": "LifestyleApplication",
+    "author": { "@type": "Person", "name": "Freddy Owen" },
+    "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
 
@@ -545,7 +570,7 @@ p  { color: #374151; }
       <h2 style="margin-bottom:16px;">The WinWithFred Mindset Assessment</h2>
       <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">This quiz covers 5 key areas: <strong>Accountability, Growth Mindset, Focus, Resilience,</strong> and <strong>Self-Discipline.</strong></p>
       <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. There are no "good" answers &mdash; only accurate ones. Takes about 3 minutes.</p>
-      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz →</button>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz â</button>
     </div>
   </div>
 
@@ -557,7 +582,7 @@ p  { color: #374151; }
     <div class="quiz-nav">
       <button class="btn btn-outline btn-sm" id="btn-prev" onclick="prevQ()" style="display:none;">&#8592; Back</button>
       <div></div>
-      <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Next →</button>
+      <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Next â</button>
     </div>
   </div>
 
@@ -637,7 +662,7 @@ p  { color: #374151; }
     document.getElementById('quiz-progress-fill').style.width = `${pct}%`;
     document.getElementById('quiz-step-label').textContent = `Question ${current+1} of ${QUESTIONS.length}`;
     document.getElementById('btn-prev').style.display = current > 0 ? 'block' : 'none';
-    document.getElementById('btn-next').textContent = current === QUESTIONS.length - 1 ? 'See My Results →' : 'Next →';
+    document.getElementById('btn-next').textContent = current === QUESTIONS.length - 1 ? 'See My Results â' : 'Next â';
 
     const selected = answers[current];
     document.getElementById('question-card').innerHTML = `
@@ -759,7 +784,7 @@ p  { color: #374151; }
 
       <div style="text-align:center;margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
         <button class="btn btn-outline btn-sm" onclick="retakeQuiz()">&#8635; Retake Quiz</button>
-        <a href="goal-tracker.html" class="btn btn-primary">Set Your First Goal →</a>
+        <a href="goal-tracker.html" class="btn btn-primary">Set Your First Goal â</a>
       </div>
     `;
   }
