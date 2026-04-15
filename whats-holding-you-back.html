@@ -620,7 +620,7 @@ p  { color: #374151; }
 }
 
 .action-steps li::before {
-  content: "→ ";
+  content: "â ";
   color: var(--orange);
   font-weight: 700;
   margin-right: 8px;
@@ -717,6 +717,31 @@ p  { color: #374151; }
   }
 }
 </style>
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/whats-holding-you-back.html" />
+  <meta property="og:title" content="What's Holding You Back — Blocker Assessment | WinWithFred" />
+  <meta property="og:description" content="Identify what's actually holding you back from the life you want. This honest assessment helps you see your real blockers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/whats-holding-you-back.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What's Holding You Back — Blocker Assessment | WinWithFred" />
+  <meta name="twitter:description" content="Identify what's actually holding you back from the life you want. This honest assessment helps you see your real blockers." />
+  <meta name="keywords" content="what's holding you back, self sabotage quiz, blocker assessment, why am I stuck" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "What's Holding You Back — Blocker Assessment",
+    "description": "Identify what's actually holding you back from the life you want. This honest assessment helps you see your real blockers.",
+    "url": "https://winwithfred.com/whats-holding-you-back.html",
+    "applicationCategory": "LifestyleApplication",
+    "author": { "@type": "Person", "name": "Freddy Owen" },
+    "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
 
@@ -759,7 +784,7 @@ p  { color: #374151; }
 
     <div class="quiz-navigation">
       <button id="prev-btn" class="btn btn-outline" style="display:none;">&#8592; Previous</button>
-      <button id="next-btn" class="btn btn-primary">Next →</button>
+      <button id="next-btn" class="btn btn-primary">Next â</button>
     </div>
   </div>
 
@@ -1053,7 +1078,7 @@ function renderQuestion() {
   document.getElementById('questions-wrapper').innerHTML = html;
 
   document.getElementById('prev-btn').style.display = currentQuestion === 0 ? 'none' : 'block';
-  document.getElementById('next-btn').textContent = currentQuestion === QUIZ_DATA.questions.length - 1 ? 'View Results' : 'Next →';
+  document.getElementById('next-btn').textContent = currentQuestion === QUIZ_DATA.questions.length - 1 ? 'View Results' : 'Next â';
 }
 
 function selectAnswer(answerIdx) {
