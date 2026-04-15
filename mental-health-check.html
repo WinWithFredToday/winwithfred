@@ -722,6 +722,31 @@ p  { color: #374151; }
 }
 
 </style>
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/mental-health-check.html" />
+  <meta property="og:title" content="Mental Health Check — Free Self-Assessment | WinWithFred" />
+  <meta property="og:description" content="Take a free mental health check to understand where you stand. Private, honest, and no login required." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/mental-health-check.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mental Health Check — Free Self-Assessment | WinWithFred" />
+  <meta name="twitter:description" content="Take a free mental health check to understand where you stand. Private, honest, and no login required." />
+  <meta name="keywords" content="mental health check, mental health assessment, mental health quiz, mental wellness" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mental Health Check — Free Self-Assessment",
+    "description": "Take a free mental health check to understand where you stand. Private, honest, and no login required.",
+    "url": "https://winwithfred.com/mental-health-check.html",
+    "applicationCategory": "LifestyleApplication",
+    "author": { "@type": "Person", "name": "Freddy Owen" },
+    "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body class="tool-page">
 
@@ -754,7 +779,7 @@ p  { color: #374151; }
   <!-- Intro Screen -->
   <div id="screen-intro">
     <div class="crisis-disclaimer">
-      <strong>Important:</strong> This is not a medical diagnosis. If you're in crisis, please reach out immediately. <a href="mental-health-resources.html" style="color:#991b1b;font-weight:700;">View crisis resources →</a>
+      <strong>Important:</strong> This is not a medical diagnosis. If you're in crisis, please reach out immediately. <a href="mental-health-resources.html" style="color:#991b1b;font-weight:700;">View crisis resources â</a>
     </div>
 
     <div class="card" style="text-align:center; padding:48px 36px;">
@@ -762,7 +787,7 @@ p  { color: #374151; }
       <h2 style="margin-bottom:16px;">Mental Health Check-In</h2>
       <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">10 questions. Takes about 3 minutes. No judgment &mdash; just honest reflection.</p>
       <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">This tool helps you understand where you're at emotionally. It's not a diagnosis &mdash; just a starting point for self-awareness.</p>
-      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Check-In →</button>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Check-In â</button>
     </div>
   </div>
 
@@ -774,7 +799,7 @@ p  { color: #374151; }
     <div class="quiz-nav">
       <button class="btn btn-outline btn-sm" id="btn-prev" onclick="prevQ()" style="display:none;">&#8592; Back</button>
       <div></div>
-      <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Next →</button>
+      <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Next â</button>
     </div>
   </div>
 
@@ -832,7 +857,7 @@ p  { color: #374151; }
     <!-- Quick Action -->
     <div style="display:flex; gap:12px;">
       <button class="btn btn-primary" style="flex:1; text-align:center;" onclick="closeGroundingModal()">Got It</button>
-      <a href="sms:?body=Hey%2C%20I%27m%20having%20a%20rough%20time.%20Could%20we%20talk%3F" class="btn btn-outline" style="flex:1; text-align:center;">Text a Friend →</a>
+      <a href="sms:?body=Hey%2C%20I%27m%20having%20a%20rough%20time.%20Could%20we%20talk%3F" class="btn btn-outline" style="flex:1; text-align:center;">Text a Friend â</a>
     </div>
   </div>
 </div>
@@ -1002,7 +1027,7 @@ function renderQuestion() {
   document.getElementById('quiz-progress-fill').style.width = `${pct}%`;
   document.getElementById('quiz-step-label').textContent = `Question ${current+1} of ${QUESTIONS.length}`;
   document.getElementById('btn-prev').style.display = current > 0 ? 'block' : 'none';
-  document.getElementById('btn-next').textContent = current === QUESTIONS.length - 1 ? 'See My Results →' : 'Next →';
+  document.getElementById('btn-next').textContent = current === QUESTIONS.length - 1 ? 'See My Results â' : 'Next â';
 
   const selected = answers[current];
   document.getElementById('question-card').innerHTML = `
@@ -1098,7 +1123,7 @@ function showResults() {
           <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
           <li><strong>If you're in immediate danger:</strong> Call 911</li>
           <li><strong>International Association for Suicide Prevention:</strong> <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank">Find crisis centers in your country</a></li>
-          <li><strong>More resources:</strong> <a href="mental-health-resources.html">Full mental health resource directory →</a></li>
+          <li><strong>More resources:</strong> <a href="mental-health-resources.html">Full mental health resource directory â</a></li>
         </ul>
       </div>
     `;
@@ -1130,7 +1155,7 @@ function showResults() {
           <li><strong>Journal:</strong> Get what's in your head onto paper</li>
           <li><strong>Don't wait:</strong> The best time to get support is now, not when things get worse</li>
         </ul>
-        <button class="btn btn-primary" style="margin-top:20px;" onclick="openGroundingModal()">Ground Me Now →</button>
+        <button class="btn btn-primary" style="margin-top:20px;" onclick="openGroundingModal()">Ground Me Now â</button>
       </div>
     `;
   } else {
@@ -1144,7 +1169,7 @@ function showResults() {
           <li><strong>Inpatient care:</strong> If you need immediate help, go to an ER or call 911</li>
           <li><strong>Support groups:</strong> Find people going through similar struggles</li>
         </ul>
-        <button class="btn btn-primary" style="margin-top:20px;" onclick="openGroundingModal()">Ground Me Now →</button>
+        <button class="btn btn-primary" style="margin-top:20px;" onclick="openGroundingModal()">Ground Me Now â</button>
       </div>
     `;
   }
@@ -1156,7 +1181,7 @@ function showResults() {
 
     <div style="text-align:center;margin-top:24px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <button class="btn btn-outline btn-sm" onclick="retakeQuiz()">&#8635; Retake Check-In</button>
-      <a href="mood-tracker.html" class="btn btn-primary">Track Your Mood Daily →</a>
+      <a href="mood-tracker.html" class="btn btn-primary">Track Your Mood Daily â</a>
     </div>
   `;
 
