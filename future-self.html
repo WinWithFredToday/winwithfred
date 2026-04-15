@@ -629,7 +629,7 @@ p  { color: #374151; }
 }
 
 .phase-list li::before {
-  content: "→";
+  content: "â";
   position: absolute;
   left: 0;
   color: var(--orange);
@@ -673,6 +673,31 @@ p  { color: #374151; }
   }
 }
 </style>
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/future-self.html" />
+  <meta property="og:title" content="Future Self Visualization Tool | WinWithFred" />
+  <meta property="og:description" content="Write a letter from your future self. This guided exercise helps you get clear on who you want to become and why it matters." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://winwithfred.com/future-self.html" />
+  <meta property="og:site_name" content="WinWithFred" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Future Self Visualization Tool | WinWithFred" />
+  <meta name="twitter:description" content="Write a letter from your future self. This guided exercise helps you get clear on who you want to become and why it matters." />
+  <meta name="keywords" content="future self, future self visualization, letter to future self, vision exercise" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Future Self Visualization Tool",
+    "description": "Write a letter from your future self. This guided exercise helps you get clear on who you want to become and why it matters.",
+    "url": "https://winwithfred.com/future-self.html",
+    "applicationCategory": "LifestyleApplication",
+    "author": { "@type": "Person", "name": "Freddy Owen" },
+    "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
 
@@ -896,7 +921,7 @@ p  { color: #374151; }
 
     <div class="form-navigation">
       <button id="prev-step-btn" class="btn btn-outline" style="display:none;">&#8592; Back</button>
-      <button id="next-step-btn" class="btn btn-primary">Next →</button>
+      <button id="next-step-btn" class="btn btn-primary">Next â</button>
     </div>
   </div>
 
@@ -977,7 +1002,7 @@ function updateStepProgress() {
   document.getElementById('step-progress-fill').style.width = percent + '%';
   document.getElementById('step-number').textContent = `Step ${currentStep} of ${totalSteps}`;
   document.getElementById('prev-step-btn').style.display = currentStep === 1 ? 'none' : 'block';
-  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next →';
+  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next â';
 }
 
 function showStep(stepNum) {
