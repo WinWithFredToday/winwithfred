@@ -595,11 +595,11 @@
   <div class="section-card">
     <div class="section-header"><h2>Quick Actions</h2></div>
     <div class="quick-actions">
-      <a href="goal-tracker.html" class="quick-action"><span>ÃÂ°ÃÂÃÂÃÂ¯</span><span>Goal Tracker</span></a>
-      <a href="journal.html" class="quick-action"><span>ÃÂ°ÃÂÃÂÃÂ</span><span>Journal</span></a>
-      <a href="habit-builder.html" class="quick-action"><span>ÃÂ°ÃÂÃÂÃÂ</span><span>Habit Builder</span></a>
-      <a href="mood-tracker.html" class="quick-action"><span>ÃÂ°ÃÂÃÂÃÂ</span><span>Mood Tracker</span></a>
-      <a href="index.html#tools" class="quick-action"><span>ÃÂ°ÃÂÃÂÃÂ ÃÂ¯ÃÂ¸ÃÂ</span><span>All Tools</span></a>
+      <a href="goal-tracker.html" class="quick-action"><span>ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ¯</span><span>Goal Tracker</span></a>
+      <a href="journal.html" class="quick-action"><span>ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ</span><span>Journal</span></a>
+      <a href="habit-builder.html" class="quick-action"><span>ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ</span><span>Habit Builder</span></a>
+      <a href="mood-tracker.html" class="quick-action"><span>ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ</span><span>Mood Tracker</span></a>
+      <a href="index.html#tools" class="quick-action"><span>ÃÂÃÂ°ÃÂÃÂÃÂÃÂÃÂÃÂ ÃÂÃÂ¯ÃÂÃÂ¸ÃÂÃÂ</span><span>All Tools</span></a>
     </div>
   </div>
 
@@ -625,39 +625,19 @@ const SOCIAL_META = {
   youtube:   { label:'YouTube',     svg:'<path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>' }
 };
 
-(function() {
-  var _tried = false;
-  function _doInit(user) {
-    if (_tried) return;
-    _tried = true;
-    loadProfile(user);
-    loadStats(user);
-    loadRecentGoals(user);
-    loadRecentEntries(user);
-    var btn = document.getElementById('sign-out-btn');
-    if (btn) btn.addEventListener('click', function() {
+window.requireAuth(function(user) {
+  if (!user) { window.location.href = 'login.html'; return; }
+  loadProfile(user);
+  loadStats(user);
+  loadRecentGoals(user);
+  loadRecentEntries(user);
+  var signOutBtn = document.getElementById('sign-out-btn');
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', function() {
       firebase.auth().signOut().then(function() { window.location.href = 'index.html'; });
     });
   }
-  function _tryInit() {
-    if (_tried) return;
-    var user = (window.WWF && window.WWF.user) ? window.WWF.user : firebase.auth().currentUser;
-    if (user) { _doInit(user); return true; }
-    return false;
-  }
-  if (!_tryInit()) {
-    var delays = [50, 150, 300, 600, 1000, 1500, 2500];
-    delays.forEach(function(ms, idx) {
-      setTimeout(function() {
-        if (!_tried) {
-          if (!_tryInit() && idx === delays.length - 1) {
-            window.location.href = 'login.html';
-          }
-        }
-      }, ms);
-    });
-  }
-})();
+});
 
 async function loadProfile(user) {
   try {
