@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strong & Steady Meal Plan — 7 Days | WinWithFred</title>
+  <meta name="description" content="Your full 7-day Strong & Steady meal plan. High-protein eating to build muscle, fuel training, and stay consistent.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://winwithfred.com/meal-plan-strong-steady.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; }
+    nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: #fff; }
+    .plan-hero { background: linear-gradient(135deg, #1a1a2e 0%, #162a1f 100%); color: #fff; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .plan-badge { display: inline-block; background: #e85d04; color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.75rem; }
+    .plan-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .plan-hero p { font-size: 1rem; opacity: 0.82; max-width: 540px; margin: 0 auto 1.5rem; line-height: 1.6; }
+    .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+    .stat .num { font-size: 1.4rem; font-weight: 800; color: #f7b267; }
+    .stat .label { font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; }
+    .gate-wrap { max-width: 600px; margin: 3rem auto; padding: 0 1.5rem; text-align: center; }
+    .gate-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 3rem 2rem; }
+    .gate-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .gate-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; }
+    .gate-card p { color: #666; margin-bottom: 1.75rem; line-height: 1.6; }
+    .btn-upgrade { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; padding: 0.9rem 2rem; border-radius: 9px; font-size: 0.95rem; }
+    .btn-upgrade:hover { background: #c94d00; }
+    .btn-login-small { display: block; margin-top: 1rem; color: #888; font-size: 0.85rem; text-decoration: underline; }
+    .content-wrap { max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 1.5rem; display: none; }
+    .section-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 2rem; margin-bottom: 2rem; }
+    .section-card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid #f0f0f0; }
+    .day-block { margin-bottom: 1.75rem; }
+    .day-label { background: #e85d04; color: #fff; display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.8rem; border-radius: 50px; margin-bottom: 0.9rem; }
+    .train-label { background: #1a5c2e; color: #fff; display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 50px; margin-left: 0.5rem; }
+    .rest-label { background: #3a4a6a; color: #fff; display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.65rem; border-radius: 50px; margin-left: 0.5rem; }
+    .meals-table { width: 100%; border-collapse: collapse; }
+    .meals-table th { background: #f7f8fa; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #888; padding: 0.6rem 0.8rem; text-align: left; }
+    .meals-table td { padding: 0.75rem 0.8rem; border-bottom: 1px solid #f3f3f3; font-size: 0.92rem; vertical-align: top; }
+    .meals-table tr:last-child td { border-bottom: none; }
+    .meal-type-cell { font-weight: 700; color: #e85d04; width: 90px; }
+    .cal-cell { color: #888; font-size: 0.82rem; white-space: nowrap; width: 70px; text-align: right; }
+    .tip-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.9rem; color: #444; line-height: 1.55; }
+    .tip-box strong { color: #16a34a; }
+    .grocery-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+    .grocery-group h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e85d04; margin-bottom: 0.6rem; }
+    .grocery-group ul { list-style: none; }
+    .grocery-group ul li { font-size: 0.88rem; color: #444; padding: 0.3rem 0; border-bottom: 1px solid #f3f3f3; display: flex; align-items: center; gap: 0.4rem; }
+    .grocery-group ul li::before { content: "&#9744;"; color: #ccc; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; color: #444; line-height: 1.5; }
+    .tips-list li::before { content: "&#128170;"; flex-shrink: 0; }
+    .retake-row { text-align: center; margin-top: 2rem; }
+    .retake-row a { color: #888; font-size: 0.88rem; text-decoration: underline; }
+    footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
+    footer a { color: #e85d04; text-decoration: none; }
+    @media (max-width: 640px) { .grocery-cols { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .grocery-cols { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">WinWithFred</a>
+  <ul class="nav-links">
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="profile.html" id="nav-profile" style="display:none;">Profile</a></li>
+    <li><a href="login.html" id="nav-login">Login</a></li>
+  </ul>
+</nav>
+
+<div class="plan-hero">
+  <div class="plan-badge">Member Plan</div>
+  <h1>Strong &amp; Steady</h1>
+  <p>High-protein eating to fuel your training, build muscle, and stay consistent — with training-day and rest-day meal variants.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">~2,600</div><div class="label">kcal/day</div></div>
+    <div class="stat"><div class="num">190g</div><div class="label">Protein</div></div>
+    <div class="stat"><div class="num">7 Days</div><div class="label">Full Plan</div></div>
+    <div class="stat"><div class="num">Train &amp; Rest</div><div class="label">Day variants</div></div>
+  </div>
+</div>
+
+<div class="gate-wrap" id="gate-section">
+  <div class="gate-card">
+    <div class="gate-icon">&#128274;</div>
+    <h2>Members Only</h2>
+    <p>Your full 7-day Strong &amp; Steady plan is waiting. Upgrade to access all meal plans, goal tools, and trackers.</p>
+    <a href="pricing.html" class="btn-upgrade">Unlock Full Access</a>
+    <a href="login.html" class="btn-login-small">Already a member? Log in</a>
+  </div>
+</div>
+
+<div class="content-wrap" id="plan-content">
+
+  <div class="section-card">
+    <h2>How This Plan Works</h2>
+    <p style="color:#555; line-height:1.65; margin-bottom:1rem;">This plan targets 2,400–2,800 calories per day with 180–200g of protein. Training days are slightly higher in carbs to fuel performance. Rest days pull calories back slightly and shift toward protein and fats. The goal is consistent protein across all 7 days — this is what drives muscle growth, not any specific workout.</p>
+    <div class="tip-box"><strong>The muscle-building rule:</strong> Eat 0.7–1g of protein per pound of bodyweight every day, including rest days. That's the non-negotiable. Everything else is just details.</div>
+  </div>
+
+  <div class="section-card">
+    <h2>7-Day Meal Plan</h2>
+
+    <div class="day-block">
+      <div class="day-label">Day 1</div><span class="train-label">Training Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>3 whole eggs scrambled + 1 cup oatmeal with banana + 1 cup whole milk</td><td class="cal-cell">720</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Double chicken rice bowl: 7oz grilled chicken, 1.5 cups brown rice, roasted peppers and corn, salsa</td><td class="cal-cell">680</td></tr>
+        <tr><td class="meal-type-cell">Pre-Workout</td><td>Greek yogurt (1 cup) + 1 banana + handful of granola</td><td class="cal-cell">350</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>8oz ground beef bolognese over pasta (2 cups cooked) with parmesan + side salad</td><td class="cal-cell">780</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Protein shake (1.5 scoops) blended with milk and peanut butter</td><td class="cal-cell">380</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 2</div><span class="rest-label">Rest Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>4 scrambled eggs + 2 slices whole grain toast + sliced avocado</td><td class="cal-cell">560</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Turkey burger (7oz) on whole grain bun + side of roasted sweet potato wedges</td><td class="cal-cell">640</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Cottage cheese (1 cup) + 1/2 cup pineapple</td><td class="cal-cell">230</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Baked salmon (7oz) + 1 cup quinoa + roasted asparagus + lemon butter sauce</td><td class="cal-cell">620</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Casein protein shake or Greek yogurt before bed (high-protein, slow-digesting)</td><td class="cal-cell">200</td></tr>
+      </table>
+      <div class="tip-box"><strong>Rest day tip:</strong> Pull carbs back slightly (less rice, pasta, bread) but keep protein high. Your muscles are still recovering and growing on rest days.</div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 3</div><span class="train-label">Training Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Protein pancakes: 1 cup oats blended with 2 eggs + 1 scoop protein powder, cooked as pancakes, topped with berries</td><td class="cal-cell">620</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Steak and rice: 7oz sirloin steak, 1.5 cups white rice, sauteed mushrooms and onions</td><td class="cal-cell">720</td></tr>
+        <tr><td class="meal-type-cell">Pre-Workout</td><td>2 rice cakes with peanut butter + 1 scoop protein in water</td><td class="cal-cell">320</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Chicken stir-fry: 7oz chicken breast, mixed veg, 1.5 cups white rice, oyster sauce</td><td class="cal-cell">680</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Protein shake + 1 cup whole milk</td><td class="cal-cell">340</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 4</div><span class="rest-label">Rest Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>3 eggs + 3 strips turkey bacon + 1 slice whole grain toast + piece of fruit</td><td class="cal-cell">490</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Tuna melt: canned tuna with light mayo on toasted whole grain bread + side salad</td><td class="cal-cell">480</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Beef jerky (2oz) + almonds (1 oz)</td><td class="cal-cell">310</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Pork tenderloin (6oz) + roasted broccoli and carrots + 1/2 cup sweet potato</td><td class="cal-cell">540</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Greek yogurt (1 cup) before bed</td><td class="cal-cell">150</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 5</div><span class="train-label">Training Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>5 egg omelette with cheese, spinach, and peppers + 2 slices toast with butter</td><td class="cal-cell">640</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Ground turkey power bowl: 7oz turkey, black beans, white rice, corn, guacamole, salsa</td><td class="cal-cell">720</td></tr>
+        <tr><td class="meal-type-cell">Pre-Workout</td><td>Banana + protein bar or shake</td><td class="cal-cell">330</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Grilled chicken thighs (7oz) + 1.5 cups pasta with marinara + side salad with olive oil</td><td class="cal-cell">740</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Cottage cheese (1 cup) + 1 tbsp honey</td><td class="cal-cell">230</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 6</div><span class="train-label">Training Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Big breakfast burrito: 3 eggs, turkey sausage, black beans, cheese, salsa in a large whole grain tortilla</td><td class="cal-cell">680</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Chicken and rice meal prep: 7oz chicken breast, 1.5 cups brown rice, steamed broccoli</td><td class="cal-cell">620</td></tr>
+        <tr><td class="meal-type-cell">Pre-Workout</td><td>1 cup oatmeal with protein powder stirred in</td><td class="cal-cell">380</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>8oz New York strip steak + baked potato with butter + roasted asparagus</td><td class="cal-cell">820</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Protein shake</td><td class="cal-cell">260</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 7</div><span class="rest-label">Rest Day</span>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Smoked salmon bagel (whole grain): 2oz salmon, cream cheese, capers + 2 hard-boiled eggs on the side</td><td class="cal-cell">560</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Big salad with grilled chicken (7oz), avocado, hard-boiled eggs, cheese, and olive oil dressing</td><td class="cal-cell">550</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Greek yogurt parfait with granola and berries</td><td class="cal-cell">300</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Sheet pan salmon (7oz) + roasted root vegetables + small portion of wild rice</td><td class="cal-cell">560</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Casein protein shake before bed</td><td class="cal-cell">200</td></tr>
+      </table>
+      <div class="tip-box"><strong>Weekly prep for next week:</strong> Cook a big batch of rice and chicken today. Portion into 4 containers — you'll have lunch sorted for Mon-Thu.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>Weekly Grocery List</h2>
+    <div class="grocery-cols">
+      <div class="grocery-group">
+        <h3>Proteins</h3>
+        <ul>
+          <li>Chicken breast (3 lbs)</li>
+          <li>Chicken thighs (1.5 lbs)</li>
+          <li>Ground beef 90/10 (2 lbs)</li>
+          <li>Ground turkey (1.5 lbs)</li>
+          <li>Sirloin steak (2 lbs)</li>
+          <li>NY strip (1 large steak)</li>
+          <li>Pork tenderloin (1.5 lbs)</li>
+          <li>Salmon fillets (1.5 lbs)</li>
+          <li>Smoked salmon (4 oz)</li>
+          <li>Turkey bacon (1 pack)</li>
+          <li>Turkey sausage (1 pack)</li>
+          <li>Canned tuna (2 cans)</li>
+          <li>Beef jerky (4 oz pack)</li>
+          <li>Eggs (2 dozen)</li>
+          <li>Greek yogurt plain (64 oz)</li>
+          <li>Cottage cheese (32 oz)</li>
+          <li>Protein powder (whey)</li>
+          <li>Casein protein powder</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Produce</h3>
+        <ul>
+          <li>Broccoli (2 heads)</li>
+          <li>Asparagus (2 bunches)</li>
+          <li>Spinach (large bag)</li>
+          <li>Mixed veg stir-fry (bag)</li>
+          <li>Bell peppers (4)</li>
+          <li>Mushrooms (16 oz)</li>
+          <li>Carrots (bag)</li>
+          <li>Sweet potatoes (4)</li>
+          <li>Root vegetables (bag)</li>
+          <li>Romaine lettuce (2 heads)</li>
+          <li>Avocados (4)</li>
+          <li>Bananas (bunch)</li>
+          <li>Blueberries (pint)</li>
+          <li>Pineapple chunks (can)</li>
+          <li>Lemon (4)</li>
+          <li>Onions (3)</li>
+          <li>Corn (canned or frozen)</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Pantry &amp; Carbs</h3>
+        <ul>
+          <li>Rolled oats (2 lb)</li>
+          <li>Brown rice (3 lb)</li>
+          <li>White rice (3 lb)</li>
+          <li>Pasta (2 lb)</li>
+          <li>Whole grain bread (2 loaves)</li>
+          <li>Whole grain tortillas</li>
+          <li>Whole grain bagels</li>
+          <li>Rice cakes</li>
+          <li>Protein bars (4)</li>
+          <li>Granola (bag)</li>
+          <li>Black beans (2 cans)</li>
+          <li>Almond milk (half gallon)</li>
+          <li>Whole milk (half gallon)</li>
+          <li>Peanut butter (jar)</li>
+          <li>Almonds (bag)</li>
+          <li>Olive oil</li>
+          <li>Oyster sauce</li>
+          <li>Parmesan (block)</li>
+          <li>Cream cheese (small)</li>
+          <li>Capers (jar)</li>
+          <li>Marinara sauce (jar)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>Muscle-Building Tips</h2>
+    <ul class="tips-list">
+      <li>Hit your protein target every single day — including rest days. Muscle synthesis happens 24/7, not just on training days.</li>
+      <li>Eat within an hour of finishing a workout. This is your best window for muscle protein synthesis. Protein + carbs is the ideal combo.</li>
+      <li>If you're not gaining weight, eat more. Add 100-200 calories per week until the scale moves. You cannot build muscle in a significant deficit.</li>
+      <li>Creatine monohydrate (3-5g/day) is the most proven muscle supplement. Take it daily — timing doesn't matter.</li>
+      <li>Sleep is a muscle-building tool. 7-9 hours is non-negotiable. Most of your recovery happens while you sleep.</li>
+      <li>Drink enough water. Even mild dehydration kills gym performance and recovery. Aim for 3-4 liters on training days.</li>
+      <li>The plan is a starting point. Adjust calories up if you're losing weight or training intensity increases.</li>
+    </ul>
+  </div>
+
+  <div class="retake-row">
+    <a href="meal-plan-quiz.html">Retake the quiz</a> &nbsp;|&nbsp; <a href="profile.html">Back to Profile</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 WinWithFred. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+
+<script src="wwf-auth.js"></script>
+<script>
+  window.requireAuth(function(user) {
+    if (!user) { window.location.href = 'login.html?next=meal-plan-strong-steady.html'; return; }
+    if (window.WWF && window.WWF.isPremium) {
+      document.getElementById('gate-section').style.display = 'none';
+      document.getElementById('plan-content').style.display = 'block';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    } else {
+      document.getElementById('gate-section').innerHTML = '<div class="gate-card"><div class="gate-icon">&#128274;</div><h2>Upgrade to Access</h2><p>You\'re logged in, but this plan requires a WinWithFred membership.</p><a href="pricing.html" class="btn-upgrade">Upgrade Now</a></div>';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    }
+  });
+</script>
+</body>
+</html>

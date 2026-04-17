@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Meal Plan Match | WinWithFred</title>
+  <meta name="description" content="See your personalized meal plan match and unlock your full 7-day plan on WinWithFred.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://winwithfred.com/meal-plan-result.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; }
+
+    nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: #fff; }
+
+    .result-hero { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); color: #fff; text-align: center; padding: 3rem 1.5rem 2.5rem; }
+    .match-badge { display: inline-block; background: #e85d04; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 1rem; }
+    .result-hero h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .result-hero .plan-name { font-size: clamp(1.9rem, 4vw, 2.8rem); color: #f7b267; font-weight: 800; margin-bottom: 0.75rem; }
+    .result-hero p { font-size: 1rem; opacity: 0.85; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    .content-wrap { max-width: 740px; margin: 2.5rem auto 4rem; padding: 0 1.5rem; }
+
+    .why-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 2rem; margin-bottom: 1.75rem; }
+    .why-card h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin-bottom: 1rem; }
+    .match-reasons { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .match-reasons li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.95rem; color: #444; line-height: 1.5; }
+    .match-reasons li::before { content: "&#10003;"; color: #e85d04; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    .sample-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 2rem; margin-bottom: 1.75rem; }
+    .sample-card h2 { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.5rem; }
+    .sample-card .free-label { display: inline-block; background: #f0fdf4; color: #16a34a; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 50px; margin-bottom: 1.25rem; border: 1px solid #bbf7d0; }
+    .meals-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+    .meal-block { background: #f7f8fa; border-radius: 10px; padding: 1rem; }
+    .meal-block .meal-type { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: #e85d04; margin-bottom: 0.4rem; }
+    .meal-block .meal-name { font-size: 0.95rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meal-block .meal-desc { font-size: 0.82rem; color: #666; line-height: 1.4; }
+
+    .macro-row { display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
+    .macro-chip { background: #fff3ee; color: #e85d04; border: 1px solid #ffd8c0; border-radius: 50px; font-size: 0.82rem; font-weight: 600; padding: 0.35rem 0.9rem; }
+
+    .lock-card { background: linear-gradient(135deg, #1a1a2e, #2d1b4e); border-radius: 14px; padding: 2.5rem 2rem; text-align: center; color: #fff; margin-bottom: 1.75rem; }
+    .lock-card .lock-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .lock-card h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.6rem; }
+    .lock-card p { font-size: 0.95rem; opacity: 0.8; max-width: 440px; margin: 0 auto 1.75rem; line-height: 1.6; }
+    .perks-list { list-style: none; text-align: left; max-width: 360px; margin: 0 auto 1.75rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .perks-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; opacity: 0.9; }
+    .perks-list li::before { content: "&#9733;"; color: #f7b267; }
+    .btn-unlock { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 1rem 2.5rem; border-radius: 10px; transition: background 0.2s; margin-right: 0.5rem; }
+    .btn-unlock:hover { background: #c94d00; }
+    .btn-login { display: inline-block; background: transparent; color: #fff; text-decoration: none; font-size: 0.9rem; opacity: 0.7; margin-top: 0.75rem; border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; transition: opacity 0.2s; }
+    .btn-login:hover { opacity: 1; }
+
+    /* When premium — full plan unlocked -->  */
+    .unlocked-section { display: none; }
+    .unlocked-section .open-plan-btn { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 1rem 2.5rem; border-radius: 10px; }
+
+    .retake-link { text-align: center; margin-top: 1rem; }
+    .retake-link a { color: #888; font-size: 0.88rem; text-decoration: underline; }
+
+    footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
+    footer a { color: #e85d04; text-decoration: none; }
+
+    @media (max-width: 560px) { .meals-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">WinWithFred</a>
+  <ul class="nav-links">
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="profile.html" id="nav-profile" style="display:none;">Profile</a></li>
+    <li><a href="login.html" id="nav-login">Login</a></li>
+  </ul>
+</nav>
+
+<div class="result-hero">
+  <div class="match-badge">Your Match</div>
+  <h1>You're a perfect fit for the</h1>
+  <div class="plan-name" id="plan-name-display">Loading...</div>
+  <p id="plan-tagline">Analyzing your answers...</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="why-card">
+    <h2>Why this plan fits you</h2>
+    <ul class="match-reasons" id="match-reasons">
+      <li>Loading reasons...</li>
+    </ul>
+  </div>
+
+  <div class="sample-card">
+    <h2>Sample Day — Free Preview</h2>
+    <span class="free-label">&#10003; Free to view</span>
+    <div class="meals-grid" id="sample-day"></div>
+    <div class="macro-row" id="macro-targets"></div>
+  </div>
+
+  <!-- GATED — shown to non-premium users -->
+  <div class="lock-card" id="lock-card">
+    <div class="lock-icon">&#128274;</div>
+    <h2>Unlock Your Full 7-Day Plan</h2>
+    <p>Get your complete meal plan with daily recipes, grocery lists, and practical tips — all tailored to your goals.</p>
+    <ul class="perks-list">
+      <li>7-day rotating meal plan with full recipes</li>
+      <li>Printable grocery list for the week</li>
+      <li>Budget-friendly and quick-cook options</li>
+      <li>Plan saved to your profile</li>
+      <li>Access to all WinWithFred tools and trackers</li>
+    </ul>
+    <div>
+      <a href="pricing.html" class="btn-unlock">Get Full Access</a>
+    </div>
+    <div>
+      <a href="login.html" class="btn-login">Already a member? Log in</a>
+    </div>
+  </div>
+
+  <!-- UNLOCKED — shown to premium members -->
+  <div class="unlocked-section" id="unlocked-section">
+    <div style="background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.07); padding:2rem; text-align:center;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">&#127881;</div>
+      <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:0.5rem;">Your Full Plan is Ready</h2>
+      <p style="color:#666; margin-bottom:1.5rem;">7 days of meals, a grocery list, and recipes — all matched to your goals.</p>
+      <a href="#" id="open-plan-btn" class="open-plan-btn">View Your Full Meal Plan &rarr;</a>
+    </div>
+  </div>
+
+  <div class="retake-link">
+    <a href="meal-plan-quiz.html">Retake the quiz</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 WinWithFred. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+
+<script src="wwf-auth.js"></script>
+<script>
+var PLANS = {
+  'lean-light': {
+    name: 'Lean & Light',
+    tagline: 'A calorie-smart, high-satiety plan that makes losing weight feel manageable — not miserable.',
+    reasons: [
+      'Your goal is to lose weight and feel lighter',
+      'Higher protein and fiber to keep you full',
+      'Calorie-controlled without counting every gram',
+      'Practical meals that fit a real schedule'
+    ],
+    sample: {
+      breakfast: { name: 'Greek Yogurt Power Bowl', desc: 'Full-fat Greek yogurt, berries, flax seeds, drizzle of honey' },
+      lunch:     { name: 'Turkey & Avocado Wrap', desc: 'Whole grain wrap, lean turkey, avocado, spinach, mustard' },
+      dinner:    { name: 'Baked Salmon & Veggies', desc: 'Salmon fillet, roasted broccoli and sweet potato, lemon butter' }
+    },
+    macros: { calories: '1,600-1,800 kcal', protein: '130g protein', carbs: '140g carbs', fat: '55g fat' },
+    page: 'meal-plan-lean-light.html'
+  },
+  'strong-steady': {
+    name: 'Strong & Steady',
+    tagline: 'A high-protein plan designed to fuel training, support muscle growth, and keep you consistent.',
+    reasons: [
+      'Your goal is to build muscle and get stronger',
+      'High protein at every meal to support recovery',
+      'Calories calibrated for your activity level',
+      'Training-day and rest-day meal variants included'
+    ],
+    sample: {
+      breakfast: { name: 'Eggs & Oat Power Plate', desc: '3 eggs scrambled, steel-cut oats with banana, glass of milk' },
+      lunch:     { name: 'Chicken Rice Bowl', desc: 'Grilled chicken breast, brown rice, roasted peppers, hot sauce' },
+      dinner:    { name: 'Ground Beef Stir Fry', desc: 'Lean ground beef, mixed veg stir fry, noodles, soy-ginger sauce' }
+    },
+    macros: { calories: '2,400-2,800 kcal', protein: '190g protein', carbs: '280g carbs', fat: '70g fat' },
+    page: 'meal-plan-strong-steady.html'
+  },
+  'everyday-energy': {
+    name: 'Everyday Energy',
+    tagline: 'A Mediterranean-inspired plan built around steady energy, sharp focus, and feeling genuinely good.',
+    reasons: [
+      'Your priority is consistent energy and feeling better',
+      'Anti-inflammatory foods that support mood and focus',
+      'Balanced macros — no spikes, no crashes',
+      'Wholesome meals that are satisfying and sustainable'
+    ],
+    sample: {
+      breakfast: { name: 'Avocado Toast with Eggs', desc: 'Sourdough, smashed avocado, two poached eggs, chili flakes' },
+      lunch:     { name: 'Mediterranean Grain Bowl', desc: 'Quinoa, chickpeas, cucumber, tomato, feta, olive oil dressing' },
+      dinner:    { name: 'Lemon Herb Chicken Thighs', desc: 'Bone-in chicken thighs, roasted root veg, fresh herbs, lemon' }
+    },
+    macros: { calories: '1,900-2,100 kcal', protein: '120g protein', carbs: '220g carbs', fat: '70g fat' },
+    page: 'meal-plan-everyday-energy.html'
+  },
+  'simple-starter': {
+    name: 'Simple Starter',
+    tagline: 'A no-fuss beginner plan built on 20 pantry staples with 15-minute meals and zero intimidation.',
+    reasons: [
+      'You want to eat better without overcomplicating it',
+      'All meals take 15-30 minutes and use simple ingredients',
+      'No macro tracking needed — just eat the plan',
+      'Build confidence in the kitchen as you go'
+    ],
+    sample: {
+      breakfast: { name: 'Overnight Oats', desc: 'Rolled oats, milk, banana, peanut butter — prep the night before' },
+      lunch:     { name: 'Simple Tuna Salad Wrap', desc: 'Canned tuna, mayo, celery, whole grain wrap, side of fruit' },
+      dinner:    { name: 'Sheet Pan Chicken & Veg', desc: 'Chicken thighs, potatoes, broccoli — toss in olive oil and bake' }
+    },
+    macros: { calories: '1,700-2,000 kcal', protein: '100g protein', carbs: '190g carbs', fat: '65g fat' },
+    page: 'meal-plan-simple-starter.html'
+  },
+  'plant-powered': {
+    name: 'Plant-Powered',
+    tagline: 'A complete plant-based plan with protein-rich meals and all the nutrients you need to thrive.',
+    reasons: [
+      'You follow a vegetarian or vegan diet',
+      'Complete proteins at every meal — no deficiencies',
+      'B12, iron, and omega-3 aware ingredient choices',
+      'Satisfying and varied — not just salads'
+    ],
+    sample: {
+      breakfast: { name: 'Tofu Scramble', desc: 'Firm tofu crumbled with turmeric, spinach, peppers, and toast' },
+      lunch:     { name: 'Lentil Soup & Bread', desc: 'Red lentil soup with cumin, coconut milk, crusty sourdough' },
+      dinner:    { name: 'Black Bean Tacos', desc: 'Spiced black beans, corn, avocado, cabbage slaw, lime crema' }
+    },
+    macros: { calories: '1,800-2,100 kcal', protein: '95g protein', carbs: '245g carbs', fat: '60g fat' },
+    page: 'meal-plan-plant-powered.html'
+  },
+  'low-carb-reset': {
+    name: 'Low-Carb Reset',
+    tagline: 'A structured low-carb plan with clear targets, electrolyte guidance, and meals that actually taste good.',
+    reasons: [
+      'You follow a keto or low-carb approach',
+      'Fat-forward, moderate protein, very low carbs',
+      'Electrolyte guidance to avoid the "keto flu"',
+      'Satisfying meals that keep carb cravings at bay'
+    ],
+    sample: {
+      breakfast: { name: 'Bacon & Egg Cups', desc: 'Bacon-lined muffin tin with eggs, cheese, baked until set' },
+      lunch:     { name: 'Chicken Caesar Salad', desc: 'Romaine, grilled chicken, parmesan, Caesar dressing — no croutons' },
+      dinner:    { name: 'Zucchini Noodle Bolognese', desc: 'Beef bolognese over spiralized zucchini, parmesan on top' }
+    },
+    macros: { calories: '1,700-2,000 kcal', protein: '130g protein', carbs: '25-50g net carbs', fat: '130g fat' },
+    page: 'meal-plan-low-carb-reset.html'
+  }
+};
+
+function displayResult(result, isPremium) {
+  var plan = PLANS[result.plan] || PLANS['simple-starter'];
+
+  // Hero
+  document.getElementById('plan-name-display').textContent = plan.name;
+  document.getElementById('plan-tagline').textContent = plan.tagline;
+
+  // Reasons
+  var reasonsHtml = '';
+  plan.reasons.forEach(function(r) { reasonsHtml += '<li>' + r + '</li>'; });
+  document.getElementById('match-reasons').innerHTML = reasonsHtml;
+
+  // Sample day
+  var s = plan.sample;
+  var sampleHtml = [
+    '<div class="meal-block"><div class="meal-type">Breakfast</div><div class="meal-name">' + s.breakfast.name + '</div><div class="meal-desc">' + s.breakfast.desc + '</div></div>',
+    '<div class="meal-block"><div class="meal-type">Lunch</div><div class="meal-name">' + s.lunch.name + '</div><div class="meal-desc">' + s.lunch.desc + '</div></div>',
+    '<div class="meal-block"><div class="meal-type">Dinner</div><div class="meal-name">' + s.dinner.name + '</div><div class="meal-desc">' + s.dinner.desc + '</div></div>'
+  ].join('');
+  document.getElementById('sample-day').innerHTML = sampleHtml;
+
+  // Macros
+  var m = plan.macros;
+  document.getElementById('macro-targets').innerHTML =
+    '<span class="macro-chip">~' + m.calories + '</span>' +
+    '<span class="macro-chip">' + m.protein + '</span>' +
+    '<span class="macro-chip">' + m.carbs + '</span>' +
+    '<span class="macro-chip">' + m.fat + '</span>';
+
+  // Gate
+  if (isPremium) {
+    document.getElementById('lock-card').style.display = 'none';
+    document.getElementById('unlocked-section').style.display = 'block';
+    document.getElementById('open-plan-btn').href = plan.page;
+  }
+}
+
+// Load and render
+document.addEventListener('DOMContentLoaded', function() {
+  var raw = sessionStorage.getItem('wwf_meal_result');
+  if (!raw) {
+    window.location.href = 'meal-plan-quiz.html';
+    return;
+  }
+  var result;
+  try { result = JSON.parse(raw); } catch(e) { window.location.href = 'meal-plan-quiz.html'; return; }
+
+  var isPremium = false;
+  if (window.WWF) {
+    if (window.WWF.user) {
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    }
+    isPremium = window.WWF.isPremium;
+  }
+
+  displayResult(result, isPremium);
+
+  // Try loading after auth resolves
+  if (window.requireAuth) {
+    // Don't require auth — result page is public
+    // But update premium state if user logs in during session
+  }
+});
+</script>
+</body>
+</html>

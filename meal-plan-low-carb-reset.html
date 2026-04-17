@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Low-Carb Reset Meal Plan — 7 Days | WinWithFred</title>
+  <meta name="description" content="Your full 7-day Low-Carb Reset meal plan. Structured keto and low-carb eating with clear targets and meals that actually taste good.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://winwithfred.com/meal-plan-low-carb-reset.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; }
+    nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: #fff; }
+    .plan-hero { background: linear-gradient(135deg, #3a1a00 0%, #5a2e00 100%); color: #fff; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .plan-badge { display: inline-block; background: #e85d04; color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.75rem; }
+    .plan-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .plan-hero p { font-size: 1rem; opacity: 0.82; max-width: 540px; margin: 0 auto 1.5rem; line-height: 1.6; }
+    .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+    .stat .num { font-size: 1.4rem; font-weight: 800; color: #fcd34d; }
+    .stat .label { font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; }
+    .gate-wrap { max-width: 600px; margin: 3rem auto; padding: 0 1.5rem; text-align: center; }
+    .gate-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 3rem 2rem; }
+    .gate-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .gate-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; }
+    .gate-card p { color: #666; margin-bottom: 1.75rem; line-height: 1.6; }
+    .btn-upgrade { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; padding: 0.9rem 2rem; border-radius: 9px; font-size: 0.95rem; }
+    .btn-upgrade:hover { background: #c94d00; }
+    .btn-login-small { display: block; margin-top: 1rem; color: #888; font-size: 0.85rem; text-decoration: underline; }
+    .content-wrap { max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 1.5rem; display: none; }
+    .section-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 2rem; margin-bottom: 2rem; }
+    .section-card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid #f0f0f0; }
+    .day-block { margin-bottom: 1.75rem; }
+    .day-label { background: #b45309; color: #fff; display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.8rem; border-radius: 50px; margin-bottom: 0.9rem; }
+    .meals-table { width: 100%; border-collapse: collapse; }
+    .meals-table th { background: #f7f8fa; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #888; padding: 0.6rem 0.8rem; text-align: left; }
+    .meals-table td { padding: 0.75rem 0.8rem; border-bottom: 1px solid #f3f3f3; font-size: 0.92rem; vertical-align: top; }
+    .meals-table tr:last-child td { border-bottom: none; }
+    .meal-type-cell { font-weight: 700; color: #b45309; width: 90px; }
+    .cal-cell { color: #888; font-size: 0.82rem; white-space: nowrap; width: 70px; text-align: right; }
+    .net-carbs { display: inline-block; background: #fff3ee; color: #b45309; font-size: 0.72rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 50px; margin-left: 0.3rem; border: 1px solid #fcd9b7; }
+    .tip-box { background: #fffbeb; border-left: 4px solid #b45309; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.9rem; color: #444; line-height: 1.55; }
+    .tip-box strong { color: #b45309; }
+    .electrolyte-box { background: #fef9c3; border-left: 4px solid #ca8a04; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: 0.9rem; color: #444; line-height: 1.55; }
+    .electrolyte-box strong { color: #ca8a04; }
+    .grocery-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+    .grocery-group h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #b45309; margin-bottom: 0.6rem; }
+    .grocery-group ul { list-style: none; }
+    .grocery-group ul li { font-size: 0.88rem; color: #444; padding: 0.3rem 0; border-bottom: 1px solid #f3f3f3; }
+    .grocery-group ul li::before { content: "&#9744; "; color: #ccc; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; color: #444; line-height: 1.5; }
+    .tips-list li::before { content: "&#9889;"; color: #e85d04; flex-shrink: 0; }
+    .retake-row { text-align: center; margin-top: 2rem; }
+    .retake-row a { color: #888; font-size: 0.88rem; text-decoration: underline; }
+    footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
+    footer a { color: #e85d04; text-decoration: none; }
+    @media (max-width: 640px) { .grocery-cols { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .grocery-cols { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">WinWithFred</a>
+  <ul class="nav-links">
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="profile.html" id="nav-profile" style="display:none;">Profile</a></li>
+    <li><a href="login.html" id="nav-login">Login</a></li>
+  </ul>
+</nav>
+<div class="plan-hero">
+  <div class="plan-badge">Member Plan</div>
+  <h1>Low-Carb Reset</h1>
+  <p>Structured low-carb and keto eating with clear carb targets, electrolyte guidance, and meals that are actually satisfying.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">~1,900</div><div class="label">kcal/day</div></div>
+    <div class="stat"><div class="num">130g</div><div class="label">Protein</div></div>
+    <div class="stat"><div class="num">&lt;50g</div><div class="label">Net carbs</div></div>
+    <div class="stat"><div class="num">130g</div><div class="label">Fat</div></div>
+  </div>
+</div>
+<div class="gate-wrap" id="gate-section">
+  <div class="gate-card">
+    <div class="gate-icon">&#128274;</div>
+    <h2>Members Only</h2>
+    <p>Your full 7-day Low-Carb Reset plan is waiting. Upgrade to access all meal plans, goal tools, and trackers.</p>
+    <a href="pricing.html" class="btn-upgrade">Unlock Full Access</a>
+    <a href="login.html" class="btn-login-small">Already a member? Log in</a>
+  </div>
+</div>
+<div class="content-wrap" id="plan-content">
+  <div class="section-card">
+    <h2>Before You Start</h2>
+    <div class="electrolyte-box"><strong>Electrolytes are critical.</strong> When you cut carbs, your kidneys excrete more sodium and water. This causes the "keto flu" — headaches, fatigue, cramps in the first week. Fix it: add salt to your food liberally, eat avocado and leafy greens for potassium, and consider a magnesium supplement (200-400mg at night). The flu is optional — proper electrolytes prevent it entirely.</div>
+    <p style="color:#555; line-height:1.65;">This plan keeps net carbs below 50g per day, which is low enough to induce ketosis for most people. If you're doing strict keto, aim for the lower end (20-30g net carbs). If you're doing general low-carb for health or weight management, the full 50g target is fine. Net carbs = total carbs minus fiber.</p>
+  </div>
+  <div class="section-card">
+    <h2>7-Day Meal Plan</h2>
+    <div class="day-block">
+      <div class="day-label">Day 1</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Bacon and egg cups: 4 strips bacon lining muffin tin, 1 egg cracked into each, bake at 375F for 15 min. Side of sauteed spinach <span class="net-carbs">~2g net carbs</span></td><td class="cal-cell">420</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Chicken Caesar salad: 6oz grilled chicken breast, romaine, parmesan, Caesar dressing, no croutons <span class="net-carbs">~5g net carbs</span></td><td class="cal-cell">480</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Celery sticks with almond butter (2 tbsp) <span class="net-carbs">~3g net carbs</span></td><td class="cal-cell">160</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Zucchini noodle bolognese: lean ground beef (6oz), marinara (no sugar), spiralized zucchini, parmesan <span class="net-carbs">~12g net carbs</span></td><td class="cal-cell">520</td></tr>
+      </table>
+      <div class="tip-box"><strong>Day 1:</strong> Total net carbs ~22g. Add salt to every meal. Drink at least 3 liters of water today. This is your most important habit this week.</div>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 2</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Keto egg scramble: 3 eggs scrambled with cheese, mushrooms, diced peppers, butter <span class="net-carbs">~4g net carbs</span></td><td class="cal-cell">380</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>BLT lettuce wraps: crispy bacon, tomato, mayo, avocado, in butter lettuce cups <span class="net-carbs">~6g net carbs</span></td><td class="cal-cell">440</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>1oz cheddar cheese + 10 macadamia nuts <span class="net-carbs">~2g net carbs</span></td><td class="cal-cell">200</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Salmon fillet (6oz) baked with butter, lemon, dill + roasted asparagus + 1/2 avocado <span class="net-carbs">~8g net carbs</span></td><td class="cal-cell">560</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 3</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Smoked salmon and cream cheese on cucumber slices (10 slices) + 2 hard-boiled eggs <span class="net-carbs">~4g net carbs</span></td><td class="cal-cell">360</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Tuna-stuffed avocados: 1 can tuna with mayo, celery, served in 2 avocado halves <span class="net-carbs">~4g net carbs</span></td><td class="cal-cell">430</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Beef jerky (1.5 oz, no sugar added) + string cheese <span class="net-carbs">~2g net carbs</span></td><td class="cal-cell">200</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Pork chops (6oz) pan-seared in butter + roasted broccoli with olive oil + side salad with olive oil dressing <span class="net-carbs">~8g net carbs</span></td><td class="cal-cell">540</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 4</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Keto pancakes: 2 oz cream cheese, 2 eggs, blended smooth, cooked in butter. Top with berries (small portion) <span class="net-carbs">~6g net carbs</span></td><td class="cal-cell">350</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Steak salad: 5oz sirloin strips over mixed greens, cherry tomatoes, blue cheese crumbles, olive oil dressing <span class="net-carbs">~5g net carbs</span></td><td class="cal-cell">490</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Handful of mixed nuts (almonds, walnuts, pecans) <span class="net-carbs">~3g net carbs</span></td><td class="cal-cell">180</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Chicken thighs (skin-on, 6oz) roasted in oven + roasted cauliflower + sauteed green beans with bacon <span class="net-carbs">~10g net carbs</span></td><td class="cal-cell">560</td></tr>
+      </table>
+      <div class="tip-box"><strong>Midweek:</strong> If you're feeling the "keto flu," drink bone broth or add a pinch of salt to water. Magnesium 300mg before bed eliminates most cramps overnight.</div>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 5</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>3 eggs any style + 4 strips bacon + 1/2 avocado + sliced tomato (small) <span class="net-carbs">~5g net carbs</span></td><td class="cal-cell">430</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Cauliflower fried rice: riced cauliflower, 2 eggs, scallions, peas (small amount), soy sauce, sesame oil <span class="net-carbs">~10g net carbs</span></td><td class="cal-cell">380</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>2 tbsp almond butter + celery sticks <span class="net-carbs">~3g net carbs</span></td><td class="cal-cell">170</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Ground lamb patties (6oz) with tzatziki + cucumber salad + roasted eggplant <span class="net-carbs">~10g net carbs</span></td><td class="cal-cell">530</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 6</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Smoked salmon omelette: 3 eggs, 2oz smoked salmon, cream cheese, chives, cooked in butter <span class="net-carbs">~2g net carbs</span></td><td class="cal-cell">400</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Shrimp lettuce tacos: 5oz shrimp sauteed with garlic butter, avocado, sriracha mayo, in butter lettuce cups <span class="net-carbs">~8g net carbs</span></td><td class="cal-cell">430</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Hard-boiled eggs x2 + 5 olives <span class="net-carbs">~1g net carbs</span></td><td class="cal-cell">160</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>NY strip steak (7oz) + roasted Brussels sprouts with bacon + compound butter <span class="net-carbs">~8g net carbs</span></td><td class="cal-cell">650</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 7</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Full keto breakfast: 3 eggs, 4 strips bacon, 1/2 avocado, sauteed mushrooms, side of sliced tomato <span class="net-carbs">~6g net carbs</span></td><td class="cal-cell">500</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Big Cobb salad: chicken breast, hard-boiled eggs, bacon, avocado, tomato, blue cheese, romaine, ranch dressing <span class="net-carbs">~7g net carbs</span></td><td class="cal-cell">530</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Cheese and charcuterie: 1oz each of 2-3 cheeses, salami or pepperoni, olives <span class="net-carbs">~2g net carbs</span></td><td class="cal-cell">250</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Baked cod (6oz) with lemon butter + roasted asparagus + side of cauliflower mash (cream, butter) <span class="net-carbs">~10g net carbs</span></td><td class="cal-cell">490</td></tr>
+      </table>
+      <div class="tip-box"><strong>Week complete.</strong> If you stayed under 50g net carbs every day, you're likely in ketosis. Most people feel the energy shift clearly by day 5-7. Next week, focus on variety.</div>
+    </div>
+  </div>
+  <div class="section-card">
+    <h2>Weekly Grocery List</h2>
+    <div class="grocery-cols">
+      <div class="grocery-group">
+        <h3>Proteins</h3>
+        <ul>
+          <li>Bacon (2 packs)</li>
+          <li>Eggs (2 dozen)</li>
+          <li>Chicken breast (1.5 lbs)</li>
+          <li>Chicken thighs skin-on (1.5 lbs)</li>
+          <li>Ground beef or lamb (1.5 lbs)</li>
+          <li>Sirloin steak (1.5 lbs)</li>
+          <li>NY strip steak (2)</li>
+          <li>Pork chops (1.5 lbs)</li>
+          <li>Salmon fillets (1.5 lbs)</li>
+          <li>Smoked salmon (4 oz)</li>
+          <li>Cod or white fish (1 lb)</li>
+          <li>Shrimp raw (1 lb)</li>
+          <li>Canned tuna (2 cans)</li>
+          <li>Beef jerky no sugar (4 oz)</li>
+          <li>Salami or pepperoni</li>
+          <li>String cheese (pack)</li>
+          <li>Cheddar cheese (block)</li>
+          <li>Blue cheese (small)</li>
+          <li>Cream cheese (8 oz)</li>
+          <li>Parmesan (block)</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Produce</h3>
+        <ul>
+          <li>Romaine lettuce (2 heads)</li>
+          <li>Butter lettuce (2 heads)</li>
+          <li>Mixed greens (large bag)</li>
+          <li>Spinach (bag)</li>
+          <li>Asparagus (2 bunches)</li>
+          <li>Broccoli (2 heads)</li>
+          <li>Brussels sprouts (1 lb)</li>
+          <li>Cauliflower (2 heads)</li>
+          <li>Zucchini (4 medium)</li>
+          <li>Eggplant (1)</li>
+          <li>Mushrooms (16 oz)</li>
+          <li>Green beans (1 lb)</li>
+          <li>Cherry tomatoes (pint)</li>
+          <li>Tomatoes (3)</li>
+          <li>Cucumber (3)</li>
+          <li>Celery (bunch)</li>
+          <li>Bell peppers (3)</li>
+          <li>Avocados (6)</li>
+          <li>Lemons (4)</li>
+          <li>Limes (2)</li>
+          <li>Scallions (bunch)</li>
+          <li>Berries small portion (for pancakes)</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Pantry &amp; Fats</h3>
+        <ul>
+          <li>Butter (1 lb)</li>
+          <li>Olive oil (bottle)</li>
+          <li>Sesame oil (small)</li>
+          <li>Almond butter (jar)</li>
+          <li>Macadamia nuts (bag)</li>
+          <li>Mixed nuts (bag)</li>
+          <li>Almonds (bag)</li>
+          <li>Walnuts (bag)</li>
+          <li>Pecans (bag)</li>
+          <li>Olives (jar)</li>
+          <li>Mayonnaise</li>
+          <li>Caesar dressing</li>
+          <li>Ranch dressing</li>
+          <li>Tzatziki</li>
+          <li>Low-sodium soy sauce</li>
+          <li>Hot sauce / sriracha</li>
+          <li>Bone broth (cartons)</li>
+          <li>Magnesium supplement</li>
+          <li>Salt (sea salt or pink)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section-card">
+    <h2>Low-Carb Success Tips</h2>
+    <ul class="tips-list">
+      <li>Salt your food more than usual, especially in week one. Keto depletes sodium rapidly — this is not optional.</li>
+      <li>If you hit a hunger wall, eat more fat, not more protein. Fat (butter, olive oil, avocado) is your primary fuel on this plan.</li>
+      <li>Watch hidden carbs: sauces, dressings, marinades. Most have added sugars. Always check the label.</li>
+      <li>Eat when hungry, stop when satisfied. Because fat is so satiating, most people naturally eat less on low-carb without trying.</li>
+      <li>Cauliflower is your best friend — it substitutes for rice, mash, and pizza crust without the carb hit.</li>
+      <li>If social eating is hard, stick to protein and vegetables at restaurants. Almost every menu has a steak and salad option.</li>
+      <li>After week one, the cravings for carbs typically drop dramatically. Getting through days 3-5 is the real challenge.</li>
+    </ul>
+  </div>
+  <div class="retake-row">
+    <a href="meal-plan-quiz.html">Retake the quiz</a> &nbsp;|&nbsp; <a href="profile.html">Back to Profile</a>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2025 WinWithFred. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+<script src="wwf-auth.js"></script>
+<script>
+  window.requireAuth(function(user) {
+    if (!user) { window.location.href = 'login.html?next=meal-plan-low-carb-reset.html'; return; }
+    if (window.WWF && window.WWF.isPremium) {
+      document.getElementById('gate-section').style.display = 'none';
+      document.getElementById('plan-content').style.display = 'block';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    } else {
+      document.getElementById('gate-section').innerHTML = '<div class="gate-card"><div class="gate-icon">&#128274;</div><h2>Upgrade to Access</h2><p>You\'re logged in, but this plan requires a WinWithFred membership.</p><a href="pricing.html" class="btn-upgrade">Upgrade Now</a></div>';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    }
+  });
+</script>
+</body>
+</html>

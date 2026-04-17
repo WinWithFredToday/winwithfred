@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lean & Light Meal Plan — 7 Days | WinWithFred</title>
+  <meta name="description" content="Your full 7-day Lean & Light meal plan. Calorie-smart, high-satiety meals for sustainable weight loss.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://winwithfred.com/meal-plan-lean-light.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; }
+    nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: #fff; }
+    .plan-hero { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); color: #fff; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .plan-badge { display: inline-block; background: #e85d04; color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.75rem; }
+    .plan-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .plan-hero p { font-size: 1rem; opacity: 0.82; max-width: 540px; margin: 0 auto 1.5rem; line-height: 1.6; }
+    .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+    .stat { text-align: center; }
+    .stat .num { font-size: 1.4rem; font-weight: 800; color: #f7b267; }
+    .stat .label { font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; }
+    .gate-wrap { max-width: 600px; margin: 3rem auto; padding: 0 1.5rem; text-align: center; }
+    .gate-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 3rem 2rem; }
+    .gate-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .gate-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; }
+    .gate-card p { color: #666; margin-bottom: 1.75rem; line-height: 1.6; }
+    .btn-upgrade { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; padding: 0.9rem 2rem; border-radius: 9px; font-size: 0.95rem; }
+    .btn-upgrade:hover { background: #c94d00; }
+    .btn-login-small { display: block; margin-top: 1rem; color: #888; font-size: 0.85rem; text-decoration: underline; }
+    .content-wrap { max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 1.5rem; display: none; }
+    .section-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 2rem; margin-bottom: 2rem; }
+    .section-card h2 { font-size: 1.2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid #f0f0f0; }
+    .day-block { margin-bottom: 1.75rem; }
+    .day-label { background: #e85d04; color: #fff; display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.8rem; border-radius: 50px; margin-bottom: 0.9rem; }
+    .meals-table { width: 100%; border-collapse: collapse; }
+    .meals-table th { background: #f7f8fa; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #888; padding: 0.6rem 0.8rem; text-align: left; }
+    .meals-table td { padding: 0.75rem 0.8rem; border-bottom: 1px solid #f3f3f3; font-size: 0.92rem; vertical-align: top; }
+    .meals-table tr:last-child td { border-bottom: none; }
+    .meal-type-cell { font-weight: 700; color: #e85d04; width: 90px; }
+    .cal-cell { color: #888; font-size: 0.82rem; white-space: nowrap; width: 70px; text-align: right; }
+    .tip-box { background: #fff8f5; border-left: 4px solid #e85d04; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.9rem; color: #444; line-height: 1.55; }
+    .tip-box strong { color: #e85d04; }
+    .grocery-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+    .grocery-group h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e85d04; margin-bottom: 0.6rem; }
+    .grocery-group ul { list-style: none; }
+    .grocery-group ul li { font-size: 0.88rem; color: #444; padding: 0.3rem 0; border-bottom: 1px solid #f3f3f3; display: flex; align-items: center; gap: 0.4rem; }
+    .grocery-group ul li::before { content: "&#9744;"; font-size: 0.9rem; color: #ccc; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; color: #444; line-height: 1.5; }
+    .tips-list li::before { content: "&#9889;"; color: #e85d04; flex-shrink: 0; }
+    .retake-row { text-align: center; margin-top: 2rem; }
+    .retake-row a { color: #888; font-size: 0.88rem; text-decoration: underline; }
+    footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
+    footer a { color: #e85d04; text-decoration: none; }
+    @media (max-width: 640px) { .grocery-cols { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .grocery-cols { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">WinWithFred</a>
+  <ul class="nav-links">
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="profile.html" id="nav-profile" style="display:none;">Profile</a></li>
+    <li><a href="login.html" id="nav-login">Login</a></li>
+  </ul>
+</nav>
+
+<div class="plan-hero">
+  <div class="plan-badge">Member Plan</div>
+  <h1>Lean &amp; Light</h1>
+  <p>Calorie-smart, high-satiety meals that make losing weight feel manageable — not miserable. Real food, real results.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">~1,700</div><div class="label">kcal/day</div></div>
+    <div class="stat"><div class="num">130g</div><div class="label">Protein</div></div>
+    <div class="stat"><div class="num">7 Days</div><div class="label">Full Plan</div></div>
+    <div class="stat"><div class="num">30 min</div><div class="label">Max cook time</div></div>
+  </div>
+</div>
+
+<!-- GATE — shown until auth confirmed -->
+<div class="gate-wrap" id="gate-section">
+  <div class="gate-card">
+    <div class="gate-icon">&#128274;</div>
+    <h2>Members Only</h2>
+    <p>Your full 7-day Lean &amp; Light plan is waiting. Upgrade to access all meal plans, goal tools, and trackers.</p>
+    <a href="pricing.html" class="btn-upgrade">Unlock Full Access</a>
+    <a href="login.html" class="btn-login-small">Already a member? Log in</a>
+  </div>
+</div>
+
+<!-- FULL PLAN — shown to premium members -->
+<div class="content-wrap" id="plan-content">
+
+  <div class="section-card">
+    <h2>How This Plan Works</h2>
+    <p style="color:#555; line-height:1.65; margin-bottom:1rem;">Each day targets roughly 1,600–1,800 calories with at least 120–140g of protein. You don't need to count every calorie — just follow the plan. High protein and fiber from vegetables will keep you full without feeling deprived. Swap any meal you don't like for another from the same day-type column.</p>
+    <div class="tip-box"><strong>Tip:</strong> Drink 2-3 liters of water daily. Hunger is often thirst in disguise — especially in the first week.</div>
+  </div>
+
+  <div class="section-card">
+    <h2>7-Day Meal Plan</h2>
+
+    <div class="day-block">
+      <div class="day-label">Day 1 — Monday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Plain Greek yogurt (1 cup), 1/2 cup blueberries, 1 tbsp chia seeds, drizzle of honey</td><td class="cal-cell">290</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Turkey &amp; avocado wrap: whole grain tortilla, 4oz turkey breast, 1/4 avocado, spinach, tomato, mustard</td><td class="cal-cell">430</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>1 medium apple + 1 tbsp almond butter</td><td class="cal-cell">180</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Baked salmon (5oz), roasted broccoli (2 cups), 1/2 cup sweet potato mash, lemon &amp; olive oil</td><td class="cal-cell">540</td></tr>
+      </table>
+      <div class="tip-box"><strong>Meal prep tip:</strong> While the salmon is in the oven, roast a double batch of broccoli. Use the other half tomorrow.</div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 2 — Tuesday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>2 eggs scrambled + 1 slice whole grain toast + 1/4 avocado + side of sliced tomato</td><td class="cal-cell">340</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Big chicken salad: 5oz grilled chicken, romaine, cucumber, cherry tomatoes, 2 tbsp olive oil &amp; lemon</td><td class="cal-cell">390</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Cottage cheese (1/2 cup) + sliced cucumber + salt &amp; pepper</td><td class="cal-cell">120</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Ground turkey taco bowl: 4oz lean turkey, black beans, salsa, romaine, lime, cauliflower rice</td><td class="cal-cell">490</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 3 — Wednesday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Protein smoothie: 1 scoop vanilla protein powder, 1 banana, 1 cup unsweetened almond milk, 1 tbsp flaxseed</td><td class="cal-cell">310</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Lentil soup (store-bought or batch-cooked) + small whole grain roll + side salad</td><td class="cal-cell">400</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Hard-boiled egg x2 + 10 almonds</td><td class="cal-cell">190</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Baked chicken breast (5oz) + 1 cup roasted zucchini + 1/2 cup quinoa, seasoned with garlic &amp; herbs</td><td class="cal-cell">460</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 4 — Thursday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Overnight oats: 1/2 cup rolled oats, 1/2 cup Greek yogurt, almond milk, 1 tbsp honey, berries — prep night before</td><td class="cal-cell">350</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Tuna salad lettuce cups: 1 can tuna in water, 1 tbsp light mayo, celery, red onion, served in butter lettuce leaves</td><td class="cal-cell">280</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Hummus (3 tbsp) + carrot and celery sticks</td><td class="cal-cell">160</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Shrimp stir-fry: 5oz shrimp, snap peas, red pepper, mushrooms, light soy sauce, 1/2 cup brown rice</td><td class="cal-cell">430</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 5 — Friday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>2 egg white + 1 whole egg omelet with spinach, mushrooms, and a sprinkle of feta + piece of fruit</td><td class="cal-cell">280</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Turkey chili (batch from previous week or canned) with a small side salad and 1/2 cup brown rice</td><td class="cal-cell">440</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>String cheese + 1 small orange</td><td class="cal-cell">130</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Grilled cod fillet (5oz) + 1 cup asparagus roasted in olive oil + 1/2 cup wild rice</td><td class="cal-cell">460</td></tr>
+      </table>
+      <div class="tip-box"><strong>Friday tip:</strong> If you eat out, order protein + veggies and skip the bread basket. Grilled fish or chicken with a salad keeps you on track anywhere.</div>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 6 — Saturday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Veggie egg muffins (batch): 4 egg muffins with spinach, bell pepper, and low-fat cheese + piece of fruit</td><td class="cal-cell">320</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Big batch soup: chicken and vegetable soup with barley — make a full pot for the week</td><td class="cal-cell">350</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Rice cake x2 + 2 tbsp peanut butter</td><td class="cal-cell">200</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Lean beef burger patty (90/10) on lettuce bun with tomato, onion, mustard + side of roasted sweet potato wedges</td><td class="cal-cell">510</td></tr>
+      </table>
+    </div>
+
+    <div class="day-block">
+      <div class="day-label">Day 7 — Sunday</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Smoked salmon &amp; avocado toast: 2 slices rye bread, 2oz smoked salmon, 1/4 avocado, capers, lemon</td><td class="cal-cell">380</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Leftover chicken &amp; veggie soup from Saturday + side salad</td><td class="cal-cell">320</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Plain Greek yogurt (3/4 cup) + 1 tbsp honey</td><td class="cal-cell">150</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Sheet pan chicken thighs (bone-in, skin removed) + roasted Brussels sprouts + 1/2 cup quinoa</td><td class="cal-cell">530</td></tr>
+      </table>
+      <div class="tip-box"><strong>Sunday prep:</strong> Use today to wash and chop vegetables, cook a batch of grains, and prep proteins for the week ahead. 60 minutes of prep = smooth weekdays.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>Weekly Grocery List</h2>
+    <div class="grocery-cols">
+      <div class="grocery-group">
+        <h3>Proteins</h3>
+        <ul>
+          <li>Salmon fillets (2 lbs)</li>
+          <li>Chicken breast (2 lbs)</li>
+          <li>Chicken thighs (1.5 lbs)</li>
+          <li>Ground turkey, lean (1 lb)</li>
+          <li>Shrimp, raw (1 lb)</li>
+          <li>Cod or white fish (1 lb)</li>
+          <li>Lean ground beef 90/10 (1 lb)</li>
+          <li>Canned tuna in water (2 cans)</li>
+          <li>Smoked salmon (4 oz)</li>
+          <li>Eggs (1 dozen)</li>
+          <li>Greek yogurt, plain (32 oz tub)</li>
+          <li>Cottage cheese (16 oz)</li>
+          <li>String cheese (pack)</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Produce</h3>
+        <ul>
+          <li>Broccoli (2 heads)</li>
+          <li>Brussels sprouts (1 lb)</li>
+          <li>Zucchini (3 medium)</li>
+          <li>Asparagus (1 bunch)</li>
+          <li>Spinach (large bag)</li>
+          <li>Romaine lettuce (2 heads)</li>
+          <li>Butter lettuce (1 head)</li>
+          <li>Cherry tomatoes (pint)</li>
+          <li>Cucumber (2)</li>
+          <li>Bell peppers (3)</li>
+          <li>Mushrooms (8 oz)</li>
+          <li>Snap peas (8 oz)</li>
+          <li>Carrots (bag)</li>
+          <li>Celery (bunch)</li>
+          <li>Auocados (3)</li>
+          <li>Sweet potatoes (3)</li>
+          <li>Blueberries (1 pint)</li>
+          <li>Apples (4)</li>
+          <li>Bananas (4)</li>
+          <li>Lemons (4)</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Pantry &amp; Grains</h3>
+        <ul>
+          <li>Brown rice (2 lb bag)</li>
+          <li>Quinoa (1 lb)</li>
+          <li>Wild rice (1 lb)</li>
+          <li>Rolled oats (1 lb)</li>
+          <li>Whole grain tortillas</li>
+          <li>Whole grain bread (loaf)</li>
+          <li>Rye bread (loaf)</li>
+          <li>Rice cakes (pack)</li>
+          <li>Canned black beans (2 cans)</li>
+          <li>Red lentils (1 lb)</li>
+          <li>Hummus (store-bought)</li>
+          <li>Almond butter (jar)</li>
+          <li>Peanut butter (jar)</li>
+          <li>Almonds (small bag)</li>
+          <li>Chia seeds</li>
+          <li>Flaxseed</li>
+          <li>Olive oil</li>
+          <li>Light soy sauce</li>
+          <li>Protein powder (1 serving)</li>
+          <li>Capers (small jar)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>Tips for Making This Work</h2>
+    <ul class="tips-list">
+      <li>Eat protein at every single meal — it's the biggest lever for staying full and keeping muscle while losing fat.</li>
+      <li>If you're still hungry, add more non-starchy vegetables. Broccoli, spinach, and cucumbers are nearly calorie-free but very filling.</li>
+      <li>Don't skip meals to "save calories." It leads to overeating later. Stick to the three meals plus your snack.</li>
+      <li>Weigh yourself once a week, same time, same conditions. Daily fluctuations are just water — ignore them.</li>
+      <li>Eating out? Protein + vegetables is always safe. Salads with dressing on the side, grilled proteins, skipped bread.</li>
+      <li>The scale may not move the first week due to water retention. Stay the course — fat loss is happening even when the number doesn't drop.</li>
+      <li>Alcohol is the hidden calorie bomb. If you drink, stick to one drink and account for it in your daily calories.</li>
+    </ul>
+  </div>
+
+  <div class="retake-row">
+    <a href="meal-plan-quiz.html">Retake the quiz</a> &nbsp;|&nbsp; <a href="profile.html">Back to Profile</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 WinWithFred. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+
+<script src="wwf-auth.js"></script>
+<script>
+  window.requireAuth(function(user) {
+    if (!user) { window.location.href = 'login.html?next=meal-plan-lean-light.html'; return; }
+    if (window.WWF && window.WWF.isPremium) {
+      document.getElementById('gate-section').style.display = 'none';
+      document.getElementById('plan-content').style.display = 'block';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    } else {
+      document.getElementById('gate-section').innerHTML = '<div class="gate-card"><div class="gate-icon">&#128274;</div><h2>Upgrade to Access</h2><p>You\'re logged in, but this plan requires a WinWithFred membership. Upgrade now to unlock all meal plans.</p><a href="pricing.html" class="btn-upgrade">Upgrade Now</a></div>';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Plan Quiz - Find Your Perfect Plan | WinWithFred</title>
+  <meta name="description" content="Take the free WinWithFred Meal Plan Quiz and get matched to a practical, goal-driven meal plan built for real people.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://winwithfred.com/meal-plan-quiz.html">
+  <meta property="og:title" content="Meal Plan Quiz | WinWithFred">
+  <meta property="og:description" content="Answer 6 quick questions and get a personalized meal plan matched to your goals.">
+  <meta property="og:url" content="https://winwithfred.com/meal-plan-quiz.html">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; }
+
+    /* NAV */
+    nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); color: #fff; text-align: center; padding: 3.5rem 1.5rem 2.5rem; }
+    .hero-badge { display: inline-block; background: #e85d04; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 1rem; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.75rem; }
+    .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 520px; margin: 0 auto; }
+
+    /* PROGRESS */
+    .progress-wrap { max-width: 640px; margin: 2rem auto 0; padding: 0 1.5rem; }
+    .progress-header { display: flex; justify-content: space-between; font-size: 0.85rem; color: #666; margin-bottom: 0.4rem; }
+    .progress-bar { background: #e0e0e0; border-radius: 50px; height: 8px; overflow: hidden; }
+    .progress-fill { background: #e85d04; height: 100%; border-radius: 50px; transition: width 0.4s ease; }
+
+    /* QUIZ CARD */
+    .quiz-wrap { max-width: 640px; margin: 1.5rem auto 4rem; padding: 0 1.5rem; }
+    .quiz-card { background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 2.5rem 2rem; }
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-q { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1a1a2e; }
+    .step-sub { font-size: 0.9rem; color: #777; margin-bottom: 1.75rem; }
+
+    /* OPTIONS */
+    .options { display: flex; flex-direction: column; gap: 0.75rem; }
+    .option-btn {
+      display: flex; align-items: center; gap: 0.9rem;
+      background: #f7f8fa; border: 2px solid #e8e8e8; border-radius: 10px;
+      padding: 1rem 1.2rem; cursor: pointer; text-align: left;
+      transition: all 0.18s; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #1a1a2e;
+    }
+    .option-btn:hover { border-color: #e85d04; background: #fff8f5; }
+    .option-btn.selected { border-color: #e85d04; background: #fff3ee; font-weight: 600; }
+    .option-icon { font-size: 1.4rem; flex-shrink: 0; width: 2rem; text-align: center; }
+    .option-text { flex: 1; }
+    .option-text strong { display: block; }
+    .option-text small { color: #888; font-size: 0.82rem; }
+
+    /* MULTI-SELECT */
+    .multi-hint { font-size: 0.82rem; color: #888; margin-bottom: 1rem; }
+    .multi-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .multi-btn {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: #f7f8fa; border: 2px solid #e8e8e8; border-radius: 10px;
+      padding: 0.75rem 1rem; cursor: pointer; font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; color: #1a1a2e; transition: all 0.18s;
+    }
+    .multi-btn:hover { border-color: #e85d04; background: #fff8f5; }
+    .multi-btn.selected { border-color: #e85d04; background: #fff3ee; font-weight: 600; }
+    .checkmark { width: 18px; height: 18px; border: 2px solid #ccc; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; transition: all 0.15s; }
+    .multi-btn.selected .checkmark { background: #e85d04; border-color: #e85d04; color: #fff; }
+
+    /* NAV BUTTONS */
+    .btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; gap: 1rem; }
+    .btn-back { background: none; border: 2px solid #e0e0e0; color: #666; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+    .btn-back:hover { border-color: #aaa; color: #333; }
+    .btn-next { background: #e85d04; color: #fff; border: none; padding: 0.85rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s; flex: 1; max-width: 220px; }
+    .btn-next:hover { background: #c94d00; }
+    .btn-next:disabled { background: #ccc; cursor: not-allowed; }
+
+    /* RESULT LOADING */
+    .loading-state { text-align: center; padding: 3rem 1rem; display: none; }
+    .spinner { width: 48px; height: 48px; border: 4px solid #f0f0f0; border-top-color: #e85d04; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1.5rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-state p { color: #666; font-size: 1rem; }
+
+    /* FOOTER */
+    footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
+    footer a { color: #e85d04; text-decoration: none; }
+
+    @media (max-width: 480px) {
+      .quiz-card { padding: 1.75rem 1.25rem; }
+      .multi-options { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column-reverse; }
+      .btn-next { max-width: 100%; }
+      .btn-back { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">WinWithFred</a>
+  <ul class="nav-links">
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="profile.html" id="nav-profile" style="display:none;">Profile</a></li>
+    <li><a href="login.html" id="nav-login">Login</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Free Quiz</div>
+  <h1>Find Your Perfect Meal Plan</h1>
+  <p>Answer 6 quick questions and get matched to a practical plan built around your goals, schedule, and preferences.</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-header">
+    <span id="step-label">Question 1 of 6</span>
+    <span id="step-pct">17%</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:17%;"></div></div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="quiz-card">
+
+    <!-- STEP 1: Primary Goal -->
+    <div class="step active" id="step-1">
+      <div class="step-q">What's your main goal right now?</div>
+      <div class="step-sub">Pick the one that matters most to you today.</div>
+      <div class="options" id="opts-1">
+        <button class="option-btn" data-value="weight-loss">
+          <span class="option-icon">&#9889;</span>
+          <span class="option-text"><strong>Lose weight</strong><small>Drop body fat and feel lighter</small></span>
+        </button>
+        <button class="option-btn" data-value="muscle">
+          <span class="option-icon">&#128170;</span>
+          <span class="option-text"><strong>Build muscle and strength</strong><small>Eat to perform and get stronger</small></span>
+        </button>
+        <button class="option-btn" data-value="energy">
+          <span class="option-icon">&#9728;</span>
+          <span class="option-text"><strong>More energy and mental clarity</strong><small>Feel sharp, steady, and good every day</small></span>
+        </button>
+        <button class="option-btn" data-value="health">
+          <span class="option-icon">&#10084;</span>
+          <span class="option-text"><strong>General health and clean eating</strong><small>Eat better, feel better overall</small></span>
+        </button>
+        <button class="option-btn" data-value="starter">
+          <span class="option-icon">&#127807;</span>
+          <span class="option-text"><strong>Not sure yet — just want to eat better</strong><small>Start simple and build from there</small></span>
+        </button>
+      </div>
+      <div class="btn-row">
+        <div></div>
+        <button class="btn-next" id="next-1" disabled onclick="nextStep(1)">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Diet Preference -->
+    <div class="step" id="step-2">
+      <div class="step-q">Do you follow any particular diet?</div>
+      <div class="step-sub">This helps us pick the right plan format for you.</div>
+      <div class="options" id="opts-2">
+        <button class="option-btn" data-value="none">
+          <span class="option-icon">&#127859;</span>
+          <span class="option-text"><strong>No restrictions</strong><small>I eat pretty much everything</small></span>
+        </button>
+        <button class="option-btn" data-value="plant">
+          <span class="option-icon">&#127807;</span>
+          <span class="option-text"><strong>Vegetarian or Vegan</strong><small>No meat, or fully plant-based</small></span>
+        </button>
+        <button class="option-btn" data-value="keto">
+          <span class="option-icon">&#129370;</span>
+          <span class="option-text"><strong>Low-carb or Keto</strong><small>I limit carbs and prioritize fat and protein</small></span>
+        </button>
+        <button class="option-btn" data-value="other">
+          <span class="option-icon">&#128203;</span>
+          <span class="option-text"><strong>Other / flexible</strong><small>I eat mostly clean but no strict rules</small></span>
+        </button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep(2)">&#8592; Back</button>
+        <button class="btn-next" id="next-2" disabled onclick="nextStep(2)">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Activity Level -->
+    <div class="step" id="step-3">
+      <div class="step-q">How active are you most days?</div>
+      <div class="step-sub">This affects your calorie and protein targets.</div>
+      <div class="options" id="opts-3">
+        <button class="option-btn" data-value="sedentary">
+          <span class="option-icon">&#128187;</span>
+          <span class="option-text"><strong>Mostly sedentary</strong><small>Desk job, little exercise</small></span>
+        </button>
+        <button class="option-btn" data-value="light">
+          <span class="option-icon">&#128694;</span>
+          <span class="option-text"><strong>Lightly active</strong><small>Walk daily, some weekend activity</small></span>
+        </button>
+        <button class="option-btn" data-value="moderate">
+          <span class="option-icon">&#127939;</span>
+          <span class="option-text"><strong>Moderately active</strong><small>Work out 3-4x per week</small></span>
+        </button>
+        <button class="option-btn" data-value="very">
+          <span class="option-icon">&#127947;</span>
+          <span class="option-text"><strong>Very active</strong><small>Train hard 5+ times per week</small></span>
+        </button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep(3)">&#8592; Back</button>
+        <button class="btn-next" id="next-3" disabled onclick="nextStep(3)">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Cooking Time -->
+    <div class="step" id="step-4">
+      <div class="step-q">How much time can you spend cooking on a weeknight?</div>
+      <div class="step-sub">Be honest — we'll match you to realistic meals.</div>
+      <div class="options" id="opts-4">
+        <button class="option-btn" data-value="quick">
+          <span class="option-icon">&#9889;</span>
+          <span class="option-text"><strong>15 minutes or less</strong><small>I need fast and simple</small></span>
+        </button>
+        <button class="option-btn" data-value="medium">
+          <span class="option-icon">&#128336;</span>
+          <span class="option-text"><strong>15-30 minutes</strong><small>I can manage a straightforward recipe</small></span>
+        </button>
+        <button class="option-btn" data-value="long">
+          <span class="option-icon">&#127859;</span>
+          <span class="option-text"><strong>30-45 minutes</strong><small>I actually like cooking</small></span>
+        </button>
+        <button class="option-btn" data-value="prep">
+          <span class="option-icon">&#128197;</span>
+          <span class="option-text"><strong>I prefer to meal prep on weekends</strong><small>Batch cook, grab during the week</small></span>
+        </button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep(4)">&#8592; Back</button>
+        <button class="btn-next" id="next-4" disabled onclick="nextStep(4)">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Budget -->
+    <div class="step" id="step-5">
+      <div class="step-q">What's your weekly grocery budget per person?</div>
+      <div class="step-sub">We'll build your plan around what's realistic for you.</div>
+      <div class="options" id="opts-5">
+        <button class="option-btn" data-value="tight">
+          <span class="option-icon">&#128176;</span>
+          <span class="option-text"><strong>Tight — keeping costs low</strong><small>Under $60/week</small></span>
+        </button>
+        <button class="option-btn" data-value="moderate">
+          <span class="option-icon">&#128179;</span>
+          <span class="option-text"><strong>Moderate — reasonable spending</strong><small>$60-$100/week</small></span>
+        </button>
+        <button class="option-btn" data-value="flexible">
+          <span class="option-icon">&#127775;</span>
+          <span class="option-text"><strong>Flexible — quality is the priority</strong><small>$100+/week</small></span>
+        </button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep(5)">&#8592; Back</button>
+        <button class="btn-next" id="next-5" disabled onclick="nextStep(5)">Next &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 6: Foods to Avoid -->
+    <div class="step" id="step-6">
+      <div class="step-q">Any foods you want to avoid?</div>
+      <div class="step-sub">Select all that apply. We'll keep these out of your plan.</div>
+      <p class="multi-hint">Select all that apply</p>
+      <div class="multi-options" id="opts-6">
+        <button class="multi-btn" data-value="dairy" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Dairy
+        </button>
+        <button class="multi-btn" data-value="gluten" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Gluten
+        </button>
+        <button class="multi-btn" data-value="nuts" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Nuts
+        </button>
+        <button class="multi-btn" data-value="eggs" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Eggs
+        </button>
+        <button class="multi-btn" data-value="soy" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Soy
+        </button>
+        <button class="multi-btn" data-value="shellfish" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Shellfish
+        </button>
+        <button class="multi-btn" data-value="none" onclick="toggleMulti(this, true)">
+          <span class="checkmark"></span> None — no restrictions
+        </button>
+        <button class="multi-btn" data-value="other" onclick="toggleMulti(this)">
+          <span class="checkmark"></span> Something else
+        </button>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="prevStep(6)">&#8592; Back</button>
+        <button class="btn-next" id="next-6" onclick="submitQuiz()">See My Plan &rarr;</button>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading-state" id="loading-state">
+      <div class="spinner"></div>
+      <p>Matching you to the right plan...</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 WinWithFred. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+
+<script src="wwf-auth.js"></script>
+<script>
+  var currentStep = 1;
+  var totalSteps = 6;
+  var answers = {};
+
+  // Show/hide nav login vs profile
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.WWF && window.WWF.user) {
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    }
+  });
+
+  function updateProgress() {
+    var pct = Math.round((currentStep / totalSteps) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('step-label').textContent = 'Question ' + currentStep + ' of ' + totalSteps;
+    document.getElementById('step-pct').textContent = pct + '%';
+  }
+
+  // Single-select options
+  document.querySelectorAll('.options').forEach(function(container) {
+    container.querySelectorAll('.option-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var stepId = container.id.replace('opts-', '');
+        container.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        answers['step' + stepId] = btn.getAttribute('data-value');
+        var nextBtn = document.getElementById('next-' + stepId);
+        if (nextBtn) nextBtn.disabled = false;
+      });
+    });
+  });
+
+  function toggleMulti(btn, clearOthers) {
+    var container = document.getElementById('opts-6');
+    if (clearOthers) {
+      container.querySelectorAll('.multi-btn').forEach(function(b) { b.classList.remove('selected'); b.querySelector('.checkmark').textContent = ''; });
+    } else {
+      var noneBtn = container.querySelector('[data-value="none"]');
+      if (noneBtn) { noneBtn.classList.remove('selected'); noneBtn.querySelector('.checkmark').textContent = ''; }
+    }
+    btn.classList.toggle('selected');
+    btn.querySelector('.checkmark').textContent = btn.classList.contains('selected') ? '&#10003;' : '';
+    btn.querySelector('.checkmark').innerHTML = btn.classList.contains('selected') ? '&#10003;' : '';
+    var selected = container.querySelectorAll('.multi-btn.selected');
+    answers['step6'] = Array.from(selected).map(function(b) { return b.getAttribute('data-value'); });
+    document.getElementById('next-6').disabled = selected.length === 0;
+  }
+
+  // Step 6 next btn starts enabled (no avoidances is valid)
+  document.getElementById('next-6').disabled = false;
+
+  function nextStep(fromStep) {
+    document.getElementById('step-' + fromStep).classList.remove('active');
+    currentStep = fromStep + 1;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevStep(fromStep) {
+    document.getElementById('step-' + fromStep).classList.remove('active');
+    currentStep = fromStep - 1;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function computePlan() {
+    var goal = answers['step1'] || 'starter';
+    var diet = answers['step2'] || 'none';
+    var activity = answers['step3'] || 'light';
+    var cookTime = answers['step4'] || 'medium';
+    var budget = answers['step5'] || 'moderate';
+    var avoid = answers['step6'] || [];
+
+    var plan;
+    // Dietary preference overrides goal
+    if (diet === 'plant') {
+      plan = 'plant-powered';
+    } else if (diet === 'keto') {
+      plan = 'low-carb-reset';
+    } else {
+      // Route by goal
+      switch (goal) {
+        case 'weight-loss': plan = 'lean-light'; break;
+        case 'muscle':      plan = 'strong-steady'; break;
+        case 'energy':      plan = 'everyday-energy'; break;
+        case 'health':      plan = 'everyday-energy'; break;
+        default:            plan = 'simple-starter'; break;
+      }
+    }
+
+    return {
+      plan: plan,
+      goal: goal,
+      diet: diet,
+      activity: activity,
+      cookTime: cookTime,
+      budget: budget,
+      avoid: typeof avoid === 'string' ? [avoid] : avoid
+    };
+  }
+
+  function submitQuiz() {
+    // Hide quiz, show loader
+    document.getElementById('step-6').style.display = 'none';
+    document.getElementById('loading-state').style.display = 'block';
+
+    var result = computePlan();
+    sessionStorage.setItem('wwf_meal_result', JSON.stringify(result));
+
+    // Save to Firebase if logged in
+    if (window.WWF && window.WWF.user && window.db) {
+      try {
+        window.db.collection('users').doc(window.WWF.user.uid).set({ mealPlanResult: result }, { merge: true });
+      } catch(e) {}
+    }
+
+    setTimeout(function() {
+      window.location.href = 'meal-plan-result.html';
+    }, 1800);
+  }
+
+  // Schema markup
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "WinWithFred Meal Plan Quiz",
+  "description": "A free 6-question quiz that matches users to a personalized meal plan based on their goals, diet, and lifestyle.",
+  "url": "https://winwithfred.com/meal-plan-quiz.html",
+  "author": { "@type": "Person", "name": "Freddy Owen" }
+}
+</script>
+</body>
+</html>

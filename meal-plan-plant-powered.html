@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant-Powered Meal Plan — 7 Days | WinWithFred</title>
+  <meta name="description" content="Your full 7-day Plant-Powered meal plan. Complete plant-based nutrition with protein-rich meals for vegetarians and vegans.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://winwithfred.com/meal-plan-plant-powered.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; }
+    nav { background: #1a1a2e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.3rem; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: 0.95rem; }
+    .nav-links a:hover { color: #fff; }
+    .plan-hero { background: linear-gradient(135deg, #14532d 0%, #166534 100%); color: #fff; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .plan-badge { display: inline-block; background: #e85d04; color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 0.75rem; }
+    .plan-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .plan-hero p { font-size: 1rem; opacity: 0.82; max-width: 540px; margin: 0 auto 1.5rem; line-height: 1.6; }
+    .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+    .stat .num { font-size: 1.4rem; font-weight: 800; color: #86efac; }
+    .stat .label { font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.5px; }
+    .gate-wrap { max-width: 600px; margin: 3rem auto; padding: 0 1.5rem; text-align: center; }
+    .gate-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 3rem 2rem; }
+    .gate-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .gate-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; }
+    .gate-card p { color: #666; margin-bottom: 1.75rem; line-height: 1.6; }
+    .btn-upgrade { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; padding: 0.9rem 2rem; border-radius: 9px; font-size: 0.95rem; }
+    .btn-upgrade:hover { background: #c94d00; }
+    .btn-login-small { display: block; margin-top: 1rem; color: #888; font-size: 0.85rem; text-decoration: underline; }
+    .content-wrap { max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 1.5rem; display: none; }
+    .section-card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 2rem; margin-bottom: 2rem; }
+    .section-card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 2px solid #f0f0f0; }
+    .day-block { margin-bottom: 1.75rem; }
+    .day-label { background: #16a34a; color: #fff; display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.8rem; border-radius: 50px; margin-bottom: 0.9rem; }
+    .meals-table { width: 100%; border-collapse: collapse; }
+    .meals-table th { background: #f7f8fa; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #888; padding: 0.6rem 0.8rem; text-align: left; }
+    .meals-table td { padding: 0.75rem 0.8rem; border-bottom: 1px solid #f3f3f3; font-size: 0.92rem; vertical-align: top; }
+    .meals-table tr:last-child td { border-bottom: none; }
+    .meal-type-cell { font-weight: 700; color: #16a34a; width: 90px; }
+    .cal-cell { color: #888; font-size: 0.82rem; white-space: nowrap; width: 70px; text-align: right; }
+    .tip-box { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.9rem; color: #444; line-height: 1.55; }
+    .tip-box strong { color: #16a34a; }
+    .nutrient-alert { background: #fff8f5; border-left: 4px solid #e85d04; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.9rem; color: #444; line-height: 1.55; }
+    .nutrient-alert strong { color: #e85d04; }
+    .grocery-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+    .grocery-group h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #16a34a; margin-bottom: 0.6rem; }
+    .grocery-group ul { list-style: none; }
+    .grocery-group ul li { font-size: 0.88rem; color: #444; padding: 0.3rem 0; border-bottom: 1px solid #f3f3f3; display: flex; align-items: center; gap: 0.4rem; }
+    .grocery-group ul li::before { content: "&#9744;"; color: #ccc; }
+    .tips-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .tips-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; color: #444; line-height: 1.5; }
+    .tips-list li::before { content: "&#127807;"; flex-shrink: 0; }
+    .retake-row { text-align: center; margin-top: 2rem; }
+    .retake-row a { color: #888; font-size: 0.88rem; text-decoration: underline; }
+    footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem 1rem; font-size: 0.85rem; }
+    footer a { color: #e85d04; text-decoration: none; }
+    @media (max-width: 640px) { .grocery-cols { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .grocery-cols { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">WinWithFred</a>
+  <ul class="nav-links">
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="profile.html" id="nav-profile" style="display:none;">Profile</a></li>
+    <li><a href="login.html" id="nav-login">Login</a></li>
+  </ul>
+</nav>
+<div class="plan-hero">
+  <div class="plan-badge">Member Plan</div>
+  <h1>Plant-Powered</h1>
+  <p>Complete plant-based nutrition with protein-rich meals at every sitting. Designed for vegetarians and vegans who actually want to feel strong and satisfied.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">~2,000</div><div class="label">kcal/day</div></div>
+    <div class="stat"><div class="num">95g</div><div class="label">Protein</div></div>
+    <div class="stat"><div class="num">7 Days</div><div class="label">Full Plan</div></div>
+    <div class="stat"><div class="num">Complete</div><div class="label">Amino acids</div></div>
+  </div>
+</div>
+<div class="gate-wrap" id="gate-section">
+  <div class="gate-card">
+    <div class="gate-icon">&#128274;</div>
+    <h2>Members Only</h2>
+    <p>Your full 7-day Plant-Powered plan is waiting. Upgrade to access all meal plans, goal tools, and trackers.</p>
+    <a href="pricing.html" class="btn-upgrade">Unlock Full Access</a>
+    <a href="login.html" class="btn-login-small">Already a member? Log in</a>
+  </div>
+</div>
+<div class="content-wrap" id="plan-content">
+  <div class="section-card">
+    <h2>Important Nutrients on This Plan</h2>
+    <div class="nutrient-alert"><strong>Note:</strong> This plan is designed to cover your nutritional needs on a plant-based diet, but consider supplementing: B12 (essential for vegans — get a B12 supplement), Vitamin D (especially in winter), and Omega-3 (algae-based DHA/EPA is the vegan source). A basic multivitamin covers most of this.</div>
+    <p style="color:#555; line-height:1.65;">Every meal pairs complementary plant proteins to give you complete amino acid profiles — you don't need to worry about "protein combining" at every meal as long as variety is high across the day. This plan deliberately includes tofu, tempeh, lentils, chickpeas, edamame, and seeds to ensure you hit your protein targets.</p>
+  </div>
+  <div class="section-card">
+    <h2>7-Day Meal Plan</h2>
+    <div class="day-block">
+      <div class="day-label">Day 1</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Tofu scramble: firm tofu crumbled and cooked with turmeric, nutritional yeast, spinach, and diced peppers. Served with 2 slices whole grain toast</td><td class="cal-cell">420</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Chickpea power bowl: 3/4 cup chickpeas, brown rice, cucumber, cherry tomatoes, tahini dressing, fresh herbs</td><td class="cal-cell">480</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Edamame (1 cup shelled) with sea salt</td><td class="cal-cell">190</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Red lentil curry: red lentils, coconut milk, canned tomatoes, cumin, garam masala. Serve over 1/2 cup basmati rice</td><td class="cal-cell">510</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 2</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Protein overnight oats: rolled oats, plant protein powder, oat milk, chia seeds, banana, almond butter</td><td class="cal-cell">440</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Black bean tacos: spiced black beans, corn tortillas (3), avocado, cabbage slaw, salsa, lime</td><td class="cal-cell">500</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Handful of mixed nuts + 1 small pear</td><td class="cal-cell">220</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Tempeh stir-fry: cubed tempeh (marinated in soy-ginger), broccoli, snap peas, bell pepper, brown rice</td><td class="cal-cell">530</td></tr>
+      </table>
+      <div class="tip-box"><strong>Protein tip:</strong> Tempeh has roughly 20g of protein per serving and is fermented for better digestibility. It's one of the best whole-food plant protein sources available.</div>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 3</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Smoothie bowl: blended frozen mango, banana, plant protein powder, oat milk. Topped with granola, hemp seeds, sliced kiwi</td><td class="cal-cell">430</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Lentil soup (big bowl): red or green lentils, carrots, celery, cumin, lemon. 1 slice whole grain bread</td><td class="cal-cell">440</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>2 rice cakes with almond butter and sliced banana</td><td class="cal-cell">220</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Buddha bowl: roasted sweet potato, chickpeas, quinoa, kale (massaged with lemon and olive oil), tahini drizzle</td><td class="cal-cell">520</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 4</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Avocado toast x2: 2 slices sourdough, 1/2 avocado, hemp seeds, nutritional yeast, chili flakes. Side of fruit</td><td class="cal-cell">410</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Tofu and vegetable wrap: baked tofu strips, roasted peppers, hummus, spinach, whole grain wrap</td><td class="cal-cell">460</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Hummus and veggie sticks (carrot, cucumber, celery)</td><td class="cal-cell">160</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Miso-glazed eggplant with edamame over 3/4 cup brown rice, drizzled with sesame oil and scallions</td><td class="cal-cell">490</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 5</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Chia pudding: 1/4 cup chia seeds, 1 cup coconut milk, 1 tsp vanilla. Set overnight. Top with berries and granola</td><td class="cal-cell">380</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>White bean and kale soup (large portion), whole grain roll, side salad with olive oil</td><td class="cal-cell">470</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>1 oz dark chocolate (70%+) + 15 almonds</td><td class="cal-cell">200</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Stuffed bell peppers: black beans, brown rice, corn, cumin, canned tomatoes, topped with avocado. Bake 25 min</td><td class="cal-cell">500</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 6</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Savoury oatmeal: cooked oats topped with sauteed spinach, nutritional yeast, sun-dried tomatoes, and pumpkin seeds</td><td class="cal-cell">390</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Falafel bowl: 5 falafels, quinoa, cucumber, tomato, olives, hummus, lemon-herb tahini</td><td class="cal-cell">520</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Plant protein shake blended with oat milk and banana</td><td class="cal-cell">280</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Mushroom and lentil bolognese over whole wheat pasta, nutritional yeast for a parmesan-like finish</td><td class="cal-cell">530</td></tr>
+      </table>
+    </div>
+    <div class="day-block">
+      <div class="day-label">Day 7</div>
+      <table class="meals-table">
+        <tr><th>Meal</th><th>What to eat</th><th class="cal-cell">~Cals</th></tr>
+        <tr><td class="meal-type-cell">Breakfast</td><td>Pancakes (plant-based): 1 cup oat flour, 1 tbsp flax egg (1 tbsp ground flax + 3 tbsp water), plant milk, banana, vanilla. Top with berries</td><td class="cal-cell">400</td></tr>
+        <tr><td class="meal-type-cell">Lunch</td><td>Tofu teriyaki bowl: baked tofu, broccoli, edamame, brown rice, teriyaki sauce (low-sodium), sesame seeds</td><td class="cal-cell">500</td></tr>
+        <tr><td class="meal-type-cell">Snack</td><td>Apple + almond butter</td><td class="cal-cell">185</td></tr>
+        <tr><td class="meal-type-cell">Dinner</td><td>Chickpea tikka masala: canned chickpeas, coconut milk, canned tomatoes, tikka masala spice blend. Serve over basmati rice with fresh cilantro</td><td class="cal-cell">510</td></tr>
+      </table>
+      <div class="tip-box"><strong>Week complete.</strong> You've consistently hit protein targets through plant foods alone. That's the hardest part of plant-based eating — and you've proven it's completely doable.</div>
+    </div>
+  </div>
+  <div class="section-card">
+    <h2>Weekly Grocery List</h2>
+    <div class="grocery-cols">
+      <div class="grocery-group">
+        <h3>Plant Proteins</h3>
+        <ul>
+          <li>Firm tofu (3 blocks)</li>
+          <li>Tempeh (2 packs)</li>
+          <li>Chickpeas canned (4 cans)</li>
+          <li>Black beans canned (3 cans)</li>
+          <li>White beans canned (2 cans)</li>
+          <li>Red lentils (1 lb)</li>
+          <li>Green lentils (1 lb)</li>
+          <li>Edamame frozen (2 bags)</li>
+          <li>Plant protein powder</li>
+          <li>Hemp seeds</li>
+          <li>Falafel (store-bought)</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Produce</h3>
+        <ul>
+          <li>Spinach (large bag)</li>
+          <li>Kale (large bunch)</li>
+          <li>Broccoli (2 heads)</li>
+          <li>Bell peppers (4)</li>
+          <li>Eggplant (2)</li>
+          <li>Mushrooms (16 oz)</li>
+          <li>Sweet potatoes (3)</li>
+          <li>Snap peas (bag)</li>
+          <li>Cherry tomatoes (2 pints)</li>
+          <li>Cucumber (2)</li>
+          <li>Carrots (bag)</li>
+          <li>Celery (bunch)</li>
+          <li>Avocados (4)</li>
+          <li>Bananas (bunch)</li>
+          <li>Mixed berries (bag)</li>
+          <li>Mango frozen (bag)</li>
+          <li>Kiwi (3)</li>
+          <li>Apples (4)</li>
+          <li>Pear (2)</li>
+          <li>Lemons (4)</li>
+          <li>Limes (4)</li>
+          <li>Scallions (bunch)</li>
+          <li>Fresh cilantro</li>
+        </ul>
+      </div>
+      <div class="grocery-group">
+        <h3>Pantry</h3>
+        <ul>
+          <li>Rolled oats (1 lb)</li>
+          <li>Brown rice (2 lb)</li>
+          <li>Basmati rice (1 lb)</li>
+          <li>Quinoa (1 lb)</li>
+          <li>Whole wheat pasta (1 lb)</li>
+          <li>Sourdough bread</li>
+          <li>Whole grain bread</li>
+          <li>Whole grain tortillas</li>
+          <li>Rice cakes</li>
+          <li>Granola</li>
+          <li>Chia seeds (bag)</li>
+          <li>Pumpkin seeds</li>
+          <li>Almonds</li>
+          <li>Mixed nuts</li>
+          <li>Almond butter</li>
+          <li>Tahini (jar)</li>
+          <li>Hummus</li>
+          <li>Coconut milk (3 cans)</li>
+          <li>Canned diced tomatoes (4 cans)</li>
+          <li>Sun-dried tomatoes</li>
+          <li>Olive oil</li>
+          <li>Sesame oil</li>
+          <li>Low-sodium soy sauce</li>
+          <li>Miso paste</li>
+          <li>Nutritional yeast</li>
+          <li>Ground flaxseed</li>
+          <li>Dark chocolate 70%+</li>
+          <li>Oat milk (half gallon)</li>
+          <li>Tikka masala spice</li>
+          <li>Garam masala</li>
+          <li>Cumin</li>
+          <li>Turmeric</li>
+          <li>B12 supplement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section-card">
+    <h2>Plant-Based Eating Tips</h2>
+    <ul class="tips-list">
+      <li>Eat protein at every meal without exception. Tofu, tempeh, legumes, and edamame are your go-to sources. Don't rely on salads alone.</li>
+      <li>Nutritional yeast is non-negotiable. It adds B vitamins, protein, and a savory depth to dishes. Use it on everything.</li>
+      <li>Combine legumes and grains regularly — they provide complementary amino acids. Rice and lentils, beans and rice, chickpeas and quinoa all work.</li>
+      <li>Take a B12 supplement daily. It's the one nutrient that genuinely cannot be obtained reliably from plants alone.</li>
+      <li>Hemp seeds (3 tbsp = 10g protein, all essential amino acids) are the easiest protein boost to add to any meal.</li>
+      <li>Batch-cook lentils and beans from dry rather than canned when you have time — it's significantly cheaper and tastes better.</li>
+      <li>If your energy dips in week one, you may need more calories. Plant foods are often less calorie-dense — eat bigger portions and add healthy fats like avocado, nuts, and olive oil.</li>
+    </ul>
+  </div>
+  <div class="retake-row">
+    <a href="meal-plan-quiz.html">Retake the quiz</a> &nbsp;|&nbsp; <a href="profile.html">Back to Profile</a>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2025 WinWithFred. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+</footer>
+<script src="wwf-auth.js"></script>
+<script>
+  window.requireAuth(function(user) {
+    if (!user) { window.location.href = 'login.html?next=meal-plan-plant-powered.html'; return; }
+    if (window.WWF && window.WWF.isPremium) {
+      document.getElementById('gate-section').style.display = 'none';
+      document.getElementById('plan-content').style.display = 'block';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    } else {
+      document.getElementById('gate-section').innerHTML = '<div class="gate-card"><div class="gate-icon">&#128274;</div><h2>Upgrade to Access</h2><p>You\'re logged in, but this plan requires a WinWithFred membership.</p><a href="pricing.html" class="btn-upgrade">Upgrade Now</a></div>';
+      document.getElementById('nav-login').style.display = 'none';
+      document.getElementById('nav-profile').style.display = 'inline';
+    }
+  });
+</script>
+</body>
+</html>
