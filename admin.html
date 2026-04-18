@@ -20,6 +20,7 @@
       align-items: center;
     }
     .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.2rem; text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
     .nav-badge {
       background: #e85d04;
       color: #fff;
@@ -30,34 +31,85 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
+    .btn-signout {
+      background: transparent;
+      color: #aaa;
+      border: 1px solid #444;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      display: none;
+    }
+    .btn-signout:hover { color: #fff; border-color: #777; }
 
-    /* ── Auth gate ── */
-    #auth-gate {
+    /* ── Login form ── */
+    #login-screen {
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 80vh;
     }
-    .gate-card {
+    .login-card {
       background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      padding: 3rem 2.5rem;
-      text-align: center;
-      max-width: 420px;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+      padding: 2.5rem 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
     }
-    .gate-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .gate-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .gate-card p { color: #666; margin-bottom: 1.5rem; line-height: 1.6; }
+    .login-icon { font-size: 2.2rem; margin-bottom: 0.75rem; }
+    .login-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .login-card p { color: #888; font-size: 0.88rem; margin-bottom: 1.75rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.3px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #1a1a2e;
+      background: #fafafa;
+      transition: border-color 0.15s;
+      outline: none;
+    }
+    .form-group input:focus { border-color: #e85d04; background: #fff; }
     .btn-login {
-      display: inline-block;
+      width: 100%;
       background: #e85d04;
       color: #fff;
       font-weight: 700;
-      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      padding: 0.8rem;
+      border: none;
       border-radius: 9px;
-      text-decoration: none;
-      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 0.5rem;
+      transition: background 0.15s;
+    }
+    .btn-login:hover { background: #cf5203; }
+    .btn-login:disabled { background: #f0a070; cursor: not-allowed; }
+    .login-error {
+      display: none;
+      background: #fff3ee;
+      border-left: 3px solid #e85d04;
+      color: #c04a00;
+      font-size: 0.85rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 0 6px 6px 0;
+      margin-top: 1rem;
     }
 
     /* ── Setup banner ── */
@@ -221,7 +273,7 @@
 
     /* ── Loading spinner ── */
     #loading-state {
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       min-height: 60vh;
@@ -258,6 +310,7 @@
       .stats-grid { grid-template-columns: 1fr; }
       nav { padding: 1rem; }
       .page-header, .stats-grid, .charts-row, .table-section { padding-left: 1rem; padding-right: 1rem; }
+      .login-card { padding: 2rem 1.5rem; margin: 1rem; }
     }
   </style>
 </head>
@@ -265,16 +318,30 @@
 
 <nav>
   <a href="index.html" class="nav-logo">WinWithFred</a>
-  <span class="nav-badge">Admin</span>
+  <div class="nav-right">
+    <span class="nav-badge">Admin</span>
+    <button class="btn-signout" id="btn-signout" onclick="signOut()">Sign out</button>
+  </div>
 </nav>
 
-<!-- Not logged in / not admin -->
-<div id="auth-gate" style="display:none">
-  <div class="gate-card">
-    <div class="gate-icon">🔒</div>
-    <h2>Admin Access Only</h2>
-    <p>This page is restricted to the site owner. Log in with your admin account to continue.</p>
-    <a href="login.html?next=admin.html" class="btn-login">Log In</a>
+<!-- Login form -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-icon">🔐</div>
+    <h2>Admin Login</h2>
+    <p>Sign in with your admin credentials to access the dashboard.</p>
+    <form id="login-form" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="your@email.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-login" id="login-btn">Log In</button>
+      <div class="login-error" id="login-error"></div>
+    </form>
   </div>
 </div>
 
@@ -284,7 +351,7 @@
   <p>Loading dashboard…</p>
 </div>
 
-<!-- Setup required banner (shown when Firestore rules need updating) -->
+<!-- Setup required banner -->
 <div id="setup-banner">
   <strong>⚠️ One-time Firestore setup required</strong> — The dashboard can see member counts, but to read individual member records you need to add an admin rule in Firebase Console → Firestore → Rules. Add this inside your existing <code>match /users/{userId}</code> block:<code>allow read: if request.auth.token.email == 'freddyowenprivate@gmail.com';</code>
   Then reload this page. Your current counts above are accurate — only the member table below needs this rule.
@@ -397,15 +464,59 @@
 </div>
 
 <script src="firebase-config.js"></script>
-<script src="wwf-auth.js"></script>
 <script>
 (function () {
   const ADMIN_EMAIL = 'freddyowenprivate@gmail.com';
 
   function show(id) { document.getElementById(id).style.display = ''; }
   function hide(id) { document.getElementById(id).style.display = 'none'; }
+  function showFlex(id) { document.getElementById(id).style.display = 'flex'; }
   function el(id) { return document.getElementById(id); }
 
+  // ── Login handler ──
+  window.handleLogin = async function(e) {
+    e.preventDefault();
+    var email = el('login-email').value.trim();
+    var password = el('login-password').value;
+    var btn = el('login-btn');
+    var errEl = el('login-error');
+
+    errEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Signing in…';
+
+    try {
+      var result = await firebase.auth().signInWithEmailAndPassword(email, password);
+      if (result.user.email !== ADMIN_EMAIL) {
+        await firebase.auth().signOut();
+        showError('This account does not have admin access.');
+        return;
+      }
+      // onAuthStateChanged will handle the rest
+    } catch (err) {
+      var msg = 'Login failed. Please check your credentials.';
+      if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
+        msg = 'Incorrect email or password.';
+      } else if (err.code === 'auth/too-many-requests') {
+        msg = 'Too many attempts. Please wait a moment and try again.';
+      }
+      showError(msg);
+    }
+
+    function showError(msg) {
+      errEl.textContent = msg;
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Log In';
+    }
+  };
+
+  // ── Sign out ──
+  window.signOut = async function() {
+    await firebase.auth().signOut();
+  };
+
+  // ── Dashboard functions ──
   function formatDate(val) {
     if (!val) return '—';
     let d;
@@ -477,19 +588,10 @@
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false }
-        },
+        plugins: { legend: { display: false } },
         scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { stepSize: 1, font: { size: 11 } },
-            grid: { color: '#f0f0f0' }
-          },
-          x: {
-            ticks: { font: { size: 11 } },
-            grid: { display: false }
-          }
+          y: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 11 } }, grid: { color: '#f0f0f0' } },
+          x: { ticks: { font: { size: 11 } }, grid: { display: false } }
         }
       }
     });
@@ -501,8 +603,6 @@
       tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">No members found</td></tr>';
       return;
     }
-
-    // Sort: premium first, then by date desc
     members.sort((a, b) => {
       if (a.premium && !b.premium) return -1;
       if (!a.premium && b.premium) return 1;
@@ -510,7 +610,6 @@
       const db2 = b.createdAt ? (b.createdAt.toDate ? b.createdAt.toDate() : new Date(b.createdAt)) : new Date(0);
       return db2 - da;
     });
-
     tbody.innerHTML = members.map(m => `
       <tr>
         <td class="email-cell">${m.email || '<span class="no-data">not yet captured</span>'}</td>
@@ -525,9 +624,8 @@
     const total = members.length;
     const premium = members.filter(m => m.premium).length;
     const free = total - premium;
-
     const now = new Date();
-    const thisMonthKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    const thisMonthKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '00');
     const newThisMonth = members.filter(m => monthKey(m.createdAt) === thisMonthKey).length;
 
     el('stat-total').textContent = total;
@@ -538,14 +636,11 @@
     const pct = total > 0 ? Math.round((premium / total) * 100) : 0;
     el('stat-premium-pct').textContent = pct + '% conversion rate';
     el('stat-new-sub').textContent = newThisMonth === 0 ? 'None with date yet' : 'Joined this month';
-
     el('pct-premium').textContent = pct + '%';
     el('pct-free').textContent = (100 - pct) + '%';
-
     const newPct = total > 0 ? Math.round((newThisMonth / total) * 100) : 0;
     el('pct-new').textContent = newPct + '%';
 
-    // Animate bars after render
     setTimeout(() => {
       el('bar-premium').style.width = pct + '%';
       el('bar-free').style.width = (100 - pct) + '%';
@@ -558,28 +653,25 @@
 
   async function loadDashboard(user) {
     const db = firebase.firestore();
+    hide('login-screen');
+    showFlex('loading-state');
+    el('btn-signout').style.display = 'inline-block';
 
     try {
       const snap = await db.collection('users').get();
       const members = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-
       hide('loading-state');
       show('admin-content');
-
       renderStats(members);
       renderChart(members);
       renderTable(members);
-
     } catch (err) {
       console.error('Firestore error:', err);
       hide('loading-state');
       show('admin-content');
       show('setup-banner');
-
-      // Try to get count via a single doc read to show what we can
       try {
-        const myDoc = await db.collection('users').doc(user.uid).get();
-        // We can at least show partial info
+        await db.collection('users').doc(user.uid).get();
         el('error-state').style.display = '';
         el('error-msg').textContent = 'Full member list requires a Firestore rule update (see banner above). ' + err.message;
         renderStats([]);
@@ -592,26 +684,20 @@
     }
   }
 
-  // Auth check
-  window.requireAuth(function (user) {
-    hide('loading-state');
-
-    if (!user) {
-      show('auth-gate');
-      return;
+  // ── Auth state listener ──
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user && user.email === ADMIN_EMAIL) {
+      loadDashboard(user);
+    } else {
+      // Not logged in or wrong account — show login form
+      hide('loading-state');
+      hide('admin-content');
+      hide('setup-banner');
+      hide('error-state');
+      show('login-screen');
+      el('btn-signout').style.display = 'none';
+      if (user) firebase.auth().signOut(); // kick out non-admin
     }
-
-    if (user.email !== ADMIN_EMAIL) {
-      const gate = el('auth-gate');
-      gate.style.display = 'flex';
-      gate.querySelector('p').textContent = 'This dashboard is only accessible to the site owner.';
-      gate.querySelector('a').style.display = 'none';
-      return;
-    }
-
-    // Admin confirmed — load data
-    el('loading-state').style.display = 'flex';
-    loadDashboard(user);
   });
 
 })();
