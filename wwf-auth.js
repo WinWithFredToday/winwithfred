@@ -1,4 +1,4 @@
-// requireAuth polyfill — queues callbacks until firebase-config.js loads.
+// requireAuth polyfill â queues callbacks until firebase-config.js loads.
 // Since wwf-auth.js is loaded synchronously, this always runs before any
 // inline page scripts, ensuring requireAuth() is never undefined.
 window._wwfAuthQueue = window._wwfAuthQueue || [];
@@ -102,6 +102,22 @@ if (typeof window.requireAuth !== "function") {
     }
 
     // Read premium status from Firestore user doc
+    async function captureUserData(user) {
+      if (!user || !user.uid) return;
+      try {
+        var ref = _db.collection('users').doc(user.uid);
+        var doc = await ref.get();
+        var updates = {};
+        if (!doc.exists || !doc.data().email) updates.email = user.email || '';
+        if (!doc.exists || !doc.data().createdAt) updates.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        if (!doc.exists || !doc.data().displayName) updates.displayName = user.displayName || '';
+        if (Object.keys(updates).length > 0) {
+          if (!doc.exists) { updates.premium = false; await ref.set(updates); }
+          else { await ref.update(updates); }
+        }
+      } catch (e) { /* non-fatal */ }
+    }
+
     async function checkPremium(uid) {
       try {
         var doc = await _db.collection('users').doc(uid).get();
@@ -186,6 +202,7 @@ if (typeof window.requireAuth !== "function") {
         // Check premium status from Firestore before rendering banner
         window.WWF.isPremium = await checkPremium(user.uid);
         try { await migrateLocalStorage(user.uid); } catch (e) { /* non-fatal */ }
+        try { await captureUserData(user); } catch (e) { /* non-fatal */ }
       } else {
         window.WWF.isPremium = false;
       }
