@@ -463,6 +463,9 @@
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
 <script>
 (function () {
@@ -675,7 +678,7 @@
         el('error-state').style.display = '';
         el('error-msg').textContent = 'Full member list requires a Firestore rule update (see banner above). ' + err.message;
         renderStats([]);
-        renderTable([]);
+        renDerTable([]);
         el('members-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Requires Firestore rule update — see yellow banner above</td></tr>';
       } catch (e2) {
         el('error-state').style.display = '';
