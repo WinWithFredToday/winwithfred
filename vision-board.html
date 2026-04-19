@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision Board | WinWithFred</title>
+  <meta name="description" content="Build your personal vision board. Upload images for your goals, organize by category, and keep your dreams in front of you every day.">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --orange: #f97316;
+      --orange-l: #fff7ed;
+      --dark: #111827;
+      --black: #0d1117;
+      --muted: #6b7280;
+      --light: #f3f4f6;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #f9fafb; color: var(--dark); }
+    a { color: inherit; text-decoration: none; }
+
+    /* Navbar */
+    .navbar { background: var(--black); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 1.2rem; font-weight: 900; color: #fff; }
+    .nav-logo span { color: var(--orange); }
+    .navbar-links { display: flex; gap: 24px; align-items: center; }
+    .navbar-links a { color: #9ca3af; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
+    .navbar-links a:hover, .navbar-links a.active { color: #fff; }
+    .btn { display: inline-block; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.15s; border: none; }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: #ea6c0a; }
+
+    /* Hero */
+    .hero { background: var(--black); color: #fff; padding: 52px 24px 44px; text-align: center; }
+    .hero-label { font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .hero h1 { font-size: 2.4rem; font-weight: 900; margin-bottom: 14px; line-height: 1.15; }
+    .hero p { color: #9ca3af; font-size: 1rem; max-width: 540px; margin: 0 auto 28px; line-height: 1.65; }
+    .hero-tip { display: inline-flex; align-items: center; gap: 8px; background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3); border-radius: 999px; padding: 6px 16px; font-size: 0.82rem; color: #fdba74; }
+
+    /* Main */
+    .main { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* Toolbar */
+    .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 12px; }
+    .toolbar-left { display: flex; flex-direction: column; gap: 4px; }
+    .toolbar-title { font-size: 1rem; font-weight: 700; color: var(--dark); }
+    .toolbar-sub { font-size: 0.85rem; color: var(--muted); }
+    .btn-add-cat { background: var(--orange); color: #fff; border: none; padding: 11px 22px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 7px; transition: background 0.15s; }
+    .btn-add-cat:hover { background: #ea6c0a; }
+
+    /* Category section */
+    .category-section { margin-bottom: 52px; }
+    .category-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid #e5e7eb; }
+    .cat-icon { width: 32px; height: 32px; background: var(--orange-l); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cat-icon svg { width: 16px; height: 16px; color: var(--orange); }
+    .category-name { font-size: 1.2rem; font-weight: 800; color: var(--dark); flex: 1; }
+    .cat-count { font-size: 0.8rem; font-weight: 600; color: var(--muted); background: var(--light); border-radius: 999px; padding: 2px 10px; }
+    .btn-cat-action { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 0.82rem; font-weight: 600; padding: 5px 10px; border-radius: 8px; transition: all 0.15s; white-space: nowrap; }
+    .btn-cat-action:hover { color: var(--dark); background: var(--light); }
+    .btn-cat-del:hover { color: #ef4444 !important; background: #fef2f2 !important; }
+
+    /* Image grid */
+    .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; min-height: 60px; transition: background 0.15s, padding 0.15s; border-radius: var(--radius); }
+    .image-grid.drop-active { background: var(--orange-l); padding: 8px; outline: 2px dashed var(--orange); outline-offset: -2px; }
+
+    /* Image card */
+    .image-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); transition: box-shadow 0.2s, transform 0.2s, opacity 0.15s; position: relative; cursor: grab; user-select: none; }
+    .image-card:active { cursor: grabbing; }
+    .image-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
+    .image-card.is-dragging { opacity: 0.35; transform: scale(0.97); cursor: grabbing; }
+    .image-card.drop-target { box-shadow: 0 0 0 3px var(--orange); transform: translateY(-2px); }
+    .card-img-wrap { position: relative; overflow: hidden; }
+    .image-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.25s; }
+    .image-card:hover img { transform: scale(1.03); }
+    .btn-delete-img { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.55); color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.15s, background 0.15s; z-index: 2; }
+    .image-card:hover .btn-delete-img { opacity: 1; }
+    .btn-delete-img:hover { background: #ef4444; }
+    .drag-handle { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.45); color: #fff; border-radius: 6px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.15s; cursor: grab; z-index: 2; }
+    .image-card:hover .drag-handle { opacity: 1; }
+    .image-card-body { padding: 10px 12px 12px; }
+    .image-caption { width: 100%; border: none; outline: none; font-size: 0.87rem; color: var(--dark); font-family: inherit; resize: none; background: transparent; line-height: 1.45; overflow: hidden; min-height: 22px; }
+    .image-caption::placeholder { color: #d1d5db; font-style: italic; }
+    .image-caption:focus { background: var(--light); border-radius: 6px; padding: 4px 6px; margin: -4px -6px; width: calc(100% + 12px); }
+
+    /* Add image card */
+    .add-image-card { background: #fff; border-radius: var(--radius); border: 2px dashed #d1d5db; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s; color: var(--muted); }
+    .add-image-card:hover { border-color: var(--orange); background: var(--orange-l); color: var(--orange); }
+    .add-image-card svg { width: 30px; height: 30px; }
+    .add-image-card span { font-size: 0.88rem; font-weight: 600; }
+    .add-image-card small { font-size: 0.78rem; opacity: 0.7; }
+    .file-input { display: none; }
+
+    /* Empty state */
+    .empty-board { text-align: center; padding: 80px 24px; }
+    .empty-board-icon { width: 72px; height: 72px; background: var(--orange-l); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .empty-board-icon svg { width: 36px; height: 36px; color: var(--orange); }
+    .empty-board h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+    .empty-board p { color: var(--muted); max-width: 380px; margin: 0 auto 24px; line-height: 1.6; }
+
+    /* Modal */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal { background: #fff; border-radius: 18px; padding: 32px; max-width: 420px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: translateY(8px); transition: transform 0.2s; }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+    .modal p { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .modal-input { width: 100%; border: 2px solid #e5e7eb; border-radius: 10px; padding: 11px 14px; font-size: 1rem; font-family: inherit; outline: none; transition: border-color 0.15s; }
+    .modal-input:focus { border-color: var(--orange); }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+    .btn-modal-cancel { background: var(--light); color: var(--muted); border: none; padding: 10px 20px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; cursor: pointer; }
+    .btn-modal-cancel:hover { background: #e5e7eb; }
+    .btn-modal-confirm { background: var(--orange); color: #fff; border: none; padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; cursor: pointer; }
+    .btn-modal-confirm:hover { background: #ea6c0a; }
+
+    /* Footer */
+    .footer { background: var(--black); color: #9ca3af; padding: 48px 24px 32px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px; }
+    .footer-brand { max-width: 280px; }
+    .footer-logo { font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .footer-logo span { color: var(--orange); }
+    .footer-col h4 { color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #9ca3af; font-size: 0.9rem; }
+    .footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
+    .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hero h1 { font-size: 1.75rem; }
+      .image-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+      .footer-inner { flex-direction: column; }
+      .modal { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Win<span>WithFred</span></a>
+  <div class="navbar-links">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="goal-tracker.html">Goal Tracker</a>
+    <a href="habit-builder.html">Habits</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="vision-board.html" class="active" style="color:#fff;">Vision Board</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-label">Free Tool</p>
+  <h1>Your Vision Board</h1>
+  <p>Upload images that represent your goals and dreams. Organize them by category. Come back every day and remember exactly what you are working toward.</p>
+  <div class="hero-tip">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25z"/></svg>
+    Images are saved in your browser and never leave your device
+  </div>
+</section>
+
+<main class="main">
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <span class="toolbar-title" id="toolbar-title">Your Vision Board</span>
+      <span class="toolbar-sub" id="toolbar-sub">Loading...</span>
+    </div>
+    <button class="btn-add-cat" onclick="openAddCategoryModal()">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Add Category
+    </button>
+  </div>
+  <div id="board"></div>
+</main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleModalOverlayClick(event)">
+  <div class="modal" id="modal">
+    <h3 id="modal-title">Add Category</h3>
+    <p id="modal-desc">Give your new category a name.</p>
+    <input class="modal-input" id="modal-input" type="text" placeholder="e.g. Dream Home" maxlength="60" onkeydown="handleModalKey(event)">
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-modal-confirm" id="modal-confirm-btn" onclick="confirmModal()">Add</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Win<span>WithFred</span></div>
+      <p style="font-size:0.9rem;line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="vision-board.html">Vision Board</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Blog</h4>
+      <ul>
+        <li><a href="blog.html">All Posts</a></li>
+        <li><a href="blog-habits-why-fail.html">Habits</a></li>
+        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
+        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="index.html#about">About Fred</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 WinWithFred.com</span>
+    <span>No fluff. No gimmicks. Just results.</span>
+  </div>
+</footer>
+
+<script src="mobile-nav.js"></script>
+<script>
+// ============================================================
+// IndexedDB setup
+// ============================================================
+const DB_NAME = 'wwf-vision-board';
+const DB_VERSION = 1;
+let db;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains('categories')) {
+        const cs = d.createObjectStore('categories', { keyPath: 'id', autoIncrement: true });
+        cs.createIndex('position', 'position', { unique: false });
+      }
+      if (!d.objectStoreNames.contains('images')) {
+        const is = d.createObjectStore('images', { keyPath: 'id', autoIncrement: true });
+        is.createIndex('categoryId', 'categoryId', { unique: false });
+        is.createIndex('position', 'position', { unique: false });
+      }
+    };
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror = e => reject(e.target.error);
+  });
+}
+
+function getAll(storeName) {
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(storeName, 'readonly').objectStore(storeName).getAll();
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function putRecord(storeName, data) {
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(storeName, 'readwrite').objectStore(storeName).put(data);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function delRecord(storeName, key) {
+  return new Promise((resolve, reject) => {
+    const req = db.transaction(storeName, 'readwrite').objectStore(storeName).delete(key);
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
+
+// ============================================================
+// State
+// ============================================================
+let categories = [];
+let images = [];
+let dragSrcId = null;
+let dragSrcCatId = null;
+
+// Modal state
+let modalCallback = null;
+let modalEditId = null;
+
+// ============================================================
+// Init
+// ============================================================
+async function init() {
+  db = await openDB();
+  categories = await getAll('categories');
+  images = await getAll('images');
+
+  if (categories.length === 0) {
+    const defaults = [
+      'Health and Fitness',
+      'Career and Wealth',
+      'Relationships',
+      'Travel and Adventure',
+      'Personal Growth'
+    ];
+    for (let i = 0; i < defaults.length; i++) {
+      const id = await putRecord('categories', { name: defaults[i], position: i });
+      categories.push({ id, name: defaults[i], position: i });
+    }
+    // Reload to get proper IDs assigned by autoIncrement
+    categories = await getAll('categories');
+  }
+
+  render();
+}
+
+// ============================================================
+// Render
+// ============================================================
+function render() {
+  const board = document.getElementById('board');
+  const sorted = [...categories].sort((a, b) => a.position - b.position);
+  const total = images.length;
+
+  document.getElementById('toolbar-title').textContent = 'Your Vision Board';
+  document.getElementById('toolbar-sub').textContent =
+    total === 0
+      ? 'No images yet. Click "Add Image" inside any category to get started.'
+      : `${total} image${total === 1 ? '' : 's'} across ${sorted.length} categor${sorted.length === 1 ? 'y' : 'ies'}`;
+
+  if (sorted.length === 0) {
+    board.innerHTML = `
+      <div class="empty-board">
+        <div class="empty-board-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z"/></svg>
+        </div>
+        <h2>Your board is empty</h2>
+        <p>Click "Add Category" above to create your first section, then start adding images.</p>
+        <button class="btn btn-primary" onclick="openAddCategoryModal()">Add Your First Category</button>
+      </div>`;
+    return;
+  }
+
+  board.innerHTML = sorted.map(cat => renderCategory(cat)).join('');
+
+  // Attach drag events
+  board.querySelectorAll('.image-card[draggable]').forEach(card => {
+    card.addEventListener('dragstart', onDragStart);
+    card.addEventListener('dragend', onDragEnd);
+    card.addEventListener('dragover', onDragOverCard);
+    card.addEventListener('dragleave', onDragLeaveCard);
+    card.addEventListener('drop', onDropCard);
+  });
+  board.querySelectorAll('.image-grid').forEach(grid => {
+    grid.addEventListener('dragover', onDragOverGrid);
+    grid.addEventListener('dragleave', onDragLeaveGrid);
+    grid.addEventListener('drop', onDropGrid);
+  });
+
+  // Auto-resize captions
+  board.querySelectorAll('.image-caption').forEach(ta => autoResize(ta));
+}
+
+function renderCategory(cat) {
+  const catImages = images
+    .filter(img => img.categoryId === cat.id)
+    .sort((a, b) => a.position - b.position);
+
+  return `
+    <div class="category-section" id="cat-section-${cat.id}">
+      <div class="category-header">
+        <div class="cat-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v8.25m19.5 0v.562c0 .891-.735 1.688-1.83 1.688H3.58c-1.095 0-1.83-.797-1.83-1.688v-.562"/></svg>
+        </div>
+        <span class="category-name">${esc(cat.name)}</span>
+        <span class="cat-count">${catImages.length} image${catImages.length === 1 ? '' : 's'}</span>
+        <button class="btn-cat-action" onclick="openRenameCategoryModal(${cat.id})">Rename</button>
+        <button class="btn-cat-action btn-cat-del" onclick="deleteCategory(${cat.id})">Delete</button>
+      </div>
+      <div class="image-grid" data-cat-id="${cat.id}">
+        ${catImages.map(img => renderImageCard(img)).join('')}
+        <div class="add-image-card" onclick="triggerUpload(${cat.id})" title="Add images to this category">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.338-2.32 3.75 3.75 0 0 1 3.818 5.908M13.5 19.5h-6"/></svg>
+          <span>Add Image</span>
+          <small>JPG, PNG, WEBP, GIF</small>
+        </div>
+      </div>
+    </div>
+    <input type="file" class="file-input" id="file-${cat.id}" accept="image/*" multiple onchange="handleFiles(event, ${cat.id})">
+  `;
+}
+
+function renderImageCard(img) {
+  return `
+    <div class="image-card" id="img-card-${img.id}" draggable="true" data-id="${img.id}" data-cat-id="${img.categoryId}">
+      <div class="card-img-wrap">
+        <img src="${img.dataUrl}" alt="${esc(img.caption || 'Vision board image')}" loading="lazy">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><circle cx="5" cy="4" r="1.5"/><circle cx="11" cy="4" r="1.5"/><circle cx="5" cy="8" r="1.5"/><circle cx="11" cy="8" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/></svg>
+        </div>
+        <button class="btn-delete-img" onclick="deleteImage(event, ${img.id})" title="Remove image">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="image-card-body">
+        <textarea
+          class="image-caption"
+          rows="1"
+          placeholder="Add a caption..."
+          data-img-id="${img.id}"
+          oninput="autoResize(this)"
+          onblur="saveCaption(${img.id}, this.value)"
+        >${esc(img.caption || '')}</textarea>
+      </div>
+    </div>
+  `;
+}
+
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function autoResize(ta) {
+  ta.style.height = 'auto';
+  ta.style.height = ta.scrollHeight + 'px';
+}
+
+// ============================================================
+// Modal
+// ============================================================
+function openAddCategoryModal() {
+  modalEditId = null;
+  modalCallback = doAddCategory;
+  document.getElementById('modal-title').textContent = 'Add Category';
+  document.getElementById('modal-desc').textContent = 'Give this section a name, like "Dream Home" or "Career Goals".';
+  document.getElementById('modal-confirm-btn').textContent = 'Add Category';
+  document.getElementById('modal-input').value = '';
+  document.getElementById('modal-input').placeholder = 'e.g. Dream Home';
+  openModal();
+}
+
+function openRenameCategoryModal(catId) {
+  const cat = categories.find(c => c.id === catId);
+  if (!cat) return;
+  modalEditId = catId;
+  modalCallback = doRenameCategory;
+  document.getElementById('modal-title').textContent = 'Rename Category';
+  document.getElementById('modal-desc').textContent = 'Enter a new name for this category.';
+  document.getElementById('modal-confirm-btn').textContent = 'Save';
+  document.getElementById('modal-input').value = cat.name;
+  document.getElementById('modal-input').placeholder = cat.name;
+  openModal();
+}
+
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(() => document.getElementById('modal-input').focus(), 50);
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  modalCallback = null;
+  modalEditId = null;
+}
+
+function confirmModal() {
+  const val = document.getElementById('modal-input').value.trim();
+  if (!val) { document.getElementById('modal-input').focus(); return; }
+  if (modalCallback) modalCallback(val);
+  closeModal();
+}
+
+function handleModalKey(e) {
+  if (e.key === 'Enter') confirmModal();
+  if (e.key === 'Escape') closeModal();
+}
+
+function handleModalOverlayClick(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+// ============================================================
+// Category actions
+// ============================================================
+async function doAddCategory(name) {
+  const position = categories.length > 0 ? Math.max(...categories.map(c => c.position)) + 1 : 0;
+  await putRecord('categories', { name, position });
+  categories = await getAll('categories');
+  render();
+}
+
+async function doRenameCategory(name) {
+  const cat = categories.find(c => c.id === modalEditId);
+  if (!cat) return;
+  await putRecord('categories', { ...cat, name });
+  categories = await getAll('categories');
+  render();
+}
+
+async function deleteCategory(catId) {
+  const catImages = images.filter(img => img.categoryId === catId);
+  const msg = catImages.length > 0
+    ? `Delete this category and its ${catImages.length} image${catImages.length === 1 ? '' : 's'}? This cannot be undone.`
+    : 'Delete this category? This cannot be undone.';
+  if (!confirm(msg)) return;
+
+  for (const img of catImages) await delRecord('images', img.id);
+  await delRecord('categories', catId);
+  categories = await getAll('categories');
+  images = await getAll('images');
+  render();
+}
+
+// ============================================================
+// Image actions
+// ============================================================
+function triggerUpload(catId) {
+  document.getElementById(`file-${catId}`).click();
+}
+
+async function handleFiles(event, catId) {
+  const files = Array.from(event.target.files);
+  if (!files.length) return;
+
+  const catImages = images.filter(img => img.categoryId === catId);
+  let pos = catImages.length > 0 ? Math.max(...catImages.map(i => i.position)) + 1 : 0;
+
+  for (const file of files) {
+    const dataUrl = await readFileAsDataURL(file);
+    await putRecord('images', { categoryId: catId, dataUrl, caption: '', position: pos++ });
+  }
+
+  images = await getAll('images');
+  render();
+  event.target.value = '';
+}
+
+function readFileAsDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => resolve(e.target.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function saveCaption(imgId, caption) {
+  const img = images.find(i => i.id === imgId);
+  if (!img || img.caption === caption) return;
+  await putRecord('images', { ...img, caption });
+  const idx = images.findIndex(i => i.id === imgId);
+  if (idx >= 0) images[idx] = { ...img, caption };
+}
+
+async function deleteImage(event, imgId) {
+  event.stopPropagation();
+  if (!confirm('Remove this image from your vision board?')) return;
+  await delRecord('images', imgId);
+  images = images.filter(i => i.id !== imgId);
+  render();
+}
+
+// ============================================================
+// Drag and drop
+// ============================================================
+function onDragStart(e) {
+  dragSrcId = parseInt(e.currentTarget.dataset.id);
+  dragSrcCatId = parseInt(e.currentTarget.dataset.catId);
+  e.currentTarget.classList.add('is-dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', dragSrcId);
+}
+
+function onDragEnd(e) {
+  e.currentTarget.classList.remove('is-dragging');
+  document.querySelectorAll('.drop-target').forEach(el => el.classList.remove('drop-target'));
+  document.querySelectorAll('.drop-active').forEach(el => el.classList.remove('drop-active'));
+}
+
+function onDragOverCard(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  e.dataTransfer.dropEffect = 'move';
+  const id = parseInt(e.currentTarget.dataset.id);
+  if (id !== dragSrcId) e.currentTarget.classList.add('drop-target');
+}
+
+function onDragLeaveCard(e) {
+  e.currentTarget.classList.remove('drop-target');
+}
+
+function onDragOverGrid(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  e.currentTarget.classList.add('drop-active');
+}
+
+function onDragLeaveGrid(e) {
+  if (!e.currentTarget.contains(e.relatedTarget)) {
+    e.currentTarget.classList.remove('drop-active');
+  }
+}
+
+async function onDropCard(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  e.currentTarget.classList.remove('drop-target');
+
+  const targetId = parseInt(e.currentTarget.dataset.id);
+  const targetCatId = parseInt(e.currentTarget.dataset.catId);
+  if (targetId === dragSrcId) return;
+
+  await reorderImages(dragSrcId, targetId, targetCatId);
+}
+
+async function onDropGrid(e) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drop-active');
+
+  const targetCatId = parseInt(e.currentTarget.dataset.catId);
+
+  // If dropping on the same category and not on a specific card, move to end
+  const targetImages = images.filter(i => i.categoryId === targetCatId);
+  const newPos = targetImages.length > 0 ? Math.max(...targetImages.map(i => i.position)) + 1 : 0;
+
+  const src = images.find(i => i.id === dragSrcId);
+  if (!src) return;
+
+  if (src.categoryId === targetCatId) return; // handled by card drop if same category
+
+  await putRecord('images', { ...src, categoryId: targetCatId, position: newPos });
+
+  // Compact positions in old category
+  const oldCatImages = images
+    .filter(i => i.categoryId === src.categoryId && i.id !== dragSrcId)
+    .sort((a, b) => a.position - b.position);
+  for (let i = 0; i < oldCatImages.length; i++) {
+    await putRecord('images', { ...oldCatImages[i], position: i });
+  }
+
+  images = await getAll('images');
+  render();
+}
+
+async function reorderImages(srcId, targetId, targetCatId) {
+  const src = images.find(i => i.id === srcId);
+  const target = images.find(i => i.id === targetId);
+  if (!src || !target) return;
+
+  const oldCatId = src.categoryId;
+
+  // Build ordered list for target category (without src)
+  let catImages = images
+    .filter(i => i.categoryId === targetCatId && i.id !== srcId)
+    .sort((a, b) => a.position - b.position);
+
+  // Insert src before target
+  const insertIdx = catImages.findIndex(i => i.id === targetId);
+  const insertAt = insertIdx === -1 ? catImages.length : insertIdx;
+  catImages.splice(insertAt, 0, { ...src, categoryId: targetCatId });
+
+  // Save new positions for target category
+  for (let i = 0; i < catImages.length; i++) {
+    await putRecord('images', { ...catImages[i], position: i });
+  }
+
+  // Compact old category if different
+  if (oldCatId !== targetCatId) {
+    const oldCatImages = images
+      .filter(i => i.categoryId === oldCatId && i.id !== srcId)
+      .sort((a, b) => a.position - b.position);
+    for (let i = 0; i < oldCatImages.length; i++) {
+      await putRecord('images', { ...oldCatImages[i], position: i });
+    }
+  }
+
+  images = await getAll('images');
+  render();
+}
+
+// ============================================================
+// Start
+// ============================================================
+init();
+</script>
+</body>
+</html>
