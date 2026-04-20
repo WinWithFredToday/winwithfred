@@ -24,8 +24,8 @@
   --muted:   #6b7280;
   --light:   #f9fafb;
   --white:   #ffffff;
-  --orange:  #f97316;
-  --orange-d:#ea6c0a;
+  --orange: #c2410c;
+  --orange-d: #9a3412;
   --orange-l:#fff7ed;
   --green:   #22c55e;
   --red:     #ef4444;
@@ -629,7 +629,7 @@ p  { color: #374151; }
 }
 
 .phase-list li::before {
-  content: "â";
+  content: "Ã¢ÂÂ";
   position: absolute;
   left: 0;
   color: var(--orange);
@@ -921,7 +921,7 @@ p  { color: #374151; }
 
     <div class="form-navigation">
       <button id="prev-step-btn" class="btn btn-outline" style="display:none;">&#8592; Back</button>
-      <button id="next-step-btn" class="btn btn-primary">Next â</button>
+      <button id="next-step-btn" class="btn btn-primary">Next Ã¢ÂÂ</button>
     </div>
   </div>
 
@@ -1002,7 +1002,7 @@ function updateStepProgress() {
   document.getElementById('step-progress-fill').style.width = percent + '%';
   document.getElementById('step-number').textContent = `Step ${currentStep} of ${totalSteps}`;
   document.getElementById('prev-step-btn').style.display = currentStep === 1 ? 'none' : 'block';
-  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next â';
+  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next Ã¢ÂÂ';
 }
 
 function showStep(stepNum) {
