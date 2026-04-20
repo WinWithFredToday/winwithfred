@@ -669,7 +669,7 @@ async function loadProfile(user) {
       // Social links
       const socials = data.socials || {};
       const linksHtml = Object.entries(SOCIAL_META).filter(([k]) => socials[k]).map(([k, meta]) =>
-        '<a href="' + socials[k] + '" target="_blank" rel="noopener" class="social-link-chip">' +
+        '<a href="' + socials[k] + '.html" target="_blank" rel="noopener" class="social-link-chip">' +
         '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' + meta.svg + '</svg>' +
         meta.label + '</a>'
       ).join('');
@@ -727,7 +727,7 @@ async function saveProfile() {
       document.getElementById('about-section').style.display = 'block';
     } else { document.getElementById('about-section').style.display = 'none'; }
     const linksHtml = Object.entries(SOCIAL_META).filter(([k]) => socials[k]).map(([k, meta]) =>
-      '<a href="' + socials[k] + '" target="_blank" rel="noopener" class="social-link-chip">' +
+      '<a href="' + socials[k] + '.html" target="_blank" rel="noopener" class="social-link-chip">' +
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">' + meta.svg + '</svg>' +
       meta.label + '</a>'
     ).join('');
