@@ -51,7 +51,7 @@ a:hover { text-decoration:underline; }
 .area-name { font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:8px; }
 .area-score { font-size:1.5rem; font-weight:900; color:var(--orange); min-width:32px; text-align:right; }
 .area-slider { width:100%; -webkit-appearance:none; height:6px; border-radius:999px; background:#e5e7eb; outline:none; cursor:pointer; }
-.area-slider::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:var(--orange); cursor:pointer; box-shadow:0 2px 6px rgba(249,115,22,0.4); }
+.area-slider::-webkit-slider-thumb { -webkit-appearance:none; width:20px; height:20px; border-radius:50%; background:var(--orange); cursor:pointer; box-shadow:0 2px 6px rgba(194,65,12,0.4); }
 .area-slider::-moz-range-thumb { width:20px; height:20px; border-radius:50%; background:var(--orange); cursor:pointer; border:none; }
 .area-labels { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--muted); margin-top:6px; }
 
@@ -280,7 +280,7 @@ function drawWheel() {
     i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
   });
   ctx.closePath();
-  ctx.fillStyle = 'rgba(249,115,22,0.18)';
+  ctx.fillStyle = 'rgba(194,65,12,0.18)';
   ctx.fill();
   ctx.strokeStyle = '#f97316';
   ctx.lineWidth = 2.5;
