@@ -24,8 +24,8 @@
   --muted:   #6b7280;
   --light:   #f9fafb;
   --white:   #ffffff;
-  --orange:  #f97316;
-  --orange-d:#ea6c0a;
+  --orange: #c2410c;
+  --orange-d: #9a3412;
   --orange-l:#fff7ed;
   --green:   #22c55e;
   --red:     #ef4444;
@@ -559,7 +559,7 @@ p  { color: #374151; }
         <div style="padding:12px; background:var(--orange-l); border-radius:8px;"><strong>Recovery</strong><br><span style="font-size:0.85rem; color:var(--muted);">Inability to bounce back</span></div>
       </div>
       <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 4 minutes.</p>
-      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start Detector â</button>
+      <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start Detector Ã¢ÂÂ</button>
     </div>
   </div>
 
@@ -570,7 +570,7 @@ p  { color: #374151; }
     <div id="quiz-container"></div>
     <div class="quiz-nav">
       <button class="btn btn-outline" onclick="prevQuestion()" id="btn-prev" style="display:none;">&#8592; Previous</button>
-      <button class="btn btn-primary" onclick="nextQuestion()" id="btn-next">Next â</button>
+      <button class="btn btn-primary" onclick="nextQuestion()" id="btn-next">Next Ã¢ÂÂ</button>
     </div>
   </div>
 
@@ -804,7 +804,7 @@ function renderQuestion() {
   document.getElementById('quiz-container').innerHTML = html;
 
   document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-block' : 'none';
-  document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'See Results â' : 'Next â';
+  document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'See Results Ã¢ÂÂ' : 'Next Ã¢ÂÂ';
 }
 
 function selectAnswer(idx) {
@@ -871,7 +871,7 @@ function showResults() {
   const prev = JSON.parse(localStorage.getItem('wwf_burnout') || 'null');
   if (prev && prev.total) {
     const diff = total - prev.total;
-    const arrow = diff > 0 ? '&#8593;' : (diff < 0 ? '&#8595;' : 'â');
+    const arrow = diff > 0 ? '&#8593;' : (diff < 0 ? '&#8595;' : 'Ã¢ÂÂ');
     const color = diff > 0 ? 'color:var(--red)' : (diff < 0 ? 'color:var(--green)' : 'color:var(--muted)');
     document.getElementById('prev-result-box').style.display = 'block';
     document.getElementById('prev-compare').innerHTML = `<span style="${color}">${arrow} ${Math.abs(diff)} points</span> from your last check`;
