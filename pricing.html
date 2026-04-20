@@ -135,7 +135,7 @@ a { color: var(--orange); text-decoration: none; }
   </div>
 </nav>
 
-<script src="wwf-auth.js"></script>
+<script defer src="wwf-auth.js"></script>
 
 <!-- Hero -->
 <section class="hero">
@@ -399,6 +399,6 @@ var urlPlan = new URLSearchParams(window.location.search).get('plan');
 if (urlPlan) { setTimeout(function () { handleUpgrade(urlPlan); }, 1200); }
 </script>
 
-<script src="mobile-nav.js"></script>
+<script defer src="mobile-nav.js"></script>
 </body>
 </html>
