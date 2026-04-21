@@ -4,95 +4,185 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Trigger Log | WinWithFred</title>
-<meta name="description" content="Track what sets you off emotionally and uncover the real reason underneath. Patterns reveal your growth edges.">
+<meta name="description" content="Track your emotional triggers to find the patterns — and understand what's really driving your reactions.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Self-Awareness</div>
-<h1>Trigger Log</h1>
-<p>What sets you off — and the real reason underneath.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Self-Awareness</div><h1>Trigger Log</h1><p>Track emotional triggers, find patterns, understand your reactions.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>Log a trigger</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:.75rem">Something that made you react emotionally — anger, shame, anxiety, withdrawal.</p>
-<label>What happened?</label>
-<textarea id="trigger-event" placeholder="Describe the situation briefly..." style="min-height:60px"></textarea>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-<div><label>Emotion</label>
-<select id="trigger-emotion">
-<option value="anger">Anger / Frustration</option>
-<option value="anxiety">Anxiety / Fear</option>
-<option value="shame">Shame / Embarrassment</option>
-<option value="sad">Sadness / Disappointment</option>
-<option value="withdraw">Withdrawal / Shutdown</option>
-<option value="jealous">Jealousy / Envy</option>
-</select></div>
-<div><label>Intensity (1-10)</label>
-<input type="number" id="trigger-intensity" min="1" max="10" value="7"></div>
+  <h2>Log a trigger</h2>
+  <p class="sub">Track the situations that cause strong emotional reactions. Patterns reveal what needs attention.</p>
+  <div style="margin-bottom:.75rem">
+    <label>What happened? (the situation)</label>
+    <input type="text" id="trigger-sit" placeholder="e.g. My manager criticised me in front of the team">
+  </div>
+  <div style="margin-bottom:.75rem">
+    <label>What did you feel?</label>
+    <div id="emotion-opts" class="opts" style="margin-top:.35rem">
+      <button class="opt" data-em="anger">Anger</button>
+      <button class="opt" data-em="anxiety">Anxiety</button>
+      <button class="opt" data-em="shame">Shame</button>
+      <button class="opt" data-em="sadness">Sadness</button>
+      <button class="opt" data-em="fear">Fear</button>
+      <button class="opt" data-em="overwhelm">Overwhelm</button>
+      <button class="opt" data-em="jealousy">Jealousy</button>
+      <button class="opt" data-em="rejection">Rejection</button>
+    </div>
+  </div>
+  <div style="margin-bottom:.75rem">
+    <label>Intensity (1–10)</label>
+    <div class="range-row"><input type="range" min="1" max="10" value="6" id="intensity-slider"><span class="rval" id="intensity-val">6</span></div>
+  </div>
+  <div style="margin-bottom:.75rem">
+    <label>How did you react?</label>
+    <input type="text" id="trigger-reaction" placeholder="e.g. Went quiet, snapped back, avoided for the rest of the day">
+  </div>
+  <div style="margin-bottom:.75rem">
+    <label>What might this connect to? (optional)</label>
+    <input type="text" id="trigger-root" placeholder="e.g. Fear of looking incompetent, need for approval">
+  </div>
+  <button class="btn btn-primary" id="logBtn">Log This Trigger</button>
 </div>
-<label>The "real reason" guess (what need or wound might this be touching?)</label>
-<textarea id="trigger-why" placeholder="e.g. 'Maybe it reminded me I don't feel respected'..." style="min-height:60px"></textarea>
-<button class="btn btn-primary btn-sm" onclick="logTrigger()" style="margin-top:.75rem">Log This Trigger</button>
+<div class="card" id="log-card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <h2 style="margin:0">Your Trigger Log</h2>
+    <button class="btn btn-ghost btn-sm" id="analyseBtn">Analyse Patterns</button>
+  </div>
+  <div id="log-list"><p style="color:#6b7280;font-size:.87rem">No triggers logged yet. Add your first one above.</p></div>
 </div>
-<div class="card">
-<h2>Your trigger log <span id="trig-count" style="color:var(--orange);font-size:.85rem"></span></h2>
-<div id="trigger-log-list"><p style="color:var(--muted);font-size:.88rem">No triggers logged yet.</p></div>
+<div class="result" id="result">
+  <div class="res-label" style="margin-bottom:1rem">Pattern Analysis</div>
+  <div id="pattern-out"></div>
+  <button class="btn btn-ghost btn-sm" id="closeAnalysis" style="margin-top:1rem">Close</button>
 </div>
-<button class="btn btn-primary" onclick="analyseTriggers()" id="trig-analyse-btn" style="width:100%;display:none">Find My Patterns</button>
-<div class="result-box" id="result"><div id="trig-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Back to Log</button></div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var EMOTION_LABELS={anger:'Anger/Frustration',anxiety:'Anxiety/Fear',shame:'Shame',sad:'Sadness',withdraw:'Withdrawal',jealous:'Jealousy'};
-var EMOTION_INSIGHTS={
-anger:{root:'Anger usually masks a violated boundary, unmet expectation, or feeling powerless.',question:'Ask: "What did I expect that didn't happen? And is that expectation reasonable?"',pattern:'Frequent anger triggers often point to a recurring boundary that needs to be set — not just managed.'},
-anxiety:{root:'Anxiety triggers often trace back to uncertainty, loss of control, or a past experience that felt threatening.',question:'Ask: "What specifically am I afraid will happen? And how realistic is that?"',pattern:'Anxiety patterns often cluster around specific domains — work, relationships, or health. The domain points to the wound.'},
-shame:{root:'Shame triggers are usually about identity: a moment where you felt exposed, inadequate, or like you didn't belong.',question:'Ask: "What does this make me think about myself? Is that belief actually true?"',pattern:'Recurring shame triggers often point to a deeply held belief about your worth that needs examining.'},
-sad:{root:'Sadness triggers usually involve loss — of connection, expectation, identity, or belonging.',question:'Ask: "What did I lose in this moment, even if just for a second?"',pattern:'Multiple sadness triggers in similar contexts suggest unprocessed grief or a persistent unmet need.'},
-withdraw:{root:'Withdrawal is a protection response — when the environment feels unsafe or overwhelming.',question:'Ask: "What felt unsafe here? Was it rejection, conflict, or something else?"',pattern:'If you consistently shut down in the same types of situations, that's a pattern worth bringing into therapy or coaching.'},
-jealous:{root:'Jealousy reveals desire. What someone else has that triggered you is often something you want for yourself.',question:'Ask: "What do they have that I wish I had? Is that something I'm actively building toward?"',pattern:'Recurring jealousy toward the same type of person or achievement is a strong signal about your own unfulfilled goals.'}
-};
-var triggers=[];
-function loadTriggers(){var saved=JSON.parse(localStorage.getItem('wwf_trigger_log')||'null');if(saved&&saved.triggers)triggers=saved.triggers;renderTrigLog();}
-function logTrigger(){
-  var event=document.getElementById('trigger-event').value.trim();if(!event)return;
-  triggers.push({event:event,emotion:document.getElementById('trigger-emotion').value,intensity:parseInt(document.getElementById('trigger-intensity').value)||7,why:document.getElementById('trigger-why').value.trim(),date:new Date().toLocaleDateString()});
-  document.getElementById('trigger-event').value='';document.getElementById('trigger-why').value='';
-  localStorage.setItem('wwf_trigger_log',JSON.stringify({triggers:triggers}));
-  renderTrigLog();
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var selEmotion="";
+document.getElementById("intensity-slider").addEventListener("input",function(){
+  document.getElementById("intensity-val").textContent=this.value;
+});
+document.querySelectorAll("[data-em]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll("[data-em]").forEach(function(b){b.classList.remove("on");});
+    this.classList.add("on");selEmotion=this.dataset.em;
+  });
+});
+function loadLogs(){return JSON.parse(localStorage.getItem("wwf_trigger_log")||"[]");}
+function saveLogs(logs){localStorage.setItem("wwf_trigger_log",JSON.stringify(logs));}
+function renderLogs(){
+  var logs=loadLogs();
+  if(logs.length===0){
+    document.getElementById("log-list").innerHTML="<p style='color:#6b7280;font-size:.87rem'>No triggers logged yet.</p>";
+    return;
+  }
+  document.getElementById("log-list").innerHTML=logs.slice().reverse().map(function(log,ri){
+    var i=logs.length-1-ri;
+    var emColor={anger:"#ef4444",anxiety:"#f59e0b",shame:"#8b5cf6",sadness:"#60a5fa",fear:"#6b7280",overwhelm:"#f97316",jealousy:"#a3e635",rejection:"#ec4899"}[log.emotion]||"#6b7280";
+    return"<div style='background:#111827;border-radius:8px;padding:.85rem;margin-bottom:.65rem;position:relative'>"
+      +"<div style='display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem'>"
+      +"<div style='font-size:.87rem;color:#f9fafb;flex:1;padding-right:1rem'>"+log.situation+"</div>"
+      +"<button class='del-btn' data-idx='"+i+"' style='background:none;border:none;color:#6b7280;cursor:pointer;font-size:1rem;padding:0'>&#x2715;</button></div>"
+      +"<div style='display:flex;gap:.5rem;flex-wrap:wrap;align-items:center'>"
+      +"<span style='background:"+emColor+"22;color:"+emColor+";padding:.15rem .5rem;border-radius:20px;font-size:.75rem;font-weight:600'>"+log.emotion+"</span>"
+      +"<span style='color:#6b7280;font-size:.75rem'>intensity "+log.intensity+"/10</span>"
+      +(log.reaction?"<span style='color:#6b7280;font-size:.75rem'>— "+log.reaction+"</span>":"")
+      +"</div>"
+      +(log.root?"<div style='margin-top:.35rem;font-size:.78rem;color:#6b7280;font-style:italic'>Root: "+log.root+"</div>":"")
+      +"</div>";
+  }).join("");
+  document.querySelectorAll(".del-btn").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var idx=parseInt(this.dataset.idx);
+      var logs=loadLogs();
+      logs.splice(idx,1);
+      saveLogs(logs);
+      renderLogs();
+    });
+  });
 }
-function deleteTrig(i){triggers.splice(i,1);localStorage.setItem('wwf_trigger_log',JSON.stringify({triggers:triggers}));renderTrigLog();}
-function renderTrigLog(){
-  var cnt=triggers.length;
-  document.getElementById('trig-count').textContent='('+cnt+' logged)';
-  if(cnt===0){document.getElementById('trigger-log-list').innerHTML='<p style="color:var(--muted);font-size:.88rem">No triggers logged yet.</p>';document.getElementById('trig-analyse-btn').style.display='none';return;}
-  document.getElementById('trigger-log-list').innerHTML=triggers.map(function(t,i){var intColor=t.intensity>=8?'var(--red)':t.intensity>=5?'var(--orange)':'var(--green)';return '<div style="background:var(--dark);border-radius:8px;padding:.75rem;margin-bottom:.5rem;display:flex;gap:.75rem;align-items:flex-start"><div style="flex:1"><div style="font-size:.88rem;color:var(--light);margin-bottom:.25rem">'+t.event+'</div><div style="font-size:.75rem;color:var(--muted)">'+t.date+' · <span class="tag tag-orange" style="font-size:.7rem">'+EMOTION_LABELS[t.emotion]+'</span> · Intensity: <strong style="color:'+intColor+'">'+t.intensity+'/10</strong>'+(t.why?' · <em>'+t.why+'</em>':'')+' </div></div><button onclick="deleteTrig('+i+')" style="background:none;border:none;color:var(--muted);cursor:pointer">×</button></div>';}).join('');
-  document.getElementById('trig-analyse-btn').style.display='block';
-}
-function analyseTriggers(){
-  if(triggers.length<2){alert('Log a few more to see patterns.');return;}
-  var counts={};triggers.forEach(function(t){counts[t.emotion]=(counts[t.emotion]||0)+1;});
-  var sorted=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];});
-  var topEmo=sorted[0];var insight=EMOTION_INSIGHTS[topEmo]||EMOTION_INSIGHTS.anger;
-  var avgIntensity=(triggers.reduce(function(s,t){return s+t.intensity;},0)/triggers.length).toFixed(1);
-  document.getElementById('trig-output').innerHTML='<div class="result-label" style="margin-bottom:.35rem">Your Trigger Profile</div><p style="color:var(--muted);font-size:.84rem;margin-bottom:1.25rem">'+triggers.length+' triggers logged · Avg intensity: <strong style="color:var(--orange)">'+avgIntensity+'/10</strong> · Dominant emotion: <strong style="color:var(--orange)">'+EMOTION_LABELS[topEmo]+'</strong></p>'
-  +sorted.map(function(e){var pct=Math.round(counts[e]/triggers.length*100);return '<div style="margin-bottom:.5rem"><div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:2px"><span>'+EMOTION_LABELS[e]+'</span><span>'+counts[e]+' ('+pct+'%)</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%"></div></div></div>';}).join('')
-  +'<div style="background:var(--surface);border-radius:8px;padding:1rem;margin-top:1.25rem"><div style="font-weight:700;color:var(--orange);font-size:.9rem;margin-bottom:.5rem">Root Cause: '+insight.root+'</div><div style="font-size:.78rem;font-weight:700;color:var(--white);margin:.75rem 0 .25rem">THE QUESTION TO SIT WITH</div><p style="color:var(--light);font-size:.85rem;font-style:italic">'+insight.question+'</p><div style="font-size:.78rem;font-weight:700;color:var(--white);margin:.75rem 0 .25rem">THE PATTERN</div><p style="color:var(--muted);font-size:.84rem">'+insight.pattern+'</p></div>';
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-}
-loadTriggers();
+document.getElementById("logBtn").addEventListener("click",function(){
+  var sit=document.getElementById("trigger-sit").value.trim();
+  if(!sit){alert("Describe the situation first.");return;}
+  var logs=loadLogs();
+  logs.push({
+    situation:sit,
+    emotion:selEmotion||"unspecified",
+    intensity:parseInt(document.getElementById("intensity-slider").value)||5,
+    reaction:document.getElementById("trigger-reaction").value.trim(),
+    root:document.getElementById("trigger-root").value.trim(),
+    date:new Date().toISOString()
+  });
+  saveLogs(logs);
+  document.getElementById("trigger-sit").value="";
+  document.getElementById("trigger-reaction").value="";
+  document.getElementById("trigger-root").value="";
+  document.querySelectorAll("[data-em]").forEach(function(b){b.classList.remove("on");});
+  selEmotion="";
+  renderLogs();
+});
+document.getElementById("analyseBtn").addEventListener("click",function(){
+  var logs=loadLogs();
+  if(logs.length<2){alert("Log at least 2 triggers to see patterns.");return;}
+  var emCounts={},avgIntensity=0,rootWords={};
+  logs.forEach(function(log){
+    emCounts[log.emotion]=(emCounts[log.emotion]||0)+1;
+    avgIntensity+=log.intensity;
+    if(log.root){
+      log.root.toLowerCase().split(/s+/).forEach(function(w){
+        if(w.length>4)rootWords[w]=(rootWords[w]||0)+1;
+      });
+    }
+  });
+  avgIntensity=(avgIntensity/logs.length).toFixed(1);
+  var sortedEm=Object.keys(emCounts).sort(function(a,b){return emCounts[b]-emCounts[a];});
+  var topEmotion=sortedEm[0];
+  var html="<div style='display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem'>"
+    +"<div style='background:#1f2937;padding:.85rem;border-radius:8px;text-align:center'>"
+    +"<div style='font-size:.75rem;color:#6b7280;margin-bottom:.25rem'>TRIGGERS LOGGED</div>"
+    +"<div style='font-size:2rem;font-weight:700;color:#c2410c'>"+logs.length+"</div></div>"
+    +"<div style='background:#1f2937;padding:.85rem;border-radius:8px;text-align:center'>"
+    +"<div style='font-size:.75rem;color:#6b7280;margin-bottom:.25rem'>AVG INTENSITY</div>"
+    +"<div style='font-size:2rem;font-weight:700;color:#c2410c'>"+avgIntensity+"</div></div></div>";
+  html+="<div class='section-title' style='margin-bottom:.5rem'>Most Common Emotions</div>";
+  html+=sortedEm.map(function(em){
+    return"<div style='display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid #1f2937'>"
+      +"<span style='font-size:.87rem'>"+em+"</span>"
+      +"<div style='display:flex;align-items:center;gap:.5rem'>"
+      +"<div style='background:#1f2937;border-radius:4px;height:6px;width:80px'>"
+      +"<div style='background:#c2410c;height:6px;border-radius:4px;width:"+Math.round(emCounts[em]/logs.length*80)+"px'></div></div>"
+      +"<span style='color:#6b7280;font-size:.78rem;min-width:20px'>"+emCounts[em]+"</span></div></div>";
+  }).join("");
+  var INSIGHTS={
+    anger:"Anger often signals a boundary being crossed or an expectation unmet. What specifically is being violated?",
+    anxiety:"Recurring anxiety suggests uncertainty or loss of control. What are you most afraid of losing?",
+    shame:"Shame clusters around self-worth. These triggers may be connected to early experiences or deeply held beliefs about yourself.",
+    sadness:"Recurring sadness may point to unprocessed grief or unmet needs. What do you feel you're missing?",
+    fear:"Fear-based triggers often protect old wounds. What is fear specifically trying to protect you from?",
+    overwhelm:"Overwhelm triggers suggest capacity limits are being hit. This is often a signal to simplify, delegate, or set boundaries.",
+    jealousy:"Jealousy is a useful emotion — it points toward unmet desires. What does it tell you that you actually want?",
+    rejection:"Rejection sensitivity often deepens over time without examination. Who is the original source of this pattern?"
+  };
+  html+="<div style='margin-top:1rem;padding:1rem;background:#1f2937;border-radius:8px'>"
+    +"<div class='section-title' style='margin-bottom:.4rem'>Insight: "+topEmotion+"</div>"
+    +"<div style='color:#9ca3af;font-size:.87rem;line-height:1.6'>"+(INSIGHTS[topEmotion]||"Keep logging. Patterns become clearer with more data.")+"</div></div>";
+  document.getElementById("pattern-out").innerHTML=html;
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("closeAnalysis").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+renderLogs();
+
 </script>
 </body>
 </html>
