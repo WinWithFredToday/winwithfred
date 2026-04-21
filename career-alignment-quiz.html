@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Career Alignment Quiz | WinWithFred</title>
+<meta name="description" content="Find out how well your current job actually aligns with your core values and what to do about the gaps.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<main>
+<div class="tool-hero">
+<div class="label">Career Tools</div>
+<h1>Career Alignment Quiz</h1>
+<p>Does your job actually fit your values? Find the gaps.</p>
+</div>
+<div class="tool-wrap">
+<div class="card">
+<h2>Step 1 — Your core values</h2>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem">Select your top 6 values. What matters most to you in life and work?</p>
+<div id="values-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem"></div>
+</div>
+<div class="card" id="rate-card" style="display:none">
+<h2>Step 2 — How well does your job honour each value?</h2>
+<p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem">1 = completely missing, 5 = fully present</p>
+<div id="value-ratings"></div>
+</div>
+<button class="btn btn-primary" onclick="calcAlignment()" style="width:100%" id="calc-btn" style="display:none">See My Alignment Score</button>
+<div class="result-box" id="result"><div id="align-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Edit</button></div>
+</div>
+</main>
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<script>
+(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
+var ALL_VALUES=['Autonomy','Security','Creativity','Impact','Growth','Recognition','Connection','Adventure','Integrity','Balance','Leadership','Expertise','Collaboration','Flexibility','Wealth','Stability','Innovation','Purpose','Fairness','Achievement'];
+var selectedVals=[];
+function renderValGrid(){
+  document.getElementById('values-grid').innerHTML=ALL_VALUES.map(function(v,i){
+    return '<button class="option-btn" id="val'+i+'" style="justify-content:center;text-align:center;padding:.5rem" onclick="toggleVal('+i+',''+v+'',this)"><span style="font-size:.82rem">'+v+'</span></button>';
+  }).join('');
+}
+function toggleVal(i,v,btn){
+  var idx=selectedVals.indexOf(v);
+  if(idx===-1){if(selectedVals.length>=6){alert('Choose up to 6 values.');return;}selectedVals.push(v);btn.classList.add('sel');}
+  else{selectedVals.splice(idx,1);btn.classList.remove('sel');}
+  if(selectedVals.length>=3){
+    document.getElementById('rate-card').style.display='block';
+    document.getElementById('calc-btn').style.display='block';
+    document.getElementById('value-ratings').innerHTML=selectedVals.map(function(v){
+      return '<div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between"><label style="font-size:.9rem;font-weight:600;margin:0">'+v+'</label><span id="vr_'+v.replace(/s/g,'_')+'" style="color:var(--orange);font-weight:700">3</span></div><input type="range" min="1" max="5" value="3" id="rv_'+v.replace(/s/g,'_')+'" oninput="document.getElementById('vr_'+v.replace(/s/g,'_')+'').textContent=this.value"></div>';
+    }).join('');
+  } else {
+    document.getElementById('rate-card').style.display='none';
+  }
+}
+function calcAlignment(){
+  if(selectedVals.length<3){alert('Select at least 3 values.');return;}
+  var ratings={};
+  selectedVals.forEach(function(v){
+    var key=v.replace(/s/g,'_');
+    ratings[v]=parseInt(document.getElementById('rv_'+key).value)||3;
+  });
+  var scores=Object.values(ratings);
+  var avg=(scores.reduce(function(a,b){return a+b;},0)/scores.length);
+  var pct=Math.round(avg/5*100);
+  var gaps=Object.keys(ratings).filter(function(v){return ratings[v]<=2;}).sort(function(a,b){return ratings[a]-ratings[b];});
+  var strengths=Object.keys(ratings).filter(function(v){return ratings[v]>=4;});
+  localStorage.setItem('wwf_career_alignment',JSON.stringify({values:selectedVals,ratings:ratings,pct:pct,date:new Date().toISOString()}));
+  var label,desc;
+  if(pct>=75){label='Strong Alignment';desc='Your job largely reflects what you care about. Focus on protecting the high-scoring areas and addressing any gaps through conversation, not escape.';}
+  else if(pct>=50){label='Partial Alignment';desc='Some of what matters to you is present, some is missing. The gaps worth examining are the values you rated lowest — these are where daily friction comes from.';}
+  else{label='Low Alignment';desc='Your current role doesn't honour much of what you actually care about. That's exhausting to sustain. The gaps here are the real source of your dissatisfaction.';}
+  var gapActions={
+    Autonomy:'Talk to your manager about owning a project end-to-end. Or start a side project where you have full control.',
+    Security:'Build your emergency fund to 3 months of expenses. Security you create yourself is more reliable than job security.',
+    Creativity:'Carve out one project per quarter that has creative latitude. If unavailable at work, add it outside.',
+    Impact:'Ask: who is affected by your work? Sometimes impact is there but invisible. If not, that's a role conversation.',
+    Growth:'Ask for a development plan. If your company won't invest in you, invest in yourself — courses, books, projects.',
+    Recognition:'Ask specifically for feedback after your next win. Explicit recognition often has to be requested.',
+    Connection:'Schedule one deeper conversation with a colleague weekly. Relationships at work are built, not given.',
+    Adventure:'Look for stretch assignments, new projects, or travel opportunities within your role before looking outside.',
+    Balance:'Set one firm boundary this week — a hard stop time, a no-meeting day, or a lunch break. Hold it.',
+    Purpose:'Write one sentence: "The real reason my work matters is ___." If you can't finish it, that's information.'
+  };
+  var gapSection=gaps.length>0?'<div style="margin:1.25rem 0"><div style="font-size:.8rem;font-weight:700;color:var(--red);margin-bottom:.75rem">BIGGEST GAPS (rated 1-2/5)</div>'+gaps.map(function(v){var action=gapActions[v]||'Reflect on what this value means to you and whether your current role could ever honour it.';return '<div style="background:var(--surface);border-radius:8px;padding:.85rem;margin-bottom:.5rem"><div style="font-weight:700;color:var(--light);font-size:.9rem;margin-bottom:.3rem">'+v+' — '+ratings[v]+'/5</div><p style="color:var(--muted);font-size:.83rem">'+action+'</p></div>';}).join('')+ '</div>':'<p style="color:var(--green);font-size:.88rem;margin:1rem 0">No major gaps found — your core values are reasonably well represented.</p>';
+  document.getElementById('align-output').innerHTML='<div style="text-align:center;margin-bottom:1.25rem"><div class="result-score">'+pct+'%</div><div class="result-label">'+label+'</div><p style="color:var(--muted);font-size:.87rem;margin-top:.5rem">'+desc+'</p></div>'
+  +(strengths.length>0?'<div style="margin-bottom:1rem"><div style="font-size:.8rem;font-weight:700;color:var(--green);margin-bottom:.4rem">WHAT YOUR JOB HONOURS</div>'+strengths.map(function(v){return '<span class="tag tag-green">'+v+'</span>';}).join('')+'</div>':'')+gapSection;
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+renderValGrid();
+</script>
+</body>
+</html>
