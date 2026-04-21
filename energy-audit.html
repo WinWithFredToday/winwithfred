@@ -4,93 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Energy Audit | WinWithFred</title>
-<meta name="description" content="Map your energy peaks and crashes throughout the day so you stop scheduling hard work at 3pm.">
+<meta name="description" content="Find what drains you, what fuels you, and how to tip the balance.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Sleep & Energy</div>
-<h1>Energy Audit</h1>
-<p>Map your peaks and crashes. Stop scheduling hard work at 3pm.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Sleep & Energy</div><h1>Energy Audit</h1><p>Find what drains you, what fuels you — and tip the balance.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>Rate your typical energy for each 2-hour block</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:1.25rem">1 = running on fumes, 5 = fully fired up. Think about a normal weekday, not your best or worst day.</p>
-<div id="energy-blocks"></div>
+  <h2>Rate each activity's effect on your energy</h2>
+  <p class="sub">Think about how you feel <em>after</em> doing each one. Be honest — this is for you.</p>
+  <div id="energy-list"></div>
 </div>
-<div class="card">
-<h2>Quick context questions</h2>
-<label>When do you drink your first coffee / caffeine?</label>
-<select id="first-coffee">
-<option value="none">I don't drink caffeine</option>
-<option value="wake">Right when I wake up</option>
-<option value="1h">About 1 hour after waking</option>
-<option value="2h">About 2 hours after waking</option>
-<option value="midday">Around midday</option>
-</select>
-<label style="margin-top:1rem">Do you eat lunch?</label>
-<select id="lunch">
-<option value="yes">Yes, a proper meal</option>
-<option value="light">Light snack only</option>
-<option value="skip">I often skip it</option>
-</select>
+<button class="btn btn-primary" id="calcBtn">Reveal My Energy Map</button>
+<div class="result" id="result">
+  <div class="res-label" style="margin-bottom:1rem">Your Energy Map</div>
+  <div id="energy-out"></div>
+  <div style="margin-top:1rem;padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">Your Action Plan</div>
+    <div id="action-plan" style="color:#9ca3af;font-size:.88rem;line-height:1.6"></div>
+  </div>
+  <button class="btn btn-ghost btn-sm" id="retakeBtn" style="margin-top:1rem">Retake</button>
 </div>
-<button class="btn btn-primary" onclick="analyseEnergy()" style="width:100%">Map My Energy Profile</button>
-<div class="result-box" id="result"><div id="energy-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Edit</button></div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var BLOCKS=[{t:'5–7am',id:'b0'},{t:'7–9am',id:'b1'},{t:'9–11am',id:'b2'},{t:'11am–1pm',id:'b3'},{t:'1–3pm',id:'b4'},{t:'3–5pm',id:'b5'},{t:'5–7pm',id:'b6'},{t:'7–9pm',id:'b7'},{t:'9–11pm',id:'b8'}];
-function renderBlocks(){
-  var saved=JSON.parse(localStorage.getItem('wwf_energy_audit')||'null');
-  document.getElementById('energy-blocks').innerHTML=BLOCKS.map(function(b,i){
-    var sv=saved&&saved.levels?saved.levels[i]:3;
-    var colors=['var(--red)','var(--red)','var(--orange)','var(--orange)','var(--green)'];
-    return '<div style="display:grid;grid-template-columns:90px 1fr 50px;gap:.75rem;align-items:center;margin-bottom:.75rem">'
-    +'<label style="margin:0;font-size:.85rem;color:var(--light)">'+b.t+'</label>'
-    +'<input type="range" min="1" max="5" value="'+sv+'" id="'+b.id+'" oninput="document.getElementById(''+b.id+'v').textContent='⚡'.repeat(parseInt(this.value))">'
-    +'<span id="'+b.id+'v" style="font-size:.8rem;text-align:right">'+'⚡'.repeat(sv)+'</span>'
-    +'</div>';
-  }).join('');
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var ITEMS=[
+  {id:"deepwork",  label:"Deep focused work",           cat:"work"},
+  {id:"meetings",  label:"Long back-to-back meetings",  cat:"work"},
+  {id:"emails",    label:"Clearing email/messages",     cat:"work"},
+  {id:"exercise",  label:"Exercise or movement",        cat:"body"},
+  {id:"junkfood",  label:"Eating junk food",            cat:"body"},
+  {id:"alcohol",   label:"Drinking alcohol",            cat:"body"},
+  {id:"socialhigh",label:"Social time with close friends",cat:"social"},
+  {id:"smalltalk", label:"Forced small talk",           cat:"social"},
+  {id:"scrolling", label:"Mindless phone scrolling",    cat:"digital"},
+  {id:"news",      label:"Watching / reading the news", cat:"digital"},
+  {id:"creating",  label:"Creative projects or hobbies",cat:"creative"},
+  {id:"learning",  label:"Learning something new",      cat:"creative"},
+  {id:"nature",    label:"Time outdoors / in nature",   cat:"restore"},
+  {id:"reading",   label:"Reading a good book",         cat:"restore"},
+  {id:"helping",   label:"Helping or teaching someone", cat:"social"}
+];
+function renderItems(){
+  var saved=JSON.parse(localStorage.getItem("wwf_energy_audit")||"null");
+  var h="";
+  ITEMS.forEach(function(item,i){
+    var v=(saved&&saved[item.id]!=null)?saved[item.id]:0;
+    h+="<div style='margin-bottom:1rem'>"
+      +"<div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem'>"
+      +"<label style='font-size:.87rem'>"+item.label+"</label>"
+      +"<span id='ev"+i+"' style='font-weight:700;font-size:.95rem;min-width:30px;text-align:right;color:"+(v>0?"#22c55e":v<0?"#ef4444":"#6b7280")+"'>"+(v>0?"+":"")+v+"</span></div>"
+      +"<input type='range' min='-3' max='3' step='1' value='"+v+"' id='er"+i+"' style='width:100%'></div>";
+  });
+  document.getElementById("energy-list").innerHTML=h
+    +"<div style='display:flex;justify-content:space-between;font-size:.75rem;color:#6b7280;margin-top:-.5rem'>"
+    +"<span>&#9660; Draining</span><span>Neutral</span><span>Energising &#9650;</span></div>";
+  ITEMS.forEach(function(item,i){
+    document.getElementById("er"+i).addEventListener("input",function(){
+      var v=parseInt(this.value);
+      var el=document.getElementById("ev"+i);
+      el.textContent=(v>0?"+":"")+v;
+      el.style.color=v>0?"#22c55e":v<0?"#ef4444":"#6b7280";
+    });
+  });
 }
-function analyseEnergy(){
-  var levels=BLOCKS.map(function(b){return parseInt(document.getElementById(b.id).value)||3;});
-  var coffee=document.getElementById('first-coffee').value;
-  var lunch=document.getElementById('lunch').value;
-  localStorage.setItem('wwf_energy_audit',JSON.stringify({levels:levels,coffee:coffee,lunch:lunch,date:new Date().toISOString()}));
-  var peakIdx=levels.indexOf(Math.max.apply(null,levels));
-  var troughIdx=levels.indexOf(Math.min.apply(null,levels));
-  var peak=BLOCKS[peakIdx];
-  var trough=BLOCKS[troughIdx];
-  var highWork=['Deep work','Complex decisions','Creative projects','Difficult conversations'];
-  var lowWork=['Email & admin','Routine tasks','Meetings (if possible)','Light reading'];
-  var tips=[];
-  if(coffee==='wake')tips.push('Delay your first coffee 90 minutes after waking — cortisol is already doing the job. Caffeine then hits harder later.');
-  if(lunch==='skip')tips.push('Skipping lunch is accelerating your afternoon crash. A small protein-rich meal at 12-1pm can lift your 3pm energy significantly.');
-  if(levels[4]<=2)tips.push('Your 1-3pm block is a crash zone. Avoid critical decisions and deep work here. A 10-min walk or power nap at 1:30pm can help.');
-  if(levels[8]>=4)tips.push('You're still high-energy late evening — that's working against your sleep. Add a hard screen cut-off at 9pm.');
-  var barHtml=BLOCKS.map(function(b,i){var pct=levels[i]/5*100;var col=levels[i]>=4?'var(--green)':levels[i]>=3?'var(--orange)':'var(--red)';return '<div style="margin-bottom:.5rem"><div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:2px"><span>'+b.t+'</span><span>'+levels[i]+'/5</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+col+'"></div></div></div>';}).join('');
-  document.getElementById('energy-output').innerHTML='<div class="result-label" style="margin-bottom:1rem">Your Energy Map</div>'
-  +barHtml
-  +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.25rem 0">'
-  +'<div style="background:rgba(34,197,94,.08);border:1px solid var(--green);border-radius:8px;padding:.85rem"><div style="font-size:.75rem;font-weight:700;color:var(--green);margin-bottom:.35rem">PEAK WINDOW</div><div style="color:var(--white);font-weight:700">'+peak.t+'</div><ul style="margin-top:.5rem;list-style:none;padding:0">'+highWork.map(function(w){return '<li style="font-size:.8rem;color:var(--light);padding:.2rem 0">→ '+w+'</li>';}).join('')+'</ul></div>'
-  +'<div style="background:rgba(239,68,68,.08);border:1px solid var(--red);border-radius:8px;padding:.85rem"><div style="font-size:.75rem;font-weight:700;color:var(--red);margin-bottom:.35rem">TROUGH WINDOW</div><div style="color:var(--white);font-weight:700">'+trough.t+'</div><ul style="margin-top:.5rem;list-style:none;padding:0">'+lowWork.map(function(w){return '<li style="font-size:.8rem;color:var(--light);padding:.2rem 0">→ '+w+'</li>';}).join('')+'</ul></div>'
-  +'</div>'
-  +(tips.length>0?'<div style="background:var(--surface);border-radius:8px;padding:1rem"><div style="font-size:.8rem;font-weight:700;color:var(--orange);margin-bottom:.5rem">PERSONALISED TIPS</div><ul style="list-style:none;padding:0">'+tips.map(function(t){return '<li style="font-size:.85rem;color:var(--light);padding:.4rem 0;border-bottom:1px solid var(--border)">'+t+'</li>';}).join('')+'</ul></div>':'');
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-}
-renderBlocks();
+document.getElementById("calcBtn").addEventListener("click",function(){
+  var data={},drainers=[],boosters=[];
+  ITEMS.forEach(function(item,i){
+    var v=parseInt(document.getElementById("er"+i).value);
+    data[item.id]=v;
+    if(v<=-2)drainers.push({label:item.label,v:v});
+    if(v>=2)boosters.push({label:item.label,v:v});
+  });
+  localStorage.setItem("wwf_energy_audit",JSON.stringify(data));
+  drainers.sort(function(a,b){return a.v-b.v;});
+  boosters.sort(function(a,b){return b.v-a.v;});
+  var html="";
+  if(boosters.length>0){
+    html+="<div style='margin-bottom:1rem'><div style='font-size:.78rem;font-weight:700;text-transform:uppercase;color:#22c55e;margin-bottom:.4rem'>Your Energy Sources</div>";
+    html+=boosters.map(function(b){return"<div style='display:flex;align-items:center;gap:.5rem;padding:.4rem 0;border-bottom:1px solid #1f2937'><span style='color:#22c55e;font-weight:700;min-width:24px'>"+(b.v>0?"+":"")+b.v+"</span><span style='font-size:.87rem'>"+b.label+"</span></div>";}).join("");
+    html+="</div>";
+  }
+  if(drainers.length>0){
+    html+="<div style='margin-bottom:1rem'><div style='font-size:.78rem;font-weight:700;text-transform:uppercase;color:#ef4444;margin-bottom:.4rem'>Your Energy Drains</div>";
+    html+=drainers.map(function(d){return"<div style='display:flex;align-items:center;gap:.5rem;padding:.4rem 0;border-bottom:1px solid #1f2937'><span style='color:#ef4444;font-weight:700;min-width:24px'>"+d.v+"</span><span style='font-size:.87rem'>"+d.label+"</span></div>";}).join("");
+    html+="</div>";
+  }
+  if(boosters.length===0&&drainers.length===0)html="<p style='color:#6b7280'>Move the sliders further from neutral to see your map.</p>";
+  document.getElementById("energy-out").innerHTML=html;
+  var plan="";
+  if(boosters.length>0)plan+="Schedule more of what energises you — especially "+boosters[0].label.toLowerCase()+". Treat it as non-negotiable, not a reward. ";
+  if(drainers.length>0)plan+="Your biggest drain is "+drainers[0].label.toLowerCase()+". Can you eliminate, delegate, or shorten it? Even a 20% reduction compounds over a week.";
+  if(!plan)plan="Rate activities further from neutral (0) to get personalised guidance.";
+  document.getElementById("action-plan").textContent=plan;
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("retakeBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+renderItems();
+
 </script>
 </body>
 </html>
