@@ -4,99 +4,122 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Excuse Audit | WinWithFred</title>
-<meta name="description" content="Log your excuses for a week, find the hidden patterns, and see exactly what beliefs are keeping you stuck.">
+<meta name="description" content="Find out which excuses are silently running your life — and get a direct challenge to each one.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Self-Awareness</div>
-<h1>Excuse Audit</h1>
-<p>Log your excuses. See the pattern. Find what's really keeping you stuck.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Self-Awareness</div><h1>Excuse Audit</h1><p>Find the excuses running your life — and challenge each one directly.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>Log an excuse</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:.75rem">Something you told yourself you couldn't, shouldn't, or didn't have time for. Be specific.</p>
-<label>The excuse</label>
-<textarea id="excuse-text" placeholder="e.g. 'I don't have time to exercise today'..." style="min-height:60px"></textarea>
-<label>Category</label>
-<select id="excuse-cat">
-<option value="time">Time ("I don't have time")</option>
-<option value="energy">Energy ("I'm too tired")</option>
-<option value="fear">Fear ("What if it doesn't work")</option>
-<option value="clarity">Clarity ("I don't know how")</option>
-<option value="worth">Worth ("I don't deserve it")</option>
-<option value="other">Other</option>
-</select>
-<label>What did you do instead?</label>
-<input type="text" id="instead-text" placeholder="What actually happened...">
-<button class="btn btn-primary btn-sm" onclick="logExcuse()" style="margin-top:.75rem">Log This Excuse</button>
+  <h2>How often do you use these excuses?</h2>
+  <p class="sub">1 = Never &nbsp;·&nbsp; 5 = This is practically my motto. Be brutal — no one's judging.</p>
+  <div id="excuse-list"></div>
+  <button class="btn btn-primary" id="calcBtn" style="margin-top:1rem">Audit My Excuses</button>
 </div>
-<div class="card">
-<h2>Your excuse log <span id="log-count" style="color:var(--orange);font-size:.85rem"></span></h2>
-<div id="excuse-log"><p style="color:var(--muted);font-size:.88rem">No excuses logged yet. Add your first one above.</p></div>
+<div class="result" id="result">
+  <div class="big-score" id="excuse-score"></div>
+  <div class="res-label" id="excuse-label"></div>
+  <div class="res-desc" id="excuse-desc" style="margin-top:.4rem;color:#9ca3af;font-size:.88rem"></div>
+  <div style="margin-top:1.25rem">
+    <div class="section-title">Your Top Excuses — Challenged</div>
+    <div id="top-excuses" style="margin-top:.5rem"></div>
+  </div>
+  <div style="margin-top:1rem;padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">The Pattern Behind Your Excuses</div>
+    <div id="pattern-text" style="color:#9ca3af;font-size:.88rem;line-height:1.6"></div>
+  </div>
+  <button class="btn btn-ghost btn-sm" id="retakeBtn" style="margin-top:1rem">Retake</button>
 </div>
-<button class="btn btn-primary" onclick="analyseExcuses()" style="width:100%" id="analyse-btn" style="display:none">Analyse My Patterns</button>
-<div class="result-box" id="result"><div id="excuse-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Back to Log</button></div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var CAT_LABELS={time:'Time',energy:'Energy',fear:'Fear',clarity:'Clarity',worth:'Worth',other:'Other'};
-var CAT_INSIGHTS={
-time:{pattern:'The "no time" excuse is almost always a priority excuse in disguise.',insight:'If it were a crisis, you'd find the time. What you're really saying is: this isn't important enough to protect time for.',fix:'Schedule the thing first. Don't find time — make it.'},
-energy:{pattern:'"Too tired" is real — but it's often a symptom, not a cause.',insight:'Chronic low energy points to sleep, diet, or overcommitment. It also spikes for tasks that trigger anxiety.',fix:'Do the avoided thing first, before you're tired. Energy follows action more than it precedes it.'},
-fear:{pattern:'Fear-based excuses protect you from the discomfort of growth.',insight:'Fear is a signal that something matters. The excuse keeps you safe from judgment, failure, or change — and also from the life you want.',fix:'Name the specific fear. Then ask: what's the worst realistic outcome? Is it actually worse than staying stuck?'},
-clarity:{pattern:'"I don't know how" is real, but it's solvable in minutes.',insight:'Most clarity excuses dissolve with a 15-minute Google search, a question to someone who's done it, or just starting and seeing what happens.',fix:'Start before you're ready. Clarity comes from action, not from thinking.'},
-worth:{pattern:'Worth-based excuses are the deepest and most costly.',insight:'You're pre-deciding you don't deserve the outcome. That's not humility — it's self-sabotage with a polite name.',fix:'Treat yourself like someone you're responsible for helping. What would you say to a friend making this excuse?'},
-other:{pattern:'Your excuses don't fit a neat category — or you're protecting yourself from seeing the real reason.',insight:'Try logging again and picking a category that feels closest, even if it's not perfect. The pattern reveals itself over time.',fix:'Ask: "If I'm honest, the real reason is ___." Fill in the blank without judgment.'}
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var EXCUSES=[
+  {e:"I don't have enough time.",         challenge:"Everyone has 24 hours. This is a priority problem, not a time problem. What would you drop to make room?",cat:"time"},
+  {e:"I'll start Monday.",                challenge:"Monday is a lie you tell yourself. The version of you that starts Monday is the same one who will push to next Monday.",cat:"delay"},
+  {e:"I'm too tired.",                    challenge:"You're not too tired to scroll for an hour. You're choosing easier. Low energy is often a symptom of avoiding hard things.",cat:"energy"},
+  {e:"I'm not ready yet.",                challenge:"Readiness is a feeling, not a state. You will never feel fully ready. Start unready and get ready as you go.",cat:"fear"},
+  {e:"I'm not smart/talented enough.",    challenge:"You don't need talent — you need reps. Most skills are learned, not born. You've been practicing the wrong story.",cat:"worth"},
+  {e:"It's too late to start.",           challenge:"Too late compared to what? The best time was 5 years ago. The second-best time is today.",cat:"time"},
+  {e:"I don't know how.",                 challenge:"'I don't know how' is now the easiest problem to solve in human history. What have you actually tried?",cat:"clarity"},
+  {e:"I work better under pressure.",     challenge:"This is procrastination wearing a lab coat. You don't work better under pressure — you just work under pressure.",cat:"delay"},
+  {e:"Nobody will care anyway.",          challenge:"You care. That should be enough to start. The outcome of sharing is unknowable — not doing it guarantees nothing.",cat:"worth"},
+  {e:"I need to do more research first.", challenge:"Research is often hiding from the work. At some point you know enough to start. You're there now.",cat:"fear"},
+  {e:"It's not the right time.",          challenge:"There is no right time. There is only now and later. Later usually means never.",cat:"delay"},
+  {e:"Other people have it easier.",      challenge:"Comparison is a trap. You're not competing with them — you're competing with who you were yesterday.",cat:"worth"}
+];
+var PATTERNS={
+  time:"Your excuses tend to be about time and competing priorities. The question isn't how to find time — it's what you're willing to sacrifice for what you say you want.",
+  delay:"You delay. This is usually fear dressed up as practicality. The 'right moment' is protection from the risk of actually trying.",
+  fear:"Fear of failure or judgment is running your excuses. The real question is: what is staying small actually costing you?",
+  energy:"Energy and motivation are your shields. The truth is that energy follows action — not the other way around.",
+  clarity:"You hide behind not knowing. The real block is usually fear, not information. You know more than you think.",
+  worth:"Your excuses suggest a belief that you're not worthy of success, or that success isn't for people like you. That belief is wrong — and testable."
 };
-var excuses=[];
-function loadExcuses(){
-  var saved=JSON.parse(localStorage.getItem('wwf_excuse_audit')||'null');
-  if(saved&&saved.excuses)excuses=saved.excuses;
-  renderLog();
+function renderList(){
+  var saved=JSON.parse(localStorage.getItem("wwf_excuse_audit")||"null");
+  var h="";
+  EXCUSES.forEach(function(ex,i){
+    var v=(saved&&saved[i]!=null)?saved[i]:1;
+    h+="<div style='margin-bottom:1rem'>"
+      +"<label style='font-size:.87rem;line-height:1.4;font-style:italic'>"+ex.e+"</label>"
+      +"<div class='range-row'><input type='range' min='1' max='5' value='"+v+"' id='ex"+i+"'>"
+      +"<span class='rval' id='exv"+i+"'>"+v+"</span></div>"
+      +"<div class='range-labels'><span>Never</span><span>My motto</span></div></div>";
+  });
+  document.getElementById("excuse-list").innerHTML=h;
+  EXCUSES.forEach(function(ex,i){
+    document.getElementById("ex"+i).addEventListener("input",function(){
+      document.getElementById("exv"+i).textContent=this.value;
+    });
+  });
 }
-function logExcuse(){
-  var text=document.getElementById('excuse-text').value.trim();
-  if(!text)return;
-  excuses.push({text:text,cat:document.getElementById('excuse-cat').value,instead:document.getElementById('instead-text').value.trim(),date:new Date().toLocaleDateString()});
-  document.getElementById('excuse-text').value='';
-  document.getElementById('instead-text').value='';
-  localStorage.setItem('wwf_excuse_audit',JSON.stringify({excuses:excuses}));
-  renderLog();
-}
-function deleteExcuse(i){excuses.splice(i,1);localStorage.setItem('wwf_excuse_audit',JSON.stringify({excuses:excuses}));renderLog();}
-function renderLog(){
-  var cnt=excuses.length;
-  document.getElementById('log-count').textContent='('+cnt+' logged)';
-  if(cnt===0){document.getElementById('excuse-log').innerHTML='<p style="color:var(--muted);font-size:.88rem">No excuses logged yet.</p>';document.getElementById('analyse-btn').style.display='none';return;}
-  document.getElementById('excuse-log').innerHTML=excuses.map(function(e,i){return '<div style="background:var(--dark);border-radius:8px;padding:.75rem;margin-bottom:.5rem;display:flex;gap:.75rem;align-items:flex-start"><div style="flex:1"><div style="font-size:.88rem;color:var(--light);margin-bottom:.2rem">'+e.text+'</div><div style="font-size:.75rem;color:var(--muted)">'+e.date+' · <span class="tag tag-orange" style="font-size:.7rem">'+CAT_LABELS[e.cat]+'</span>'+(e.instead?' · Did: '+e.instead:'')+' </div></div><button onclick="deleteExcuse('+i+')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem">×</button></div>';}).join('');
-  document.getElementById('analyse-btn').style.display='block';
-}
-function analyseExcuses(){
-  if(excuses.length<2){alert('Log a few more to see a pattern.');return;}
-  var counts={};
-  excuses.forEach(function(e){counts[e.cat]=(counts[e.cat]||0)+1;});
-  var sorted=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];});
-  var topCat=sorted[0];
-  var topInsight=CAT_INSIGHTS[topCat]||CAT_INSIGHTS.other;
-  var barHtml=sorted.map(function(c){var pct=Math.round(counts[c]/excuses.length*100);return '<div style="margin-bottom:.5rem"><div style="display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:2px"><span>'+CAT_LABELS[c]+'</span><span>'+counts[c]+' ('+pct+'%)</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%"></div></div></div>';}).join('');
-  document.getElementById('excuse-output').innerHTML='<div class="result-label" style="margin-bottom:.35rem">Your Excuse Profile</div><p style="color:var(--muted);font-size:.84rem;margin-bottom:1.25rem">Based on '+excuses.length+' logged excuse'+(excuses.length>1?'s':'')+' — dominant type: <strong style="color:var(--orange)">'+CAT_LABELS[topCat]+'</strong></p>'
-  +barHtml
-  +'<div style="background:var(--surface);border-radius:8px;padding:1rem;margin-top:1rem"><div style="font-weight:700;color:var(--white);font-size:.95rem;margin-bottom:.5rem">The Pattern: '+topInsight.pattern+'</div><p style="color:var(--muted);font-size:.85rem;margin-bottom:.75rem">'+topInsight.insight+'</p><div style="font-size:.78rem;font-weight:700;color:var(--orange);margin-bottom:.25rem">THE FIX</div><p style="color:var(--light);font-size:.85rem">'+topInsight.fix+'</p></div>';
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-}
-loadExcuses();
+document.getElementById("calcBtn").addEventListener("click",function(){
+  var scores=[],catTotals={};
+  EXCUSES.forEach(function(ex,i){
+    var v=parseInt(document.getElementById("ex"+i).value)||1;
+    scores.push(v);
+    catTotals[ex.cat]=(catTotals[ex.cat]||0)+v;
+  });
+  var total=scores.reduce(function(a,b){return a+b;},0);
+  var maxPossible=EXCUSES.length*5;
+  var pct=Math.round(total/maxPossible*100);
+  localStorage.setItem("wwf_excuse_audit",JSON.stringify(scores));
+  document.getElementById("excuse-score").textContent=pct+"%";
+  var label,desc;
+  if(pct<30){label="Low Excuse Usage";desc="You don't lean on excuses much. Keep a close eye on any you rated above 3 — those are the ones quietly doing damage.";}
+  else if(pct<55){label="Moderate Excuse Usage";desc="Excuses are a regular feature of your thinking. Some are harmless habits — others are actively blocking progress.";}
+  else if(pct<75){label:"High Excuse Usage";desc="Your excuses are consuming significant mental bandwidth and limiting your actions. Time to challenge each one directly.";}
+  else{label="Excuse-Dominant Thinking";desc="Excuses have become a primary lens. This isn't about discipline — it's about the stories you tell yourself. They can be rewritten.";}
+  document.getElementById("excuse-label").textContent=label;
+  document.getElementById("excuse-desc").textContent=desc;
+  var topExcuses=EXCUSES.map(function(ex,i){return{e:ex.e,challenge:ex.challenge,v:scores[i],cat:ex.cat};})
+    .filter(function(ex){return ex.v>=4;}).sort(function(a,b){return b.v-a.v;}).slice(0,3);
+  var html=topExcuses.length>0
+    ?topExcuses.map(function(ex){
+      return"<div style='background:#1f2937;border-radius:8px;padding:1rem;margin-bottom:.75rem'>"
+        +"<div style='font-style:italic;color:#f9fafb;font-size:.88rem;margin-bottom:.5rem'>""+ex.e+""</div>"
+        +"<div style='background:#111827;border-left:3px solid #c2410c;padding:.6rem;border-radius:0 6px 6px 0;color:#9ca3af;font-size:.83rem'>"+ex.challenge+"</div>"
+        +"</div>";
+    }).join("")
+    :"<p style='color:#6b7280;font-size:.87rem'>No excuses rated 4 or higher. Check your low scores — even a 3 can hold you back in the right circumstances.</p>";
+  document.getElementById("top-excuses").innerHTML=html;
+  var topCat=Object.keys(catTotals).sort(function(a,b){return catTotals[b]-catTotals[a];})[0]||"delay";
+  document.getElementById("pattern-text").textContent=PATTERNS[topCat]||PATTERNS.delay;
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("retakeBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+renderList();
+
 </script>
 </body>
 </html>
