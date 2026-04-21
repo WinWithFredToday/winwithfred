@@ -4,90 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Next Action Generator | WinWithFred</title>
-<meta name="description" content="Dump your vague goal and get the one smallest specific next step you can take in the next 24 hours.">
+<meta name="description" content="Stuck on a project? Get the exact next physical action to take — matched to your time and blocker.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Decision & Action</div>
-<h1>Next Action Generator</h1>
-<p>Dump your vague goal. Get the one smallest next step.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Decision & Action</div><h1>Next Action Generator</h1><p>Stuck? Get the exact next action to take — matched to your time and blocker.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>What's the goal or project?</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:.75rem">Dump it here — messy, vague, incomplete. That's fine.</p>
-<textarea id="goal-dump" placeholder="e.g. I want to start a business, get in shape, fix my finances, write a book..."></textarea>
+  <h2>What project or goal are you stuck on?</h2>
+  <input type="text" id="project" placeholder="e.g. Launch my online course, Fix the back bedroom, Write my resume">
 </div>
-<div class="card" id="q2-card">
-<h2>Quick context</h2>
-<label>What is the biggest obstacle right now?</label>
-<select id="obstacle">
-<option value="start">I haven't started at all</option>
-<option value="stuck">I started but got stuck</option>
-<option value="overwhelm">I'm overwhelmed by how much there is to do</option>
-<option value="unclear">I'm unclear on what to do next</option>
-<option value="time">I feel like I don't have time</option>
-</select>
-<label style="margin-top:1rem">What resources do you have available?</label>
-<div id="resources-check" class="option-group" style="flex-direction:row;flex-wrap:wrap;gap:.4rem;margin-top:.4rem"></div>
-<label style="margin-top:1rem">When is the next time you have 30+ free minutes?</label>
-<select id="next-time">
-<option value="today">Later today</option>
-<option value="tomorrow">Tomorrow</option>
-<option value="weekend">This weekend</option>
-<option value="unsure">Not sure</option>
-</select>
+<div class="card">
+  <h2>Tell me more</h2>
+  <div style="margin-bottom:1rem">
+    <label>What's the desired outcome?</label>
+    <input type="text" id="outcome" placeholder="e.g. Course live and making sales, Bedroom painted and furnished">
+  </div>
+  <div style="margin-bottom:1rem">
+    <label>What have you done so far?</label>
+    <input type="text" id="done-so-far" placeholder="e.g. Nothing yet, Outlined the chapters, Bought the paint">
+  </div>
+  <div style="margin-bottom:1rem">
+    <label>What's stopping you right now?</label>
+    <div id="blocks" class="opts" style="margin-top:.5rem">
+      <button class="opt on" data-block="clarity">Not sure what to do</button>
+      <button class="opt" data-block="time">Not enough time</button>
+      <button class="opt" data-block="resources">Missing info or tools</button>
+      <button class="opt" data-block="people">Waiting on someone else</button>
+      <button class="opt" data-block="motivation">Low energy or motivation</button>
+      <button class="opt" data-block="fear">Afraid to get it wrong</button>
+    </div>
+  </div>
+  <div>
+    <label>Time available right now</label>
+    <div id="time-opts" class="opts" style="margin-top:.5rem">
+      <button class="opt" data-time="5">5 min</button>
+      <button class="opt on" data-time="25">25 min</button>
+      <button class="opt" data-time="60">1 hour</button>
+      <button class="opt" data-time="120">2+ hours</button>
+    </div>
+  </div>
 </div>
-<button class="btn btn-primary" onclick="generateNextAction()" style="width:100%">Generate My Next Action</button>
-<div class="result-box" id="result"><div id="na-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Try Again</button></div>
+<button class="btn btn-primary" id="buildBtn">Generate My Next Action</button>
+<div class="result" id="result">
+  <div style="padding:1.25rem;background:#111827;border-left:4px solid #c2410c;border-radius:0 8px 8px 0;margin-bottom:1.25rem">
+    <div style="font-size:.75rem;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.35rem">Your next action</div>
+    <div id="next-action" style="color:#f9fafb;font-size:1.05rem;font-weight:600;line-height:1.5"></div>
+    <div id="time-box" style="margin-top:.5rem;font-size:.82rem;color:#c2410c;font-weight:600"></div>
+  </div>
+  <div id="context-block" style="margin-bottom:1rem"></div>
+  <div style="padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">After this action</div>
+    <ul class="action-list" id="after-steps"></ul>
+  </div>
+  <button class="btn btn-ghost btn-sm" id="retakeBtn" style="margin-top:1rem">New Action</button>
+</div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var RESOURCES=['Phone','Laptop','Internet','15 min','30 min','1 hour','Money','Help from someone'];
-var selectedRes=[];
-function renderRes(){
-  document.getElementById('resources-check').innerHTML=RESOURCES.map(function(r,i){
-    return '<button class="option-btn btn-sm" id="res'+i+'" style="width:auto;padding:.35rem .75rem" onclick="toggleRes('+i+',this)"><span style="font-size:.82rem">'+r+'</span></button>';
-  }).join('');
-}
-function toggleRes(i,btn){var idx=selectedRes.indexOf(i);if(idx===-1)selectedRes.push(i);else selectedRes.splice(idx,1);btn.classList.toggle('sel');}
-function generateNextAction(){
-  var goal=document.getElementById('goal-dump').value.trim();
-  if(!goal){alert('Tell me the goal first.');return;}
-  var obstacle=document.getElementById('obstacle').value;
-  var nextTime=document.getElementById('next-time').value;
-  var hasPhone=selectedRes.indexOf(0)!==-1;
-  var hasLaptop=selectedRes.indexOf(1)!==-1;
-  var has15=selectedRes.indexOf(3)!==-1||selectedRes.indexOf(4)!==-1||selectedRes.indexOf(5)!==-1;
-  localStorage.setItem('wwf_next_action',JSON.stringify({goal:goal,obstacle:obstacle,nextTime:nextTime,date:new Date().toISOString()}));
-  var actions={
-    start:['Open a blank document and write the title of this goal at the top. Nothing else — just the title.','Set a 10-minute timer and write down every possible first step you can think of, no matter how small.','Find one person who has done something similar and message them today asking for their #1 piece of advice.','Search "[your goal] beginner guide" and read the first result for 15 minutes.'],
-    stuck:['Write down exactly where you got stuck and why in one sentence.','Do the last thing that was working, just to rebuild momentum.','Ask yourself: "What is the smallest version of the stuck part I could do?"','Find the specific point of confusion and look it up — just that one thing.'],
-    overwhelm:['Write down everything that feels like it needs to happen. All of it. Then circle the one that would unlock the most others.','Do the smallest thing on your list — not the most important, the smallest. Break the paralysis.','Set a timer for 15 minutes and work on just one piece. Stop when it goes off.','Ask: "What can I delete, delegate, or delay?" Not everything is actually necessary.'],
-    unclear:['Write down what "done" looks like for this project. Describe the finish line.','Pick the most logical next step and do it for 20 minutes. Clarity comes from action, not from thinking.','Break the project into 3 phases: start, middle, end. What is the very first step of phase 1?','Phone a friend and explain your goal out loud. Explaining it creates clarity.'],
-    time:['Schedule 25 minutes this week specifically for this — block it in your calendar right now.','Find the 15 minutes you waste most predictably and use that instead.','Ask: "What is the smallest version of progress I can make in 10 minutes?" Do that.','Identify one regular task you can skip once this week and use that time.']
-  };
-  var timeNote=nextTime==='today'?'You said you have time today. Do this in the next 3 hours.':nextTime==='tomorrow'?'Set a reminder for tomorrow morning. Make it the first real task of the day.':nextTime==='weekend'?'Put it in your calendar for Saturday morning before your plans kick in.':'Find the time. This matters to you — protect 30 minutes for it this week.';
-  var actionList=actions[obstacle]||actions.unclear;
-  var primaryAction=actionList[0];
-  document.getElementById('na-output').innerHTML='<div style="background:rgba(194,65,12,.12);border:2px solid var(--orange);border-radius:8px;padding:1.25rem;margin-bottom:1rem"><div style="font-size:.75rem;font-weight:700;color:var(--orange);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Your Next Action</div><div style="font-size:1.05rem;font-weight:700;color:var(--white);line-height:1.5">'+primaryAction+'</div></div>'
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.35rem">WHEN TO DO IT</div><p style="color:var(--muted);font-size:.85rem">'+timeNote+'</p></div>'
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.5rem">ALTERNATIVES (IF THAT'S NOT RIGHT)</div><ul class="action-list">'+actionList.slice(1).map(function(a){return '<li>'+a+'</li>';}).join('')+'</ul></div>'
-  +'<p style="color:var(--muted);font-size:.8rem;margin-top:.75rem;line-height:1.5">One action. Not a plan, not a system — just the next step. When you've done it, come back and generate the next one.</p>';
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-}
-renderRes();
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var selBlock="clarity",selTime="25";
+document.querySelectorAll("[data-block]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll("[data-block]").forEach(function(b){b.classList.remove("on");});
+    this.classList.add("on");selBlock=this.dataset.block;
+  });
+});
+document.querySelectorAll("[data-time]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll("[data-time]").forEach(function(b){b.classList.remove("on");});
+    this.classList.add("on");selTime=this.dataset.time;
+  });
+});
+var ACTIONS={
+  clarity:{
+    "5":"Open a blank doc and write one sentence: what does 'done' look like for this project?",
+    "25":"Spend 20 minutes on a brain dump: everything you know, need to know, and need to do. Don't organise — just dump.",
+    "60":"Write a project definition: outcome, first milestone, and 5 next actions in priority order.",
+    "120":"Create a full project map: milestones, dependencies, open questions, and the first 10 concrete actions."
+  },
+  time:{
+    "5":"Identify one task you can delegate, defer, or delete to protect time for this.",
+    "25":"Time-block one hour in your calendar this week specifically for this project — treat it like a meeting.",
+    "60":"Review your schedule this week and cut or compress one commitment to create a 2-hour block.",
+    "120":"Do a full weekly review and schedule all project sessions for the next 2 weeks."
+  },
+  resources:{
+    "5":"Write down the single most important thing you're missing. Then identify one person or search that could solve it.",
+    "25":"Research the one piece of missing information. Stop after 25 minutes — done or not.",
+    "60":"Make a resource list: tools, info, people. For each, identify the fastest path to getting it.",
+    "120":"Solve the resource gap completely before doing anything else — it's your real blocker."
+  },
+  people:{
+    "5":"Send a clear, specific follow-up message right now. Include a deadline.",
+    "25":"Draft the follow-up, decide on a fallback if they don't respond, and schedule a check-in.",
+    "60":"Work on the parts of the project that don't require them — remove other blockers first.",
+    "120":"Identify what you can do without them and start. Never let one person block the whole project."
+  },
+  motivation:{
+    "5":"Set a 5-minute timer and work for exactly 5 minutes. Just start. Stop when it goes off if you want.",
+    "25":"Do a Pomodoro: 25 min of work, 5 min break. Reward yourself after.",
+    "60":"Connect this project to a value you care about deeply. Write a one-paragraph 'why' before starting.",
+    "120":"Go somewhere different to work. A change of environment often resets motivation."
+  },
+  fear:{
+    "5":"Write one sentence naming the fear exactly. Get it out of your head.",
+    "25":"Write the worst realistic outcome. Then write how you'd recover from it. Then start.",
+    "60":"Do the smallest possible version of the thing you're afraid of — reduce the stakes to near zero.",
+    "120":"Separate the creative work from the judgment. Produce first, evaluate later."
+  }
+};
+var AFTER={
+  clarity:["Define milestone 1 — the first point you can call progress","Share the plan with one person for accountability","Schedule your first work session"],
+  time:["Protect that scheduled block — treat it like a doctor's appointment","Do a 5-min daily check-in on progress","Identify the next blocker before it becomes urgent"],
+  resources:["Once you have what you need, set a 25-min timer and start immediately","Document what you found so you don't re-research later","Ask: what else might be missing?"],
+  people:["Build a version that doesn't rely on them — reduce single points of failure","Set a deadline for their response — then move forward regardless","Plan what you'll do if they're unavailable"],
+  motivation:["Capture the feeling of momentum after the session — it'll remind you why to start next time","Put your next session in the calendar before closing your laptop","Tell one person what you did"],
+  fear:["Notice that you survived the action — catalogue that","Make the next step slightly harder. Build tolerance gradually","Share the output before it feels 'ready' — the response is rarely as bad as the fear"]
+};
+document.getElementById("buildBtn").addEventListener("click",function(){
+  var project=document.getElementById("project").value.trim();
+  var outcome=document.getElementById("outcome").value.trim();
+  var done=document.getElementById("done-so-far").value.trim();
+  if(!project){alert("Name the project first.");return;}
+  var action=ACTIONS[selBlock][selTime];
+  document.getElementById("next-action").textContent=action;
+  document.getElementById("time-box").textContent="Time needed: "+selTime+" minutes";
+  var ctx="";
+  if(project||done||outcome){
+    ctx="<div style='padding:.75rem;background:#1f2937;border-radius:8px;margin-bottom:1rem'>";
+    if(project)ctx+="<div style='margin-bottom:.3rem'><span style='color:#6b7280;font-size:.8rem'>Project: </span><span style='color:#f9fafb;font-size:.87rem'>"+project+"</span></div>";
+    if(outcome)ctx+="<div style='margin-bottom:.3rem'><span style='color:#6b7280;font-size:.8rem'>Goal: </span><span style='color:#f9fafb;font-size:.87rem'>"+outcome+"</span></div>";
+    if(done)ctx+="<div><span style='color:#6b7280;font-size:.8rem'>Done so far: </span><span style='color:#f9fafb;font-size:.87rem'>"+done+"</span></div>";
+    ctx+="</div>";
+  }
+  document.getElementById("context-block").innerHTML=ctx;
+  document.getElementById("after-steps").innerHTML=(AFTER[selBlock]||[]).map(function(a){return"<li>"+a+"</li>";}).join("");
+  localStorage.setItem("wwf_next_action",JSON.stringify({project:project,outcome:outcome,done:done,block:selBlock,time:selTime}));
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("retakeBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+(function init(){
+  var saved=JSON.parse(localStorage.getItem("wwf_next_action")||"null");
+  if(saved){
+    if(saved.project)document.getElementById("project").value=saved.project;
+    if(saved.outcome)document.getElementById("outcome").value=saved.outcome;
+    if(saved.done)document.getElementById("done-so-far").value=saved.done;
+    if(saved.block){
+      document.querySelectorAll("[data-block]").forEach(function(b){b.classList.remove("on");});
+      var el=document.querySelector("[data-block='"+saved.block+"']");
+      if(el){el.classList.add("on");selBlock=saved.block;}
+    }
+    if(saved.time){
+      document.querySelectorAll("[data-time]").forEach(function(b){b.classList.remove("on");});
+      var el=document.querySelector("[data-time='"+saved.time+"']");
+      if(el){el.classList.add("on");selTime=saved.time;}
+    }
+  }
+})();
+
 </script>
 </body>
 </html>
