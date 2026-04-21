@@ -4,75 +4,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Workout Style Quiz | WinWithFred</title>
-<meta name="description" content="Find the workout style that matches your goals, personality, and lifestyle — then get a starter routine.">
+<meta name="description" content="Find the type of exercise that actually matches your personality, schedule, and goals.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Fitness Tools</div>
-<h1>Workout Style Quiz</h1>
-<p>Find the workout that actually fits your goals, personality, and life.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Fitness</div><h1>Workout Style Quiz</h1><p>Find the exercise style that actually matches your personality and goals.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>Let's find your workout match</h2>
-<div id="wq-questions"></div>
-<button class="btn btn-primary" onclick="calcWorkout()" style="margin-top:1rem;width:100%">Find My Workout Style</button>
+  <h2>Find your ideal workout style</h2>
+  <p class="sub">Answer honestly based on how you <em>actually</em> feel — not what you think you should like.</p>
+  <div id="workout-qs"></div>
+  <button class="btn btn-primary" id="calcBtn">Find My Workout Style</button>
 </div>
-<div class="result-box" id="result"><div id="wq-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Retake</button></div>
+<div class="result" id="result">
+  <div class="big-score" id="style-icon" style="font-size:2.5rem;margin-bottom:.5rem"></div>
+  <div class="res-label" id="style-name"></div>
+  <div class="res-desc" id="style-desc" style="margin-top:.4rem;color:#9ca3af;font-size:.88rem"></div>
+  <div style="margin-top:1.25rem;padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">Getting Started</div>
+    <ul class="action-list" id="style-starts"></ul>
+  </div>
+  <div style="margin-top:1rem;padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">What to Watch Out For</div>
+    <div id="style-warning" style="color:#9ca3af;font-size:.88rem;line-height:1.6"></div>
+  </div>
+  <div style="margin-top:1rem">
+    <div class="section-title" style="margin-bottom:.5rem">Your Other Good Matches</div>
+    <div id="other-styles" style="margin-top:.5rem"></div>
+  </div>
+  <button class="btn btn-ghost btn-sm" id="retakeBtn" style="margin-top:1rem">Retake</button>
+</div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var WQ=[
-{q:'Your main goal right now:',id:'goal',opts:[{l:'Lose body fat',v:'cardio'},{l:'Build muscle/strength',v:'strength'},{l:'Feel better & reduce stress',v:'wellness'},{l:'Get more athletic / fit overall',v:'hiit'}]},
-{q:'How do you feel about the gym?',id:'gym',opts:[{l:'I love it',v:'gym'},{l:'I prefer home workouts',v:'home'},{l:'I like outdoors',v:'outdoor'},{l:'Anywhere is fine',v:'any'}]},
-{q:'How much time can you realistically commit per session?',id:'time',opts:[{l:'Under 20 minutes',v:'short'},{l:'20-40 minutes',v:'medium'},{l:'45-60 minutes',v:'long'},{l:'60+ minutes',v:'xlong'}]},
-{q:'What kind of effort do you prefer?',id:'style',opts:[{l:'Steady and sustained (zone 2)',v:'steady'},{l:'Intense bursts with rest (HIIT)',v:'hiit'},{l:'Slow and controlled (strength)',v:'slow'},{l:'Flowing and mindful (yoga, pilates)',v:'flow'}]},
-{q:'How consistent have you been with working out in the past?',id:'history',opts:[{l:'Never really started',v:'beginner'},{l:'On and off',v:'intermediate'},{l:'Fairly consistent',v:'regular'},{l:'Very consistent',v:'advanced'}]}
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var QS=[
+  {q:"How do you feel about working out alone?",answers:[
+    {label:"I prefer it — no distractions",         scores:{solo:3,strength:1,hiking:1}},
+    {label:"Fine either way",                        scores:{running:1,yoga:1,cycling:1}},
+    {label:"I need other people to stay motivated",  scores:{team:3,classes:2,martial:1}},
+    {label:"I love the energy of a group",           scores:{classes:3,team:2,dance:2}}
+  ]},
+  {q:"How important is stress relief from your workout?",answers:[
+    {label:"Very — I need to decompress",            scores:{yoga:3,hiking:2,swimming:2}},
+    {label:"Somewhat — but I also want results",     scores:{strength:2,running:2,cycling:1}},
+    {label:"Not a priority — I want performance",    scores:{strength:3,martial:2,hiit:2}},
+    {label:"I want to feel energised, not drained",  scores:{yoga:2,walking:2,dance:1}}
+  ]},
+  {q:"What's your relationship with competition?",answers:[
+    {label:"Love it — I want to track progress",     scores:{strength:2,martial:2,running:2}},
+    {label:"Like competing with myself",             scores:{hiit:2,swimming:2,cycling:2}},
+    {label:"Prefer non-competitive movement",        scores:{yoga:3,hiking:2,dance:1}},
+    {label:"Enjoy light friendly competition",       scores:{team:3,classes:1,martial:1}}
+  ]},
+  {q:"How much time can you realistically commit?",answers:[
+    {label:"20-30 minutes a few times a week",       scores:{hiit:3,walking:2,yoga:1}},
+    {label:"45-60 minutes, 3-4 times a week",        scores:{strength:2,running:2,classes:2}},
+    {label:"1 hour+, I want full sessions",          scores:{swimming:2,cycling:2,martial:2}},
+    {label:"Flexible — it varies a lot",             scores:{hiking:2,yoga:2,walking:2}}
+  ]},
+  {q:"What result matters most to you?",answers:[
+    {label:"Build visible muscle and strength",      scores:{strength:4,hiit:1}},
+    {label:"Lose weight and improve cardio",         scores:{hiit:3,running:2,cycling:1}},
+    {label:"Flexibility, balance, and calm",         scores:{yoga:4,swimming:1}},
+    {label:"Enjoy being active and feel good",       scores:{hiking:2,dance:2,walking:2,team:1}}
+  ]},
+  {q:"How do you feel about routine and structure?",answers:[
+    {label:"Love it — clear programmes work for me", scores:{strength:3,running:2}},
+    {label:"Like some structure but want variety",   scores:{classes:2,hiit:2,martial:2}},
+    {label:"Prefer spontaneous, free-form movement", scores:{hiking:2,dance:2,walking:1}},
+    {label:"Need it to be different every session",  scores:{team:2,classes:2,dance:1}}
+  ]}
 ];
-var wqAnswers={};
-function renderWQs(){
-  document.getElementById('wq-questions').innerHTML=WQ.map(function(q){
-    return '<div style="margin-bottom:1.5rem"><label style="font-size:.92rem;margin-bottom:.5rem">'+q.q+'</label><div class="option-group">'+q.opts.map(function(o){return '<button class="option-btn" id="wq_'+q.id+'_'+o.v+'" onclick="selectWQ(''+q.id+'',''+o.v+'',this)"><span>'+o.l+'</span></button>';}).join('')+'</div></div>';
-  }).join('');
-}
-function selectWQ(qid,val,btn){
-  wqAnswers[qid]=val;
-  WQ.find(function(q){return q.id===qid;}).opts.forEach(function(o){var b=document.getElementById('wq_'+qid+'_'+o.v);if(b)b.classList.remove('sel');});
-  btn.classList.add('sel');
-}
 var STYLES={
-strength:{name:'Strength Training',desc:'Lifting weights, progressive overload, building muscle and metabolic rate.',routine:['Day 1: Upper body push (bench press, shoulder press, triceps)','Day 2: Lower body (squats, deadlifts, lunges)','Day 3: Rest or walk','Day 4: Upper body pull (rows, pull-ups, biceps)','Day 5: Lower body + core','Days 6-7: Rest and recovery'],tips:['Start with compound movements before isolation.','Track your weights — progressive overload is the mechanism.','Rest 1.5-3 mins between heavy sets.','3-4 sessions per week is optimal for most people.']},
-cardio:{name:'Cardio-Focused Training',desc:'Zone 2 cardio, running, cycling, or swimming for fat loss and heart health.',routine:['3x per week: 30-45 min steady cardio (run, cycle, swim, row)','2x per week: 20 min LISS (brisk walk, easy bike)','Optional: 1x short strength circuit to preserve muscle','Rest: minimum 1 full day','Progression: add 5 min per week or increase intensity monthly'],tips:['Keep zone 2 at a pace where you can hold a conversation.','Pair with strength work to avoid muscle loss.','Consistency over intensity — showing up beats killing yourself.','Track distance or time, not calories.']},
-hiit:{name:'HIIT & Athletic Training',desc:'High-intensity intervals, functional fitness, and conditioning work.',routine:['Day 1: 20-min HIIT circuit (push-ups, burpees, jump squats, mountain climbers)','Day 2: Active recovery (walk, stretch, mobility)','Day 3: 25-min AMRAP or tabata','Day 4: Rest','Day 5: Athletic conditioning (sprints, agility, plyometrics)','Days 6-7: Rest or light activity'],tips:['Maximum 3 HIIT sessions per week — recovery is part of training.','Warm up for 5 mins before every session — injuries are expensive.','Each interval: 20-40 sec all out, equal rest.','Combine with strength work for best body composition results.']},
-wellness:{name:'Movement & Wellness Training',desc:'Yoga, pilates, mobility, breathwork, and restorative movement.',routine:['3x: 30-min yoga or pilates (use YouTube — Yoga with Adriene is excellent)','2x: 20-min mobility and stretching routine','1x: Longer walk (45-60 mins) outdoors if possible','Daily: 5-10 mins morning movement or breathing','Optional: Add one strength session per week to build functional capacity'],tips:['Consistency matters more than intensity in this style.','Morning practice changes your whole day — try 7am for 2 weeks.','Don't skip the breathwork — it's doing more than you think.','This style pairs well with any mental health goal.']}
+  strength:{name:"Strength Training",icon:"🏋️",desc:"You want measurable progress, visible results, and sessions you can track. Lifting weights matches your goal-oriented, structured approach to fitness.",starts:["Start with 3 days/week: push, pull, legs split.","Use the Starting Strength or StrongLifts 5x5 programme to begin.","Focus on form before weight — one bad habit is hard to unlearn."],warning:"Progress can be slow early on. Don't judge the first 4 weeks — that's neurological adaptation, not failure."},
+  hiit:{name:"HIIT Training",icon:"⚡",desc:"Short, intense, efficient. You want maximum results in minimum time and don't mind the burn. HIIT matches your schedule and your desire for serious cardio.",starts:["Try 3x 20-min HIIT sessions per week initially.","Use a 2:1 work-to-rest ratio: 40 sec on, 20 sec off.","Bodyweight HIIT needs no equipment — start today."],warning:"HIIT is taxing. Don't do it 5 days a week. Recovery is where the adaptation happens."},
+  yoga:{name:"Yoga / Mobility Work",icon:"🧘",desc:"You want to move in a way that restores rather than depletes. Yoga matches your need for stress relief, flexibility, and sustainable practice.",starts:["Start with 3x 30-min sessions per week via YouTube or an app.","Yoga with Adriene is a trusted beginner channel.","Morning sessions tend to set a better tone for the day."],warning:"Progress is subtle and slow. Don't compare yourself to advanced practitioners. Flexibility comes in months, not weeks."},
+  running:{name:"Running",icon:"🏃",desc:"Accessible, scalable, and deeply rewarding. Running suits people who want independence, measurable progress, and a meditative solo activity.",starts:["Use the Couch to 5K programme — it works.","Run 3x per week, never two days in a row.","Invest in good shoes — it prevents most beginner injuries."],warning:"Running injuries are common when you ramp up too fast. The 10% rule: never increase weekly distance by more than 10% per week."},
+  hiking:{name:"Hiking & Outdoor Walking",icon:"🥾",desc:"You move because you enjoy being outside, not because you're punishing yourself. Hiking gives you fitness, nature, and zero gym pressure.",starts:["Start with 45-60 min local walks, 3-4x per week.","Gradually add elevation and distance each week.","Download AllTrails to find local routes rated by difficulty."],warning:"Easy to underestimate the cardio benefit. Don't discount walking as 'not a real workout' — for many people it outperforms the gym for long-term consistency."},
+  swimming:{name:"Swimming",icon:"🏊",desc:"Low-impact, full-body, and deeply satisfying. Swimming suits people who want a comprehensive workout that's easy on joints.",starts:["Begin with 3x 30-min pool sessions — focus on technique first.","Learn the freestyle stroke properly before adding distance.","Total Immersion is the best swimming technique resource for beginners."],warning:"Technique matters enormously in swimming. Bad habits slow you down and cause strain. Consider 2-3 lessons with a coach at the start."},
+  cycling:{name:"Cycling",icon:"🚴",desc:"High cardio return, low joint impact, and great for people who find running too hard on their body. Works indoors or outdoors.",starts:["Start with 3x 30-40 min sessions per week.","Indoor cycling (Peloton, Zwift, trainer) makes consistency easier.","Build endurance before intensity — first 4 weeks, focus on duration."],warning:"Bike fit matters. An improperly fitted bike causes knee and back problems. Get a basic fit before riding regularly."},
+  classes:{name:"Group Fitness Classes",icon:"👥",desc:"You need the energy of others to push yourself. Classes give you structure, a trainer doing the thinking, and a community that keeps you accountable.",starts:["Try 3-4 different class types in your first month.","Book in advance — it increases follow-through.","Ask the instructor to check your form in the first session."],warning:"Class-hopping feels fun but can limit progress. Pick 1-2 formats you enjoy and go consistently for 6 weeks before evaluating."},
+  team:{name:"Team & Social Sports",icon:"⚽",desc:"You're not built for solo training — you need connection and friendly competition. Team sports deliver fitness as a side effect of something you actually enjoy.",starts:["Find a local recreational league — most cities have adult amateur leagues for every sport.","Join as an individual and you'll be placed on a team.","Commit to showing up — your teammates are depending on you."],warning:"Dependence on others can make consistency harder. Have a solo backup plan for when the team schedule doesn't work."},
+  dance:{name:"Dance / Movement Classes",icon:"💃",desc:"You want to enjoy moving your body, not just endure it. Dance suits people who want coordination, creativity, and joy in their fitness routine.",starts:["Try a beginner salsa, hip-hop, or contemporary class.","YouTube has great free beginner courses for most dance styles.","Aim for 2-3 sessions per week — consistency matters more than intensity."],warning:"Dance can feel slow to improve. The learning curve is steep early on. Stick past the first 4 sessions before deciding if it's for you."},
+  martial:{name:"Martial Arts",icon:"🥋",desc:"You want discipline, self-improvement, and physical challenge with a clear progression system. Martial arts deliver all three.",starts:["Choose one style to start: boxing, BJJ, Muay Thai, or karate are the most beginner-friendly.","Most gyms offer a free trial — take it.","Commit to 2 sessions per week minimum. Consistency is everything in martial arts."],warning:"Progress can feel invisible early on. Trust the process and the instructor. The breakthroughs come after months, not weeks."},
+  walking:{name:"Walking Programme",icon:"🚶",desc:"Consistent, underrated, and genuinely effective. Walking suits people who need to build a baseline habit, recover from injury, or prefer low-intensity movement.",starts:["Start with 30 minutes daily — this alone produces measurable health benefits.","Use a podcast or music to make it enjoyable.","Set a step goal (8,000-10,000/day) and track it."],warning:"Walking is often undervalued. Don't let anyone tell you it's not enough — consistency in walking beats sporadic intensity every time."}
 };
-function calcWorkout(){
-  var goal=wqAnswers.goal||'hiit';
-  var style=STYLES[goal]||STYLES.hiit;
-  var time=wqAnswers.time||'medium';
-  var hist=wqAnswers.history||'beginner';
-  var timeNote=time==='short'?'With under 20 minutes, focus on high-efficiency circuits: 3-4 exercises, minimal rest.':time==='long'||time==='xlong'?'You have time to train properly — use it for warm-up, main work, and cool-down, not just the workout.':'20-40 minutes is the sweet spot. You can do a complete session in this window.';
-  var histNote=hist==='beginner'?'Start with 2 sessions per week. Your first goal is building the habit, not the fitness.':hist==='advanced'?'You know what you're doing — use this as a style calibration, not a full blueprint.':'3 sessions per week is the right target for your level. Progress will come fast.';
-  localStorage.setItem('wwf_workout_style',JSON.stringify({goal:goal,answers:wqAnswers,date:new Date().toISOString()}));
-  document.getElementById('wq-output').innerHTML='<div class="result-label">'+style.name+'</div><p style="color:var(--muted);font-size:.87rem;margin:.35rem 0 1.25rem">'+style.desc+'</p>'
-  +'<div style="margin-bottom:1.25rem"><div style="font-size:.8rem;font-weight:700;color:var(--orange);margin-bottom:.5rem">WEEKLY STARTER ROUTINE</div>'+style.routine.map(function(d){return '<div style="background:var(--surface);border-radius:6px;padding:.6rem .85rem;margin-bottom:.35rem;font-size:.86rem;color:var(--light)">→ '+d+'</div>';}).join('')+'</div>'
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.5rem">FOR YOUR TIME WINDOW</div><p style="color:var(--muted);font-size:.84rem">'+timeNote+'</p></div>'
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.5rem">FOR YOUR EXPERIENCE LEVEL</div><p style="color:var(--muted);font-size:.84rem">'+histNote+'</p></div>'
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.5rem">KEY TIPS</div><ul class="action-list">'+style.tips.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul></div>';
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+function renderQs(){
+  var saved=JSON.parse(localStorage.getItem("wwf_workout_quiz")||"null");
+  var h="";
+  QS.forEach(function(q,i){
+    h+="<div style='margin-bottom:1.25rem'>"
+      +"<div style='font-size:.92rem;font-weight:600;color:#f9fafb;margin-bottom:.5rem'>"+(i+1)+". "+q.q+"</div>";
+    q.answers.forEach(function(a,j){
+      var isSaved=saved&&saved[i]===j;
+      h+="<button class='opt"+(isSaved?" on":"")+"' data-qi='"+i+"' data-ai='"+j+"'><span>"+a.label+"</span></button>";
+    });
+    h+="</div>";
+  });
+  document.getElementById("workout-qs").innerHTML=h;
+  document.querySelectorAll("[data-qi]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var qi=this.dataset.qi;
+      document.querySelectorAll("[data-qi='"+qi+"']").forEach(function(b){b.classList.remove("on");});
+      this.classList.add("on");
+    });
+  });
 }
-renderWQs();
+document.getElementById("calcBtn").addEventListener("click",function(){
+  var totals={},answerData=[];
+  var allAnswered=true;
+  QS.forEach(function(q,i){
+    var active=document.querySelector("[data-qi='"+i+"'].on");
+    if(!active){allAnswered=false;return;}
+    answerData.push(parseInt(active.dataset.ai));
+    var scores=q.answers[parseInt(active.dataset.ai)].scores;
+    Object.keys(scores).forEach(function(k){totals[k]=(totals[k]||0)+scores[k];});
+  });
+  if(!allAnswered){alert("Answer all questions first.");return;}
+  localStorage.setItem("wwf_workout_quiz",JSON.stringify(answerData));
+  var sorted=Object.keys(totals).sort(function(a,b){return totals[b]-totals[a];});
+  var top=sorted[0];
+  var info=STYLES[top]||STYLES.strength;
+  document.getElementById("style-icon").textContent=info.icon;
+  document.getElementById("style-name").textContent=info.name;
+  document.getElementById("style-desc").textContent=info.desc;
+  document.getElementById("style-starts").innerHTML=info.starts.map(function(s){return"<li>"+s+"</li>";}).join("");
+  document.getElementById("style-warning").textContent=info.warning;
+  var others=sorted.slice(1,4).map(function(k){var s=STYLES[k];return s?s.icon+" "+s.name:"";}).filter(Boolean);
+  document.getElementById("other-styles").innerHTML=others.map(function(o){return"<span class='tag tag-o' style='margin-right:.4rem'>"+o+"</span>";}).join("");
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("retakeBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+renderQs();
+
 </script>
 </body>
 </html>
