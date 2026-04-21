@@ -1,6 +1,16 @@
 User-agent: *
 Allow: /
+Disallow: /login
 Disallow: /login.html
+Disallow: /profile
 Disallow: /profile.html
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /dashboard
+Disallow: /dashboard.html
+Disallow: /success
+Disallow: /success.html
+Disallow: /404-router
+Disallow: /404-router.html
 
 Sitemap: https://winwithfred.com/sitemap.xml
