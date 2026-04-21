@@ -415,7 +415,7 @@ p  { color: #374151; }
 .loading-page p { color:#9ca3af; font-size:0.9rem; }
 @keyframes spin { to { transform:rotate(360deg); } }
 
-    /* ── Contrast: orange on dark backgrounds uses lighter shade ── */
+    /* ââ Contrast: orange on dark backgrounds uses lighter shade ââ */
     :root { --orange-on-dark: #fb923c; }
     .navbar-logo span,
     .navbar-links a.active { color: var(--orange-on-dark); }
@@ -424,9 +424,9 @@ p  { color: #374151; }
     .hero .btn-outline { border-color: var(--orange-on-dark); }
     .dark-section .text-orange,
     .stat-num { color: var(--orange-on-dark); }
-    /* ── Section label: dark text on orange-tint bg ── */
+    /* ââ Section label: dark text on orange-tint bg ââ */
     .section-label { color: #7c2d0e; }
-  </style>
+  .filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}.filter-tab{padding:8px 20px;border-radius:999px;border:2px solid #e5e7eb;background:#fff;color:#6b7280;font-weight:600;font-size:0.88rem;cursor:pointer;transition:all 0.15s;font-family:var(--font);}.filter-tab:hover{border-color:var(--orange);color:var(--orange);}.filter-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;}.tool-card.hidden{display:none !important;}</style>
 <!-- Firebase SDKs -->
 <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -517,288 +517,288 @@ p  { color: #374151; }
       <h2>Everything you need to <span class="text-orange">get moving</span></h2>
       <p>Use these tools daily. They're simple, fast, and built around what actually works.</p>
     </div>
-    <div class="grid-4">
-      <a href="goal-tracker.html" class="tool-card">
+    <div class="filter-tabs"><button class="filter-tab active" data-filter="all">All</button><button class="filter-tab" data-filter="mindset">Mindset</button><button class="filter-tab" data-filter="habits">Habits</button><button class="filter-tab" data-filter="goals">Goals</button><button class="filter-tab" data-filter="wellbeing">Wellbeing</button><button class="filter-tab" data-filter="self-discovery">Self-Discovery</button></div><div class="grid-4">
+      <a href="goal-tracker.html" class="tool-card" data-category="goals">
         <div class="tool-icon">&#127919;</div>
         <h3>Goal Tracker</h3>
         <p>Set clear goals, track your progress, and hold yourself accountable every step of the way.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="habit-builder.html" class="tool-card">
+      <a href="habit-builder.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#128293;</div>
         <h3>Habit Builder</h3>
         <p>Build the daily habits that compound into real results. Track your streaks and don't break the chain.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="journal.html" class="tool-card">
+      <a href="journal.html" class="tool-card" data-category="self-discovery">
         <div class="tool-icon">&#128221;</div>
         <h3>Journal Prompts</h3>
         <p>Stop staring at a blank page. Curated prompts to spark self-reflection and push your thinking.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="quiz.html" class="tool-card">
+      <a href="quiz.html" class="tool-card" data-category="mindset">
         <div class="tool-icon">&#129504;</div>
         <h3>Mindset Quiz</h3>
         <p>Find out what's actually holding you back. A 10-question assessment with a real, honest result.</p>
         <span class="tool-link">Take the Quiz &rarr;</span>
       </a>
-    <a href="vision-board.html" class="tool-card">
+    <a href="vision-board.html" class="tool-card" data-category="self-discovery">
           <div class="tool-icon">&#128444;</div>
           <h3>Vision Board</h3>
           <p>Upload images for your goals, organize them by category, and keep your dreams in front of you every day.</p>
           <span class="tool-link">Open Tool &rarr;</span>
         </a>
-      <a href="instant-calm.html" class="tool-card">
+      <a href="instant-calm.html" class="tool-card" data-category="wellbeing">
         <div class="tool-icon">&#129496;</div>
         <h3>Instant Calm</h3>
         <p>Feeling overwhelmed? A step-by-step grounding exercise to bring you back to center in minutes.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="reframe-thought.html" class="tool-card">
+      <a href="reframe-thought.html" class="tool-card" data-category="mindset">
         <div class="tool-icon">&#128260;</div>
         <h3>Reframe This Thought</h3>
         <p>Turn a toxic thought into a useful one using CBT-inspired techniques that actually work.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="burnout-detector.html" class="tool-card">
+      <a href="burnout-detector.html" class="tool-card" data-category="wellbeing">
         <div class="tool-icon">&#9889;</div>
         <h3>Burnout Detector</h3>
         <p>Are you heading for burnout? Take the assessment and get a clear picture of where you stand.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="mental-health-check.html" class="tool-card">
+      <a href="mental-health-check.html" class="tool-card" data-category="wellbeing">
         <div class="tool-icon">&#128154;</div>
         <h3>Mental Health Check-In</h3>
         <p>A quick, honest check-in on how you're really doing &mdash; no fluff, just clarity.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="mood-tracker.html" class="tool-card">
+      <a href="mood-tracker.html" class="tool-card" data-category="wellbeing">
         <div class="tool-icon">&#128202;</div>
         <h3>Mood Tracker</h3>
         <p>Log your mood daily and spot the patterns that are driving (or draining) your energy.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="morning-routine.html" class="tool-card">
+      <a href="morning-routine.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#127749;</div>
         <h3>Morning Routine Builder</h3>
         <p>Design a morning routine you'll actually stick to. Start the day on your terms.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="weekly-reset.html" class="tool-card">
+      <a href="weekly-reset.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#128257;</div>
         <h3>Weekly Reset</h3>
         <p>End your week with intention. Review what happened and plan what matters next.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="habit-scorecard.html" class="tool-card">
+      <a href="habit-scorecard.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#9989;</div>
         <h3>Habit Scorecard</h3>
         <p>Audit your current habits &mdash; good, bad, and neutral &mdash; so you know exactly what to change.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="life-balance.html" class="tool-card">
+      <a href="life-balance.html" class="tool-card" data-category="self-discovery">
         <div class="tool-icon">&#9878;&#65039;</div>
         <h3>Life Balance Wheel</h3>
         <p>See which areas of your life need attention and which ones you're neglecting without realizing it.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="future-self.html" class="tool-card">
+      <a href="future-self.html" class="tool-card" data-category="mindset">
         <div class="tool-icon">&#128301;</div>
         <h3>Future Self Visualizer</h3>
         <p>Get specific about who you want to become. Clear vision drives real action.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="whats-holding-you-back.html" class="tool-card">
+      <a href="whats-holding-you-back.html" class="tool-card" data-category="mindset">
         <div class="tool-icon">&#128679;</div>
         <h3>What's Holding You Back</h3>
         <p>Identify the real obstacles between you and your goals &mdash; fear, habits, or something else.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="fix-my-life.html" class="tool-card">
+      <a href="fix-my-life.html" class="tool-card" data-category="mindset">
         <div class="tool-icon">&#128736;&#65039;</div>
         <h3>Fix My Life</h3>
         <p>Overwhelmed and not sure where to start? This tool cuts through the noise and tells you exactly what to do first.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="time-wasted.html" class="tool-card">
+      <a href="time-wasted.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#9201;&#65039;</div>
         <h3>Time Wasted Calculator</h3>
         <p>See exactly how much time your habits are costing you &mdash; in hours, days, and years.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="life-trajectory.html" class="tool-card">
+      <a href="life-trajectory.html" class="tool-card" data-category="goals">
         <div class="tool-icon">&#128200;</div>
         <h3>Life Trajectory</h3>
         <p>Project where your current habits and choices will take you in 1, 5, and 10 years.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="alcohol-assessment.html" class="tool-card">
+      <a href="alcohol-assessment.html" class="tool-card" data-category="wellbeing">
         <div class="tool-icon">&#127866;</div>
         <h3>Alcohol Assessment</h3>
         <p>An honest, judgment-free look at your relationship with alcohol and what it's costing you.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="personality-quiz.html" class="tool-card">
+      <a href="personality-quiz.html" class="tool-card" data-category="self-discovery">
         <div class="tool-icon">&#129694;</div>
         <h3>Personality Quiz</h3>
         <p>Understand your core tendencies and how they're shaping your results &mdash; for better or worse.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="wheel-of-life.html" class="tool-card">
+      <a href="wheel-of-life.html" class="tool-card" data-category="self-discovery">
         <div class="tool-icon">&#9899;</div>
         <h3>Wheel of Life</h3>
         <p>Score 8 life areas and see exactly where you're thriving and where you're falling behind. Get a clear picture of your life balance.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="values-quiz.html" class="tool-card">
+      <a href="values-quiz.html" class="tool-card" data-category="self-discovery">
         <div class="tool-icon">&#10024;</div>
         <h3>Core Values Quiz</h3>
         <p>12 quick questions reveal your top 5 personal values. Stop drifting. Start making decisions that actually align with who you are.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="eisenhower-matrix.html" class="tool-card">
+      <a href="eisenhower-matrix.html" class="tool-card" data-category="goals">
         <div class="tool-icon">&#9638;</div>
         <h3>Eisenhower Matrix</h3>
         <p>Separate urgent from important. Drop your tasks into 4 quadrants and finally stop spending your day on things that don't move the needle.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="challenge-30.html" class="tool-card">
+      <a href="challenge-30.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#128293;</div>
         <h3>30-Day Challenge</h3>
         <p>Pick a habit, show up every day for 30 days. Track your streak, stay accountable, and prove to yourself you can build real consistency.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="challenge-90.html" class="tool-card">
+      <a href="challenge-90.html" class="tool-card" data-category="habits">
         <div class="tool-icon">&#127942;</div>
         <h3>90-Day Challenge</h3>
         <p>Three phases. 90 days. Full transformation. Break your big goal into phases and track your progress all the way to the finish line.</p>
         <span class="tool-link">Open Tool &rarr;</span>
       </a>
-      <a href="meal-plan-quiz.html" class="tool-card">
+      <a href="meal-plan-quiz.html" class="tool-card" data-category="wellbeing">
         <div class="tool-icon">&#127869;</div>
         <h3>Meal Plan Quiz</h3>
         <p>Answer 5 questions and get a personalized 7-day meal plan matched to your goals and lifestyle.</p>
         <span class="tool-link">Get My Plan &rarr;</span>
       </a>
-      <a href="money-mindset-audit.html" class="tool-card">
-        <div class="tool-icon">💰</div>
+      <a href="money-mindset-audit.html" class="tool-card" data-category="mindset">
+        <div class="tool-icon">ð°</div>
         <h3>Money Mindset Audit</h3>
         <p>Surface the limiting beliefs quietly running your financial life.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="spending-leak-finder.html" class="tool-card">
-        <div class="tool-icon">🔍</div>
+      <a href="spending-leak-finder.html" class="tool-card" data-category="mindset">
+        <div class="tool-icon">ð</div>
         <h3>Spending Leak Finder</h3>
         <p>Find where your money actually goes vs. where you think it goes.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="friendship-audit.html" class="tool-card">
-        <div class="tool-icon">👥</div>
+      <a href="friendship-audit.html" class="tool-card" data-category="self-discovery">
+        <div class="tool-icon">ð¥</div>
         <h3>Friendship Audit</h3>
         <p>Who deserves your time and who is quietly draining it.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="boundary-builder.html" class="tool-card">
-        <div class="tool-icon">🛡️</div>
+      <a href="boundary-builder.html" class="tool-card" data-category="mindset">
+        <div class="tool-icon">ð¡ï¸</div>
         <h3>Boundary Builder</h3>
-        <p>Identify where you need to say no — and get the script to say it.</p>
-        <span class="tool-link">Open Tool →</span>
+        <p>Identify where you need to say no â and get the script to say it.</p>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="evening-routine-builder.html" class="tool-card">
-        <div class="tool-icon">🌙</div>
+      <a href="evening-routine-builder.html" class="tool-card" data-category="habits">
+        <div class="tool-icon">ð</div>
         <h3>Evening Routine Builder</h3>
         <p>Build a wind-down routine that actually sticks.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="sleep-debt-calculator.html" class="tool-card">
-        <div class="tool-icon">😴</div>
+      <a href="sleep-debt-calculator.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">ð´</div>
         <h3>Sleep Debt Calculator</h3>
         <p>Find out how many hours of sleep you actually owe yourself.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="energy-audit.html" class="tool-card">
-        <div class="tool-icon">⚡</div>
+      <a href="energy-audit.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">â¡</div>
         <h3>Energy Audit</h3>
         <p>Map your peaks and crashes so you stop scheduling hard work at 3pm.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="phone-addiction-assessment.html" class="tool-card">
-        <div class="tool-icon">📱</div>
+      <a href="phone-addiction-assessment.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">ð±</div>
         <h3>Phone Addiction Assessment</h3>
         <p>Find out exactly how bad your screen habit really is.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="doom-scroll-cost-calculator.html" class="tool-card">
-        <div class="tool-icon">📉</div>
+      <a href="doom-scroll-cost-calculator.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">ð</div>
         <h3>Doom Scroll Cost Calculator</h3>
         <p>The real time, money, and mental cost of your scroll habit.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="digital-detox-planner.html" class="tool-card">
-        <div class="tool-icon">🔌</div>
+      <a href="digital-detox-planner.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">ð</div>
         <h3>Digital Detox Planner</h3>
         <p>A 7-day plan built around your actual attachment level.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="fear-setting.html" class="tool-card">
-        <div class="tool-icon">🔥</div>
+      <a href="fear-setting.html" class="tool-card" data-category="mindset">
+        <div class="tool-icon">ð¥</div>
         <h3>Fear Setting Tool</h3>
-        <p>Define worst case, cost of inaction, recovery plan — then decide.</p>
-        <span class="tool-link">Open Tool →</span>
+        <p>Define worst case, cost of inaction, recovery plan â then decide.</p>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="10-10-10-decision.html" class="tool-card">
-        <div class="tool-icon">🧭</div>
+      <a href="10-10-10-decision.html" class="tool-card" data-category="goals">
+        <div class="tool-icon">ð§­</div>
         <h3>10-10-10 Decision Maker</h3>
         <p>How will this choice feel in 10 minutes, 10 months, 10 years?</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="procrastination-diagnosis.html" class="tool-card">
-        <div class="tool-icon">🔎</div>
+      <a href="procrastination-diagnosis.html" class="tool-card" data-category="goals">
+        <div class="tool-icon">ð</div>
         <h3>Procrastination Diagnosis</h3>
         <p>Find out exactly why you're avoiding this specific thing.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="next-action-generator.html" class="tool-card">
-        <div class="tool-icon">🎯</div>
+      <a href="next-action-generator.html" class="tool-card" data-category="goals">
+        <div class="tool-icon">ð¯</div>
         <h3>Next Action Generator</h3>
         <p>Dump a vague goal and get the one smallest next step.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="should-i-quit.html" class="tool-card">
-        <div class="tool-icon">💼</div>
+      <a href="should-i-quit.html" class="tool-card" data-category="goals">
+        <div class="tool-icon">ð¼</div>
         <h3>Should I Quit?</h3>
         <p>Weighted scoring on 8 dimensions. Stay vs. go decided with clarity.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="career-alignment-quiz.html" class="tool-card">
-        <div class="tool-icon">🧩</div>
+      <a href="career-alignment-quiz.html" class="tool-card" data-category="goals">
+        <div class="tool-icon">ð§©</div>
         <h3>Career Alignment Quiz</h3>
         <p>Does your job actually fit your values? Find the gaps.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="excuse-audit.html" class="tool-card">
-        <div class="tool-icon">🗒️</div>
+      <a href="excuse-audit.html" class="tool-card" data-category="mindset">
+        <div class="tool-icon">ðï¸</div>
         <h3>Excuse Audit</h3>
         <p>Log your excuses for a week and see the pattern behind them.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="trigger-log.html" class="tool-card">
-        <div class="tool-icon">💡</div>
+      <a href="trigger-log.html" class="tool-card" data-category="mindset">
+        <div class="tool-icon">ð¡</div>
         <h3>Trigger Log</h3>
-        <p>What sets you off — and the real reason underneath.</p>
-        <span class="tool-link">Open Tool →</span>
+        <p>What sets you off â and the real reason underneath.</p>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="workout-style-quiz.html" class="tool-card">
-        <div class="tool-icon">🏋️</div>
+      <a href="workout-style-quiz.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">ðï¸</div>
         <h3>Workout Style Quiz</h3>
         <p>Find the workout that matches your goals, personality, and life.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
-      <a href="movement-minimum-builder.html" class="tool-card">
-        <div class="tool-icon">🚶</div>
+      <a href="movement-minimum-builder.html" class="tool-card" data-category="wellbeing">
+        <div class="tool-icon">ð¶</div>
         <h3>Movement Minimum Builder</h3>
         <p>The smallest daily movement habit you'll actually stick to.</p>
-        <span class="tool-link">Open Tool →</span>
+        <span class="tool-link">Open Tool â</span>
       </a>
     </div>
   </div>
@@ -1003,5 +1003,5 @@ p  { color: #374151; }
   document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
 </script>
 <script defer src="mobile-nav.js"></script>
-</body>
+<script>document.querySelectorAll(".filter-tab").forEach(function(t){t.addEventListener("click",function(){document.querySelectorAll(".filter-tab").forEach(function(x){x.classList.remove("active")});t.classList.add("active");var f=t.getAttribute("data-filter");document.querySelectorAll(".tool-card").forEach(function(c){c.classList.toggle("hidden",f!=="all"&&c.getAttribute("data-category")!==f)});});});</script></body>
 </html>
