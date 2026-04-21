@@ -414,7 +414,19 @@ p  { color: #374151; }
 .loading-page .spinner { width:40px; height:40px; border:3px solid rgba(194,65,12,0.3); border-top-color:var(--orange); border-radius:50%; animation:spin 0.7s linear infinite; }
 .loading-page p { color:#9ca3af; font-size:0.9rem; }
 @keyframes spin { to { transform:rotate(360deg); } }
-</style>
+
+    /* ── Contrast: orange on dark backgrounds uses lighter shade ── */
+    :root { --orange-on-dark: #fb923c; }
+    .navbar-logo span,
+    .navbar-links a.active { color: var(--orange-on-dark); }
+    .hero h1 span, .hero h2 span, .hero .text-orange,
+    .hero .btn-outline { color: var(--orange-on-dark); }
+    .hero .btn-outline { border-color: var(--orange-on-dark); }
+    .dark-section .text-orange,
+    .stat-num { color: var(--orange-on-dark); }
+    /* ── Section label: dark text on orange-tint bg ── */
+    .section-label { color: #7c2d0e; }
+  </style>
 <!-- Firebase SDKs -->
 <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -442,6 +454,7 @@ p  { color: #374151; }
     </ul>
   </div>
 </nav>
+<main>
 
 <!-- &#9472;&#9472; Hero &#9472;&#9472; -->
 <section class="hero">
@@ -807,6 +820,7 @@ p  { color: #374151; }
 </section>
 
 <!-- &#9472;&#9472; Footer &#9472;&#9472; -->
+</main>
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -814,7 +828,7 @@ p  { color: #374151; }
       <p style="font-size:0.9rem; line-height:1.7;">Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p>
     </div>
     <div class="footer-col">
-      <h4>Tools</h4>
+      <h3>Tools</h3>
       <ul>
         <li><a href="goal-tracker.html">Goal Tracker</a></li>
         <li><a href="habit-builder.html">Habit Builder</a></li>
@@ -824,7 +838,7 @@ p  { color: #374151; }
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Blog</h4>
+      <h3>Blog</h3>
       <ul>
         <li><a href="#">Habits</a></li>
         <li><a href="#">Goals</a></li>
@@ -833,7 +847,7 @@ p  { color: #374151; }
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Site</h4>
+      <h3>Site</h3>
       <ul>
         <li><a href="newsletter.html">Newsletter</a></li>
         <li><a href="#about">About Fred</a></li>
