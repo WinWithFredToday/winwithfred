@@ -4,103 +4,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Boundary Builder | WinWithFred</title>
-<meta name="description" content="Identify where you need to say no and get a ready-made script for how to say it.">
+<meta name="description" content="Identify where you need to say no and get the exact script to say it.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Relationship Tools</div>
-<h1>Boundary Builder</h1>
-<p>Identify where you need to say no — and script exactly how to say it.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Relationship Tools</div><h1>Boundary Builder</h1><p>Identify where you need to say no — and get the script to say it.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>Where do you need better boundaries?</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem">Select every situation that applies to you right now.</p>
-<div id="situations" class="option-group"></div>
+  <h2>Where do you need better boundaries?</h2>
+  <p class="sub">Select every situation that applies right now.</p>
+  <div id="situations" class="opts"></div>
 </div>
 <div class="card" id="detail-card" style="display:none">
-<h2>Tell me more about your top boundary need</h2>
-<label>Who or what is this with? (e.g. "my boss", "my partner", "social media")</label>
-<input type="text" id="who-input" placeholder="Be specific...">
-<label style="margin-top:1rem">What do they do that crosses the line?</label>
-<textarea id="behaviour-input" placeholder="Describe the behaviour..."></textarea>
-<label style="margin-top:1rem">What have you tried so far?</label>
-<textarea id="tried-input" placeholder="What has or hasn't worked..." style="min-height:60px"></textarea>
+  <h2>Tell me more about your top need</h2>
+  <label>Who or what is this with?</label>
+  <input type="text" id="who" placeholder='e.g. "my boss", "social media", "my partner"'>
 </div>
-<button class="btn btn-primary" onclick="buildBoundary()" style="width:100%">Build My Boundary Script</button>
-<div class="result-box" id="result">
-<div class="result-label">Your Boundary Plan</div>
-<div id="boundary-output"></div>
-<button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Edit</button>
+<button class="btn btn-primary" id="buildBtn">Build My Boundary Script</button>
+<div class="result" id="result">
+  <div class="res-label" style="margin-bottom:1rem">Your Boundary Plan</div>
+  <div id="boundary-out"></div>
+  <button class="btn btn-ghost btn-sm" id="editBtn" style="margin-top:1rem">Edit</button>
 </div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
 var SITS=[
-{id:'overwork',label:'I say yes to work I don't want or have time for',type:'work'},
-{id:'emotional',label:'Someone treats me as their emotional dumping ground',type:'people'},
-{id:'time',label:'People interrupt me, cancel last minute, or waste my time',type:'time'},
-{id:'criticism',label:'Someone regularly criticises or undermines me',type:'people'},
-{id:'phone',label:'I can't stop checking my phone / social media',type:'digital'},
-{id:'family',label:'Family members cross personal lines regularly',type:'family'},
-{id:'money',label:'People ask to borrow money or assume I'll pay',type:'money'},
-{id:'guilt',label:'Someone uses guilt to control my decisions',type:'people'},
-{id:'social',label:'I get pressured to attend events I don't want to',type:'social'},
-{id:'privacy',label:'People share my information or overstep my privacy',type:'people'}
+  {id:"overwork",  label:"I say yes to work I don't have time for",        type:"work"},
+  {id:"emotional", label:"Someone dumps their problems on me constantly",   type:"people"},
+  {id:"time",      label:"People waste my time or cancel last minute",      type:"time"},
+  {id:"criticism", label:"Someone regularly criticises or undermines me",   type:"people"},
+  {id:"phone",     label:"I can't control my phone or social media use",    type:"digital"},
+  {id:"family",    label:"Family members cross personal lines regularly",   type:"family"},
+  {id:"money",     label:"People assume I'll pay or ask to borrow money",   type:"money"},
+  {id:"guilt",     label:"Someone uses guilt to control my decisions",      type:"guilt"},
+  {id:"social",    label:"I get pressured to attend things I don't want to",type:"social"},
+  {id:"privacy",   label:"People share my info or overstep my privacy",     type:"people"}
 ];
 var SCRIPTS={
-work:{phrase:'I can't take that on right now — my plate is full. Can we revisit in [timeframe], or could someone else handle it?',tip:'Deliver this calmly and once. You don't owe a detailed reason. "My plate is full" is complete.'},
-people:{phrase:'I care about you, but I'm not able to be the support you need for this. I think talking to [friend/therapist/professional] would help you more than I can.',tip:'This is not rejection — it's redirection. Say it once, warmly, and hold the line.'},
-time:{phrase:'I'm going to need [X] days' notice for changes. If something comes up last minute, I may not be available.',tip:'Set the expectation up front, before the next incident. Don't wait until you're already frustrated.'},
-family:{phrase:'I love you, and this topic is off-limits for me. I'm happy to talk about [other thing] instead.',tip:'Repeat the same phrase each time they push. Consistency is what makes it a boundary — not the words.'},
-digital:{phrase:'Between [time] and [time] I don't check my phone. I'll respond after [time].',tip:'Tell the people who matter, then stick to it. Boundaries with devices are promises you make to yourself.'},
-money:{phrase:'I don't lend money — it changes relationships. But I'm happy to help you think through your options.',tip:'Say it once, clearly, with no apology. Offering an alternative keeps the relationship intact.'},
-social:{phrase:'That doesn't work for me. Have a great time.',tip:'You don't need to explain. "That doesn't work for me" is a complete sentence. Practice saying it in the mirror.'},
-guilt:{phrase:'I understand you feel that way. My decision stays the same.',tip:'Guilt-trippers escalate when you explain or defend. Don't. Acknowledge their feeling, hold your position, and move on.'}
+  work:   {phrase:"I can't take that on right now — my plate is at capacity. Can we revisit next week?",tip:"Deliver this once, calmly, without over-explaining. No means no."},
+  people: {phrase:"I care about you, but I'm not the right support for this. A professional can help you far better than I can.",tip:"This is redirection, not rejection. Say it once, warmly, and hold the line."},
+  time:   {phrase:"I need at least 48 hours notice for changes. If something comes up last minute, I may not be available.",tip:"Set the expectation before the next incident, not after you're already frustrated."},
+  family: {phrase:"I love you, and this topic is off-limits for me. Happy to talk about something else instead.",tip:"Repeat the exact same phrase each time. Consistency is what makes it a boundary."},
+  digital:{phrase:"Between [time] and [time] I don't check my phone. I'll respond after [time].",tip:"This is a promise you make to yourself. Write it down and tell one person."},
+  money:  {phrase:"I don't lend money — it changes relationships. But I can help you think through your options.",tip:"Say it once, without apology. Offering an alternative keeps the relationship intact."},
+  guilt:  {phrase:"I understand you feel that way. My decision stays the same.",tip:"Guilt-trippers escalate when you explain or defend. Acknowledge the feeling, hold your position."},
+  social: {phrase:"That doesn't work for me. Have a great time.",tip:"You don't need to explain. That is a complete sentence."}
 };
-function renderSits(){
-  document.getElementById('situations').innerHTML=SITS.map(function(s){
-    return '<button class="option-btn" id="sit_'+s.id+'" onclick="toggleSit(''+s.id+'')"><span>'+s.label+'</span></button>';
-  }).join('');
-}
 var selected=[];
-function toggleSit(id){
-  var btn=document.getElementById('sit_'+id);
-  var idx=selected.indexOf(id);
-  if(idx===-1){selected.push(id);btn.classList.add('sel');}
-  else{selected.splice(idx,1);btn.classList.remove('sel');}
-  document.getElementById('detail-card').style.display=selected.length>0?'block':'none';
-}
-function buildBoundary(){
-  if(selected.length===0){alert('Select at least one situation first.');return;}
-  var who=document.getElementById('who-input').value||'this person';
-  var behaviour=document.getElementById('behaviour-input').value;
-  var outputs=[];
-  selected.forEach(function(id){
-    var sit=SITS.find(function(s){return s.id===id;});
-    var script=SCRIPTS[sit.type]||SCRIPTS.people;
-    outputs.push('<div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:.75rem"><div style="font-weight:700;color:var(--white);font-size:.9rem;margin-bottom:.5rem">'+sit.label+'</div><div style="background:var(--dark);border-left:3px solid var(--orange);padding:.75rem;border-radius:0 6px 6px 0;margin:.5rem 0"><p style="color:var(--light);font-size:.88rem;font-style:italic">"'+script.phrase.replace('[person]',who)+'"</p></div><p style="color:var(--muted);font-size:.82rem;margin-top:.5rem">→ '+script.tip+'</p></div>');
+function renderSits(){
+  document.getElementById("situations").innerHTML=SITS.map(function(s){
+    return"<button class='opt"+(selected.indexOf(s.id)!==-1?" on":"")+"' data-sid='"+s.id+"'><span>"+s.label+"</span></button>";
+  }).join("");
+  document.querySelectorAll(".opt").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var id=this.dataset.sid;
+      var idx=selected.indexOf(id);
+      if(idx===-1){selected.push(id);this.classList.add("on");}
+      else{selected.splice(idx,1);this.classList.remove("on");}
+      document.getElementById("detail-card").style.display=selected.length>0?"block":"none";
+    });
   });
-  document.getElementById('boundary-output').innerHTML=outputs.join('');
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-  localStorage.setItem('wwf_boundary_builder',JSON.stringify({selected:selected,who:who,date:new Date().toISOString()}));
 }
+document.getElementById("buildBtn").addEventListener("click",function(){
+  if(selected.length===0){alert("Select at least one situation first.");return;}
+  var who=document.getElementById("who").value||"this person";
+  var html=selected.map(function(id){
+    var sit=SITS.find(function(s){return s.id===id;});
+    var scr=SCRIPTS[sit.type]||SCRIPTS.people;
+    return"<div style='background:#1f2937;border-radius:8px;padding:1rem;margin-bottom:.75rem'>"
+      +"<div style='font-weight:700;color:#fff;font-size:.9rem;margin-bottom:.5rem'>"+sit.label+"</div>"
+      +"<div style='background:#111827;border-left:3px solid #c2410c;padding:.75rem;border-radius:0 6px 6px 0;margin:.4rem 0'>"
+      +"<p style='color:#f9fafb;font-size:.88rem;font-style:italic'>""+scr.phrase.replace("[person]",who)+""</p>"
+      +"</div>"
+      +"<p style='color:#6b7280;font-size:.82rem;margin-top:.4rem'>&#x2192; "+scr.tip+"</p>"
+      +"</div>";
+  }).join("");
+  localStorage.setItem("wwf_boundary_builder",JSON.stringify({selected:selected,who:who}));
+  document.getElementById("boundary-out").innerHTML=html;
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("editBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
 (function init(){
-  var saved=JSON.parse(localStorage.getItem('wwf_boundary_builder')||'null');
+  var saved=JSON.parse(localStorage.getItem("wwf_boundary_builder")||"null");
+  if(saved&&saved.selected)selected=saved.selected;
   renderSits();
-  if(saved&&saved.selected){saved.selected.forEach(function(id){toggleSit(id);});if(saved.who)document.getElementById('who-input').value=saved.who;}
+  if(saved&&saved.selected&&saved.selected.length){
+    document.getElementById("detail-card").style.display="block";
+    if(saved.who)document.getElementById("who").value=saved.who;
+  }
 })();
+
 </script>
 </body>
 </html>
