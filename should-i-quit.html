@@ -3,103 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Should I Quit? Calculator | WinWithFred</title>
-<meta name="description" content="Weighted scoring across 8 dimensions to help you make the stay vs. leave decision with clarity instead of emotion.">
+<title>Should I Quit? | WinWithFred</title>
+<meta name="description" content="Score the key dimensions of your job, relationship, or project to get an honest read on whether to stay or go.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Career Tools</div>
-<h1>Should I Quit? Calculator</h1>
-<p>Weighted scoring on 8 dimensions. Stay vs. go — decided with clarity, not emotion.</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Career</div><h1>Should I Quit?</h1><p>Score the key dimensions to get an honest read: stay or go.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>Rate your current job on each dimension</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:1.25rem">1 = terrible, 10 = excellent. Rate what it actually is, not what you wish it was.</p>
-<div id="job-dims"></div>
-</div>
-<div class="card">
-<h2>What matters most to you?</h2>
-<p style="color:var(--muted);font-size:.82rem;margin-bottom:1rem">Drag or adjust the weight for each dimension. Total will auto-balance.</p>
-<div id="weights"></div>
+  <h2>What are you considering quitting?</h2>
+  <div id="quit-type-opts" class="opts" style="margin-bottom:1rem">
+    <button class="opt on" data-qt="job">My job</button>
+    <button class="opt" data-qt="career">My career path</button>
+    <button class="opt" data-qt="relationship">A relationship</button>
+    <button class="opt" data-qt="project">A project or business</button>
+    <button class="opt" data-qt="habit">A habit or activity</button>
+  </div>
+  <input type="text" id="quit-subject" placeholder="Describe it briefly (optional)">
 </div>
 <div class="card">
-<h2>One more thing</h2>
-<label>Do you have something else to go to?</label>
-<select id="alternative">
-<option value="solid">Yes — a solid opportunity</option>
-<option value="idea">Yes — an idea but not confirmed</option>
-<option value="no">No — I'd be leaving without something lined up</option>
-<option value="self">Yes — self-employment / my own thing</option>
-</select>
-<label style="margin-top:1rem">How long have you felt this way about your job?</label>
-<select id="duration">
-<option value="recent">Less than 3 months</option>
-<option value="medium">3-12 months</option>
-<option value="long">Over a year</option>
-</select>
+  <h2>Rate each dimension honestly</h2>
+  <p class="sub">1 = Very low &nbsp;·&nbsp; 10 = Very high. Rate how this applies <em>right now</em>.</p>
+  <div id="dims-list"></div>
 </div>
-<button class="btn btn-primary" onclick="calcQuit()" style="width:100%">Calculate My Score</button>
-<div class="result-box" id="result"><div id="quit-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Edit</button></div>
+<button class="btn btn-primary" id="calcBtn">Get My Assessment</button>
+<div class="result" id="result">
+  <div class="big-score" id="quit-score"></div>
+  <div class="res-label" id="quit-label"></div>
+  <div class="res-desc" id="quit-desc" style="margin-top:.4rem;color:#9ca3af;font-size:.88rem"></div>
+  <div id="dim-breakdown" style="margin-top:1.25rem"></div>
+  <div style="margin-top:1rem;padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">Before you decide</div>
+    <ul class="action-list" id="quit-questions"></ul>
+  </div>
+  <button class="btn btn-ghost btn-sm" id="retakeBtn" style="margin-top:1rem">Reassess</button>
+</div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var DIMS=[
-{id:'pay',label:'Compensation',sub:'Salary, benefits, and total package vs. market',weight:15},
-{id:'growth',label:'Growth & Learning',sub:'Are you developing skills and advancing?',weight:20},
-{id:'meaning',label:'Meaning & Purpose',sub:'Does the work feel worthwhile?',weight:15},
-{id:'culture',label:'Culture & People',sub:'Do you respect and enjoy the people around you?',weight:15},
-{id:'wlb',label:'Work-Life Balance',sub:'Hours, flexibility, and mental load outside work',weight:15},
-{id:'manager',label:'Your Manager',sub:'Do they support, challenge, and advocate for you?',weight:10},
-{id:'future',label:'Company Future',sub:'Is this company/team going somewhere you want to go?',weight:10}
-];
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var quitType="job";
+document.querySelectorAll("[data-qt]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll("[data-qt]").forEach(function(b){b.classList.remove("on");});
+    this.classList.add("on");quitType=this.dataset.qt;renderDims();
+  });
+});
+var DIMS={
+  job:[
+    {id:"growth",  label:"Growth & learning opportunities",  weight:1.2},
+    {id:"pay",     label:"Compensation fairly reflects my value",weight:1.0},
+    {id:"meaning", label:"The work feels meaningful",         weight:1.3},
+    {id:"manager", label:"My relationship with my manager",   weight:1.2},
+    {id:"culture", label:"The culture fits who I am",         weight:1.0},
+    {id:"stress",  label:"Stress levels are manageable",      weight:1.1,flip:true}
+  ],
+  career:[
+    {id:"align",   label:"This career aligns with my values", weight:1.3},
+    {id:"future",  label:"Strong future demand for this field",weight:1.0},
+    {id:"skills",  label:"I'm building transferable skills",   weight:1.1},
+    {id:"identity",label:"I feel proud to do this work",      weight:1.2},
+    {id:"options", label:"This path keeps my options open",   weight:1.0},
+    {id:"ceiling", label:"I can see a clear ceiling approaching",weight:1.1,flip:true}
+  ],
+  relationship:[
+    {id:"respect", label:"I feel respected and valued",       weight:1.3},
+    {id:"trust",   label:"There is mutual trust",             weight:1.3},
+    {id:"growth",  label:"This relationship helps me grow",   weight:1.1},
+    {id:"effort",  label:"Effort is reciprocal",              weight:1.2},
+    {id:"future",  label:"I can see a positive future here",  weight:1.1},
+    {id:"dread",   label:"I dread interactions with this person",weight:1.2,flip:true}
+  ],
+  project:[
+    {id:"passion", label:"I still care about the outcome",    weight:1.2},
+    {id:"viability",label:"There is a realistic path to success",weight:1.1},
+    {id:"learn",   label:"I'm learning and improving",        weight:1.0},
+    {id:"sunk",    label:"I'm continuing because of what I've invested",weight:1.3,flip:true},
+    {id:"time",    label:"The time cost is sustainable",      weight:1.0},
+    {id:"pride",   label:"I'd be proud to finish this",       weight:1.1}
+  ],
+  habit:[
+    {id:"benefit", label:"This clearly benefits my health or growth",weight:1.3},
+    {id:"enjoy",   label:"I actually enjoy doing it",          weight:1.1},
+    {id:"identity",label:"This fits who I want to be",         weight:1.2},
+    {id:"cost",    label:"The cost (time/money/health) is justified",weight:1.1},
+    {id:"guilt",   label:"I only do it out of guilt or obligation",weight:1.2,flip:true},
+    {id:"replace", label:"Something better could replace this",weight:1.0,flip:true}
+  ]
+};
+var QUESTIONS={
+  job:["Have you had a direct conversation about what's not working?","Is this role's problems fixable, or structural?","What specifically would staying look like in 12 months?"],
+  career:["Are you quitting the field or just this specific role?","What would you do instead — is that path clearer or just different?","Have you spoken to someone thriving in this field?"],
+  relationship:["Have you clearly communicated what's not working?","Is this a pattern or a rough patch?","What would need to change for you to be happy staying?"],
+  project:["Are you quitting because it's hard, or because it's wrong?","What would a pivot look like — not full quit, just a direction change?","What would 'done enough' look like?"],
+  habit:["What specifically are you hoping to replace it with?","Is this about the habit itself, or how you're approaching it?","What would a 30-day experiment with a different version look like?"]
+};
 function renderDims(){
-  var saved=JSON.parse(localStorage.getItem('wwf_should_i_quit')||'null');
-  document.getElementById('job-dims').innerHTML=DIMS.map(function(d,i){
-    var sv=saved&&saved.scores?saved.scores[i]:5;
-    return '<div style="margin-bottom:1.25rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><label style="margin:0;font-size:.9rem;font-weight:700">'+d.label+'</label><span id="dv'+i+'" style="color:var(--orange);font-weight:700;font-size:1rem">'+sv+'</span></div><div style="color:var(--muted);font-size:.78rem;margin:.15rem 0 .4rem">'+d.sub+'</div><input type="range" min="1" max="10" value="'+sv+'" id="dim'+i+'" oninput="document.getElementById('dv'+i+'').textContent=this.value"></div>';
-  }).join('');
-  document.getElementById('weights').innerHTML=DIMS.map(function(d,i){
-    var sw=saved&&saved.weights?saved.weights[i]:d.weight;
-    return '<div style="display:grid;grid-template-columns:140px 1fr 40px;gap:.75rem;align-items:center;margin-bottom:.5rem"><label style="margin:0;font-size:.85rem">'+d.label+'</label><input type="range" min="0" max="40" value="'+sw+'" id="wt'+i+'" oninput="document.getElementById('wtv'+i+'').textContent=this.value+'%'"><span id="wtv'+i+'" style="font-size:.82rem;color:var(--muted);text-align:right">'+sw+'%</span></div>';
-  }).join('');
+  var saved=JSON.parse(localStorage.getItem("wwf_should_quit")||"null");
+  var dims=DIMS[quitType]||DIMS.job;
+  var h="";
+  dims.forEach(function(d,i){
+    var v=(saved&&saved[quitType]&&saved[quitType][i]!=null)?saved[quitType][i]:5;
+    h+="<div style='margin-bottom:1rem'>"
+      +"<div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem'>"
+      +"<label style='font-size:.87rem'>"+(d.flip?"<em style='color:#6b7280;font-size:.8rem'>[higher = worse]</em> ":"")+d.label+"</label>"
+      +"<span id='qv"+i+"' style='font-weight:700;min-width:20px;text-align:right'>"+v+"</span></div>"
+      +"<input type='range' min='1' max='10' value='"+v+"' id='qd"+i+"'></div>";
+  });
+  document.getElementById("dims-list").innerHTML=h;
+  dims.forEach(function(d,i){
+    document.getElementById("qd"+i).addEventListener("input",function(){
+      document.getElementById("qv"+i).textContent=this.value;
+    });
+  });
 }
-function calcQuit(){
-  var scores=DIMS.map(function(d,i){return parseInt(document.getElementById('dim'+i).value)||5;});
-  var weights=DIMS.map(function(d,i){return parseInt(document.getElementById('wt'+i).value)||d.weight;});
-  var totalW=weights.reduce(function(a,b){return a+b;},0)||100;
-  var weighted=0;
-  DIMS.forEach(function(d,i){weighted+=scores[i]*(weights[i]/totalW);});
-  var score=(weighted*10).toFixed(0);
-  var alt=document.getElementById('alternative').value;
-  var dur=document.getElementById('duration').value;
-  localStorage.setItem('wwf_should_i_quit',JSON.stringify({scores:scores,weights:weights,score:score,alt:alt,dur:dur,date:new Date().toISOString()}));
-  var verdict,verdictColor,verdictDesc;
-  if(score>=70){verdict='Stay & Invest';verdictColor='var(--green)';verdictDesc='Your score suggests this job has more going for it than not. Before making a move, consider what specifically would make it a 9 or 10 — and whether you've asked for it.';}
-  else if(score>=50){verdict='Have the Conversation';verdictColor='#60a5fa';verdictDesc='There's enough good here to warrant trying to fix what's broken. But if the low dimensions are structural (culture, leadership, future), conversations rarely fix them.';}
-  else if(score>=35){verdict='Start Looking';verdictColor='var(--orange)';verdictDesc='Your score is in the "start exploring" zone. You don't need to quit today — but having active conversations protects your options and resets your sense of what's possible.';}
-  else{verdict='Time to Go';verdictColor='var(--red)';verdictDesc='Most of what makes a job worth staying for isn't there. Staying out of fear or comfort has a cost. Start building your exit.';}
-  var altNote={solid:'Having a solid opportunity changes the calculus entirely. The risk of leaving is lower than it seems.',idea:'An idea is a start — validate it before you jump. But actively pursuing it is reasonable.',no:'Leaving without something lined up is risky but not impossible. How long is your financial runway?',self:'Building your own thing is a different risk calculation. What's your 6-month plan?'};
-  var durNote=dur==='recent'?'You've only felt this way for a few months — that could be a rough patch, not a trend. Give it another 60 days before deciding.':dur==='medium'?'3-12 months of this feeling suggests it's a pattern, not a moment. That's meaningful data.':'A year or more of feeling this way is significant. At some point, staying becomes a choice too.';
-  var worst=DIMS.map(function(d,i){return {label:d.label,score:scores[i]};}).filter(function(d){return d.score<=4;}).sort(function(a,b){return a.score-b.score;});
-  document.getElementById('quit-output').innerHTML='<div style="text-align:center;margin-bottom:1.25rem"><div style="font-size:3.5rem;font-weight:900;color:'+verdictColor+'">'+score+'/100</div><div style="font-size:1.1rem;font-weight:700;color:'+verdictColor+'">'+verdict+'</div><p style="color:var(--muted);font-size:.87rem;margin-top:.5rem;max-width:480px;margin-left:auto;margin-right:auto">'+verdictDesc+'</p></div>'
-  +(worst.length>0?'<div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--red);margin-bottom:.4rem">LOWEST SCORING AREAS</div>'+worst.map(function(d){return '<div style="font-size:.85rem;color:var(--light);padding:.25rem 0">'+d.label+': <strong style="color:var(--red)">'+d.score+'/10</strong></div>';}).join('')+'</div>':'')
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.35rem">YOUR SITUATION</div><p style="font-size:.84rem;color:var(--muted)">'+altNote[alt]+'</p></div>'
-  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.35rem">TIME FACTOR</div><p style="font-size:.84rem;color:var(--muted)">'+durNote+'</p></div>';
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
-}
-renderDims();
+document.getElementById("calcBtn").addEventListener("click",function(){
+  var dims=DIMS[quitType]||DIMS.job;
+  var scores=[],weighted=0,totalWeight=0;
+  dims.forEach(function(d,i){
+    var v=parseInt(document.getElementById("qd"+i).value)||5;
+    scores.push(v);
+    var adj=d.flip?(11-v):v;
+    weighted+=adj*d.weight;
+    totalWeight+=d.weight*10;
+  });
+  var pct=Math.round(weighted/totalWeight*100);
+  localStorage.setItem("wwf_should_quit",JSON.stringify({type:quitType,scores:scores}));
+  document.getElementById("quit-score").textContent=pct+"%";
+  var label,desc;
+  if(pct>=70){label="Stay — Fix the Issues";desc="The foundation is solid. The problems are real but worth addressing. Quitting now likely means carrying the same issues somewhere else.";}
+  else if(pct>=50){label="Borderline — Get Clarity First";desc="Neither a clear stay nor a clear quit. Gather more information, have honest conversations, and give yourself a defined window to reassess.";}
+  else if(pct>=35){label="Leaning Toward Quit";desc="More is wrong than right. The key question is whether the problems are fixable, or structural. If structural — it's time to plan your exit.";}
+  else{label="Strong Signal to Quit";desc="The evidence points one direction. The question isn't whether to leave, but how to do it well — on your timeline, with a plan.";}
+  document.getElementById("quit-label").textContent=label;
+  document.getElementById("quit-desc").textContent=desc;
+  var dimDims=DIMS[quitType]||DIMS.job;
+  var breakdown="<div class='section-title' style='margin-bottom:.5rem'>Dimension Breakdown</div>";
+  var pairs=dimDims.map(function(d,i){return{label:d.label,score:scores[i],flip:d.flip};});
+  pairs.sort(function(a,b){var as=a.flip?(11-a.score):a.score;var bs=b.flip?(11-b.score):b.score;return as-bs;});
+  breakdown+=pairs.map(function(p){
+    var adj=p.flip?(11-p.score):p.score;
+    var color=adj>=7?"#22c55e":adj>=4?"#f59e0b":"#ef4444";
+    var pct2=Math.round(adj/10*100);
+    return"<div style='margin-bottom:.5rem'>"
+      +"<div style='display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.2rem'>"
+      +"<span style='color:#9ca3af'>"+p.label+"</span><span style='color:"+color+"'>"+adj+"/10</span></div>"
+      +"<div style='background:#1f2937;border-radius:4px;height:5px'>"
+      +"<div style='background:"+color+";width:"+pct2+"%;height:5px;border-radius:4px'></div></div></div>";
+  }).join("");
+  document.getElementById("dim-breakdown").innerHTML=breakdown;
+  var qs=QUESTIONS[quitType]||QUESTIONS.job;
+  document.getElementById("quit-questions").innerHTML=qs.map(function(q){return"<li>"+q+"</li>";}).join("");
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("retakeBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+(function init(){
+  var saved=JSON.parse(localStorage.getItem("wwf_should_quit")||"null");
+  if(saved&&saved.type){
+    var el=document.querySelector("[data-qt='"+saved.type+"']");
+    if(el){document.querySelectorAll("[data-qt]").forEach(function(b){b.classList.remove("on");});el.classList.add("on");quitType=saved.type;}
+  }
+  renderDims();
+})();
+
 </script>
 </body>
 </html>
