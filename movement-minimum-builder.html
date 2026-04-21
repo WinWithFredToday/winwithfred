@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Movement Minimum Builder | WinWithFred</title>
+<meta name="description" content="Find the smallest daily movement habit you will actually stick to — and build from there.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<main>
+<div class="tool-hero">
+<div class="label">Fitness Tools</div>
+<h1>Movement Minimum Builder</h1>
+<p>The smallest daily movement habit you'll actually do. Build from there.</p>
+</div>
+<div class="tool-wrap">
+<div class="card">
+<h2>Tell me about your life</h2>
+<label>How active is your typical day?</label>
+<select id="current-activity">
+<option value="sedentary">Mostly sitting — desk job, little movement</option>
+<option value="light">Light activity — some walking, occasional standing</option>
+<option value="moderate">Moderately active — on my feet some of the day</option>
+<option value="active">Active — regular movement built into my day</option>
+</select>
+<label style="margin-top:1rem">Any physical limitations I should know about?</label>
+<select id="limitations">
+<option value="none">No limitations</option>
+<option value="back">Back or spine issues</option>
+<option value="knee">Knee or hip issues</option>
+<option value="general">General pain or fatigue</option>
+<option value="cardiac">Heart or cardio concerns</option>
+</select>
+<label style="margin-top:1rem">When could you realistically fit movement into your day?</label>
+<div id="timing-options" class="option-group"></div>
+</div>
+<div class="card">
+<h2>Your motivation style</h2>
+<label>What has kept you exercising in the past? (if anything)</label>
+<select id="motivation">
+<option value="habit">Having a set routine I don't think about</option>
+<option value="social">Doing it with someone else</option>
+<option value="track">Tracking progress and seeing results</option>
+<option value="feel">How it makes me feel afterwards</option>
+<option value="nothing">Nothing — I've never stuck to it</option>
+</select>
+<label style="margin-top:1rem">What's the most common reason you've skipped in the past?</label>
+<select id="skip-reason">
+<option value="time">No time</option>
+<option value="energy">Too tired</option>
+<option value="plan">No plan / didn't know what to do</option>
+<option value="mood">Not in the mood</option>
+<option value="equipment">No equipment or gym access</option>
+</select>
+</div>
+<button class="btn btn-primary" onclick="buildMinimum()" style="width:100%">Build My Minimum</button>
+<div class="result-box" id="result"><div id="mm-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Edit</button></div>
+</div>
+</main>
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<script>
+(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
+var TIMINGS=['Morning before work','Lunch break','After work / evening','During work (micro-breaks)','Before bed'];
+var selectedTimings=[];
+function renderTimings(){
+  document.getElementById('timing-options').innerHTML=TIMINGS.map(function(t,i){
+    return '<button class="option-btn" id="tm'+i+'" onclick="toggleTiming('+i+',this)"><span>'+t+'</span></button>';
+  }).join('');
+}
+function toggleTiming(i,btn){var idx=selectedTimings.indexOf(i);if(idx===-1)selectedTimings.push(i);else selectedTimings.splice(idx,1);btn.classList.toggle('sel');}
+function buildMinimum(){
+  var activity=document.getElementById('current-activity').value;
+  var limits=document.getElementById('limitations').value;
+  var motivation=document.getElementById('motivation').value;
+  var skip=document.getElementById('skip-reason').value;
+  var timing=selectedTimings.length>0?TIMINGS[selectedTimings[0]]:'Morning';
+  var minutes=activity==='sedentary'?10:activity==='light'?15:20;
+  var skipFixes={time:'The minimum is designed to take less time than your commute. Protect this slot in your calendar right now.',energy:'Do it before your energy crashes — morning or lunch, not evening. Energy follows action.',plan:'Your plan is below. Screenshot it. Done.',mood:'The minimum is so small it doesn't require mood. 5 minutes. Start before you decide.',equipment:'Everything below needs zero equipment.'};
+  var movements={
+    none:{core:['10 squats','10 push-ups (or wall push-ups)','30-sec plank','10 lunges each side','20 jumping jacks'],low_impact:[]},
+    back:{core:['Gentle cat-cow stretch (10 reps)','Bird-dog hold (5 each side)','Glute bridges (10 reps)','Standing side stretches','10-min walk at comfortable pace'],low_impact:['Avoid bending forward under load','No sit-ups or crunches']},
+    knee:{core:['Seated leg extensions','Wall sits (start with 10 sec)','Swimming or pool walking if available','Upper body exercises','Gentle heel raises'],low_impact:['Avoid deep squats, lunges, and stairs initially']},
+    general:{core:['5-min gentle walk','5 deep breaths + light stretching','Seated exercises from a chair','10 shoulder rolls each direction'],low_impact:['Listen to your body and stop if there's pain']},
+    cardiac:{core:['Consult your doctor before starting','Walking at a comfortable pace','Gentle stretching','Deep breathing exercises'],low_impact:['Do not push to breathlessness until cleared by a doctor']}
+  };
+  var mov=movements[limits]||movements.none;
+  var motivationTips={habit:'Stack this on an existing habit — after your morning coffee, before your shower. Habit stacking is the most reliable way to make new habits stick.',social:'Tell one person your minimum habit. Ask them to check in weekly. Even a text check-in helps significantly.',track:'Use a simple habit tracker app or put an X on a physical calendar. Don't break the chain.',feel:'After your minimum, write one sentence about how you feel. Build the connection between movement and your mood.',nothing:'The secret is making it so small it would be embarrassing not to do it. 5 minutes. No negotiation. That's your entry point.'};
+  localStorage.setItem('wwf_movement_minimum',JSON.stringify({activity:activity,limits:limits,timing:timing,minutes:minutes,date:new Date().toISOString()}));
+  document.getElementById('mm-output').innerHTML='<div style="background:rgba(194,65,12,.12);border:2px solid var(--orange);border-radius:8px;padding:1.25rem;margin-bottom:1.25rem;text-align:center"><div style="font-size:.75rem;font-weight:700;color:var(--orange);margin-bottom:.35rem;text-transform:uppercase">Your Movement Minimum</div><div style="font-size:2rem;font-weight:900;color:var(--white)">'+minutes+' minutes</div><div style="color:var(--muted);font-size:.85rem;margin-top:.25rem">Every day · '+timing+'</div></div>'
+  +'<div style="margin-bottom:1.25rem"><div style="font-size:.8rem;font-weight:700;color:var(--orange);margin-bottom:.5rem">YOUR '+minutes+'-MINUTE ROUTINE</div>'+mov.core.map(function(m){return '<div style="background:var(--surface);border-radius:6px;padding:.6rem .85rem;margin-bottom:.35rem;font-size:.86rem;color:var(--light)">→ '+m+'</div>';}).join('')+'</div>'
+  +(mov.low_impact.length>0?'<div style="background:rgba(239,68,68,.08);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--red);margin-bottom:.35rem">NOTE FOR YOUR CONDITION</div>'+mov.low_impact.map(function(n){return '<p style="font-size:.83rem;color:var(--light);margin:.2rem 0">'+n+'</p>';}).join('')+'</div>':'')
+  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem;margin-bottom:.75rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.35rem">YOUR SKIP FIX</div><p style="color:var(--muted);font-size:.84rem">'+skipFixes[skip]+'</p></div>'
+  +'<div style="background:var(--surface);border-radius:8px;padding:.85rem"><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.35rem">MOTIVATION STRATEGY</div><p style="color:var(--muted);font-size:.84rem">'+motivationTips[motivation]+'</p></div>'
+  +'<p style="color:var(--muted);font-size:.8rem;margin-top:.75rem;text-align:center">The minimum is the floor, not the ceiling. Do more when you want to. But never go below it.</p>';
+  document.getElementById('result').classList.add('show');
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+renderTimings();
+</script>
+</body>
+</html>
