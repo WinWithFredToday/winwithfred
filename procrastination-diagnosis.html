@@ -4,91 +4,180 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Procrastination Diagnosis | WinWithFred</title>
-<meta name="description" content="Find out exactly why you're avoiding that specific thing — fear, clarity, energy, or perfectionism — and get a targeted fix.">
+<meta name="description" content="Find out exactly why you procrastinate — then get the right fix for your type.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font);background:var(--dark);color:var(--light);line-height:1.6}:root{--black:#0d0d0d;--dark:#111827;--surface:#1f2937;--border:#374151;--muted:#6b7280;--light:#f9fafb;--white:#fff;--orange:#c2410c;--orange-d:#9a3412;--orange-l:#fff7ed;--green:#22c55e;--red:#ef4444;--radius:10px;--shadow:0 4px 24px rgba(0,0,0,.08);--font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.navbar{background:var(--black);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;z-index:100}.navbar-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.navbar-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.navbar-logo span{color:var(--orange)}.navbar-links{list-style:none;display:flex;gap:1.5rem;align-items:center}.navbar-links a{color:var(--muted);text-decoration:none;font-size:.9rem}.navbar-links a:hover{color:var(--white)}.tool-hero{background:var(--black);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)}.tool-hero .label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.75rem}.tool-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.75rem}.tool-hero p{color:var(--muted);max-width:540px;margin:0 auto;font-size:.95rem}.tool-wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:1rem}.card h3{font-size:.95rem;font-weight:600;color:var(--light);margin-bottom:.5rem}label{display:block;font-size:.85rem;font-weight:600;color:var(--light);margin-bottom:.4rem;margin-top:.75rem}input[type=text],input[type=number],textarea,select{width:100%;padding:.6rem .85rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;color:var(--white);font-family:var(--font);font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:80px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:opacity .2s;font-family:var(--font)}.btn-primary{background:var(--orange);color:var(--white)}.btn-primary:hover{opacity:.88}.btn-outline{background:transparent;border:2px solid var(--border);color:var(--light)}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-sm{padding:.4rem .9rem;font-size:.8rem}.result-box{background:var(--dark);border:2px solid var(--orange);border-radius:var(--radius);padding:1.5rem;margin-top:1.5rem;display:none}.result-box.show{display:block}.result-score{font-size:2.5rem;font-weight:900;color:var(--orange)}.result-label{font-size:1.1rem;font-weight:700;color:var(--white);margin:.25rem 0}.result-desc{color:var(--muted);font-size:.9rem;line-height:1.6}.action-list{margin-top:1rem;padding:0;list-style:none}.action-list li{padding:.5rem 0;border-bottom:1px solid var(--border);color:var(--light);font-size:.88rem}.action-list li:last-child{border:none}.action-list li::before{content:"→ ";color:var(--orange);font-weight:700}.progress-bar{background:var(--border);border-radius:99px;height:8px;overflow:hidden;margin:.5rem 0}.progress-fill{height:100%;background:var(--orange);border-radius:99px;transition:width .4s}input[type=range]{width:100%;cursor:pointer;accent-color:var(--orange);padding:0;margin:.25rem 0}.range-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.option-group{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}.option-btn{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;background:var(--dark);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:all .15s;width:100%;text-align:left}.option-btn:hover,.option-btn.sel{border-color:var(--orange);background:rgba(194,65,12,.08)}.option-btn span{color:var(--light);font-size:.88rem}.tag{display:inline-block;padding:.2rem .6rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.tag-orange{background:rgba(194,65,12,.15);color:var(--orange)}.tag-green{background:rgba(34,197,94,.1);color:var(--green)}.tag-red{background:rgba(239,68,68,.1);color:var(--red)}.tag-muted{background:var(--border);color:var(--muted)}.footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 1.5rem 1.5rem}.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.footer-logo{font-weight:800;font-size:1.2rem;color:var(--white);text-decoration:none}.footer-logo span{color:var(--orange)}.footer-brand p{color:var(--muted);font-size:.85rem;margin-top:.5rem;line-height:1.5}.footer-col h3{color:var(--white);font-size:.85rem;font-weight:700;margin-bottom:.75rem}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.4rem}.footer-col a{color:var(--muted);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--orange)}.footer-bottom{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid var(--border)}.wwf-legal-bar{color:var(--muted);font-size:.8rem}@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}.navbar-links li:not(.navbar-cta){display:none}.navbar-links li.navbar-cta{display:flex}}
-</style>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,sans-serif;background:#111827;color:#f9fafb;line-height:1.6}:root{--dark:#111827;--sf:#1f2937;--bd:#374151;--mu:#6b7280;--wh:#fff;--or:#c2410c;--gn:#22c55e;--rd:#ef4444}.navbar{background:#0d0d0d;border-bottom:1px solid #374151;padding:0 1.5rem;position:sticky;top:0;z-index:100}.nbi{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nbl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.nbl span{color:#c2410c}.nbs{list-style:none;display:flex;gap:1.5rem;align-items:center}.nbs a{color:#6b7280;text-decoration:none;font-size:.9rem}.nbs a:hover{color:#fff}.hero{background:#0d0d0d;padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid #374151}.hero .lbl{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#c2410c;margin-bottom:.75rem}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#fff;margin-bottom:.75rem}.hero p{color:#6b7280;max-width:540px;margin:0 auto;font-size:.95rem}.wrap{max-width:720px;margin:2rem auto;padding:0 1.5rem 4rem}.card{background:#1f2937;border:1px solid #374151;border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}.card h2{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.75rem}.sub{color:#6b7280;font-size:.85rem;margin-bottom:1rem}label{display:block;font-size:.85rem;font-weight:600;color:#f9fafb;margin:.85rem 0 .35rem}label:first-child{margin-top:0}input[type=text],input[type=number],input[type=time],textarea,select{width:100%;padding:.6rem .85rem;background:#111827;border:1px solid #374151;border-radius:6px;color:#fff;font-family:inherit;font-size:.9rem}input:focus,textarea:focus,select:focus{outline:none;border-color:#c2410c}textarea{resize:vertical;min-height:72px}input[type=range]{width:100%;cursor:pointer;accent-color:#c2410c;padding:0;margin:.3rem 0}.rrow{display:flex;align-items:center;gap:.75rem}.rrow input{flex:1}.rv{color:#c2410c;font-weight:700;min-width:2.5rem;text-align:right}.rl{display:flex;justify-content:space-between;font-size:.72rem;color:#6b7280;margin-top:1px}.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;font-family:inherit;transition:opacity .2s;text-align:center}.bp{background:#c2410c;color:#fff;width:100%;margin-top:.75rem}.bp:hover{opacity:.88}.bsm{padding:.4rem .9rem;font-size:.8rem;width:auto}.bg{background:transparent;border:2px solid #374151;color:#f9fafb}.bg:hover{border-color:#c2410c;color:#c2410c}.opts{display:flex;flex-direction:column;gap:.4rem;margin:.4rem 0}.opt{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#111827;border:1px solid #374151;border-radius:6px;cursor:pointer;width:100%;text-align:left;font-family:inherit}.opt:hover,.opt.on{border-color:#c2410c;background:rgba(194,65,12,.08)}.opt span{color:#f9fafb;font-size:.88rem}.res{background:#111827;border:2px solid #c2410c;border-radius:10px;padding:1.5rem;margin-top:1.5rem;display:none}.res.show{display:block}.bsc{font-size:3rem;font-weight:900;color:#c2410c}.rl2{font-size:1.1rem;font-weight:700;color:#fff;margin:.25rem 0}.rd{color:#6b7280;font-size:.88rem;line-height:1.6}.bw{background:#374151;border-radius:99px;height:8px;overflow:hidden;margin:.35rem 0}.bf{height:100%;background:#c2410c;border-radius:99px;transition:width .4s}.al{list-style:none;padding:0;margin:.75rem 0}.al li{padding:.45rem 0;border-bottom:1px solid #374151;color:#f9fafb;font-size:.87rem}.al li:last-child{border:none}.al li::before{content:"→ ";color:#c2410c;font-weight:700}.tag{display:inline-block;padding:.2rem .55rem;border-radius:99px;font-size:.75rem;font-weight:600;margin:.15rem}.to{background:rgba(194,65,12,.15);color:#c2410c}.tg{background:rgba(34,197,94,.1);color:#22c55e}.tr{background:rgba(239,68,68,.1);color:#ef4444}.st{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c2410c;margin-bottom:.5rem}table{width:100%;border-collapse:collapse;font-size:.85rem}th{color:#6b7280;font-weight:600;padding:.5rem;border-bottom:1px solid #374151;text-align:left}td{padding:.45rem .5rem;border-bottom:1px solid rgba(55,65,81,.5);color:#f9fafb}.footer{background:#0d0d0d;border-top:1px solid #374151;padding:3rem 1.5rem 1.5rem}.fi{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem}.fl{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none}.fl span{color:#c2410c}.fb p{color:#6b7280;font-size:.85rem;margin-top:.5rem;line-height:1.5}.fc h3{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.75rem}.fc ul{list-style:none}.fc li{margin-bottom:.4rem}.fc a{color:#6b7280;text-decoration:none;font-size:.85rem}.fc a:hover{color:#c2410c}.fbot{max-width:1100px;margin:2rem auto 0;padding-top:1rem;border-top:1px solid #374151;color:#6b7280;font-size:.8rem}@media(max-width:768px){.fi{grid-template-columns:1fr 1fr}}@media(max-width:480px){.fi{grid-template-columns:1fr}.nbs li:not(.nc){display:none}}</style>
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"><a href="index.html" class="navbar-logo">Win<span>WithFred</span></a><ul class="navbar-links"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="navbar-cta"><div id="auth-nav"></div></li></ul></div></nav>
+<nav class="navbar"><div class="nbi"><a href="index.html" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="index.html">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
-<div class="tool-hero">
-<div class="label">Decision & Action</div>
-<h1>Procrastination Diagnosis</h1>
-<p>Why are you actually avoiding this specific thing?</p>
-</div>
-<div class="tool-wrap">
+<div class="hero"><div class="lbl">Decision & Action</div><h1>Procrastination Diagnosis</h1><p>Find out exactly why you procrastinate — and get the right fix.</p></div>
+<div class="wrap">
+
 <div class="card">
-<h2>What are you procrastinating on?</h2>
-<input type="text" id="the-task" placeholder="Be specific — e.g. 'writing the first chapter', 'calling my accountant'...">
-<label style="margin-top:1rem">How long have you been putting it off?</label>
-<select id="how-long">
-<option value="days">A few days</option>
-<option value="weeks">A couple of weeks</option>
-<option value="months">Months</option>
-<option value="years">More than a year</option>
-</select>
+  <h2>What task are you procrastinating on?</h2>
+  <input type="text" id="task-name" placeholder="Be specific — e.g. Write the business plan, Start the gym, Finish the report">
 </div>
 <div class="card">
-<h2>Diagnosis questions</h2>
-<p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem">Select every statement that feels true right now.</p>
-<div id="proc-checks" class="option-group"></div>
+  <h2>Answer honestly about this specific task</h2>
+  <p class="sub">Select the statement that best describes how you feel.</p>
+  <div id="diag-qs"></div>
 </div>
-<button class="btn btn-primary" onclick="diagnoseProcrastination()" style="width:100%">Diagnose My Procrastination</button>
-<div class="result-box" id="result"><div id="proc-output"></div><button class="btn btn-outline btn-sm" onclick="document.getElementById('result').classList.remove('show')" style="margin-top:1rem">Redo</button></div>
+<button class="btn btn-primary" id="calcBtn">Diagnose My Procrastination</button>
+<div class="result" id="result">
+  <div class="res-label" id="diag-type"></div>
+  <div class="res-desc" id="diag-desc" style="margin-top:.4rem;color:#9ca3af;font-size:.88rem"></div>
+  <div style="margin-top:1.25rem;padding:1rem;background:#1f2937;border-radius:8px">
+    <div class="section-title" style="margin-bottom:.5rem">The Fix for Your Type</div>
+    <ul class="action-list" id="diag-fixes"></ul>
+  </div>
+  <div style="margin-top:1rem;padding:.75rem;background:#111827;border-left:3px solid #c2410c;border-radius:0 6px 6px 0">
+    <div style="font-size:.8rem;color:#6b7280;margin-bottom:.25rem">The next action for</div>
+    <div id="task-display" style="color:#f9fafb;font-weight:600;margin-bottom:.5rem"></div>
+    <div id="next-action" style="color:#c2410c;font-size:.9rem;font-weight:600"></div>
+  </div>
+  <button class="btn btn-ghost btn-sm" id="retakeBtn" style="margin-top:1rem">Retake</button>
+</div>
 </div>
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><a href="index.html" class="footer-logo">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="footer-col"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="footer-col"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="footer-col"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="footer-bottom"><div class="wwf-legal-bar"><span>© 2025 WinWithFred. All rights reserved.</span></div></div></footer>
+<footer class="footer"><div class="fi"><div class="fb"><a href="index.html" class="fl">Win<span>WithFred</span></a><p>Practical self-help for people who are done messing around. No fluff. No gimmicks. Just what works.</p></div><div class="fc"><h3>Tools</h3><ul><li><a href="goal-tracker.html">Goal Tracker</a></li><li><a href="habit-builder.html">Habit Builder</a></li><li><a href="journal.html">Journal Prompts</a></li><li><a href="quiz.html">Mindset Quiz</a></li><li><a href="vision-board.html">Vision Board</a></li></ul></div><div class="fc"><h3>Blog</h3><ul><li><a href="blog.html">All Posts</a></li><li><a href="blog.html">Habits</a></li><li><a href="blog.html">Goals</a></li><li><a href="blog.html">Mindset</a></li></ul></div><div class="fc"><h3>Site</h3><ul><li><a href="newsletter.html">Newsletter</a></li><li><a href="index.html#about">About Fred</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div></div><div class="fbot">&copy; 2025 WinWithFred. All rights reserved.</div></footer>
 <script>
-(function(){var u=JSON.parse(localStorage.getItem('wwf_user')||'null');var el=document.getElementById('auth-nav');if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:var(--orange);font-weight:700;text-decoration:none;font-size:.9rem;">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:var(--orange);color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem;">Log In</a>';}})();
-var PROC_CHECKS=[
-{label:"I'm not sure exactly what the first step is.",cat:"clarity"},
-{label:"I'm worried it won't be good enough when I do it.",cat:"perfectionism"},
-{label:"I'm afraid of what happens if I actually succeed.",cat:"fear"},
-{label:"I'm afraid of failing or looking stupid.",cat:"fear"},
-{label:"I don't have enough energy for it right now.",cat:"energy"},
-{label:"Every time I think about starting, I feel overwhelmed.",cat:"clarity"},
-{label:"I feel like I need more information or preparation first.",cat:"clarity"},
-{label:"I keep waiting to be 'in the mood' to start.",cat:"energy"},
-{label:"I've told myself I'll do it 'later' more than 5 times.",cat:"avoidance"},
-{label:"Part of me doesn't actually want to do this.",cat:"motivation"},
-{label:"Other tasks feel more urgent so I keep prioritising those.",cat:"priority"},
-{label:"I feel guilty about it, which makes me avoid it more.",cat:"avoidance"}
+(function(){var u=JSON.parse(localStorage.getItem("wwf_user")||"null");var el=document.getElementById("an");if(!el)return;if(u){el.innerHTML='<a href="dashboard.html" style="color:#c2410c;font-weight:700;text-decoration:none;font-size:.9rem">Dashboard</a>';}else{el.innerHTML='<a href="login.html" style="background:#c2410c;color:#fff;padding:.4rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;font-size:.85rem">Log In</a>';}})();
+
+var QS=[
+  {q:"Why haven't you started yet?",answers:[
+    {label:"I'm not sure exactly what to do first",      type:"clarity"},
+    {label:"It feels huge and I don't know where to begin",type:"overwhelm"},
+    {label:"I'm worried it won't be good enough",        type:"perfectionism"},
+    {label:"I'm scared of what happens if I succeed or fail",type:"fear"},
+    {label:"I just don't feel like it — motivation is zero",type:"motivation"},
+    {label:"Other things keep getting in the way",       type:"distraction"}
+  ]},
+  {q:"When you think about doing this task, you feel...",answers:[
+    {label:"Confused — I don't have a clear picture",    type:"clarity"},
+    {label:"Overwhelmed — it feels like too much",       type:"overwhelm"},
+    {label:"Anxious — what if it's not perfect?",        type:"perfectionism"},
+    {label:"Avoidant — I change the subject in my mind", type:"fear"},
+    {label:"Flat — nothing pulls me toward it",          type:"motivation"},
+    {label:"Interrupted — always something else first",  type:"distraction"}
+  ]},
+  {q:"The last time you procrastinated this way, the real reason was...",answers:[
+    {label:"I didn't have enough info or a clear next step",type:"clarity"},
+    {label:"The scope felt bigger than I could handle",   type:"overwhelm"},
+    {label:"I kept tweaking instead of finishing",        type:"perfectionism"},
+    {label:"The stakes felt too high to risk failing",    type:"fear"},
+    {label:"I waited until the deadline forced me",       type:"motivation"},
+    {label:"My environment or phone kept pulling me away",type:"distraction"}
+  ]}
 ];
-var procSelected=[];
-function renderProcChecks(){
-  document.getElementById('proc-checks').innerHTML=PROC_CHECKS.map(function(c,i){
-    return '<button class="option-btn" id="pc'+i+'" onclick="toggleProc('+i+',this)"><span>'+c.label+'</span></button>';
-  }).join('');
-}
-function toggleProc(i,btn){var idx=procSelected.indexOf(i);if(idx===-1)procSelected.push(i);else procSelected.splice(idx,1);btn.classList.toggle('sel');}
-var DIAGNOSES={
-clarity:{label:'Clarity Deficit',color:'#60a5fa',desc:'You're not procrastinating — you're stuck. The task is too vague for your brain to begin. Vague tasks feel overwhelming; specific tasks feel doable.',fixes:['Write down the task as: "I will [do X] for [Y minutes] on [day/time]"','Ask: "What is the absolute first physical action?" Not "write the report" — "open a blank doc"','Use a 2-minute brain dump: write everything you know needs to happen, then pick just one.','Break it down until the first step takes less than 5 minutes. That's your entry point.']},
-perfectionism:{label:'Perfectionism Block',color:'#a78bfa',desc:'You're not avoiding the work — you're protecting yourself from the judgment of an imperfect result. The standard you've set is the blocker.',fixes:['Set a "rough draft" rule: the first version is allowed to be terrible. Just get it out.','Give yourself a 25-minute sprint with explicit permission to produce bad work.','Ask: "What's a passing grade here?" Not an A+. What does done look like?','Remind yourself: a mediocre finished thing beats a perfect unstarted thing every time.']},
-fear:{label:'Fear-Based Avoidance',color:'var(--orange)',desc:'There's something about this task that feels threatening — failure, success, judgment, change. The avoidance is a protection mechanism, not laziness.',fixes:['Name the fear explicitly. Write: "I'm afraid that if I do this, _____." Say it out loud.','Do the fear setting exercise: worst case, prevention, cost of inaction.','Ask: "What's the smallest version of this I could do with zero risk?" Start there.','Remind yourself that the discomfort of doing is always less than the weight of avoiding.']},
-energy:{label:'Energy Mismatch',color:'var(--green)',desc:'This isn't procrastination — it's poor scheduling. You're trying to do a high-energy task at a low-energy time.',fixes:['Schedule this task at your peak energy time (usually mid-morning for most people).','Before starting, do 5 minutes of movement — even a walk around the block changes brain state.','Use the 2-minute rule: just commit to starting for 2 minutes. Starting creates momentum.','Audit your sleep and caffeine timing — chronic low energy is a systems problem, not a willpower problem.']},
-avoidance:{label:'Guilt-Avoidance Loop',color:'var(--red)',desc:'The guilt about not doing it is now part of the reason you avoid it. Every time you think about it, you feel bad — so you stop thinking about it.',fixes:['Forgive yourself for not having done it yet. Seriously. Guilt doesn't help — permission does.','Do a "clean slate": write down what you'll do today, not what you failed to do before.','Tell someone you're going to start it in the next 30 minutes. Accountability breaks the loop.','Set a timer for 10 minutes and just do it. The loop breaks the moment you begin.']},
-motivation:{label:'Values Misalignment',color:'var(--muted)',desc:'Part of you doesn't want to do this. That's worth listening to — but it's also worth examining. Is this actually not worth doing, or are you making excuses?',fixes:['Ask: "If I knew I would succeed at this, would I still want to do it?" If no, it might not be right for you.','Ask: "Who am I doing this for?" Obligation-driven tasks are harder to start.','Connect the task to something you do care about. Find the "why" that's actually yours.','Consider: is this actually something you need to do, or something you think you should do?']},
-priority:{label:'Priority Confusion',color:'var(--orange)',desc:'Urgent tasks keep winning over important ones. The procrastinated thing never feels pressing enough to beat the daily firefighting.',fixes:['Schedule a specific block for this task — time-block it like a meeting you can't miss.','Put it at the top of tomorrow's list before you finish today. Decision fatigue kills important work.','Use the 2-minute rule: if it takes under 2 minutes, do it now. Otherwise, schedule it.','Remove one "urgent" distraction from tomorrow's list. Most urgency is manufactured.']}
+var TYPES={
+  clarity:{
+    label:"Clarity Blocker",
+    desc:"You're not lazy — you're unclear. When the brain can't picture the next step concretely, it defaults to avoidance. This isn't a motivation problem.",
+    fixes:["Write down the very next physical action (not 'work on project' — 'open doc and write one sentence').",
+      "Spend 10 minutes on planning only. Don't start yet. Just clarify.",
+      "Ask: what would done look like? Then reverse-engineer from there."]
+  },
+  overwhelm:{
+    label:"Overwhelm Blocker",
+    desc:"The task feels too big to start, so you don't. Breaking it into tiny, stupid-easy steps removes the size as a barrier.",
+    fixes:["Break the task into chunks so small they feel almost laughable.",
+      "Only commit to 25 minutes. Set a timer. Stop when it goes off.",
+      "Write the first 3 micro-steps only. Don't plan further until those are done."]
+  },
+  perfectionism:{
+    label:"Perfectionism Blocker",
+    desc:"You're holding yourself to a standard that prevents starting. A done version beats a perfect version that never ships.",
+    fixes:["Give yourself explicit permission to do a bad first draft.",
+      "Set a 'good enough' standard before you start — then stop when you hit it.",
+      "Remind yourself: editing a bad draft is 10x easier than starting from nothing."]
+  },
+  fear:{
+    label:"Fear Blocker",
+    desc:"Procrastination is protecting you from a risk — real or imagined. The task has meaning, which is why the stakes feel high.",
+    fixes:["Name the fear specifically. Write it down. Often it loses power when named.",
+      "Ask: what is the worst realistic outcome? Then: could you survive it?",
+      "Start with the smallest version of the task — reduce the stakes to near-zero."]
+  },
+  motivation:{
+    label:"Motivation Blocker",
+    desc:"Waiting for motivation before you start is backwards. Action creates motivation — not the other way around.",
+    fixes:["Start for exactly 2 minutes. Momentum usually does the rest.",
+      "Connect the task to something you actually care about — purpose, not pressure.",
+      "Create an artificial deadline or accountability partner."]
+  },
+  distraction:{
+    label:"Environment Blocker",
+    desc:"Your environment is winning. You can't out-willpower a phone notification. The solution is removing the friction, not adding more discipline.",
+    fixes:["Phone in another room, notifications off, for the first 25 minutes.",
+      "Work in a different physical location — a library, cafe, or even a different room.",
+      "Use the 'two-minute start' rule: remove one distraction before sitting down."]
+  }
 };
-function diagnoseProcrastination(){
-  var task=document.getElementById('the-task').value||'this task';
-  var duration=document.getElementById('how-long').value;
-  var counts={};
-  procSelected.forEach(function(i){var c=PROC_CHECKS[i].cat;counts[c]=(counts[c]||0)+1;});
-  var top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).slice(0,2);
-  if(top.length===0)top=['clarity'];
-  localStorage.setItem('wwf_procrastination',JSON.stringify({task:task,duration:duration,selected:procSelected,top:top,date:new Date().toISOString()}));
-  var urgency=duration==='years'?'This has been costing you for over a year. The cost of one more day is real.':duration==='months'?'Months of avoidance. The mental weight of this is probably heavier than the task itself.':'Good — you caught it early. Diagnose and break the pattern before it becomes a habit.';
-  document.getElementById('proc-output').innerHTML='<div class="result-label" style="margin-bottom:.5rem">Diagnosis for: '+task+'</div><p style="color:var(--muted);font-size:.84rem;margin-bottom:1.25rem">'+urgency+'</p>'
-  +top.map(function(cat){var d=DIAGNOSES[cat];if(!d)return '';return '<div style="background:var(--surface);border:1px solid '+d.color+';border-radius:8px;padding:1rem;margin-bottom:.75rem"><div style="font-weight:700;color:'+d.color+';font-size:.95rem;margin-bottom:.35rem">'+d.label+'</div><p style="color:var(--muted);font-size:.84rem;line-height:1.5;margin-bottom:.75rem">'+d.desc+'</p><div style="font-size:.78rem;font-weight:700;color:var(--white);margin-bottom:.4rem">TARGETED FIXES</div><ul class="action-list">'+d.fixes.map(function(f){return '<li>'+f+'</li>';}).join('')+'</ul></div>';}).join('');
-  document.getElementById('result').classList.add('show');
-  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+var FIRST_ACTIONS={
+  clarity:"Write down in one sentence what 'done' looks like for this task.",
+  overwhelm:"List 5 micro-steps — each under 15 minutes. Then do only step 1.",
+  perfectionism:"Set a 25-min timer and produce a rough version. Messy is fine.",
+  fear:"Write one sentence naming exactly what you're afraid of.",
+  motivation:"Set a 2-minute timer. Start. Just the first sentence or step.",
+  distraction:"Put your phone in another room. Set a 25-min timer. Begin."
+};
+var answers=[];
+function renderQs(){
+  var saved=JSON.parse(localStorage.getItem("wwf_procrastination")||"null");
+  var h="";
+  QS.forEach(function(q,i){
+    h+="<div style='margin-bottom:1.25rem'>"
+      +"<div style='font-size:.9rem;font-weight:600;color:#f9fafb;margin-bottom:.5rem'>"+(i+1)+". "+q.q+"</div>";
+    q.answers.forEach(function(a,j){
+      var isSaved=saved&&saved.answers&&saved.answers[i]===j;
+      h+="<button class='opt"+(isSaved?" on":"")+"' data-qi='"+i+"' data-ai='"+j+"' data-atype='"+a.type+"'>"
+        +"<span>"+a.label+"</span></button>";
+    });
+    h+="</div>";
+  });
+  document.getElementById("diag-qs").innerHTML=h;
+  document.querySelectorAll("[data-qi]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var qi=this.dataset.qi;
+      document.querySelectorAll("[data-qi='"+qi+"']").forEach(function(b){b.classList.remove("on");});
+      this.classList.add("on");
+    });
+  });
 }
-renderProcChecks();
+document.getElementById("calcBtn").addEventListener("click",function(){
+  var taskName=document.getElementById("task-name").value.trim()||"this task";
+  var typeCounts={};
+  var answerData=[];
+  var allAnswered=true;
+  QS.forEach(function(q,i){
+    var active=document.querySelector("[data-qi='"+i+"'].on");
+    if(!active){allAnswered=false;return;}
+    var t=active.dataset.atype;
+    typeCounts[t]=(typeCounts[t]||0)+1;
+    answerData.push(parseInt(active.dataset.ai));
+  });
+  if(!allAnswered){alert("Answer all 3 questions first.");return;}
+  var topType=Object.keys(typeCounts).sort(function(a,b){return typeCounts[b]-typeCounts[a];})[0];
+  var info=TYPES[topType];
+  localStorage.setItem("wwf_procrastination",JSON.stringify({task:taskName,answers:answerData,type:topType}));
+  document.getElementById("diag-type").textContent=info.label;
+  document.getElementById("diag-desc").textContent=info.desc;
+  document.getElementById("diag-fixes").innerHTML=info.fixes.map(function(f){return"<li>"+f+"</li>";}).join("");
+  document.getElementById("task-display").textContent=taskName;
+  document.getElementById("next-action").textContent=FIRST_ACTIONS[topType];
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("retakeBtn").addEventListener("click",function(){document.getElementById("result").classList.remove("show");});
+(function init(){
+  var saved=JSON.parse(localStorage.getItem("wwf_procrastination")||"null");
+  if(saved&&saved.task)document.getElementById("task-name").value=saved.task;
+  renderQs();
+})();
+
 </script>
 </body>
 </html>
