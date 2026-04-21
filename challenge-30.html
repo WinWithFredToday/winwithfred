@@ -65,7 +65,7 @@ a:hover { text-decoration:underline; }
 .day-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; }
 .day-cell { aspect-ratio:1; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; transition:all 0.15s; border:2px solid #e5e7eb; background:var(--white); font-size:0.75rem; font-weight:700; color:var(--muted); user-select:none; }
 .day-cell.done { background:var(--orange); border-color:var(--orange); color:var(--white); }
-.day-cell.done::after { content:'Ã¢ÂÂ'; font-size:1.1rem; font-weight:900; }
+.day-cell.done::after { content:'✓'; font-size:1.1rem; font-weight:900; }
 .day-cell.today { border-color:var(--orange); color:var(--orange); }
 .day-cell.future { opacity:0.4; cursor:default; }
 .day-cell.done:hover { background:var(--orange-d); border-color:var(--orange-d); }
@@ -150,7 +150,7 @@ a:hover { text-decoration:underline; }
         <button class="preset-btn" onclick="selectPreset(this)">&#129380; Cold shower daily</button>
         <button class="preset-btn" onclick="selectPreset(this)">&#127815; Eat clean, no junk food</button>
       </div>
-      <div class="or-divider">Ã¢ÂÂ or write your own Ã¢ÂÂ</div>
+      <div class="or-divider">— or write your own —</div>
       <div class="custom-input-wrap">
         <input type="text" class="custom-input" id="custom-challenge" placeholder="e.g. Practice guitar for 15 minutes" maxlength="80" />
       </div>
@@ -279,7 +279,7 @@ function render() {
   // quote
   const q = QUOTES[done % QUOTES.length];
   document.getElementById('quote-text').textContent = '"' + q.text + '"';
-  document.getElementById('quote-author').textContent = 'Ã¢ÂÂ ' + q.author;
+  document.getElementById('quote-author').textContent = '— ' + q.author;
 
   // grid
   const grid = document.getElementById('day-grid');
@@ -307,13 +307,13 @@ function render() {
   // check btn
   const btn = document.getElementById('check-btn');
   if (idx >= 0 && idx < 30 && state.days[idx]) {
-    btn.textContent = 'Ã¢ÂÂ Done Today!';
+    btn.textContent = '✓ Done Today!';
     btn.style.opacity = '0.6';
   } else if (idx >= 30) {
     btn.textContent = 'Ã°ÂÂÂ Challenge Complete!';
     btn.disabled = true;
   } else {
-    btn.textContent = 'Ã¢ÂÂ Check Off Today';
+    btn.textContent = '✓ Check Off Today';
     btn.style.opacity = '1';
   }
 }
