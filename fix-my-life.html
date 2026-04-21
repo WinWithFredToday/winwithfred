@@ -818,7 +818,7 @@ function displayPlan(plan, input) {
   let toolsHtml = '';
   const toolNames = { 'goal-tracker.html': 'Goal Tracker', 'habit-builder.html': 'Habit Builder', 'journal.html': 'Journal' };
   for (const tool of plan.relatedTools) {
-    toolsHtml += `<a href="${tool}.html">&rarr; ${toolNames[tool]}</a>`;
+    toolsHtml += `<a href="#" class="tool-link">&rarr; ${toolNames[tool]}</a>`;
   }
   document.getElementById('related-links').innerHTML = toolsHtml;
 }
