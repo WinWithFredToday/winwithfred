@@ -101,6 +101,14 @@
   <meta name="twitter:description" content="Free self-help tools that actually work. No fluff, real results.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sign In &mdash; WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/login.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CX355GZZM2');
+</script>
 </head>
 <body>
 
@@ -162,7 +170,7 @@
         <label class="form-label">Password</label>
         <input id="input-password" class="form-input" type="password" placeholder="At least 6 characters" required />
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In →</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In â</button>
     </form>
 
     <div class="back-link">
@@ -195,7 +203,7 @@
     document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
     document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
     document.getElementById('name-group').style.display = mode === 'signup' ? 'block' : 'none';
-    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In →' : 'Create Account →';
+    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In â' : 'Create Account â';
     clearMessages();
   }
 
@@ -222,7 +230,7 @@
     if (loading) {
       btn.textContent = 'Please wait...';
     } else {
-      btn.textContent = mode === 'signin' ? 'Sign In →' : 'Create Account →';
+      btn.textContent = mode === 'signin' ? 'Sign In â' : 'Create Account â';
     }
   }
 
