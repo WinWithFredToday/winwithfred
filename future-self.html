@@ -628,7 +628,7 @@ p  { color: #374151; }
 }
 
 .phase-list li::before {
-  content: "→";
+  content: "â";
   position: absolute;
   left: 0;
   color: var(--orange);
@@ -702,6 +702,14 @@ p  { color: #374151; }
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CX355GZZM2');
+</script>
 </head>
 <body>
 
@@ -926,7 +934,7 @@ p  { color: #374151; }
 
     <div class="form-navigation">
       <button id="prev-step-btn" class="btn btn-outline" style="display:none;">&#8592; Back</button>
-      <button id="next-step-btn" class="btn btn-primary">Next →</button>
+      <button id="next-step-btn" class="btn btn-primary">Next â</button>
     </div>
   </div>
 
@@ -1008,7 +1016,7 @@ function updateStepProgress() {
   document.getElementById('step-progress-fill').style.width = percent + '%';
   document.getElementById('step-number').textContent = `Step ${currentStep} of ${totalSteps}`;
   document.getElementById('prev-step-btn').style.display = currentStep === 1 ? 'none' : 'block';
-  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next →';
+  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next â';
 }
 
 function showStep(stepNum) {
