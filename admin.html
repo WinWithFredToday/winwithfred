@@ -47,7 +47,7 @@
     }
     .btn-signout:hover { color: #fff; border-color: #777; }
 
-    /* ── Login form ── */
+    /* ââ Login form ââ */
     #login-screen {
       display: flex;
       align-items: center;
@@ -114,7 +114,7 @@
       margin-top: 1rem;
     }
 
-    /* ── Setup banner ── */
+    /* ââ Setup banner ââ */
     #setup-banner {
       display: none;
       background: #fef9c3;
@@ -139,7 +139,7 @@
       overflow-x: auto;
     }
 
-    /* ── Main content ── */
+    /* ââ Main content ââ */
     #admin-content { display: none; }
 
     .page-header {
@@ -152,7 +152,7 @@
     .page-header h1 { font-size: 1.8rem; font-weight: 800; }
     .last-updated { color: #888; font-size: 0.85rem; }
 
-    /* ── Stats row ── */
+    /* ââ Stats row ââ */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -184,7 +184,7 @@
     .stat-card.orange .stat-value { color: #e85d04; }
     .stat-card.green .stat-value { color: #16a34a; }
 
-    /* ── Chart + breakdown row ── */
+    /* ââ Chart + breakdown row ââ */
     .charts-row {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -226,7 +226,7 @@
     .bar-free { background: #1a1a2e; }
     .bar-new { background: #16a34a; }
 
-    /* ── Members table ── */
+    /* ââ Members table ââ */
     .table-section { padding: 0 2rem 3rem; }
     .table-header {
       display: flex;
@@ -273,7 +273,7 @@
     .email-cell { font-weight: 500; }
     .no-data { color: #aaa; font-style: italic; }
 
-    /* ── Loading spinner ── */
+    /* ââ Loading spinner ââ */
     #loading-state {
       display: none;
       align-items: center;
@@ -292,7 +292,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     #loading-state p { color: #888; font-size: 0.9rem; }
 
-    /* ── Error state ── */
+    /* ââ Error state ââ */
     #error-state {
       display: none;
       background: #fff3ee;
@@ -331,6 +331,14 @@
   <meta name="twitter:description" content="Free self-help tools that actually work. No fluff, real results.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Admin Dashboard | WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/admin.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CX355GZZM2');
+</script>
 </head>
 <body>
 
@@ -345,7 +353,7 @@
 <!-- Login form -->
 <div id="login-screen">
   <div class="login-card">
-    <div class="login-icon">🔐</div>
+    <div class="login-icon">ð</div>
     <h2>Admin Login</h2>
     <p>Sign in with your admin credentials to access the dashboard.</p>
     <form id="login-form" onsubmit="handleLogin(event)">
@@ -355,7 +363,7 @@
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
-        <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+        <input type="password" id="login-password" placeholder="â¢â¢â¢â¢â¢â¢â¢â¢" required autocomplete="current-password">
       </div>
       <button type="submit" class="btn-login" id="login-btn">Log In</button>
       <div class="login-error" id="login-error"></div>
@@ -366,13 +374,13 @@
 <!-- Loading -->
 <div id="loading-state">
   <div class="spinner"></div>
-  <p>Loading dashboard…</p>
+  <p>Loading dashboardâ¦</p>
 </div>
 
 <!-- Setup required banner -->
 <div id="setup-banner">
-  <strong>⚠️ One-time Firestore setup required</strong> — The dashboard can see member counts, but to read individual member records you need to add an admin rule in Firebase Console → Firestore → Rules. Add this inside your existing <code>match /users/{userId}</code> block:<code>allow read: if request.auth.token.email == 'freddyowenprivate@gmail.com';</code>
-  Then reload this page. Your current counts above are accurate — only the member table below needs this rule.
+  <strong>â ï¸ One-time Firestore setup required</strong> â The dashboard can see member counts, but to read individual member records you need to add an admin rule in Firebase Console â Firestore â Rules. Add this inside your existing <code>match /users/{userId}</code> block:<code>allow read: if request.auth.token.email == 'freddyowenprivate@gmail.com';</code>
+  Then reload this page. Your current counts above are accurate â only the member table below needs this rule.
 </div>
 
 <!-- Error state -->
@@ -391,22 +399,22 @@
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-label">Total Members</div>
-      <div class="stat-value" id="stat-total">—</div>
+      <div class="stat-value" id="stat-total">â</div>
       <div class="stat-sub">All registered accounts</div>
     </div>
     <div class="stat-card orange">
       <div class="stat-label">Premium</div>
-      <div class="stat-value" id="stat-premium">—</div>
+      <div class="stat-value" id="stat-premium">â</div>
       <div class="stat-sub" id="stat-premium-pct">Paid members</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Free</div>
-      <div class="stat-value" id="stat-free">—</div>
+      <div class="stat-value" id="stat-free">â</div>
       <div class="stat-sub">Free accounts</div>
     </div>
     <div class="stat-card green">
       <div class="stat-label">New This Month</div>
-      <div class="stat-value" id="stat-new">—</div>
+      <div class="stat-value" id="stat-new">â</div>
       <div class="stat-sub" id="stat-new-sub">Members with join date</div>
     </div>
   </div>
@@ -414,7 +422,7 @@
   <!-- Charts row -->
   <div class="charts-row">
     <div class="card">
-      <h2>Member Growth — Last 6 Months</h2>
+      <h2>Member Growth â Last 6 Months</h2>
       <div class="chart-wrap">
         <canvas id="growthChart"></canvas>
       </div>
@@ -427,7 +435,7 @@
       <div class="breakdown-item">
         <div class="breakdown-label">
           <span>Premium</span>
-          <span id="pct-premium">—</span>
+          <span id="pct-premium">â</span>
         </div>
         <div class="breakdown-bar-bg">
           <div class="breakdown-bar bar-premium" id="bar-premium" style="width:0%"></div>
@@ -436,7 +444,7 @@
       <div class="breakdown-item">
         <div class="breakdown-label">
           <span>Free</span>
-          <span id="pct-free">—</span>
+          <span id="pct-free">â</span>
         </div>
         <div class="breakdown-bar-bg">
           <div class="breakdown-bar bar-free" id="bar-free" style="width:0%"></div>
@@ -445,7 +453,7 @@
       <div class="breakdown-item" id="breakdown-new-row">
         <div class="breakdown-label">
           <span>New this month</span>
-          <span id="pct-new">—</span>
+          <span id="pct-new">â</span>
         </div>
         <div class="breakdown-bar-bg">
           <div class="breakdown-bar bar-new" id="bar-new" style="width:0%"></div>
@@ -474,7 +482,7 @@
           </tr>
         </thead>
         <tbody id="members-tbody">
-          <tr><td colspan="4" style="text-align:center; padding:2rem; color:#aaa;">Loading members…</td></tr>
+          <tr><td colspan="4" style="text-align:center; padding:2rem; color:#aaa;">Loading membersâ¦</td></tr>
         </tbody>
       </table>
     </div>
@@ -494,7 +502,7 @@
   function showFlex(id) { document.getElementById(id).style.display = 'flex'; }
   function el(id) { return document.getElementById(id); }
 
-  // ── Login handler ──
+  // ââ Login handler ââ
   window.handleLogin = async function(e) {
     e.preventDefault();
     var email = el('login-email').value.trim();
@@ -504,7 +512,7 @@
 
     errEl.style.display = 'none';
     btn.disabled = true;
-    btn.textContent = 'Signing in…';
+    btn.textContent = 'Signing inâ¦';
 
     try {
       var result = await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -532,19 +540,19 @@
     }
   };
 
-  // ── Sign out ──
+  // ââ Sign out ââ
   window.signOut = async function() {
     await firebase.auth().signOut();
   };
 
-  // ── Dashboard functions ──
+  // ââ Dashboard functions ââ
   function formatDate(val) {
-    if (!val) return '—';
+    if (!val) return 'â';
     let d;
     if (val && typeof val.toDate === 'function') d = val.toDate();
     else if (val instanceof Date) d = val;
     else d = new Date(val);
-    if (isNaN(d)) return '—';
+    if (isNaN(d)) return 'â';
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
@@ -634,9 +642,9 @@
     tbody.innerHTML = members.map(m => `
       <tr>
         <td class="email-cell">${m.email || '<span class="no-data">not yet captured</span>'}</td>
-        <td><span class="badge ${m.premium ? 'badge-premium' : 'badge-free'}">${m.premium ? '⭐ Premium' : 'Free'}</span></td>
+        <td><span class="badge ${m.premium ? 'badge-premium' : 'badge-free'}">${m.premium ? 'â­ Premium' : 'Free'}</span></td>
         <td>${formatDate(m.createdAt)}</td>
-        <td class="uid-cell">${m.id.slice(0, 12)}…</td>
+        <td class="uid-cell">${m.id.slice(0, 12)}â¦</td>
       </tr>
     `).join('');
   }
@@ -697,7 +705,7 @@
         el('error-msg').textContent = 'Full member list requires a Firestore rule update (see banner above). ' + err.message;
         renderStats([]);
         renDerTable([]);
-        el('members-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Requires Firestore rule update — see yellow banner above</td></tr>';
+        el('members-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Requires Firestore rule update â see yellow banner above</td></tr>';
       } catch (e2) {
         el('error-state').style.display = '';
         el('error-msg').textContent = err.message;
@@ -705,12 +713,12 @@
     }
   }
 
-  // ── Auth state listener ──
+  // ââ Auth state listener ââ
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email === ADMIN_EMAIL) {
       loadDashboard(user);
     } else {
-      // Not logged in or wrong account — show login form
+      // Not logged in or wrong account â show login form
       hide('loading-state');
       hide('admin-content');
       hide('setup-banner');
