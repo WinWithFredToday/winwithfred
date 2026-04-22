@@ -59,7 +59,7 @@
     .btn-login { display: inline-block; background: transparent; color: #fff; text-decoration: none; font-size: 0.9rem; opacity: 0.7; margin-top: 0.75rem; border: 1px solid rgba(255,255,255,0.3); padding: 0.75rem 1.5rem; border-radius: 8px; transition: opacity 0.2s; }
     .btn-login:hover { opacity: 1; }
 
-    /* When premium — full plan unlocked -->  */
+    /* When premium â full plan unlocked -->  */
     .unlocked-section { display: none; }
     .unlocked-section .open-plan-btn { display: inline-block; background: #e85d04; color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; padding: 1rem 2.5rem; border-radius: 10px; }
 
@@ -87,6 +87,14 @@
   <meta name="twitter:description" content="See your personalized meal plan match and unlock your full 7-day plan on WinWithFred.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Your Meal Plan Match | WinWithFred","description":"See your personalized meal plan match and unlock your full 7-day plan on WinWithFred.","url":"https://winwithfred.com/meal-plan-result.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CX355GZZM2');
+</script>
 </head>
 <body>
 
@@ -119,17 +127,17 @@
   </div>
 
   <div class="sample-card">
-    <h2>Sample Day — Free Preview</h2>
+    <h2>Sample Day â Free Preview</h2>
     <span class="free-label">&#10003; Free to view</span>
     <div class="meals-grid" id="sample-day"></div>
     <div class="macro-row" id="macro-targets"></div>
   </div>
 
-  <!-- GATED — shown to non-premium users -->
+  <!-- GATED â shown to non-premium users -->
   <div class="lock-card" id="lock-card">
     <div class="lock-icon">&#128274;</div>
     <h2>Unlock Your Full 7-Day Plan</h2>
-    <p>Get your complete meal plan with daily recipes, grocery lists, and practical tips — all tailored to your goals.</p>
+    <p>Get your complete meal plan with daily recipes, grocery lists, and practical tips â all tailored to your goals.</p>
     <ul class="perks-list">
       <li>7-day rotating meal plan with full recipes</li>
       <li>Printable grocery list for the week</li>
@@ -145,12 +153,12 @@
     </div>
   </div>
 
-  <!-- UNLOCKED — shown to premium members -->
+  <!-- UNLOCKED â shown to premium members -->
   <div class="unlocked-section" id="unlocked-section">
     <div style="background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.07); padding:2rem; text-align:center;">
       <div style="font-size:2.5rem; margin-bottom:1rem;">&#127881;</div>
       <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:0.5rem;">Your Full Plan is Ready</h2>
-      <p style="color:#666; margin-bottom:1.5rem;">7 days of meals, a grocery list, and recipes — all matched to your goals.</p>
+      <p style="color:#666; margin-bottom:1.5rem;">7 days of meals, a grocery list, and recipes â all matched to your goals.</p>
       <a href="#" id="open-plan-btn" class="open-plan-btn">View Your Full Meal Plan &rarr;</a>
     </div>
   </div>
@@ -170,7 +178,7 @@
 var PLANS = {
   'lean-light': {
     name: 'Lean & Light',
-    tagline: 'A calorie-smart, high-satiety plan that makes losing weight feel manageable — not miserable.',
+    tagline: 'A calorie-smart, high-satiety plan that makes losing weight feel manageable â not miserable.',
     reasons: [
       'Your goal is to lose weight and feel lighter',
       'Higher protein and fiber to keep you full',
@@ -208,7 +216,7 @@ var PLANS = {
     reasons: [
       'Your priority is consistent energy and feeling better',
       'Anti-inflammatory foods that support mood and focus',
-      'Balanced macros — no spikes, no crashes',
+      'Balanced macros â no spikes, no crashes',
       'Wholesome meals that are satisfying and sustainable'
     ],
     sample: {
@@ -225,13 +233,13 @@ var PLANS = {
     reasons: [
       'You want to eat better without overcomplicating it',
       'All meals take 15-30 minutes and use simple ingredients',
-      'No macro tracking needed — just eat the plan',
+      'No macro tracking needed â just eat the plan',
       'Build confidence in the kitchen as you go'
     ],
     sample: {
-      breakfast: { name: 'Overnight Oats', desc: 'Rolled oats, milk, banana, peanut butter — prep the night before' },
+      breakfast: { name: 'Overnight Oats', desc: 'Rolled oats, milk, banana, peanut butter â prep the night before' },
       lunch:     { name: 'Simple Tuna Salad Wrap', desc: 'Canned tuna, mayo, celery, whole grain wrap, side of fruit' },
-      dinner:    { name: 'Sheet Pan Chicken & Veg', desc: 'Chicken thighs, potatoes, broccoli — toss in olive oil and bake' }
+      dinner:    { name: 'Sheet Pan Chicken & Veg', desc: 'Chicken thighs, potatoes, broccoli â toss in olive oil and bake' }
     },
     macros: { calories: '1,700-2,000 kcal', protein: '100g protein', carbs: '190g carbs', fat: '65g fat' },
     page: 'meal-plan-simple-starter.html'
@@ -241,9 +249,9 @@ var PLANS = {
     tagline: 'A complete plant-based plan with protein-rich meals and all the nutrients you need to thrive.',
     reasons: [
       'You follow a vegetarian or vegan diet',
-      'Complete proteins at every meal — no deficiencies',
+      'Complete proteins at every meal â no deficiencies',
       'B12, iron, and omega-3 aware ingredient choices',
-      'Satisfying and varied — not just salads'
+      'Satisfying and varied â not just salads'
     ],
     sample: {
       breakfast: { name: 'Tofu Scramble', desc: 'Firm tofu crumbled with turmeric, spinach, peppers, and toast' },
@@ -264,7 +272,7 @@ var PLANS = {
     ],
     sample: {
       breakfast: { name: 'Bacon & Egg Cups', desc: 'Bacon-lined muffin tin with eggs, cheese, baked until set' },
-      lunch:     { name: 'Chicken Caesar Salad', desc: 'Romaine, grilled chicken, parmesan, Caesar dressing — no croutons' },
+      lunch:     { name: 'Chicken Caesar Salad', desc: 'Romaine, grilled chicken, parmesan, Caesar dressing â no croutons' },
       dinner:    { name: 'Zucchini Noodle Bolognese', desc: 'Beef bolognese over spiralized zucchini, parmesan on top' }
     },
     macros: { calories: '1,700-2,000 kcal', protein: '130g protein', carbs: '25-50g net carbs', fat: '130g fat' },
@@ -332,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Try loading after auth resolves
   if (window.requireAuth) {
-    // Don't require auth — result page is public
+    // Don't require auth â result page is public
     // But update premium state if user logs in during session
   }
 });
