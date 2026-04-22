@@ -76,7 +76,7 @@ a:hover { text-decoration:underline; }
 .task-check { width:20px; height:20px; border-radius:50%; border:2px solid #d1d5db; cursor:pointer; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.15s; background:white; }
 .task-check:hover { border-color:var(--orange); }
 .task-check.checked { background:var(--orange); border-color:var(--orange); }
-.task-check.checked::after { content:'✓'; color:white; font-size:11px; font-weight:700; }
+.task-check.checked::after { content:'â'; color:white; font-size:11px; font-weight:700; }
 .task-text { flex:1; font-size:0.9rem; font-weight:600; color:var(--dark); }
 .task-del { background:none; border:none; cursor:pointer; color:#d1d5db; font-size:1rem; padding:2px 4px; border-radius:4px; transition:color 0.15s; line-height:1; }
 .task-del:hover { color:#ef4444; }
@@ -124,6 +124,14 @@ a:hover { text-decoration:underline; }
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CX355GZZM2');
+</script>
 </head>
 <body>
 
