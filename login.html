@@ -100,7 +100,10 @@
   <meta name="twitter:title" content="Sign In &mdash; WinWithFred">
   <meta name="twitter:description" content="Free self-help tools that actually work. No fluff, real results.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sign In &mdash; WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/login.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sign In &mdash; WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/login.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}
+  // Fallback: hide spinner after 3s if auth never resolves
+  setTimeout(function() { var s = document.getElementById("spinner") || document.querySelector(".spinner"); if(s) s.style.display = "none"; }, 3000);
+</script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -197,6 +200,18 @@
   let mode = 'signin';
 
   // If already logged in, redirect away
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDK8dYLaQKpoPi9kDCdDVmO_WRRAwHz7Xo",
+    authDomain: "winwithfred-53df4.firebaseapp.com",
+    projectId: "winwithfred-53df4",
+    storageBucket: "winwithfred-53df4.firebasestorage.app",
+    messagingSenderId: "1071467470411",
+    appId: "1:1071467470411:web:7e76444ebad384eb2d77ce",
+    measurementId: "G-CX355GZZM2"
+  };
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
   auth.onAuthStateChanged(user => {
     document.getElementById('loading-overlay').style.display = 'none';
     if (user) {
