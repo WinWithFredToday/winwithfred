@@ -180,7 +180,7 @@
         <label class="form-label">Password</label>
         <input id="input-password" class="form-input" type="password" placeholder="At least 6 characters" required />
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In Ã¢ÂÂ</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In ÃÂ¢ÃÂÃÂ</button>
     </form>
 
     <div class="back-link">
@@ -200,19 +200,10 @@
   let mode = 'signin';
 
   // If already logged in, redirect away
-  // Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDK8dYLaQKpoPi9kDCdDVmO_WRRAwHz7Xo",
-    authDomain: "winwithfred-53df4.firebaseapp.com",
-    projectId: "winwithfred-53df4",
-    storageBucket: "winwithfred-53df4.firebasestorage.app",
-    messagingSenderId: "1071467470411",
-    appId: "1:1071467470411:web:7e76444ebad384eb2d77ce",
-    measurementId: "G-CX355GZZM2"
-  };
-  const app = firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  auth.onAuthStateChanged(user => {
+  // Auth provided by firebase-config.js
+  const auth = window.auth;
+
+    auth.onAuthStateChanged(user => {
     var overlay = document.getElementById('loading-overlay');
     if (overlay) overlay.style.display = 'none';
     document.getElementById('loading-overlay').style.display = 'none';
@@ -227,7 +218,7 @@
     document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
     document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
     document.getElementById('name-group').style.display = mode === 'signup' ? 'block' : 'none';
-    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In Ã¢ÂÂ' : 'Create Account Ã¢ÂÂ';
+    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In ÃÂ¢ÃÂÃÂ' : 'Create Account ÃÂ¢ÃÂÃÂ';
     clearMessages();
   }
 
@@ -254,7 +245,7 @@
     if (loading) {
       btn.textContent = 'Please wait...';
     } else {
-      btn.textContent = mode === 'signin' ? 'Sign In Ã¢ÂÂ' : 'Create Account Ã¢ÂÂ';
+      btn.textContent = mode === 'signin' ? 'Sign In ÃÂ¢ÃÂÃÂ' : 'Create Account ÃÂ¢ÃÂÃÂ';
     }
   }
 
