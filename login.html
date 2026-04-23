@@ -102,7 +102,7 @@
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sign In &mdash; WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/login.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}
   // Fallback: hide spinner after 3s if auth never resolves
-  setTimeout(function() { var s = document.getElementById("spinner") || document.querySelector(".spinner"); if(s) s.style.display = "none"; }, 3000);
+  setTimeout(function() { var o = document.getElementById("loading-overlay"); if(o) o.style.display="none"; }, 4000);
 </script>
 
 <script>
@@ -180,7 +180,7 @@
         <label class="form-label">Password</label>
         <input id="input-password" class="form-input" type="password" placeholder="At least 6 characters" required />
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In â</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In Ã¢ÂÂ</button>
     </form>
 
     <div class="back-link">
@@ -191,10 +191,10 @@
 </div>
 
 <!-- Firebase SDKs -->
-<script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script defer src="firebase-config.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 
 <script>
   let mode = 'signin';
@@ -213,6 +213,8 @@
   const app = firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
   auth.onAuthStateChanged(user => {
+    var overlay = document.getElementById('loading-overlay');
+    if (overlay) overlay.style.display = 'none';
     document.getElementById('loading-overlay').style.display = 'none';
     if (user) {
       const redirect = new URLSearchParams(window.location.search).get('redirect') || 'goal-tracker.html';
@@ -225,7 +227,7 @@
     document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
     document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
     document.getElementById('name-group').style.display = mode === 'signup' ? 'block' : 'none';
-    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In â' : 'Create Account â';
+    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In Ã¢ÂÂ' : 'Create Account Ã¢ÂÂ';
     clearMessages();
   }
 
@@ -252,7 +254,7 @@
     if (loading) {
       btn.textContent = 'Please wait...';
     } else {
-      btn.textContent = mode === 'signin' ? 'Sign In â' : 'Create Account â';
+      btn.textContent = mode === 'signin' ? 'Sign In Ã¢ÂÂ' : 'Create Account Ã¢ÂÂ';
     }
   }
 
