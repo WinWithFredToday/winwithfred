@@ -16,7 +16,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; min-height: 100vh; }
 
-    /* ââ Shared loading spinner ââ */
+    /* ── Shared loading spinner ── */
     .loader-ring {
       width: 44px; height: 44px;
       border: 4px solid #2a2a2a; border-top-color: #f97316;
@@ -25,11 +25,11 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ââ Screens ââ */
+    /* ── Screens ── */
     .screen { display: none; }
     .screen.active { display: block; }
 
-    /* ââ Loading screen ââ */
+    /* ── Loading screen ── */
     #screen-loading {
       position: fixed; inset: 0;
       display: none; align-items: center; justify-content: center;
@@ -39,7 +39,7 @@
     #screen-loading.active { display: flex; }
     #screen-loading p { color: #666; font-size: 14px; }
 
-    /* ââ Login screen ââ */
+    /* ── Login screen ── */
     #screen-login {
       min-height: 100vh;
       display: none; align-items: center; justify-content: center;
@@ -106,7 +106,7 @@
     .login-footer { text-align: center; margin-top: 24px; font-size: 13px; color: #555; }
     .login-footer a { color: #f97316; text-decoration: none; }
 
-    /* ââ Upgrade screen ââ */
+    /* ── Upgrade screen ── */
     #screen-upgrade {
       min-height: 100vh;
       display: none; align-items: center; justify-content: center;
@@ -135,7 +135,7 @@
       text-decoration: underline;
     }
 
-    /* ââ Navbar ââ */
+    /* ── Navbar ── */
     nav {
       background: #141414; border-bottom: 1px solid #222;
       padding: 0 24px; height: 64px;
@@ -161,10 +161,10 @@
     }
     .btn-signout:hover { border-color: #f97316; color: #f97316; }
 
-    /* ââ Main layout ââ */
+    /* ── Main layout ── */
     main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
 
-    /* ââ Welcome ââ */
+    /* ── Welcome ── */
     .welcome-header { margin-bottom: 36px; }
     .welcome-header h1 { font-size: 30px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 5px; }
     .welcome-header h1 span { color: #f97316; }
@@ -176,12 +176,12 @@
       text-transform: uppercase; letter-spacing: 0.5px;
       padding: 3px 9px; border-radius: 20px; margin-top: 10px;
     }
-    .premium-tag::before { content: "â"; }
+    .premium-tag::before { content: "★"; }
 
-    /* ââ Section title ââ */
+    /* ── Section title ── */
     .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #444; margin-bottom: 14px; }
 
-    /* ââ Stats strip ââ */
+    /* ── Stats strip ── */
     .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 10px; margin-bottom: 36px; }
     .stat-card { background: #141414; border: 1px solid #1e1e1e; border-radius: 12px; padding: 16px 18px; }
     .stat-label { font-size: 11px; color: #444; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 7px; }
@@ -190,7 +190,7 @@
     .stat-card.highlight { border-color: rgba(194,65,12,0.25); background: rgba(194,65,12,0.05); }
     .stat-card.highlight .stat-value { color: #f97316; }
 
-    /* ââ Tool grid ââ */
+    /* ── Tool grid ── */
     .tools-section { margin-bottom: 36px; }
     .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
     .tool-card {
@@ -205,10 +205,10 @@
     .tool-footer { margin-top: 12px; padding-top: 12px; border-top: 1px solid #1e1e1e; display: flex; align-items: center; justify-content: space-between; }
     .tool-stat { font-size: 11px; color: #444; }
     .tool-cta { font-size: 11px; font-weight: 600; color: #f97316; }
-    .tool-cta::after { content: " â"; }
+    .tool-cta::after { content: " →"; }
 
 
-    /* ââ Activity ââ */
+    /* ── Activity ── */
     .activity-section { margin-bottom: 36px; }
     .activity-list { display: flex; flex-direction: column; gap: 8px; }
     .activity-item { background: #141414; border: 1px solid #1e1e1e; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
@@ -217,7 +217,7 @@
     .activity-time { font-size: 11px; color: #3a3a3a; }
     .empty-state { font-size: 13px; color: #3a3a3a; padding: 20px; text-align: center; background: #141414; border: 1px dashed #222; border-radius: 10px; }
 
-    /* ââ Responsive ââ */
+    /* ── Responsive ── */
     @media (max-width: 640px) {
       nav { padding: 0 16px; }
       main { padding: 20px 16px 60px; }
@@ -260,18 +260,18 @@
 </head>
 <body>
 
-  <!-- â  Loading -->
+  <!-- ① Loading -->
   <div id="screen-loading" class="active">
     <div class="loader-ring"></div>
-    <p>Loading your dashboardâ¦</p>
+    <p>Loading your dashboard…</p>
   </div>
 
-  <!-- â¡ Login -->
+  <!-- ② Login -->
   <div id="screen-login">
     <div class="login-box">
       <div class="login-logo">Win<span>WithFred</span></div>
       <div class="login-tagline">Your personal growth hub</div>
-      <div class="login-title">Welcome back ð</div>
+      <div class="login-title">Welcome back 👊</div>
       <div class="login-sub">Sign in to access your premium dashboard.</div>
 
       <div class="error-msg" id="login-error"></div>
@@ -282,7 +282,7 @@
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" id="login-password" placeholder="â¢â¢â¢â¢â¢â¢â¢â¢" autocomplete="current-password" />
+        <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
       </div>
       <button class="btn-primary" id="btn-email-login">Sign In</button>
 
@@ -299,15 +299,15 @@
       </button>
 
       <div class="login-footer">
-        Don't have an account? <a href="pricing.html">Get Premium â</a>
+        Don't have an account? <a href="pricing.html">Get Premium →</a>
       </div>
     </div>
   </div>
 
-  <!-- â¢ Not Premium -->
+  <!-- ③ Not Premium -->
   <div id="screen-upgrade">
     <div class="upgrade-box">
-      <div class="icon">ð</div>
+      <div class="icon">🔒</div>
       <h2>Premium Members Only</h2>
       <p>The dashboard is available to WinWithFred premium members. Upgrade to unlock all tools, progress tracking, and coaching access.</p>
       <a href="pricing.html" class="btn-upgrade">Upgrade to Premium</a><br/>
@@ -315,7 +315,7 @@
     </div>
   </div>
 
-  <!-- â£ Dashboard -->
+  <!-- ④ Dashboard -->
   <div id="screen-dashboard" class="screen">
 
     <nav>
@@ -333,8 +333,8 @@
     <main>
 
       <div class="welcome-header">
-        <h1>Welcome back, <span id="display-name">Champion</span> ð</h1>
-        <p>Your personal growth hub â everything in one place.</p>
+        <h1>Welcome back, <span id="display-name">Champion</span> 👊</h1>
+        <p>Your personal growth hub — everything in one place.</p>
         <div class="premium-tag">Premium Member</div>
       </div>
 
@@ -342,27 +342,27 @@
       <div class="stats-strip">
         <div class="stat-card highlight">
           <div class="stat-label">Best Streak</div>
-          <div class="stat-value" id="stat-streaks">â</div>
+          <div class="stat-value" id="stat-streaks">—</div>
           <div class="stat-sub">days in a row</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">30-Day Challenge</div>
-          <div class="stat-value" id="stat-c30">â</div>
+          <div class="stat-value" id="stat-c30">—</div>
           <div class="stat-sub">days complete</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">90-Day Challenge</div>
-          <div class="stat-value" id="stat-c90">â</div>
+          <div class="stat-value" id="stat-c90">—</div>
           <div class="stat-sub">% complete</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Journal Entries</div>
-          <div class="stat-value" id="stat-journal">â</div>
+          <div class="stat-value" id="stat-journal">—</div>
           <div class="stat-sub">total written</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Active Goals</div>
-          <div class="stat-value" id="stat-goals">â</div>
+          <div class="stat-value" id="stat-goals">—</div>
           <div class="stat-sub">goals tracked</div>
         </div>
       </div>
@@ -371,49 +371,49 @@
         <div class="section-title">Your Tools</div>
         <div class="tool-grid">
           <a class="tool-card" href="goal-tracker.html">
-            <div class="tool-icon" style="background:rgba(194,65,12,0.12)">ð¯</div>
+            <div class="tool-icon" style="background:rgba(194,65,12,0.12)">🎯</div>
             <div class="tool-name">Goal Tracker</div>
             <div class="tool-desc">Set, track, and crush your most important goals with milestones and progress bars.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-goals">No goals yet</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="habit-builder.html">
-            <div class="tool-icon" style="background:rgba(34,197,94,0.1)">â</div>
+            <div class="tool-icon" style="background:rgba(34,197,94,0.1)">✅</div>
             <div class="tool-name">Daily Habits</div>
             <div class="tool-desc">Build unstoppable daily habits with check-off tracking and streak counters.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-habits">No habits yet</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="journal.html">
-            <div class="tool-icon" style="background:rgba(139,92,246,0.1)">ð</div>
+            <div class="tool-icon" style="background:rgba(139,92,246,0.1)">📓</div>
             <div class="tool-name">Journal</div>
             <div class="tool-desc">Reflect and grow with prompted daily journaling designed for high performers.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-journal">No entries yet</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="values-quiz.html">
-            <div class="tool-icon" style="background:rgba(194,65,12,0.12)">ð§­</div>
+            <div class="tool-icon" style="background:rgba(194,65,12,0.12)">🧭</div>
             <div class="tool-name">Values Quiz</div>
             <div class="tool-desc">Discover your core values and align your daily decisions with what matters most.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-values">Not taken yet</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="life-balance.html">
-            <div class="tool-icon" style="background:rgba(59,130,246,0.1)">âï¸</div>
+            <div class="tool-icon" style="background:rgba(59,130,246,0.1)">⚖️</div>
             <div class="tool-name">Life Balance</div>
             <div class="tool-desc">Score the 8 key areas of your life and see exactly where to focus your energy.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-balance">Not assessed yet</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="eisenhower-matrix.html">
-            <div class="tool-icon" style="background:rgba(239,68,68,0.1)">ðï¸</div>
+            <div class="tool-icon" style="background:rgba(239,68,68,0.1)">🗂️</div>
             <div class="tool-name">Eisenhower Matrix</div>
             <div class="tool-desc">Prioritize ruthlessly. Sort tasks into Urgent/Important quadrants and eliminate the noise.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-matrix">No tasks yet</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="challenge-30.html">
-            <div class="tool-icon" style="background:rgba(194,65,12,0.12)">ð¥</div>
+            <div class="tool-icon" style="background:rgba(194,65,12,0.12)">🔥</div>
             <div class="tool-name">30-Day Challenge</div>
             <div class="tool-desc">Pick one habit and commit to 30 consecutive days. Simple, powerful, life-changing.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-c30">No challenge active</span><span class="tool-cta">Open</span></div>
           </a>
           <a class="tool-card" href="challenge-90.html">
-            <div class="tool-icon" style="background:rgba(168,85,247,0.1)">ð</div>
+            <div class="tool-icon" style="background:rgba(168,85,247,0.1)">🚀</div>
             <div class="tool-name">90-Day Challenge</div>
             <div class="tool-desc">3 phases. 90 days. Complete transformation. The serious upgrade to your 30-day challenge.</div>
             <div class="tool-footer"><span class="tool-stat" id="tstat-c90">No challenge active</span><span class="tool-cta">Open</span></div>
@@ -425,7 +425,7 @@
       <div class="activity-section">
         <div class="section-title">Recent Activity</div>
         <div class="activity-list" id="activity-list">
-          <div class="empty-state">Start using your tools â your activity will appear here ð</div>
+          <div class="empty-state">Start using your tools — your activity will appear here 🚀</div>
         </div>
       </div>
 
@@ -435,7 +435,7 @@
   <script>
   (function() {
     function init() {
-      // ââ Helpers ââââââââââââââââââââââââââââââââââââââââââââââââââ
+      // ── Helpers ──────────────────────────────────────────────────
       function show(id) {
         ['screen-loading','screen-login','screen-upgrade','screen-dashboard'].forEach(function(s) {
           var el = document.getElementById(s);
@@ -450,15 +450,15 @@
       }
       window.show = show;
 
-      // ââ Firebase auth ref âââââââââââââââââââââââââââââââââââââââââ
+      // ── Firebase auth ref ─────────────────────────────────────────
       var auth = window.auth;
       if (!auth && typeof firebase !== 'undefined') { auth = firebase.auth(); }
       if (!auth) { show('screen-login'); return; }
 
-      // ââ Auth state listener âââââââââââââââââââââââââââââââââââââââ
+      // ── Auth state listener ───────────────────────────────────────
       auth.onAuthStateChanged(function(user) {
         if (!user) { show('screen-login'); return; }
-        // ââ Premium check via Firestore âââââââââââââââââââââââââââââââ
+        // ── Premium check via Firestore ───────────────────────────────
         firebase.firestore().collection('users').doc(user.uid).get()
           .then(function(doc) {
             if (doc.exists && doc.data().premium === true) {
@@ -468,12 +468,12 @@
             }
           })
           .catch(function() {
-            // Firestore unavailable â deny access
+            // Firestore unavailable — deny access
             show('screen-upgrade');
           });
       });
 
-      // ââ Email/password sign-in ââââââââââââââââââââââââââââââââââââ
+      // ── Email/password sign-in ────────────────────────────────────
       var emailBtn = document.getElementById('btn-email-login');
       if (emailBtn) emailBtn.addEventListener('click', function() {
         var email    = document.getElementById('login-email').value.trim();
@@ -497,7 +497,7 @@
         if (e.key === 'Enter') document.getElementById('btn-email-login').click();
       });
 
-      // ââ Google sign-in ââââââââââââââââââââââââââââââââââââââââââââ
+      // ── Google sign-in ────────────────────────────────────────────
       var googleBtn = document.getElementById('btn-google-login');
       if (googleBtn) googleBtn.addEventListener('click', function() {
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -510,13 +510,13 @@
         });
       });
 
-      // ââ Sign out buttons ââââââââââââââââââââââââââââââââââââââââââ
+      // ── Sign out buttons ──────────────────────────────────────────
       var soBtn = document.getElementById('sign-out-btn');
       if (soBtn) soBtn.addEventListener('click', function() { auth.signOut(); });
       var soBtn2 = document.getElementById('btn-upgrade-signout');
       if (soBtn2) soBtn2.addEventListener('click', function() { auth.signOut(); });
 
-      // ââ Render dashboard ââââââââââââââââââââââââââââââââââââââââââ
+      // ── Render dashboard ──────────────────────────────────────────
       function renderDashboard(user) {
         var name     = user.displayName || user.email.split('@')[0] || 'Champion';
         var initials = name.charAt(0).toUpperCase();
@@ -528,7 +528,7 @@
       }
       window.renderDashboard = renderDashboard;
 
-      // ââ Stats from localStorage âââââââââââââââââââââââââââââââââââ
+      // ── Stats from localStorage ───────────────────────────────────
       var _streak = 0;
       function bumpStreak(n) { if (n > _streak) { _streak = n; document.getElementById('stat-streaks').textContent = n; } }
       window.bumpStreak = bumpStreak;
@@ -606,4 +606,4 @@
   })();
   </script>
 </body>
-</html>
+  </html>
