@@ -180,7 +180,7 @@
         <label class="form-label">Password</label>
         <input id="input-password" class="form-input" type="password" placeholder="At least 6 characters" required />
       </div>
-      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In ÃÂ¢ÃÂÃÂ</button>
+      <button type="submit" class="btn btn-primary" id="submit-btn">Sign In ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</button>
     </form>
 
     <div class="back-link">
@@ -200,10 +200,10 @@
   let mode = 'signin';
 
   // If already logged in, redirect away
-  // Auth provided by firebase-config.js
-  const auth = window.auth;
+  // Use auth from firebase-config.js (fallback to firebase.auth() if needed)
+  const auth = window.auth || firebase.auth();
 
-    auth.onAuthStateChanged(user => {
+  auth.onAuthStateChanged(user => {
     var overlay = document.getElementById('loading-overlay');
     if (overlay) overlay.style.display = 'none';
     document.getElementById('loading-overlay').style.display = 'none';
@@ -218,7 +218,7 @@
     document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
     document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
     document.getElementById('name-group').style.display = mode === 'signup' ? 'block' : 'none';
-    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In ÃÂ¢ÃÂÃÂ' : 'Create Account ÃÂ¢ÃÂÃÂ';
+    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ' : 'Create Account ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ';
     clearMessages();
   }
 
@@ -245,7 +245,7 @@
     if (loading) {
       btn.textContent = 'Please wait...';
     } else {
-      btn.textContent = mode === 'signin' ? 'Sign In ÃÂ¢ÃÂÃÂ' : 'Create Account ÃÂ¢ÃÂÃÂ';
+      btn.textContent = mode === 'signin' ? 'Sign In ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ' : 'Create Account ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ';
     }
   }
 
