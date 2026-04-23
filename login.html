@@ -217,7 +217,7 @@
     document.getElementById('tab-signin').classList.toggle('active', mode === 'signin');
     document.getElementById('tab-signup').classList.toggle('active', mode === 'signup');
     document.getElementById('name-group').style.display = mode === 'signup' ? 'block' : 'none';
-    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In →Â→Â→Â→Â' : 'Create Account →Â→Â→Â→Â';
+    document.getElementById('submit-btn').textContent = mode === 'signin' ? 'Sign In \u2192' : 'Create Account \u2192';
     clearMessages();
   }
 
@@ -244,7 +244,7 @@
     if (loading) {
       btn.textContent = 'Please wait...';
     } else {
-      btn.textContent = mode === 'signin' ? 'Sign In →Â→Â→Â→Â' : 'Create Account →Â→Â→Â→Â';
+      btn.textContent = mode === 'signin' ? 'Sign In \u2192' : 'Create Account \u2192';
     }
   }
 
