@@ -628,7 +628,7 @@ p  { color: #374151; }
 }
 
 .phase-list li::before {
-  content: "â";
+  content: "→";
   position: absolute;
   left: 0;
   color: var(--orange);
@@ -941,7 +941,7 @@ p  { color: #374151; }
 
     <div class="form-navigation">
       <button id="prev-step-btn" class="btn btn-outline" style="display:none;">&#8592; Back</button>
-      <button id="next-step-btn" class="btn btn-primary">Next â</button>
+      <button id="next-step-btn" class="btn btn-primary">Next →</button>
     </div>
   </div>
 
@@ -1023,7 +1023,7 @@ function updateStepProgress() {
   document.getElementById('step-progress-fill').style.width = percent + '%';
   document.getElementById('step-number').textContent = `Step ${currentStep} of ${totalSteps}`;
   document.getElementById('prev-step-btn').style.display = currentStep === 1 ? 'none' : 'block';
-  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next â';
+  document.getElementById('next-step-btn').textContent = currentStep === totalSteps ? 'See Your Future' : 'Next →';
 }
 
 function showStep(stepNum) {
@@ -1226,4 +1226,4 @@ document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
 
 <script defer src="mobile-nav.js"></script>
 </body>
-</html>
+      </html>
