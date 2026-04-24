@@ -429,7 +429,34 @@ p  { color: #374151; }
     .stat-num { color: var(--orange-on-dark); }
     /* ── Section label: dark text on orange-tint bg ── */
     .section-label { color: #7c2d0e; }
-  .filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}.filter-tab{padding:8px 20px;border-radius:999px;border:2px solid #e5e7eb;background:#fff;color:#6b7280;font-weight:600;font-size:0.88rem;cursor:pointer;transition:all 0.15s;font-family:var(--font);}.filter-tab:hover{border-color:var(--orange);color:var(--orange);}.filter-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;}.tool-card.hidden{display:none !important;}</style>
+  .filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}.filter-tab{padding:8px 20px;border-radius:999px;border:2px solid #e5e7eb;background:#fff;color:#6b7280;font-weight:600;font-size:0.88rem;cursor:pointer;transition:all 0.15s;font-family:var(--font);}.filter-tab:hover{border-color:var(--orange);color:var(--orange);}.filter-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;}.tool-card.hidden{display:none !important;}
+/* ── Hero Search ── */
+.hero-search-wrap { max-width: 580px; margin: 32px auto 0; position: relative; }
+.hero-search-wrap label { display: block; color: #9ca3af; font-size: 0.9rem; margin-bottom: 10px; text-align: center; }
+.hero-search-box { display: flex; align-items: center; background: #1c2128; border: 2px solid #30363d; border-radius: 12px; padding: 4px 4px 4px 16px; transition: border-color 0.2s; }
+.hero-search-box:focus-within { border-color: var(--orange); }
+.hero-search-box input { flex: 1; background: none; border: none; outline: none; color: #e6edf3; font-size: 1.05rem; padding: 10px 4px; }
+.hero-search-box input::placeholder { color: #5a6272; }
+.hero-search-btn { background: var(--orange); border: none; border-radius: 8px; color: #fff; padding: 10px 18px; cursor: pointer; font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
+.hero-search-btn:hover { background: #c94f18; }
+.search-dropdown { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: #1c2128; border: 1px solid #30363d; border-radius: 12px; overflow: hidden; z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,0.4); display: none; }
+.search-dropdown.open { display: block; }
+.search-result { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; text-decoration: none; transition: background 0.15s; border-bottom: 1px solid #21262d; }
+.search-result:last-child { border-bottom: none; }
+.search-result:hover { background: #21262d; }
+.search-result-icon { font-size: 1.4rem; flex-shrink: 0; }
+.search-result-body { flex: 1; min-width: 0; }
+.search-result-title { color: #e6edf3; font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-result-desc { color: #8b949e; font-size: 0.8rem; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-result-badge { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
+.search-result-badge.tool { background: rgba(224,90,30,0.2); color: var(--orange); }
+.search-result-badge.blog { background: rgba(88,166,255,0.15); color: #58a6ff; }
+.search-no-results { padding: 20px; text-align: center; color: #8b949e; font-size: 0.9rem; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+.hero-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; color: #9ca3af; font-size: 0.8rem; padding: 5px 14px; cursor: pointer; transition: all 0.15s; }
+.hero-pill:hover { background: rgba(224,90,30,0.15); border-color: var(--orange); color: var(--orange); }
+
+  </style>
 <!-- Firebase SDKs -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -473,7 +500,27 @@ p  { color: #374151; }
       <li><a href="#about">About</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="newsletter.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Newsletter</a></li>
-      <li class="navbar-cta"><div id="auth-nav"></div></li>
+      <li class="navbar-cta"><div id="auth-nav"></div>
+
+    <div class="hero-search-wrap">
+      <label for="hero-search">What do you want help with today?</label>
+      <div class="hero-search-box">
+        <input type="text" id="hero-search" placeholder="e.g. I can't stop procrastinating..." autocomplete="off" />
+        <button class="hero-search-btn" onclick="document.getElementById('hero-search').focus()">Search</button>
+      </div>
+      <div id="search-dropdown" class="search-dropdown" role="listbox"></div>
+    </div>
+    <div class="hero-pills" id="hero-pills">
+      <span class="hero-pill" onclick="doSearch('procrastination')">Procrastination</span>
+      <span class="hero-pill" onclick="doSearch('habits')">Habits</span>
+      <span class="hero-pill" onclick="doSearch('confidence')">Confidence</span>
+      <span class="hero-pill" onclick="doSearch('stress anxiety')">Stress</span>
+      <span class="hero-pill" onclick="doSearch('goals')">Goals</span>
+      <span class="hero-pill" onclick="doSearch('relationships')">Relationships</span>
+      <span class="hero-pill" onclick="doSearch('money')">Money</span>
+      <span class="hero-pill" onclick="doSearch('motivation')">Motivation</span>
+    </div>
+</li>
     </ul>
   </div>
 </nav>
@@ -1010,5 +1057,128 @@ p  { color: #374151; }
   document.addEventListener('DOMContentLoaded', () => initAuthNavbar());
 </script>
 <script defer src="mobile-nav.js"></script>
-<script>document.querySelectorAll(".filter-tab").forEach(function(t){t.addEventListener("click",function(){document.querySelectorAll(".filter-tab").forEach(function(x){x.classList.remove("active")});t.classList.add("active");var f=t.getAttribute("data-filter");document.querySelectorAll(".tool-card").forEach(function(c){c.classList.toggle("hidden",f!=="all"&&c.getAttribute("data-category")!==f)});});});</script></body>
+<script>document.querySelectorAll(".filter-tab").forEach(function(t){t.addEventListener("click",function(){document.querySelectorAll(".filter-tab").forEach(function(x){x.classList.remove("active")});t.classList.add("active");var f=t.getAttribute("data-filter");document.querySelectorAll(".tool-card").forEach(function(c){c.classList.toggle("hidden",f!=="all"&&c.getAttribute("data-category")!==f)});});});</script>
+<script>
+(function(){
+const IDX=[
+  // TOOLS
+  {t:'Goal Tracker',u:'/goal-tracker',c:'tool',e:'🎯',d:'Set clear goals and track your progress',k:'goals tracking progress achieve planning objectives success'},
+  {t:'Habit Builder',u:'/habit-builder',c:'tool',e:'🔥',d:'Build daily habits that actually stick',k:'habits daily routine consistency build streak discipline'},
+  {t:'Journal Prompts',u:'/journal',c:'tool',e:'📝',d:'Guided journaling to process your thoughts',k:'journal writing prompts reflection thoughts feelings diary'},
+  {t:'Mindset Quiz',u:'/quiz',c:'tool',e:'🧠',d:'Find out what mindset is holding you back',k:'mindset quiz assessment growth fixed personality beliefs'},
+  {t:'Vision Board',u:'/vision-board',c:'tool',e:'🖼',d:'Visualize your future and make it real',k:'vision board dreams goals visualize future motivation inspire'},
+  {t:'Instant Calm',u:'/instant-calm',c:'tool',e:'🧘',d:'Breathe through stress and anxiety fast',k:'calm anxiety stress breathe relax panic overwhelmed nervous'},
+  {t:'Weekly Reset',u:'/weekly-reset',c:'tool',e:'🔄',d:'End your week strong, start the next one ready',k:'reset review week planning organize recap reflect'},
+  {t:'Energy Audit',u:'/energy-audit',c:'tool',e:'⚡',d:'Map when you peak and crash to work smarter',k:'energy fatigue tired productivity peaks crashes schedule optimize'},
+  {t:'Procrastination Diagnosis',u:'/procrastination-diagnosis',c:'tool',e:'🔬',d:'Find out exactly why you keep putting things off',k:'procrastinate delay avoid stuck lazy starting action motivation focus'},
+  {t:'Fear Setting Tool',u:'/fear-setting',c:'tool',e:'🔥',d:'Define your fears, then make them powerless',k:'fear anxiety worry decision risk worst case stoic courage'},
+  {t:'10-10-10 Decision Maker',u:'/10-10-10-decision',c:'tool',e:'🧩',d:'How will this choice feel in 10 min, 10 months, 10 years?',k:'decision choice decide dilemma options clarity stuck choose'},
+  {t:'Should I Quit?',u:'/should-i-quit',c:'tool',e:'🚪',d:'Weighted scoring to help you stay or go',k:'quit job career change stay leave decision unhappy work'},
+  {t:'Career Alignment Quiz',u:'/career-alignment-quiz',c:'tool',e:'🧭',d:'Does your job actually fit your values?',k:'career job values purpose work satisfaction fit meaning direction'},
+  {t:'Excuse Audit',u:'/excuse-audit',c:'tool',e:'🔎',d:'Log your excuses and see the pattern',k:'excuses accountability blame reasons obstacles self-sabotage ownership'},
+  {t:'Next Action Generator',u:'/next-action-generator',c:'tool',e:'⚡',d:'Get the one smallest next step for any goal',k:'goals next step action stuck overwhelmed momentum start move'},
+  {t:'Spending Leak Finder',u:'/spending-leak-finder',c:'tool',e:'💰',d:'Find where your money actually goes',k:'money spending budget financial leaks expenses track wasting'},
+  {t:'Sleep Debt Calculator',u:'/sleep-debt-calculator',c:'tool',e:'😴',d:'Find out how many hours of sleep you owe yourself',k:'sleep tired rest hours debt fatigue rest quality recover'},
+  {t:'Doom Scroll Cost Calculator',u:'/doom-scroll-cost-calculator',c:'tool',e:'📱',d:'The real cost of your scroll habit',k:'scrolling social media phone time wasted addiction doom cost'},
+  {t:'Phone Addiction Assessment',u:'/phone-addiction-assessment',c:'tool',e:'📱',d:'Find out exactly how bad your screen habit is',k:'phone addiction screen time social media scroll habit compulsive'},
+  {t:'Friendship Audit',u:'/friendship-audit',c:'tool',e:'👥',d:'Who deserves your time and who is draining it',k:'friends relationships social connections toxic energy drain support'},
+  {t:'Boundary Builder',u:'/boundary-builder',c:'tool',e:'🛡',d:'Get the script to say no and mean it',k:'boundaries saying no limits assertive relationships protect respect'},
+  {t:'Digital Detox Planner',u:'/digital-detox-planner',c:'tool',e:'🌿',d:'A 7-day plan to reset your relationship with tech',k:'detox phone screen digital break reset technology social media'},
+  {t:'Burnout Detector',u:'/burnout-detector',c:'tool',e:'🌡',d:'Are you burning out or just tired?',k:'burnout exhausted depleted recovery work stress tired drained empty'},
+  {t:'30-Day Challenge',u:'/challenge-30',c:'tool',e:'📅',d:'Commit to one thing for 30 days',k:'challenge 30 days commit streak discipline habit focus short term'},
+  {t:'90-Day Challenge',u:'/challenge-90',c:'tool',e:'🗓',d:'Transform one area of your life in 90 days',k:'challenge 90 days goals long-term transformation discipline commit'},
+  {t:'Trigger Log',u:'/trigger-log',c:'tool',e:'🧨',d:'What sets you off and the real reason underneath',k:'triggers emotions anger reactions patterns self-awareness control'},
+  {t:'Workout Style Quiz',u:'/workout-style-quiz',c:'tool',e:'🏋',d:'Find the workout that matches your personality',k:'workout exercise fitness gym training personality style match'},
+  {t:'Movement Minimum Builder',u:'/movement-minimum-builder',c:'tool',e:'🏃',d:'The smallest daily movement habit you will actually stick to',k:'exercise movement habit fitness minimal daily walk steps health'},
+  {t:'Mood Tracker',u:'/mood-tracker',c:'tool',e:'🎭',d:'Track your moods and spot patterns',k:'mood emotions tracking mental health feelings patterns wellbeing'},
+  // BLOG POSTS
+  {t:'How to Stop Overthinking',u:'/blog-how-to-stop-overthinking',c:'blog',e:'📖',d:'Break the cycle of overanalyzing and quiet your mind',k:'overthinking anxiety ruminate racing thoughts mind spiral analysis'},
+  {t:'How to Build Confidence',u:'/blog-how-to-build-confidence',c:'blog',e:'📖',d:'Real strategies to build unshakeable self-confidence',k:'confidence self-esteem self-worth assertive insecure shy bold'},
+  {t:'How to Get Your Life Together',u:'/blog-how-to-get-your-life-together',c:'blog',e:'📖',d:'A real plan for when everything feels off track',k:'life together overwhelmed stuck direction change chaos organize'},
+  {t:'How to Find Your Purpose',u:'/blog-how-to-find-your-purpose',c:'blog',e:'📖',d:'Discover what you are actually here to do',k:'purpose meaning direction calling passion work identity mission'},
+  {t:'How to Deal With Stress',u:'/blog-how-to-deal-with-stress',c:'blog',e:'📖',d:'Practical stress management that actually works',k:'stress anxiety manage cope reduce tension pressure overwhelmed'},
+  {t:'How to Break Bad Habits',u:'/blog-how-to-break-bad-habits',c:'blog',e:'📖',d:'Rewire your brain and stop self-destructive patterns',k:'bad habits quit break change addiction pattern rewire stop'},
+  {t:'How to Stop Procrastinating',u:'/blog-beat-procrastination',c:'blog',e:'📖',d:'Beat procrastination once and for all',k:'procrastinate delay avoid lazy start action motivation stuck'},
+  {t:'How to Be More Productive',u:'/blog-how-to-be-more-productive',c:'blog',e:'📖',d:'Get more done without burning out',k:'productive productivity time focus output efficiency work less'},
+  {t:'How to Stop Worrying',u:'/blog-how-to-stop-worrying',c:'blog',e:'📖',d:'Break the cycle of anxious thoughts',k:'worry anxiety future catastrophize calm mind control peace'},
+  {t:'How to Love Yourself',u:'/blog-how-to-love-yourself',c:'blog',e:'📖',d:'Build genuine self-respect from the inside out',k:'self-love self-worth self-care self-compassion accept appreciate'},
+  {t:'How to Stop Being Hard on Yourself',u:'/blog-how-to-stop-being-hard-on-yourself',c:'blog',e:'📖',d:'Stop the inner critic and be kinder to yourself',k:'self-criticism harsh judge cruel inner critic kind compassion'},
+  {t:'How to Get Out of Your Comfort Zone',u:'/blog-how-to-get-out-of-your-comfort-zone',c:'blog',e:'📖',d:'Take the leap and grow beyond your limits',k:'comfort zone growth fear challenge risk expand stretch scared'},
+  {t:'How to Stop People Pleasing',u:'/blog-how-to-stop-people-pleasing',c:'blog',e:'📖',d:'Stop living for other people\'s approval',k:'people pleasing approval validation others say no please guilt'},
+  {t:'How to Stop Seeking Approval',u:'/blog-how-to-stop-seeking-approval',c:'blog',e:'📖',d:'Stop needing validation from others',k:'approval validation opinions others care what think judgment'},
+  {t:'How to Build a Morning Routine',u:'/blog-how-to-build-a-morning-routine',c:'blog',e:'📖',d:'Start your day with intention and energy',k:'morning routine start day productive wake up habits ritual'},
+  {t:'How to Stay Consistent With Goals',u:'/blog-how-to-stay-consistent-with-goals',c:'blog',e:'📖',d:'Keep going when motivation runs out',k:'consistent consistency goals follow through stick discipline motivation'},
+  {t:'How to Stop Making Excuses',u:'/blog-how-to-stop-making-excuses',c:'blog',e:'📖',d:'Take ownership and stop blaming everything else',k:'excuses accountability blame ownership responsibility stop'},
+  {t:'How to Stop Being Lazy',u:'/blog-how-to-stop-being-lazy',c:'blog',e:'📖',d:'Overcome laziness and start taking action',k:'lazy laziness motivation energy action start discipline tired'},
+  {t:'How to Let Go of the Past',u:'/blog-how-to-let-go-of-the-past',c:'blog',e:'📖',d:'Stop letting your past define your present',k:'past regret forgive move on stuck old wounds let go heal'},
+  {t:'How to Stop Being a Perfectionist',u:'/blog-how-to-stop-being-a-perfectionist',c:'blog',e:'📖',d:'Done is better than perfect',k:'perfectionism perfect standards paralysis done good enough release'},
+  {t:'How to Silence Your Inner Critic',u:'/blog-how-to-silence-your-inner-critic',c:'blog',e:'📖',d:'Quiet the voice that tells you you are not enough',k:'inner critic negative self-talk voice enough worth confidence quiet'},
+  {t:'Signs You Need to Change Your Life',u:'/blog-signs-you-need-to-change-your-life',c:'blog',e:'📖',d:'Recognize when it\'s time for a real change',k:'change life signs unhappy stuck unfulfilled different direction'},
+  {t:'How to Develop a Growth Mindset',u:'/blog-how-to-develop-a-growth-mindset',c:'blog',e:'📖',d:'Rewire how you think about challenges',k:'growth mindset fixed learning challenges resilience improve brain'},
+  {t:'Why Your Habits Keep Failing',u:'/blog-habits-why-fail',c:'blog',e:'📖',d:'The real reason habits do not stick',k:'habits fail quit give up why stop stick consistency reason'},
+  {t:'Why Your Goals Do Not Stick',u:'/blog-goals-dont-stick',c:'blog',e:'📖',d:'Fix the way you set goals',k:'goals stick fail lose motivation smart clear vision why'},
+];
+
+function score(item, q) {
+  const ql = q.toLowerCase().trim();
+  if (!ql) return 0;
+  let s = 0;
+  const tl = item.t.toLowerCase();
+  const kl = item.k.toLowerCase();
+  const dl = item.d.toLowerCase();
+  ql.split(/s+/).forEach(w => {
+    if (w.length < 2) return;
+    if (tl.includes(w)) s += 4;
+    if (kl.includes(w)) s += 2;
+    if (dl.includes(w)) s += 1;
+  });
+  return s;
+}
+
+function renderResults(q) {
+  const dd = document.getElementById('search-dropdown');
+  if (!q || q.length < 2) { dd.classList.remove('open'); return; }
+  const results = IDX.map(item => ({...item, s: score(item, q)}))
+    .filter(i => i.s > 0).sort((a,b) => b.s - a.s).slice(0, 7);
+  if (!results.length) {
+    dd.innerHTML = '<div class="search-no-results">No results found — try different words</div>';
+  } else {
+    dd.innerHTML = results.map(r =>
+      '<a href="' + r.u + '" class="search-result" role="option">' +
+      '<span class="search-result-icon">' + r.e + '</span>' +
+      '<span class="search-result-body">' +
+        '<div class="search-result-title">' + r.t + '</div>' +
+        '<div class="search-result-desc">' + r.d + '</div>' +
+      '</span>' +
+      '<span class="search-result-badge ' + r.c + '">' + (r.c === 'tool' ? 'Tool' : 'Article') + '</span>' +
+      '</a>'
+    ).join('');
+  }
+  dd.classList.add('open');
+}
+
+window.doSearch = function(q) {
+  const inp = document.getElementById('hero-search');
+  if (inp) { inp.value = q; renderResults(q); inp.focus(); }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+  const inp = document.getElementById('hero-search');
+  const dd = document.getElementById('search-dropdown');
+  if (!inp) return;
+  inp.addEventListener('input', () => renderResults(inp.value));
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { dd.classList.remove('open'); inp.blur(); }
+    if (e.key === 'Enter') {
+      const first = dd.querySelector('.search-result');
+      if (first) window.location.href = first.getAttribute('href');
+    }
+  });
+  document.addEventListener('click', e => {
+    if (!inp.closest('.hero-search-wrap').contains(e.target)) dd.classList.remove('open');
+  });
+});
+})();
+</script>
+</body>
 </html>
