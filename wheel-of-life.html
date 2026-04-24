@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wheel of Life Assessment &mdash; WinWithFred</title>
+  <title>Wheel of Life Assessment — WinWithFred</title>
   <meta name="description" content="The Wheel of Life assessment shows where you're thriving and where you're falling short. Score 8 life areas and see your balance at a glance." />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,20 +98,20 @@ canvas#wheel { max-width:100%; }
 
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://winwithfred.com/wheel-of-life.html" />
-  <meta property="og:title" content="Wheel of Life â Life Balance Assessment | WinWithFred" />
+  <meta property="og:title" content="Wheel of Life — Life Balance Assessment | WinWithFred" />
   <meta property="og:description" content="Use the Wheel of Life to rate all major areas of your life and identify where to focus your energy for maximum impact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://winwithfred.com/wheel-of-life.html" />
   <meta property="og:site_name" content="WinWithFred" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wheel of Life â Life Balance Assessment | WinWithFred" />
+  <meta name="twitter:title" content="Wheel of Life — Life Balance Assessment | WinWithFred" />
   <meta name="twitter:description" content="Use the Wheel of Life to rate all major areas of your life and identify where to focus your energy for maximum impact." />
   <meta name="keywords" content="wheel of life, life wheel, life satisfaction, wheel of life exercise, life areas" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Wheel of Life â Life Balance Assessment",
+    "name": "Wheel of Life — Life Balance Assessment",
     "description": "Use the Wheel of Life to rate all major areas of your life and identify where to focus your energy for maximum impact.",
     "url": "https://winwithfred.com/wheel-of-life.html",
     "applicationCategory": "LifestyleApplication",
@@ -181,7 +181,7 @@ canvas#wheel { max-width:100%; }
     <div class="score-summary" id="score-summary"></div>
 
     <div class="focus-list">
-      <h3>All Areas &mdash; Ranked by Priority</h3>
+      <h3>All Areas — Ranked by Priority</h3>
       <div id="focus-list-items"></div>
     </div>
 
@@ -200,7 +200,7 @@ canvas#wheel { max-width:100%; }
 
 </main>
 <footer class="footer">
-  <p>&copy; 2026 WinWithFred.com &bull; <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a></p>
+  <p>&copy; 2026 WinWithFred.com • <a href="privacy.html">Privacy</a> • <a href="terms.html">Terms</a></p>
 </footer>
 
 <script>
@@ -235,7 +235,7 @@ function buildSliders() {
       </div>
       <input type="range" class="area-slider" min="1" max="10" value="${scores[a.id]}"
         oninput="updateScore('${a.id}', this.value)" />
-      <div class="area-labels"><span>1 &mdash; Falling behind</span><span>10 &mdash; Thriving</span></div>
+      <div class="area-labels"><span>1 — Falling behind</span><span>10 — Thriving</span></div>
     </div>
   `).join('');
   drawWheel();
@@ -356,7 +356,7 @@ function showResults() {
     <div class="focus-item">
       <div class="focus-rank">${i + 1}</div>
       <div class="focus-bar-wrap">
-        <div class="focus-bar-name">${a.label} &mdash; ${scores[a.id]}/10</div>
+        <div class="focus-bar-name">${a.label} — ${scores[a.id]}/10</div>
         <div class="focus-bar-bg"><div class="focus-bar-fill" style="width:${scores[a.id] * 10}%"></div></div>
       </div>
     </div>
