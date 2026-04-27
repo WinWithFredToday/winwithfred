@@ -481,12 +481,12 @@
   </style>
 
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://winwithfred.com/profile.html">
+  <link rel="canonical" href="https://winwithfred.com/profile">
   <meta property="og:site_name" content="WinWithFred">
   <meta property="og:type" content="website">
   <meta property="og:title" content="My Profile - WinWithFred">
   <meta property="og:description" content="Free self-help tools that actually work. No fluff, real results.">
-  <meta property="og:url" content="https://winwithfred.com/profile.html">
+  <meta property="og:url" content="https://winwithfred.com/profile">
   <meta property="og:image" content="https://winwithfred.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -494,7 +494,7 @@
   <meta name="twitter:title" content="My Profile - WinWithFred">
   <meta name="twitter:description" content="Free self-help tools that actually work. No fluff, real results.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"My Profile - WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/profile.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"My Profile - WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/profile","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -610,7 +610,7 @@
   <div class="section-card">
     <div class="section-header">
       <h2>Recent Goals</h2>
-      <a href="goal-tracker.html" class="view-all">View All &rarr;</a>
+      <a href="/goal-tracker" class="view-all">View All &rarr;</a>
     </div>
     <div id="goals-container" class="goals-list"></div>
   </div>
@@ -619,7 +619,7 @@
   <div class="section-card">
     <div class="section-header">
       <h2>Recent Journal Entries</h2>
-      <a href="journal.html" class="view-all">View All &rarr;</a>
+      <a href="/journal" class="view-all">View All &rarr;</a>
     </div>
     <div id="entries-container"></div>
   </div>
@@ -628,9 +628,9 @@
   <div class="section-card">
     <div class="section-header"><h2>Quick Actions</h2></div>
     <div class="quick-actions">
-      <a href="goal-tracker.html" class="quick-action"><span>&#127919;</span><span>Goal Tracker</span></a>
-      <a href="journal.html" class="quick-action"><span>&#128211;</span><span>Journal</span></a>
-      <a href="habit-builder.html" class="quick-action"><span>&#127942;</span><span>Habit Builder</span></a>
+      <a href="/goal-tracker" class="quick-action"><span>&#127919;</span><span>Goal Tracker</span></a>
+      <a href="/journal" class="quick-action"><span>&#128211;</span><span>Journal</span></a>
+      <a href="/habit-builder" class="quick-action"><span>&#127942;</span><span>Habit Builder</span></a>
       <a href="mood-tracker.html" class="quick-action"><span>&#128522;</span><span>Mood Tracker</span></a>
       <a href="index.html#tools" class="quick-action"><span>&#9881;</span><span>All Tools</span></a>
     </div>
@@ -840,7 +840,7 @@ async function loadRecentGoals(user) {
   const container = document.getElementById('goals-container');
   try {
     const snap = await db.collection('users').doc(user.uid).collection('goals').orderBy('createdAt','desc').limit(3).get();
-    if (snap.empty) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals yet. <a href="goal-tracker.html">Add your first goal</a>.</p>'; return; }
+    if (snap.empty) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No goals yet. <a href="/goal-tracker">Add your first goal</a>.</p>'; return; }
     container.innerHTML = '';
     snap.forEach(doc => {
       const g = doc.data();
@@ -856,7 +856,7 @@ async function loadRecentEntries(user) {
   const container = document.getElementById('entries-container');
   try {
     const snap = await db.collection('users').doc(user.uid).collection('journal').orderBy('createdAt','desc').limit(3).get();
-    if (snap.empty) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries yet. <a href="journal.html">Write your first entry</a>.</p>'; return; }
+    if (snap.empty) { container.innerHTML = '<p style="color:#6b7280;font-size:0.95rem">No entries yet. <a href="/journal">Write your first entry</a>.</p>'; return; }
     container.innerHTML = '';
     snap.forEach(doc => {
       const e = doc.data();
