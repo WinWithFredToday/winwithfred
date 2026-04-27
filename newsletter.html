@@ -292,12 +292,12 @@ p  { color: #374151; }
     .section-label { color: #7c2d0e; }
   </style>
 
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="canonical" href="https://winwithfred.com/newsletter.html" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://winwithfred.com/newsletter" />
   <meta property="og:title" content="Newsletter — WinWithFred | WinWithFred" />
   <meta property="og:description" content="Sign up for the WinWithFred newsletter. Practical self-improvement tips, new tools, and updates delivered to your inbox." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://winwithfred.com/newsletter.html" />
+  <meta property="og:url" content="https://winwithfred.com/newsletter" />
   <meta property="og:site_name" content="WinWithFred" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Newsletter — WinWithFred | WinWithFred" />
@@ -309,7 +309,7 @@ p  { color: #374151; }
     "@type": "WebApplication",
     "name": "Newsletter — WinWithFred",
     "description": "Sign up for the WinWithFred newsletter. Practical self-improvement tips, new tools, and updates delivered to your inbox.",
-    "url": "https://winwithfred.com/newsletter.html",
+    "url": "https://winwithfred.com/newsletter",
     "applicationCategory": "LifestyleApplication",
     "author": { "@type": "Person", "name": "Freddy Owen" },
     "publisher": { "@type": "Organization", "name": "WinWithFred", "url": "https://winwithfred.com" },
@@ -341,13 +341,13 @@ p  { color: #374151; }
 <!-- Navbar -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="/" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="newsletter.html" class="active btn btn-primary btn-sm" style="margin-left:8px;">Newsletter</a></li>
+      <li><a href="/newsletter" class="active btn btn-primary btn-sm" style="margin-left:8px;">Newsletter</a></li>
     </ul>
   </div>
 </nav>
@@ -364,9 +364,7 @@ p  { color: #374151; }
     <h3>Get your first issue this week</h3>
     <p>Drop your email below. No spam. Unsubscribe anytime. It's that simple.</p>
 
-    <div class="substack-embed">
-      <iframe src="https://thefunnelprodigy.substack.com/embed" width="480" height="320" frameborder="0" scrolling="no"></iframe>
-    </div>
+    <form id="nl-form" style="display:flex;flex-direction:column;gap:12px;"><input type="email" id="nl-email" placeholder="your@email.com" required style="padding:14px 18px;border-radius:10px;border:1px solid #4b5563;background:#111827;color:#fff;font-size:1rem;font-family:inherit;outline:none;width:100%;" /><button type="submit" class="btn btn-primary" style="width:100%;font-size:1rem;">Get My First Issue →</button></form><script>document.getElementById("nl-form").addEventListener("submit",function(e){e.preventDefault();var em=document.getElementById("nl-email").value;window.open("https://thefunnelprodigy.substack.com/subscribe?email="+encodeURIComponent(em),"_blank");});</script>
 
     <div class="guarantee">
       <span>&#128274;</span>
@@ -509,9 +507,9 @@ p  { color: #374151; }
     <div class="footer-col">
       <h3>Tools</h3>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="/goal-tracker">Goal Tracker</a></li>
+        <li><a href="/habit-builder">Habit Builder</a></li>
+        <li><a href="/journal">Journal Prompts</a></li>
         <li><a href="quiz.html">Mindset Quiz</a></li>
       </ul>
     </div>
@@ -528,9 +526,9 @@ p  { color: #374151; }
     <div class="footer-col">
       <h3>Site</h3>
       <ul>
-        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="/newsletter">Newsletter</a></li>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="/">Home</a></li>
       </ul>
     </div>
   </div>
