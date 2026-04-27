@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redirecting... | WinWithFred</title>
-<style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#f9f9f9;}</style>
-<script>
-(function() {
-  var path = window.location.pathname;
-  var search = window.location.search;
-  var hash = window.location.hash;
-
-  // If path has no file extension and is not root, redirect to .html version
-  if (path && path !== '/' && !path.match(/\.[^\/]+$/)) {
-    window.location.replace(path + '.html' + search + hash);
-  }
-  // Otherwise show a real 404
-})();
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading... | WinWithFred</title>
+  <style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0d1117;color:#fff;}</style>
+  <script>
+  (function() {
+    var path = window.location.pathname;
+    var search = window.location.search;
+    var hash = window.location.hash;
+    if (path && path !== '/' && !path.match(/\.[^\/]+$/)) {
+      fetch(path + '.html' + search)
+        .then(function(resp) {
+          if (!resp.ok) throw new Error('404');
+          return resp.text();
+        })
+        .then(function(html) {
+          document.open();
+          document.write(html);
+          document.close();
+          if (window.location.pathname.endsWith('.html')) {
+            history.replaceState(null, document.title, path + search + hash);
+          }
+        })
+        .catch(function() {
+          document.title = 'Page Not Found | WinWithFred';
+          document.body.innerHTML = '<div style="text-align:center"><h1 style="color:#fff;font-size:2rem;margin-bottom:12px">Page Not Found</h1><p style="color:#9ca3af;margin-bottom:24px">The page you\'re looking for doesn\'t exist.</p><a href="/" style="color:#e07b39;text-decoration:none;font-weight:600">← Back to Home</a></div>';
+        });
+    }
+  })();
+  </script>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="canonical" href="https://winwithfred.com/404-router.html">
-  <meta property="og:site_name" content="WinWithFred">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Redirecting... | WinWithFred">
-  <meta property="og:description" content="Free self-help tools that actually work. No fluff, real results.">
-  <meta property="og:url" content="https://winwithfred.com/404-router.html">
-  <meta property="og:image" content="https://winwithfred.com/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Redirecting... | WinWithFred">
-  <meta name="twitter:description" content="Free self-help tools that actually work. No fluff, real results.">
-  <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Redirecting... | WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/404-router.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CX355GZZM2');
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CX355GZZM2');
-</script>
 </head>
 <body>
-<div>
-  <h1 style="color:#333">Page Not Found</h1>
-  <p>The page you're looking for doesn't exist.</p>
-  <a href="/" style="color:#e07b39">← Back to Home</a>
-</div>
+  <div><p style="color:#9ca3af;font-size:1rem">Loading…</p></div>
 </body>
 </html>
