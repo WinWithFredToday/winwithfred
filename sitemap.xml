@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://winwithfred.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://winwithfred.com/blog</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://winwithfred.com/blog-how-to-take-responsibility-for-your-life.html</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://winwithfred.com/blog-how-to-build-resilience.html</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://winwithfred.com/tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://winwithfred.com/quiz</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
