@@ -2,9 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://winwithfred.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://winwithfred.com/blog</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://winwithfred.com/blog-how-to-stop-self-doubt.html</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://winwithfred.com/blog-how-to-take-responsibility-for-your-life.html</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://winwithfred.com/blog-how-to-build-resilience.html</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://winwithfred.com/blog-how-to-build-resilience</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://winwithfred.com/tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://winwithfred.com/quiz</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://winwithfred.com/login</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -41,6 +39,13 @@
   <url><loc>https://winwithfred.com/meal-plan-plant-powered</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://winwithfred.com/meal-plan-simple-starter</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://winwithfred.com/meal-plan-strong-steady</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://winwithfred.com/newsletter</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://winwithfred.com/blog-stop-procrastinating-take-action</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://winwithfred.com/blog-set-goals-you-will-achieve</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://winwithfred.com/blog-overcome-fear-of-failure</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://winwithfred.com/blog-morning-routine-that-sticks</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://winwithfred.com/blog-create-habits-that-last</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://winwithfred.com/blog-build-mental-toughness</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://winwithfred.com/blog-how-to-be-more-present</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://winwithfred.com/blog-how-to-deal-with-loneliness</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://winwithfred.com/blog-how-to-be-more-decisive</loc><lastmod>2026-04-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
