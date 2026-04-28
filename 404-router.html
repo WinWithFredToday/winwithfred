@@ -10,6 +10,8 @@
     var path = window.location.pathname;
     var search = window.location.search;
     var hash = window.location.hash;
+
+    // If path has no file extension and is not root, serve .html content at clean URL
     if (path && path !== '/' && !path.match(/\.[^\/]+$/)) {
       fetch(path + '.html' + search)
         .then(function(resp) {
@@ -17,16 +19,24 @@
           return resp.text();
         })
         .then(function(html) {
+          // Replace document content while keeping the clean URL
           document.open();
           document.write(html);
           document.close();
+          // Ensure address bar stays on clean URL (no .html)
           if (window.location.pathname.endsWith('.html')) {
             history.replaceState(null, document.title, path + search + hash);
           }
         })
         .catch(function() {
+          // Genuine 404 — show error
           document.title = 'Page Not Found | WinWithFred';
-          document.body.innerHTML = '<div style="text-align:center"><h1 style="color:#fff;font-size:2rem;margin-bottom:12px">Page Not Found</h1><p style="color:#9ca3af;margin-bottom:24px">The page you\'re looking for doesn\'t exist.</p><a href="/" style="color:#e07b39;text-decoration:none;font-weight:600">← Back to Home</a></div>';
+          document.body.innerHTML =
+            '<div style="text-align:center">' +
+            '<h1 style="color:#fff;font-size:2rem;margin-bottom:12px">Page Not Found</h1>' +
+            '<p style="color:#9ca3af;margin-bottom:24px">The page you\'re looking for doesn\'t exist.</p>' +
+            '<a href="/" style="color:#e07b39;text-decoration:none;font-weight:600">\u2190 Back to Home</a>' +
+            '</div>';
         });
     }
   })();
@@ -34,6 +44,8 @@
   <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
-  <div><p style="color:#9ca3af;font-size:1rem">Loading…</p></div>
+  <div>
+    <p style="color:#9ca3af;font-size:1rem">Loading\u2026</p>
+  </div>
 </body>
 </html>
