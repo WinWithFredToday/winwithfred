@@ -1,0 +1,43 @@
+name: Fix Blog Back Arrow
+on:
+  workflow_dispatch:
+jobs:
+  fix-arrow:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix corrupted back arrow in all blog posts
+        run: |
+          python3 << 'PYEOF'
+          import os
+          fixed = 0
+          for fname in os.listdir('.'):
+            if not (fname.startswith('blog-') and fname.endswith('.html')):
+              continue
+            with open(fname, 'rb') as f:
+              raw = f.read()
+            original = raw
+            # Fix: E2 20 (â space) -> E2 86 90 20 (← space) before "Back to Blog"
+            # The corruption: UTF-8 E2 86 90 became just E2 (dropping 86 90)
+            target = 'Back to Blog'.encode('utf-8')
+            # Replace b'\xe2 Back' with b'\xe2\x86\x90 Back' (← Back)
+            raw = raw.replace(b'\xe2 ' + target, '\u2190 '.encode('utf-8') + target)
+            # Also handle if â† pattern (E2 86 without 90)
+            raw = raw.replace(b'\xe2\x86 ' + target, '\u2190 '.encode('utf-8') + target)
+            if raw != original:
+              with open(fname, 'wb') as f:
+                f.write(raw)
+              print(f'Fixed: {fname}')
+              fixed += 1
+          print(f'Total fixed: {fixed}')
+          PYEOF
+      - name: Commit fixes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add blog-*.html
+          git diff --staged --stat
+          git commit -m "Fix corrupted back arrow in blog posts" || echo "Nothing to commit"
+          git push
