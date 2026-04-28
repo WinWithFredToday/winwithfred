@@ -1,35 +1,61 @@
-name: Fix Blog Back Arrow
+name: Fix Unicode Corruption Sitewide
 on:
   workflow_dispatch:
 jobs:
-  fix-arrow:
+  fix-unicode:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Fix corrupted back arrow in all blog posts
+      - name: Fix all corrupted Unicode in HTML files
         run: |
           python3 << 'PYEOF'
           import os
+          # All patterns: corrupted bytes -> correct bytes
+          # Rule: original e2 XX YY was double-encoded as c3 a2 c2 XX c2 YY
+          # Em dash (e2 80 94) -> replace with hyphen, per site preference
+          # All others -> restore correct UTF-8
+          FIXES = [
+            # em dash: replace with plain hyphen (user preference)
+            (b'\xc3\xa2\xc2\x80\xc2\x94', b'-'),
+            (b'\xe2\x80\x94', b'-'),
+            # en dash -> restore
+            (b'\xc3\xa2\xc2\x80\xc2\x93', b'\xe2\x80\x93'),
+            # right single quote -> restore
+            (b'\xc3\xa2\xc2\x80\xc2\x99', b'\xe2\x80\x99'),
+            # left double quote -> restore
+            (b'\xc3\xa2\xc2\x80\xc2\x9c', b'\xe2\x80\x9c'),
+            # right double quote -> restore
+            (b'\xc3\xa2\xc2\x80\xc2\x9d', b'\xe2\x80\x9d'),
+            # ellipsis -> restore
+            (b'\xc3\xa2\xc2\x80\xc2\xa6', b'\xe2\x80\xa6'),
+            # right arrow -> restore
+            (b'\xc3\xa2\xc2\x86\xc2\x92', b'\xe2\x86\x92'),
+            # left arrow -> restore (belt and suspenders)
+            (b'\xc3\xa2\xc2\x86\xc2\x90', b'\xe2\x86\x90'),
+            # bullet -> restore
+            (b'\xc3\xa2\xc2\x80\xc2\xa2', b'\xe2\x80\xa2'),
+          ]
           fixed = 0
-          BAD  = b'\xc3\xa2\xc2\x86\xc2\x90'
-          GOOD = b'\xe2\x86\x90'
           for fname in os.listdir('.'):
-            if not (fname.startswith('blog-') and fname.endswith('.html')):
+            if not fname.endswith('.html'):
               continue
             raw = open(fname, 'rb').read()
-            if BAD in raw:
-              open(fname, 'wb').write(raw.replace(BAD, GOOD))
+            original = raw
+            for bad, good in FIXES:
+              raw = raw.replace(bad, good)
+            if raw != original:
+              open(fname, 'wb').write(raw)
               print(f'Fixed: {fname}')
               fixed += 1
-          print(f'Total fixed: {fixed}')
+          print(f'Total files fixed: {fixed}')
           PYEOF
       - name: Commit fixes
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add blog-*.html
+          git add '*.html'
           git diff --staged --stat
-          git commit -m "Fix corrupted back arrow in blog posts" || echo "Nothing to commit"
+          git commit -m "Fix all Unicode corruption sitewide, remove em dashes" || echo "Nothing to commit"
           git push
