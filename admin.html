@@ -386,8 +386,8 @@
 
 <!-- Setup required banner -->
 <div id="setup-banner">
-  <strong>⚠️ One-time Firestore setup required</strong> — The dashboard can see member counts, but to read individual member records you need to add an admin rule in Firebase Console → Firestore → Rules. Add this inside your existing <code>match /users/{userId}</code> block:<code>allow read: if request.auth.token.email == 'freddyowenprivate@gmail.com';</code>
-  Then reload this page. Your current counts above are accurate — only the member table below needs this rule.
+  <strong>⚠️ One-time Firestore setup required</strong> - The dashboard can see member counts, but to read individual member records you need to add an admin rule in Firebase Console → Firestore → Rules. Add this inside your existing <code>match /users/{userId}</code> block:<code>allow read: if request.auth.token.email == 'freddyowenprivate@gmail.com';</code>
+  Then reload this page. Your current counts above are accurate - only the member table below needs this rule.
 </div>
 
 <!-- Error state -->
@@ -406,22 +406,22 @@
   <div class="stats-grid">
     <div class="stat-card">
       <div class="stat-label">Total Members</div>
-      <div class="stat-value" id="stat-total">—</div>
+      <div class="stat-value" id="stat-total">-</div>
       <div class="stat-sub">All registered accounts</div>
     </div>
     <div class="stat-card orange">
       <div class="stat-label">Premium</div>
-      <div class="stat-value" id="stat-premium">—</div>
+      <div class="stat-value" id="stat-premium">-</div>
       <div class="stat-sub" id="stat-premium-pct">Paid members</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">Free</div>
-      <div class="stat-value" id="stat-free">—</div>
+      <div class="stat-value" id="stat-free">-</div>
       <div class="stat-sub">Free accounts</div>
     </div>
     <div class="stat-card green">
       <div class="stat-label">New This Month</div>
-      <div class="stat-value" id="stat-new">—</div>
+      <div class="stat-value" id="stat-new">-</div>
       <div class="stat-sub" id="stat-new-sub">Members with join date</div>
     </div>
   </div>
@@ -429,7 +429,7 @@
   <!-- Charts row -->
   <div class="charts-row">
     <div class="card">
-      <h2>Member Growth — Last 6 Months</h2>
+      <h2>Member Growth - Last 6 Months</h2>
       <div class="chart-wrap">
         <canvas id="growthChart"></canvas>
       </div>
@@ -442,7 +442,7 @@
       <div class="breakdown-item">
         <div class="breakdown-label">
           <span>Premium</span>
-          <span id="pct-premium">—</span>
+          <span id="pct-premium">-</span>
         </div>
         <div class="breakdown-bar-bg">
           <div class="breakdown-bar bar-premium" id="bar-premium" style="width:0%"></div>
@@ -451,7 +451,7 @@
       <div class="breakdown-item">
         <div class="breakdown-label">
           <span>Free</span>
-          <span id="pct-free">—</span>
+          <span id="pct-free">-</span>
         </div>
         <div class="breakdown-bar-bg">
           <div class="breakdown-bar bar-free" id="bar-free" style="width:0%"></div>
@@ -460,7 +460,7 @@
       <div class="breakdown-item" id="breakdown-new-row">
         <div class="breakdown-label">
           <span>New this month</span>
-          <span id="pct-new">—</span>
+          <span id="pct-new">-</span>
         </div>
         <div class="breakdown-bar-bg">
           <div class="breakdown-bar bar-new" id="bar-new" style="width:0%"></div>
@@ -554,12 +554,12 @@
 
   // ── Dashboard functions ──
   function formatDate(val) {
-    if (!val) return '—';
+    if (!val) return '-';
     let d;
     if (val && typeof val.toDate === 'function') d = val.toDate();
     else if (val instanceof Date) d = val;
     else d = new Date(val);
-    if (isNaN(d)) return '—';
+    if (isNaN(d)) return '-';
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
@@ -712,7 +712,7 @@
         el('error-msg').textContent = 'Full member list requires a Firestore rule update (see banner above). ' + err.message;
         renderStats([]);
         renDerTable([]);
-        el('members-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Requires Firestore rule update — see yellow banner above</td></tr>';
+        el('members-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Requires Firestore rule update - see yellow banner above</td></tr>';
       } catch (e2) {
         el('error-state').style.display = '';
         el('error-msg').textContent = err.message;
@@ -725,7 +725,7 @@
     if (user && user.email === ADMIN_EMAIL) {
       loadDashboard(user);
     } else {
-      // Not logged in or wrong account — show login form
+      // Not logged in or wrong account - show login form
       hide('loading-state');
       hide('admin-content');
       hide('setup-banner');

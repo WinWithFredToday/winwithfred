@@ -45,12 +45,12 @@
 <nav class="navbar"><div class="nbi"><a href="/" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="/">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
 <div class="hero"><div class="lbl">Sleep & Energy</div><h1>Energy Audit</h1>
-<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 5 min · You'll get: what drains you and what fuels you</p><p>Find what drains you, what fuels you — and tip the balance.</p></div>
+<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 5 min · You'll get: what drains you and what fuels you</p><p>Find what drains you, what fuels you - and tip the balance.</p></div>
 <div class="wrap">
 
 <div class="card">
   <h2>Rate each activity's effect on your energy</h2>
-  <p class="sub">Think about how you feel <em>after</em> doing each one. Be honest — this is for you.</p>
+  <p class="sub">Think about how you feel <em>after</em> doing each one. Be honest - this is for you.</p>
   <div id="energy-list"></div>
 </div>
 <button class="btn btn-primary" id="calcBtn">Reveal My Energy Map</button>
@@ -134,7 +134,7 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   if(boosters.length===0&&drainers.length===0)html="<p style='color:#6b7280'>Move the sliders further from neutral to see your map.</p>";
   document.getElementById("energy-out").innerHTML=html;
   var plan="";
-  if(boosters.length>0)plan+="Schedule more of what energises you — especially "+boosters[0].label.toLowerCase()+". Treat it as non-negotiable, not a reward. ";
+  if(boosters.length>0)plan+="Schedule more of what energises you - especially "+boosters[0].label.toLowerCase()+". Treat it as non-negotiable, not a reward. ";
   if(drainers.length>0)plan+="Your biggest drain is "+drainers[0].label.toLowerCase()+". Can you eliminate, delegate, or shorten it? Even a 20% reduction compounds over a week.";
   if(!plan)plan="Rate activities further from neutral (0) to get personalised guidance.";
   document.getElementById("action-plan").textContent=plan;

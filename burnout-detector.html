@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Burnout Detector — WinWithFred</title>
-  <meta name="description" content="Burnout doesn't hit all at once — it creeps up. These 12 questions will tell you exactly where you stand and what to do about it." />
+  <title>Burnout Detector - WinWithFred</title>
+  <meta name="description" content="Burnout doesn't hit all at once - it creeps up. These 12 questions will tell you exactly where you stand and what to do about it." />
 <style>
 /* ============================================
-   WinWithFred.com — Global Stylesheet
+   WinWithFred.com - Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
@@ -559,7 +559,7 @@ p  { color: #374151; }
   <div class="tool-header-inner">
     <div class="section-label">&#128293; Burnout Detector</div>
     <h1>Are You Heading Toward Burnout?</h1>
-    <p>Burnout doesn't hit all at once — it creeps up. These 12 questions will tell you exactly where you stand and what to do about it.</p>
+    <p>Burnout doesn't hit all at once - it creeps up. These 12 questions will tell you exactly where you stand and what to do about it.</p>
   </div>
 </div>
 
@@ -716,13 +716,13 @@ function logout() { localStorage.removeItem('wwf_user'); location.href='index.ht
 // &#9472;&#9472; Questions &#9472;&#9472;
 const questions = [
   { dim: 'exhaustion', text: 'How do you feel when you wake up on a typical morning?', opts: [
-    { text: 'Ready to go — I bounce back well', score: 0 },
+    { text: 'Ready to go - I bounce back well', score: 0 },
     { text: 'Tired but functional', score: 1 },
     { text: 'Frequently exhausted before the day starts', score: 2 },
     { text: 'Completely drained, dreading the day', score: 3 }
   ]},
   { dim: 'exhaustion', text: 'By the end of a typical workday, how depleted are you?', opts: [
-    { text: 'Fine — I still have energy left', score: 0 },
+    { text: 'Fine - I still have energy left', score: 0 },
     { text: 'A bit tired but okay', score: 1 },
     { text: 'Running on empty most days', score: 2 },
     { text: 'Completely wiped out, unable to do anything personal', score: 3 }
@@ -748,7 +748,7 @@ const questions = [
   { dim: 'cynicism', text: 'When things go wrong at work, your reaction is:', opts: [
     { text: 'I problem-solve and move on', score: 0 },
     { text: 'I\'m frustrated but I get over it', score: 1 },
-    { text: 'Growing cynicism — I expect things to go wrong now', score: 2 },
+    { text: 'Growing cynicism - I expect things to go wrong now', score: 2 },
     { text: 'Nothing surprises me anymore, and I don\'t care either way', score: 3 }
   ]},
   { dim: 'effectiveness', text: 'How effective do you feel at your work right now compared to 6 months ago?', opts: [
@@ -760,14 +760,14 @@ const questions = [
   { dim: 'effectiveness', text: 'How often do you struggle to concentrate or complete tasks that used to be easy?', opts: [
     { text: 'Rarely', score: 0 },
     { text: 'Sometimes', score: 1 },
-    { text: 'Often — I\'m slower and less focused', score: 2 },
-    { text: 'Almost every day — basic tasks take huge effort', score: 3 }
+    { text: 'Often - I\'m slower and less focused', score: 2 },
+    { text: 'Almost every day - basic tasks take huge effort', score: 3 }
   ]},
   { dim: 'effectiveness', text: 'How would you rate your sense of accomplishment at work lately?', opts: [
-    { text: 'High — I feel proud of what I\'m doing', score: 0 },
-    { text: 'Average — nothing notable', score: 1 },
-    { text: 'Low — I complete tasks but feel little satisfaction', score: 2 },
-    { text: 'Very low — I can barely remember my last real win', score: 3 }
+    { text: 'High - I feel proud of what I\'m doing', score: 0 },
+    { text: 'Average - nothing notable', score: 1 },
+    { text: 'Low - I complete tasks but feel little satisfaction', score: 2 },
+    { text: 'Very low - I can barely remember my last real win', score: 3 }
   ]},
   { dim: 'recovery', text: 'How effective is your time off at restoring your energy?', opts: [
     { text: 'I come back refreshed', score: 0 },
@@ -776,13 +776,13 @@ const questions = [
     { text: 'I can\'t seem to recover no matter how much I rest', score: 3 }
   ]},
   { dim: 'recovery', text: 'How often do you think about work during personal time or vacations?', opts: [
-    { text: 'Rarely — I disconnect well', score: 0 },
+    { text: 'Rarely - I disconnect well', score: 0 },
     { text: 'Sometimes', score: 1 },
-    { text: 'Often — work follows me everywhere', score: 2 },
-    { text: 'Constantly — I can never fully switch off', score: 3 }
+    { text: 'Often - work follows me everywhere', score: 2 },
+    { text: 'Constantly - I can never fully switch off', score: 3 }
   ]},
   { dim: 'recovery', text: 'How are your sleep and physical health holding up?', opts: [
-    { text: 'Good — no major issues', score: 0 },
+    { text: 'Good - no major issues', score: 0 },
     { text: 'Minor disruptions', score: 1 },
     { text: 'Sleep is affected, energy is lower', score: 2 },
     { text: 'Sleep is poor, physical symptoms appearing (stress, headaches, etc.)', score: 3 }
@@ -854,17 +854,17 @@ function showResults() {
   // Determine result tier
   let tier, icon, label, title, desc;
   if (total <= 8) {
-    tier = 1; icon = '&#9989;'; label = 'SAFE'; title = "You're Not Burning Out — Keep It That Way";
+    tier = 1; icon = '&#9989;'; label = 'SAFE'; title = "You're Not Burning Out - Keep It That Way";
     desc = "You're managing well. These habits are what protect you in high-stress periods.";
   } else if (total <= 16) {
-    tier = 2; icon = '&#9888;&#65039;'; label = 'WARNING'; title = "Watch Out — Early Warning Signs";
+    tier = 2; icon = '&#9888;&#65039;'; label = 'WARNING'; title = "Watch Out - Early Warning Signs";
     desc = "You're not burned out yet, but the warning signs are there. Ignored, this becomes serious within months.";
   } else if (total <= 24) {
     tier = 3; icon = '&#128308;'; label = 'URGENT'; title = "You're Approaching Burnout Fast";
     desc = "This is serious. You are burning out. The question is whether you catch it now or wait until you crash.";
   } else {
     tier = 4; icon = '&#127384;'; label = 'CRITICAL'; title = "You're Already Burned Out";
-    desc = "Stop. You need rest — not more productivity tips. Burnout this severe requires real intervention.";
+    desc = "Stop. You need rest - not more productivity tips. Burnout this severe requires real intervention.";
   }
 
   document.getElementById('result-icon').textContent = icon;
@@ -882,7 +882,7 @@ function showResults() {
 
   // Recovery Plan
   let plan = '';
-  if (scores.exhaustion >= 5) plan += '<div class="recovery-card"><h4>High Exhaustion</h4><p>Take a real day off — no email, no productivity. Your brain needs genuine rest.</p></div>';
+  if (scores.exhaustion >= 5) plan += '<div class="recovery-card"><h4>High Exhaustion</h4><p>Take a real day off - no email, no productivity. Your brain needs genuine rest.</p></div>';
   if (scores.cynicism >= 5) plan += '<div class="recovery-card"><h4>High Cynicism</h4><p>Reconnect with WHY you started. Talk to someone who energizes you.</p></div>';
   if (scores.effectiveness < 4) plan += '<div class="recovery-card"><h4>Low Effectiveness</h4><p>Stop multi-tasking. Do one important thing per morning, that\'s it.</p></div>';
   if (scores.recovery < 4) plan += '<div class="recovery-card"><h4>Poor Recovery</h4><p>No screens after 9pm for one week. No exceptions. Sleep is recovery.</p></div>';

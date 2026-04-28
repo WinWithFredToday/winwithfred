@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Sleep Debt Calculator | WinWithFred</title>
-<meta name="description" content="How much sleep are you missing — and how to recover it.">
+<meta name="description" content="How much sleep are you missing - and how to recover it.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
@@ -15,16 +15,16 @@
   <meta property="og:site_name" content="WinWithFred">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sleep Debt Calculator | WinWithFred">
-  <meta property="og:description" content="How much sleep are you missing — and how to recover it.">
+  <meta property="og:description" content="How much sleep are you missing - and how to recover it.">
   <meta property="og:url" content="https://winwithfred.com/sleep-debt-calculator">
   <meta property="og:image" content="https://winwithfred.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sleep Debt Calculator | WinWithFred">
-  <meta name="twitter:description" content="How much sleep are you missing — and how to recover it.">
+  <meta name="twitter:description" content="How much sleep are you missing - and how to recover it.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sleep Debt Calculator | WinWithFred","description":"How much sleep are you missing — and how to recover it.","url":"https://winwithfred.com/sleep-debt-calculator","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sleep Debt Calculator | WinWithFred","description":"How much sleep are you missing - and how to recover it.","url":"https://winwithfred.com/sleep-debt-calculator","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -45,7 +45,7 @@
 <nav class="navbar"><div class="nbi"><a href="/" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="/">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
 <div class="hero"><div class="lbl">Sleep & Energy</div><h1>Sleep Debt Calculator</h1>
-<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 2 min · You'll get: exactly how much sleep you owe yourself</p><p>How much sleep are you actually missing — and what to do about it.</p></div>
+<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 2 min · You'll get: exactly how much sleep you owe yourself</p><p>How much sleep are you actually missing - and what to do about it.</p></div>
 <div class="wrap">
 
 <div class="card">
@@ -108,9 +108,9 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   localStorage.setItem("wwf_sleep_debt",JSON.stringify({hours:hours,needed:needed}));
   document.getElementById("debt-score").textContent=totalDebt.toFixed(1)+"h";
   var label,desc;
-  if(totalDebt<2){label="Debt-Free";desc="You're sleeping well. Keep the streak going — consistency matters more than any single night.";}
+  if(totalDebt<2){label="Debt-Free";desc="You're sleeping well. Keep the streak going - consistency matters more than any single night.";}
   else if(totalDebt<5){label="Mild Debt";desc="A few nights of slightly short sleep. You can recover this over a weekend with one or two extra hours.";}
-  else if(totalDebt<10){label="Moderate Debt";desc="This is affecting your mood, focus, and decision-making — even if you don't feel it. Prioritise recovery nights.";}
+  else if(totalDebt<10){label="Moderate Debt";desc="This is affecting your mood, focus, and decision-making - even if you don't feel it. Prioritise recovery nights.";}
   else{label="Severe Debt";desc="Chronic sleep deprivation at this level impairs cognition like being drunk. Recovery will take 1-2 weeks of consistent sleep.";}
   document.getElementById("debt-label").textContent=label;
   document.getElementById("debt-desc").textContent=desc;
@@ -127,8 +127,8 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   document.getElementById("debt-bars").innerHTML=bars;
   var recText;
   if(totalDebt<2)recText="You're good. Aim for the same bedtime every night to lock in your rhythm.";
-  else if(totalDebt<5)recText="Go to bed 30-45 min earlier for 3-4 nights. Avoid sleeping in more than 1 hour on weekends — it shifts your clock.";
-  else if(totalDebt<10)recText="Add 1 extra hour of sleep per night for the next week. Resist the urge to catch up all at once on weekends — gradual recovery is more effective.";
+  else if(totalDebt<5)recText="Go to bed 30-45 min earlier for 3-4 nights. Avoid sleeping in more than 1 hour on weekends - it shifts your clock.";
+  else if(totalDebt<10)recText="Add 1 extra hour of sleep per night for the next week. Resist the urge to catch up all at once on weekends - gradual recovery is more effective.";
   else recText="You need a structured recovery plan. Commit to a consistent 8-9 hour window for 2 full weeks. No late nights, no early alarms. Consider ruling out a sleep disorder if this is chronic.";
   document.getElementById("recovery").textContent=recText;
   document.getElementById("result").classList.add("show");

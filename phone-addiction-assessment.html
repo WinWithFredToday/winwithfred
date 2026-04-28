@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Phone Addiction Assessment | WinWithFred</title>
-<meta name="description" content="Find out if your phone is running your life — and what to do about it.">
+<meta name="description" content="Find out if your phone is running your life - and what to do about it.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
@@ -15,16 +15,16 @@
   <meta property="og:site_name" content="WinWithFred">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Phone Addiction Assessment | WinWithFred">
-  <meta property="og:description" content="Find out if your phone is running your life — and what to do about it.">
+  <meta property="og:description" content="Find out if your phone is running your life - and what to do about it.">
   <meta property="og:url" content="https://winwithfred.com/phone-addiction-assessment">
   <meta property="og:image" content="https://winwithfred.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Phone Addiction Assessment | WinWithFred">
-  <meta name="twitter:description" content="Find out if your phone is running your life — and what to do about it.">
+  <meta name="twitter:description" content="Find out if your phone is running your life - and what to do about it.">
   <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Phone Addiction Assessment | WinWithFred","description":"Find out if your phone is running your life — and what to do about it.","url":"https://winwithfred.com/phone-addiction-assessment","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Phone Addiction Assessment | WinWithFred","description":"Find out if your phone is running your life - and what to do about it.","url":"https://winwithfred.com/phone-addiction-assessment","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
 
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -45,12 +45,12 @@
 <nav class="navbar"><div class="nbi"><a href="/" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="/">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
 <div class="hero"><div class="lbl">Digital Life</div><h1>Phone Addiction Assessment</h1>
-<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 3 min · You'll get: your phone dependency score</p><p>Find out if your phone is running your life — and what to do about it.</p></div>
+<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 3 min · You'll get: your phone dependency score</p><p>Find out if your phone is running your life - and what to do about it.</p></div>
 <div class="wrap">
 
 <div class="card">
   <h2>Answer honestly about your phone habits</h2>
-  <p class="sub">No judgement — this is diagnostic, not a guilt trip.</p>
+  <p class="sub">No judgement - this is diagnostic, not a guilt trip.</p>
   <div id="quiz-qs"></div>
   <button class="btn btn-primary" id="calcBtn">See My Assessment</button>
 </div>
@@ -89,7 +89,7 @@ var QS=[
 var ACTIONS={
   sleep:["Charge your phone outside the bedroom tonight. Use an alarm clock instead.","Set a hard phone-off time 30 minutes before bed."],
   anxiety:["Try one 2-hour phone-free block today. Notice what you feel.","Leave your phone in a drawer when at home. Build tolerance gradually."],
-  presence:["Phone-free meals — start with just one meal per day.","When in conversation, phone goes face-down or out of sight."],
+  presence:["Phone-free meals - start with just one meal per day.","When in conversation, phone goes face-down or out of sight."],
   habit:["Remove your most-used apps from your home screen.","Set your lock screen to show your screen time as a reminder."],
   time:["Use your phone's built-in app timer to set a daily limit.","Replace one hour of phone time with a physical activity this week."],
   control:["Delete your most addictive app for 7 days. See how you feel.","Schedule specific phone check-in times instead of checking constantly."],
@@ -133,9 +133,9 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   var pct=Math.round(total/maxScore*100);
   document.getElementById("phone-score").textContent=pct+"%";
   var label,desc;
-  if(pct<30){label="Healthy User";desc="You have a healthy relationship with your phone. Stay intentional — the defaults are designed to pull you back in.";}
+  if(pct<30){label="Healthy User";desc="You have a healthy relationship with your phone. Stay intentional - the defaults are designed to pull you back in.";}
   else if(pct<55){label="Habitual User";desc="Your phone use has some problematic patterns. A few intentional changes now will prevent these from becoming deeper habits.";}
-  else if(pct<75){label="Heavy Dependent";desc="Your phone is significantly impacting your attention, mood, or relationships. This is worth taking seriously — the payoff of changing is huge.";}
+  else if(pct<75){label="Heavy Dependent";desc="Your phone is significantly impacting your attention, mood, or relationships. This is worth taking seriously - the payoff of changing is huge.";}
   else{label="High Dependency";desc="Your phone habits are causing real harm to your wellbeing, focus, and likely your relationships. A structured digital detox is worth considering.";}
   document.getElementById("phone-label").textContent=label;
   document.getElementById("phone-desc").textContent=desc;
@@ -146,7 +146,7 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   var topRisks=sorted.slice(0,3);
   var acts=[];
   topRisks.forEach(function(k){if(ACTIONS[k])acts.push(ACTIONS[k][0]);});
-  if(acts.length===0)acts=["Keep your phone out of the bedroom at night.","Set one phone-free hour each day.","Notice when you pick up your phone — and why."];
+  if(acts.length===0)acts=["Keep your phone out of the bedroom at night.","Set one phone-free hour each day.","Notice when you pick up your phone - and why."];
   document.getElementById("actions").innerHTML=acts.map(function(a){return"<li>"+a+"</li>";}).join("");
   document.getElementById("result").classList.add("show");
   document.getElementById("result").scrollIntoView({behavior:"smooth",block:"start"});

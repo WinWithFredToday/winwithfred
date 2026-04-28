@@ -45,7 +45,7 @@
 <nav class="navbar"><div class="nbi"><a href="/" class="nbl">Win<span>WithFred</span></a><ul class="nbs"><li><a href="/">Home</a></li><li><a href="index.html#blog">Blog</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#about">About</a></li><li class="nc"><div id="an"></div></li></ul></div></nav>
 <main>
 <div class="hero"><div class="lbl">Decision & Action</div><h1>Fear Setting</h1>
-<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 10 min · You'll get: fear turned into a clear action plan</p><p>Define, prevent, and repair your worst fears — then decide with clear eyes.</p></div>
+<p class="wwf-tool-meta" style="text-align:center;color:#9ca3af;font-size:0.9rem;margin:-0.75rem auto 1.5rem">⏱ Takes 10 min · You'll get: fear turned into a clear action plan</p><p>Define, prevent, and repair your worst fears - then decide with clear eyes.</p></div>
 <div class="wrap">
 
 <div class="card">
@@ -54,23 +54,23 @@
   <textarea id="fear-action" rows="3" placeholder="e.g. Leave my job and start a business. Ask for a raise. End a relationship. Move to a new city."></textarea>
 </div>
 <div class="card">
-  <h2>Step 1 — Define: What's the worst that could happen?</h2>
+  <h2>Step 1 - Define: What's the worst that could happen?</h2>
   <p class="sub">List up to 5 realistic worst-case outcomes.</p>
   <div id="define-list"></div>
   <button class="btn btn-ghost btn-sm" id="addDefineBtn" style="margin-top:.5rem">+ Add outcome</button>
 </div>
 <div class="card">
-  <h2>Step 2 — Prevent: How likely are these? How could you reduce the risk?</h2>
+  <h2>Step 2 - Prevent: How likely are these? How could you reduce the risk?</h2>
   <p class="sub">For each outcome, estimate the probability and one prevention step.</p>
   <div id="prevent-list"></div>
 </div>
 <div class="card">
-  <h2>Step 3 — Repair: If the worst happened, what would you do?</h2>
-  <textarea id="repair-text" rows="3" placeholder="How would you recover? Who could help? What would you do next? Be honest — you've survived hard things before."></textarea>
+  <h2>Step 3 - Repair: If the worst happened, what would you do?</h2>
+  <textarea id="repair-text" rows="3" placeholder="How would you recover? Who could help? What would you do next? Be honest - you've survived hard things before."></textarea>
 </div>
 <div class="card">
   <h2>The cost of inaction</h2>
-  <p class="sub">What does it cost you — financially, emotionally, physically — to NOT take this action? Think 6 months, 1 year, 3 years out.</p>
+  <p class="sub">What does it cost you - financially, emotionally, physically - to NOT take this action? Think 6 months, 1 year, 3 years out.</p>
   <textarea id="inaction-text" rows="3" placeholder="e.g. Another year of hating Monday mornings. Watching others take the leap. The slow resentment of playing it safe."></textarea>
 </div>
 <button class="btn btn-primary" id="buildBtn">Build My Fear-Setting Analysis</button>
@@ -154,7 +154,7 @@ document.getElementById("buildBtn").addEventListener("click",function(){
       +"<div style='color:#9ca3af;font-size:.87rem;line-height:1.6'>"+inaction+"</div></div>";
   }
   html+="<div style='margin-top:1rem;padding:1rem;background:#1f2937;border-radius:8px;color:#9ca3af;font-size:.85rem;line-height:1.6'>"
-    +"The goal of fear-setting isn't to eliminate fear — it's to realise the downside is survivable and the cost of inaction is higher than you thought. Now you can choose with eyes open.</div>";
+    +"The goal of fear-setting isn't to eliminate fear - it's to realise the downside is survivable and the cost of inaction is higher than you thought. Now you can choose with eyes open.</div>";
   localStorage.setItem("wwf_fear_setting",JSON.stringify({action:action,outcomes:outcomes,repair:repair,inaction:inaction}));
   document.getElementById("fs-out").innerHTML=html;
   document.getElementById("result").classList.add("show");

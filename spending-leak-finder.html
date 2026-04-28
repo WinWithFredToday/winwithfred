@@ -49,12 +49,12 @@
 <div class="wrap">
 
 <div class="card">
-  <h2>Step 1 — What you <em>think</em> you spend (monthly)</h2>
+  <h2>Step 1 - What you <em>think</em> you spend (monthly)</h2>
   <p class="sub">Enter estimates before checking any statements.</p>
   <div id="estimates"></div>
 </div>
 <div class="card">
-  <h2>Step 2 — What you <em>actually</em> spend (monthly)</h2>
+  <h2>Step 2 - What you <em>actually</em> spend (monthly)</h2>
   <p class="sub">Now check your bank or card app and enter real numbers.</p>
   <div id="actuals"></div>
 </div>
@@ -109,7 +109,7 @@ document.getElementById("calcBtn").addEventListener("click",function(){
     if(diff>0){leaks.push({cat:c,est:e,act:a,diff:diff});total+=diff;}
   });
   localStorage.setItem("wwf_spending_leaks",JSON.stringify({est:est,act:act}));
-  document.getElementById("rlabel").textContent=leaks.length===0?"No leaks found — impressive!":"You found "+leaks.length+" spending leak"+(leaks.length>1?"s":"");
+  document.getElementById("rlabel").textContent=leaks.length===0?"No leaks found - impressive!":"You found "+leaks.length+" spending leak"+(leaks.length>1?"s":"");
   document.getElementById("rdesc").textContent=leaks.length===0?"Your estimates match your actuals. Either you track well or you underestimated both equally.":"These are categories where reality exceeded your estimate.";
   leaks.sort(function(a,b){return b.diff-a.diff;});
   document.getElementById("leak-table").innerHTML=leaks.length>0

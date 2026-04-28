@@ -49,7 +49,7 @@
 <div class="wrap">
 
 <div class="card">
-  <h2>Answer honestly — no one is watching</h2>
+  <h2>Answer honestly - no one is watching</h2>
   <p class="sub">Rate how true each statement feels &nbsp;(1 = Not at all &nbsp;·&nbsp; 5 = Absolutely true)</p>
   <div id="qs"></div>
   <button class="btn btn-primary" id="calcBtn">Reveal My Money Mindset</button>
@@ -79,22 +79,22 @@ var QS=[
   {q:"Wanting more money makes me greedy or selfish.",cat:"shame"},
   {q:"I don't deserve to be wealthy.",cat:"worth"},
   {q:"Rich people got lucky or did something wrong.",cat:"resentment"},
-  {q:"I'm just not good with money — it's not in my nature.",cat:"identity"},
+  {q:"I'm just not good with money - it's not in my nature.",cat:"identity"},
   {q:"I feel anxious checking my bank account.",cat:"avoidance"},
   {q:"I spend money to feel better when I'm stressed.",cat:"emotional"},
   {q:"I'd feel guilty earning significantly more than my family.",cat:"guilt"},
-  {q:"Money problems are just part of life — I can't change much.",cat:"helpless"},
+  {q:"Money problems are just part of life - I can't change much.",cat:"helpless"},
   {q:"Talking about money feels rude or uncomfortable.",cat:"shame"}
 ];
 var REFRAME={
   scarcity:"Money is renewable. Every dollar you earn proves there's more available.",
-  shame:"Wanting security isn't greed — it's responsibility. You can't help others from empty pockets.",
+  shame:"Wanting security isn't greed - it's responsibility. You can't help others from empty pockets.",
   worth:"Your net worth is not your self-worth. You deserve abundance because you exist and contribute.",
   resentment:"Most wealth is built through consistency and problem-solving, not luck.",
   identity:"Money skills are learned, not inherited. If you can learn to drive, you can manage money.",
   avoidance:"Avoiding your balance makes it worse. Awareness is the first step toward control.",
   emotional:"Spending to feel better is a symptom, not a strategy. What need is it actually filling?",
-  guilt:"Your growth doesn't take from your family — it creates options for everyone.",
+  guilt:"Your growth doesn't take from your family - it creates options for everyone.",
   helpless:"The rules are learnable. One changed habit, sustained, changes everything."
 };
 function renderQs(){
@@ -125,7 +125,7 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   localStorage.setItem("wwf_money_mindset",JSON.stringify(scores));
   document.getElementById("score").textContent=avg+"/5";
   var label,desc;
-  if(avg<2.5){label="Mostly Clear";desc="Relatively healthy money beliefs. A few blind spots remain — check the areas you rated higher.";}
+  if(avg<2.5){label="Mostly Clear";desc="Relatively healthy money beliefs. A few blind spots remain - check the areas you rated higher.";}
   else if(avg<3.5){label="Mixed Signals";desc="You hold both healthy and limiting beliefs about money. The limiting ones are costing you more than you realise.";}
   else{label="Deep-Rooted Blocks";desc="Significant limiting beliefs are holding you back. Beliefs are just thoughts you've practised. You can practise different ones.";}
   document.getElementById("slabel").textContent=label;

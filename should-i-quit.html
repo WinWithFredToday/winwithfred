@@ -133,9 +133,9 @@ var DIMS={
 };
 var QUESTIONS={
   job:["Have you had a direct conversation about what's not working?","Is this role's problems fixable, or structural?","What specifically would staying look like in 12 months?"],
-  career:["Are you quitting the field or just this specific role?","What would you do instead — is that path clearer or just different?","Have you spoken to someone thriving in this field?"],
+  career:["Are you quitting the field or just this specific role?","What would you do instead - is that path clearer or just different?","Have you spoken to someone thriving in this field?"],
   relationship:["Have you clearly communicated what's not working?","Is this a pattern or a rough patch?","What would need to change for you to be happy staying?"],
-  project:["Are you quitting because it's hard, or because it's wrong?","What would a pivot look like — not full quit, just a direction change?","What would 'done enough' look like?"],
+  project:["Are you quitting because it's hard, or because it's wrong?","What would a pivot look like - not full quit, just a direction change?","What would 'done enough' look like?"],
   habit:["What specifically are you hoping to replace it with?","Is this about the habit itself, or how you're approaching it?","What would a 30-day experiment with a different version look like?"]
 };
 function renderDims(){
@@ -171,10 +171,10 @@ document.getElementById("calcBtn").addEventListener("click",function(){
   localStorage.setItem("wwf_should_quit",JSON.stringify({type:quitType,scores:scores}));
   document.getElementById("quit-score").textContent=pct+"%";
   var label,desc;
-  if(pct>=70){label="Stay — Fix the Issues";desc="The foundation is solid. The problems are real but worth addressing. Quitting now likely means carrying the same issues somewhere else.";}
-  else if(pct>=50){label="Borderline — Get Clarity First";desc="Neither a clear stay nor a clear quit. Gather more information, have honest conversations, and give yourself a defined window to reassess.";}
-  else if(pct>=35){label="Leaning Toward Quit";desc="More is wrong than right. The key question is whether the problems are fixable, or structural. If structural — it's time to plan your exit.";}
-  else{label="Strong Signal to Quit";desc="The evidence points one direction. The question isn't whether to leave, but how to do it well — on your timeline, with a plan.";}
+  if(pct>=70){label="Stay - Fix the Issues";desc="The foundation is solid. The problems are real but worth addressing. Quitting now likely means carrying the same issues somewhere else.";}
+  else if(pct>=50){label="Borderline - Get Clarity First";desc="Neither a clear stay nor a clear quit. Gather more information, have honest conversations, and give yourself a defined window to reassess.";}
+  else if(pct>=35){label="Leaning Toward Quit";desc="More is wrong than right. The key question is whether the problems are fixable, or structural. If structural - it's time to plan your exit.";}
+  else{label="Strong Signal to Quit";desc="The evidence points one direction. The question isn't whether to leave, but how to do it well - on your timeline, with a plan.";}
   document.getElementById("quit-label").textContent=label;
   document.getElementById("quit-desc").textContent=desc;
   var dimDims=DIMS[quitType]||DIMS.job;

@@ -54,7 +54,7 @@
   <textarea id="decision-text" rows="3" placeholder="Be specific. e.g. Should I quit my job? Should I say yes to this opportunity? Should I end this relationship?"></textarea>
 </div>
 <div class="card">
-  <h2>In 10 minutes — How will you feel?</h2>
+  <h2>In 10 minutes - How will you feel?</h2>
   <p class="sub">Right after making this choice. The emotional heat of the moment.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
     <div><label>If you say YES</label><textarea id="yes10m" rows="3" placeholder="Relief? Excitement? Fear? Guilt?"></textarea></div>
@@ -62,15 +62,15 @@
   </div>
 </div>
 <div class="card">
-  <h2>In 10 months — How will you feel?</h2>
+  <h2>In 10 months - How will you feel?</h2>
   <p class="sub">The medium-term reality after the emotion has faded.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
     <div><label>If you said YES</label><textarea id="yes10mo" rows="3" placeholder="Where will this have taken you?"></textarea></div>
-    <div><label>If you said NO</label><textarea id="no10mo" rows="3" placeholder="What will you have avoided — or missed?"></textarea></div>
+    <div><label>If you said NO</label><textarea id="no10mo" rows="3" placeholder="What will you have avoided - or missed?"></textarea></div>
   </div>
 </div>
 <div class="card">
-  <h2>In 10 years — How will you feel?</h2>
+  <h2>In 10 years - How will you feel?</h2>
   <p class="sub">Zoom out to where this choice really matters.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
     <div><label>If you said YES</label><textarea id="yes10y" rows="3" placeholder="What does your life look like?"></textarea></div>
@@ -93,8 +93,8 @@ function val(id){return document.getElementById(id).value.trim();}
 function row(time,yes,no){
   return"<tr>"
     +"<td style='color:#c2410c;font-weight:700;white-space:nowrap;vertical-align:top;padding-right:.75rem'>"+time+"</td>"
-    +"<td style='vertical-align:top;padding:.1rem .5rem;color:#f9fafb;font-size:.87rem'>"+(yes||"<em style='color:#374151'>—</em>")+"</td>"
-    +"<td style='vertical-align:top;padding:.1rem .5rem;color:#f9fafb;font-size:.87rem'>"+(no||"<em style='color:#374151'>—</em>")+"</td>"
+    +"<td style='vertical-align:top;padding:.1rem .5rem;color:#f9fafb;font-size:.87rem'>"+(yes||"<em style='color:#374151'>-</em>")+"</td>"
+    +"<td style='vertical-align:top;padding:.1rem .5rem;color:#f9fafb;font-size:.87rem'>"+(no||"<em style='color:#374151'>-</em>")+"</td>"
     +"</tr>";
 }
 document.getElementById("buildBtn").addEventListener("click",function(){
@@ -116,7 +116,7 @@ document.getElementById("buildBtn").addEventListener("click",function(){
   var insight="";
   if(data.yes10y&&data.no10y){
     if(data.yes10m&&data.yes10m.length>data.no10m.length){
-      insight="The immediate discomfort of YES is real — but look at where it takes you. Short-term pain, long-term gain.";
+      insight="The immediate discomfort of YES is real - but look at where it takes you. Short-term pain, long-term gain.";
     }else{
       insight="The 10-year view usually tells the truth. If your YES column feels more alive there, that's your answer.";
     }
