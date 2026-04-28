@@ -16,19 +16,15 @@ jobs:
           for fname in os.listdir('.'):
             if not (fname.startswith('blog-') and fname.endswith('.html')):
               continue
-            with open(fname, 'rb') as f:
-              raw = f.read()
-            original = raw
-            # Fix: E2 20 (â space) -> E2 86 90 20 (← space) before "Back to Blog"
-            # The corruption: UTF-8 E2 86 90 became just E2 (dropping 86 90)
-            target = 'Back to Blog'.encode('utf-8')
-            # Replace b'\xe2 Back' with b'\xe2\x86\x90 Back' (← Back)
-            raw = raw.replace(b'\xe2 ' + target, '\u2190 '.encode('utf-8') + target)
-            # Also handle if â† pattern (E2 86 without 90)
-            raw = raw.replace(b'\xe2\x86 ' + target, '\u2190 '.encode('utf-8') + target)
-            if raw != original:
-              with open(fname, 'wb') as f:
-                f.write(raw)
+            with open(fname, 'r', encoding='utf-8') as f:
+              content = f.read()
+            original = content
+            # Corrupted pattern: e2 86 90 (UTF-8 for ←) double-encoded as latin-1 then UTF-8
+            # Results in Python string: U+00E2 + U+0086 + U+0090 before " Back to Blog"
+            content = content.replace('\u00e2\u0086\u0090 Back to Blog', '\u2190 Back to Blog')
+            if content != original:
+              with open(fname, 'w', encoding='utf-8') as f:
+                f.write(content)
               print(f'Fixed: {fname}')
               fixed += 1
           print(f'Total fixed: {fixed}')
