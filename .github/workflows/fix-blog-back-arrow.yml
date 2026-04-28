@@ -13,18 +13,14 @@ jobs:
           python3 << 'PYEOF'
           import os
           fixed = 0
+          BAD  = b'\xc3\xa2\xc2\x86\xc2\x90'
+          GOOD = b'\xe2\x86\x90'
           for fname in os.listdir('.'):
             if not (fname.startswith('blog-') and fname.endswith('.html')):
               continue
-            with open(fname, 'r', encoding='utf-8') as f:
-              content = f.read()
-            original = content
-            # Corrupted pattern: e2 86 90 (UTF-8 for ←) double-encoded as latin-1 then UTF-8
-            # Results in Python string: U+00E2 + U+0086 + U+0090 before " Back to Blog"
-            content = content.replace('\u00e2\u0086\u0090 Back to Blog', '\u2190 Back to Blog')
-            if content != original:
-              with open(fname, 'w', encoding='utf-8') as f:
-                f.write(content)
+            raw = open(fname, 'rb').read()
+            if BAD in raw:
+              open(fname, 'wb').write(raw.replace(BAD, GOOD))
               print(f'Fixed: {fname}')
               fixed += 1
           print(f'Total fixed: {fixed}')
