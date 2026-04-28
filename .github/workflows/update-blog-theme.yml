@@ -1,0 +1,87 @@
+name: Convert Blog Posts to Light Theme
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-theme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply light theme to all blog posts
+        run: |
+          python3 << 'PYEOF'
+          import os
+
+          for fname in os.listdir('.'):
+            if not (fname.startswith('blog-') and fname.endswith('.html')):
+              continue
+            with open(fname, 'r', encoding='utf-8') as f:
+              content = f.read()
+
+            original = content
+
+            # === PATTERN A: full dark theme (--dark: #0d1117) ===
+            if '--dark: #0d1117;' in content:
+              subs = [
+                ('--dark: #0d1117;',       '--dark: #ffffff;'),
+                ('--dark2: #161b22;',      '--dark2: #f7f7f5;'),
+                ('--dark3: #21262d;',      '--dark3: #eeeeeb;'),
+                ('--orange: #e05a1e;',     '--orange: #c94e14;'),
+                ('--orange-light: #f07540;', '--orange-light: #e05a1e;'),
+                ('--text: #e6edf3;',       '--text: #1a1a1e;'),
+                ('--text-muted: #8b949e;', '--text-muted: #5f6b7a;'),
+                ('--border: #30363d;',     '--border: #dde1e7;'),
+              ]
+              for old, new in subs:
+                content = content.replace(old, new)
+
+            # === PATTERN B: light body, dark navbar/footer (--dark: #111827) ===
+            elif '--dark: #111827' in content:
+              subs = [
+                # Navbar bg
+                ('background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3);',
+                 'background: #ffffff; padding: 0 24px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e5e7eb;'),
+                # Logo text white -> dark
+                ('font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px;',
+                 'font-size: 1.4rem; font-weight: 900; color: #111827; letter-spacing: -0.5px;'),
+                # Nav links color
+                ('color: #d1d5db;', 'color: #374151;'),
+                # Nav link hover
+                ('color: #fff; background: var(--surface); text-decoration: none;',
+                 'color: #111827; background: #f3f4f6; text-decoration: none;'),
+                # Footer bg (uses --black)
+                ('background: var(--black); color: #9ca3af; padding: 48px 24px 32px;',
+                 'background: #f8f8f6; color: #6b7280; padding: 48px 24px 32px; border-top: 1px solid #e5e7eb;'),
+                # Footer logo white -> dark
+                ('font-size: 1.3rem; font-weight: 900; color: #fff; margin-bottom: 12px;',
+                 'font-size: 1.3rem; font-weight: 900; color: #111827; margin-bottom: 12px;'),
+                # Footer headings white -> dark
+                ('color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;',
+                 'color: #111827; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;'),
+                # Footer bottom border
+                ('border-top: 1px solid #1f2937;',
+                 'border-top: 1px solid #e5e7eb;'),
+              ]
+              for old, new in subs:
+                content = content.replace(old, new)
+
+            if content != original:
+              with open(fname, 'w', encoding='utf-8') as f:
+                f.write(content)
+              print(f'Updated: {fname}')
+            else:
+              print(f'No change: {fname}')
+          PYEOF
+
+      - name: Commit all changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add blog-*.html
+          git diff --staged --stat
+          git commit -m "Convert all blog posts to light theme" || echo "Nothing to commit"
+          git push
