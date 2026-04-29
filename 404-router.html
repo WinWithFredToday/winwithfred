@@ -4,17 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loading... | WinWithFred</title>
-  <script>
-    // Inject canonical and readable title based on current URL (before JS renders full page)
-    (function() {
-      var p = window.location.pathname.replace(/\.html$/, '');
-      document.write('<link rel="canonical" href="https://winwithfred.com' + p + '">');
-      if (p && p !== '/') {
-        var slug = p.replace(/^\//, '');
-        document.title = slug.replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); }) + ' | WinWithFred';
-      }
-    })();
-  <\/script>
   <style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0d1117;color:#fff;}</style>
   <script>
   (function() {
