@@ -11,7 +11,6 @@
     var search = window.location.search;
     var hash = window.location.hash;
 
-    // If path has no file extension and is not root, serve .html content at clean URL
     if (path && path !== '/' && !path.match(/\.[^\/]+$/)) {
       fetch(path + '.html' + search)
         .then(function(resp) {
@@ -19,17 +18,31 @@
           return resp.text();
         })
         .then(function(html) {
-          // Replace document content while keeping the clean URL
-          document.open();
-          document.write(html);
-          document.close();
-          // Ensure address bar stays on clean URL (no .html)
-          if (window.location.pathname.endsWith('.html')) {
-            history.replaceState(null, document.title, path + search + hash);
+          var parser = new DOMParser();
+          var newDoc = parser.parseFromString(html, 'text/html');
+          document.title = newDoc.title;
+          var oldHead = document.head;
+          while (oldHead.firstChild) { oldHead.removeChild(oldHead.firstChild); }
+          Array.from(newDoc.head.childNodes).forEach(function(node) {
+            oldHead.appendChild(document.importNode(node, true));
+          });
+          document.body.innerHTML = newDoc.body.innerHTML;
+          Array.from(newDoc.body.attributes).forEach(function(attr) {
+            document.body.setAttribute(attr.name, attr.value);
+          });
+          function reRunScripts(root) {
+            Array.from(root.querySelectorAll('script')).forEach(function(old) {
+              var s = document.createElement('script');
+              Array.from(old.attributes).forEach(function(a) { s.setAttribute(a.name, a.value); });
+              if (!old.src) s.textContent = old.textContent;
+              old.parentNode.replaceChild(s, old);
+            });
           }
+          reRunScripts(document.head);
+          reRunScripts(document.body);
+          history.replaceState(null, document.title, path + search + hash);
         })
         .catch(function() {
-          // Genuine 404 - show error
           document.title = 'Page Not Found | WinWithFred';
           document.body.innerHTML =
             '<div style="text-align:center">' +
@@ -40,11 +53,11 @@
         });
     }
   })();
-  <\/script>
+  </script>
 </head>
 <body>
   <div>
-    <p style="color:#9ca3af;font-size:1rem">Loading\u2026</p>
+    <p style="color:#9ca3af;font-size:1rem">Loading…</p>
   </div>
 </body>
 </html>
