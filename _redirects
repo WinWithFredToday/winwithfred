@@ -1,8 +1,8 @@
-# WinWithFred.com — Clean URL → .html rewrites
+# WinWithFred.com â Clean URL â .html rewrites
 # Processed by DigitalOcean App Platform before the catchall_document,
 # so crawlers get real HTML instead of the JS 404-router "Loading..." page.
 
-# ─── Core pages ────────────────────────────────────────────────────────────────────────────────
+# âââ Core pages ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 /blog                           /blog.html                      301
 /about                          /about.html                     301
 /tools                          /tools.html                     301
@@ -13,7 +13,7 @@
 /success                        /success.html                   301
 /admin                          /admin.html                     301
 
-# ─── Tools & assessments ───────────────────────────────────────────────────────────────────
+# âââ Tools & assessments âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 /goal-tracker                   /goal-tracker.html              301
 /habit-builder                  /habit-builder.html             301
 /journal                        /journal.html                   301
@@ -63,7 +63,7 @@
 /challenge-30                   /challenge-30.html              301
 /challenge-90                   /challenge-90.html              301
 
-# ─── Meal plan results ───────────────────────────────────────────────────────────────────────
+# âââ Meal plan results âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 /meal-plan-everyday-energy      /meal-plan-everyday-energy.html 301
 /meal-plan-lean-light           /meal-plan-lean-light.html      301
 /meal-plan-low-carb-reset       /meal-plan-low-carb-reset.html  301
@@ -71,16 +71,56 @@
 /meal-plan-simple-starter       /meal-plan-simple-starter.html  301
 /meal-plan-strong-steady        /meal-plan-strong-steady.html   301
 
-# ─── Account pages ───────────────────────────────────────────────────────────────────────────
+# âââ Account pages âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 /login                          /login.html                     301
 /profile                        /profile.html                   301
 /dashboard                      /dashboard.html                 301
 
-# ─── Legal / info ─────────────────────────────────────────────────────────────────────────────
+# âââ Legal / info âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 /privacy                        /privacy.html                   301
 /terms                          /terms.html                     301
 /disclaimer                     /disclaimer.html                301
 /mental-health-resources        /mental-health-resources.html   301
 
-# ─── Blog posts (wildcard) ────────────────────────────────────────────────────────────────────────
+# âââ Blog posts (wildcard) ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 /blog-*                         /blog-:splat.html               301
+
+# ─── Legacy WordPress URLs (old relationship/dating/podcast era) ──────────────
+# These old URLs are still indexed by Google. 301s tell Google to remove them.
+/first-date-signs-successful/               /                               301
+/first-date-signs-successful                /                               301
+/how-to-create-a-strong-and-amazing-relationship/   /                       301
+/how-to-create-a-strong-and-amazing-relationship    /                       301
+/how-to-know-if-a-guy-likes-you/            /                               301
+/how-to-know-if-a-guy-likes-you             /                               301
+/signs-he-likes-you/                        /                               301
+/signs-he-likes-you                         /                               301
+/how-to-get-a-guy-to-like-you/              /                               301
+/how-to-get-a-guy-to-like-you               /                               301
+/first-date-tips/                           /                               301
+/first-date-tips                            /                               301
+/how-to-text-a-guy/                         /                               301
+/how-to-text-a-guy                          /                               301
+/how-to-make-a-guy-miss-you/                /                               301
+/how-to-make-a-guy-miss-you                 /                               301
+/signs-he-wants-a-relationship/             /                               301
+/signs-he-wants-a-relationship              /                               301
+/how-to-get-over-a-breakup/                 /                               301
+/how-to-get-over-a-breakup                  /                               301
+/relationship-advice/                       /                               301
+/relationship-advice                        /                               301
+/dating-advice/                             /                               301
+/dating-advice                              /                               301
+/podcast/                                   /                               301
+/podcast                                    /                               301
+/episodes/                                  /                               301
+/episodes                                   /                               301
+/wp-content/                                /                               301
+/wp-admin/                                  /                               301
+/wp-login.php                               /                               301
+/feed/                                      /                               301
+/feed                                       /                               301
+/category/                                  /blog                           301
+/tag/                                       /blog                           301
+/author/                                    /about                          301
+/page/                                      /                               301
