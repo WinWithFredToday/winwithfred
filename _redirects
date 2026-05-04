@@ -1,0 +1,86 @@
+# WinWithFred.com — Clean URL → .html rewrites
+# Processed by DigitalOcean App Platform before the catchall_document,
+# so crawlers get real HTML instead of the JS 404-router "Loading..." page.
+
+# ─── Core pages ────────────────────────────────────────────────────────────────────────────────
+/blog                           /blog.html                      301
+/about                          /about.html                     301
+/tools                          /tools.html                     301
+/pricing                        /pricing.html                   301
+/contact                        /contact.html                   301
+/faith                          /faith.html                     301
+/newsletter                     /newsletter.html                301
+/success                        /success.html                   301
+/admin                          /admin.html                     301
+
+# ─── Tools & assessments ───────────────────────────────────────────────────────────────────
+/goal-tracker                   /goal-tracker.html              301
+/habit-builder                  /habit-builder.html             301
+/journal                        /journal.html                   301
+/vision-board                   /vision-board.html              301
+/meal-plan-quiz                 /meal-plan-quiz.html            301
+/meal-plan-result               /meal-plan-result.html          301
+/quiz                           /quiz.html                      301
+/habit-scorecard                /habit-scorecard.html           301
+/instant-calm                   /instant-calm.html              301
+/morning-routine                /morning-routine.html           301
+/mood-tracker                   /mood-tracker.html              301
+/energy-audit                   /energy-audit.html              301
+/burnout-detector               /burnout-detector.html          301
+/life-balance                   /life-balance.html              301
+/wheel-of-life                  /wheel-of-life.html             301
+/eisenhower-matrix              /eisenhower-matrix.html         301
+/boundary-builder               /boundary-builder.html          301
+/fear-setting                   /fear-setting.html              301
+/future-self                    /future-self.html               301
+/life-trajectory                /life-trajectory.html           301
+/mental-health-check            /mental-health-check.html       301
+/money-mindset-audit            /money-mindset-audit.html       301
+/spending-leak-finder           /spending-leak-finder.html      301
+/time-wasted                    /time-wasted.html               301
+/doom-scroll-cost-calculator    /doom-scroll-cost-calculator.html 301
+/sleep-debt-calculator          /sleep-debt-calculator.html     301
+/phone-addiction-assessment     /phone-addiction-assessment.html 301
+/alcohol-assessment             /alcohol-assessment.html        301
+/procrastination-diagnosis      /procrastination-diagnosis.html 301
+/excuse-audit                   /excuse-audit.html              301
+/digital-detox-planner          /digital-detox-planner.html     301
+/evening-routine-builder        /evening-routine-builder.html   301
+/movement-minimum-builder       /movement-minimum-builder.html  301
+/weekly-reset                   /weekly-reset.html              301
+/friendship-audit               /friendship-audit.html          301
+/career-alignment-quiz          /career-alignment-quiz.html     301
+/personality-quiz               /personality-quiz.html          301
+/values-quiz                    /values-quiz.html               301
+/workout-style-quiz             /workout-style-quiz.html        301
+/should-i-quit                  /should-i-quit.html             301
+/fix-my-life                    /fix-my-life.html               301
+/reframe-thought                /reframe-thought.html           301
+/next-action-generator          /next-action-generator.html     301
+/trigger-log                    /trigger-log.html               301
+/whats-holding-you-back         /whats-holding-you-back.html    301
+/10-10-10-decision              /10-10-10-decision.html         301
+/challenge-30                   /challenge-30.html              301
+/challenge-90                   /challenge-90.html              301
+
+# ─── Meal plan results ───────────────────────────────────────────────────────────────────────
+/meal-plan-everyday-energy      /meal-plan-everyday-energy.html 301
+/meal-plan-lean-light           /meal-plan-lean-light.html      301
+/meal-plan-low-carb-reset       /meal-plan-low-carb-reset.html  301
+/meal-plan-plant-powered        /meal-plan-plant-powered.html   301
+/meal-plan-simple-starter       /meal-plan-simple-starter.html  301
+/meal-plan-strong-steady        /meal-plan-strong-steady.html   301
+
+# ─── Account pages ───────────────────────────────────────────────────────────────────────────
+/login                          /login.html                     301
+/profile                        /profile.html                   301
+/dashboard                      /dashboard.html                 301
+
+# ─── Legal / info ─────────────────────────────────────────────────────────────────────────────
+/privacy                        /privacy.html                   301
+/terms                          /terms.html                     301
+/disclaimer                     /disclaimer.html                301
+/mental-health-resources        /mental-health-resources.html   301
+
+# ─── Blog posts (wildcard) ────────────────────────────────────────────────────────────────────────
+/blog-*                         /blog-:splat.html               301
