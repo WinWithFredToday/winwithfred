@@ -1,742 +1,698 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | WinWithFred</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #f7f8fa; color: #1a1a2e; min-height: 100vh; }
-
-    nav {
-      background: #1a1a2e;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo { color: #e85d04; font-weight: 800; font-size: 1.2rem; text-decoration: none; }
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .nav-badge {
-      background: #e85d04;
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .btn-signout {
-      background: transparent;
-      color: #aaa;
-      border: 1px solid #444;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.3rem 0.8rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: inherit;
-      display: none;
-    }
-    .btn-signout:hover { color: #fff; border-color: #777; }
-
-    /* ── Login form ── */
-    #login-screen {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 80vh;
-    }
-    .login-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-      padding: 2.5rem 2.5rem 2rem;
-      width: 100%;
-      max-width: 400px;
-    }
-    .login-icon { font-size: 2.2rem; margin-bottom: 0.75rem; }
-    .login-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.3rem; }
-    .login-card p { color: #888; font-size: 0.88rem; margin-bottom: 1.75rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #555;
-      margin-bottom: 0.35rem;
-      letter-spacing: 0.3px;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: #1a1a2e;
-      background: #fafafa;
-      transition: border-color 0.15s;
-      outline: none;
-    }
-    .form-group input:focus { border-color: #e85d04; background: #fff; }
-    .btn-login {
-      width: 100%;
-      background: #e85d04;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 9px;
-      cursor: pointer;
-      font-family: inherit;
-      margin-top: 0.5rem;
-      transition: background 0.15s;
-    }
-    .btn-login:hover { background: #cf5203; }
-    .btn-login:disabled { background: #f0a070; cursor: not-allowed; }
-    .login-error {
-      display: none;
-      background: #fff3ee;
-      border-left: 3px solid #e85d04;
-      color: #c04a00;
-      font-size: 0.85rem;
-      padding: 0.6rem 0.9rem;
-      border-radius: 0 6px 6px 0;
-      margin-top: 1rem;
-    }
-
-    /* ── Setup banner ── */
-    #setup-banner {
-      display: none;
-      background: #fef9c3;
-      border-left: 4px solid #ca8a04;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.5rem;
-      margin: 1.5rem 2rem 0;
-      font-size: 0.9rem;
-      color: #444;
-      line-height: 1.6;
-    }
-    #setup-banner strong { color: #ca8a04; }
-    #setup-banner code {
-      display: block;
-      background: #1a1a2e;
-      color: #e85d04;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      margin: 0.5rem 0;
-      white-space: pre;
-      overflow-x: auto;
-    }
-
-    /* ── Main content ── */
-    #admin-content { display: none; }
-
-    .page-header {
-      padding: 2rem 2rem 0;
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .page-header h1 { font-size: 1.8rem; font-weight: 800; }
-    .last-updated { color: #888; font-size: 0.85rem; }
-
-    /* ── Stats row ── */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-      padding: 1.5rem 2rem;
-    }
-    .stat-card {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      padding: 1.5rem;
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #888;
-      margin-bottom: 0.5rem;
-    }
-    .stat-value {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #1a1a2e;
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-    .stat-sub { font-size: 0.82rem; color: #888; }
-    .stat-card.orange .stat-value { color: #e85d04; }
-    .stat-card.green .stat-value { color: #16a34a; }
-
-    /* ── Chart + breakdown row ── */
-    .charts-row {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1.25rem;
-      padding: 0 2rem 1.25rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      padding: 1.5rem;
-    }
-    .card h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid #f0f0f0;
-    }
-    .chart-wrap { position: relative; height: 220px; }
-
-    /* Breakdown bars */
-    .breakdown-item { margin-bottom: 1.25rem; }
-    .breakdown-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-    .breakdown-bar-bg {
-      background: #f0f0f0;
-      border-radius: 50px;
-      height: 10px;
-      overflow: hidden;
-    }
-    .breakdown-bar { height: 100%; border-radius: 50px; transition: width 0.6s ease; }
-    .bar-premium { background: #e85d04; }
-    .bar-free { background: #1a1a2e; }
-    .bar-new { background: #16a34a; }
-
-    /* ── Members table ── */
-    .table-section { padding: 0 2rem 3rem; }
-    .table-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-    .table-header h2 { font-size: 1rem; font-weight: 700; }
-    .table-count { font-size: 0.82rem; color: #888; }
-    .table-wrap {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-    table { width: 100%; border-collapse: collapse; }
-    thead { background: #f7f8fa; }
-    th {
-      padding: 0.75rem 1.25rem;
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #888;
-    }
-    td {
-      padding: 0.9rem 1.25rem;
-      border-top: 1px solid #f3f3f3;
-      font-size: 0.88rem;
-      vertical-align: middle;
-    }
-    tr:hover td { background: #fafafa; }
-    .badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-    }
-    .badge-premium { background: #fff3ee; color: #e85d04; border: 1px solid #fcd9b7; }
-    .badge-free { background: #f0f0f0; color: #666; border: 1px solid #e0e0e0; }
-    .uid-cell { font-family: monospace; font-size: 0.8rem; color: #888; }
-    .email-cell { font-weight: 500; }
-    .no-data { color: #aaa; font-style: italic; }
-
-    /* ── Loading spinner ── */
-    #loading-state {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .spinner {
-      width: 36px; height: 36px;
-      border: 3px solid #f0f0f0;
-      border-top-color: #e85d04;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    #loading-state p { color: #888; font-size: 0.9rem; }
-
-    /* ── Error state ── */
-    #error-state {
-      display: none;
-      background: #fff3ee;
-      border-left: 4px solid #e85d04;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.5rem;
-      margin: 2rem;
-      font-size: 0.9rem;
-    }
-    #error-state strong { color: #e85d04; }
-
-    @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .charts-row { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 540px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      nav { padding: 1rem; }
-      .page-header, .stats-grid, .charts-row, .table-section { padding-left: 1rem; padding-right: 1rem; }
-      .login-card { padding: 2rem 1.5rem; margin: 1rem; }
-    }
-  </style>
-
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="canonical" href="https://winwithfred.com/admin.html">
-  <meta property="og:site_name" content="WinWithFred">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Admin Dashboard | WinWithFred">
-  <meta property="og:description" content="Free self-help tools that actually work. No fluff, real results.">
-  <meta property="og:url" content="https://winwithfred.com/admin.html">
-  <meta property="og:image" content="https://winwithfred.com/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Admin Dashboard | WinWithFred">
-  <meta name="twitter:description" content="Free self-help tools that actually work. No fluff, real results.">
-  <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Admin Dashboard | WinWithFred","description":"Free self-help tools that actually work. No fluff, real results.","url":"https://winwithfred.com/admin.html","applicationCategory":"LifestyleApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"WinWithFred","url":"https://winwithfred.com"}}</script>
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CX355GZZM2');
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CX355GZZM2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CX355GZZM2');
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — WinWithFred</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f0f0f;color:#e0e0e0;height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit}
+#login-wrap{display:flex;align-items:center;justify-content:center;height:100vh;background:#0f0f0f}
+#login-box{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:48px 40px;width:400px;text-align:center}
+#login-box h1{font-size:1.5rem;font-weight:700;color:#f5a623;margin-bottom:8px}
+#login-box p{color:#888;margin-bottom:28px;font-size:.9rem}
+#login-box input{width:100%;padding:12px 16px;background:#111;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:.95rem;margin-bottom:12px}
+#login-box input:focus{outline:none;border-color:#f5a623}
+#login-box .login-btn{width:100%;padding:12px;background:#f5a623;color:#000;font-weight:700;border-radius:8px;font-size:1rem;transition:opacity .2s}
+#login-box .login-btn:hover{opacity:.85}
+#login-error{color:#e74c3c;font-size:.85rem;margin-top:8px;display:none}
+#app{display:none;flex:1;overflow:hidden;flex-direction:row}
+#sidebar{width:220px;background:#141414;border-right:1px solid #222;display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-logo{padding:20px 20px 16px;border-bottom:1px solid #222;font-weight:700;font-size:1.05rem;color:#f5a623}
+.sidebar-logo span{color:#e0e0e0;font-weight:400;font-size:.8rem;display:block;margin-top:2px}
+#sidebar nav{flex:1;padding:12px 8px}
+.nav-btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;background:none;color:#aaa;border-radius:8px;font-size:.9rem;text-align:left;transition:all .15s}
+.nav-btn:hover{background:#1f1f1f;color:#e0e0e0}
+.nav-btn.active{background:#f5a6231a;color:#f5a623;font-weight:600}
+.nav-icon{font-size:1rem;width:20px;text-align:center}
+.sidebar-footer{padding:12px 8px;border-top:1px solid #222}
+.logout-btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;background:none;color:#666;border-radius:8px;font-size:.85rem;text-align:left;transition:all .15s}
+.logout-btn:hover{background:#1f1f1f;color:#e74c3c}
+#main-panel{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#topbar{padding:14px 24px;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+#topbar h2{font-size:1.1rem;font-weight:600}
+#content{flex:1;overflow-y:auto;padding:24px}
+#toast{position:fixed;bottom:24px;right:24px;padding:12px 20px;border-radius:8px;font-size:.9rem;font-weight:500;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none;z-index:9999}
+#toast.show{opacity:1;transform:translateY(0)}
+#toast.success{background:#27ae60;color:#fff}
+#toast.error{background:#e74c3c;color:#fff}
+#toast.info{background:#2980b9;color:#fff}
+.posts-grid{display:grid;gap:10px}
+.post-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .15s}
+.post-card:hover{border-color:#f5a623;background:#1e1e1e}
+.post-card-cat{padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;white-space:nowrap}
+.cat-mindset{background:#3d2b7a;color:#c9b8ff}
+.cat-habits{background:#1a4a2e;color:#7dd9a4}
+.cat-goals{background:#4a2a1a;color:#f9c784}
+.cat-productivity{background:#1a3a4a;color:#7dcbf9}
+.cat-life-reset{background:#4a1a3a;color:#f97dcb}
+.cat-faith{background:#4a3a1a;color:#f9e07d}
+.cat-default{background:#2a2a2a;color:#aaa}
+.post-card-title{flex:1;font-size:.92rem;font-weight:500;line-height:1.3}
+.post-card-date{font-size:.78rem;color:#555;flex-shrink:0;white-space:nowrap}
+.post-card-edit{padding:5px 12px;background:#f5a623;color:#000;border-radius:6px;font-size:.78rem;font-weight:600;flex-shrink:0;opacity:0;transition:opacity .15s}
+.post-card:hover .post-card-edit{opacity:1}
+.search-bar{display:flex;gap:10px;margin-bottom:14px}
+.search-bar input{flex:1;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e0e0e0;font-size:.9rem}
+.search-bar input:focus{outline:none;border-color:#f5a623}
+.filter-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.filter-tab{padding:5px 12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;font-size:.8rem;color:#888;cursor:pointer;transition:all .15s}
+.filter-tab:hover,.filter-tab.active{background:#f5a6231a;border-color:#f5a623;color:#f5a623}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:.78rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select,.form-group textarea{padding:10px 12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e0e0e0;font-size:.9rem;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#f5a623}
+.form-group select option{background:#1a1a1a}
+.editor-toolbar{display:flex;gap:4px;padding:8px 0;border-bottom:1px solid #222;flex-wrap:wrap;margin-bottom:8px}
+.tb-btn{padding:5px 10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:5px;color:#ccc;font-size:.8rem;transition:all .15s}
+.tb-btn:hover{background:#2a2a2a;color:#e0e0e0}
+.tb-sep{width:1px;background:#2a2a2a;margin:0 4px;align-self:stretch}
+.body-editor{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:16px;min-height:380px;font-size:.95rem;line-height:1.7;color:#e0e0e0;overflow-y:auto}
+.body-editor:focus{outline:none;border-color:#f5a623}
+.body-editor h2{font-size:1.25rem;color:#f5a623;margin:18px 0 8px;border-bottom:1px solid #222;padding-bottom:5px}
+.body-editor h3{font-size:1.05rem;color:#e0e0e0;margin:14px 0 6px}
+.body-editor p{margin-bottom:10px;color:#ccc}
+.body-editor ul,.body-editor ol{margin:8px 0 10px 20px;color:#ccc}
+.body-editor li{margin-bottom:3px}
+.body-editor blockquote{border-left:3px solid #f5a623;padding:8px 16px;background:#1f1f1f;margin:10px 0;color:#aaa;font-style:italic;border-radius:0 6px 6px 0}
+.body-editor a{color:#f5a623;text-decoration:underline}
+.editor-actions{display:flex;gap:10px;margin-top:16px;align-items:center;flex-wrap:wrap}
+.btn-primary{padding:10px 24px;background:#f5a623;color:#000;font-weight:700;border-radius:8px;font-size:.9rem;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{padding:10px 20px;background:#1a1a1a;border:1px solid #333;color:#ccc;border-radius:8px;font-size:.9rem;transition:all .15s}
+.btn-secondary:hover{border-color:#f5a623;color:#e0e0e0}
+.btn-danger{padding:10px 20px;background:#1a1a1a;border:1px solid #333;color:#e74c3c;border-radius:8px;font-size:.9rem;transition:all .15s;margin-left:auto}
+.btn-danger:hover{border-color:#e74c3c;background:#2a1a1a}
+.save-status{font-size:.85rem;color:#666}
+.index-table{width:100%;border-collapse:collapse}
+.index-table th{padding:10px 14px;text-align:left;font-size:.78rem;color:#666;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #222}
+.index-table td{padding:9px 14px;border-bottom:1px solid #1a1a1a;font-size:.86rem;vertical-align:middle}
+.index-table tr:hover td{background:#161616}
+.cat-badge{padding:2px 8px;border-radius:10px;font-size:.73rem;font-weight:600}
+.idx-edit-btn{padding:4px 10px;border-radius:5px;font-size:.75rem;font-weight:600;background:#f5a6231a;color:#f5a623;border:1px solid #f5a62344;cursor:pointer;transition:all .15s}
+.idx-edit-btn:hover{background:#f5a62333}
+#modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center}
+#modal-overlay.show{display:flex}
+#modal{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:28px;width:560px;max-height:90vh;overflow-y:auto}
+#modal h3{font-size:1.05rem;font-weight:600;margin-bottom:20px;color:#f5a623}
+.modal-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
+.loading{display:flex;align-items:center;justify-content:center;padding:60px;color:#555;font-size:.95rem;gap:10px}
+.spinner{width:20px;height:20px;border:2px solid #333;border-top-color:#f5a623;border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:60px 20px;color:#555}
+.post-count{margin-bottom:8px;color:#555;font-size:.82rem}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">WinWithFred</a>
-  <div class="nav-right">
-    <span class="nav-badge">Admin</span>
-    <button class="btn-signout" id="btn-signout" onclick="signOut()">Sign out</button>
+<div id="login-wrap">
+  <div id="login-box">
+    <h1>WinWithFred</h1>
+    <p>Enter your GitHub token to manage your site</p>
+    <input id="token-input" type="password" placeholder="ghp_..." autocomplete="off">
+    <button class="login-btn" onclick="doLogin()">Sign In &rarr;</button>
+    <div id="login-error">Invalid token &mdash; please try again</div>
+  </div>
+</div>
+
+<div id="app">
+  <aside id="sidebar">
+    <div class="sidebar-logo">WwF <span>Admin Panel</span></div>
+    <nav>
+      <button class="nav-btn active" id="nav-posts" onclick="showView('posts')">
+        <span class="nav-icon">&#128221;</span><span>Blog Posts</span>
+      </button>
+      <button class="nav-btn" id="nav-index" onclick="showView('index')">
+        <span class="nav-icon">&#128203;</span><span>Blog Index</span>
+      </button>
+      <button class="nav-btn" id="nav-new" onclick="showView('new')">
+        <span class="nav-icon">&#9997;</span><span>New Post</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="logout-btn" onclick="doLogout()">
+        <span class="nav-icon">&#128682;</span><span>Sign Out</span>
+      </button>
+    </div>
+  </aside>
+  <div id="main-panel">
+    <div id="topbar">
+      <h2 id="topbar-title">Blog Posts</h2>
+      <div id="topbar-actions"></div>
+    </div>
+    <div id="content">
+      <div class="loading"><div class="spinner"></div> Loading...</div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-overlay">
+  <div id="modal">
+    <h3 id="modal-title"></h3>
+    <div id="modal-body"></div>
+    <div class="modal-actions" id="modal-actions"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const REPO = 'WinWithFredToday/winwithfred';
+let TOKEN = '';
+let H = {};
+let allPosts = [];
+let currentFile = null;
+
+const CATS = {
+  mindset:{label:'Mindset',cls:'cat-mindset'},
+  habits:{label:'Habits',cls:'cat-habits'},
+  goals:{label:'Goals',cls:'cat-goals'},
+  productivity:{label:'Productivity',cls:'cat-productivity'},
+  'life-reset':{label:'Life Reset',cls:'cat-life-reset'},
+  faith:{label:'Faith',cls:'cat-faith'}
+};
+
+window.addEventListener('load',()=>{
+  TOKEN = localStorage.getItem('wwf_token')||'';
+  if(TOKEN){H=mkH(TOKEN);showApp();}
+});
+
+function mkH(t){return{'Authorization':'token '+t,'Content-Type':'application/json'};}
+document.getElementById('token-input').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+
+async function doLogin(){
+  const t=document.getElementById('token-input').value.trim();
+  if(!t)return;
+  document.getElementById('login-error').style.display='none';
+  try{
+    const r=await fetch('https://api.github.com/repos/'+REPO,{headers:mkH(t)});
+    if(!r.ok)throw new Error();
+    TOKEN=t;H=mkH(t);
+    localStorage.setItem('wwf_token',t);
+    showApp();
+  }catch(e){document.getElementById('login-error').style.display='block';}
+}
+
+function doLogout(){localStorage.removeItem('wwf_token');location.reload();}
+
+function showApp(){
+  document.getElementById('login-wrap').style.display='none';
+  document.getElementById('app').style.display='flex';
+  showView('posts');
+}
+
+function showView(v){
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('nav-'+v).classList.add('active');
+  if(v==='posts')renderPostsView();
+  else if(v==='index')renderIndexView();
+  else if(v==='new')renderNewView();
+}
+
+function setTopbar(title,actions=''){
+  document.getElementById('topbar-title').textContent=title;
+  document.getElementById('topbar-actions').innerHTML=actions;
+}
+function setContent(html){document.getElementById('content').innerHTML=html;}
+
+// ── POSTS VIEW ──────────────────────────────────────────
+async function renderPostsView(){
+  setTopbar('Blog Posts');
+  setContent('<div class="loading"><div class="spinner"></div> Loading posts...</div>');
+  try{
+    if(!allPosts.length)await loadPosts();
+    drawPosts('','');
+  }catch(e){setContent('<div class="empty-state">Failed to load posts. Check your token.</div>');}
+}
+
+async function loadPosts(){
+  const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/',{headers:H});
+  const files=await r.json();
+  allPosts=files.filter(f=>f.name.startsWith('blog-')&&f.name.endsWith('.html'))
+               .sort((a,b)=>b.name.localeCompare(a.name));
+  // Load metadata in batches of 8
+  for(let i=0;i<allPosts.length;i+=8){
+    const batch=allPosts.slice(i,i+8);
+    await Promise.all(batch.map(async p=>{
+      try{
+        const r2=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+p.name,{headers:H});
+        const d=await r2.json();
+        const html=decB64(d.content);
+        p.sha=d.sha; p.html=html;
+        const doc=new DOMParser().parseFromString(html,'text/html');
+        p.title=doc.querySelector('h1')?.textContent?.trim()||p.name;
+        p.cat=doc.querySelector('.blog-tag')?.textContent?.trim()||'';
+        p.meta=doc.querySelector('meta[name="description"]')?.getAttribute('content')||'';
+        const mt=doc.querySelector('.post-meta')?.textContent?.replace(/\s+/g,' ').trim()||'';
+        const dm=mt.match(/([A-Z][a-z]+ \d+,? \d{4})/);
+        p.date=dm?dm[1]:'';
+      }catch(e){p.title=p.name;}
+    }));
+  }
+}
+
+function drawPosts(q,cat){
+  q=(document.getElementById('srch')?.value||'').toLowerCase();
+  cat=document.getElementById('fcat')?.value||'';
+  const filtered=allPosts.filter(p=>{
+    const mq=!q||(p.title||'').toLowerCase().includes(q)||p.name.includes(q);
+    const mc=!cat||p.cat?.toLowerCase()===cat||(p.cat||'').toLowerCase().replace(/\s+/g,'-')===cat;
+    return mq&&mc;
+  });
+  const tabs=['','mindset','habits','goals','productivity','life-reset','faith'].map(c=>{
+    const lbl=c?(CATS[c]?.label||c):'All';
+    return `<button class="filter-tab ${cat===c?'active':''}" onclick="filterCat('${c}')">${lbl}</button>`;
+  }).join('');
+  const cards=filtered.map(p=>{
+    const ci=Object.values(CATS).find(v=>v.label.toLowerCase()===(p.cat||'').toLowerCase())||{label:p.cat||'',cls:'cat-default'};
+    return `<div class="post-card" onclick="openEditor('${p.name}')">
+      <span class="post-card-cat ${ci.cls}">${ci.label||p.cat||'&mdash;'}</span>
+      <span class="post-card-title">${esc(p.title||p.name)}</span>
+      <span class="post-card-date">${p.date||''}</span>
+      <span class="post-card-edit">Edit &rarr;</span>
+    </div>`;
+  }).join('');
+  setContent(`
+    <div class="post-count">${filtered.length} of ${allPosts.length} posts</div>
+    <div class="search-bar"><input id="srch" type="text" placeholder="Search posts..." value="${esc(q)}" oninput="drawPosts()"></div>
+    <div class="filter-tabs">${tabs}<input type="hidden" id="fcat" value="${cat}"></div>
+    <div class="posts-grid">${cards||'<div class="empty-state">No posts found.</div>'}</div>
+  `);
+}
+
+function filterCat(c){document.getElementById('fcat').value=c;drawPosts();}
+
+// ── EDITOR ──────────────────────────────────────────────
+async function openEditor(name){
+  setTopbar('Loading...');
+  setContent('<div class="loading"><div class="spinner"></div> Loading...</div>');
+  try{
+    const p=allPosts.find(x=>x.name===name)||{name};
+    let html=p.html,sha=p.sha;
+    if(!html){
+      const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+name,{headers:H});
+      const d=await r.json();
+      html=decB64(d.content);sha=d.sha;
+    }
+    currentFile={name,sha,html};
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const title=doc.querySelector('h1')?.textContent?.trim()||'';
+    const cat=doc.querySelector('.blog-tag')?.textContent?.trim()||'Mindset';
+    const meta=doc.querySelector('meta[name="description"]')?.getAttribute('content')||'';
+    const body=doc.querySelector('article.post-body')?.innerHTML?.trim()||'';
+    const mt=doc.querySelector('.post-meta')?.textContent?.replace(/\s+/g,' ').trim()||'';
+    const dm=mt.match(/([A-Z][a-z]+ \d+,? \d{4})/);
+    const date=dm?dm[1]:'';
+    const catOpts=Object.entries(CATS).map(([k,v])=>`<option value="${v.label}" ${v.label===cat?'selected':''}>${v.label}</option>`).join('');
+    setTopbar(title.slice(0,45)+(title.length>45?'...':''),`<button class="btn-secondary" onclick="showView('posts')">&larr; Back</button>`);
+    setContent(`
+      <div class="form-row">
+        <div class="form-group"><label>Title</label><input id="e-title" type="text" value="${esc(title)}"></div>
+        <div class="form-group"><label>Category</label><select id="e-cat">${catOpts}</select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Date</label><input id="e-date" type="text" value="${esc(date)}" placeholder="May 8, 2026"></div>
+        <div class="form-group"><label>File</label><input type="text" value="${name}" readonly style="opacity:.4;cursor:default"></div>
+      </div>
+      <div class="form-group">
+        <label>Meta Description <span id="mc" style="color:#555;font-weight:400;text-transform:none"></span></label>
+        <textarea id="e-meta" rows="2" oninput="document.getElementById('mc').textContent=this.value.length+'/160'">${esc(meta)}</textarea>
+      </div>
+      <div class="form-group">
+        <label>Post Body</label>
+        <div class="editor-toolbar">
+          <button class="tb-btn" onclick="fmt('bold')"><b>B</b></button>
+          <button class="tb-btn" onclick="fmt('italic')"><i>I</i></button>
+          <span class="tb-sep"></span>
+          <button class="tb-btn" onclick="fmtB('h2')">H2</button>
+          <button class="tb-btn" onclick="fmtB('h3')">H3</button>
+          <button class="tb-btn" onclick="fmtB('p')">P</button>
+          <span class="tb-sep"></span>
+          <button class="tb-btn" onclick="fmt('insertUnorderedList')">&bull; List</button>
+          <button class="tb-btn" onclick="fmtB('blockquote')">&ldquo; Quote</button>
+          <span class="tb-sep"></span>
+          <button class="tb-btn" onclick="insLink()">&#128279; Link</button>
+          <button class="tb-btn" onclick="fmt('unlink')">&#9988; Unlink</button>
+          <button class="tb-btn" onclick="previewPost()">&#128065; Preview</button>
+        </div>
+        <div id="e-body" class="body-editor" contenteditable="true" spellcheck="true">${body}</div>
+      </div>
+      <div class="editor-actions">
+        <button class="btn-primary" onclick="savePost()">&nbsp;&#128190; Save &amp; Publish</button>
+        <span id="sts" class="save-status"></span>
+        <button class="btn-danger" onclick="showView('posts')">Cancel</button>
+      </div>
+    `);
+    document.getElementById('mc').textContent=meta.length+'/160';
+  }catch(e){showToast('Failed to load post','error');showView('posts');}
+}
+
+function fmt(c){document.getElementById('e-body')?.focus();document.execCommand(c,false,null);}
+function fmtB(t){document.getElementById('e-body')?.focus();document.execCommand('formatBlock',false,t);}
+function insLink(){const u=prompt('URL:','https://');if(u){document.getElementById('e-body')?.focus();document.execCommand('createLink',false,u);}}
+function previewPost(){
+  const t=document.getElementById('e-title')?.value||'';
+  const b=document.getElementById('e-body')?.innerHTML||'';
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(t)}</title>
+  <style>body{font-family:Georgia,serif;max-width:720px;margin:40px auto;padding:0 20px;line-height:1.7;color:#222}
+  h1{font-size:2rem}h2{font-size:1.4rem;margin-top:24px;color:#333}blockquote{border-left:3px solid #f5a623;padding:8px 16px;background:#fffdf0;margin:12px 0}a{color:#c47d00}</style>
+  </head><body><h1>${esc(t)}</h1><hr style="margin:16px 0">${b}</body></html>`);
+}
+
+async function savePost(){
+  const title=document.getElementById('e-title').value.trim();
+  const cat=document.getElementById('e-cat').value;
+  const date=document.getElementById('e-date').value.trim();
+  const meta=document.getElementById('e-meta').value.trim();
+  const body=document.getElementById('e-body').innerHTML;
+  if(!title){showToast('Title is required','error');return;}
+  const sts=document.getElementById('sts');
+  sts.textContent='Saving...';
+  try{
+    const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+currentFile.name,{headers:H});
+    const d=await r.json();
+    let html=decB64(d.content);
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const h1=doc.querySelector('h1');if(h1)h1.textContent=title;
+    const og=doc.querySelector('meta[property="og:title"]');if(og)og.setAttribute('content',title);
+    const tt=doc.querySelector('title');if(tt)tt.textContent=title+' | WinWithFred';
+    const tg=doc.querySelector('.blog-tag');if(tg)tg.textContent=cat;
+    const md=doc.querySelector('meta[name="description"]');if(md)md.setAttribute('content',meta);
+    const ogd=doc.querySelector('meta[property="og:description"]');if(ogd)ogd.setAttribute('content',meta);
+    const pm=doc.querySelector('.post-meta');
+    if(pm&&date)pm.innerHTML=pm.innerHTML.replace(/([A-Z][a-z]+ \d+,? \d{4})/,date);
+    const ab=doc.querySelector('article.post-body');if(ab)ab.innerHTML=body;
+    const newHTML='<!DOCTYPE html>\n'+doc.documentElement.outerHTML;
+    const put=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+currentFile.name,{
+      method:'PUT',headers:H,
+      body:JSON.stringify({message:'Update: '+title,content:encB64(newHTML),sha:d.sha})
+    });
+    if(!put.ok)throw new Error(await put.text());
+    const pd=await put.json();
+    // Update cache
+    const cp=allPosts.find(p=>p.name===currentFile.name);
+    if(cp){cp.title=title;cp.cat=cat;cp.date=date;cp.meta=meta;cp.html=newHTML;cp.sha=pd.content?.sha||d.sha;}
+    sts.textContent='&#10003; Saved!';
+    showToast('Saved and published!','success');
+    setTimeout(()=>{if(sts)sts.textContent='';},3000);
+  }catch(e){sts.textContent='Error';showToast('Save failed: '+e.message,'error');}
+}
+
+// ── BLOG INDEX ──────────────────────────────────────────
+async function renderIndexView(){
+  setTopbar('Blog Index');
+  setContent('<div class="loading"><div class="spinner"></div> Loading index...</div>');
+  try{
+    const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/blog.html',{headers:H});
+    const d=await r.json();
+    const html=decB64(d.content);
+    window._idxSHA=d.sha; window._idxHTML=html;
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const cards=Array.from(doc.querySelectorAll('.blog-card'));
+    window._idxCards=cards.map((c,i)=>({
+      i,cat:c.getAttribute('data-category')||'',
+      title:c.querySelector('.blog-card-title a')?.textContent?.trim()||'',
+      slug:c.querySelector('.blog-card-title a')?.getAttribute('href')||'',
+      excerpt:c.querySelector('.blog-card-excerpt')?.textContent?.trim()||'',
+      meta:c.querySelector('.blog-card-meta')?.textContent?.trim()||''
+    }));
+    const rows=window._idxCards.map(c=>{
+      const ci=CATS[c.cat]||{label:c.cat,cls:'cat-default'};
+      return `<tr>
+        <td><span class="cat-badge ${ci.cls}">${ci.label}</span></td>
+        <td>${esc(c.title)}</td>
+        <td style="color:#555;font-size:.8rem">${esc(c.slug)}</td>
+        <td style="color:#555;font-size:.8rem">${esc(c.meta)}</td>
+        <td><button class="idx-edit-btn" onclick="editCard(${c.i})">Edit</button></td>
+      </tr>`;
+    }).join('');
+    setContent(`<div class="post-count">${cards.length} cards</div>
+      <div style="overflow-x:auto"><table class="index-table">
+        <thead><tr><th>Category</th><th>Title</th><th>URL Slug</th><th>Date / Read Time</th><th></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>`);
+  }catch(e){setContent('<div class="empty-state">Failed to load index.</div>');}
+}
+
+function editCard(i){
+  const c=window._idxCards[i];
+  const catOpts=Object.entries(CATS).map(([k,v])=>`<option value="${k}" ${k===c.cat?'selected':''}>${v.label}</option>`).join('');
+  document.getElementById('modal-title').textContent='Edit Blog Card';
+  document.getElementById('modal-body').innerHTML=`
+    <div class="form-group"><label>Title</label><input id="ci-title" type="text" value="${esc(c.title)}"></div>
+    <div class="form-row">
+      <div class="form-group"><label>Category</label><select id="ci-cat">${catOpts}</select></div>
+      <div class="form-group"><label>URL Slug</label><input id="ci-slug" type="text" value="${esc(c.slug)}"></div>
+    </div>
+    <div class="form-group"><label>Excerpt</label><textarea id="ci-exc" rows="3">${esc(c.excerpt)}</textarea></div>
+    <div class="form-group"><label>Date &amp; Read Time</label><input id="ci-meta" type="text" value="${esc(c.meta)}"></div>`;
+  document.getElementById('modal-actions').innerHTML=`
+    <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+    <button class="btn-primary" onclick="saveCard(${i})">Save</button>`;
+  showModal();
+}
+
+async function saveCard(i){
+  const title=document.getElementById('ci-title').value.trim();
+  const cat=document.getElementById('ci-cat').value;
+  const slug=document.getElementById('ci-slug').value.trim();
+  const exc=document.getElementById('ci-exc').value.trim();
+  const meta=document.getElementById('ci-meta').value.trim();
+  const lbl=CATS[cat]?.label||cat;
+  closeModal();showToast('Saving...','info');
+  try{
+    const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/blog.html',{headers:H});
+    const d=await r.json();
+    const html=decB64(d.content);
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const card=doc.querySelectorAll('.blog-card')[i];
+    if(!card)throw new Error('Card not found');
+    card.setAttribute('data-category',cat);
+    const tg=card.querySelector('.blog-card-tag');if(tg)tg.textContent=lbl;
+    const ta=card.querySelector('.blog-card-title a');if(ta){ta.textContent=title;ta.href=slug;}
+    const ra=card.querySelector('.read-more');if(ra)ra.href=slug;
+    const ex=card.querySelector('.blog-card-excerpt');if(ex)ex.textContent=exc;
+    const me=card.querySelector('.blog-card-meta');if(me)me.innerHTML=meta.replace('·','&middot;');
+    const newHTML='<!DOCTYPE html>\n'+doc.documentElement.outerHTML;
+    const put=await fetch('https://api.github.com/repos/'+REPO+'/contents/blog.html',{
+      method:'PUT',headers:H,
+      body:JSON.stringify({message:'Update card: '+title,content:encB64(newHTML),sha:d.sha})
+    });
+    if(!put.ok)throw new Error(await put.text());
+    await syncBlog(newHTML);
+    showToast('Card updated!','success');
+    renderIndexView();
+  }catch(e){showToast('Failed: '+e.message,'error');}
+}
+
+async function syncBlog(html){
+  try{
+    const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/blog',{headers:H});
+    if(!r.ok)return;
+    const d=await r.json();
+    await fetch('https://api.github.com/repos/'+REPO+'/contents/blog',{
+      method:'PUT',headers:H,
+      body:JSON.stringify({message:'Sync blog',content:encB64(html),sha:d.sha})
+    });
+  }catch(e){}
+}
+
+// ── NEW POST ─────────────────────────────────────────────
+function renderNewView(){
+  setTopbar('New Post');
+  const today=new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const catOpts=Object.entries(CATS).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('');
+  setContent(`
+    <div class="form-row">
+      <div class="form-group"><label>Title</label><input id="n-title" type="text" placeholder="How to ..." oninput="autoSlug()"></div>
+      <div class="form-group"><label>Category</label><select id="n-cat">${catOpts}</select></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>URL Slug (filename)</label><input id="n-slug" type="text" placeholder="blog-how-to-..."></div>
+      <div class="form-group"><label>Date</label><input id="n-date" type="text" value="${today}"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Meta Description <span id="nmc" style="color:#555;font-weight:400;text-transform:none">0/160</span></label>
+        <textarea id="n-meta" rows="2" placeholder="Brief description for Google..." oninput="document.getElementById('nmc').textContent=this.value.length+'/160'"></textarea>
+      </div>
+      <div class="form-group"><label>Read Time (mins)</label><input id="n-time" type="number" value="6" min="1" max="60" style="width:90px"></div>
+    </div>
+    <div class="form-group">
+      <label>Post Body</label>
+      <div class="editor-toolbar">
+        <button class="tb-btn" onclick="nfmt('bold')"><b>B</b></button>
+        <button class="tb-btn" onclick="nfmt('italic')"><i>I</i></button>
+        <span class="tb-sep"></span>
+        <button class="tb-btn" onclick="nfmtB('h2')">H2</button>
+        <button class="tb-btn" onclick="nfmtB('h3')">H3</button>
+        <button class="tb-btn" onclick="nfmtB('p')">P</button>
+        <span class="tb-sep"></span>
+        <button class="tb-btn" onclick="nfmt('insertUnorderedList')">&bull; List</button>
+        <button class="tb-btn" onclick="nfmtB('blockquote')">&ldquo; Quote</button>
+        <span class="tb-sep"></span>
+        <button class="tb-btn" onclick="nInsLink()">&#128279; Link</button>
+      </div>
+      <div id="n-body" class="body-editor" contenteditable="true" spellcheck="true"><p>Start writing your post here...</p></div>
+    </div>
+    <div class="editor-actions">
+      <button class="btn-primary" onclick="publishPost()">&#128640; Publish Post</button>
+      <span id="nsts" class="save-status"></span>
+    </div>
+  `);
+}
+
+function autoSlug(){
+  const t=document.getElementById('n-title').value;
+  document.getElementById('n-slug').value='blog-'+t.toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
+}
+function nfmt(c){document.getElementById('n-body')?.focus();document.execCommand(c,false,null);}
+function nfmtB(t){document.getElementById('n-body')?.focus();document.execCommand('formatBlock',false,t);}
+function nInsLink(){const u=prompt('URL:','https://');if(u){document.getElementById('n-body')?.focus();document.execCommand('createLink',false,u);}}
+
+async function publishPost(){
+  const title=document.getElementById('n-title').value.trim();
+  const cat=document.getElementById('n-cat').value;
+  const slug=document.getElementById('n-slug').value.trim();
+  const date=document.getElementById('n-date').value.trim();
+  const meta=document.getElementById('n-meta').value.trim();
+  const time=document.getElementById('n-time').value||'6';
+  const body=document.getElementById('n-body').innerHTML;
+  const lbl=CATS[cat]?.label||cat;
+  if(!title){showToast('Add a title','error');return;}
+  if(!slug){showToast('Add a URL slug','error');return;}
+  if(!meta){showToast('Add a meta description','error');return;}
+  const sts=document.getElementById('nsts');
+  sts.textContent='Publishing...';
+  const url='https://winwithfred.com/'+slug;
+  const filename=slug+'.html';
+  const postHTML=makePostHTML(title,cat,lbl,slug,date,meta,time,body,url);
+  try{
+    let sha=null;
+    try{const chk=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+filename,{headers:H});
+      if(chk.ok){const cd=await chk.json();sha=cd.sha;}}catch(e){}
+    const body2={message:'Add post: '+title,content:encB64(postHTML)};
+    if(sha)body2.sha=sha;
+    const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+filename,{method:'PUT',headers:H,body:JSON.stringify(body2)});
+    if(!r.ok)throw new Error(await r.text());
+    await addCard(title,cat,lbl,slug,date,time,meta);
+    allPosts=[];
+    sts.textContent='&#10003; Published!';
+    showToast('"'+title+'" is live!','success');
+    setTimeout(()=>showView('posts'),1800);
+  }catch(e){sts.textContent='Error';showToast('Failed: '+e.message,'error');}
+}
+
+async function addCard(title,cat,lbl,slug,date,time,meta){
+  const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/blog.html',{headers:H});
+  const d=await r.json();
+  let html=decB64(d.content);
+  const card=`\n      <div class="blog-card" data-category="${cat}">
+        <div class="blog-card-body">
+          <span class="blog-card-tag">${lbl}</span>
+          <h2 class="blog-card-title"><a href="${slug}">${title}</a></h2>
+          <p class="blog-card-excerpt">${meta}</p>
+          <div class="blog-card-footer"><span class="blog-card-meta">${date} &middot; ${time} min</span><a href="${slug}" class="read-more">Read More &rarr;</a></div>
+        </div>
+      </div>`;
+  const at=html.indexOf('<div class="blog-grid"');
+  if(at===-1)throw new Error('blog-grid not found');
+  const af=html.indexOf('>',at)+1;
+  const newHTML=html.slice(0,af)+card+html.slice(af);
+  const put=await fetch('https://api.github.com/repos/'+REPO+'/contents/blog.html',{method:'PUT',headers:H,body:JSON.stringify({message:'Add card: '+title,content:encB64(newHTML),sha:d.sha})});
+  if(!put.ok)throw new Error('Failed to update blog index');
+  await syncBlog(newHTML);
+}
+
+function makePostHTML(title,cat,lbl,slug,date,meta,time,body,url){
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="${esc(meta)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(meta)}">
+<meta property="og:url" content="${url}">
+<meta property="og:type" content="article">
+<link rel="canonical" href="${url}">
+<title>${esc(title)} | WinWithFred</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"${esc(title)}","description":"${esc(meta)}","url":"${url}","author":{"@type":"Person","name":"Freddy Owen"},"publisher":{"@type":"Organization","name":"WinWithFred"},"datePublished":"${date}"}<\/script>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">WinWithFred</a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/tools">Tools</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/newsletter" class="nav-cta">Newsletter</a></li>
+    </ul>
   </div>
 </nav>
-
-<!-- Login form -->
-<div id="login-screen">
-  <div class="login-card">
-    <div class="login-icon">🔐</div>
-    <h2>Admin Login</h2>
-    <p>Sign in with your admin credentials to access the dashboard.</p>
-    <form id="login-form" onsubmit="handleLogin(event)">
-      <div class="form-group">
-        <label for="login-email">Email</label>
-        <input type="email" id="login-email" placeholder="your@email.com" required autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="login-password">Password</label>
-        <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password">
-      </div>
-      <button type="submit" class="btn-login" id="login-btn">Log In</button>
-      <div class="login-error" id="login-error"></div>
-    </form>
+<main>
+  <header class="post-header">
+    <div class="post-header-inner">
+      <span class="blog-tag">${lbl}</span>
+      <h1>${esc(title)}</h1>
+      <div class="post-meta">By Freddy Owen &middot; ${date} &middot; ${time} min read</div>
+    </div>
+  </header>
+  <article class="post-body">
+${body}
+  </article>
+  <section class="post-cta">
+    <div class="cta-inner">
+      <h2>Ready to take action?</h2>
+      <p>Join thousands of people getting real advice every week.</p>
+      <a href="/newsletter" class="btn-primary">Get the Newsletter</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-container">
+    <p>&copy; 2026 WinWithFred. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
   </div>
-</div>
+</footer>
+<script src="/nav.js" defer><\/script>
+</body>
+</html>`;
+}
 
-<!-- Loading -->
-<div id="loading-state">
-  <div class="spinner"></div>
-  <p>Loading dashboard…</p>
-</div>
+// ── MODAL ───────────────────────────────────────────────
+function showModal(){document.getElementById('modal-overlay').classList.add('show');}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('show');}
+document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target.id==='modal-overlay')closeModal();});
 
-<!-- Setup required banner -->
-<div id="setup-banner">
-  <strong>⚠️ One-time Firestore setup required</strong> - The dashboard can see member counts, but to read individual member records you need to add an admin rule in Firebase Console → Firestore → Rules. Add this inside your existing <code>match /users/{userId}</code> block:<code>allow read: if request.auth.token.email == 'freddyowenprivate@gmail.com';</code>
-  Then reload this page. Your current counts above are accurate - only the member table below needs this rule.
-</div>
+// ── TOAST ───────────────────────────────────────────────
+let _tt;
+function showToast(msg,type='info'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='show '+type;
+  clearTimeout(_tt);_tt=setTimeout(()=>t.className='',3500);
+}
 
-<!-- Error state -->
-<div id="error-state">
-  <strong>Error loading data.</strong> <span id="error-msg"></span>
-</div>
-
-<!-- Admin dashboard -->
-<div id="admin-content">
-  <div class="page-header">
-    <h1>Member Dashboard</h1>
-    <span class="last-updated" id="last-updated"></span>
-  </div>
-
-  <!-- Stats -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-label">Total Members</div>
-      <div class="stat-value" id="stat-total">-</div>
-      <div class="stat-sub">All registered accounts</div>
-    </div>
-    <div class="stat-card orange">
-      <div class="stat-label">Premium</div>
-      <div class="stat-value" id="stat-premium">-</div>
-      <div class="stat-sub" id="stat-premium-pct">Paid members</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Free</div>
-      <div class="stat-value" id="stat-free">-</div>
-      <div class="stat-sub">Free accounts</div>
-    </div>
-    <div class="stat-card green">
-      <div class="stat-label">New This Month</div>
-      <div class="stat-value" id="stat-new">-</div>
-      <div class="stat-sub" id="stat-new-sub">Members with join date</div>
-    </div>
-  </div>
-
-  <!-- Charts row -->
-  <div class="charts-row">
-    <div class="card">
-      <h2>Member Growth - Last 6 Months</h2>
-      <div class="chart-wrap">
-        <canvas id="growthChart"></canvas>
-      </div>
-      <p id="chart-no-data" style="display:none; color:#aaa; font-size:0.85rem; margin-top:0.75rem; font-style:italic;">
-        Growth tracking activates for members who log in after today. Historical data will build up over time.
-      </p>
-    </div>
-    <div class="card">
-      <h2>Breakdown</h2>
-      <div class="breakdown-item">
-        <div class="breakdown-label">
-          <span>Premium</span>
-          <span id="pct-premium">-</span>
-        </div>
-        <div class="breakdown-bar-bg">
-          <div class="breakdown-bar bar-premium" id="bar-premium" style="width:0%"></div>
-        </div>
-      </div>
-      <div class="breakdown-item">
-        <div class="breakdown-label">
-          <span>Free</span>
-          <span id="pct-free">-</span>
-        </div>
-        <div class="breakdown-bar-bg">
-          <div class="breakdown-bar bar-free" id="bar-free" style="width:0%"></div>
-        </div>
-      </div>
-      <div class="breakdown-item" id="breakdown-new-row">
-        <div class="breakdown-label">
-          <span>New this month</span>
-          <span id="pct-new">-</span>
-        </div>
-        <div class="breakdown-bar-bg">
-          <div class="breakdown-bar bar-new" id="bar-new" style="width:0%"></div>
-        </div>
-      </div>
-      <p style="font-size:0.78rem; color:#aaa; margin-top:1.5rem; line-height:1.5;">
-        Premium conversion rate is the most important number. Anything above 5% is strong for a content site.
-      </p>
-    </div>
-  </div>
-
-  <!-- Members table -->
-  <div class="table-section">
-    <div class="table-header">
-      <h2>Members</h2>
-      <span class="table-count" id="table-count"></span>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Plan</th>
-            <th>Joined</th>
-            <th>User ID</th>
-          </tr>
-        </thead>
-        <tbody id="members-tbody">
-          <tr><td colspan="4" style="text-align:center; padding:2rem; color:#aaa;">Loading members…</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script defer src="firebase-config.js"></script>
-<script>
-(function () {
-  const ADMIN_EMAIL = 'freddyowenprivate@gmail.com';
-
-  function show(id) { document.getElementById(id).style.display = ''; }
-  function hide(id) { document.getElementById(id).style.display = 'none'; }
-  function showFlex(id) { document.getElementById(id).style.display = 'flex'; }
-  function el(id) { return document.getElementById(id); }
-
-  // ── Login handler ──
-  window.handleLogin = async function(e) {
-    e.preventDefault();
-    var email = el('login-email').value.trim();
-    var password = el('login-password').value;
-    var btn = el('login-btn');
-    var errEl = el('login-error');
-
-    errEl.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Signing in…';
-
-    try {
-      var result = await firebase.auth().signInWithEmailAndPassword(email, password);
-      if (result.user.email !== ADMIN_EMAIL) {
-        await firebase.auth().signOut();
-        showError('This account does not have admin access.');
-        return;
-      }
-      // onAuthStateChanged will handle the rest
-    } catch (err) {
-      var msg = 'Login failed. Please check your credentials.';
-      if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
-        msg = 'Incorrect email or password.';
-      } else if (err.code === 'auth/too-many-requests') {
-        msg = 'Too many attempts. Please wait a moment and try again.';
-      }
-      showError(msg);
-    }
-
-    function showError(msg) {
-      errEl.textContent = msg;
-      errEl.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Log In';
-    }
-  };
-
-  // ── Sign out ──
-  window.signOut = async function() {
-    await firebase.auth().signOut();
-  };
-
-  // ── Dashboard functions ──
-  function formatDate(val) {
-    if (!val) return '-';
-    let d;
-    if (val && typeof val.toDate === 'function') d = val.toDate();
-    else if (val instanceof Date) d = val;
-    else d = new Date(val);
-    if (isNaN(d)) return '-';
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }
-
-  function monthKey(val) {
-    if (!val) return null;
-    let d;
-    if (val && typeof val.toDate === 'function') d = val.toDate();
-    else if (val instanceof Date) d = val;
-    else d = new Date(val);
-    if (isNaN(d)) return null;
-    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
-  }
-
-  function getLast6Months() {
-    const months = [];
-    const now = new Date();
-    for (let i = 5; i >= 0; i--) {
-      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
-      const label = d.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
-      months.push({ key, label });
-    }
-    return months;
-  }
-
-  function renderChart(members) {
-    const months = getLast6Months();
-    const counts = {};
-    months.forEach(m => counts[m.key] = 0);
-
-    let hasDateData = false;
-    members.forEach(m => {
-      const key = monthKey(m.createdAt);
-      if (key && counts[key] !== undefined) {
-        counts[key]++;
-        hasDateData = true;
-      }
-    });
-
-    if (!hasDateData) {
-      el('chart-no-data').style.display = '';
-      return;
-    }
-
-    const ctx = document.getElementById('growthChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: months.map(m => m.label),
-        datasets: [{
-          label: 'New Members',
-          data: months.map(m => counts[m.key]),
-          borderColor: '#e85d04',
-          backgroundColor: 'rgba(232,93,4,0.08)',
-          borderWidth: 2.5,
-          pointBackgroundColor: '#e85d04',
-          pointRadius: 4,
-          fill: true,
-          tension: 0.3
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 11 } }, grid: { color: '#f0f0f0' } },
-          x: { ticks: { font: { size: 11 } }, grid: { display: false } }
-        }
-      }
-    });
-  }
-
-  function renderTable(members) {
-    const tbody = el('members-tbody');
-    if (!members.length) {
-      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">No members found</td></tr>';
-      return;
-    }
-    members.sort((a, b) => {
-      if (a.premium && !b.premium) return -1;
-      if (!a.premium && b.premium) return 1;
-      const da = a.createdAt ? (a.createdAt.toDate ? a.createdAt.toDate() : new Date(a.createdAt)) : new Date(0);
-      const db2 = b.createdAt ? (b.createdAt.toDate ? b.createdAt.toDate() : new Date(b.createdAt)) : new Date(0);
-      return db2 - da;
-    });
-    tbody.innerHTML = members.map(m => `
-      <tr>
-        <td class="email-cell">${m.email || '<span class="no-data">not yet captured</span>'}</td>
-        <td><span class="badge ${m.premium ? 'badge-premium' : 'badge-free'}">${m.premium ? '⭐ Premium' : 'Free'}</span></td>
-        <td>${formatDate(m.createdAt)}</td>
-        <td class="uid-cell">${m.id.slice(0, 12)}…</td>
-      </tr>
-    `).join('');
-  }
-
-  function renderStats(members) {
-    const total = members.length;
-    const premium = members.filter(m => m.premium).length;
-    const free = total - premium;
-    const now = new Date();
-    const thisMonthKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '00');
-    const newThisMonth = members.filter(m => monthKey(m.createdAt) === thisMonthKey).length;
-
-    el('stat-total').textContent = total;
-    el('stat-premium').textContent = premium;
-    el('stat-free').textContent = free;
-    el('stat-new').textContent = newThisMonth;
-
-    const pct = total > 0 ? Math.round((premium / total) * 100) : 0;
-    el('stat-premium-pct').textContent = pct + '% conversion rate';
-    el('stat-new-sub').textContent = newThisMonth === 0 ? 'None with date yet' : 'Joined this month';
-    el('pct-premium').textContent = pct + '%';
-    el('pct-free').textContent = (100 - pct) + '%';
-    const newPct = total > 0 ? Math.round((newThisMonth / total) * 100) : 0;
-    el('pct-new').textContent = newPct + '%';
-
-    setTimeout(() => {
-      el('bar-premium').style.width = pct + '%';
-      el('bar-free').style.width = (100 - pct) + '%';
-      el('bar-new').style.width = newPct + '%';
-    }, 100);
-
-    el('table-count').textContent = total + ' member' + (total !== 1 ? 's' : '');
-    el('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-  }
-
-  async function loadDashboard(user) {
-    const db = firebase.firestore();
-    hide('login-screen');
-    showFlex('loading-state');
-    el('btn-signout').style.display = 'inline-block';
-
-    try {
-      const snap = await db.collection('users').get();
-      const members = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-      hide('loading-state');
-      show('admin-content');
-      renderStats(members);
-      renderChart(members);
-      renderTable(members);
-    } catch (err) {
-      console.error('Firestore error:', err);
-      hide('loading-state');
-      show('admin-content');
-      show('setup-banner');
-      try {
-        await db.collection('users').doc(user.uid).get();
-        el('error-state').style.display = '';
-        el('error-msg').textContent = 'Full member list requires a Firestore rule update (see banner above). ' + err.message;
-        renderStats([]);
-        renDerTable([]);
-        el('members-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:#aaa;">Requires Firestore rule update - see yellow banner above</td></tr>';
-      } catch (e2) {
-        el('error-state').style.display = '';
-        el('error-msg').textContent = err.message;
-      }
-    }
-  }
-
-  // ── Auth state listener ──
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user && user.email === ADMIN_EMAIL) {
-      loadDashboard(user);
-    } else {
-      // Not logged in or wrong account - show login form
-      hide('loading-state');
-      hide('admin-content');
-      hide('setup-banner');
-      hide('error-state');
-      show('login-screen');
-      el('btn-signout').style.display = 'none';
-      if (user) firebase.auth().signOut(); // kick out non-admin
-    }
-  });
-
-})();
+// ── UTILS ───────────────────────────────────────────────
+function decB64(b){return decodeURIComponent(escape(atob(b.replace(/\n/g,''))));}
+function encB64(s){return btoa(unescape(encodeURIComponent(s)));}
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 </script>
 </body>
-    </html>
+</html>
