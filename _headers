@@ -1,8 +1,8 @@
 /*
-  # Security Headers â WinWithFred.com
+  # Security Headers Ã¢ÂÂ WinWithFred.com
   # Applied to all pages by DigitalOcean App Platform
 
-  # Prevent clickjacking â site cannot be embedded in iframes
+  # Prevent clickjacking Ã¢ÂÂ site cannot be embedded in iframes
   X-Frame-Options: DENY
 
   # Prevent MIME-type sniffing attacks
@@ -24,8 +24,11 @@
   # Allows: Firebase, Google Auth, Google Fonts, self
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com; frame-src https://winwithfred-53df4.firebaseapp.com https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self';
 
-# âââ Cache Control âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ Cache Control Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 # HTML pages: no cache so deployments show instantly
+  # Extensionless HTML pages (e.g. /blog): short CDN cache
+  Cache-Control: public, max-age=10, s-maxage=300, must-revalidate
+
 /*.html
   Cache-Control: public, max-age=0, s-maxage=0, must-revalidate
 
