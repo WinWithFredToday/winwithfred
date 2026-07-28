@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>30-Day Challenge Tracker &mdash; WinWithFred</title>
+  <meta name="description" content="Pick a 30-day challenge and track it every single day. Build momentum, break habits, prove something to yourself. Free tracker with streaks." />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark:#111827; --surface:#1f2937; --border:#374151;
+  --muted:#6b7280; --light:#f9fafb; --white:#ffffff;
+  --orange:#f97316; --orange-d:#ea6c0a;
+  --green:#22c55e; --radius:10px;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+html { scroll-behavior:smooth; }
+body { font-family:var(--font); background:var(--light); color:var(--dark); line-height:1.6; font-size:16px; }
+a { color:var(--orange); text-decoration:none; }
+.btn { display:inline-block; padding:14px 28px; border-radius:var(--radius); font-weight:700; font-size:1rem; cursor:pointer; border:2px solid transparent; transition:all 0.18s; font-family:var(--font); line-height:1; }
+.btn-primary { background:var(--orange); color:var(--white); border-color:var(--orange); }
+.btn-primary:hover { background:var(--orange-d); text-decoration:none; transform:translateY(-1px); }
+.btn-outline { background:transparent; color:var(--orange); border-color:var(--orange); }
+.btn-outline:hover { background:var(--orange); color:var(--white); text-decoration:none; }
+.btn-sm { padding:10px 20px; font-size:0.9rem; }
+.navbar { background:var(--dark); padding:0 24px; position:sticky; top:0; z-index:100; box-shadow:0 2px 12px rgba(0,0,0,0.3); }
+.navbar-inner { max-width:1120px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
+.navbar-logo { font-size:1.4rem; font-weight:900; color:var(--white); letter-spacing:-0.5px; }
+.navbar-logo span { color:var(--orange); }
+.navbar-logo:hover { text-decoration:none; }
+.navbar-links { display:flex; align-items:center; gap:8px; list-style:none; }
+.navbar-links a { color:#d1d5db; font-weight:500; font-size:0.95rem; padding:8px 14px; border-radius:8px; transition:all 0.15s; }
+.navbar-links a:hover { color:var(--white); background:var(--surface); text-decoration:none; }
+.tool-header { background:var(--dark); color:var(--white); padding:64px 24px 56px; text-align:center; }
+.tool-header h1 { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; margin-bottom:16px; }
+.tool-header p { color:#9ca3af; font-size:1.05rem; max-width:560px; margin:0 auto; }
+.section-label { display:inline-block; background:rgba(249,115,22,0.15); color:var(--orange); font-size:0.75rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:6px 16px; border-radius:999px; margin-bottom:20px; }
+.tool-body { max-width:720px; margin:0 auto; padding:48px 24px 80px; }
+
+/* Setup */
+.setup-card { background:var(--white); border:2px solid #e5e7eb; border-radius:16px; padding:32px; margin-bottom:32px; }
+.setup-card h2 { font-size:1.2rem; margin-bottom:20px; }
+.field-label { font-size:0.85rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:8px; }
+.text-input { width:100%; padding:14px 18px; border:2px solid #e5e7eb; border-radius:var(--radius); font-family:var(--font); font-size:1rem; outline:none; transition:border-color 0.2s; margin-bottom:20px; }
+.text-input:focus { border-color:var(--orange); }
+.presets { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.preset-btn { background:var(--white); border:2px solid #e5e7eb; border-radius:999px; padding:7px 16px; font-family:var(--font); font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.15s; }
+.preset-btn:hover { border-color:var(--orange); color:var(--orange); }
+
+/* Stats */
+.stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
+.stat-card { background:var(--white); border:2px solid #e5e7eb; border-radius:12px; padding:16px; text-align:center; }
+.stat-number { font-size:2rem; font-weight:900; color:var(--orange); line-height:1; margin-bottom:4px; }
+.stat-label { font-size:0.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; }
+
+/* Progress bar */
+.progress-wrap { background:var(--white); border:2px solid #e5e7eb; border-radius:14px; padding:20px 24px; margin-bottom:32px; }
+.progress-top { display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.9rem; font-weight:700; }
+.prog-bar { background:#f3f4f6; border-radius:999px; height:12px; }
+.prog-fill { height:12px; border-radius:999px; background:linear-gradient(90deg, var(--orange), #f59e0b); transition:width 0.4s ease; }
+
+/* Grid */
+.days-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-bottom:32px; }
+.day-cell { aspect-ratio:1; border-radius:10px; border:2px solid #e5e7eb; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; transition:all 0.15s; background:var(--white); font-size:0.75rem; font-weight:700; color:var(--muted); user-select:none; }
+.day-cell:hover { border-color:var(--orange); }
+.day-cell.checked { background:var(--orange); border-color:var(--orange); color:var(--white); }
+.day-cell.today { border-color:var(--orange); box-shadow:0 0 0 2px rgba(249,115,22,0.2); }
+.day-cell.future { opacity:0.4; cursor:not-allowed; }
+.day-num { font-size:1rem; line-height:1; margin-bottom:2px; }
+.day-check { font-size:0.9rem; }
+
+/* Motivation */
+.motivation { background:linear-gradient(135deg, var(--dark) 0%, #1e3a5f 100%); border-radius:16px; padding:28px; text-align:center; color:var(--white); margin-bottom:24px; }
+.motivation p { font-size:1.05rem; font-style:italic; color:#d1d5db; margin-bottom:8px; }
+.motivation .author { font-size:0.85rem; color:var(--orange); font-weight:700; }
+
+.action-row { display:flex; gap:12px; flex-wrap:wrap; }
+.challenge-title-display { font-size:1.5rem; font-weight:900; margin-bottom:4px; }
+.challenge-meta { font-size:0.9rem; color:var(--muted); margin-bottom:24px; }
+
+.footer { background:var(--dark); color:#9ca3af; padding:40px 24px; text-align:center; font-size:0.875rem; margin-top:80px; }
+.footer a { color:#9ca3af; }
+.footer a:hover { color:var(--orange); }
+
+@media(max-width:480px) {
+  .navbar-links { display:none; }
+  .stats-row { grid-template-columns:1fr 1fr; }
+  .days-grid { grid-template-columns:repeat(5,1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="tool-header">
+  <div class="section-label">&#128293; 30-Day Challenge</div>
+  <h1>30 Days. One Rule. No Excuses.</h1>
+  <p>Pick your challenge. Check off every day. Thirty days from now, you'll be a different person. That's the deal.</p>
+</div>
+
+<div class="tool-body" id="tool-body">
+
+  <!-- Setup screen -->
+  <div id="setup-screen">
+    <div class="setup-card">
+      <h2>What's your 30-day challenge?</h2>
+      <div class="field-label">Pick a preset or write your own</div>
+      <div class="presets">
+        <button class="preset-btn" onclick="setPreset('No alcohol for 30 days')">No alcohol</button>
+        <button class="preset-btn" onclick="setPreset('Exercise every day for 30 days')">Exercise daily</button>
+        <button class="preset-btn" onclick="setPreset('Read 10 pages every day for 30 days')">Read 10 pages</button>
+        <button class="preset-btn" onclick="setPreset('No social media for 30 days')">No social media</button>
+        <button class="preset-btn" onclick="setPreset('Cold shower every morning for 30 days')">Cold showers</button>
+        <button class="preset-btn" onclick="setPreset('Write 500 words every day for 30 days')">Write daily</button>
+        <button class="preset-btn" onclick="setPreset('Meditate 10 minutes every day for 30 days')">Meditate daily</button>
+        <button class="preset-btn" onclick="setPreset('No junk food for 30 days')">No junk food</button>
+      </div>
+      <div class="field-label">Your challenge</div>
+      <input type="text" class="text-input" id="challenge-name" placeholder="e.g. Run 1 mile every day" maxlength="80" />
+      <button class="btn btn-primary" onclick="startChallenge()" style="width:100%;">Start My 30-Day Challenge &#8594;</button>
+    </div>
+  </div>
+
+  <!-- Tracker screen -->
+  <div id="tracker-screen" style="display:none;">
+    <div class="challenge-title-display" id="challenge-display"></div>
+    <div class="challenge-meta" id="challenge-meta"></div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-number" id="stat-done">0</div><div class="stat-label">Days Done</div></div>
+      <div class="stat-card"><div class="stat-number" id="stat-streak">0</div><div class="stat-label">Current Streak</div></div>
+      <div class="stat-card"><div class="stat-number" id="stat-left">30</div><div class="stat-label">Days Left</div></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-top"><span id="prog-label">0% complete</span><span id="prog-days">0 / 30 days</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="days-grid" id="days-grid"></div>
+
+    <div class="motivation" id="motivation-wrap">
+      <p id="motivation-quote">"The secret of getting ahead is getting started."</p>
+      <div class="author">Mark Twain</div>
+    </div>
+
+    <div class="action-row">
+      <button class="btn btn-outline btn-sm" onclick="resetChallenge()">Start New Challenge</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>&copy; 2026 WinWithFred.com &bull; <a href="privacy.html">Privacy</a> &bull; <a href="terms.html">Terms</a></p>
+</footer>
+
+<script>
+const QUOTES = [
+  { q:'We are what we repeatedly do. Excellence is not an act, but a habit.', a:'Aristotle' },
+  { q:'It does not matter how slowly you go as long as you do not stop.', a:'Confucius' },
+  { q:'Success is the sum of small efforts, repeated day in and day out.', a:'Robert Collier' },
+  { q:'The chains of habit are too light to be felt until they are too heavy to be broken.', a:'Warren Buffett' },
+  { q:'One day or day one. You decide.', a:'Unknown' },
+  { q:'Motivation gets you started. Habit keeps you going.', a:'Jim Ryun' },
+  { q:'You do not rise to the level of your goals. You fall to the level of your systems.', a:'James Clear' },
+  { q:'Discipline is choosing between what you want now and what you want most.', a:'Abraham Lincoln' },
+];
+
+const KEY = 'wwf_challenge30';
+let data = null;
+
+function setPreset(text) {
+  document.getElementById('challenge-name').value = text;
+}
+
+function startChallenge() {
+  const name = document.getElementById('challenge-name').value.trim();
+  if (!name) { alert('Enter a challenge name first.'); return; }
+  data = {
+    name,
+    startDate: new Date().toISOString().slice(0,10),
+    days: new Array(30).fill(false),
+  };
+  save();
+  showTracker();
+}
+
+function showTracker() {
+  document.getElementById('setup-screen').style.display = 'none';
+  document.getElementById('tracker-screen').style.display = 'block';
+  renderTracker();
+}
+
+function renderTracker() {
+  const start = new Date(data.startDate);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  document.getElementById('challenge-display').textContent = data.name;
+  const end = new Date(start);
+  end.setDate(end.getDate() + 29);
+  document.getElementById('challenge-meta').textContent =
+    `Started ${fmtDate(start)} &bull; Ends ${fmtDate(end)}`.replace('&bull;', '\u2022');
+
+  const done = data.days.filter(Boolean).length;
+  let streak = 0;
+  for (let i = done - 1; i >= 0; i--) {
+    const d = new Date(start); d.setDate(d.getDate() + i);
+    if (data.days[i]) streak++;
+    else break;
+  }
+  // recalc streak properly
+  streak = 0;
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(start); d.setDate(d.getDate() + i);
+    d.setHours(0,0,0,0);
+    if (d > today) continue;
+    if (data.days[i]) streak++;
+    else break;
+  }
+
+  const left = Math.max(0, 30 - done);
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-streak').textContent = streak;
+  document.getElementById('stat-left').textContent = left;
+
+  const pct = Math.round((done / 30) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = pct + '% complete';
+  document.getElementById('prog-days').textContent = done + ' / 30 days';
+
+  const q = QUOTES[done % QUOTES.length];
+  document.getElementById('motivation-quote').textContent = '"' + q.q + '"';
+  document.getElementById('motivation-wrap').querySelector('.author').textContent = q.a;
+
+  const grid = document.getElementById('days-grid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 30; i++) {
+    const dayDate = new Date(start);
+    dayDate.setDate(dayDate.getDate() + i);
+    dayDate.setHours(0,0,0,0);
+    const isFuture = dayDate > today;
+    const isToday = dayDate.getTime() === today.getTime();
+    const cell = document.createElement('div');
+    cell.className = 'day-cell' + (data.days[i] ? ' checked' : '') + (isToday ? ' today' : '') + (isFuture ? ' future' : '');
+    cell.innerHTML = `<div class="day-num">${i + 1}</div><div class="day-check">${data.days[i] ? '&#10003;' : '&nbsp;'}</div>`;
+    if (!isFuture) {
+      cell.onclick = () => toggleDay(i);
+    }
+    grid.appendChild(cell);
+  }
+}
+
+function toggleDay(i) {
+  data.days[i] = !data.days[i];
+  save();
+  renderTracker();
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+}
+
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function resetChallenge() {
+  if (!confirm('Start a new challenge? This will clear your current progress.')) return;
+  data = null;
+  localStorage.removeItem(KEY);
+  document.getElementById('setup-screen').style.display = 'block';
+  document.getElementById('tracker-screen').style.display = 'none';
+  document.getElementById('challenge-name').value = '';
+}
+
+function init() {
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) {
+      data = JSON.parse(saved);
+      showTracker();
+      return;
+    }
+  } catch(e) {}
+}
+
+init();
+</script>
+<script src="mobile-nav.js"></script>
+</body>
+</html>

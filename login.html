@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In — WinWithFred</title>
+  <title>Sign In &mdash; WinWithFred</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,7 +85,7 @@
 </head>
 <body>
 
-<!-- Loading overlay — shown briefly while checking if user is already logged in -->
+<!-- Loading overlay &mdash; shown briefly while checking if user is already logged in -->
 <div class="loading-overlay" id="loading-overlay">
   <div class="spinner"></div>
 </div>
@@ -103,7 +103,7 @@
 
     <div class="auth-logo">
       <div class="brand">Win<span>WithFred</span></div>
-      <p>Your goals. Your habits. Your progress — saved forever.</p>
+      <p>Your goals. Your habits. Your progress &mdash; saved forever.</p>
     </div>
 
     <!-- Tabs -->
@@ -147,7 +147,7 @@
     </form>
 
     <div class="back-link">
-      <a href="index.html">← Back to homepage</a>
+      <a href="index.html">&#8592; Back to homepage</a>
     </div>
 
   </div>
@@ -254,18 +254,21 @@
 
   function friendlyError(code) {
     const errors = {
+      'auth/invalid-credential':    'Incorrect email or password. Try again.',
       'auth/user-not-found':        'No account found with that email.',
-      'auth/wrong-password':        'Incorrect password. Try again.',
+      'auth/wrong-password':        'Incorrect email or password. Try again.',
       'auth/email-already-in-use':  'An account with that email already exists. Sign in instead.',
       'auth/weak-password':         'Password must be at least 6 characters.',
       'auth/invalid-email':         'Please enter a valid email address.',
       'auth/too-many-requests':     'Too many attempts. Please wait a minute and try again.',
       'auth/popup-closed-by-user':  'Google sign-in was cancelled.',
       'auth/network-request-failed':'Network error. Check your connection.',
+      'auth/operation-not-allowed': 'Email/password sign-in is not enabled. Contact support.',
     };
-    return errors[code] || 'Something went wrong. Please try again.';
+    return errors[code] || ('Something went wrong (' + code + '). Please try again.');
   }
 </script>
 
+<script src="mobile-nav.js"></script>
 </body>
 </html>
