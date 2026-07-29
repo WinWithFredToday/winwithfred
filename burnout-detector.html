@@ -498,9 +498,9 @@ p  { color: #374151; }
 <!-- &#9472;&#9472; Navbar &#9472;&#9472; -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index">Home</a></li>
       <li><a href="index.html#blog">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -609,8 +609,8 @@ p  { color: #374151; }
 
     <!-- Action -->
     <div style="text-align:center; margin-top:32px;">
-      <button class="btn btn-primary" onclick="location.href='burnout-detector.html'">Retake Detector</button>
-      <a href="index.html" style="margin-left:12px;" class="btn btn-outline">Back to Tools</a>
+      <button class="btn btn-primary" onclick="location.href='burnout-detector'">Retake Detector</button>
+      <a href="index" style="margin-left:12px;" class="btn btn-outline">Back to Tools</a>
     </div>
   </div>
 
@@ -661,11 +661,11 @@ function initAuthNavbar() {
       </div>
     `;
   } else {
-    navDiv.innerHTML = '<a href="index.html" style="color:#d1d5db; font-weight:500; padding:8px 14px;">Login</a>';
+    navDiv.innerHTML = '<a href="index" style="color:#d1d5db; font-weight:500; padding:8px 14px;">Login</a>';
   }
 }
 
-function logout() { localStorage.removeItem('wwf_user'); location.href='index.html'; }
+function logout() { localStorage.removeItem('wwf_user'); location.href='index'; }
 
 // &#9472;&#9472; Questions &#9472;&#9472;
 const questions = [

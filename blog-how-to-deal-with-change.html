@@ -96,18 +96,191 @@
     .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -164,7 +337,7 @@
 
   <p>Do not wait until you "feel ready." You will not feel ready. Readiness is something that shows up after you start moving, not before. Pick two or three anchors and lock them in this week. A set wake-up time. A morning walk. A specific block where you handle the new reality head on.</p>
 
-  <p>These anchors do not fix the change. They give your nervous system something solid to grab onto while everything else is in motion. Small, repeated actions tell your brain, "We are okay. We have got this handled." Our <a href="habit-builder.html">Habit Builder</a> tool is built for exactly this. Use it to lock in a couple of daily anchors and watch how much steadier you feel inside a week.</p>
+  <p>These anchors do not fix the change. They give your nervous system something solid to grab onto while everything else is in motion. Small, repeated actions tell your brain, "We are okay. We have got this handled." Our <a href="habit-builder">Habit Builder</a> tool is built for exactly this. Use it to lock in a couple of daily anchors and watch how much steadier you feel inside a week.</p>
 
   <h3>Why structure beats willpower here</h3>
 
@@ -178,7 +351,7 @@
 
   <p>So name it. Write down the exact outcome you are afraid of. Get specific. Then ask one cold question: how likely is that, really? Most fears do not survive being written down and examined. They thrive in the fog of your mind, not on paper in the daylight.</p>
 
-  <p>Then look backward. You have survived change before. Every hard transition you have already lived through is proof you adapt. You did not think you would get through those either, and here you are. If you want a deeper playbook on the uncertainty piece, read our guide on <a href="blog-how-to-handle-uncertainty.html">how to handle uncertainty</a>. It pairs with this one.</p>
+  <p>Then look backward. You have survived change before. Every hard transition you have already lived through is proof you adapt. You did not think you would get through those either, and here you are. If you want a deeper playbook on the uncertainty piece, read our guide on <a href="blog-how-to-handle-uncertainty">how to handle uncertainty</a>. It pairs with this one.</p>
 
   <h2>Step Four: Stop Clinging to the Old Version of Your Life</h2>
 
@@ -186,19 +359,19 @@
 
   <p>Embracing change does not mean pretending the old thing did not matter. It means letting it have its place in the past while you keep walking forward. The people who struggle most are the ones who keep one foot planted in what used to be, refusing to fully step into what is.</p>
 
-  <p>If you find yourself stuck replaying the old chapter on a loop, that is a signal worth taking seriously. Our piece on <a href="blog-how-to-let-go-of-the-past.html">how to let go of the past</a> goes deep on this exact trap. You cannot grab the new thing with your hands full of the old one.</p>
+  <p>If you find yourself stuck replaying the old chapter on a loop, that is a signal worth taking seriously. Our piece on <a href="blog-how-to-let-go-of-the-past">how to let go of the past</a> goes deep on this exact trap. You cannot grab the new thing with your hands full of the old one.</p>
 
   <h2>Step Five: Treat Change as a Skill You Are Building</h2>
 
   <p>Here is the reframe that changes everything. Adapting to change is not a personality trait some people are born with. It is a skill. And like any skill, it gets stronger every time you use it.</p>
 
-  <p>Every change you navigate makes the next one easier, because you are building evidence that you can handle hard things. This is the same muscle as resilience, and you train it the same way: through reps. If you want to go further on the toughness side of this, our guide on <a href="blog-how-to-build-resilience.html">how to build resilience</a> is the natural next read.</p>
+  <p>Every change you navigate makes the next one easier, because you are building evidence that you can handle hard things. This is the same muscle as resilience, and you train it the same way: through reps. If you want to go further on the toughness side of this, our guide on <a href="blog-how-to-build-resilience">how to build resilience</a> is the natural next read.</p>
 
   <p>You can even practice on purpose. Take a cold shower. Change your route to work. Say yes to something unfamiliar. These tiny, voluntary changes teach your brain a powerful lesson: change is survivable, and often it is even good. The more reps you get, the less the big changes scare you.</p>
 
   <h3>Keep a record of what you are learning</h3>
 
-  <p>When you are in the thick of a transition, it is hard to see your own progress. That is why writing it down matters. A few minutes with our <a href="journal.html">Journal Prompts</a> tool at the end of each day helps you track how you are actually adapting, not just how you feel in the worst moment. Patterns become obvious on paper that are invisible in your head.</p>
+  <p>When you are in the thick of a transition, it is hard to see your own progress. That is why writing it down matters. A few minutes with our <a href="journal">Journal Prompts</a> tool at the end of each day helps you track how you are actually adapting, not just how you feel in the worst moment. Patterns become obvious on paper that are invisible in your head.</p>
 
   <h2>Frequently Asked Questions</h2>
 
@@ -220,16 +393,67 @@
 
   <p>Start small. Sort what you can control from what you cannot. Rebuild one routine this week. Name the fear and check if it is even true. Do that, and change stops being the thing that flattens you and starts being the thing that grows you.</p>
 
-  <p>Want to know where your mindset stands right now, before the next change hits? <a href="quiz.html">Take the free Mindset Quiz</a> and find out exactly where you are strong and where you need work. Knowing your starting point is how you stop getting caught off guard.</p>
+  <p>Want to know where your mindset stands right now, before the next change hits? <a href="quiz">Take the free Mindset Quiz</a> and find out exactly where you are strong and where you need work. Knowing your starting point is how you stop getting caught off guard.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Deal%20With%20Change%20%28Without%20Letting%20It%20Knock%20You%20Flat%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-deal-with-change" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-deal-with-change" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-stop-self-sabotage">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Stop Self-Sabotaging Your Own Success</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-stop-being-jealous">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Stop Being Jealous (And Use Envy as Fuel Instead)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-stop-worrying-about-the-future">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Stop Worrying About the Future (And Get Your Life Back)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>What Is Your Mindset Built For?</h2>
     <p>Take the free Mindset Quiz to see where you stand. Knowing your starting point is the first step to handling whatever comes next.</p>
-    <a href="quiz.html" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -242,26 +466,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>

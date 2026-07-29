@@ -497,14 +497,14 @@
     <!-- Recent Goals -->
     <div class="section-header">
       <h2>Recent Goals</h2>
-      <a href="goal-tracker.html" class="view-all">View All →</a>
+      <a href="goal-tracker" class="view-all">View All →</a>
     </div>
     <div id="goals-container" class="goals-list"></div>
 
     <!-- Recent Journal Entries -->
     <div class="section-header">
       <h2>Recent Journal Entries</h2>
-      <a href="journal.html" class="view-all">View All →</a>
+      <a href="journal" class="view-all">View All →</a>
     </div>
     <div id="entries-container" class="entries-grid"></div>
 
@@ -513,19 +513,19 @@
       <h2>Quick Actions</h2>
     </div>
     <div class="quick-actions">
-      <a href="goal-tracker.html" class="action-card">
+      <a href="goal-tracker" class="action-card">
         <div class="action-icon">&#127919;</div>
         <div class="action-label">Goal Tracker</div>
       </a>
-      <a href="journal.html" class="action-card">
+      <a href="journal" class="action-card">
         <div class="action-icon">&#128211;</div>
         <div class="action-label">Journal</div>
       </a>
-      <a href="habit-builder.html" class="action-card">
+      <a href="habit-builder" class="action-card">
         <div class="action-icon">&#127942;</div>
         <div class="action-label">Habit Builder</div>
       </a>
-      <a href="mood-tracker.html" class="action-card">
+      <a href="mood-tracker" class="action-card">
         <div class="action-icon">&#128522;</div>
         <div class="action-label">Mood Tracker</div>
       </a>
@@ -658,7 +658,7 @@
         if (!snapshot.exists) {
           container.innerHTML = `
             <div class="empty-state">
-              <p>No goals yet. <a href="goal-tracker.html" style="color: var(--orange);">Create one →</a></p>
+              <p>No goals yet. <a href="goal-tracker" style="color: var(--orange);">Create one →</a></p>
             </div>
           `;
           return;
@@ -700,7 +700,7 @@
         if (!snapshot.exists) {
           container.innerHTML = `
             <div class="empty-state">
-              <p>No journal entries yet. <a href="journal.html" style="color: var(--orange);">Start writing →</a></p>
+              <p>No journal entries yet. <a href="journal" style="color: var(--orange);">Start writing →</a></p>
             </div>
           `;
           return;

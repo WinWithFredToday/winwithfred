@@ -129,18 +129,191 @@
     .faq-item p { margin-bottom: 0; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -181,7 +354,7 @@
 
   <h3>You Are Comparing Your Insides to Other People&rsquo;s Outsides</h3>
 
-  <p>You see confident people and you think they feel nothing on the inside. You are wrong. Most of them are nervous too. They just act anyway. You are comparing your inner experience to their outer behavior. That comparison will never be fair and it will never help you grow. If you want to <a href="blog-stop-comparing-yourself-to-others.html">stop comparing yourself to others</a>, you need to pull your eyes off their lane and put them back on yours.</p>
+  <p>You see confident people and you think they feel nothing on the inside. You are wrong. Most of them are nervous too. They just act anyway. You are comparing your inner experience to their outer behavior. That comparison will never be fair and it will never help you grow. If you want to <a href="blog-stop-comparing-yourself-to-others">stop comparing yourself to others</a>, you need to pull your eyes off their lane and put them back on yours.</p>
 
   <h2>How to Build Confidence: The Core Principle</h2>
 
@@ -195,7 +368,7 @@
 
   <p>Think of your confidence like a bank account. Every time you do something hard, every time you keep a commitment to yourself, every time you show up when you did not want to, you make a deposit. Every time you avoid, quit, or back down without trying, you make a withdrawal.</p>
 
-  <p>Most people who feel low confidence have been making more withdrawals than deposits for a long time. The solution is not to feel better about yourself. The solution is to start making deposits. Use the <a href="habit-builder.html">Habit Builder</a> to track your daily actions and watch your evidence bank grow over time.</p>
+  <p>Most people who feel low confidence have been making more withdrawals than deposits for a long time. The solution is not to feel better about yourself. The solution is to start making deposits. Use the <a href="habit-builder">Habit Builder</a> to track your daily actions and watch your evidence bank grow over time.</p>
 
   <h2>Six Steps to Build Self Confidence That Lasts</h2>
 
@@ -207,7 +380,7 @@
 
   <h3>2. Track Every Win, No Matter How Small</h3>
 
-  <p>Buy a notebook. Open a note on your phone. Start writing down what you did right each day. Not what you planned to do. What you actually did. This is not about being easy on yourself. It is about feeding your brain accurate data. Your confidence is being starved of evidence. Start providing it. The <a href="journal.html">Journal Prompts</a> tool can help you build this habit in just five minutes a day.</p>
+  <p>Buy a notebook. Open a note on your phone. Start writing down what you did right each day. Not what you planned to do. What you actually did. This is not about being easy on yourself. It is about feeding your brain accurate data. Your confidence is being starved of evidence. Start providing it. The <a href="journal">Journal Prompts</a> tool can help you build this habit in just five minutes a day.</p>
 
   <h3>3. Do One Thing Each Day That Makes You Nervous</h3>
 
@@ -223,7 +396,7 @@
 
   <h3>6. Set Goals and Actually Hit Them</h3>
 
-  <p>Nothing builds confidence faster than having a goal, working toward it, and hitting it. Start with a goal that is achievable in 30 days or less. Write it down. Make a simple plan. Work the plan. When you hit that goal, your brain learns something important: you can be counted on. Use the <a href="goal-tracker.html">Goal Tracker</a> to set a target and build the momentum that comes from seeing real progress.</p>
+  <p>Nothing builds confidence faster than having a goal, working toward it, and hitting it. Start with a goal that is achievable in 30 days or less. Write it down. Make a simple plan. Work the plan. When you hit that goal, your brain learns something important: you can be counted on. Use the <a href="goal-tracker">Goal Tracker</a> to set a target and build the momentum that comes from seeing real progress.</p>
 
   <h2>What Confident People Actually Do Differently</h2>
 
@@ -233,7 +406,7 @@
 
   <p>That last one is important. The gap between thinking about doing something and actually doing it is where confidence lives or dies. The longer you sit in that gap, the bigger the fear grows. Confident people have trained themselves to shrink that gap. They decide, and then they move.</p>
 
-  <p>You can learn to do this too. It is not a personality trait. It is a habit. And like any habit, you can build it. Read more about <a href="blog-discipline-beats-motivation.html">why discipline beats waiting for motivation</a> to understand the mindset shift underneath this.</p>
+  <p>You can learn to do this too. It is not a personality trait. It is a habit. And like any habit, you can build it. Read more about <a href="blog-discipline-beats-motivation">why discipline beats waiting for motivation</a> to understand the mindset shift underneath this.</p>
 
   <h2>How to Build Confidence When You Have Been Beaten Down</h2>
 
@@ -245,7 +418,7 @@
 
   <p>Second: you start exactly where you are. Not where you wish you were. Not where you used to be. Where you are right now. One small action. One kept promise. One piece of evidence that you can be trusted. That is how you rebuild.</p>
 
-  <p>If you have been letting <a href="blog-stop-self-sabotage.html">self-sabotage</a> get in the way of your progress, that is worth looking at too. Sometimes the thing blocking your confidence is a habit you do not even realize you have.</p>
+  <p>If you have been letting <a href="blog-stop-self-sabotage">self-sabotage</a> get in the way of your progress, that is worth looking at too. Sometimes the thing blocking your confidence is a habit you do not even realize you have.</p>
 
   <h2>The Confidence Spiral</h2>
 
@@ -285,16 +458,67 @@
 
   <p>Your confidence is not missing. It is waiting for you to give it something to work with. Go do that now.</p>
 
-  <p>Use the <a href="habit-builder.html">Habit Builder</a> to track your daily actions, the <a href="goal-tracker.html">Goal Tracker</a> to set targets you can actually hit, and the <a href="journal.html">Journal</a> to record your wins at the end of each day. These tools do one thing: they help you collect evidence. And evidence is everything.</p>
+  <p>Use the <a href="habit-builder">Habit Builder</a> to track your daily actions, the <a href="goal-tracker">Goal Tracker</a> to set targets you can actually hit, and the <a href="journal">Journal</a> to record your wins at the end of each day. These tools do one thing: they help you collect evidence. And evidence is everything.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Build%20Confidence%20%28Even%20When%20You%20Do%20Not%20Feel%20It%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-build-confidence" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-build-confidence" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-find-motivation">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #2193b0, #6dd5ed)">
+          <span class="related-tag">PRODUCTIVITY</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Find Motivation When You Have None</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-let-go-of-the-past">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Let Go of the Past (And Actually Move Forward)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-get-out-of-your-comfort-zone">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #485563, #29323c)">
+          <span class="related-tag">PERSONAL GROWTH</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Get Out of Your Comfort Zone (And Why It Gets Easier)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>Find Out Where Your Mindset Stands</h2>
     <p>Take the free Mindset Quiz and get a clear picture of what is holding you back. It only takes two minutes.</p>
-    <a href="quiz.html" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -307,26 +531,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>

@@ -96,18 +96,191 @@
     .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -144,7 +317,7 @@
 
   <p>The thing about comparing your life to others is that you are always comparing your inside to their outside. You know your doubts, your debt, your bad days, the stuff nobody sees. You do not know theirs. The person whose life looks perfect online might be falling apart in ways you will never hear about.</p>
 
-  <p>Comparison is a rigged game. You will always lose, because you are comparing complete information about yourself to a carefully edited preview of someone else. If you want to dig deeper into breaking this specific pattern, read <a href="blog-stop-comparing-yourself-to-others.html">why comparison is wrecking you and how to stop</a>. It is the engine behind most of this feeling.</p>
+  <p>Comparison is a rigged game. You will always lose, because you are comparing complete information about yourself to a carefully edited preview of someone else. If you want to dig deeper into breaking this specific pattern, read <a href="blog-stop-comparing-yourself-to-others">why comparison is wrecking you and how to stop</a>. It is the engine behind most of this feeling.</p>
 
   <h3>Timelines Are Made Up</h3>
 
@@ -170,7 +343,7 @@
 
   <p>You feel behind partly because your progress is invisible to you. Wins are quiet and slow. You forget how far you have come because you are standing too close to it. The cure is to make your progress visible so you have hard evidence instead of a vague bad feeling.</p>
 
-  <p>Write down where you were twelve months ago. Your skills, your habits, your mindset, your situation. Then write down where you are now. Almost everyone underestimates their own movement until they see it on paper. A simple <a href="goal-tracker.html">goal tracker</a> does this automatically. When you can see the line going up, the feeling of being behind loses most of its grip.</p>
+  <p>Write down where you were twelve months ago. Your skills, your habits, your mindset, your situation. Then write down where you are now. Almost everyone underestimates their own movement until they see it on paper. A simple <a href="goal-tracker">goal tracker</a> does this automatically. When you can see the line going up, the feeling of being behind loses most of its grip.</p>
 
   <h2>Cut the Inputs That Make You Feel Behind</h2>
 
@@ -182,7 +355,7 @@
 
   <p>For one week, pay attention to the moment the feeling hits. What were you looking at right before you felt behind? A specific app? A specific person's posts? A group chat? Write it down every time. By the end of the week you will have a short list of the real triggers.</p>
 
-  <p>Then cut them. Mute, unfollow, delete the app, or set a hard limit. This is not about hiding from reality. It is about refusing to feed a feeling that is lying to you. Protecting your attention is a core skill, and it connects directly to getting your wider situation in order, which is the whole point of learning <a href="blog-how-to-get-your-life-together.html">how to get your life together</a> in a real, step-by-step way.</p>
+  <p>Then cut them. Mute, unfollow, delete the app, or set a hard limit. This is not about hiding from reality. It is about refusing to feed a feeling that is lying to you. Protecting your attention is a core skill, and it connects directly to getting your wider situation in order, which is the whole point of learning <a href="blog-how-to-get-your-life-together">how to get your life together</a> in a real, step-by-step way.</p>
 
   <h2>Replace the Feeling With Direction</h2>
 
@@ -194,7 +367,7 @@
 
   <p>Do not try to fix your entire life at once. That is overwhelm, and overwhelm sends you right back to the couch. Pick one area that actually matters to you. Health, money, a skill, a relationship, your work. Just one. Then choose the smallest possible action and do it today.</p>
 
-  <p>Small is the point. Small is repeatable. A small action done today beats a perfect plan you start "someday." And if you want to make those small actions stick over the long haul, learn <a href="blog-how-to-stay-consistent-with-goals.html">how to stay consistent with your goals</a> even after the motivation wears off. Consistency, not speed, is what closes the gap you are worried about.</p>
+  <p>Small is the point. Small is repeatable. A small action done today beats a perfect plan you start "someday." And if you want to make those small actions stick over the long haul, learn <a href="blog-how-to-stay-consistent-with-goals">how to stay consistent with your goals</a> even after the motivation wears off. Consistency, not speed, is what closes the gap you are worried about.</p>
 
   <div class="callout"><p>Speed is not the goal. Direction is. A person moving slowly in the right direction will pass a person sprinting in circles every single time.</p></div>
 
@@ -228,16 +401,67 @@
 
   <p>You are not behind. You are comparing your real, unfinished life to a fantasy built from other people's best moments and a timeline that nobody actually enforces. The way to stop feeling behind in life is to drop the scoreboard, measure yourself against who you used to be, cut the inputs that feed the feeling, and replace comparison with direction.</p>
 
-  <p>Stop trying to catch up to people running a different race. Start moving on the one thing that matters to you today. Open the <a href="goal-tracker.html">Goal Tracker</a> and set a single goal you can take action on this week. That one move does more to kill the feeling of being behind than any amount of scrolling, worrying, or waiting ever will.</p>
+  <p>Stop trying to catch up to people running a different race. Start moving on the one thing that matters to you today. Open the <a href="goal-tracker">Goal Tracker</a> and set a single goal you can take action on this week. That one move does more to kill the feeling of being behind than any amount of scrolling, worrying, or waiting ever will.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Stop%20Feeling%20Behind%20in%20Life%20%28And%20Run%20Your%20Own%20Race%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stop-feeling-behind-in-life" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stop-feeling-behind-in-life" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-deal-with-rejection">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Deal With Rejection (Without Letting It Break You)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-stop-worrying">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Stop Worrying: 8 Ways to Break the Cycle</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-build-confidence">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Build Confidence (Even When You Do Not Feel It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>What Is Your Mindset Built For?</h2>
     <p>Take the free Mindset Quiz to see where you really stand. Knowing your starting point beats guessing where everyone else is.</p>
-    <a href="quiz.html" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -250,26 +474,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>

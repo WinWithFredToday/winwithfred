@@ -72,6 +72,179 @@
     footer a { color: var(--text2); }
     footer a:hover { color: var(--orange); }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #485563, #29323c) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 

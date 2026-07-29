@@ -120,18 +120,191 @@
       .article-inner h2 { font-size: 1.45rem; }
     }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #485563, #29323c) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -175,7 +348,7 @@
 
     <h3>The avoidance trap</h3>
 
-    <p>The avoidance trap is the quieter, longer-lasting version. You do not spiral. You just silently stop trying. The failure never gets reviewed. It never gets metabolized. It just becomes a weight you carry, and you route around whatever caused it for the rest of your life. This is how one failed business, one bad breakup, or one embarrassing presentation ten years ago can still be shaping your choices today. For a deeper look at what long-term avoidance looks like, see <a href="blog-how-to-get-out-of-a-rut.html">how to get out of a rut</a>. Unprocessed failure is the raw material a rut is built from.</p>
+    <p>The avoidance trap is the quieter, longer-lasting version. You do not spiral. You just silently stop trying. The failure never gets reviewed. It never gets metabolized. It just becomes a weight you carry, and you route around whatever caused it for the rest of your life. This is how one failed business, one bad breakup, or one embarrassing presentation ten years ago can still be shaping your choices today. For a deeper look at what long-term avoidance looks like, see <a href="blog-how-to-get-out-of-a-rut">how to get out of a rut</a>. Unprocessed failure is the raw material a rut is built from.</p>
 
     <h2>How to Deal with Failure: The First 48 Hours</h2>
 
@@ -187,7 +360,7 @@
 
     <p><strong>Do not make any big decisions.</strong> No quitting. No resigning. No declaring you are done forever. No burning bridges. No public statements. No &ldquo;I will never do X again.&rdquo; Big decisions made in the first 48 hours are almost always regret in a trench coat. Whatever you are thinking about doing can wait at least a week.</p>
 
-    <p><strong>Guard your inner monologue.</strong> This is when negative self-talk is at its loudest. The voice is going to want to run a documentary on every mistake you have ever made. Do not let it. Notice the voice, name it, and refuse to sign off on its conclusions. If that voice is a chronic problem for you, <a href="blog-how-to-stop-being-hard-on-yourself.html">how to stop being hard on yourself</a> covers the actual mechanics of turning it down.</p>
+    <p><strong>Guard your inner monologue.</strong> This is when negative self-talk is at its loudest. The voice is going to want to run a documentary on every mistake you have ever made. Do not let it. Notice the voice, name it, and refuse to sign off on its conclusions. If that voice is a chronic problem for you, <a href="blog-how-to-stop-being-hard-on-yourself">how to stop being hard on yourself</a> covers the actual mechanics of turning it down.</p>
 
     <div class="callout">
       <p><strong>The 48-hour rule:</strong> feel it, sleep on it, do not act on it. The version of you that wakes up on day three is a smarter decision maker than the version of you trying to run your life on day one.</p>
@@ -203,7 +376,7 @@
 
     <p>One, what actually happened, in facts, without adjectives? Two, what parts of the outcome were in my control, and what parts were not? Three, if I had to do it again, what one or two things would I change? Four, what does this tell me about my current approach, my current skills, or my current plan?</p>
 
-    <p>That is it. No self-flagellation. No highlight reel of every past failure. Just this one, reviewed on paper, with curiosity. The written part matters. Failures reviewed only in your head get bigger and blurrier. Failures reviewed on paper get smaller and more specific. <a href="journal.html">The Journal</a> has prompts that make this kind of debrief easy to run without staring at a blank page.</p>
+    <p>That is it. No self-flagellation. No highlight reel of every past failure. Just this one, reviewed on paper, with curiosity. The written part matters. Failures reviewed only in your head get bigger and blurrier. Failures reviewed on paper get smaller and more specific. <a href="journal">The Journal</a> has prompts that make this kind of debrief easy to run without staring at a blank page.</p>
 
     <h3>Turn failure into data, not identity</h3>
 
@@ -223,7 +396,7 @@
 
     <h3>Use momentum, not motivation</h3>
 
-    <p>Do not wait for motivation to come back. Motivation after failure is slow and unreliable. Momentum is faster and more honest. Pick the next small action, schedule it, and do it on the schedule whether you feel like it or not. <a href="habit-builder.html">The Habit Builder</a> is useful here because it turns abstract &ldquo;get back on track&rdquo; ideas into a daily check you can actually complete. A few boxes checked this week matter more than any pep talk.</p>
+    <p>Do not wait for motivation to come back. Motivation after failure is slow and unreliable. Momentum is faster and more honest. Pick the next small action, schedule it, and do it on the schedule whether you feel like it or not. <a href="habit-builder">The Habit Builder</a> is useful here because it turns abstract &ldquo;get back on track&rdquo; ideas into a daily check you can actually complete. A few boxes checked this week matter more than any pep talk.</p>
 
     <h2>How to Build a Long-Term Failure Mindset</h2>
 
@@ -235,7 +408,7 @@
 
     <p><strong>Separate the pain from the problem.</strong> The pain of failure is a feeling to move through. The problem the failure exposed is a thing to solve. They are not the same project. Handling the pain is about self-care and time. Solving the problem is about debriefing and adjusting. If you try to do both at the same time in the first 48 hours, you will do both badly. If you do them in order, you do each one well.</p>
 
-    <p><strong>Remember that confidence is built here.</strong> Real confidence does not come from never failing. It comes from proving to yourself, over and over, that you can fail and keep going. Every recovery is a deposit. Over years, those deposits compound into a quiet kind of self-trust that people who have never failed hard simply do not have. If that is a missing piece for you, <a href="blog-how-to-build-confidence.html">how to build confidence</a> goes deeper on where real confidence actually comes from.</p>
+    <p><strong>Remember that confidence is built here.</strong> Real confidence does not come from never failing. It comes from proving to yourself, over and over, that you can fail and keep going. Every recovery is a deposit. Over years, those deposits compound into a quiet kind of self-trust that people who have never failed hard simply do not have. If that is a missing piece for you, <a href="blog-how-to-build-confidence">how to build confidence</a> goes deeper on where real confidence actually comes from.</p>
 
     <h2>Frequently Asked Questions</h2>
 
@@ -249,16 +422,67 @@
     <p>Failure hurts because your brain treats it as a threat to your social standing and your self-image at the same time. It is not just the lost outcome. It is the story you start telling yourself about what it means. Most of the pain is in the story, not in the event. Separating the facts of what happened from the meaning you added is the first real step to handling failure well.</p>
 
     <h3>How do you bounce back from a big failure?</h3>
-    <p>Bouncing back from a big failure works best in stages. First, stabilize. Sleep, eat, talk to someone you trust. Second, debrief. Write down what happened and what you would change. Third, re-engage in small. Take one tiny action in the same domain within two weeks. Avoidance is what turns one failure into a long rut. Small motion is what turns it into a lesson. For more on the mental side of pushing through when it is hard, see <a href="blog-how-to-build-mental-toughness.html">how to build mental toughness</a>.</p>
+    <p>Bouncing back from a big failure works best in stages. First, stabilize. Sleep, eat, talk to someone you trust. Second, debrief. Write down what happened and what you would change. Third, re-engage in small. Take one tiny action in the same domain within two weeks. Avoidance is what turns one failure into a long rut. Small motion is what turns it into a lesson. For more on the mental side of pushing through when it is hard, see <a href="blog-how-to-build-mental-toughness">how to build mental toughness</a>.</p>
 
     <h2>The Takeaway</h2>
 
     <p>If you remember one thing from this, make it this: dealing with failure is a skill, and like any skill it gets better with reps. The event is always going to hurt. That part you cannot cheat. But the time you spend spiraling, the decisions you make in the fog, the lessons you miss, and the months you lose to avoidance, all of that is optional. Feel it on a timer, debrief it on paper, take one small next step, and refuse to let a single event write your identity. Do that a few times and failure stops being the thing that derails you. It becomes the thing that quietly makes you better.</p>
 
-    <p style="margin-top: 32px;"><a href="goal-tracker.html" class="btn btn-primary">Set your next small goal &rarr;</a></p>
+    <p style="margin-top: 32px;"><a href="goal-tracker" class="btn btn-primary">Set your next small goal &rarr;</a></p>
 
   </div>
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Deal%20with%20Failure%20%28Without%20Letting%20It%20Define%20You%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-deal-with-failure" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-deal-with-failure" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-manage-your-time">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #2193b0, #6dd5ed)">
+          <span class="related-tag">PRODUCTIVITY</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Manage Your Time So You Stop Feeling Behind</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-develop-patience">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Develop Patience (When You Want Everything Right Now)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-deal-with-decision-fatigue">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #2193b0, #6dd5ed)">
+          <span class="related-tag">PRODUCTIVITY</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Deal With Decision Fatigue (Without White-Knuckling It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- CTA -->
 <section class="cta-banner">
@@ -266,8 +490,8 @@
     <h2>Put What You Read Into Action</h2>
     <p>Reading is the first step. Use the free tools to turn the ideas into real daily habits, goals, and progress.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="habit-builder.html" class="btn btn-dark">Start a Habit &rarr;</a>
-      <a href="quiz.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);color:#fff;">Take the Quiz &rarr;</a>
+      <a href="habit-builder" class="btn btn-dark">Start a Habit &rarr;</a>
+      <a href="quiz" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);color:#fff;">Take the Quiz &rarr;</a>
     </div>
   </div>
 </section>
@@ -281,28 +505,28 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog-how-to-build-mental-toughness.html">How to Build Mental Toughness</a></li>
-        <li><a href="blog-how-to-build-self-discipline.html">How to Build Self-Discipline</a></li>
-        <li><a href="blog-how-to-stop-being-hard-on-yourself.html">Stop Being Hard on Yourself</a></li>
-        <li><a href="blog-how-to-get-out-of-a-rut.html">How to Get Out of a Rut</a></li>
-        <li><a href="blog-overcoming-adversity.html">Overcoming Adversity</a></li>
+        <li><a href="blog-how-to-build-mental-toughness">How to Build Mental Toughness</a></li>
+        <li><a href="blog-how-to-build-self-discipline">How to Build Self-Discipline</a></li>
+        <li><a href="blog-how-to-stop-being-hard-on-yourself">Stop Being Hard on Yourself</a></li>
+        <li><a href="blog-how-to-get-out-of-a-rut">How to Get Out of a Rut</a></li>
+        <li><a href="blog-overcoming-adversity">Overcoming Adversity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">All Posts</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="blog">All Posts</a></li>
       </ul>
     </div>
   </div>

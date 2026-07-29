@@ -96,18 +96,191 @@
     .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #f7971e, #ffd200) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -176,7 +349,7 @@
 
   <p>What gets measured gets managed. What gets tracked gets done. You need a visual record of your consistency that you see every single day. Not buried in an app you forget to open. Front and center.</p>
 
-  <p>Use the <a href="goal-tracker.html">Goal Tracker</a> to set your target and log your daily progress. When you can see an unbroken streak building, something shifts in your brain. You do not want to break it. That streak becomes its own source of motivation &mdash; not the emotional kind that fades, but the structural kind that builds on itself.</p>
+  <p>Use the <a href="goal-tracker">Goal Tracker</a> to set your target and log your daily progress. When you can see an unbroken streak building, something shifts in your brain. You do not want to break it. That streak becomes its own source of motivation &mdash; not the emotional kind that fades, but the structural kind that builds on itself.</p>
 
   <p>A calendar on your wall works too. Put an X on every day you complete your minimum action. After a few weeks of Xs, the visual chain does the motivating for you. You are no longer relying on feelings. You are relying on momentum.</p>
 
@@ -200,9 +373,9 @@
 
   <p>You are not meant to do this alone. Solo consistency is possible, but it is playing the game on hard mode for no reason. Adding accountability into your process makes staying consistent dramatically easier.</p>
 
-  <p>There are two ways to do this. First, find one person &mdash; a friend, a partner, a coworker &mdash; and tell them your specific daily commitment. Check in with them weekly. Not a long conversation. A text. "Did I do the thing this week? Yes or no." That social pressure is incredibly effective. We covered this in depth in the <a href="blog-accountability-secret-weapon.html">accountability article</a> if you want to go deeper.</p>
+  <p>There are two ways to do this. First, find one person &mdash; a friend, a partner, a coworker &mdash; and tell them your specific daily commitment. Check in with them weekly. Not a long conversation. A text. "Did I do the thing this week? Yes or no." That social pressure is incredibly effective. We covered this in depth in the <a href="blog-accountability-secret-weapon">accountability article</a> if you want to go deeper.</p>
 
-  <p>Second, make your commitment public. Write your goal in your <a href="journal.html">journal</a>. Post it on social media. Put it on a whiteboard in your office. The act of declaring what you are going to do activates a psychological principle called commitment consistency. Once you state something publicly, your brain works harder to align your actions with your words.</p>
+  <p>Second, make your commitment public. Write your goal in your <a href="journal">journal</a>. Post it on social media. Put it on a whiteboard in your office. The act of declaring what you are going to do activates a psychological principle called commitment consistency. Once you state something publicly, your brain works harder to align your actions with your words.</p>
 
   <p>You do not need both. Pick whichever one feels more uncomfortable. That is probably the one that will work best for you.</p>
 
@@ -214,7 +387,7 @@
 
   <p>Every time you complete your minimum viable action, you are casting a vote for the identity of the person you want to become. One vote does not win an election. But hundreds of votes, stacked over weeks and months, create a landslide. That is how identity change works. It is not a declaration. It is an accumulation of evidence.</p>
 
-  <p>You do not wake up one morning and decide to be consistent. You become consistent by proving it to yourself one small action at a time. The <a href="blog-one-percent-rule.html">1% rule</a> works the same way &mdash; tiny daily improvements compound into something you could never achieve with a single burst of effort.</p>
+  <p>You do not wake up one morning and decide to be consistent. You become consistent by proving it to yourself one small action at a time. The <a href="blog-one-percent-rule">1% rule</a> works the same way &mdash; tiny daily improvements compound into something you could never achieve with a single burst of effort.</p>
 
   <h2>What Consistent People Do Differently</h2>
 
@@ -248,20 +421,71 @@
 
   <h2>Your Move</h2>
 
-  <p>You do not need a new goal. You need a new system for the goals you already have. Here is what to do right now. Pick your most important goal. Define the smallest daily action that moves it forward. Attach it to something you already do. Start tracking it today using the <a href="goal-tracker.html">Goal Tracker</a>. And tell one person what you are committing to.</p>
+  <p>You do not need a new goal. You need a new system for the goals you already have. Here is what to do right now. Pick your most important goal. Define the smallest daily action that moves it forward. Attach it to something you already do. Start tracking it today using the <a href="goal-tracker">Goal Tracker</a>. And tell one person what you are committing to.</p>
 
   <p>That is how you stay consistent with your goals. Not by feeling motivated. Not by gritting your teeth. By building a system that makes showing up the easy choice, and then showing up enough times that it becomes who you are.</p>
 
   <p>Stop waiting for the perfect moment. Start with the smallest action. Do it today.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Stay%20Consistent%20With%20Your%20Goals%20%28When%20Motivation%20Fades%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stay-consistent-with-goals" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stay-consistent-with-goals" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-stop-living-on-autopilot">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Stop Living on Autopilot (And Take Back Your Life)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-signs-you-are-growing">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>10 Signs You Are Growing as a Person (Even When It Does Not Feel Like It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-habits-why-fail">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #11998e, #38ef7d)">
+          <span class="related-tag">HABITS</span>
+        </div>
+        <div class="related-card-body">
+          <h3>Why You Keep Failing Your Habits (And What to Do About It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>Turn This Into Action</h2>
     <p>Use the free Goal Tracker to set your target and start building your consistency streak today. Or take the Mindset Quiz to see where you stand.</p>
-    <a href="goal-tracker.html" class="btn btn-primary" style="margin-right:12px;">Set a Goal &rarr;</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="goal-tracker" class="btn btn-primary" style="margin-right:12px;">Set a Goal &rarr;</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -274,26 +498,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>

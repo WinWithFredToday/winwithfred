@@ -129,18 +129,191 @@
     .faq-item p { margin-bottom: 0; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #2193b0, #6dd5ed) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -198,7 +371,7 @@
 
   <p>The second reason people stay stuck is that they think getting out of a rut requires a massive change. So they plan a big overhaul, feel overwhelmed by the size of it, and do nothing. Then they feel worse because they planned and did not execute. This kills confidence and makes the rut deeper.</p>
 
-  <p>The fix is to think smaller. Much smaller. Small enough that there is no excuse not to start today. Read more about why <a href="blog-discipline-beats-motivation.html">discipline beats waiting for motivation</a> and you will understand the mindset shift that makes this possible.</p>
+  <p>The fix is to think smaller. Much smaller. Small enough that there is no excuse not to start today. Read more about why <a href="blog-discipline-beats-motivation">discipline beats waiting for motivation</a> and you will understand the mindset shift that makes this possible.</p>
 
   <div class="callout"><p>A rut does not end with a breakthrough. It ends with one small different action, repeated until the pattern breaks. Start there.</p></div>
 
@@ -212,11 +385,11 @@
 
   <h3>2. Write Down What You Actually Want</h3>
 
-  <p>Most people in a rut have lost touch with what they want. Not what they should want. Not what other people want for them. What they actually want. Get a piece of paper and write down what your life would look like if things were going well. Do not filter it. Do not judge it. Just write. This exercise sounds simple but it is powerful. It reconnects you to a direction. A rut thrives on directionlessness. Give yourself a direction. The <a href="journal.html">Journal Prompts</a> tool has specific prompts designed to help you get clear on this fast.</p>
+  <p>Most people in a rut have lost touch with what they want. Not what they should want. Not what other people want for them. What they actually want. Get a piece of paper and write down what your life would look like if things were going well. Do not filter it. Do not judge it. Just write. This exercise sounds simple but it is powerful. It reconnects you to a direction. A rut thrives on directionlessness. Give yourself a direction. The <a href="journal">Journal Prompts</a> tool has specific prompts designed to help you get clear on this fast.</p>
 
   <h3>3. Set One Goal for the Next 30 Days</h3>
 
-  <p>Not ten goals. One. Pick something specific and achievable. Something you could actually accomplish in 30 days if you did the work consistently. Write it down. Make a basic plan. Work the plan. When you hit it, you will have broken the rut and built a piece of real confidence at the same time. Use the <a href="goal-tracker.html">Goal Tracker</a> to keep it in front of you every day so it does not disappear into the back of your mind where good intentions go to die.</p>
+  <p>Not ten goals. One. Pick something specific and achievable. Something you could actually accomplish in 30 days if you did the work consistently. Write it down. Make a basic plan. Work the plan. When you hit it, you will have broken the rut and built a piece of real confidence at the same time. Use the <a href="goal-tracker">Goal Tracker</a> to keep it in front of you every day so it does not disappear into the back of your mind where good intentions go to die.</p>
 
   <h3>4. Add One New Thing to Your Week</h3>
 
@@ -232,13 +405,13 @@
 
   <h3>7. Track What You Do, Not Just What You Feel</h3>
 
-  <p>One of the worst parts of being in a rut is that every day feels the same so every day looks the same in your memory. You lose track of the good things you do because they blend into the blur. Start tracking your daily actions. Not just your feelings. What did you actually do today? What small thing moved you forward? Use the <a href="habit-builder.html">Habit Builder</a> to build this tracking habit and watch how quickly the data changes your perception of your own progress.</p>
+  <p>One of the worst parts of being in a rut is that every day feels the same so every day looks the same in your memory. You lose track of the good things you do because they blend into the blur. Start tracking your daily actions. Not just your feelings. What did you actually do today? What small thing moved you forward? Use the <a href="habit-builder">Habit Builder</a> to build this tracking habit and watch how quickly the data changes your perception of your own progress.</p>
 
   <h2>The Role of Habits in Getting and Staying Out of a Rut</h2>
 
   <p>A rut is made of habits. Getting out of a rut requires replacing bad habits with better ones. This does not happen overnight. It happens through repetition. You do the new thing once. Then again. Then again. At some point it stops feeling like effort and starts feeling automatic. That is when you know the rut is behind you.</p>
 
-  <p>The problem most people have with <a href="blog-habits-why-fail.html">building new habits</a> is they try to do too many at once. They get excited, change everything, and burn out in two weeks. Do not do that. Pick one habit. Build it until it is solid. Then add another. Slow is fast when it comes to habits. Trying to rush it is the fastest way to fail.</p>
+  <p>The problem most people have with <a href="blog-habits-why-fail">building new habits</a> is they try to do too many at once. They get excited, change everything, and burn out in two weeks. Do not do that. Pick one habit. Build it until it is solid. Then add another. Slow is fast when it comes to habits. Trying to rush it is the fastest way to fail.</p>
 
   <h3>The Habit That Changes Everything</h3>
 
@@ -250,7 +423,7 @@
 
   <p>That is the process. It is not cinematic. But it is real. And it is available to you right now if you are willing to start with something small and keep going.</p>
 
-  <p>If you have been dealing with <a href="blog-how-to-stop-overthinking.html">overthinking</a> on top of feeling stuck, that combination can make a rut feel impossible to escape. Overthinking feeds the rut by keeping you planning instead of doing. The answer is the same: one small action, right now, before your brain talks you out of it.</p>
+  <p>If you have been dealing with <a href="blog-how-to-stop-overthinking">overthinking</a> on top of feeling stuck, that combination can make a rut feel impossible to escape. Overthinking feeds the rut by keeping you planning instead of doing. The answer is the same: one small action, right now, before your brain talks you out of it.</p>
 
   <h2>One More Thing Before You Go</h2>
 
@@ -286,16 +459,67 @@
 
   <p>Pick one thing from this list and do it before the day is over. Not all of them. One. Write down what you want. Take a different walk. Set a 30-day goal. Track your actions tonight. Start there.</p>
 
-  <p>Use the <a href="goal-tracker.html">Goal Tracker</a> to give yourself a target, the <a href="habit-builder.html">Habit Builder</a> to build the consistency that gets you out, and the <a href="journal.html">Journal</a> to process where you are and where you are headed. Getting out of a rut starts with a single move. Make it now.</p>
+  <p>Use the <a href="goal-tracker">Goal Tracker</a> to give yourself a target, the <a href="habit-builder">Habit Builder</a> to build the consistency that gets you out, and the <a href="journal">Journal</a> to process where you are and where you are headed. Getting out of a rut starts with a single move. Make it now.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Get%20Out%20of%20a%20Rut%20%28When%20You%20Feel%20Completely%20Stuck%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-get-out-of-a-rut" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-get-out-of-a-rut" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-manage-your-time">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #2193b0, #6dd5ed)">
+          <span class="related-tag">PRODUCTIVITY</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Manage Your Time So You Stop Feeling Behind</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-stop-procrastinating-take-action">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #2193b0, #6dd5ed)">
+          <span class="related-tag">PRODUCTIVITY</span>
+        </div>
+        <div class="related-card-body">
+          <h3>Stop Procrastinating and Take Action Today</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-forgive-yourself">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #485563, #29323c)">
+          <span class="related-tag">DEFAULT</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Forgive Yourself (When You Actually Did the Thing)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>Ready to Stop Spinning Your Wheels?</h2>
     <p>Take the free Mindset Quiz to find out exactly what is keeping you stuck. Two minutes. No fluff.</p>
-    <a href="quiz.html" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -308,26 +532,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>

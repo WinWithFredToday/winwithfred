@@ -97,18 +97,191 @@
     .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #485563, #29323c) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -157,11 +330,11 @@
 
   <p>Those small signals matter more than people think. The goal early on is not to commit your whole life to something. It is to run cheap experiments. Try a thing for a few weeks. See how it feels once the novelty wears off. Most ideas will fizzle, and that is fine. You are gathering data about yourself.</p>
 
-  <p>This is also the antidote to feeling stuck. A lot of people who think they lack passion are really just under-stimulated and stalled. If that sounds like you, our guide on <a href="blog-how-to-deal-with-feeling-lost-in-life.html">how to deal with feeling lost in life</a> pairs directly with this one. Direction often returns the moment you start moving.</p>
+  <p>This is also the antidote to feeling stuck. A lot of people who think they lack passion are really just under-stimulated and stalled. If that sounds like you, our guide on <a href="blog-how-to-deal-with-feeling-lost-in-life">how to deal with feeling lost in life</a> pairs directly with this one. Direction often returns the moment you start moving.</p>
 
   <h3>Make a short list of pulls</h3>
 
-  <p>Write down five to ten things that even mildly interest you. Not careers. Not five-year plans. Just activities, topics, or skills that make you a little curious. Then pick one and commit to exploring it for two or three weeks. Use the <a href="goal-tracker.html">Goal Tracker</a> to set a simple, time-boxed experiment so you actually follow through instead of letting it stay a daydream.</p>
+  <p>Write down five to ten things that even mildly interest you. Not careers. Not five-year plans. Just activities, topics, or skills that make you a little curious. Then pick one and commit to exploring it for two or three weeks. Use the <a href="goal-tracker">Goal Tracker</a> to set a simple, time-boxed experiment so you actually follow through instead of letting it stay a daydream.</p>
 
   <h2>Take Action Before You Feel Ready</h2>
 
@@ -169,7 +342,7 @@
 
   <p>Action does three things that thinking cannot. It gives you real experience to react to. It builds the early competence that turns interest into enjoyment. And it generates momentum, which feels a lot like motivation once it gets going. You do not need confidence to start. You need to start in order to build confidence.</p>
 
-  <p>If self-doubt is what keeps freezing you in place, that is worth tackling head-on. The voice saying "you'll be bad at this, don't bother" is not protecting you, it is trapping you. Read <a href="blog-how-to-stop-doubting-yourself.html">how to stop doubting yourself</a> for a practical way to quiet it. Then take the smallest possible first step anyway.</p>
+  <p>If self-doubt is what keeps freezing you in place, that is worth tackling head-on. The voice saying "you'll be bad at this, don't bother" is not protecting you, it is trapping you. Read <a href="blog-how-to-stop-doubting-yourself">how to stop doubting yourself</a> for a practical way to quiet it. Then take the smallest possible first step anyway.</p>
 
   <p>Small is the key word. You are not quitting your job to chase a dream you have done for zero hours. You are signing up for one class, building one small project, or spending one weekend trying the thing. Keep the stakes low and the reps frequent.</p>
 
@@ -177,7 +350,7 @@
 
   <p>As you start trying things, become a detective of your own energy. After an activity, ask one question: do I feel drained or charged up? Not "was it easy" &mdash; passion is rarely easy. The real signal is whether the effort felt worth it, whether you lost track of time, whether you wanted to come back to it.</p>
 
-  <p>This is where a simple journaling habit earns its keep. Spend two minutes after each experiment noting how it felt. Over a few weeks, patterns appear that you would never catch in the moment. Use the <a href="journal.html">Journal</a> tool to track it. Your own notes will tell you more about your passion than any personality quiz.</p>
+  <p>This is where a simple journaling habit earns its keep. Spend two minutes after each experiment noting how it felt. Over a few weeks, patterns appear that you would never catch in the moment. Use the <a href="journal">Journal</a> tool to track it. Your own notes will tell you more about your passion than any personality quiz.</p>
 
   <p>Watch out for the difference between liking the idea of something and liking the actual doing of it. Plenty of people love the fantasy of being a writer but hate sitting down to write. The doing is what counts. If the day-to-day reality energizes you even when it is hard, you are onto something real.</p>
 
@@ -187,7 +360,7 @@
 
   <p>Everyone you admire was once terrible at the thing they are now known for. The gap you see is not talent. It is time and reps. Your job in the early stage is not to be good. It is to stay in the game long enough to get good, because that is when passion actually shows up.</p>
 
-  <p>This comparison trap also feeds the sense that you are somehow behind everyone else. You are not. If that feeling drives you, read <a href="blog-how-to-stop-feeling-behind-in-life.html">how to stop feeling behind in life</a>. There is no universal schedule for finding what you love, and pretending there is only makes you quit faster.</p>
+  <p>This comparison trap also feeds the sense that you are somehow behind everyone else. You are not. If that feeling drives you, read <a href="blog-how-to-stop-feeling-behind-in-life">how to stop feeling behind in life</a>. There is no universal schedule for finding what you love, and pretending there is only makes you quit faster.</p>
 
   <h2>Let Your Passion Evolve</h2>
 
@@ -215,16 +388,67 @@
 
   <p>You do not find your passion by thinking harder or waiting longer. You find it by getting curious, trying things, paying attention to what energizes you, and sticking with it past the awkward beginner phase. Passion is the reward for showing up, not the requirement to begin.</p>
 
-  <p>So pick one thread of curiosity today and run a two-week experiment with it. That is the whole move. Want a clearer read on where your mindset and motivation stand right now? Take the free <a href="quiz.html">Mindset Quiz</a> &mdash; knowing your starting point is how you start building momentum.</p>
+  <p>So pick one thread of curiosity today and run a two-week experiment with it. That is the whole move. Want a clearer read on where your mindset and motivation stand right now? Take the free <a href="quiz">Mindset Quiz</a> &mdash; knowing your starting point is how you start building momentum.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Find%20Your%20Passion%20%28Without%20Waiting%20for%20a%20Lightning%20Bolt%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-find-your-passion" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-find-your-passion" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-practice-gratitude">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #485563, #29323c)">
+          <span class="related-tag">MENTAL HEALTH</span>
+        </div>
+        <div class="related-card-body">
+          <h3>10 Simple Ways to Practice Gratitude Every Day</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-toxic-habits-holding-you-back">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #11998e, #38ef7d)">
+          <span class="related-tag">HABITS</span>
+        </div>
+        <div class="related-card-body">
+          <h3>10 Toxic Habits That Are Secretly Holding You Back</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-discipline-beats-motivation">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>Stop Waiting to Feel Motivated. Get Disciplined.</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>What Is Your Mindset Built For?</h2>
     <p>Take the free Mindset Quiz to see where you stand. Knowing your starting point is the first step to getting stronger.</p>
-    <a href="quiz.html" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -237,26 +461,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>

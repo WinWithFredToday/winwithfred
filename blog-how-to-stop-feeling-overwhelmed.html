@@ -120,18 +120,191 @@
       .article-inner h2 { font-size: 1.45rem; }
     }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #485563, #29323c) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -222,13 +395,13 @@
 
     <p>A task you are avoiding is usually too big. Not in real size. In the size you have it stored in your head. &ldquo;Do taxes&rdquo; is a huge task. &ldquo;Open the tax folder&rdquo; is a three second task. Start with the three second version. Once you start, the next step shows up on its own. Overwhelm lives in &ldquo;do taxes.&rdquo; It dies in &ldquo;open the folder.&rdquo;</p>
 
-    <p>Write every task on your list with the very first action, not the goal. Not &ldquo;plan birthday.&rdquo; &ldquo;Text three friends to ask if Saturday works.&rdquo; Not &ldquo;clean out garage.&rdquo; &ldquo;Put one empty box by the door.&rdquo; The Goal Tracker works well here if you want it structured. You can start one at <a href="goal-tracker.html">the Goal Tracker</a>.</p>
+    <p>Write every task on your list with the very first action, not the goal. Not &ldquo;plan birthday.&rdquo; &ldquo;Text three friends to ask if Saturday works.&rdquo; Not &ldquo;clean out garage.&rdquo; &ldquo;Put one empty box by the door.&rdquo; The Goal Tracker works well here if you want it structured. You can start one at <a href="goal-tracker">the Goal Tracker</a>.</p>
 
     <h3>Let some balls drop on purpose</h3>
 
     <p>If your load is real and not imagined, no system will make all of it fit. The math just does not work. At that point, the job is not better organizing. It is choosing what does not get done this week on purpose. If you do not choose, your brain will keep every single thing on the list alive in the background, and you will pay for all of it in overwhelm.</p>
 
-    <p>Once a week, look at your list and mark three items you are letting slide. Not forever. Just for now. The calm comes from the choice, not from finishing everything. If this connects to something bigger, <a href="blog-how-to-stop-being-a-perfectionist.html">how to stop being a perfectionist</a> goes deeper on the part that cannot let anything drop.</p>
+    <p>Once a week, look at your list and mark three items you are letting slide. Not forever. Just for now. The calm comes from the choice, not from finishing everything. If this connects to something bigger, <a href="blog-how-to-stop-being-a-perfectionist">how to stop being a perfectionist</a> goes deeper on the part that cannot let anything drop.</p>
 
     <h2>Long-Term Fixes for Constant Overwhelm</h2>
 
@@ -240,7 +413,7 @@
 
     <h3>Review your yeses</h3>
 
-    <p>Overwhelmed people usually have a yes problem. Every yes you give is a debit from your week. If you say yes to everything, you cannot be surprised that the account is empty by Thursday. Look at the last month. Which yeses drained you most? Which ones were kind of a shrug? Put a quiet no in the rotation and watch overwhelm thin out. The people-pleasing angle on this is covered in <a href="blog-how-to-stop-people-pleasing.html">how to stop people pleasing</a>.</p>
+    <p>Overwhelmed people usually have a yes problem. Every yes you give is a debit from your week. If you say yes to everything, you cannot be surprised that the account is empty by Thursday. Look at the last month. Which yeses drained you most? Which ones were kind of a shrug? Put a quiet no in the rotation and watch overwhelm thin out. The people-pleasing angle on this is covered in <a href="blog-how-to-stop-people-pleasing">how to stop people pleasing</a>.</p>
 
     <h3>Sleep is not optional</h3>
 
@@ -248,7 +421,7 @@
 
     <h3>Track the load, not just the tasks</h3>
 
-    <p>Most planners track tasks. They do not track the total weight. A useful habit is a two-minute end-of-day note. Energy level today, out of ten. One thing that filled the glass. One thing that drained it. After a few weeks you will start to see patterns. You will know which Tuesdays to defend. You will know which meetings actually cost you. The <a href="journal.html">Journal</a> works for this kind of light tracking.</p>
+    <p>Most planners track tasks. They do not track the total weight. A useful habit is a two-minute end-of-day note. Energy level today, out of ten. One thing that filled the glass. One thing that drained it. After a few weeks you will start to see patterns. You will know which Tuesdays to defend. You will know which meetings actually cost you. The <a href="journal">Journal</a> works for this kind of light tracking.</p>
 
     <h2>When Overwhelm Turns Into Something Bigger</h2>
 
@@ -256,7 +429,7 @@
 
     <p>At that point, you are not dealing with a time management problem. You are likely dealing with burnout, long grief, unresolved anxiety, or something that needs more care than a brain dump can give. The signs to watch for are these. Tired that sleep does not fix. Losing interest in things that used to matter. Basic tasks feeling like boulders. A quiet sense of hopelessness underneath the stress.</p>
 
-    <p>If that is where you are, please do not try to self-help your way through it alone. Talk to a doctor. Talk to a therapist. Talk to a friend who will not rush you. There is no gold star for handling it by yourself. For related ideas on the stress side of this, see <a href="blog-how-to-deal-with-stress.html">how to deal with stress</a>.</p>
+    <p>If that is where you are, please do not try to self-help your way through it alone. Talk to a doctor. Talk to a therapist. Talk to a friend who will not rush you. There is no gold star for handling it by yourself. For related ideas on the stress side of this, see <a href="blog-how-to-deal-with-stress">how to deal with stress</a>.</p>
 
     <h2>A One-Week Reset for Overwhelm</h2>
 
@@ -296,10 +469,61 @@
 
     <p>Overwhelm is not a character flaw. It is a signal that the glass is too full. Drop the load before you touch the list. Breathe slow with a long exhale. Dump the swirl onto paper. Pick the smallest thing on the page and start. For the bigger picture, guard your sleep, watch your yeses, and put one real pause in every day. You do not need a new system. You need a lighter glass. Start there this week, and the rest of your life gets a lot easier to carry.</p>
 
-    <p style="margin-top: 32px;"><a href="goal-tracker.html" class="btn btn-primary">Shrink one task right now &rarr;</a></p>
+    <p style="margin-top: 32px;"><a href="goal-tracker" class="btn btn-primary">Shrink one task right now &rarr;</a></p>
 
   </div>
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Stop%20Feeling%20Overwhelmed%20%28When%20Everything%20Is%20Too%20Much%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stop-feeling-overwhelmed" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stop-feeling-overwhelmed" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-stop-being-positive">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>Stop Trying to Be Positive. Do This Instead.</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-get-your-life-together">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #f953c6, #b91d73)">
+          <span class="related-tag">LIFE RESET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Get Your Life Together (A Real Plan That Actually Works)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-how-to-stop-doubting-yourself">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #485563, #29323c)">
+          <span class="related-tag">DEFAULT</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Stop Doubting Yourself (And Finally Trust Your Own Judgment)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- CTA -->
 <section class="cta-banner">
@@ -307,8 +531,8 @@
     <h2>Put What You Read Into Action</h2>
     <p>Reading is the first step. Use the free tools to turn the ideas into real daily habits, goals, and progress.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="habit-builder.html" class="btn btn-dark">Start a Habit &rarr;</a>
-      <a href="quiz.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);color:#fff;">Take the Quiz &rarr;</a>
+      <a href="habit-builder" class="btn btn-dark">Start a Habit &rarr;</a>
+      <a href="quiz" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);color:#fff;">Take the Quiz &rarr;</a>
     </div>
   </div>
 </section>
@@ -322,28 +546,28 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog-how-to-deal-with-stress.html">How to Deal With Stress</a></li>
-        <li><a href="blog-how-to-stop-overthinking.html">Stop Overthinking</a></li>
-        <li><a href="blog-how-to-stop-being-a-perfectionist.html">Stop Being a Perfectionist</a></li>
-        <li><a href="blog-how-to-stop-people-pleasing.html">Stop People Pleasing</a></li>
-        <li><a href="blog-how-to-build-mental-toughness.html">Build Mental Toughness</a></li>
+        <li><a href="blog-how-to-deal-with-stress">How to Deal With Stress</a></li>
+        <li><a href="blog-how-to-stop-overthinking">Stop Overthinking</a></li>
+        <li><a href="blog-how-to-stop-being-a-perfectionist">Stop Being a Perfectionist</a></li>
+        <li><a href="blog-how-to-stop-people-pleasing">Stop People Pleasing</a></li>
+        <li><a href="blog-how-to-build-mental-toughness">Build Mental Toughness</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">All Posts</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="blog">All Posts</a></li>
       </ul>
     </div>
   </div>

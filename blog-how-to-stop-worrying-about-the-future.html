@@ -96,18 +96,191 @@
     .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     @media (max-width: 768px) { .navbar-links { display: none; } .footer-inner { flex-direction: column; } }
   </style>
+<style id="wf-post-gradient">
+.post-header {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border-bottom: none !important;
+}
+.post-header-inner h1,
+.post-header-inner .post-meta {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.post-header .blog-tag {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+</style>
+<style id="wf-new-sections">
+/* ── Social Share ─────────────────────── */
+.post-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 36px 0 0;
+}
+.share-label { font-weight: 600; color: #374151; font-size: 14px; }
+.share-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.share-btn:hover { opacity: 0.8; }
+.share-x    { background: #000; color: #fff; }
+.share-fb   { background: #1877f2; color: #fff; }
+.share-copy { background: #f3f4f6; color: #374151; }
+
+/* ── Email Capture ────────────────────── */
+.email-capture-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 52px 24px;
+  margin: 40px 0;
+  border-radius: 14px;
+}
+.email-capture-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.email-capture-inner h2 {
+  color: #fff;
+  font-size: 26px;
+  margin: 0 0 14px;
+  line-height: 1.3;
+}
+.email-capture-inner > p {
+  color: rgba(255,255,255,0.78);
+  margin: 0 0 28px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+.capture-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.capture-form input[type=email] {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+}
+.capture-form button {
+  padding: 13px 24px;
+  background: #f7971e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.capture-form button:hover { background: #e5860d; }
+.capture-fine {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+/* ── Related Posts ────────────────────── */
+.related-posts-section {
+  padding: 48px 0 0;
+  margin: 0;
+  border-top: 2px solid #f3f4f6;
+}
+.related-posts-section h2 {
+  font-size: 24px;
+  color: #111827;
+  margin: 0 0 24px;
+}
+.related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+.related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+.related-card-header {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+.related-tag {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.related-card-body {
+  padding: 14px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.related-card-body h3 {
+  font-size: 14px;
+  color: #111827;
+  margin: 0 0 auto;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.related-read {
+  display: block;
+  margin-top: 12px;
+  color: #f7971e;
+  font-size: 13px;
+  font-weight: 700;
+}
+</style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="blog" class="active">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
@@ -168,7 +341,7 @@
 
   <h3>Give the worry a parking spot</h3>
 
-  <p>Telling yourself to stop thinking about something never works &mdash; it just makes the thought louder. Instead, contain it. Set a daily ten-minute "worry window." When an anxious thought shows up outside that window, write it down and tell yourself you will deal with it at the scheduled time. This sounds almost too simple, but it works because your brain mostly wants to know the worry will not be forgotten. Once it trusts that, it lets go. Writing it down is the key move &mdash; the same reason a tool like the <a href="journal.html">Journal Prompts</a> page helps. Getting the fear out of your head and onto the page shrinks it to its real size.</p>
+  <p>Telling yourself to stop thinking about something never works &mdash; it just makes the thought louder. Instead, contain it. Set a daily ten-minute "worry window." When an anxious thought shows up outside that window, write it down and tell yourself you will deal with it at the scheduled time. This sounds almost too simple, but it works because your brain mostly wants to know the worry will not be forgotten. Once it trusts that, it lets go. Writing it down is the key move &mdash; the same reason a tool like the <a href="journal">Journal Prompts</a> page helps. Getting the fear out of your head and onto the page shrinks it to its real size.</p>
 
   <h2>Train Your Brain to Stop Overthinking the Future</h2>
 
@@ -176,7 +349,7 @@
 
   <p>Start by noticing how often your worries are phrased as questions you cannot answer. "What if it all falls apart?" "What if I picked wrong?" Your brain treats those open questions like emergencies and keeps hunting for an answer that does not exist yet. The fix is to convert the unanswerable question into a concrete one you can actually work with: not "what if I lose my job," but "what would my first three moves be if that happened." Suddenly you are problem-solving instead of free-falling.</p>
 
-  <p>Then build evidence that you can handle hard things. Every time you face something you were dreading and get through it, your brain updates its threat model a little. This is the same muscle behind real <a href="blog-how-to-handle-uncertainty.html">handling of uncertainty</a> &mdash; you stop needing to know how everything ends before you can be okay today. The more reps you get, the less the future feels like a threat and the more it feels like a series of problems you are equipped to solve.</p>
+  <p>Then build evidence that you can handle hard things. Every time you face something you were dreading and get through it, your brain updates its threat model a little. This is the same muscle behind real <a href="blog-how-to-handle-uncertainty">handling of uncertainty</a> &mdash; you stop needing to know how everything ends before you can be okay today. The more reps you get, the less the future feels like a threat and the more it feels like a series of problems you are equipped to solve.</p>
 
   <p>It also helps to attack the conditions that fuel worry. Anxiety thrives on exhaustion, too much caffeine, no movement, and a brain that never gets a break from the screen. None of that is the cause of your worry, but all of it pours gas on it. Clean up the inputs and the spirals lose a lot of their power.</p>
 
@@ -184,9 +357,9 @@
 
   <p>Here is the part nobody likes to hear. A lot of chronic worry is what fills the space when you are not moving toward anything. An idle mind defaults to threat-scanning. A mind with a clear next step in front of it does not have the same room to spin. So the long game for how to stop worrying about the future is not just calming down &mdash; it is building a life with enough direction that worry gets crowded out.</p>
 
-  <p>Action is the antidote to anxiety. Not big, dramatic action. Small, repeated action toward something that matters to you. When you are taking real steps, your brain gets fed actual progress instead of imagined catastrophe. This is closely tied to learning <a href="blog-how-to-stop-overthinking.html">how to stop overthinking</a> in general: thinking is what your mind does when it is not allowed to do anything else.</p>
+  <p>Action is the antidote to anxiety. Not big, dramatic action. Small, repeated action toward something that matters to you. When you are taking real steps, your brain gets fed actual progress instead of imagined catastrophe. This is closely tied to learning <a href="blog-how-to-stop-overthinking">how to stop overthinking</a> in general: thinking is what your mind does when it is not allowed to do anything else.</p>
 
-  <p>Give yourself a system for that forward motion. Pick one thing that matters and track your progress on it daily &mdash; a tool like the <a href="habit-builder.html">Habit Builder</a> works for exactly this. Watching a streak build gives your brain proof that the future you are walking toward is being shaped by you, not just happening to you. That sense of agency is the real cure for future anxiety. Worry is loudest when you feel powerless. The moment you are actively building something, the volume drops.</p>
+  <p>Give yourself a system for that forward motion. Pick one thing that matters and track your progress on it daily &mdash; a tool like the <a href="habit-builder">Habit Builder</a> works for exactly this. Watching a streak build gives your brain proof that the future you are walking toward is being shaped by you, not just happening to you. That sense of agency is the real cure for future anxiety. Worry is loudest when you feel powerless. The moment you are actively building something, the volume drops.</p>
 
   <p>You will never make the future certain. That is not on the table for anyone. But you can become the kind of person who trusts themselves to deal with whatever it brings. That is a far better deal than trying to predict and control everything in advance, and it is the only version that actually lets you rest.</p>
 
@@ -212,16 +385,67 @@
 
   <p>You will not silence your worried brain by arguing with it. You beat it by giving it less room to operate &mdash; by coming back to the present, separating real planning from useless dread, and building enough forward motion that the future stops feeling like a threat and starts feeling like yours to shape. Learning how to stop worrying about the future is not about becoming fearless. It is about trusting that you can handle what comes.</p>
 
-  <p>Start today with one move. Pick the thing you have been quietly dreading and write down the single next step you can take on it. Then go build some momentum &mdash; open the <a href="habit-builder.html">Habit Builder</a> and start a streak on something that matters. Action is what shrinks the future back down to a size you can carry.</p>
+  <p>Start today with one move. Pick the thing you have been quietly dreading and write down the single next step you can take on it. Then go build some momentum &mdash; open the <a href="habit-builder">Habit Builder</a> and start a streak on something that matters. Action is what shrinks the future back down to a size you can carry.</p>
 
 </article>
+<div class="post-share">
+  <span class="share-label">Share this post:</span>
+  <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=How%20to%20Stop%20Worrying%20About%20the%20Future%20%28And%20Get%20Your%20Life%20Back%29&url=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stop-worrying-about-the-future" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwinwithfred.com%2Fblog-how-to-stop-worrying-about-the-future" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+  <button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.href);this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'},2000,this)">Copy Link</button>
+</div>
+<section class="email-capture-section">
+  <div class="email-capture-inner">
+    <h2>Enjoyed This? Get More Free.</h2>
+    <p>Join thousands getting Freddy's best posts on mindset, habits, and real growth — delivered straight to your inbox.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe Free &#8594;</button>
+    </form>
+    <p class="capture-fine">No spam. Unsubscribe anytime with one click.</p>
+  </div>
+</section>
+<section class="related-posts-section">
+  <div class="related-posts-inner">
+    <h2>You Might Also Like</h2>
+    <div class="related-posts-grid">
+      <a class="related-card" href="/blog-how-to-say-no-without-feeling-guilty">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+          <span class="related-tag">MINDSET</span>
+        </div>
+        <div class="related-card-body">
+          <h3>How to Say No Without Feeling Guilty (And Mean It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-accountability-secret-weapon">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #485563, #29323c)">
+          <span class="related-tag">ACCOUNTABILITY</span>
+        </div>
+        <div class="related-card-body">
+          <h3>Accountability Is Your Secret Weapon (Here's How to Use It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+      <a class="related-card" href="/blog-habits-why-fail">
+        <div class="related-card-header" style="background:linear-gradient(135deg, #11998e, #38ef7d)">
+          <span class="related-tag">HABITS</span>
+        </div>
+        <div class="related-card-body">
+          <h3>Why You Keep Failing Your Habits (And What to Do About It)</h3>
+          <span class="related-read">Read More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="post-cta">
   <div style="max-width:600px; margin:0 auto;">
     <h2>What Is Your Mindset Built For?</h2>
     <p>Take the free Mindset Quiz to see where you stand. Knowing your starting point is the first step to getting stronger.</p>
-    <a href="quiz.html" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
-    <a href="blog.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
+    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Quiz</a>
+    <a href="blog" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Read More Posts</a>
   </div>
 </section>
 
@@ -234,26 +458,26 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker.html">Goal Tracker</a></li>
-        <li><a href="habit-builder.html">Habit Builder</a></li>
-        <li><a href="journal.html">Journal Prompts</a></li>
-        <li><a href="quiz.html">Mindset Quiz</a></li>
+        <li><a href="goal-tracker">Goal Tracker</a></li>
+        <li><a href="habit-builder">Habit Builder</a></li>
+        <li><a href="journal">Journal Prompts</a></li>
+        <li><a href="quiz">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog.html">All Posts</a></li>
-        <li><a href="blog-habits-why-fail.html">Habits</a></li>
-        <li><a href="blog-goals-dont-stick.html">Goals</a></li>
-        <li><a href="blog-one-percent-rule.html">Productivity</a></li>
+        <li><a href="blog">All Posts</a></li>
+        <li><a href="blog-habits-why-fail">Habits</a></li>
+        <li><a href="blog-goals-dont-stick">Goals</a></li>
+        <li><a href="blog-one-percent-rule">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="index.html#about">About Fred</a></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index">Home</a></li>
       </ul>
     </div>
   </div>
