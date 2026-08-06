@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personality & Discipline Quiz &mdash; WinWithFred</title>
-  <meta name="description" content="15 questions. No fluff. Understand exactly how your brain approaches work, goals, and change &mdash; so you can finally stop fighting yourself." />
+  <title>Personality & Discipline Quiz — WinWithFred</title>
+  <meta name="description" content="15 questions. No fluff. Understand exactly how your brain approaches work, goals, and change — so you can finally stop fighting yourself." />
 <style>
 /* ============================================
-   WinWithFred.com &mdash; Global Stylesheet
+   WinWithFred.com — Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* &#9472;&#9472; Reset & Base &#9472;&#9472; */
+/* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -48,12 +48,12 @@ img { max-width: 100%; display: block; }
 a  { color: var(--orange); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* &#9472;&#9472; Layout &#9472;&#9472; */
+/* ── Layout ── */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 .section    { padding: 80px 0; }
 .section-sm { padding: 48px 0; }
 
-/* &#9472;&#9472; Typography &#9472;&#9472; */
+/* ── Typography ── */
 h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
@@ -64,7 +64,7 @@ p  { color: #374151; }
 .text-muted  { color: var(--muted); font-size: 0.9rem; }
 .text-center { text-align: center; }
 
-/* &#9472;&#9472; Buttons &#9472;&#9472; */
+/* ── Buttons ── */
 .btn {
   display: inline-block;
   padding: 14px 28px;
@@ -111,7 +111,7 @@ p  { color: #374151; }
 .btn-sm { padding: 10px 20px; font-size: 0.9rem; }
 .btn-lg { padding: 18px 40px; font-size: 1.1rem; }
 
-/* &#9472;&#9472; Navbar &#9472;&#9472; */
+/* ── Navbar ── */
 .navbar {
   background: var(--dark);
   padding: 0 24px;
@@ -154,7 +154,7 @@ p  { color: #374151; }
 .navbar-links a.active { color: var(--orange); }
 .navbar-cta { margin-left: 8px; }
 
-/* &#9472;&#9472; Hero &#9472;&#9472; */
+/* ── Hero ── */
 .hero {
   background: var(--dark);
   color: var(--white);
@@ -177,7 +177,7 @@ p  { color: #374151; }
 .hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
 .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-/* &#9472;&#9472; Section Headers &#9472;&#9472; */
+/* ── Section Headers ── */
 .section-header { margin-bottom: 48px; }
 .section-header h2 { margin-bottom: 12px; }
 .section-header p  { color: var(--muted); font-size: 1.05rem; }
@@ -194,7 +194,7 @@ p  { color: #374151; }
   margin-bottom: 12px;
 }
 
-/* &#9472;&#9472; Cards &#9472;&#9472; */
+/* ── Cards ── */
 .card {
   background: var(--white);
   border-radius: var(--radius);
@@ -205,12 +205,12 @@ p  { color: #374151; }
 }
 .card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
 
-/* &#9472;&#9472; Grid &#9472;&#9472; */
+/* ── Grid ── */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-/* &#9472;&#9472; Tool Cards (Homepage) &#9472;&#9472; */
+/* ── Tool Cards (Homepage) ── */
 .tool-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -232,7 +232,7 @@ p  { color: #374151; }
 .tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
 .tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
 
-/* &#9472;&#9472; Blog Cards &#9472;&#9472; */
+/* ── Blog Cards ── */
 .blog-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -258,7 +258,7 @@ p  { color: #374151; }
 .blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
 .blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
 
-/* &#9472;&#9472; Dark section &#9472;&#9472; */
+/* ── Dark section ── */
 .dark-section {
   background: var(--dark);
   color: var(--white);
@@ -266,7 +266,7 @@ p  { color: #374151; }
 .dark-section h2 { color: var(--white); }
 .dark-section p  { color: #9ca3af; }
 
-/* &#9472;&#9472; CTA Banner &#9472;&#9472; */
+/* ── CTA Banner ── */
 .cta-banner {
   background: var(--orange);
   color: var(--white);
@@ -276,7 +276,7 @@ p  { color: #374151; }
 .cta-banner h2 { color: var(--white); margin-bottom: 12px; }
 .cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
 
-/* &#9472;&#9472; Footer &#9472;&#9472; */
+/* ── Footer ── */
 .footer {
   background: var(--black);
   color: #9ca3af;
@@ -311,7 +311,7 @@ p  { color: #374151; }
   gap: 12px;
 }
 
-/* &#9472;&#9472; Tool Page Layout &#9472;&#9472; */
+/* ── Tool Page Layout ── */
 .tool-page { min-height: calc(100vh - 64px); }
 .tool-header {
   background: var(--dark);
@@ -323,7 +323,7 @@ p  { color: #374151; }
 .tool-header p  { color: #9ca3af; font-size: 1.05rem; }
 .tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
 
-/* &#9472;&#9472; Form Elements &#9472;&#9472; */
+/* ── Form Elements ── */
 .form-group { margin-bottom: 20px; }
 .form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
 .form-input, .form-textarea, .form-select {
@@ -342,12 +342,12 @@ p  { color: #374151; }
 .form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 .form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
 
-/* &#9472;&#9472; Progress Bar &#9472;&#9472; */
+/* ── Progress Bar ── */
 .progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
 .progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
 .progress-fill.green { background: var(--green); }
 
-/* &#9472;&#9472; Badge &#9472;&#9472; */
+/* ── Badge ── */
 .badge {
   display: inline-block;
   padding: 3px 10px;
@@ -359,10 +359,10 @@ p  { color: #374151; }
 .badge-green  { background: #dcfce7; color: #16a34a; }
 .badge-gray   { background: #f3f4f6; color: var(--muted); }
 
-/* &#9472;&#9472; Divider &#9472;&#9472; */
+/* ── Divider ── */
 .divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
 
-/* &#9472;&#9472; Stat Box &#9472;&#9472; */
+/* ── Stat Box ── */
 .stat-box {
   background: var(--white);
   border: 1px solid #e5e7eb;
@@ -373,12 +373,12 @@ p  { color: #374151; }
 .stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
 .stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
 
-/* &#9472;&#9472; Empty State &#9472;&#9472; */
+/* ── Empty State ── */
 .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
 .empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
 .empty-state p { font-size: 1rem; }
 
-/* &#9472;&#9472; Alert &#9472;&#9472; */
+/* ── Alert ── */
 .alert {
   padding: 14px 18px;
   border-radius: var(--radius);
@@ -389,7 +389,7 @@ p  { color: #374151; }
 .alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
 
-/* &#9472;&#9472; Responsive &#9472;&#9472; */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .hero { padding: 72px 24px; }
@@ -404,14 +404,14 @@ p  { color: #374151; }
   .btn-lg { width: 100%; text-align: center; }
 }
 
-/* &#9472;&#9472; Auth Navbar &#9472;&#9472; */
+/* ── Auth Navbar ── */
 .nav-user { display:flex; align-items:center; gap:10px; }
 .nav-avatar { width:32px; height:32px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0; }
 .nav-name { color:#d1d5db; font-size:0.9rem; font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .nav-logout { background:none; border:1px solid rgba(255,255,255,0.2); color:#9ca3af; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:0.82rem; font-family:var(--font); transition:all 0.15s; }
 .nav-logout:hover { background:rgba(255,255,255,0.08); color:#fff; }
 
-/* &#9472;&#9472; Personality Quiz Styles &#9472;&#9472; */
+/* ── Personality Quiz Styles ── */
 .quiz-progress {
   background: #e5e7eb;
   border-radius: 999px;
@@ -524,17 +524,15 @@ p  { color: #374151; }
   .question-card { padding: 28px 20px; }
 }
 </style>
-  <meta property="og:image" content="https://winwithfred.com/og-image.png">
-  <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
 </head>
 <body>
 
-<!-- &#9472;&#9472; Navbar &#9472;&#9472; -->
+<!-- ── Navbar ── -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="index.html#blog">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -543,25 +541,25 @@ p  { color: #374151; }
   </div>
 </nav>
 
-<!-- &#9472;&#9472; Tool Header &#9472;&#9472; -->
+<!-- ── Tool Header ── -->
 <div class="tool-header">
   <div class="tool-header-inner">
-    <div class="section-label" style="background:rgba(249,115,22,0.15);">&#129516; Personality & Discipline Quiz</div>
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">🧬 Personality & Discipline Quiz</div>
     <h1>Find Out Your Discipline Type.</h1>
-    <p>15 questions. No fluff. Understand exactly how your brain approaches work, goals, and change &mdash; so you can finally stop fighting yourself.</p>
+    <p>15 questions. No fluff. Understand exactly how your brain approaches work, goals, and change — so you can finally stop fighting yourself.</p>
   </div>
 </div>
 
-<!-- &#9472;&#9472; Tool Body &#9472;&#9472; -->
+<!-- ── Tool Body ── -->
 <div class="tool-body">
 
   <!-- Intro Screen -->
   <div id="screen-intro">
     <div class="card" style="text-align:center; padding:48px 36px;">
-      <div style="font-size:3rem; margin-bottom:20px;">&#129516;</div>
+      <div style="font-size:3rem; margin-bottom:20px;">🧬</div>
       <h2 style="margin-bottom:16px;">The Discipline Type Assessment</h2>
       <p style="color:var(--muted); margin-bottom:12px; font-size:1.05rem;">Discover your personality type: Overthinker, Starter, Avoider, Perfectionist, or Drifter.</p>
-      <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 5 minutes. You'll get a detailed breakdown of your strengths, blindspots, and a custom routine to work with your brain &mdash; not against it.</p>
+      <p style="color:var(--muted); margin-bottom:32px; font-size:0.95rem;">Answer honestly. Takes about 5 minutes. You'll get a detailed breakdown of your strengths, blindspots, and a custom routine to work with your brain — not against it.</p>
       <button class="btn btn-primary btn-lg" onclick="startQuiz()">Start the Quiz →</button>
     </div>
   </div>
@@ -576,7 +574,7 @@ p  { color: #374151; }
     <div id="questions-container"></div>
 
     <div class="quiz-nav">
-      <button class="btn btn-outline btn-sm" onclick="prevQuestion()" id="btn-prev" style="display:none;">&#8592; Back</button>
+      <button class="btn btn-outline btn-sm" onclick="prevQuestion()" id="btn-prev" style="display:none;">← Back</button>
       <div></div>
       <button class="btn btn-primary btn-sm" onclick="nextQuestion()" id="btn-next">Next →</button>
     </div>
@@ -618,7 +616,7 @@ p  { color: #374151; }
     <div class="footer-col">
       <h4>Platform</h4>
       <ul>
-        <li><a href="index">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="index.html#tools">Tools</a></li>
         <li><a href="index.html#blog">Blog</a></li>
       </ul>
@@ -628,30 +626,30 @@ p  { color: #374151; }
       <ul>
         <li><a href="index.html#about">About</a></li>
         <li><a href="#">Privacy</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="mailto:hello@winwithfred.com">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <div>&#169; 2026 WinWithFred. All rights reserved.</div>
+    <div>© 2026 WinWithFred. All rights reserved.</div>
     <div>Made with intent. No fluff.</div>
   </div>
 </footer>
 
 <script>
 const TYPES = {
-  OVERTHINKER: { emoji: '&#129504;', label: 'THE OVERTHINKER', title: 'You have clarity without courage to act.', desc: 'Your problem isn\'t knowledge &mdash; it\'s execution.' },
-  STARTER: { emoji: '&#9889;', label: 'THE STARTER', title: 'Your energy and enthusiasm are real assets.', desc: 'Your enemy is the middle.' },
-  AVOIDER: { emoji: '&#128737;&#65039;', label: 'THE AVOIDER', title: 'You\'re not lazy. You\'re afraid.', desc: 'The avoidance is a protection mechanism &mdash; but it\'s costing you.' },
-  PERFECTIONIST: { emoji: '&#128142;', label: 'THE PERFECTIONIST', title: 'You have extremely high standards.', desc: 'Perfect is the enemy of done &mdash; and done beats perfect every time.' },
-  DRIFTER: { emoji: '&#127754;', label: 'THE DRIFTER', title: 'You\'re not incapable &mdash; you\'re undirected.', desc: 'Without direction, you\'ll keep ending up somewhere you didn\'t choose.' }
+  OVERTHINKER: { emoji: '🧠', label: 'THE OVERTHINKER', title: 'You have clarity without courage to act.', desc: 'Your problem isn\'t knowledge — it\'s execution.' },
+  STARTER: { emoji: '⚡', label: 'THE STARTER', title: 'Your energy and enthusiasm are real assets.', desc: 'Your enemy is the middle.' },
+  AVOIDER: { emoji: '🛡️', label: 'THE AVOIDER', title: 'You\'re not lazy. You\'re afraid.', desc: 'The avoidance is a protection mechanism — but it\'s costing you.' },
+  PERFECTIONIST: { emoji: '💎', label: 'THE PERFECTIONIST', title: 'You have extremely high standards.', desc: 'Perfect is the enemy of done — and done beats perfect every time.' },
+  DRIFTER: { emoji: '🌊', label: 'THE DRIFTER', title: 'You\'re not incapable — you\'re undirected.', desc: 'Without direction, you\'ll keep ending up somewhere you didn\'t choose.' }
 };
 
 const QUESTIONS = [
   {
     text: "You have a big task to do. What actually happens?",
     answers: [
-      { text: "I research, plan, outline, create systems &mdash; but rarely actually start", type: 'OVERTHINKER' },
+      { text: "I research, plan, outline, create systems — but rarely actually start", type: 'OVERTHINKER' },
       { text: "I dive in with excitement and usually lose steam halfway", type: 'STARTER' },
       { text: "I find 10 other things to do first", type: 'AVOIDER' },
       { text: "I wait until I can do it perfectly", type: 'PERFECTIONIST' },
@@ -691,18 +689,18 @@ const QUESTIONS = [
   {
     text: "How do you handle criticism of your work?",
     answers: [
-      { text: "I already knew the flaws &mdash; I was going to fix them", type: 'OVERTHINKER' },
+      { text: "I already knew the flaws — I was going to fix them", type: 'OVERTHINKER' },
       { text: "Stings briefly but I get back up quickly", type: 'STARTER' },
       { text: "I try to avoid situations where I might be criticized", type: 'AVOIDER' },
       { text: "It confirms my fear that I should have worked more on it", type: 'PERFECTIONIST' },
-      { text: "Doesn't matter much &mdash; I wasn't that invested anyway", type: 'DRIFTER' }
+      { text: "Doesn't matter much — I wasn't that invested anyway", type: 'DRIFTER' }
     ]
   },
   {
     text: "Pick the statement that sounds most like something you'd say:",
     answers: [
       { text: "I just need to think this through a bit more before I start", type: 'OVERTHINKER' },
-      { text: "I have so many great ideas &mdash; I just need to pick one and go for it!", type: 'STARTER' },
+      { text: "I have so many great ideas — I just need to pick one and go for it!", type: 'STARTER' },
       { text: "I'll do it when I feel more ready", type: 'AVOIDER' },
       { text: "It's not good enough yet", type: 'PERFECTIONIST' },
       { text: "I'll figure it out as I go", type: 'DRIFTER' }
@@ -714,7 +712,7 @@ const QUESTIONS = [
       { text: "I have very detailed goals in my head. They rarely move to paper", type: 'OVERTHINKER' },
       { text: "I set exciting goals. Abandon them when the spark dies", type: 'STARTER' },
       { text: "Goals stress me out because they mean I might fail", type: 'AVOIDER' },
-      { text: "My goals are very specific &mdash; and I rarely feel I've met the bar", type: 'PERFECTIONIST' },
+      { text: "My goals are very specific — and I rarely feel I've met the bar", type: 'PERFECTIONIST' },
       { text: "I don't think about goals much", type: 'DRIFTER' }
     ]
   },
@@ -731,11 +729,11 @@ const QUESTIONS = [
   {
     text: "Your unfinished projects number:",
     answers: [
-      { text: "Many &mdash; I plan them thoroughly and don't start", type: 'OVERTHINKER' },
-      { text: "Many &mdash; I start everything and finish little", type: 'STARTER' },
-      { text: "Few &mdash; I rarely start things", type: 'AVOIDER' },
-      { text: "A few &mdash; I can't finish because they're never good enough", type: 'PERFECTIONIST' },
-      { text: "I'm not sure &mdash; I don't track them", type: 'DRIFTER' }
+      { text: "Many — I plan them thoroughly and don't start", type: 'OVERTHINKER' },
+      { text: "Many — I start everything and finish little", type: 'STARTER' },
+      { text: "Few — I rarely start things", type: 'AVOIDER' },
+      { text: "A few — I can't finish because they're never good enough", type: 'PERFECTIONIST' },
+      { text: "I'm not sure — I don't track them", type: 'DRIFTER' }
     ]
   },
   {
@@ -762,7 +760,7 @@ const QUESTIONS = [
     text: "Your mornings typically look like:",
     answers: [
       { text: "Planned the night before, rarely executed as planned", type: 'OVERTHINKER' },
-      { text: "Great energy &mdash; until the afternoon", type: 'STARTER' },
+      { text: "Great energy — until the afternoon", type: 'STARTER' },
       { text: "Slow start, checking phone, avoiding the task list", type: 'AVOIDER' },
       { text: "Carefully structured routine that I'm never quite satisfied with", type: 'PERFECTIONIST' },
       { text: "Wake up and just react to whatever's there", type: 'DRIFTER' }
@@ -771,19 +769,19 @@ const QUESTIONS = [
   {
     text: "How long does it take you to make big decisions?",
     answers: [
-      { text: "A long time &mdash; I need all the information first", type: 'OVERTHINKER' },
-      { text: "Quickly &mdash; I'd rather try than analyze", type: 'STARTER' },
-      { text: "A long time &mdash; mostly because I'm nervous about getting it wrong", type: 'AVOIDER' },
-      { text: "A long time &mdash; I want to make the perfect decision", type: 'PERFECTIONIST' },
+      { text: "A long time — I need all the information first", type: 'OVERTHINKER' },
+      { text: "Quickly — I'd rather try than analyze", type: 'STARTER' },
+      { text: "A long time — mostly because I'm nervous about getting it wrong", type: 'AVOIDER' },
+      { text: "A long time — I want to make the perfect decision", type: 'PERFECTIONIST' },
       { text: "I avoid big decisions when I can", type: 'DRIFTER' }
     ]
   },
   {
     text: "When you succeed at something, your first thought is:",
     answers: [
-      { text: "That was lucky &mdash; now how do I replicate it systematically?", type: 'OVERTHINKER' },
-      { text: "That was great &mdash; what's next?!", type: 'STARTER' },
-      { text: "That worked out &mdash; thank goodness", type: 'AVOIDER' },
+      { text: "That was lucky — now how do I replicate it systematically?", type: 'OVERTHINKER' },
+      { text: "That was great — what's next?!", type: 'STARTER' },
+      { text: "That worked out — thank goodness", type: 'AVOIDER' },
       { text: "It was okay but I could have done better", type: 'PERFECTIONIST' },
       { text: "Nice.", type: 'DRIFTER' }
     ]
@@ -793,9 +791,9 @@ const QUESTIONS = [
     answers: [
       { text: "Disciplined in thinking, less so in doing", type: 'OVERTHINKER' },
       { text: "Motivated in bursts, inconsistent overall", type: 'STARTER' },
-      { text: "Low &mdash; I know what to do but avoid doing it", type: 'AVOIDER' },
+      { text: "Low — I know what to do but avoid doing it", type: 'AVOIDER' },
       { text: "High standards, irregular follow-through", type: 'PERFECTIONIST' },
-      { text: "Reactive &mdash; going with the flow more than I'd like", type: 'DRIFTER' }
+      { text: "Reactive — going with the flow more than I'd like", type: 'DRIFTER' }
     ]
   }
 ];
@@ -805,8 +803,8 @@ const TYPE_DETAILS = {
     strengths: "Analytical, strategic, thorough",
     blindspot: "You use planning as a shield from action",
     routine: [
-      "Morning: 25-min 'action sprint' &mdash; no planning, just doing",
-      "Rule: '2-minute rule' &mdash; if you've thought about it twice, start it now",
+      "Morning: 25-min 'action sprint' — no planning, just doing",
+      "Rule: '2-minute rule' — if you've thought about it twice, start it now",
       "Weekly: Cap your planning to 30 min. Then act for 2 hours.",
       "Remove: 'I'll plan this properly' from your vocabulary"
     ]
@@ -816,8 +814,8 @@ const TYPE_DETAILS = {
     blindspot: "You treat every new thing as an escape from finishing the last thing",
     routine: [
       "Rule: Finish before starting. Close 1 loop before opening 3.",
-      "Morning: Review your open projects &mdash; commit to one for the day",
-      "Weekly: One 'completion day' &mdash; no new starts, only finishing",
+      "Morning: Review your open projects — commit to one for the day",
+      "Weekly: One 'completion day' — no new starts, only finishing",
       "Mantra: 'Progress on this, not new things'"
     ]
   },
@@ -825,17 +823,17 @@ const TYPE_DETAILS = {
     strengths: "Thoughtful, empathetic, risk-aware",
     blindspot: "Discomfort signals have too much power over your decisions",
     routine: [
-      "Morning: Do the uncomfortable thing first &mdash; before email, before coffee if needed",
-      "Rule: 'Eat the frog' &mdash; whatever you're avoiding most, that's your first task",
+      "Morning: Do the uncomfortable thing first — before email, before coffee if needed",
+      "Rule: 'Eat the frog' — whatever you're avoiding most, that's your first task",
       "Weekly: Name one thing you're avoiding. Schedule it. Tell someone you did.",
       "Challenge: Embrace micro-discomforts daily (cold water, hard conversation, hard task)"
     ]
   },
   PERFECTIONIST: {
     strengths: "Quality-focused, detail-oriented, ambitious",
-    blindspot: "Perfect is the enemy of done &mdash; and done beats perfect every time",
+    blindspot: "Perfect is the enemy of done — and done beats perfect every time",
     routine: [
-      "Rule: 'Good enough to send' &mdash; set a threshold and hit publish",
+      "Rule: 'Good enough to send' — set a threshold and hit publish",
       "Morning: Set a 'completion time' for each task. When the clock hits, it ships.",
       "Weekly: Ship one thing you're not 100% happy with. Notice no one cares as much as you do.",
       "Mantra: 'Done creates momentum. Perfect kills it.'"
@@ -985,7 +983,7 @@ function showResults() {
     </div>
     <div class="insight-box">
       <h4>How to Work With Your Brain</h4>
-      <p>Your custom routine above is built for how you actually work &mdash; not against it. Start with one practice this week.</p>
+      <p>Your custom routine above is built for how you actually work — not against it. Start with one practice this week.</p>
     </div>
   `;
   document.getElementById('insights-section').innerHTML = insightsHtml;
