@@ -1,27 +1,45 @@
 <!DOCTYPE html>
-<!-- -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | WinWithFred – Real Advice for Real People</title>
-  <meta name="description" content="Practical articles on mindset, habits, goals, and personal growth. No fluff. No gimmicks. Just actionable content that actually works." />
+  <title>Blog — Practical Self-Help That Actually Works | WinWithFred</title>
+  <meta name="description" content="Real talk on habits, goals, mindset, productivity, and overcoming adversity. No fluff. No gimmicks. Just articles you can actually use today." />
+  <meta name="author" content="Freddy Owen" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://winwithfred.com/blog" />
-  <meta property="og:title" content="Blog | WinWithFred" />
-  <meta property="og:description" content="Practical articles on mindset, habits, goals, and personal growth. No fluff. No gimmicks. Just what works." />
+  <link rel="canonical" href="https://winwithfred.com/blog.html" />
+  <meta property="og:title" content="Blog — Practical Self-Help That Actually Works | WinWithFred" />
+  <meta property="og:description" content="Real talk on habits, goals, mindset, productivity, and overcoming adversity. No fluff. No gimmicks. Just articles you can use today." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://winwithfred.com/blog" />
+  <meta property="og:url" content="https://winwithfred.com/blog.html" />
   <meta property="og:site_name" content="WinWithFred" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "WinWithFred Blog",
+    "description": "Real talk on habits, goals, mindset, productivity, and overcoming adversity.",
+    "url": "https://winwithfred.com/blog.html",
+    "publisher": { "@type": "Person", "name": "Freddy Owen" }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --black: #0d0d0d; --dark: #111827; --surface: #1f2937; --muted: #6b7280; --light: #f9fafb; --white: #ffffff; --orange: #f97316; --orange-d: #ea6c0a; --orange-l: #fff7ed; --radius: 10px; --font: 'Inter', -apple-system, sans-serif; }
+    :root {
+      --black: #0d0d0d; --dark: #111827; --surface: #1f2937; --border: #374151;
+      --muted: #6b7280; --light: #f9fafb; --white: #ffffff;
+      --orange: #f97316; --orange-d: #ea6c0a; --orange-l: #fff7ed;
+      --radius: 10px; --shadow: 0 4px 24px rgba(0,0,0,0.08); --font: 'Inter', -apple-system, sans-serif;
+    }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.7; font-size: 17px; }
+    body { font-family: var(--font); background: var(--light); color: var(--dark); line-height: 1.6; font-size: 16px; }
     a { color: var(--orange); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* Navbar */
     .navbar { background: var(--dark); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
     .navbar-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .navbar-logo { font-size: 1.4rem; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
@@ -37,31 +55,58 @@
     .btn-outline { background: transparent; color: var(--orange); border-color: var(--orange); }
     .btn-outline:hover { background: var(--orange); color: #fff; text-decoration: none; }
     .btn-sm { padding: 10px 20px; font-size: 0.9rem; }
-    .blog-hero { background: var(--dark); color: #fff; padding: 64px 24px 56px; text-align: center; }
-    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: #fff; margin-bottom: 16px; }
-    .blog-hero p { color: #9ca3af; font-size: 1.1rem; max-width: 520px; margin: 0 auto; }
-    .blog-filters { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 24px; }
-    .blog-filters-inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 4px; overflow-x: auto; padding: 12px 0; }
-    .filter-btn { display: inline-block; padding: 8px 18px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; white-space: nowrap; transition: all 0.15s; background: var(--light); color: var(--muted); }
-    .filter-btn:hover, .filter-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); text-decoration: none; }
-    .blog-grid-section { padding: 56px 24px 80px; }
-    .blog-grid-inner { max-width: 1120px; margin: 0 auto; }
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
-    .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; }
-    .blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); transform: translateY(-3px); }
-    .blog-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
-    .blog-card-tag { display: inline-block; background: var(--orange-l); color: var(--orange); font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .blog-card-title { font-size: 1.15rem; font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 12px; }
-    .blog-card-title a { color: var(--dark); }
-    .blog-card-title a:hover { color: var(--orange); text-decoration: none; }
-    .blog-card-excerpt { color: var(--muted); font-size: 0.95rem; line-height: 1.65; flex: 1; margin-bottom: 20px; }
-    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .blog-card-meta { font-size: 0.82rem; color: var(--muted); }
-    .read-more { font-size: 0.9rem; font-weight: 700; color: var(--orange); }
-    .read-more:hover { text-decoration: underline; }
-    .section-label { font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
-    .section-title { font-size: 1.6rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .section-sub { color: var(--muted); font-size: 1rem; margin-bottom: 40px; }
+
+    /* Hero */
+    .blog-hero { background: var(--dark); color: #fff; padding: 72px 24px 64px; text-align: center; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%); pointer-events: none; }
+    .blog-hero h1 { color: #fff; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .blog-hero h1 span { color: var(--orange); }
+    .blog-hero p { color: #9ca3af; font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
+    .section-label { display: inline-block; background: rgba(249,115,22,0.15); color: var(--orange); font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; margin-bottom: 16px; }
+
+    /* Filter bar */
+    .filter-bar { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 16px 24px; }
+    .filter-bar-inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-bar span { color: var(--muted); font-size: 0.85rem; font-weight: 600; margin-right: 4px; }
+    .filter-pill { display: inline-block; padding: 6px 16px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; border: 2px solid #e5e7eb; color: var(--muted); background: #fff; cursor: pointer; transition: all 0.15s; text-decoration: none; }
+    .filter-pill:hover, .filter-pill.active { background: var(--orange); color: #fff; border-color: var(--orange); text-decoration: none; }
+
+    /* Blog Grid */
+    .blog-section { padding: 60px 0 80px; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+
+    /* Blog Card */
+    .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; border: 1px solid #e5e7eb; transition: all 0.2s; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+    .blog-card-top { background: var(--dark); padding: 32px 28px 24px; }
+    .blog-tag { display: inline-block; background: rgba(249,115,22,0.15); color: var(--orange); font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .blog-card-top h2 { color: #fff; font-size: 1.1rem; line-height: 1.4; margin: 0; }
+    .blog-card-body { padding: 20px 28px 24px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .blog-card-body p { color: var(--muted); font-size: 0.93rem; line-height: 1.6; margin-bottom: 16px; flex: 1; }
+    .blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+    .blog-read-link { color: var(--orange); font-weight: 700; font-size: 0.88rem; margin-top: 12px; display: inline-block; }
+
+    /* Featured post */
+    .featured-post { background: #fff; border-radius: var(--radius); border: 1px solid #e5e7eb; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; transition: all 0.2s; }
+    .featured-post:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); border-color: var(--orange); text-decoration: none; }
+    .featured-left { background: var(--dark); padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .featured-label { display: inline-block; background: var(--orange); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase; width: fit-content; }
+    .featured-left .blog-tag { background: rgba(249,115,22,0.2); }
+    .featured-left h2 { color: #fff; font-size: 1.5rem; line-height: 1.3; margin: 10px 0 16px; }
+    .featured-left p { color: #9ca3af; font-size: 0.95rem; line-height: 1.65; }
+    .featured-right { padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .featured-right p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
+    .featured-meta { color: var(--muted); font-size: 0.85rem; }
+
+    /* CTA Banner */
+    .cta-banner { background: var(--orange); color: #fff; padding: 64px 24px; text-align: center; }
+    .cta-banner h2 { color: #fff; margin-bottom: 12px; font-size: 1.8rem; }
+    .cta-banner p { color: rgba(255,255,255,0.88); font-size: 1.05rem; margin-bottom: 28px; }
+    .btn-dark { background: var(--dark); color: #fff; border-color: var(--dark); }
+    .btn-dark:hover { background: var(--surface); text-decoration: none; }
+
+    /* Footer */
     .footer { background: var(--black); color: #9ca3af; padding: 48px 24px 32px; }
     .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px; }
     .footer-brand { max-width: 280px; }
@@ -73,1365 +118,173 @@
     .footer-col ul li a { color: #9ca3af; font-size: 0.9rem; }
     .footer-col ul li a:hover { color: var(--orange); text-decoration: none; }
     .footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid #1f2937; padding-top: 24px; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
     @media (max-width: 768px) {
       .navbar-links { display: none; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-left, .featured-right { padding: 32px 24px; }
       .footer-inner { flex-direction: column; }
-      .blog-hero { padding: 40px 20px 36px; }
-      .blog-hero h1 { font-size: 1.75rem; }
-      .blog-hero p { font-size: 1rem; }
-      .blog-grid-section { padding: 36px 16px 60px; }
-      .blog-grid { grid-template-columns: 1fr; gap: 16px; }
-      .blog-card-body { padding: 20px; }
-      .blog-card-title { font-size: 1.05rem; }
-      .blog-card-excerpt { font-size: 0.92rem; }
-      .section-title { font-size: 1.3rem; }
+    }
+    @media (max-width: 1000px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
-<style id="wf-blog-search">
-.blog-search-wrap {
-  text-align: center;
-  padding: 0 24px 24px;
-}
-#blogSearch {
-  width: 100%;
-  max-width: 480px;
-  padding: 13px 22px;
-  border-radius: 50px;
-  border: 2px solid #e5e7eb;
-  font-size: 15px;
-  outline: none;
-  box-sizing: border-box;
-  font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-#blogSearch:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102,126,234,0.15);
-}
-#blogNoResults {
-  text-align: center;
-  padding: 48px 24px;
-  color: #6b7280;
-  font-size: 16px;
-  display: none;
-}
-</style>
-  <meta property="og:image" content="https://winwithfred.com/og-image.png">
-  <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
 </head>
 <body>
 
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="/" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="blog" class="active">Blog</a></li>
-      <li><a href="/#tools">Tools</a></li>
-      <li><a href="/#about">About</a></li>
-      <li><a href="quiz" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="quiz.html" class="btn btn-primary btn-sm" style="margin-left:8px;">Take the Quiz</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- Hero -->
 <section class="blog-hero">
-  <h1>The WinWithFred Blog</h1>
-  <p>Real advice for real people. No fluff. No gimmicks. Just practical content that helps you build a better life.</p>
+  <div class="section-label">The WinWithFred Blog</div>
+  <h1>Real Talk. <span>Actionable Advice.</span></h1>
+  <p>No fluff. No gimmicks. Articles on habits, goals, mindset, and overcoming adversity that give you something you can use today.</p>
 </section>
 
-<div class="blog-filters">
-  <div class="blog-filters-inner">
-    <a href="#" class="filter-btn active" onclick="filterPosts(event,'all')">All Posts</a>
-    <a href="#" class="filter-btn" onclick="filterPosts(event,'mindset')">Mindset</a>
-    <a href="#" class="filter-btn" onclick="filterPosts(event,'habits')">Habits</a>
-    <a href="#" class="filter-btn" onclick="filterPosts(event,'goals')">Goals</a>
-    <a href="#" class="filter-btn" onclick="filterPosts(event,'productivity')">Productivity</a>
-    <a href="#" class="filter-btn" onclick="filterPosts(event,'life-reset')">Life Reset</a>
+<!-- Filter Bar -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <span>Filter:</span>
+    <a href="blog.html" class="filter-pill active">All Posts</a>
+    <a href="#" class="filter-pill">Habits</a>
+    <a href="#" class="filter-pill">Goals</span>
+    <a href="#" class="filter-pill">Mindset</a>
+    <a href="#" class="filter-pill">Productivity</a>
+    <a href="#" class="filter-pill">Adversity</a>
   </div>
 </div>
 
-<div class="blog-search-wrap">
-  <input type="text" id="blogSearch" placeholder="&#128269; Search articles..." autocomplete="off">
-</div>
-<p id="blogNoResults" style="display:none;text-align:center;padding:48px;color:#6b7280;font-size:16px;">No articles found. Try a different keyword.</p>
-<section class="blog-grid-section">
-  <div class="blog-grid-inner">
-    <p class="section-label">All Articles</p>
-    <h2 class="section-title">Everything We Have Published</h2>
-    <p class="section-sub">Pick the topic that matters most to you right now and start there.</p>
-    <div class="blog-grid" id="blog-grid">
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-momentum">How to Build Momentum in Life (When You Feel Stuck)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build momentum in life when you feel stuck &mdash; use small wins, daily action, and simple systems to get moving and stay consistent for good.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">August 6, 2026 &middot; 8 min</span><a href="blog-how-to-build-momentum" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-doomscrolling">How to Stop Doomscrolling (and Take Your Time Back)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop doomscrolling for good &mdash; why the feed hooks you, how to break the phone habit, and simple ways to reduce screen time and take back your hours.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">August 5, 2026 &middot; 7 min</span><a href="blog-how-to-stop-doomscrolling" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stick-to-a-workout-routine">How to Stick to a Workout Routine When Motivation Runs Out</a></h2>
-          <p class="blog-card-excerpt">Learn how to stick to a workout routine when motivation fades &mdash; build an exercise habit, stay consistent on bad days, and stop quitting after two weeks.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 30, 2026 &middot; 9 min</span><a href="blog-how-to-stick-to-a-workout-routine" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="life-reset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Life Reset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-reinvent-yourself">How to Reinvent Yourself Without Blowing Up Your Whole Life</a></h2>
-          <p class="blog-card-excerpt">Learn how to reinvent yourself without blowing up your whole life: change your identity, build new habits, and become who you want to be.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 29, 2026 &middot; 9 min</span><a href="blog-how-to-reinvent-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Personal Growth</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-become-the-best-version-of-yourself">How to Become the Best Version of Yourself</a></h2>
-          <p class="blog-card-excerpt">Learn how to become the best version of yourself with a no-fluff plan: honest self-assessment, small habits that compound, a stronger mindset, and systems that stick.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 28, 2026 &middot; 9 min</span><a href="blog-how-to-become-the-best-version-of-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-wasting-time">How to Stop Wasting Time (And Actually Do Something With Your Days)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop wasting time with a no-fluff plan. Find where your hours really go, kill your biggest time wasters, and build a day that moves you forward.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 27, 2026 &middot; 9 min</span><a href="blog-how-to-stop-wasting-time" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Self-Worth</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-trust-yourself">How to Trust Yourself (When Every Decision Feels Like a Gamble)</a></h2>
-          <p class="blog-card-excerpt">Learn how to trust yourself again with a no-fluff plan. Rebuild self-trust, stop second-guessing every decision, and start relying on your own judgment for good.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 23, 2026 &middot; 9 min</span><a href="blog-how-to-trust-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Self-Worth</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-self-respect">How to Build Self-Respect (When You've Spent Years Letting Yourself Down)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build self-respect with a no-fluff plan. Stop letting yourself down, set real boundaries, and become someone you actually trust and admire.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 9, 2026 &middot; 9 min</span><a href="blog-how-to-build-self-respect" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="goals">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Goals</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-finish-what-you-start">How to Finish What You Start (And Stop Leaving a Trail of Half-Done Projects)</a></h2>
-          <p class="blog-card-excerpt">Learn how to finish what you start with a no-fluff plan. Stop quitting halfway, define your finish line, and actually follow through on the goals that matter.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">July 6, 2026 &middot; 9 min</span><a href="blog-how-to-finish-what-you-start" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-decision-fatigue">How to Deal With Decision Fatigue (Without White-Knuckling It)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with decision fatigue with a no-fluff plan. Spot the warning signs, protect your mental energy, and make better choices when it counts most.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 30, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-decision-fatigue" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-develop-self-awareness">How to Develop Self-Awareness (Without Years of Navel-Gazing)</a></h2>
-          <p class="blog-card-excerpt">Learn how to develop self-awareness with a practical, no-fluff plan. Simple exercises to spot your patterns, understand yourself, and stop running on autopilot.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 29, 2026 &middot; 9 min</span><a href="blog-how-to-develop-self-awareness" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="goals">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Purpose</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-find-your-passion">How to Find Your Passion (Without Waiting for a Lightning Bolt)</a></h2>
-          <p class="blog-card-excerpt">Learn how to find your passion with a no-fluff plan that actually works. Stop waiting for a lightning bolt and start building a life you care about today.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 26, 2026 &middot; 9 min</span><a href="blog-how-to-find-your-passion" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="life reset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Life Reset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-feeling-lost-in-life">How to Deal With Feeling Lost in Life (Without Forcing a Five-Year Plan)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with feeling lost in life with a practical, no-fluff plan. Stop drifting, find direction again, and take the first real step forward today.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 25, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-feeling-lost-in-life" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Confidence</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-a-pushover">How to Stop Being a Pushover (And Stop Getting Walked Over)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop being a pushover with no-fluff strategies that actually work. Stand up for yourself, set real boundaries, and stop getting walked over.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 24, 2026 &middot; 9 min</span><a href="blog-how-to-stop-being-a-pushover" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-willpower">How to Build Willpower (Without Relying on Motivation)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build willpower with a no-fluff system. Stop relying on motivation and train real self-control that holds up on the days you do not feel like it.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 23, 2026 &middot; 9 min</span><a href="blog-how-to-build-willpower" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-say-no-without-feeling-guilty">How to Say No Without Feeling Guilty (And Mean It)</a></h2>
-          <p class="blog-card-excerpt">Learn how to say no without feeling guilty. No-fluff scripts and mindset shifts to set boundaries, stop people pleasing, and protect your time without the guilt.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 19, 2026 &middot; 9 min</span><a href="blog-how-to-say-no-without-feeling-guilty" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stay-calm-under-pressure">How to Stay Calm Under Pressure (When Everything Feels Like Too Much)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stay calm under pressure with practical, no-fluff techniques to control your nerves, think clearly, and perform under pressure when it counts.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 18, 2026 &middot; 9 min</span><a href="blog-how-to-stay-calm-under-pressure" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-an-evening-routine">How to Build an Evening Routine (That Sets Up Your Whole Day)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build an evening routine that actually sticks. No-fluff steps to wind down, sleep better, and set up tomorrow so you wake up ready to win.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 17, 2026 &middot; 9 min</span><a href="blog-how-to-build-an-evening-routine" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-wake-up-early">How to Wake Up Early (And Actually Stick With It)</a></h2>
-          <p class="blog-card-excerpt">Learn how to wake up early and actually stick with it. No-fluff strategies to become a morning person, beat the snooze button, and stop feeling tired.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 15, 2026 &middot; 9 min</span><a href="blog-how-to-wake-up-early" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-wasting-time-on-your-phone">How to Stop Wasting Time on Your Phone (And Get Your Hours Back)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop wasting time on your phone with no-fluff strategies that actually work. Cut screen time, break phone addiction, and get your hours back.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 14, 2026 &middot; 9 min</span><a href="blog-how-to-stop-wasting-time-on-your-phone" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-taking-things-personally">How to Stop Taking Things Personally (And Stop Letting Every Comment Wreck Your Day)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop taking things personally with no-fluff strategies that actually work. Stop overreacting to comments, build a thicker skin, and protect your peace.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 13, 2026 &middot; 9 min</span><a href="blog-how-to-stop-taking-things-personally" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-a-reading-habit">How to Build a Reading Habit (That Actually Sticks)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build a reading habit that actually sticks. No-fluff strategies to read more books, beat the excuses, and make daily reading automatic.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 12, 2026 &middot; 9 min</span><a href="blog-how-to-build-a-reading-habit" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="confidence">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Confidence</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-shy">How to Stop Being Shy (And Stop Letting It Run Your Life)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop being shy with no-fluff strategies that actually work. Overcome shyness, build social confidence, and stop freezing up around people.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 11, 2026 &middot; 9 min</span><a href="blog-how-to-stop-being-shy" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-rejection">How to Deal With Rejection (Without Letting It Break You)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with rejection without falling apart &mdash; no-fluff strategies to handle rejection, beat the fear of rejection, and bounce back stronger.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 10, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-rejection" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-worrying-about-the-future">How to Stop Worrying About the Future (And Get Your Life Back)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop worrying about the future with no-fluff strategies that actually work. Calm future anxiety, stop overthinking what's next, and get your life back.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 9, 2026 &middot; 9 min</span><a href="blog-how-to-stop-worrying-about-the-future" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-feeling-behind-in-life">How to Stop Feeling Behind in Life (And Run Your Own Race)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop feeling behind in life with no-fluff strategies that actually work. Quiet the timeline anxiety, stop comparing your life to others, and start moving.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 8, 2026 &middot; 9 min</span><a href="blog-how-to-stop-feeling-behind-in-life" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Self-Esteem</span>
-          <h2 class="blog-card-title"><a href="blog-10-signs-of-low-self-esteem">10 Signs of Low Self-Esteem (And How to Fix Each One)</a></h2>
-          <p class="blog-card-excerpt">Think low self-worth might be holding you back? Here are 10 clear signs of low self-esteem and exactly what to do about each one.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 10 min</span><a href="blog-10-signs-of-low-self-esteem" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Daily Habits</span>
-          <h2 class="blog-card-title"><a href="blog-10-daily-habits-that-will-change-your-life">10 Daily Habits That Will Change Your Life</a></h2>
-          <p class="blog-card-excerpt">You don't need a complete overhaul. These 10 life-changing daily habits are simple, proven, and possible to start today.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 9 min</span><a href="blog-10-daily-habits-that-will-change-your-life" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-10-mindset-shifts-that-change-everything">10 Mindset Shifts That Will Change Everything</a></h2>
-          <p class="blog-card-excerpt">The way you think is either working for you or against you. These 10 mindset shifts show you how to rewire your thinking for real results.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 10 min</span><a href="blog-10-mindset-shifts-that-change-everything" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Self-Confidence</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-doubting-yourself">How to Stop Doubting Yourself (And Finally Trust Your Own Judgment)</a></h2>
-          <p class="blog-card-excerpt">Self-doubt is one of the biggest things holding people back. Here's how to stop doubting yourself and start trusting your own decisions.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 9 min</span><a href="blog-how-to-stop-doubting-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Confidence</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-be-more-assertive">How to Be More Assertive (Without Being Rude or Aggressive)</a></h2>
-          <p class="blog-card-excerpt">Learning how to be more assertive is not about being mean. It's about being clear. Here's how to speak up for yourself the right way.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 9 min</span><a href="blog-how-to-be-more-assertive" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-fear-of-success">How to Deal With Fear of Success (When You Sabotage Yourself)</a></h2>
-          <p class="blog-card-excerpt">If you keep self-sabotaging right when things start going well, fear of success might be why. Here's what it is and how to finally stop it.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-fear-of-success" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-
-      
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-anxiety">How to Deal With Anxiety (Without Letting It Run Your Life)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with anxiety with no-fluff strategies that actually work. Calm anxiety in the moment, reduce anxiety long term, and stop it running your life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 7, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-anxiety" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-change">How to Deal With Change (Without Letting It Knock You Flat)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with change with no-fluff strategies that actually work. Handle big life changes, beat the fear of change, and adapt faster than before.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 4, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-change" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-break-phone-addiction">How to Break Phone Addiction (And Take Back Your Attention)</a></h2>
-          <p class="blog-card-excerpt">Learn how to break phone addiction with no-fluff strategies that actually work. Stop scrolling your phone, reduce screen time, and take back your attention.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">June 2, 2026 &middot; 9 min</span><a href="blog-how-to-break-phone-addiction" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Self-Trust</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-keep-promises-to-yourself">How to Keep Promises to Yourself (And Stop Letting Yourself Down)</a></h2>
-          <p class="blog-card-excerpt">Learn how to keep promises to yourself with no-fluff strategies that actually work. Rebuild self-trust, stop breaking your word, and become someone who follows through.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 28, 2026 &middot; 9 min</span><a href="blog-how-to-keep-promises-to-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-reactive">How to Stop Being Reactive (And Start Responding Instead)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop being reactive with no-fluff strategies that actually work. Break the trigger-react loop, manage emotional reactivity, and respond instead of react.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 27, 2026 &middot; 9 min</span><a href="blog-how-to-stop-being-reactive" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-            <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Relationships</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-toxic-people">How to Deal With Toxic People (Without Losing Your Mind or Yourself)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with toxic people with no-fluff strategies that actually work. Spot the pattern, set real boundaries, and protect your peace without burning it all down.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 23, 2026 &middot; 10 min</span><a href="blog-how-to-deal-with-toxic-people" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-playing-the-victim">How to Stop Playing the Victim (And Take Your Power Back)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop playing the victim with no-fluff strategies that actually work. Break the victim mindset, take ownership, and rebuild real personal power.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 21, 2026 &middot; 9 min</span><a href="blog-how-to-stop-playing-the-victim" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-handle-disappointment">How to Handle Disappointment (Without Letting It Crush You)</a></h2>
-          <p class="blog-card-excerpt">Learn how to handle disappointment without spiraling. No-fluff strategies to process the hurt, recover faster, and turn letdowns into fuel for the next move.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 20, 2026 &middot; 9 min</span><a href="blog-how-to-handle-disappointment" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mental-health">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-anger">How to Deal With Anger (Before It Costs You Everything)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with anger with no-fluff strategies that actually work. Stop blowing up, manage anger triggers, and turn the heat into fuel for a stronger life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 18, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-anger" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-develop-patience">How to Develop Patience (When You Want Everything Right Now)</a></h2>
-          <p class="blog-card-excerpt">Learn how to develop patience with no-fluff strategies that actually work. Stop rushing, build real patience in life, and finally play the long game without losing your mind.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 17, 2026 &middot; 9 min</span><a href="blog-how-to-develop-patience" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-handle-uncertainty">How to Handle Uncertainty (When You Cannot Control What is Next)</a></h2>
-          <p class="blog-card-excerpt">Learn how to handle uncertainty with no-fluff strategies that actually work. Stop spinning out, calm uncertainty anxiety, and keep moving when the path is unclear.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 15, 2026 &middot; 9 min</span><a href="blog-how-to-handle-uncertainty" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-jealous">How to Stop Being Jealous (And Use Envy as Fuel Instead)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop being jealous with no-fluff strategies that actually work. Spot the real cause of envy, rebuild self-worth, and turn jealousy into fuel for real progress.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 14, 2026 &middot; 9 min</span><a href="blog-how-to-stop-being-jealous" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Toughness</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-do-hard-things">How to Do Hard Things (When Everything in You Wants to Quit)</a></h2>
-          <p class="blog-card-excerpt">Learn how to do hard things even when every part of you wants to quit. No-fluff strategies to push through discomfort, build mental toughness, and finally follow through.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 13, 2026 &middot; 9 min</span><a href="blog-how-to-do-hard-things" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-living-on-autopilot">How to Stop Living on Autopilot (And Take Back Your Life)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop living on autopilot with no-fluff strategies that actually work. Break the zombie routine, reconnect with your real life, and start living on purpose again.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 12, 2026 &middot; 9 min</span><a href="blog-how-to-stop-living-on-autopilot" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-emotional-intelligence">How to Build Emotional Intelligence (A Practical, No-Fluff Guide)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build emotional intelligence with real strategies that work. Improve self-awareness, manage emotions, and read people better &mdash; without the fluff.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 11, 2026 &middot; 9 min</span><a href="blog-how-to-build-emotional-intelligence" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-overcome-impostor-syndrome">How to Overcome Impostor Syndrome (When You Feel Like a Fraud)</a></h2>
-          <p class="blog-card-excerpt">Learn how to overcome impostor syndrome with no-fluff strategies that actually work. Stop feeling like a fraud, quiet self-doubt, and own your real achievements.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 10, 2026 &middot; 9 min</span><a href="blog-how-to-overcome-impostor-syndrome" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mental-health">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-burnout">How to Deal With Burnout (Before It Wrecks Everything)</a></h2>
-          <p class="blog-card-excerpt">Learning how to deal with burnout is not about a vacation or a productivity hack. Here are the real signs of burnout, how to recover, and how to keep it from coming back.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 9, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-burnout" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-toxic-habits-holding-you-back">10 Toxic Habits That Are Secretly Holding You Back</a></h2>
-          <p class="blog-card-excerpt">Some habits hurt you without you even realizing it. Here are 10 toxic habits that are silently costing you progress, confidence, and energy every single day.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 10 min</span><a href="blog-toxic-habits-holding-you-back" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mental-health">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-practice-gratitude">10 Simple Ways to Practice Gratitude Every Day</a></h2>
-          <p class="blog-card-excerpt">Want to practice gratitude but do not know where to start? Here are 10 real-world ways to build a daily gratitude practice that actually sticks and changes how you feel.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 8 min</span><a href="blog-how-to-practice-gratitude" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-signs-you-are-growing">10 Signs You Are Growing as a Person (Even When It Does Not Feel Like It)</a></h2>
-          <p class="blog-card-excerpt">Growth does not always look like a win. Here are 10 quiet signs you are growing as a person, even when life feels hard and progress feels invisible.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 9 min</span><a href="blog-signs-you-are-growing" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="life-reset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Life Reset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-invest-in-yourself">How to Invest in Yourself Every Single Day</a></h2>
-          <p class="blog-card-excerpt">Investing in yourself is not a one-time event. It is a daily decision. Here is how to invest in yourself in practical ways that compound into real results over time.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 8 min</span><a href="blog-how-to-invest-in-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-manage-your-time">How to Manage Your Time So You Stop Feeling Behind</a></h2>
-          <p class="blog-card-excerpt">If you always feel behind no matter how hard you work, the problem is not effort. It is time management. Here are the strategies that actually fix it.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 9 min</span><a href="blog-how-to-manage-your-time" class="read-more">Read More &rarr;</a></div>
-</div>
-      </div>
-
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-find-motivation">How to Find Motivation When You Have None</a></h2>
-          <p class="blog-card-excerpt">Struggling to get motivated? Motivation does not come before action. It comes after. Here is how to find motivation on your worst days using strategies that actually work.</p>
-<div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 8 min</span><a href="blog-how-to-find-motivation" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-trust-the-process">How to Trust the Process When You Are Not Seeing Results</a></h2>
-          <p class="blog-card-excerpt">Learning how to trust the process is the difference between people who eventually win and people who keep starting over. Here is what trusting the process really means and how to stay patient when results are slow.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2, 2026 &middot; 8 min</span><a href="blog-how-to-trust-the-process" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-<div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-regret">How to Deal With Regret (Without Letting It Define You)</a></h2>
-          <p class="blog-card-excerpt">Learn how to deal with regret in a way that actually frees you. Stop dwelling on the past and turn old mistakes into fuel for a better life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 1, 2026 &middot; 8 min</span><a href="blog-how-to-deal-with-regret" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-stop-procrastinating-take-action">Stop Procrastinating and Take Action Today</a></h2>
-<p class="blog-card-excerpt">Procrastination isn't a time management problem — it's an emotion management problem. Here's what's actually causing it and how to beat it for good.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 7 min</span><a href="blog-stop-procrastinating-take-action" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="goals">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Goals</span>
-          <h2 class="blog-card-title"><a href="blog-set-goals-you-will-achieve">How to Set Goals You Will Actually Achieve</a></h2>
-          <p class="blog-card-excerpt">Most goals fail not because people lack motivation — but because the goals were set wrong. Learn how to set goals that actually get done.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 6 min</span><a href="blog-set-goals-you-will-achieve" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-overcome-fear-of-failure">How to Overcome Fear of Failure and Actually Take Action</a></h2>
-          <p class="blog-card-excerpt">Fear of failure keeps more people stuck than actual failure ever does. Here's how to stop letting it run your life and start taking real action.</p>
-<div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 7 min</span><a href="blog-overcome-fear-of-failure" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-morning-routine-that-sticks">Build a Morning Routine That Actually Sticks</a></h2>
-          <p class="blog-card-excerpt">Most morning routines fail within a week. Here's how to build one that actually sticks — starting small, building momentum, and making it yours.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 6 min</span><a href="blog-morning-routine-that-sticks" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-<h2 class="blog-card-title"><a href="blog-create-habits-that-last">How to Create Habits That Last</a></h2>
-          <p class="blog-card-excerpt">Most habits die within two weeks. Here's the science-backed approach to building habits that stick for months and years, not just days.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 6 min</span><a href="blog-create-habits-that-last" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Toughness</span>
-          <h2 class="blog-card-title"><a href="blog-build-mental-toughness">How to Build Mental Toughness</a></h2>
-          <p class="blog-card-excerpt">Mental toughness isn't something you either have or you don't. It's a skill you build. Here's exactly how to develop it, no matter where you're starting from.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 8 min</span><a href="blog-build-mental-toughness" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-<div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Toughness</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-resilience">How to Build Resilience (And Stop Letting Setbacks Take You Out)</a></h2>
-          <p class="blog-card-excerpt">Learn how to build resilience with practical, no-fluff strategies. Develop the mental and emotional toughness to handle setbacks and bounce back faster.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 26, 2026 &middot; 9 min</span><a href="blog-how-to-build-resilience" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="life-reset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Life Reset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-get-your-life-together">How to Get Your Life Together (A Real Plan That Actually Works)</a></h2>
-          <p class="blog-card-excerpt">Feeling overwhelmed and lost? Here is exactly how to get your life together, step by step, starting today. No fluff. Just a real plan you can follow.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 18, 2026 &middot; 9 min</span><a href="blog-how-to-get-your-life-together" class="read-more">Read More &rarr;</a></div>
-        </div>
-</div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-stress">How to Deal With Stress (Before It Deals With You)</a></h2>
-          <p class="blog-card-excerpt">Stress does not have to run your life. Here is how to deal with stress in a practical way that actually helps, without the fake fixes.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 18, 2026 &middot; 8 min</span><a href="blog-how-to-deal-with-stress" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-develop-a-growth-mindset">How to Develop a Growth Mindset (And Why It Changes Everything)</a></h2>
-          <p class="blog-card-excerpt">A growth mindset is the single biggest factor in long-term success. Here is how to develop one and the exact steps to start using it today.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 18, 2026 &middot; 9 min</span><a href="blog-how-to-develop-a-growth-mindset" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-<span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-negative-self-talk">How to Stop Negative Self-Talk (And Rewire Your Inner Critic)</a></h2>
-          <p class="blog-card-excerpt">Negative self-talk is quietly destroying your confidence. Here is how to silence your inner critic and start thinking like someone who wins.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 16, 2026 &middot; 8 min</span><a href="blog-how-to-stop-negative-self-talk" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-<div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-people-pleasing">How to Stop People Pleasing (And Start Putting Yourself First)</a></h2>
-          <p class="blog-card-excerpt">People pleasing feels like kindness but it is actually self-abandonment. Here is how to break the pattern without burning every relationship you have.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 14, 2026 &middot; 8 min</span><a href="blog-how-to-stop-people-pleasing" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-break-bad-habits">How to Break Bad Habits (The Approach That Actually Sticks)</a></h2>
-          <p class="blog-card-excerpt">Bad habits do not break through willpower. They break through systems. Here is the approach that actually works and why most people get it wrong.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 12, 2026 &middot; 8 min</span><a href="blog-how-to-break-bad-habits" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-<div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-caring-what-others-think">How to Stop Caring What Others Think (And Start Living for You)</a></h2>
-          <p class="blog-card-excerpt">You are living someone else's life and you know it. Here is how to break free from the approval trap and start making decisions that actually serve you.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 11, 2026 &middot; 8 min</span><a href="blog-how-to-stop-caring-what-others-think" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-<span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-lazy">How to Stop Being Lazy (A No-BS Guide That Actually Works)</a></h2>
-          <p class="blog-card-excerpt">Tired of feeling stuck in laziness? Here is how to stop being lazy for good, with a no-nonsense plan you can start using in the next 10 minutes.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 10, 2026 &middot; 8 min</span><a href="blog-how-to-stop-being-lazy" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-<div class="blog-card" data-category="goals">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Goals</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stay-consistent-with-goals">How to Stay Consistent With Your Goals (Even When Motivation Dies)</a></h2>
-          <p class="blog-card-excerpt">Consistency is what separates people who get results from people who keep starting over. Here is how to stay on track when the excitement wears off.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 8, 2026 &middot; 8 min</span><a href="blog-how-to-stay-consistent-with-goals" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-confidence">How to Build Confidence (Without Faking It)</a></h2>
-          <p class="blog-card-excerpt">Real confidence is not something you are born with. It is something you build. Here is the actual process, step by step, with nothing to fake.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 7, 2026 &middot; 8 min</span><a href="blog-how-to-build-confidence" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="life-reset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Life Reset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-get-out-of-a-rut">How to Get Out of a Rut (When You Feel Completely Stuck)</a></h2>
-          <p class="blog-card-excerpt">Feeling stuck is one of the worst feelings there is. Here is a clear, no-nonsense approach to getting out of a rut and building real momentum again.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 6, 2026 &middot; 8 min</span><a href="blog-how-to-get-out-of-a-rut" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-<div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-making-excuses">How to Stop Making Excuses (And Take Real Ownership)</a></h2>
-          <p class="blog-card-excerpt">Excuses feel protective but they are costing you everything. Here is how to break the excuse habit and become someone who actually follows through.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 5, 2026 &middot; 7 min</span><a href="blog-how-to-stop-making-excuses" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-<div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-a-morning-routine">How to Build a Morning Routine That Actually Works</a></h2>
-          <p class="blog-card-excerpt">A great morning routine does not have to take two hours. Here is how to build one that sets you up to win every day, even if you hate mornings.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 4, 2026 &middot; 8 min</span><a href="blog-how-to-build-a-morning-routine" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-stop-comparing-yourself-to-others">Stop Comparing Yourself to Others (Here Is Why It Is Wrecking You)</a></h2>
-          <p class="blog-card-excerpt">Comparison is the thief of everything good. Here is why you keep doing it, why it hurts so much, and exactly how to break the habit.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 3, 2026 &middot; 7 min</span><a href="blog-stop-comparing-yourself-to-others" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-<h2 class="blog-card-title"><a href="blog-how-to-stop-overthinking">How to Stop Overthinking (And Actually Start Doing)</a></h2>
-          <p class="blog-card-excerpt">Overthinking is not careful planning. It is fear in disguise. Here is how to break the loop and start making decisions that move your life forward.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 2, 2026 &middot; 7 min</span><a href="blog-how-to-stop-overthinking" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-<div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-stop-self-sabotage">How to Stop Self-Sabotage (When You Are Your Own Worst Enemy)</a></h2>
-          <p class="blog-card-excerpt">Self-sabotage does not feel like self-destruction. It feels like being realistic. Here is how to recognize it and stop it before it costs you everything.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 1, 2026 &middot; 7 min</span><a href="blog-stop-self-sabotage" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-stop-being-positive">Stop Being So Positive (Toxic Positivity Is Keeping You Stuck)</a></h2>
-          <p class="blog-card-excerpt">Not all positivity is helpful. Some of it is a way of avoiding the truth. Here is how to tell the difference and what actually works instead.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 30, 2026 &middot; 7 min</span><a href="blog-stop-being-positive" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-overcoming-adversity">Overcoming Adversity (How to Keep Going When Life Gets Hard)</a></h2>
-          <p class="blog-card-excerpt">Hard times are not optional. How you handle them is. Here is how to get through adversity without losing yourself in the process.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 28, 2026 &middot; 7 min</span><a href="blog-overcoming-adversity" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-one-percent-rule">The One Percent Rule: Why Small Gains Beat Big Leaps Every Time</a></h2>
-          <p class="blog-card-excerpt">Getting 1 percent better every day compounds into results most people never believe possible. Here is how the one percent rule works in real life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 26, 2026 &middot; 7 min</span><a href="blog-one-percent-rule" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-journaling-10-minutes">10 Minutes of Journaling That Changes Everything</a></h2>
-          <p class="blog-card-excerpt">Ten focused minutes of journaling a day can shift your thinking, reduce stress, and clarify what you actually want out of your life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 24, 2026 &middot; 6 min</span><a href="blog-journaling-10-minutes" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-habits-why-fail">Why Your Habits Keep Failing (And How to Actually Fix That)</a></h2>
-          <p class="blog-card-excerpt">Most people fail at habits for the same three reasons. Once you know what they are, fixing them is straightforward. Here is the real reason your habits die.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 22, 2026 &middot; 7 min</span><a href="blog-habits-why-fail" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-
-      <div class="blog-card" data-category="goals">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Goals</span>
-          <h2 class="blog-card-title"><a href="blog-goals-dont-stick">Why Goals Do Not Stick (And What to Do Instead)</a></h2>
-          <p class="blog-card-excerpt">Setting goals is easy. Keeping them is hard. Here is the real reason goals fail and the system that actually gets results over the long run.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 20, 2026 &middot; 7 min</span><a href="blog-goals-dont-stick" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
+<!-- Blog Posts -->
+<section class="blog-section">
+  <div class="container">
 
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-beat-procrastination">How to Beat Procrastination (For Real, Not Just Today)</a></h2>
-          <p class="blog-card-excerpt">Procrastination is not a time management problem. It is an emotion management problem. Here is how to tackle it at the root so it stops coming back.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 18, 2026 &middot; 7 min</span><a href="blog-beat-procrastination" class="read-more">Read More &rarr;</a></div>
-        </div>
+    <!-- Featured Post -->
+    <a href="blog-habits-why-fail.html" class="featured-post">
+      <div class="featured-left">
+        <span class="featured-label">Featured Post</span>
+        <span class="blog-tag">Habits</span>
+        <h2>Why You Keep Failing Your Habits (And What to Do About It)</h2>
+        <p>The problem is not your willpower. It is your system. Here is how to fix it in one afternoon and build habits that actually stick.</p>
       </div>
-
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-better-decisions">How to Make Better Decisions (A Framework That Actually Works)</a></h2>
-          <p class="blog-card-excerpt">Every outcome in your life is the result of a decision. Here is how to make better ones, faster, with less regret, using a simple framework you can use today.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 16, 2026 &middot; 7 min</span><a href="blog-better-decisions" class="read-more">Read More &rarr;</a></div>
-        </div>
+      <div class="featured-right">
+        <p>Most people make their habits too big, too fast. When life gets busy and they miss a day, they feel like a failure. Then they quit. This is not a discipline problem. It is a design problem. Once you understand how to build a habit the right way, everything changes.</p>
+        <div class="featured-meta">By Freddy Owen &nbsp;·&nbsp; January 6, 2025 &nbsp;·&nbsp; 6 min read</div>
+        <span class="blog-read-link" style="margin-top:20px;">Read the Article →</span>
       </div>
+    </a>
 
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-discipline-beats-motivation">Why Discipline Beats Motivation Every Single Time</a></h2>
-          <p class="blog-card-excerpt">Motivation comes and goes. Discipline is the one thing that keeps working when motivation has packed its bags and left. Here is how to build it.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 14, 2026 &middot; 7 min</span><a href="blog-discipline-beats-motivation" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
+    <!-- Blog Grid -->
+    <div class="blog-grid">
 
-      <div class="blog-card" data-category="goals">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Goals</span>
-          <h2 class="blog-card-title"><a href="blog-accountability-secret-weapon">Accountability Is Your Secret Weapon (Here Is How to Use It)</a></h2>
-          <p class="blog-card-excerpt">The fastest way to hit your goals is not to want them more. It is to have someone watching. Here is why accountability works and how to use it.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">March 12, 2026 &middot; 6 min</span><a href="blog-accountability-secret-weapon" class="read-more">Read More &rarr;</a></div>
+      <a href="blog-goals-dont-stick.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Goals</span>
+          <h2>The Brutal Reason Your Goals Don't Stick (It's Not Motivation)</h2>
         </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
         <div class="blog-card-body">
-          <span class="blog-card-tag">Purpose &amp; Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-find-your-purpose">How to Find Your Purpose in Life (A Real Guide, Not a Pep Talk)</a></h2>
-          <p class="blog-card-excerpt">Feeling lost and unsure what you are meant to do? Here is how to find your purpose in life using real steps that go beyond advice like follow your passion.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 11 min</span><a href="blog-how-to-find-your-purpose" class="read-more">Read More &rarr;</a></div>
+          <p>Motivation is not the problem. Your goal itself is. Here is how to set goals that actually stick using one simple framework.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 7 &nbsp;·&nbsp; 7 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="blog-card" data-category="mental-health">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-hard-on-yourself">How to Stop Being Hard on Yourself (Without Going Soft)</a></h2>
-          <p class="blog-card-excerpt">Being your own worst critic is not making you better. Here is how to stop being hard on yourself in a way that actually raises your standards instead of lowering them.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 7 min</span><a href="blog-how-to-stop-being-hard-on-yourself" class="read-more">Read More &rarr;</a></div>
+      <a href="blog-stop-being-positive.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Mindset</span>
+          <h2>Stop Trying to Be Positive. Do This Instead.</h2>
         </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
         <div class="blog-card-body">
-          <span class="blog-card-tag">Personal Growth</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-get-out-of-your-comfort-zone">How to Get Out of Your Comfort Zone (And Why It Gets Easier)</a></h2>
-          <p class="blog-card-excerpt">Your comfort zone is not keeping you safe. It is keeping you small. Here is how to get out of your comfort zone in a way that actually builds confidence over time.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 7 min</span><a href="blog-how-to-get-out-of-your-comfort-zone" class="read-more">Read More &rarr;</a></div>
+          <p>Toxic positivity makes things worse. Here is the mindset shift that actually builds real mental strength when life gets hard.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 8 &nbsp;·&nbsp; 6 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Life Change</span>
-          <h2 class="blog-card-title"><a href="blog-signs-you-need-to-change-your-life">10 Signs You Need to Change Your Life (And How to Start)</a></h2>
-          <p class="blog-card-excerpt">Some signs are hard to ignore. Others sneak up on you slowly. Here are the clearest signs you need to change your life, and what to actually do about them.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 8 min</span><a href="blog-signs-you-need-to-change-your-life" class="read-more">Read More &rarr;</a></div>
+      <a href="blog-one-percent-rule.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Productivity</span>
+          <h2>The 1% Rule: How Small Daily Wins Add Up to Big Results</h2>
         </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
         <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-change-your-mindset">How to Change Your Mindset: 8 Shifts That Actually Work</a></h2>
-          <p class="blog-card-excerpt">Your mindset is not a personality trait you are stuck with. It is a set of beliefs you formed over time. And because you formed them, you can change them. Here is how.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 24, 2026 &middot; 9 min</span><a href="blog-how-to-change-your-mindset" class="read-more">Read More &rarr;</a></div>
+          <p>Getting 1% better every day sounds tiny. The math says you end up 37 times better in a year. Here is how to make it work for you.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 9 &nbsp;·&nbsp; 5 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="blog-card" data-category="mental-health">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-control-your-emotions">How to Control Your Emotions: 7 Strategies That Actually Help</a></h2>
-          <p class="blog-card-excerpt">Controlling your emotions does not mean shutting them off. It means learning to feel them without letting them run the show. Here is how to do that in real life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 24, 2026 &middot; 8 min</span><a href="blog-how-to-control-your-emotions" class="read-more">Read More &rarr;</a></div>
+      <a href="blog-journaling-10-minutes.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Accountability</span>
+          <h2>10 Minutes a Day: The Journaling Habit That Changed How I Think</h2>
         </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
         <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-negative">How to Stop Being Negative: 9 Ways to Break the Pattern</a></h2>
-          <p class="blog-card-excerpt">Negativity is not a personality flaw. It is a habit. Your brain learned to default to the worst-case interpretation of everything. Here is how to retrain it.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 24, 2026 &middot; 8 min</span><a href="blog-how-to-stop-being-negative" class="read-more">Read More &rarr;</a></div>
+          <p>I resisted journaling for years. Then I tried it for 30 days straight. Here is what happened and why you should try it too.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 10 &nbsp;·&nbsp; 5 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-seeking-validation">How to Stop Seeking Validation: 8 Ways to Trust Yourself</a></h2>
-          <p class="blog-card-excerpt">If you constantly check for approval before you feel okay about yourself, this is for you. Here is how to break the validation loop and build self-worth that actually sticks.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 25, 2026 &middot; 9 min</span><a href="blog-how-to-stop-seeking-validation" class="read-more">Read More &rarr;</a></div>
+      <a href="blog-better-decisions.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Mindset</span>
+          <h2>The One Question That Makes You a Better Decision Maker</h2>
         </div>
-      </div>
-
-      <div class="blog-card" data-category="goals">
         <div class="blog-card-body">
-          <span class="blog-card-tag">Personal Growth</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-be-more-decisive">How to Be More Decisive: Stop Second-Guessing and Make Better Choices</a></h2>
-          <p class="blog-card-excerpt">Indecision feels safe but it is quietly draining your energy and holding you back. Here is how to make faster, better decisions without the mental exhaustion.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 25, 2026 &middot; 8 min</span><a href="blog-how-to-be-more-decisive" class="read-more">Read More &rarr;</a></div>
+          <p>One question. Ask it before any important choice. Watch your decisions get sharper and your results improve across every area of your life.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 11 &nbsp;·&nbsp; 4 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="blog-card" data-category="mental-health">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mental Health</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-loneliness">How to Deal With Loneliness: What Actually Helps When You Feel Alone</a></h2>
-          <p class="blog-card-excerpt">You can feel deeply lonely even when surrounded by people. Here is what is really going on and the practical steps that actually help you reconnect.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 25, 2026 &middot; 9 min</span><a href="blog-how-to-deal-with-loneliness" class="read-more">Read More &rarr;</a></div>
+      <a href="blog-overcoming-adversity.html" class="blog-card">
+        <div class="blog-card-top">
+          <span class="blog-tag">Adversity</span>
+          <h2>How to Keep Going When Everything Goes Wrong</h2>
         </div>
-      </div>
-
-      <div class="blog-card" data-category="mindset">
         <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-be-more-present">How to Be More Present: Stop Living in Your Head and Start Living Your Life</a></h2>
-          <p class="blog-card-excerpt">Most people spend most of their time somewhere other than where they actually are. Here is how to close the gap between where your mind is and where your life is happening.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 25, 2026 &middot; 8 min</span><a href="blog-how-to-be-more-present" class="read-more">Read More &rarr;</a></div>
+          <p>Adversity hits everyone. What separates people who make it from people who quit is not talent. It is how they respond. Here is how to respond.</p>
+          <div>
+            <div class="blog-meta">By Freddy Owen &nbsp;·&nbsp; Jan 12 &nbsp;·&nbsp; 6 min read</div>
+            <span class="blog-read-link">Read →</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-    
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-bounce-back-from-failure">How to Bounce Back After Failure</a></h2>
-          <p class="blog-card-excerpt">Failing hurts. But failure is not the end of the story unless you decide it is. Here is how to deal with failure and come back stronger than before.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 13, 2026 &middot; 5 min</span><a href="blog-bounce-back-from-failure" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-complete-guide-to-building-habits">How to Build Good Habits That Actually Stick: The Complete Guide</a></h2>
-          <p class="blog-card-excerpt">The only habit guide you need. Learn how habits form, why most people fail, and the exact steps to build habits that last for life. No fluff, just wha</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 15, 2026 &middot; 5 min</span><a href="blog-complete-guide-to-building-habits" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="faith">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Faith</span>
-          <h2 class="blog-card-title"><a href="blog-faith-over-fear">How to Choose Faith Over Fear (Even When It's Hard)</a></h2>
-          <p class="blog-card-excerpt">Fear is real and loud. But faith doesn't require the absence of fear — it requires a decision. Learn the practical steps to choose faith consistentl</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 30, 2026 &middot; 5 min</span><a href="blog-faith-over-fear" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-be-more-productive">How to Be More Productive: 9 Habits That Actually Work</a></h2>
-          <p class="blog-card-excerpt">Learn how to be more productive without burning out. These simple, proven habits will help you get more done, focus better, and stop wasting time ever</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2026 &middot; 5 min</span><a href="blog-how-to-be-more-productive" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-mental-toughness">How to Build Mental Toughness: 7 Ways to Train Your Mind</a></h2>
-          <p class="blog-card-excerpt">Mental toughness isn't about suppressing emotions. It's about reframing discomfort and building resilience through deliberate practice.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-build-mental-toughness" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-self-discipline">How to Build Self-Discipline That Actually Sticks</a></h2>
-          <p class="blog-card-excerpt">Self-discipline is a learnable skill, not an inborn trait. Master decision fatigue, environment design, habit stacking, and identity-based change to b</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-build-self-discipline" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-build-willpower">How to Build Willpower</a></h2>
-          <p class="blog-card-excerpt">Learn how to build willpower that actually holds up under pressure. A no-fluff guide to strengthening self-control, beating decision fatigue, and acti</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 4, 2026 &middot; 5 min</span><a href="blog-how-to-build-willpower" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-deal-with-failure">How to Deal With Failure (Without Letting It Define You)</a></h2>
-          <p class="blog-card-excerpt">Learn how to process failure, separate your identity from outcomes, and extract lessons without ruminating. A practical guide to getting back up with </p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-deal-with-failure" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-develop-self-awareness">How to Develop Self-Awareness (Without Becoming a Navel-Gazer)</a></h2>
-          <p class="blog-card-excerpt">How to develop self-awareness without becoming a navel-gazer. A no-fluff guide to becoming more self-aware, spotting your blind spots, and using it to</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 6, 2026 &middot; 5 min</span><a href="blog-how-to-develop-self-awareness" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-forgive-yourself">How to Forgive Yourself (And Actually Mean It)</a></h2>
-          <p class="blog-card-excerpt">Self-forgiveness is hard but necessary. Learn the difference between guilt and shame, how to take accountability without self-punishment, and move for</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-forgive-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-handle-criticism">How to Handle Criticism Without Falling Apart (Or Snapping Back)</a></h2>
-          <p class="blog-card-excerpt">How to handle criticism without falling apart or snapping back. A no-fluff guide to taking feedback, sorting useful from unfair, and not letting it ru</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 7, 2026 &middot; 5 min</span><a href="blog-how-to-handle-criticism" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-handle-rejection">How to Handle Rejection (Without Letting It Wreck You)</a></h2>
-          <p class="blog-card-excerpt">Learn how to handle rejection without spiraling. The real strategies that turn a no into momentum &mdash; no fragile pep talks, no fake positivity, ju</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 30, 2026 &middot; 5 min</span><a href="blog-how-to-handle-rejection" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-improve-focus-and-concentration">How to Improve Focus and Concentration (Without Becoming a Monk)</a></h2>
-          <p class="blog-card-excerpt">Learn how to improve focus and concentration with a practical, no-fluff system. Real techniques to sharpen attention, stay focused, and do deeper work</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 24, 2026 &middot; 5 min</span><a href="blog-how-to-improve-focus-and-concentration" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="faith">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Faith</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-keep-faith-when-nothing-is-working">How to Keep Faith When Nothing Is Working</a></h2>
-          <p class="blog-card-excerpt">You have prayed. You have worked hard. You have believed. And still, nothing has moved. Here is how to keep faith when nothing is working and results </p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 1, 2026 &middot; 5 min</span><a href="blog-how-to-keep-faith-when-nothing-is-working" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-let-go-of-the-past">How to Let Go of the Past (And Actually Move Forward)</a></h2>
-          <p class="blog-card-excerpt">You cannot change what happened. But staying stuck in it is a choice. Here is how to let go of the past without pretending it did not matter.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 5 min</span><a href="blog-how-to-let-go-of-the-past" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-love-yourself">How to Love Yourself: 10 Practical Ways to Start Today</a></h2>
-          <p class="blog-card-excerpt">Learning how to love yourself is not selfish. It is necessary. These 10 practical steps will help you build genuine self-respect, self-compassion, and</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2026 &middot; 5 min</span><a href="blog-how-to-love-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-set-boundaries">How to Set Boundaries Without Feeling Guilty</a></h2>
-          <p class="blog-card-excerpt">A practical guide to setting healthy boundaries in relationships, work, and life. Learn scripts, how to handle pushback, and why boundaries aren't sel</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-set-boundaries" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-silence-your-inner-critic">How to Silence Your Inner Critic</a></h2>
-          <p class="blog-card-excerpt">Your inner critic is not telling the truth. It is telling you old stories. Here is how to silence negative self-talk and start thinking like someone w</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 5 min</span><a href="blog-how-to-silence-your-inner-critic" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-start-over-in-life">How to Start Over in Life When Everything Feels Stuck</a></h2>
-          <p class="blog-card-excerpt">How to start over in life when everything feels stuck. A no-fluff guide to rebuilding your life, resetting your direction, and starting fresh at any a</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 5, 2026 &middot; 5 min</span><a href="blog-how-to-start-over-in-life" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-a-perfectionist">How to Stop Being a Perfectionist (Before It Stops You)</a></h2>
-          <p class="blog-card-excerpt">Perfectionism is not high standards. It is fear with a productivity costume on. Here is how to stop being a perfectionist and actually finish the thin</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 5 min</span><a href="blog-how-to-stop-being-a-perfectionist" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-being-insecure">How to Stop Being Insecure (And Stop Letting It Run Your Life)</a></h2>
-          <p class="blog-card-excerpt">How to stop being insecure without faking confidence. A no-fluff guide to the real root causes of insecurity and a step-by-step playbook to take your </p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 8, 2026 &middot; 5 min</span><a href="blog-how-to-stop-being-insecure" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-caring-what-others-think">How to Stop Caring What Others Think</a></h2>
-          <p class="blog-card-excerpt">You're wired to care what others think. Learn why, and discover how to detach from others' judgments while staying true to your values.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-stop-caring-what-others-think" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-feeling-overwhelmed">How to Stop Feeling Overwhelmed: A Practical Reset</a></h2>
-          <p class="blog-card-excerpt">Overwhelm is caused by too many open loops and unclear priorities. Here's the practical system to reset and regain clarity.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-stop-feeling-overwhelmed" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-getting-distracted">How to Stop Getting Distracted and Actually Focus</a></h2>
-          <p class="blog-card-excerpt">Distraction is not a willpower problem. It is a design problem. Here is how to stop getting distracted and actually focus on the work that matters mos</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 1, 2026 &middot; 5 min</span><a href="blog-how-to-stop-getting-distracted" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-making-excuses">How to Stop Making Excuses and Start Taking Action</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop making excuses that hold you back. Discover why you keep justifying inaction and the practical steps to start taking action today.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 5, 2026 &middot; 5 min</span><a href="blog-how-to-stop-making-excuses" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-negative-self-talk">How to Stop Negative Self-Talk</a></h2>
-          <p class="blog-card-excerpt">Learn how to recognize and overcome your inner critic. Discover cognitive defusion techniques, self-compassion practices, and journaling methods to tr</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-stop-negative-self-talk" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-overthinking">How to Stop Overthinking Everything &mdash; A No-BS Guide to Getting Out of Your Head</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop overthinking everything with practical strategies that actually work. Break the cycle of overanalyzing, quiet your mind, and start t</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 4, 2026 &middot; 5 min</span><a href="blog-how-to-stop-overthinking" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-second-guessing-yourself">How to Stop Second Guessing Yourself</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop second guessing yourself, trust your decisions, and move forward with confidence. A practical, no-fluff guide for chronic over-think</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 3, 2026 &middot; 5 min</span><a href="blog-how-to-stop-second-guessing-yourself" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-seeking-approval">How to Stop Seeking Approval From Other People</a></h2>
-          <p class="blog-card-excerpt">Constantly seeking approval keeps you trapped in other people's opinions. Here is how to stop needing validation from others and start trusting yourse</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 20, 2026 &middot; 5 min</span><a href="blog-how-to-stop-seeking-approval" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-seeking-validation">How to Stop Seeking Validation: 8 Ways to Trust Yourself</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop seeking validation from others and start trusting yourself. Break the approval-seeking cycle and build real self-worth that does not</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2026 &middot; 5 min</span><a href="blog-how-to-stop-seeking-validation" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-stop-self-doubt">How to Stop Self-Doubt (And Start Trusting Yourself Again)</a></h2>
-          <p class="blog-card-excerpt">Learn how to stop self-doubt with practical, no-fluff strategies. Quiet the second-guessing, build real self-trust, and start moving on what matters.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-how-to-stop-self-doubt" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-take-responsibility-for-your-life">How to Take Responsibility for Your Life (And Stop Waiting for Things to Change)</a></h2>
-          <p class="blog-card-excerpt">Learn how to take responsibility for your life with no-fluff strategies. Stop blaming others, take ownership of your choices, and start moving forward</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 27, 2026 &middot; 5 min</span><a href="blog-how-to-take-responsibility-for-your-life" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="faith">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Faith</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-trust-gods-timing">How to Trust God's Timing When You're Tired of Waiting</a></h2>
-          <p class="blog-card-excerpt">Waiting on God is one of the hardest parts of faith. Here's how to stay grounded, keep moving, and trust His timing when everything in you wants it to</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 30, 2026 &middot; 5 min</span><a href="blog-how-to-trust-gods-timing" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-trust-the-process">How to Trust the Process When You Are Not Seeing Results</a></h2>
-          <p class="blog-card-excerpt">Learn how to trust the process when results are slow and you want to quit. The real meaning of trusting the process and how to stay patient without lo</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2, 2026 &middot; 5 min</span><a href="blog-how-to-trust-the-process" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-how-to-wake-up-early">How to Wake Up Early (And Actually Make It Stick)</a></h2>
-          <p class="blog-card-excerpt">Learn how to wake up early without hating your life. The real strategies that turn chronic snoozers into early risers &mdash; no willpower theatrics, </p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 29, 2026 &middot; 5 min</span><a href="blog-how-to-wake-up-early" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-journaling-10-minutes">10 Minutes a Day: The Journaling Habit That Changed How I Think</a></h2>
-          <p class="blog-card-excerpt">I resisted journaling for years. Then I tried it for 30 days. Here is what happened and why daily journaling is one of the best things you can do for </p>
-          <div class="blog-card-footer"><span class="blog-card-meta">January 10, 2026 &middot; 5 min</span><a href="blog-journaling-10-minutes" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="habits">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Habits</span>
-          <h2 class="blog-card-title"><a href="blog-morning-routine-that-sticks">Build a Morning Routine That Actually Sticks</a></h2>
-          <p class="blog-card-excerpt">Most morning routines fail within a week. Here's how to build one that actually sticks - starting small, building momentum, and making it yours.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2026 &middot; 5 min</span><a href="blog-morning-routine-that-sticks" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-overcome-fear-of-failure">How to Overcome Fear of Failure and Actually Take Action</a></h2>
-          <p class="blog-card-excerpt">Fear of failure keeps more people stuck than actual failure ever does. Here's how to stop letting it run your life and start taking real action.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2026 &middot; 5 min</span><a href="blog-overcome-fear-of-failure" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="faith">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Faith</span>
-          <h2 class="blog-card-title"><a href="blog-prayer-and-productivity">Prayer and Productivity: How Your Faith Fuels Your Work</a></h2>
-          <p class="blog-card-excerpt">Prayer isn't separate from productivity — it's the foundation of it. Here's how to integrate faith into your daily work, goals, and output in a way </p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 30, 2026 &middot; 5 min</span><a href="blog-prayer-and-productivity" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-set-boundaries">How to Set Boundaries Without Feeling Guilty</a></h2>
-          <p class="blog-card-excerpt">Learning how to set boundaries is one of the most important things you can do for your mental health and your relationships. Here is how to do it with</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 13, 2026 &middot; 5 min</span><a href="blog-set-boundaries" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-set-goals-you-will-achieve">How to Set Goals You Will Actually Achieve</a></h2>
-          <p class="blog-card-excerpt">Stop failing at goals. Learn why most goals fail, how to structure them properly, and the exact weekly system that makes them stick.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 28, 2026 &middot; 5 min</span><a href="blog-set-goals-you-will-achieve" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-stop-being-positive">Stop Trying to Be Positive. Do This Instead.</a></h2>
-          <p class="blog-card-excerpt">Forcing yourself to think positive does not work. Here is the mindset shift that actually builds real mental strength and helps you get through hard t</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">January 8, 2026 &middot; 5 min</span><a href="blog-stop-being-positive" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-stop-comparing-yourself-to-others">Stop Comparing Yourself to Others (And What to Do Instead)</a></h2>
-          <p class="blog-card-excerpt">Comparison is keeping you stuck. Here's the honest truth about why you do it and how to stop letting other people's highlight reel run your life.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 2, 2026 &middot; 5 min</span><a href="blog-stop-comparing-yourself-to-others" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-stop-procrastinating-take-action">Stop Procrastinating and Take Action Today</a></h2>
-          <p class="blog-card-excerpt">Procrastination isn't a time management problem - it's an emotion management problem. Here's what's actually causing it and how to beat it for good.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 2026 &middot; 5 min</span><a href="blog-stop-procrastinating-take-action" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-stop-self-sabotage">How to Stop Self-Sabotaging Your Own Success</a></h2>
-          <p class="blog-card-excerpt">Self-sabotage is not a character flaw. It is a pattern you can break. Here is what drives it and how to stop getting in your own way for good.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 2, 2026 &middot; 5 min</span><a href="blog-stop-self-sabotage" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="productivity">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Productivity</span>
-          <h2 class="blog-card-title"><a href="blog-stop-wasting-time">How to Stop Wasting Time and Get More Done</a></h2>
-          <p class="blog-card-excerpt">If you feel like the day disappears before you accomplish anything, this is for you. Here is how to stop wasting time and actually get things done.</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">April 13, 2026 &middot; 5 min</span><a href="blog-stop-wasting-time" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
-      <div class="blog-card" data-category="mindset">
-        <div class="blog-card-body">
-          <span class="blog-card-tag">Mindset</span>
-          <h2 class="blog-card-title"><a href="blog-why-you-never-finish-what-you-start">Why You Never Finish What You Start (And How to Change That)</a></h2>
-          <p class="blog-card-excerpt">Starting is easy. Finishing is where most people fall apart. Here is an honest look at why you start things and never finish them, and what to actuall</p>
-          <div class="blog-card-footer"><span class="blog-card-meta">May 1, 2026 &middot; 5 min</span><a href="blog-why-you-never-finish-what-you-start" class="read-more">Read More &rarr;</a></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<section style="background:#fff; padding: 64px 24px; text-align:center; border-top: 1px solid #e5e7eb;">
+<!-- CTA -->
+<section class="cta-banner">
   <div style="max-width:600px; margin:0 auto;">
-    <p style="font-size:0.85rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--orange); margin-bottom:12px;">Free Tools</p>
-    <h2 style="font-size:1.8rem; font-weight:800; color:var(--dark); margin-bottom:12px;">Put the Advice Into Action</h2>
-    <p style="color:var(--muted); margin-bottom:28px;">Reading is the start. The tools are where the real change happens. Track your habits, build your goals, and take the quiz to find out where you stand.</p>
-    <a href="quiz" class="btn btn-primary" style="margin-right:12px;">Take the Free Quiz</a>
-    <a href="/#tools" class="btn btn-outline">See All Tools</a>
+    <h2>Put What You Read Into Action</h2>
+    <p>Reading is the first step. Use the free tools to turn the ideas into real daily habits, goals, and progress.</p>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="goal-tracker.html" class="btn btn-dark">Set a Goal →</a>
+      <a href="quiz.html" class="btn btn-outline" style="border-color:rgba(255,255,255,0.6);color:#fff;">Take the Quiz →</a>
+    </div>
   </div>
 </section>
 
@@ -1444,26 +297,29 @@
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker">Goal Tracker</a></li>
-        <li><a href="habit-builder">Habit Builder</a></li>
-        <li><a href="journal">Journal Prompts</a></li>
-        <li><a href="quiz">Mindset Quiz</a></li>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="blog">All Posts</a></li>
-        <li><a href="blog-habits-why-fail">Habits</a></li>
-        <li><a href="blog-goals-dont-stick">Goals</a></li>
-        <li><a href="blog-one-percent-rule">Productivity</a></li>
+        <li><a href="blog-habits-why-fail.html">Why Habits Fail</a></li>
+        <li><a href="blog-goals-dont-stick.html">Why Goals Don't Stick</a></li>
+        <li><a href="blog-stop-being-positive.html">Stop Being Positive</a></li>
+        <li><a href="blog-one-percent-rule.html">The 1% Rule</a></li>
+        <li><a href="blog-journaling-10-minutes.html">10-Minute Journaling</a></li>
+        <li><a href="blog-better-decisions.html">Better Decisions</a></li>
+        <li><a href="blog-overcoming-adversity.html">Overcoming Adversity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
-        <li><a href="/#about">About Fred</a></li>
-        <li><a href="/">Home</a></li>
+        <li><a href="index.html#about">About Fred</a></li>
+        <li><a href="index.html">Home</a></li>
       </ul>
     </div>
   </div>
@@ -1473,44 +329,6 @@
   </div>
 </footer>
 
-<script>
-function filterPosts(e, category) {
-  e.preventDefault();
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  e.target.classList.add('active');
-  document.querySelectorAll('.blog-card').forEach(card => {
-    card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
-  });
-}
-</script>
 <script src="mobile-nav.js"></script>
-<script id="wf-blog-search-js">
-(function() {
-  var inp = document.getElementById("blogSearch");
-  if (!inp) return;
-  inp.addEventListener("input", function() {
-    var q = this.value.toLowerCase().trim();
-    var count = 0;
-    document.querySelectorAll(".blog-card").forEach(function(card) {
-      var t = ((card.querySelector(".blog-card-title") || {}).textContent || "")
-            + " " + ((card.querySelector(".blog-card-tag") || {}).textContent || "")
-            + " " + ((card.querySelector(".blog-card-excerpt") || {}).textContent || "");
-      var show = !q || t.toLowerCase().indexOf(q) !== -1;
-      card.style.display = show ? "" : "none";
-      if (show) count++;
-    });
-    if (q) {
-      document.querySelectorAll(".filter-btn").forEach(function(b) {
-        b.classList.remove("active");
-      });
-    } else {
-      var first = document.querySelector(".filter-btn");
-      if (first) first.classList.add("active");
-    }
-    var nr = document.getElementById("blogNoResults");
-    if (nr) nr.style.display = (count === 0 && q) ? "block" : "none";
-  });
-})();
-</script>
 </body>
 </html>
