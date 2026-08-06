@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mood Tracker &mdash; WinWithFred</title>
-  <meta name="description" content="Daily mood tracking to spot patterns. See what actually affects your mood &mdash; sleep, alcohol, exercise &mdash; and change what you can." />
+  <title>Mood Tracker â€” WinWithFred</title>
+  <meta name="description" content="Daily mood tracking to spot patterns. See what actually affects your mood â€” sleep, alcohol, exercise â€” and change what you can." />
 <style>
 /* ============================================
-   WinWithFred.com &mdash; Global Stylesheet
+   WinWithFred.com â€” Global Stylesheet
    Tone: Practical. No-nonsense. Results-driven.
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* &#9472;&#9472; Reset & Base &#9472;&#9472; */
+/* â”€â”€ Reset & Base â”€â”€ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -48,12 +48,12 @@ img { max-width: 100%; display: block; }
 a  { color: var(--orange); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* &#9472;&#9472; Layout &#9472;&#9472; */
+/* â”€â”€ Layout â”€â”€ */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 .section    { padding: 80px 0; }
 .section-sm { padding: 48px 0; }
 
-/* &#9472;&#9472; Typography &#9472;&#9472; */
+/* â”€â”€ Typography â”€â”€ */
 h1, h2, h3, h4 { line-height: 1.2; font-weight: 800; color: var(--dark); }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
@@ -64,7 +64,7 @@ p  { color: #374151; }
 .text-muted  { color: var(--muted); font-size: 0.9rem; }
 .text-center { text-align: center; }
 
-/* &#9472;&#9472; Buttons &#9472;&#9472; */
+/* â”€â”€ Buttons â”€â”€ */
 .btn {
   display: inline-block;
   padding: 14px 28px;
@@ -111,7 +111,7 @@ p  { color: #374151; }
 .btn-sm { padding: 10px 20px; font-size: 0.9rem; }
 .btn-lg { padding: 18px 40px; font-size: 1.1rem; }
 
-/* &#9472;&#9472; Navbar &#9472;&#9472; */
+/* â”€â”€ Navbar â”€â”€ */
 .navbar {
   background: var(--dark);
   padding: 0 24px;
@@ -154,7 +154,7 @@ p  { color: #374151; }
 .navbar-links a.active { color: var(--orange); }
 .navbar-cta { margin-left: 8px; }
 
-/* &#9472;&#9472; Hero &#9472;&#9472; */
+/* â”€â”€ Hero â”€â”€ */
 .hero {
   background: var(--dark);
   color: var(--white);
@@ -177,7 +177,7 @@ p  { color: #374151; }
 .hero p  { color: #9ca3af; font-size: 1.2rem; max-width: 600px; margin: 0 auto 36px; }
 .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-/* &#9472;&#9472; Section Headers &#9472;&#9472; */
+/* â”€â”€ Section Headers â”€â”€ */
 .section-header { margin-bottom: 48px; }
 .section-header h2 { margin-bottom: 12px; }
 .section-header p  { color: var(--muted); font-size: 1.05rem; }
@@ -194,7 +194,7 @@ p  { color: #374151; }
   margin-bottom: 12px;
 }
 
-/* &#9472;&#9472; Cards &#9472;&#9472; */
+/* â”€â”€ Cards â”€â”€ */
 .card {
   background: var(--white);
   border-radius: var(--radius);
@@ -205,12 +205,12 @@ p  { color: #374151; }
 }
 .card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
 
-/* &#9472;&#9472; Grid &#9472;&#9472; */
+/* â”€â”€ Grid â”€â”€ */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-/* &#9472;&#9472; Tool Cards (Homepage) &#9472;&#9472; */
+/* â”€â”€ Tool Cards (Homepage) â”€â”€ */
 .tool-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -232,7 +232,7 @@ p  { color: #374151; }
 .tool-card p  { color: var(--muted); font-size: 0.95rem; margin-bottom: 16px; }
 .tool-card .tool-link { color: var(--orange); font-weight: 600; font-size: 0.9rem; }
 
-/* &#9472;&#9472; Blog Cards &#9472;&#9472; */
+/* â”€â”€ Blog Cards â”€â”€ */
 .blog-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -258,7 +258,7 @@ p  { color: #374151; }
 .blog-card p  { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
 .blog-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
 
-/* &#9472;&#9472; Dark section &#9472;&#9472; */
+/* â”€â”€ Dark section â”€â”€ */
 .dark-section {
   background: var(--dark);
   color: var(--white);
@@ -266,7 +266,7 @@ p  { color: #374151; }
 .dark-section h2 { color: var(--white); }
 .dark-section p  { color: #9ca3af; }
 
-/* &#9472;&#9472; CTA Banner &#9472;&#9472; */
+/* â”€â”€ CTA Banner â”€â”€ */
 .cta-banner {
   background: var(--orange);
   color: var(--white);
@@ -276,7 +276,7 @@ p  { color: #374151; }
 .cta-banner h2 { color: var(--white); margin-bottom: 12px; }
 .cta-banner p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 32px; }
 
-/* &#9472;&#9472; Footer &#9472;&#9472; */
+/* â”€â”€ Footer â”€â”€ */
 .footer {
   background: var(--black);
   color: #9ca3af;
@@ -311,93 +311,70 @@ p  { color: #374151; }
   gap: 12px;
 }
 
-/* &#9472;&#9472; Tool Page Layout &#9472;&#9472; */
+/* â”€â”€ Tool Page Layout â”€â”€ */
 .tool-page { min-height: calc(100vh - 64px); }
 .tool-header {
   background: var(--dark);
   color: var(--white);
+  padding: 64px 24px 48px;
+}
+.tool-header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.tool-header h1 { color: var(--white); margin-bottom: 12px; }
+.tool-header p  { color: #9ca3af; font-size: 1.15rem; }
+.tool-body {
+  max-width: 720px;
+  margin: 0 auto;
   padding: 48px 24px;
 }
-.tool-header-inner { max-width: 800px; margin: 0 auto; }
-.tool-header h1 { color: var(--white); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 10px; }
-.tool-header p  { color: #9ca3af; font-size: 1.05rem; }
-.tool-body { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
 
-/* &#9472;&#9472; Form Elements &#9472;&#9472; */
-.form-group { margin-bottom: 20px; }
-.form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--dark); }
-.form-input, .form-textarea, .form-select {
+/* â”€â”€ Forms â”€â”€ */
+.form-group    { margin-bottom: 20px; }
+.form-label    { display: block; font-weight: 600; margin-bottom: 8px; color: var(--dark); font-size: 0.95rem; }
+.form-input, .form-select, .form-textarea {
   width: 100%;
   padding: 12px 16px;
   border: 2px solid #e5e7eb;
   border-radius: var(--radius);
   font-size: 1rem;
   font-family: var(--font);
-  background: var(--white);
   color: var(--dark);
+  background: var(--white);
   transition: border-color 0.15s;
   outline: none;
 }
-.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--orange); }
-.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-.form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
-
-/* &#9472;&#9472; Progress Bar &#9472;&#9472; */
-.progress-bar { background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--orange); border-radius: 999px; transition: width 0.4s ease; }
-.progress-fill.green { background: var(--green); }
-
-/* &#9472;&#9472; Badge &#9472;&#9472; */
-.badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 700;
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--orange);
 }
-.badge-orange { background: var(--orange-l); color: var(--orange); }
-.badge-green  { background: #dcfce7; color: #16a34a; }
-.badge-gray   { background: #f3f4f6; color: var(--muted); }
+.form-textarea { resize: vertical; min-height: 120px; }
 
-/* &#9472;&#9472; Divider &#9472;&#9472; */
-.divider { border: none; border-top: 1px solid #e5e7eb; margin: 32px 0; }
-
-/* &#9472;&#9472; Stat Box &#9472;&#9472; */
-.stat-box {
-  background: var(--white);
-  border: 1px solid #e5e7eb;
-  border-radius: var(--radius);
-  padding: 20px;
-  text-align: center;
-}
-.stat-box .stat-num { font-size: 2rem; font-weight: 900; color: var(--orange); }
-.stat-box .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; margin-top: 4px; }
-
-/* &#9472;&#9472; Empty State &#9472;&#9472; */
-.empty-state { text-align: center; padding: 60px 20px; color: var(--muted); }
-.empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
-.empty-state p { font-size: 1rem; }
-
-/* &#9472;&#9472; Alert &#9472;&#9472; */
-.alert {
-  padding: 14px 18px;
-  border-radius: var(--radius);
-  font-size: 0.95rem;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-.alert-success { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-.alert-info    { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
-
-/* &#9472;&#9472; Responsive &#9472;&#9472; */
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .hero { padding: 72px 24px; }
-  .section { padding: 56px 0; }
-  .navbar-links { display: none; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  .navbar-links li:not(.navbar-cta) { display: none; }
+  .hero { padding: 64px 24px; }
+  .tool-body { padding: 32px 16px; }
+}
+@media (max-width: 600px) {
+  .hero-btns { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-lg { width: 100%; text-align: center; }
+}
+
+/* â”€â”€ Auth Navbar â”€â”€ */
+˜]‹]\Ù\ˆÈ\Ü^N™›^È[YÛ‹Z][\Î˜Ù[\ÈØ\ŒLÈB‹›˜]‹X]˜]\ˆÈÚYŒÌœÈZYÚŒÌœÈ›Ü™\‹\˜Y]\ÎL	NÈ˜XÚÙÜ›İ[™˜\ŠK[Ü˜[™ÙJNÈÛÛÜˆÙ™™È\Ü^N™›^È[YÛ‹Z][\Î˜Ù[\È\İYKXÛÛ[˜Ù[\È›Û]ÙZYÚÌÈ›Û\Ú^™NŒ\™[NÈ›^\Úš[šÎŒÈB‹›˜]‹[˜[YHÈÛÛÜˆÙYYÈ›Û\Ú^™NŒ\™[NÈ›Û]ÙZYÚLÈX^]ÚYŒLŒÈİ™\™›İÎšY[È^[İ™\™›İÎ™[\Ú\ÎÈÚ]K\ÜXÙN››İÜ˜\ÈB‹›˜]‹[ÙÛİ]È˜XÚÙÜ›İ[™››Û™NÈ›Ü™\Œ\ÛÛY™Ø˜JMKMKMKŒŠNÈÛÛÜˆÎXØLØYÈY[™ÎœLœÈ›Ü™\‹\˜Y]\ÎœÈİ\œÛÜœÚ[\È›Û\Ú^™NŒœ™[NÈ›ÛY˜[Z[N˜\ŠKY›Û
+NÈ˜[œÚ][Û˜[ŒM\ÎÈB‹›˜]‹[ÙÛİ]šİ™\ˆÈ˜XÚÙÜ›İ[™œ™Ø˜JMKMKMKŒ
+NÈÛÛÜˆÙ™™ÈB‚‹Êˆ8¥ 8¥ [ÛÙÜXÚYšXÈ8¥ 8¥ 
+‹Â‹›[ÛÙ\Ù[XİÜˆÂˆ\Ü^NˆÜšYÂˆÜšY][\]KXÛÛ[[œÎˆ™\X]
+KYœŠNÂˆØ\ˆLÂˆX\™Ú[‹X›İÛNˆÂŸB‹™[[ÚšKXˆÂˆ\Ü^Nˆ›^Âˆ›^Y\™Xİ[ÛˆÛÛ[[Âˆ[YÛ‹Z][\ÎˆÙ[\ÂˆØ\ˆÂˆY[™ÎˆMœLÂˆ›Ü™\ˆœÛÛYÙMYMÙXÂˆ›Ü™\‹\˜Y]\Îˆ˜\ŠK\˜Y]\ÊNÂˆİ\œÛÜˆÚ[\Âˆ˜XÚÙÜ›İ[™ˆ˜\ŠK]Ú]JNÂˆ˜[œÚ][Ûˆ[ŒM\ÎÂˆ›ÛY˜[Z[Nˆ˜\ŠKY›Û
+NÂŸB‹™[[ÚšKXšİ™\ˆÈ›Ü™\‹XÛÛÜˆ˜\ŠK[Ü˜[™ÙJNÈ˜XÚÙÜ›İ[™ˆ˜\ŠK[Ü˜[™ÙK[
+NÈB‹™[[ÚšKX‹˜Xİ]™HÈ›Ü™\‹XÛÛÜˆ˜\ŠK[Ü˜[™ÙJNÈ˜XÚÙÜ›İ[™ˆ˜\ŠK[Ü˜[™ÙK[
+NÈB‹™[[ÚšKXˆ™[[ÚšHÈ›Û\Ú^™Nˆœ™[NÈB‹™[[ÚšKXˆ›X™[È›Û\Ú^™NˆÍ\™[NÈ›Û]ÙZYÚˆŒÈÛÛÜˆ˜\ŠK[]]Y
+NÈB‹™[[ÚšKX‹˜Xİ]™H›X™[ÈÛÛÜˆ˜\ŠK[Ü˜[™ÙJNÈB‚‹YËYÜšYÈ\Ü^Nˆ›^È›^]Ü˜\ˆÜ˜\ÈØ\ˆÈX\™Ú[‹X›İÛNˆÈB‹YËXˆÂˆY[™ÎˆMœÂˆ›Ü™\ˆœÛÛYÙMYMÙXÂˆ›Ü™\‹\˜Y]\ÎˆNx-direction: column; text-align: center; }
 }
 @media (max-width: 480px) {
   .hero-btns { flex-direction: column; align-items: center; }
@@ -405,7 +382,7 @@ p  { color: #374151; }
 }
 
 /* ============================================
-   Mood Tracker &mdash; Tool-Specific Styles
+   Mood Tracker â€” Tool-Specific Styles
    ============================================ */
 
 .tabs {
@@ -660,17 +637,15 @@ p  { color: #374151; }
 }
 
 </style>
-  <meta property="og:image" content="https://winwithfred.com/og-image.png">
-  <meta name="twitter:image" content="https://winwithfred.com/og-image.png">
 </head>
 <body class="tool-page">
 
-<!-- &#9472;&#9472; Navbar &#9472;&#9472; -->
+<!-- â”€â”€ Navbar â”€â”€ -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <a href="index" class="navbar-logo">Win<span>WithFred</span></a>
+    <a href="index.html" class="navbar-logo">Win<span>WithFred</span></a>
     <ul class="navbar-links">
-      <li><a href="index">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="index.html#blog">Blog</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -679,21 +654,21 @@ p  { color: #374151; }
   </div>
 </nav>
 
-<!-- &#9472;&#9472; Tool Header &#9472;&#9472; -->
+<!-- â”€â”€ Tool Header â”€â”€ -->
 <div class="tool-header">
   <div class="tool-header-inner">
-    <div class="section-label" style="background:rgba(249,115,22,0.15);">&#128202; Mood Tracker</div>
+    <div class="section-label" style="background:rgba(249,115,22,0.15);">ğŸ“Š Mood Tracker</div>
     <h1>Track Your Mood. Find Your Patterns.</h1>
-    <p>Daily check-ins take 30 seconds. Over time, you'll see exactly what affects your mood &mdash; sleep, alcohol, exercise &mdash; and what you can actually change.</p>
+    <p>Daily check-ins take 30 seconds. Over time, you'll see exactly what affects your mood â€” sleep, alcohol, exercise â€” and what you can actually change.</p>
   </div>
 </div>
 
-<!-- &#9472;&#9472; Tool Body &#9472;&#9472; -->
+<!-- â”€â”€ Tool Body â”€â”€ -->
 <div class="tool-body">
 
   <!-- Streak Banner -->
   <div class="streak-banner" id="streak-banner" style="display:none;">
-    &#128293; <span id="streak-count">0</span> day streak
+    ğŸ”¥ <span id="streak-count">0</span> day streak
   </div>
 
   <!-- Tabs -->
@@ -725,12 +700,12 @@ p  { color: #374151; }
   <!-- Crisis Resources Link -->
   <div class="crisis-link">
     <p>Struggling with your mental health?</p>
-    <a href="mental-health-check">Take our mental health check-in â†’</a>
+    <a href="mental-health-check.html">Take our mental health check-in â†’</a>
   </div>
 
 </div>
 
-<!-- &#9472;&#9472; Footer &#9472;&#9472; -->
+<!-- â”€â”€ Footer â”€â”€ -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -740,32 +715,32 @@ p  { color: #374151; }
     <div class="footer-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="goal-tracker">Goal Tracker</a></li>
-        <li><a href="habit-builder">Habit Builder</a></li>
-        <li><a href="journal">Journal Prompts</a></li>
-        <li><a href="quiz">Mindset Quiz</a></li>
+        <li><a href="goal-tracker.html">Goal Tracker</a></li>
+        <li><a href="habit-builder.html">Habit Builder</a></li>
+        <li><a href="journal.html">Journal Prompts</a></li>
+        <li><a href="quiz.html">Mindset Quiz</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Blog</h4>
       <ul>
-        <li><a href="#">Habits</a></li>
-        <li><a href="#">Goals</a></li>
-        <li><a href="#">Mindset</a></li>
-        <li><a href="#">Productivity</a></li>
+        <li><a href="/blog">Habits</a></li>
+        <li><a href="/blog">Goals</a></li>
+        <li><a href="/blog">Mindset</a></li>
+        <li><a href="/blog">Productivity</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
         <li><a href="#about">About Fred</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="mailto:hello@winwithfred.com">Contact</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2026 WinWithFred.com &mdash; All rights reserved.</span>
+    <span>Â© 2026 WinWithFred.com â€” All rights reserved.</span>
     <span>Built for people who get things done.</span>
   </div>
 </footer>
@@ -778,14 +753,14 @@ p  { color: #374151; }
 <script>
 
 // ============================================
-// Mood Tracker &mdash; Main Logic
+// Mood Tracker â€” Main Logic
 // ============================================
 
 const TODAY = new Date().toISOString().split('T')[0];
 const MOOD_EMOJIS = {
-  1: '&#128532;', 2: '&#128532;', 3: '&#128533;',
-  4: '&#128528;', 5: '&#128528;', 6: '&#128528;',
-  7: '&#128578;', 8: '&#128578;', 9: '&#128522;', 10: '&#128516;'
+  1: 'ğŸ˜”', 2: 'ğŸ˜”', 3: 'ğŸ˜•',
+  4: 'ğŸ˜', 5: 'ğŸ˜', 6: 'ğŸ˜',
+  7: 'ğŸ™‚', 8: 'ğŸ™‚', 9: 'ğŸ˜Š', 10: 'ğŸ˜„'
 };
 
 let allLogs = [];
@@ -869,11 +844,11 @@ function renderCheckinForm() {
     html = `
       <h3 style="margin-bottom:20px;">Today's Entry</h3>
       <div style="margin-bottom:20px;">
-        <div style="font-size:0.9rem; color:var(--muted); margin-bottom:8px;">Mood: <strong>${today.mood}/10</strong> ${MOOD_EMOJIS[today.mood] || '&#128528;'}</div>
+        <div style="font-size:0.9rem; color:var(--muted); margin-bottom:8px;">Mood: <strong>${today.mood}/10</strong> ${MOOD_EMOJIS[today.mood] || 'ğŸ˜'}</div>
         <div style="font-size:0.9rem; color:var(--muted); margin-bottom:4px;">Sleep: <strong>${today.sleep}</strong></div>
         <div style="font-size:0.9rem; color:var(--muted); margin-bottom:4px;">Alcohol: <strong>${today.alcohol}</strong></div>
         <div style="font-size:0.9rem; color:var(--muted); margin-bottom:8px;">Exercise: <strong>${today.exercise ? 'Yes' : 'No'}</strong></div>
-        ${today.note ? `<div style="font-size:0.9rem; color:var(--muted); margin-bottom:8px;">Note: <em>${escHtml(today.note)}</em></div>` : ''}
+        ${today.note ? `<div style="font-size:0.9rem; color:var(--muted); margin-bottom:8px;">Note: <em>${escH¶il(today.note)}</em></div>` : ''}
       </div>
       <button class="btn btn-outline btn-sm" onclick="editToday()">Edit Today</button>
     `;
@@ -888,7 +863,7 @@ function renderCheckinForm() {
           <span>Okay</span>
           <span>Great</span>
         </div>
-        <div class="mood-display" id="mood-display">&#128528;</div>
+        <div class="mood-display" id="mood-display">ğŸ˜</div>
       </div>
 
       <div class="form-group">
@@ -935,7 +910,7 @@ function renderCheckinForm() {
 
 function updateMoodDisplay() {
   const mood = document.getElementById('mood-input').value;
-  document.getElementById('mood-display').textContent = MOOD_EMOJIS[mood] || '&#128528;';
+  document.getElementById('mood-display').textContent = MOOD_EMOJIS[mood] || 'ğŸ˜';
 }
 
 function logToday() {
@@ -1008,7 +983,7 @@ function renderHistory() {
         <div>
           <div style="font-weight:600; margin-bottom:4px;">${new Date(log.date).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'})}</div>
           <div style="font-size:0.9rem; color:var(--muted);">Mood: <strong>${log.mood}/10 ${MOOD_EMOJIS[log.mood]}</strong> | Sleep: ${log.sleep} | Alcohol: ${log.alcohol} | Exercise: ${log.exercise ? 'Yes' : 'No'}</div>
-          ${log.note ? `<div style="font-size:0.9rem; color:var(--muted); margin-top:6px; font-style:italic;">"${escHtml(log.note)}"</div>` : ''}
+          ${log.note ? `<div style="font-size:0.9rem; color:var(--muted); margin-top:6px; font-style:italic;">"${escH¶il(log.note)}"</div>` : ''}
         </div>
       </div>
     </div>
@@ -1073,7 +1048,7 @@ function renderPatterns() {
           <div class="insight-comp-item">After poor sleep (under 6h): <strong>${moodAfterPoorSleep}/10</strong></div>
           <div class="insight-comp-item">After good sleep (7h+): <strong>${moodAfterGoodSleep}/10</strong></div>
         </div>
-        ${sleepDiff > 0 ? `<p style="margin-top:12px; color:#15803d; font-weight:600;">Your mood is ${sleepDiff}% better with good sleep &#10003;</p>` : ''}
+        ${sleepDiff > 0 ? `<p style="margin-top:12px; color:#15803d; font-weight:600;">Your mood is ${sleepDiff}% better with good sleep âœ“</p>` : ''}
       </div>
     `;
   }
@@ -1087,7 +1062,7 @@ function renderPatterns() {
           <div class="insight-comp-item">With alcohol: <strong>${moodWithAlcohol}/10</strong></div>
           <div class="insight-comp-item">Without alcohol: <strong>${moodNoAlcohol}/10</strong></div>
         </div>
-        ${alcoholDiff > 0 ? `<p style="margin-top:12px; color:#15803d; font-weight:600;">You're ${alcoholDiff}% happier without alcohol &#10003;</p>` : ''}
+        ${alcoholDiff > 0 ? `<p style="margin-top:12px; color:#15803d; font-weight:600;">You're ${alcoholDiff}% happier without alcohol âœ“</p>` : ''}
       </div>
     `;
   }
@@ -1101,7 +1076,7 @@ function renderPatterns() {
           <div class="insight-comp-item">Exercise days: <strong>${moodExerciseYes}/10</strong></div>
           <div class="insight-comp-item">No exercise: <strong>${moodExerciseNo}/10</strong></div>
         </div>
-        ${exerciseDiff > 0 ? `<p style="margin-top:12px; color:#15803d; font-weight:600;">Your mood is ${exerciseDiff}% better on exercise days &#10003;</p>` : ''}
+        ${exerciseDiff > 0 ? `<p style="margin-top:12px; color:#15803d; font-weight:600;">Your mood is ${exerciseDiff}% better on exercise days âœ“</p>` : ''}
       </div>
     `;
   }
@@ -1119,7 +1094,7 @@ function switchTab(tab) {
   if (tab === 'patterns') renderPatterns();
 }
 
-function escHtml(s) {
+function escH¶il(s) {
   if (!s) return '';
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
