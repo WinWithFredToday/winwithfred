@@ -29,30 +29,3 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --staged --quiet && echo "Nothing to commit" || (git commit -m "Fix script tag escaping and add exit intent popup" && git push)
-name: Add Exit Intent Popup
-
-on:
-  workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/add-popup.yml'
-      - 'add-popup.py'
-
-permissions:
-  contents: write
-
-jobs:
-  add-popup:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Add popup to all blog posts
-        run: python3 add-popup.py
-
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --staged --quiet && echo "Nothing to commit" || (git commit -m "Add exit intent popup to all blog posts" && git push)
