@@ -1,0 +1,303 @@
+name: Generate Habit Tracker PDF
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/generate-pdf.yml'
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install reportlab
+      - name: Generate PDF
+        run: |
+          python3 << 'PYEOF'
+          from reportlab.lib.pagesizes import letter
+          from reportlab.lib import colors
+          from reportlab.lib.units import inch
+          from reportlab.pdfgen import canvas
+          from reportlab.lib.colors import HexColor
+          import os
+
+          W, H = letter
+          DARK=HexColor("#111827"); SURFACE=HexColor("#1f2937"); ORANGE=HexColor("#f97316")
+          ORANGE_L=HexColor("#fff7ed"); MUTED=HexColor("#6b7280"); LIGHT=HexColor("#f9fafb")
+          WHITE=colors.white; GRID_LN=HexColor("#e5e7eb"); D_GRAY=HexColor("#374151")
+          MED_GRAY=HexColor("#9ca3af"); M=0.45*inch
+
+          def hdr(c,sub="",pg=None):
+              c.setFillColor(DARK); c.rect(0,H-inch,W,inch,fill=1,stroke=0)
+              c.setFillColor(ORANGE); c.rect(0,H-0.05*inch,W,0.05*inch,fill=1,stroke=0)
+              c.setFillColor(WHITE); c.setFont("Helvetica-Bold",19); c.drawString(M,H-0.46*inch,"Win")
+              ww=c.stringWidth("Win","Helvetica-Bold",19); c.setFillColor(ORANGE)
+              c.drawString(M+ww,H-0.46*inch,"WithFred"); c.setFillColor(MED_GRAY)
+              c.setFont("Helvetica",8); c.drawString(M,H-0.67*inch,"winwithfred.com")
+              if sub:
+                  c.setFillColor(WHITE); c.setFont("Helvetica-Bold",15)
+                  sw=c.stringWidth(sub,"Helvetica-Bold",15); c.drawString(W-M-sw,H-0.44*inch,sub)
+              if pg:
+                  c.setFillColor(MED_GRAY); c.setFont("Helvetica",8)
+                  c.drawString(W-M-c.stringWidth(pg,"Helvetica",8),H-0.67*inch,pg)
+
+          def ftr(c,msg=""):
+              c.setFillColor(DARK); c.rect(0,0,W,0.38*inch,fill=1,stroke=0)
+              c.setFillColor(ORANGE); c.setFont("Helvetica-Bold",7); c.drawString(M,0.14*inch,"WinWithFred")
+              c.setFillColor(MED_GRAY); c.setFont("Helvetica",7); c.drawString(M+0.68*inch,0.14*inch,"· winwithfred.com")
+              if msg:
+                  mw=c.stringWidth(msg,"Helvetica",7); c.drawString(W-M-mw,0.14*inch,msg)
+
+          os.makedirs("downloads", exist_ok=True)
+          cv=canvas.Canvas("downloads/winwithfred-habit-tracker.pdf",pagesize=letter)
+          cv.setTitle("WinWithFred 30-Day Habit Tracker")
+          cv.setAuthor("WinWithFred"); cv.setSubject("Free printable from winwithfred.com")
+
+          # PAGE 1 — COVER
+          cv.setFillColor(DARK); cv.rect(0,0,W,H,fill=1,stroke=0)
+          cv.setFillColor(ORANGE); cv.rect(0,H-0.07*inch,W,0.07*inch,fill=1,stroke=0)
+          cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",22); cv.drawString(M,H-0.52*inch,"Win")
+          ww=cv.stringWidth("Win","Helvetica-Bold",22); cv.setFillColor(ORANGE)
+          cv.drawString(M+ww,H-0.52*inch,"WithFred")
+          cx,cy=W/2,H/2+0.6*inch
+          cv.setFillColor(SURFACE); cv.circle(cx,cy,2.4*inch,fill=1,stroke=0)
+          cv.setFillColor(ORANGE); cv.setLineWidth(3); cv.setStrokeColor(ORANGE)
+          cv.circle(cx,cy,2.4*inch,fill=0,stroke=1)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",88)
+          nw=cv.stringWidth("30","Helvetica-Bold",88); cv.drawString(cx-nw/2,cy-0.05*inch,"30")
+          cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",16)
+          dw=cv.stringWidth("DAYS","Helvetica-Bold",16); cv.drawString(cx-dw/2,cy-0.72*inch,"DAYS")
+          cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",10)
+          sw=cv.stringWidth("of intentional living","Helvetica",10); cv.drawString(cx-sw/2,cy-1.02*inch,"of intentional living")
+          cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",38)
+          t="Habit Tracker"; tw=cv.stringWidth(t,"Helvetica-Bold",38); cv.drawString(cx-tw/2,H/2-1.85*inch,t)
+          cv.setFillColor(ORANGE); cv.rect(cx-tw/2,H/2-1.97*inch,tw,0.04*inch,fill=1,stroke=0)
+          cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",11)
+          tag="Track it. Build it. Win it."; tagw=cv.stringWidth(tag,"Helvetica",11)
+          cv.drawString(cx-tagw/2,H/2-2.28*inch,tag)
+          for label,offset in [("NAME",0),("MONTH",2.5*inch),("GOAL FOR THE MONTH",5.1*inch)]:
+              lx=M+offset; cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",7)
+              cv.drawString(lx,1.52*inch,label); cv.setStrokeColor(HexColor("#374151"))
+              cv.setLineWidth(0.7); cv.line(lx,1.3*inch,lx+(2.0 if offset<5*inch else 2.4)*inch,1.3*inch)
+          cv.setFillColor(SURFACE); cv.rect(0,0,W,0.9*inch,fill=1,stroke=0)
+          cv.setFillColor(ORANGE); cv.rect(0,0,W,0.06*inch,fill=1,stroke=0)
+          cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",8)
+          ft="Free resource from WinWithFred · winwithfred.com"; ftw=cv.stringWidth(ft,"Helvetica",8)
+          cv.drawString(cx-ftw/2,0.34*inch,ft)
+          cv.showPage()
+
+          # PAGE 2 — HOW TO USE
+          hdr(cv,"How to Use This Tracker","2 of 6"); ftr(cv,"Free to print & share · winwithfred.com")
+          y=H-1.28*inch
+          cv.setFillColor(D_GRAY); cv.setFont("Helvetica-Bold",13)
+          cv.drawString(M,y,"The Simple System That Changes Everything"); y-=0.28*inch
+          cv.setFont("Helvetica",9.5); cv.setFillColor(MUTED)
+          cv.drawString(M,y,"Most habit trackers fail because they are complicated. This one is not. One page. One grid. One check per day."); y-=0.38*inch
+          steps=[
+              ("1",ORANGE,"Write in your 10 habits","Use the pre-printed habits or write your own. Pick habits you actually want to build. Start with 3-5 if 10 feels like too much."),
+              ("2",SURFACE,"Check the box each day","At the end of each day, mark what happened. Use checkmark for done, X for missed, tilde for partial, dot for intentional rest."),
+              ("3",HexColor("#6366f1"),"Do your weekly reflection","Every 7 days, answer the 4 questions on your Weekly Reflection page. This is where real growth happens."),
+              ("4",HexColor("#10b981"),"Calculate your monthly win rate","Count your checkmarks and divide by 300 total possible. 80 percent plus is excellent. Below 60 percent, drop 2 habits and go again."),
+          ]
+          for num,col,title,desc in steps:
+              cv.setFillColor(LIGHT); cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.5)
+              cv.roundRect(M,y-0.82*inch,W-2*M,0.92*inch,6,fill=1,stroke=1)
+              cv.setFillColor(col); cv.circle(M+0.28*inch,y-0.35*inch,0.22*inch,fill=1,stroke=0)
+              cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",11)
+              nw=cv.stringWidth(num,"Helvetica-Bold",11); cv.drawString(M+0.28*inch-nw/2,y-0.39*inch,num)
+              cv.setFillColor(DARK); cv.setFont("Helvetica-Bold",11); cv.drawString(M+0.6*inch,y-0.26*inch,title)
+              cv.setFillColor(MUTED); cv.setFont("Helvetica",8.5)
+              words=desc.split(); line=""; lines=[]
+              mxw=W-2*M-0.65*inch
+              for w in words:
+                  test=(line+" "+w).strip()
+                  if cv.stringWidth(test,"Helvetica",8.5)<mxw: line=test
+                  else: lines.append(line); line=w
+              lines.append(line)
+              for li,ln in enumerate(lines[:2]): cv.drawString(M+0.6*inch,y-0.48*inch-li*0.16*inch,ln)
+              y-=1.04*inch
+          y-=0.05*inch
+          cv.setFillColor(SURFACE); cv.roundRect(M,y-0.65*inch,W-2*M,0.72*inch,6,fill=1,stroke=0)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",9); cv.drawString(M+0.18*inch,y-0.18*inch,"TRACKING KEY")
+          keys=[("checkmark",WHITE,HexColor("#10b981"),"Done"),("X",WHITE,HexColor("#ef4444"),"Missed"),("~",DARK,HexColor("#f59e0b"),"Partial"),(".",D_GRAY,GRID_LN,"Rest day")]
+          kx=M+0.18*inch; ky=y-0.46*inch
+          for sym,sc,bg,label in keys:
+              cv.setFillColor(bg); cv.roundRect(kx,ky,0.22*inch,0.22*inch,3,fill=1,stroke=0)
+              cv.setFillColor(sc); cv.setFont("Helvetica-Bold",9); cv.drawCentredString(kx+0.11*inch,ky+0.05*inch,sym)
+              cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",8); cv.drawString(kx+0.28*inch,ky+0.05*inch,label)
+              kx+=1.78*inch
+          cv.showPage()
+
+          # PAGE 3 — MAIN GRID
+          hdr(cv,"30-Day Habit Grid","3 of 6"); ftr(cv,"Done / Missed / Partial / Rest day")
+          gt=H-1.22*inch; gb=0.55*inch; gh=gt-gb
+          nh=10; hcw=1.58*inch; scw=0.38*inch; sccw=0.42*inch
+          daw=W-2*M-hcw-scw-sccw; dcw=daw/30; rh=gh/(nh+1)
+          gl=M; dsx=gl+hcw; strx=dsx+30*dcw; scrx=strx+scw
+          habits=[
+              ("Make my bed","morning",ORANGE),("Drink water first","morning",ORANGE),
+              ("Move / exercise","body",HexColor("#10b981")),("Read 20 minutes","mind",HexColor("#6366f1")),
+              ("Write 3 gratitudes","mind",HexColor("#6366f1")),("Plan tomorrow","evening",HexColor("#8b5cf6")),
+              ("Phone away by 9pm","evening",HexColor("#8b5cf6")),("5 min silence","mind",HexColor("#6366f1")),
+              ("Do one hard thing","mind",HexColor("#6366f1")),("Evening check-in","evening",HexColor("#8b5cf6")),
+          ]
+          hy=gt-rh
+          cv.setFillColor(DARK); cv.rect(gl,hy,W-2*M,rh,fill=1,stroke=0)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",7.5); cv.drawString(gl+0.45*inch,hy+rh*0.36,"HABIT")
+          for d in range(1,31):
+              dx=dsx+(d-1)*dcw+dcw/2; cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",6)
+              cv.drawCentredString(dx,hy+rh*0.36,str(d))
+          for wc,wl in [(3.5,"Wk1"),(10.5,"Wk2"),(17.5,"Wk3"),(24.5,"Wk4")]:
+              wx=dsx+wc*dcw; cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",5.5)
+              cv.drawCentredString(wx,hy+rh*0.78,wl)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",6)
+          cv.drawCentredString(strx+scw/2,hy+rh*0.36,"STK")
+          cv.drawCentredString(scrx+sccw/2,hy+rh*0.36,"%")
+          for i,(hn,cat,cc) in enumerate(habits):
+              ry=hy-(i+1)*rh
+              cv.setFillColor(LIGHT if i%2==0 else WHITE); cv.rect(gl,ry,W-2*M,rh,fill=1,stroke=0)
+              cv.setFillColor(cc); cv.rect(gl,ry,0.045*inch,rh,fill=1,stroke=0)
+              cv.circle(gl+0.18*inch,ry+rh*0.5,0.1*inch,fill=1,stroke=0)
+              cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",6.5)
+              cv.drawCentredString(gl+0.18*inch,ry+rh*0.5-0.024*inch,str(i+1))
+              cv.setFillColor(HexColor("#9ca3af")); cv.setFont("Helvetica",7.2)
+              cv.drawString(gl+0.33*inch,ry+rh*0.32,hn)
+              for d in range(30):
+                  bx=dsx+d*dcw+dcw*0.15; by=ry+rh*0.2; bw=dcw*0.7; bh=rh*0.6
+                  cv.setFillColor(HexColor("#f3f4f6") if d%7 in (5,6) else WHITE)
+                  cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.35)
+                  cv.roundRect(bx,by,bw,bh,1.5,fill=1,stroke=1)
+              for wc in [7,14,21,28]:
+                  wx=dsx+(wc-1)*dcw; cv.setFillColor(HexColor("#fef3c7"))
+                  cv.rect(wx+dcw*0.15,ry+rh*0.2,dcw*0.7,rh*0.6,fill=1,stroke=0)
+                  cv.setStrokeColor(HexColor("#fbbf24")); cv.setLineWidth(0.4)
+                  cv.roundRect(wx+dcw*0.15,ry+rh*0.2,dcw*0.7,rh*0.6,1.5,fill=0,stroke=1)
+              cv.setFillColor(WHITE); cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.4)
+              cv.roundRect(strx+0.04*inch,ry+rh*0.18,scw-0.08*inch,rh*0.64,2,fill=1,stroke=1)
+              cv.roundRect(scrx+0.03*inch,ry+rh*0.18,sccw-0.06*inch,rh*0.64,2,fill=1,stroke=1)
+          cv.setStrokeColor(D_GRAY); cv.setLineWidth(0.8)
+          cv.rect(gl,hy-nh*rh,W-2*M,(nh+1)*rh,fill=0,stroke=1)
+          for vx in [dsx,strx,scrx]:
+              cv.setStrokeColor(D_GRAY); cv.setLineWidth(0.5); cv.line(vx,hy-nh*rh,vx,gt)
+          for wc in [7,14,21,28]:
+              vx=dsx+wc*dcw; cv.setStrokeColor(HexColor("#f59e0b")); cv.setLineWidth(0.7)
+              cv.line(vx,hy-nh*rh,vx,hy)
+          for i in range(1,nh+1):
+              ly=hy-i*rh; cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.35); cv.line(gl,ly,W-M,ly)
+          lx=M
+          for col,label in [(ORANGE,"Morning"),(HexColor("#10b981"),"Body"),(HexColor("#6366f1"),"Mind"),(HexColor("#8b5cf6"),"Evening"),(HexColor("#fbbf24"),"Week end")]:
+              cv.setFillColor(col); cv.roundRect(lx,0.42*inch,0.1*inch,0.1*inch,1,fill=1,stroke=0)
+              cv.setFillColor(MUTED); cv.setFont("Helvetica",7); cv.drawString(lx+0.13*inch,0.44*inch,label)
+              lx+=cv.stringWidth(label,"Helvetica",7)+0.28*inch
+          cv.showPage()
+
+          # PAGES 4-5 — WEEKLY REFLECTIONS
+          for wk,pg in [(1,"4 of 6"),(2,"5 of 6")]:
+              hdr(cv,f"Week {wk} Reflection",pg); ftr(cv,"Reflect honestly. Adjust smartly. Keep going.")
+              y=H-1.28*inch; days=f"Days {(wk-1)*7+1}-{wk*7}"
+              cv.setFillColor(SURFACE); cv.roundRect(M,y-0.5*inch,W-2*M,0.55*inch,6,fill=1,stroke=0)
+              cv.setFillColor(ORANGE); cv.rect(M,y-0.5*inch,0.05*inch,0.55*inch,fill=1,stroke=0)
+              cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",14); cv.drawString(M+0.2*inch,y-0.18*inch,f"Week {wk} Check-In")
+              cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",9); cv.drawString(M+0.2*inch,y-0.38*inch,days); y-=0.7*inch
+              cv.setFillColor(LIGHT); cv.roundRect(M,y-0.72*inch,W-2*M,0.78*inch,6,fill=1,stroke=0)
+              cv.setFillColor(DARK); cv.setFont("Helvetica-Bold",8.5); cv.drawString(M+0.18*inch,y-0.2*inch,"THIS WEEK SNAPSHOT")
+              mw2=(W-2*M-0.36*inch)/4
+              for mi,ml in enumerate(["Habits Done","Habits Missed","Win Rate","Best Streak"]):
+                  mx=M+0.18*inch+mi*mw2; cv.setFillColor(WHITE); cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.4)
+                  cv.roundRect(mx,y-0.62*inch,mw2-0.1*inch,0.34*inch,3,fill=1,stroke=1)
+                  cv.setFillColor(MUTED); cv.setFont("Helvetica",6.5)
+                  lw2=cv.stringWidth(ml,"Helvetica",6.5); cv.drawString(mx+(mw2-0.1*inch)/2-lw2/2,y-0.72*inch+0.04*inch,ml)
+              y-=1.0*inch
+              for emoji,qt,qh in [
+                  ("WIN","What was your BIGGEST WIN this week?","The habit you crushed, the breakthrough you had."),
+                  ("HARD","What was your BIGGEST STRUGGLE?","Which habit kept slipping? What time of day was hardest?"),
+                  ("ADJUST","What will you ADJUST for next week?","Change one small thing — a trigger, a time, a place."),
+                  ("FOCUS","What is your ONE FOCUS for next week?","Pick the single habit to nail perfectly for 7 days."),
+              ]:
+                  cv.setFillColor(LIGHT); cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.5)
+                  cv.roundRect(M,y-1.18*inch,W-2*M,1.26*inch,6,fill=1,stroke=1)
+                  cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",8)
+                  cv.roundRect(M+0.12*inch,y-0.42*inch,0.28*inch,0.28*inch,3,fill=1,stroke=0)
+                  cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",6)
+                  cv.drawCentredString(M+0.26*inch,y-0.31*inch,emoji[:3])
+                  cv.setFillColor(DARK); cv.setFont("Helvetica-Bold",10); cv.drawString(M+0.52*inch,y-0.28*inch,qt)
+                  cv.setFillColor(MUTED); cv.setFont("Helvetica-Oblique",8); cv.drawString(M+0.52*inch,y-0.46*inch,qh)
+                  for li in range(3):
+                      cv.setStrokeColor(HexColor("#d1d5db")); cv.setLineWidth(0.4)
+                      cv.line(M+0.18*inch,y-0.72*inch-li*0.24*inch,W-M-0.18*inch,y-0.72*inch-li*0.24*inch)
+                  y-=1.38*inch
+              cv.showPage()
+
+          # PAGE 6 — MONTHLY REVIEW
+          hdr(cv,"Monthly Review","6 of 6"); ftr(cv,"30 days down. Keep the momentum.")
+          y=H-1.28*inch
+          cv.setFillColor(D_GRAY); cv.setFont("Helvetica-Bold",13); cv.drawString(M,y,"Your 30-Day Results"); y-=0.22*inch
+          cv.setFillColor(MUTED); cv.setFont("Helvetica",9)
+          cv.drawString(M,y,"Fill this in on Day 30. The numbers are honest — use them."); y-=0.38*inch
+          cv.setFillColor(DARK); cv.rect(M,y-0.34*inch,W-2*M,0.34*inch,fill=1,stroke=0)
+          col_ws=[2.4*inch,0.9*inch,0.9*inch,1.1*inch,0.9*inch]
+          hx=M
+          for hi,(hd,cw) in enumerate(zip(["HABIT","DONE","MISSED","BEST STREAK","WIN RATE"],col_ws)):
+              cv.setFillColor(ORANGE if hi==0 else WHITE); cv.setFont("Helvetica-Bold",7)
+              cv.drawString(hx+0.1*inch,y-0.21*inch,hd); hx+=cw
+          hnames=["Make my bed","Drink water first","Move / exercise","Read 20 minutes","Write 3 gratitudes","Plan tomorrow","Phone away by 9pm","5 min silence","Do one hard thing","Evening check-in"]
+          ccols=[ORANGE,ORANGE,HexColor("#10b981"),HexColor("#6366f1"),HexColor("#6366f1"),HexColor("#8b5cf6"),HexColor("#8b5cf6"),HexColor("#6366f1"),HexColor("#6366f1"),HexColor("#8b5cf6")]
+          rrh=0.28*inch
+          for i,(hn,cc) in enumerate(zip(hnames,ccols)):
+              ry=y-0.34*inch-(i+1)*rrh
+              cv.setFillColor(LIGHT if i%2==0 else WHITE); cv.rect(M,ry,W-2*M,rrh,fill=1,stroke=0)
+              cv.setFillColor(cc); cv.rect(M,ry,0.04*inch,rrh,fill=1,stroke=0)
+              hx=M; cv.setFillColor(MED_GRAY); cv.setFont("Helvetica",7.5)
+              cv.drawString(hx+0.12*inch,ry+rrh*0.3,hn); hx+=col_ws[0]
+              for cw in col_ws[1:]:
+                  cv.setFillColor(WHITE); cv.setStrokeColor(GRID_LN); cv.setLineWidth(0.3)
+                  cv.roundRect(hx+0.07*inch,ry+0.04*inch,cw-0.14*inch,rrh-0.08*inch,2,fill=1,stroke=1); hx+=cw
+          cv.setStrokeColor(D_GRAY); cv.setLineWidth(0.6)
+          cv.rect(M,y-0.34*inch-10*rrh,W-2*M,10*rrh+0.34*inch,fill=0,stroke=1)
+          y=y-0.34*inch-10*rrh-0.3*inch
+          cv.setFillColor(SURFACE); cv.roundRect(M,y-0.58*inch,W-2*M,0.62*inch,6,fill=1,stroke=0)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",9)
+          cv.drawString(M+0.2*inch,y-0.2*inch,"OVERALL SCORE = Total checkmarks divided by 300 x 100 =")
+          cv.setFillColor(WHITE); cv.setStrokeColor(ORANGE); cv.setLineWidth(0.8)
+          cv.roundRect(W-M-inch,y-0.5*inch,0.9*inch,0.38*inch,4,fill=1,stroke=1)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",9); cv.drawString(W-M-0.28*inch,y-0.38*inch,"%")
+          y-=0.82*inch
+          cv.setFillColor(D_GRAY); cv.setFont("Helvetica-Bold",10); cv.drawString(M,y,"What Your Score Means"); y-=0.24*inch
+          tiers=[(HexColor("#10b981"),"90-100%","Elite - Identity-level change"),(HexColor("#6366f1"),"80-89%","Excellent - Strong momentum"),(ORANGE,"70-79%","Solid - Real progress"),(HexColor("#f59e0b"),"60-69%","Growing - Drop 2 habits"),(HexColor("#ef4444"),"Below 60%","Reset - Start with 3 only")]
+          tw2=(W-2*M)/len(tiers)
+          for ti,(col,pct,lbl) in enumerate(tiers):
+              tx=M+ti*tw2; cv.setFillColor(col)
+              cv.roundRect(tx+0.05*inch,y-0.9*inch,tw2-0.1*inch,0.96*inch,5,fill=1,stroke=0)
+              cv.setFillColor(WHITE); cv.setFont("Helvetica-Bold",9)
+              pw=cv.stringWidth(pct,"Helvetica-Bold",9); cv.drawString(tx+tw2/2-pw/2,y-0.22*inch,pct)
+              cv.setFont("Helvetica",7)
+              words=lbl.split(); line=""; lines2=[]
+              for w in words:
+                  test=(line+" "+w).strip()
+                  if cv.stringWidth(test,"Helvetica",7)<tw2-0.18*inch: line=test
+                  else: lines2.append(line); line=w
+              lines2.append(line)
+              for li2,ln2 in enumerate(lines2[:2]):
+                  lw2=cv.stringWidth(ln2,"Helvetica",7); cv.drawString(tx+tw2/2-lw2/2,y-0.44*inch-li2*0.14*inch,ln2)
+          y-=1.1*inch
+          cv.setFillColor(LIGHT); cv.setStrokeColor(ORANGE); cv.setLineWidth(0.8)
+          cv.roundRect(M,y-0.92*inch,W-2*M,inch,6,fill=1,stroke=1)
+          cv.setFillColor(ORANGE); cv.setFont("Helvetica-Bold",9); cv.drawString(M+0.2*inch,y-0.2*inch,"NEXT MONTH INTENTIONS")
+          for ni,itm in enumerate(["Habit I will add:","Habit I will drop:","My one focus word:","My reward at 30 days:"]):
+              nx=M+0.2*inch+(ni%2)*((W-2*M)/2); ny=y-0.44*inch-(ni//2)*0.28*inch
+              cv.setFillColor(D_GRAY); cv.setFont("Helvetica-Bold",7.5); cv.drawString(nx,ny,itm)
+              cv.setStrokeColor(HexColor("#d1d5db")); cv.setLineWidth(0.4)
+              cv.line(nx+cv.stringWidth(itm,"Helvetica-Bold",7.5)+0.08*inch,ny-0.02*inch,nx+(W-2*M)/2-0.25*inch,ny-0.02*inch)
+          cv.showPage()
+          cv.save()
+          print("PDF generated successfully")
+          PYEOF
+      - name: Commit PDF
+        run: |
+          git config user.name "WinWithFred Bot"
+          git config user.email "action@github.com"
+          git add downloads/winwithfred-habit-tracker.pdf
+          git diff --staged --quiet && echo "No changes" || git commit -m "Add 30-Day Habit Tracker PDF lead magnet"
+          git push
