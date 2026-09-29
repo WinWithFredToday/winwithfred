@@ -1,0 +1,58 @@
+name: Add Thank-You Redirect to Forms
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/add-redirect.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-redirect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add redirectionUrl to all Brevo forms
+        run: |
+          python3 - <<'PYEOF'
+          import os
+
+          REDIRECT_INPUT = '<input type="hidden" name="redirectionUrl" value="https://winwithfred.com/thank-you">'
+          MARKER = '<input type="hidden" name="locale" value="en">'
+          REPLACEMENT = MARKER + '\n      ' + REDIRECT_INPUT
+
+          updated = 0
+          skipped = 0
+
+          files_to_check = []
+          for fname in os.listdir('.'):
+              if (fname.startswith('blog-') and fname.endswith('.html')) or fname == 'index.html':
+                  files_to_check.append(fname)
+
+          for fname in sorted(files_to_check):
+              with open(fname, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              if 'redirectionUrl' in content:
+                  skipped += 1
+                  continue
+              if MARKER not in content:
+                  skipped += 1
+                  continue
+              new_content = content.replace(MARKER, REPLACEMENT)
+              with open(fname, 'w', encoding='utf-8') as f:
+                  f.write(new_content)
+              updated += 1
+              print('Updated: ' + fname)
+
+          print('DONE: ' + str(updated) + ' updated, ' + str(skipped) + ' skipped')
+          PYEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet && echo "Nothing to commit" || (git commit -m "Add thank-you redirect to all Brevo forms" && git push)
