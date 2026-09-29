@@ -1,0 +1,65 @@
+name: Fix Light-on-White Text Colors in Tool Pages
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fix-tool-page-colors.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-colors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix invisible light-colored text on white backgrounds
+        run: |
+          python3 - <<'PYEOF'
+          import os, glob
+
+          # The bug: intro sections on tool pages used dark-mode text colors
+          # (light #f1f5f9 heading, #cbd5e1 body) but have no dark background,
+          # so text is near-invisible on the #f9fafb page background.
+          # Fix: swap to dark-on-light colors appropriate for a white background.
+
+          OLD_SECTION_COLOR = 'color:#cbd5e1;'
+          NEW_SECTION_COLOR = 'color:#374151;'
+          OLD_H2_COLOR = 'color:#f1f5f9;'
+          NEW_H2_COLOR = 'color:#111827;'
+
+          # Only fix the specific pattern (inline style on intro section)
+          pages = ['goal-tracker.html', 'mood-tracker.html', 'quiz.html',
+                   'journal-prompts.html', 'journal.html', 'habit-builder.html']
+
+          updated = 0
+          for fname in pages:
+              if not os.path.exists(fname):
+                  print(f'Skipped (not found): {fname}')
+                  continue
+              with open(fname, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              original = content
+              # Only replace within the intro section block (avoid touching dark navbar/hero)
+              # The pattern is very specific: section style with light colors, no background
+              if OLD_SECTION_COLOR in content or OLD_H2_COLOR in content:
+                  content = content.replace(OLD_SECTION_COLOR, NEW_SECTION_COLOR)
+                  content = content.replace(OLD_H2_COLOR, NEW_H2_COLOR)
+                  with open(fname, 'w', encoding='utf-8') as f:
+                      f.write(content)
+                  print(f'Fixed: {fname}')
+                  updated += 1
+              else:
+                  print(f'Clean (no fix needed): {fname}')
+
+          print(f'DONE: {updated} file(s) fixed')
+          PYEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet && echo "Nothing to commit" || (git commit -m "Fix light-on-white text in tool page intro sections" && git push)
