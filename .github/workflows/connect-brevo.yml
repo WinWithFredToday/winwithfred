@@ -1,11 +1,9 @@
 name: Connect Brevo Email Form
-
 on:
   workflow_dispatch:
   push:
     paths:
       - '.github/workflows/connect-brevo.yml'
-
 jobs:
   update-forms:
     runs-on: ubuntu-latest
@@ -13,44 +11,39 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
       - name: Replace Formspree with Brevo in all blog posts
         run: |
           python3 << 'PYEOF'
-          import os, re, glob
-
+          import os, glob
           BREVO_URL = "https://b0a4908b.sibforms.com/v2/serve/MUIFAIyZfejVz8HaBjH-rgzTct8G025A-3rLx9JPNaGGjuwzFgf3keyzyLwEFgJjKe7A2yMJKQGUo8WM93shIKqvqI8jGEc8YRaePejm0I-8fMOtSmHI77tgaAavCIUbT11MQlxawGWXKvkxClIhzFbQKz7rNHKkJARUdQqwA2u6Xp16kUJsswaBwEqU1N2MPfb6kP5r9LuNd0Dqrw=="
-          OLD_ACTION = 'action="https://formspree.io/f/YOUR_FORM_ID"'
-          NEW_ACTION = f'action="{BREVO_URL}" data-type="subscription"'
-
-          OLD_FORM = '<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="capture-form">'
-          NEW_FORM = f"""<form action="{BREVO_URL}" method="POST" data-type="subscription" class="capture-form">"""
-
-          OLD_INPUT = '<input type="email" name="email" placeholder="Your email address" required>'
-          NEW_INPUT = """<input type="email" name="EMAIL" placeholder="Your email address" required autocomplete="email">
-            <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true" tabindex="-1">
-            <input type="hidden" name="locale" value="en">"""
-
           files = glob.glob('blog-*.html')
           updated = 0
+          skipped = 0
           for path in files:
               with open(path, 'r', encoding='utf-8') as f:
                   content = f.read()
-              if 'formspree.io' not in content:
+              if 'formspree.io/f/YOUR_FORM_ID' not in content:
+                  skipped += 1
                   continue
-              new_content = content.replace(OLD_FORM, NEW_FORM).replace(OLD_INPUT, NEW_INPUT)
+              new_content = content.replace(
+                  'action="https://formspree.io/f/YOUR_FORM_ID"',
+                  'action="' + BREVO_URL + '" data-type="subscription"'
+              )
+              new_content = new_content.replace(
+                  'name="email" placeholder="Your email address" required>',
+                  'name="EMAIL" placeholder="Your email address" required autocomplete="email">\n      <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true" tabindex="-1">\n      <input type="hidden" name="locale" value="en">'
+              )
               if new_content != content:
                   with open(path, 'w', encoding='utf-8') as f:
                       f.write(new_content)
                   updated += 1
-                  print(f'Updated: {path}')
-          print(f'Total files updated: {updated}')
+                  print(f"Updated: {path}")
+          print(f"Done. Updated {updated} files, skipped {skipped} already-updated.")
           PYEOF
-
       - name: Commit changes
         run: |
           git config user.name "WinWithFred Bot"
           git config user.email "action@github.com"
           git add blog-*.html
-          git diff --staged --quiet || git commit -m "Connect Brevo email form across all blog posts"
+          git diff --staged --quiet && echo "No changes to commit" || git commit -m "Connect Brevo email form across all blog posts"
           git push
