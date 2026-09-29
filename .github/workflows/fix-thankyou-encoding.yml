@@ -1,0 +1,39 @@
+name: Fix Encoding in thank-you.html
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fix-thankyou-encoding.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-encoding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix broken arrow and em dash encoding
+        run: |
+          python3 - <<'PYEOF'
+          with open('thank-you.html', 'r', encoding='utf-8') as f:
+              content = f.read()
+          original = content
+          content = content.replace('\u00e2\u0086\u0092', '&#8594;')
+          content = content.replace('\u00e2\u0080\u0094', '&mdash;')
+          if content != original:
+              with open('thank-you.html', 'w', encoding='utf-8') as f:
+                  f.write(content)
+              print('Fixed encoding in thank-you.html')
+          else:
+              print('No changes needed')
+          PYEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add thank-you.html
+          git diff --staged --quiet && echo "Nothing to commit" || (git commit -m "Fix broken arrow and em dash encoding in thank-you.html" && git push)
