@@ -1,0 +1,97 @@
+name: Fix Homepage SEO
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Patch index.html
+        run: |
+          python3 - << 'PYEOF'
+import re
+
+with open('index.html', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+original = content
+
+# 1. Add JSON-LD Organization + WebSite schema before </head>
+if '"@type": "Organization"' not in content and '"@type":"Organization"' not in content:
+    schema = '''<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "WinWithFred",
+      "url": "https://winwithfred.com",
+      "description": "Practical self-improvement tools and straight-talk articles by Freddy Owen. Free, evidence-based, no fluff.",
+      "foundingDate": "2021",
+      "founder": {
+        "@type": "Person",
+        "name": "Freddy Owen",
+        "url": "https://winwithfred.com/about"
+      },
+      "sameAs": ["https://medium.com/@winwithfred"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "WinWithFred",
+      "url": "https://winwithfred.com",
+      "description": "Practical self-improvement for people who want systems, not speeches. Free tools and articles by Freddy Owen.",
+      "author": {
+        "@type": "Person",
+        "name": "Freddy Owen",
+        "url": "https://winwithfred.com/about"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://winwithfred.com/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
+</head>'''
+    content = content.replace('</head>', schema, 1)
+    print('Added JSON-LD schema')
+
+# 2. Add author identity + /about link to About section
+old_about_btn = '<a href="/blog" class="btn btn-primary">Read the Blog →</a>'
+new_about_btn = '''<p style="color:#9ca3af; margin-bottom:16px; font-size:1.05rem;"><strong style="color:#fff;">I’m Freddy Owen</strong>, the Fred behind WinWithFred.</p>
+        <a href="/blog" class="btn btn-primary" style="margin-right:12px;">Read the Blog →</a>
+        <a href="/about" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5); color:#fff;">About Freddy</a>'''
+if old_about_btn in content:
+    content = content.replace(old_about_btn, new_about_btn, 1)
+    print('Added author identity line and /about button')
+
+# 3. Fix nav About link: href="#about" -> href="/about"
+content = content.replace('<li><a href="#about">About</a></li>', '<li><a href="/about">About</a></li>', 1)
+print('Fixed nav About link')
+
+# 4. Fix footer About Fred link
+content = content.replace('<li><a href="#about">About Fred</a></li>', '<li><a href="/about">About Fred</a></li>', 1)
+print('Fixed footer About link')
+
+if content != original:
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print('index.html saved')
+else:
+    print('No changes made')
+PYEOF
+
+      - name: Commit changes
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add index.html
+          git diff --cached --quiet && echo "No changes to commit" || (git commit -m "SEO: Add JSON-LD schema + author identity to homepage" && git push)
