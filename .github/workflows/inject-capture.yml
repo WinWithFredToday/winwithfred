@@ -1,0 +1,37 @@
+name: Inject capture script into blog posts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject wwf-capture.js into all blog posts
+        run: |
+          python3 - <<'PYEOF'
+          import os, re
+          tag = '<script src="/wwf-capture.js"></script>'
+          count = 0
+          for fn in os.listdir('.'):
+              if fn.startswith('blog-') and fn.endswith('.html'):
+                  with open(fn, 'r', encoding='utf-8') as f:
+                      content = f.read()
+                  if 'wwf-capture.js' not in content:
+                      content = content.replace('</body>', tag + '\n</body>', 1)
+                      with open(fn, 'w', encoding='utf-8') as f:
+                          f.write(content)
+                      count += 1
+                      print(f'Injected: {fn}')
+          print(f'Total files updated: {count}')
+          PYEOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add blog-*.html
+          git diff --cached --quiet || git commit -m "Add email capture bar and popup to all blog posts"
+          git push
