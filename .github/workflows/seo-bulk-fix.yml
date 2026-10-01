@@ -1,0 +1,98 @@
+name: SEO Bulk Fix — og:url, schema URLs, FAQ sections, copyright year
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run SEO bulk fixes on all blog posts
+        run: |
+          python3 - <<'PYEOF'
+          import os, json, re
+
+          def fix_post(content):
+              changed = False
+
+              # 1. Fix og:url — strip .html from blog post URLs
+              new = re.sub(
+                  r'(<meta\s+property="og:url"\s+content="https://winwithfred\.com/blog-[^"]+?)\.html(")',
+                  r'\1\2', content
+              )
+              if new != content:
+                  content = new; changed = True
+
+              # 2. Fix Article/schema "url" and "mainEntityOfPage" fields — strip .html
+              new = re.sub(
+                  r'"(url|mainEntityOfPage)":\s*"(https://winwithfred\.com/[^"]+?)\.html"',
+                  r'"\1": "\2"', content
+              )
+              if new != content:
+                  content = new; changed = True
+
+              # 3. Fix copyright year 2025 -> 2026
+              for old, rep in [('2025 WinWithFred', '2026 WinWithFred'), ('169; 2025', '169; 2026')]:
+                  if old in content:
+                      content = content.replace(old, rep); changed = True
+
+              # 4. Add visible FAQ section if FAQPage JSON-LD present but no visible FAQ in body
+              if '"@type": "FAQPage"' in content and 'Frequently Asked Questions' not in content:
+                  faq_match = re.search(
+                      r'<script type="application/ld\+json">\s*(\{[\s\S]*?"@type":\s*"FAQPage"[\s\S]*?\})\s*</script>',
+                      content
+                  )
+                  if faq_match:
+                      try:
+                          data = json.loads(faq_match.group(1))
+                          questions = data.get('mainEntity', [])
+                          if questions:
+                              html = '\n<section class="faq-section" style="margin:48px 0;padding:40px;background:#f9fafb;border-radius:12px;border:1px solid #e5e7eb;">\n'
+                              html += '  <h2 style="font-size:1.4rem;font-weight:800;color:#111827;margin:0 0 28px;">Frequently Asked Questions</h2>\n'
+                              for q in questions:
+                                  qname = q.get('name','').replace('<','&lt;').replace('>','&gt;')
+                                  ans = q.get('acceptedAnswer',{}).get('text','').replace('<','&lt;').replace('>','&gt;')
+                                  html += '  <div class="faq-item" style="margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid #e5e7eb;">\n'
+                                  html += f'    <h3 style="font-size:1.05rem;font-weight:700;color:#111827;margin:0 0 10px;">{qname}</h3>\n'
+                                  html += f'    <p style="margin:0;color:#374151;line-height:1.75;">{ans}</p>\n'
+                                  html += '  </div>\n'
+                              html += '</section>\n'
+                              if '</article>' in content:
+                                  content = content.replace('</article>', html + '</article>', 1)
+                                  changed = True
+                      except Exception as e:
+                          print('FAQ parse error: ' + str(e))
+
+              return content, changed
+
+          count = 0
+          errors = 0
+          for fn in os.listdir('.'):
+              if fn.startswith('blog-') and fn.endswith('.html'):
+                  try:
+                      with open(fn, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                      new_content, changed = fix_post(content)
+                      if changed:
+                          with open(fn, 'w', encoding='utf-8') as f:
+                              f.write(new_content)
+                          count += 1
+                          print('Fixed: ' + fn)
+                  except Exception as e:
+                      errors += 1
+                      print('Error ' + fn + ': ' + str(e))
+          print('Total fixed: ' + str(count) + ', errors: ' + str(errors))
+          PYEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add blog-*.html
+          git diff --cached --quiet || git commit -m "SEO bulk fix: og:url, schema URLs, FAQ sections, copyright year"
+          git push
