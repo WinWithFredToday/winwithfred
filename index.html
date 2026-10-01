@@ -429,6 +429,42 @@ p  { color: #374151; }
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="firebase-config.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "WinWithFred",
+      "url": "https://winwithfred.com",
+      "description": "Practical self-improvement tools and straight-talk articles by Freddy Owen. Free, evidence-based, no fluff.",
+      "foundingDate": "2021",
+      "founder": {
+        "@type": "Person",
+        "name": "Freddy Owen",
+        "url": "https://winwithfred.com/about"
+      },
+      "sameAs": ["https://medium.com/@winwithfred"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "WinWithFred",
+      "url": "https://winwithfred.com",
+      "description": "Practical self-improvement for people who want systems, nnt speeches. Free tools and articles by Freddy Owen.",
+      "author": {
+        "@type": "Person",
+        "name": "Freddy Owen",
+        "url": "https://winwithfred.com/about"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://winwithfred.com/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -440,7 +476,7 @@ p  { color: #374151; }
       <li><a href="/" class="active">Home</a></li>
       <li><a href="/blog">Blog</a></li>
       <li><a href="#tools">Tools</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="/about">About</a></li>
       <li class="navbar-cta"><div id="auth-nav"></div></li>
     </ul>
   </div>
@@ -624,7 +660,9 @@ p  { color: #374151; }
         <h2 style="color:#fff; margin-bottom:20px;">I'm not a guru.<br>I'm just someone <span class="text-orange">who figured it out.</span></h2>
         <p style="color:#9ca3af; margin-bottom:16px; font-size:1.05rem;">I spent years reading self-help books that promised the world and delivered nothing. So I stopped reading and started testing — what actually changes behavior, what builds momentum, and what's just feel-good noise.</p>
         <p style="color:#9ca3af; margin-bottom:32px; font-size:1.05rem;">WinWithFred is where I share what works. No life coach certificate. No motivational posters. Just systems, tools, and straight talk that move the needle.</p>
-        <a href="/blog" class="btn btn-primary">Read the Blog →</a>
+        <p style="color:#9ca3af; margin-bottom:16px; font-size:1.05rem;"><strong style="color:#fff;">I’m Freddy Owen</strong>, the Fred behind WinWithFred.</p>
+        <a href="/blog" class="btn btn-primary" style="margin-right:12px;">Read the Blog →</a>
+        <a href="/about" class="btn btn-outline" style="border-color:rgba(255,255,255,0.5); color:#fff;">About Freddy</a>
       </div>
       <div class="grid-2" style="gap:16px;">
         <div class="stat-box" style="background:#1f2937; border-color:#374151;">
@@ -783,7 +821,7 @@ p  { color: #374151; }
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
-        <li><a href="#about">About Fred</a></li>
+        <li><a href="/about">About Fred</a></li>
         <li><a href="mailto:hello@winwithfred.com">Contact</a></li>
         <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/mental-health-resources">Mental Health Resources</a></li>
