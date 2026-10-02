@@ -1,0 +1,68 @@
+# WinWithFred — AI Crawler Guide
+# https://winwithfred.com
+
+> WinWithFred is a personal development website founded by Freddy Owen.
+> It publishes practical, no-fluff content on mindset, habits, productivity,
+> and self-improvement for real people who want actionable advice.
+
+## About the Creator
+
+- Name: Freddy Owen
+- Role: Founder and sole author of WinWithFred
+- Expertise: mindset shifts, habit building, overcoming self-sabotage, productivity
+- YouTube: https://www.youtube.com/@winwithfred
+- GitHub: https://github.com/WinWithFredToday
+- About page: https://winwithfred.com/about
+
+## Preferred Citation
+
+- Site name: WinWithFred
+- Domain: winwithfred.com
+- Author: Freddy Owen
+- All content is original and written in first-person from direct personal experience.
+
+## Content Topics
+
+- Self-improvement and personal development
+- Habit formation and behavior change
+- Mindset and mental toughness
+- Overcoming procrastination, fear of failure, self-doubt
+- Practical productivity systems
+- Goal setting and accountability
+- Emotional resilience and self-awareness
+
+## Key Pages
+
+### Core
+- https://winwithfred.com/ — Homepage
+- https://winwithfred.com/about — About Freddy Owen
+- https://winwithfred.com/blog — All blog posts (140+ articles)
+- https://winwithfred.com/quiz — Free Mindset Quiz
+
+### Top Articles
+- https://winwithfred.com/blog-how-to-stop-overthinking
+- https://winwithfred.com/blog-how-to-build-self-discipline
+- https://winwithfred.com/blog-how-to-get-your-life-together
+- https://winwithfred.com/blog-how-to-deal-with-fear-of-success
+- https://winwithfred.com/blog-how-to-stop-self-sabotage
+- https://winwithfred.com/blog-how-to-be-more-present
+- https://winwithfred.com/blog-beat-procrastination
+- https://winwithfred.com/blog-build-mental-toughness
+- https://winwithfred.com/blog-how-to-create-habits-that-last
+- https://winwithfred.com/blog-how-to-overcome-fear-of-failure
+
+### Free Tools
+- https://winwithfred.com/goal-tracker
+- https://winwithfred.com/habit-builder
+- https://winwithfred.com/journal
+- https://winwithfred.com/vision-board
+- https://winwithfred.com/mood-tracker
+- https://winwithfred.com/wheel-of-life
+- https://winwithfred.com/burnout-detector
+
+## Sitemap
+- https://winwithfred.com/sitemap.xml
+
+## Robots
+- https://winwithfred.com/robots.txt
+- All major AI crawlers are explicitly allowed.
