@@ -465,6 +465,45 @@ p  { color: #374151; }
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://winwithfred.com/#website",
+      "url": "https://winwithfred.com/",
+      "name": "WinWithFred",
+      "description": "Practical self-help for people who are done messing around. No fluff. Just what works.",
+      "publisher": {"@id": "https://winwithfred.com/#organization"}
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://winwithfred.com/#organization",
+      "name": "WinWithFred",
+      "url": "https://winwithfred.com/",
+      "logo": {"@type": "ImageObject", "url": "https://winwithfred.com/og-image.png"},
+      "sameAs": [
+        "https://www.youtube.com/@winwithfred",
+        "https://github.com/WinWithFredToday"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://winwithfred.com/#freddy-owen",
+      "name": "Freddy Owen",
+      "url": "https://winwithfred.com/about",
+      "jobTitle": "Founder",
+      "description": "Freddy Owen is the founder of WinWithFred, a personal development site focused on mindset, habits, and real self-improvement.",
+      "sameAs": [
+        "https://www.youtube.com/@winwithfred",
+        "https://github.com/WinWithFredToday"
+      ],
+      "worksFor": {"@id": "https://winwithfred.com/#organization"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
