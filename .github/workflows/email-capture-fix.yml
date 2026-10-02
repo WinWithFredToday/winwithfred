@@ -1,0 +1,34 @@
+name: Email Capture â Floating Bar + Exit Popup + Form Redirect
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run email capture patch
+        run: python3 .github/scripts/email-capture-patch.py
+
+      - name: Commit and push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Actions"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Email capture: Add floating bar + exit-intent popup + _next redirect to all blog posts"
+            git push
+          fi
