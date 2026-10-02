@@ -1,4 +1,4 @@
-name: GEO Fix â llms.txt, sameAs schema, old-template posts
+name: GEO Fix - llms.txt, sameAs schema, old-template posts
 
 on:
   workflow_dispatch:
