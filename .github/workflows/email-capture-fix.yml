@@ -1,4 +1,4 @@
-name: Email Capture â Floating Bar + Exit Popup + Form Redirect
+name: Email Capture - Floating Bar + Exit Popup + Form Redirect
 
 on:
   workflow_dispatch:
