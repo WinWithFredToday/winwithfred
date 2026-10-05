@@ -1,0 +1,49 @@
+name: Add Mobile Nav to All Pages
+on:
+  workflow_dispatch:
+
+jobs:
+  add-script:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject mobile-nav.js into all HTML files
+        run: |
+          python3 << 'PYEOF'
+          import os
+
+          count = 0
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = [d for d in dirs if d not in ['.git', '.github', 'node_modules']]
+              for f in files:
+                  if not f.endswith('.html'):
+                      continue
+                  path = os.path.join(root, f)
+                  with open(path, 'r', encoding='utf-8') as fh:
+                      content = fh.read()
+                  if 'mobile-nav.js' in content:
+                      continue
+                  if '</body>' not in content:
+                      continue
+                  new_content = content.replace(
+                      '</body>',
+                      '<script src="/mobile-nav.js"></script>\n</body>',
+                      1
+                  )
+                  with open(path, 'w', encoding='utf-8') as fh:
+                      fh.write(new_content)
+                  count += 1
+                  print(f"Updated: {path}")
+          print(f"Done. {count} files updated.")
+          PYEOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Add mobile-nav.js script to all HTML pages"
+          git push
