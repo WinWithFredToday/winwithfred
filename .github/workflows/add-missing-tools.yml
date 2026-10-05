@@ -1,0 +1,103 @@
+name: Add Missing Tools to Homepage
+on: workflow_dispatch
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add 7 missing tools and update counters
+        run: |
+          python3 << 'PYEOF'
+          import re
+
+          with open('index.html', 'r', encoding='utf-8') as f:
+              html = f.read()
+
+          # ── 1. Update stat box: 20 → 27 ──
+          html = html.replace(
+              '<div class="stat-num">20</div>\n        <div class="stat-label">Free Tools</div>',
+              '<div class="stat-num">27</div>\n        <div class="stat-label">Free Tools</div>'
+          )
+
+          # ── 2. Update any "20 Free Tools Built" text ──
+          html = html.replace('20 Free Tools Built', '27 Free Tools Built')
+
+          # ── 3. New tool cards to insert ──
+          new_cards = """
+      <a href="/eisenhower-matrix" class="tool-card">
+        <div class="tool-icon">📋</div>
+        <h3>Eisenhower Matrix</h3>
+        <p>Sort your tasks by urgency and importance. Stop doing the wrong things and start doing what actually matters.</p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+      <a href="/values-quiz" class="tool-card">
+        <div class="tool-icon">💎</div>
+        <h3>Values Quiz</h3>
+        <p>Discover your core values so your goals and decisions are built on a foundation that actually means something to you.</p>
+        <span class="tool-link">Take the Quiz →</span>
+      </a>
+      <a href="/vision-board" class="tool-card">
+        <div class="tool-icon">🖼️</div>
+        <h3>Vision Board</h3>
+        <p>Build a visual map of your future. See it clearly, believe it fully, and work toward it daily.</p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+      <a href="/wheel-of-life" class="tool-card">
+        <div class="tool-icon">🎡</div>
+        <h3>Wheel of Life</h3>
+        <p>Rate every dimension of your life in one view. Find the gaps and decide where to focus your energy first.</p>
+        <span class="tool-link">Open Tool →</span>
+      </a>
+      <a href="/challenge-30" class="tool-card">
+        <div class="tool-icon">🗓️</div>
+        <h3>30-Day Challenge</h3>
+        <p>Pick a habit, commit for 30 days, and track every single rep. Build the streak that changes everything.</p>
+        <span class="tool-link">Start Challenge →</span>
+      </a>
+      <a href="/challenge-90" class="tool-card">
+        <div class="tool-icon">🚀</div>
+        <h3>90-Day Challenge</h3>
+        <p>Three months of focused effort on one goal. This is where real transformation happens. Are you in?</p>
+        <span class="tool-link">Start Challenge →</span>
+      </a>
+      <a href="/meal-plan-quiz" class="tool-card">
+        <div class="tool-icon">🥗</div>
+        <h3>Meal Plan Finder</h3>
+        <p>Answer 5 questions and get a personalized meal plan built around your lifestyle, goals, and preferences.</p>
+        <span class="tool-link">Find My Plan →</span>
+      </a>"""
+
+          # Insert before closing </section> of the tools grid
+          # The last tool card ends with </a> then closing </div> then </section>
+          # Find the personality-quiz card (last card) and insert after it
+          insert_marker = '      </a>\n    </div>\n</section>'
+          # Find the personality quiz closing tag
+          marker = '</a>\n    </div>\n</section>'
+          if marker in html:
+              html = html.replace(marker, new_cards + '\n    </div>\n</section>', 1)
+              print('Cards inserted successfully')
+          else:
+              print('Marker not found, trying alternate')
+              # Try to find the closing of the grid div
+              marker2 = '      </a>\n    </div>'
+              idx = html.rfind('</a>\n    </div>')
+              if idx >= 0:
+                  html = html[:idx + len('</a>')] + new_cards + '\n    </div>' + html[idx + len('</a>\n    </div>'):]
+                  print('Cards inserted via rfind')
+              else:
+                  print('Could not find insertion point')
+
+          with open('index.html', 'w', encoding='utf-8') as f:
+              f.write(html)
+
+          print('Done.')
+          PYEOF
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Add 7 hidden tools to homepage and update counter to 27"
+          git push
