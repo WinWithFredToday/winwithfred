@@ -1,0 +1,49 @@
+import re, os
+
+LIGHT_COLORS = [
+    'color:#cbd5e1', 'color:#f1f5f9', 'color:#e2e8f0',
+    'color: #cbd5e1', 'color: #f1f5f9', 'color: #e2e8f0'
+]
+DARK_BG = 'background:#111827;'
+
+files = [
+    'burnout-detector.html', 'challenge-90.html', 'eisenhower-matrix.html',
+    'fix-my-life.html', 'future-self.html', 'habit-scorecard.html',
+    'instant-calm.html', 'life-balance.html', 'life-trajectory.html',
+    'mental-health-check.html', 'morning-routine.html', 'reframe-thought.html',
+    'time-wasted.html', 'values-quiz.html', 'vision-board.html',
+    'weekly-reset.html', 'whats-holding-you-back.html', 'wheel-of-life.html'
+]
+
+def fix_section_bg(html):
+    def replacer(m):
+        tag = m.group(0)
+        style_m = re.search(r'style="([^"]*)"', tag)
+        if not style_m:
+            return tag
+        style = style_m.group(1)
+        has_light = any(c in style for c in LIGHT_COLORS)
+        has_bg = 'background:' in style or 'background-color:' in style
+        if has_light and not has_bg:
+            new_style = DARK_BG + style
+            return tag.replace(style_m.group(0), 'style="' + new_style + '"')
+        return tag
+    return re.sub(r'<section[^>]*style="[^"]*"[^>]*>', replacer, html)
+
+total = 0
+for fname in files:
+    if not os.path.exists(fname):
+        print('SKIP:', fname)
+        continue
+    with open(fname, 'r', encoding='utf-8') as f:
+        html = f.read()
+    fixed = fix_section_bg(html)
+    if fixed != html:
+        with open(fname, 'w', encoding='utf-8') as f:
+            f.write(fixed)
+        print('FIXED:', fname)
+        total += 1
+    else:
+        print('no change:', fname)
+
+print('Done. Fixed', total, 'files.')
