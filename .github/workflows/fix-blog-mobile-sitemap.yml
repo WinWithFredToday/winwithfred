@@ -1,0 +1,112 @@
+name: Fix Blog Mobile Layout and Sitemap
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix blog.html mobile CSS and update sitemap
+        run: |
+          python3 << 'PYEOF'
+          import re
+
+          # ── Fix blog.html: swap media query order ──────────────────────────
+          with open('blog.html', 'r', encoding='utf-8') as f:
+              blog = f.read()
+
+          old_mq = (
+              "    @media (max-width: 768px) {\n"
+              "      .navbar-links { display: none; }\n"
+              "      .blog-grid { grid-template-columns: 1fr; }\n"
+              "      .featured-post { grid-template-columns: 1fr; }\n"
+              "      .featured-left, .featured-right { padding: 32px 24px; }\n"
+              "      .footer-inner { flex-direction: column; }\n"
+              "    }\n"
+              "    @media (max-width: 1000px) {\n"
+              "      .blog-grid { grid-template-columns: repeat(2, 1fr); }\n"
+              "    }"
+          )
+          new_mq = (
+              "    @media (max-width: 1000px) {\n"
+              "      .blog-grid { grid-template-columns: repeat(2, 1fr); }\n"
+              "      .featured-post { grid-template-columns: 1fr; }\n"
+              "    }\n"
+              "    @media (max-width: 768px) {\n"
+              "      .navbar-links { display: none; }\n"
+              "      .blog-grid { grid-template-columns: 1fr; }\n"
+              "      .featured-post { grid-template-columns: 1fr; }\n"
+              "      .featured-left, .featured-right { padding: 28px 20px; }\n"
+              "      .featured-left h2 { font-size: 1.3rem; }\n"
+              "      .blog-card-top { padding: 24px 20px 20px; }\n"
+              "      .blog-card-top h2 { font-size: 1rem; }\n"
+              "      .blog-card-body { padding: 16px 20px 20px; }\n"
+              "      .footer-inner { flex-direction: column; }\n"
+              "      .filter-bar-inner { gap: 6px; }\n"
+              "    }"
+          )
+
+          if old_mq in blog:
+              blog = blog.replace(old_mq, new_mq)
+              with open('blog.html', 'w', encoding='utf-8') as f:
+                  f.write(blog)
+              print("blog.html: media query order fixed + mobile card styles added")
+          else:
+              print("blog.html: pattern not found - checking content...")
+              # Find the 768 media query and report context
+              idx = blog.find('@media (max-width: 768px)')
+              print(f"768 found at index {idx}")
+              idx2 = blog.find('@media (max-width: 1000px)')
+              print(f"1000 found at index {idx2}")
+
+          # ── Update sitemap.xml ──────────────────────────────────────────────
+          new_posts = [
+              'blog-why-do-i-give-up-so-easily',
+              'blog-how-to-believe-in-yourself-again-after-failure',
+              'blog-how-to-stop-feeling-guilty-for-resting',
+              'blog-how-to-keep-going-when-everything-is-falling-apart',
+              'blog-what-to-do-when-you-feel-like-a-failure-at-everything',
+              'blog-how-to-stop-self-sabotaging',
+              'blog-how-to-build-confidence-from-zero',
+              'blog-why-am-i-so-hard-on-myself',
+              'blog-how-to-get-out-of-a-rut-when-you-dont-know-where-to-start',
+              'blog-how-to-change-your-mindset-about-failure',
+          ]
+
+          with open('sitemap.xml', 'r', encoding='utf-8') as f:
+              sitemap = f.read()
+
+          entries = ''
+          for slug in new_posts:
+              url = f'https://winwithfred.com/{slug}'
+              if url not in sitemap:
+                  entries += (
+                      f'  <url>\n'
+                      f'    <loc>{url}</loc>\n'
+                      f'    <lastmod>2026-10-05</lastmod>\n'
+                      f'    <changefreq>monthly</changefreq>\n'
+                      f'    <priority>0.8</priority>\n'
+                      f'  </url>\n'
+                  )
+
+          if entries:
+              sitemap = sitemap.replace('</urlset>', entries + '</urlset>')
+              with open('sitemap.xml', 'w', encoding='utf-8') as f:
+                  f.write(sitemap)
+              print(f"sitemap.xml: {len(new_posts)} posts added")
+          else:
+              print("sitemap.xml: posts already present")
+
+          PYEOF
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog.html sitemap.xml
+          git diff --staged --quiet || git commit -m "Fix blog mobile layout + add 10 posts to sitemap"
+          git push
