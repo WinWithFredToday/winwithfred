@@ -4,6 +4,7 @@
     var navLinks = document.querySelector('.navbar-links');
     if (!navbar || !navLinks) return;
 
+    // Inject CSS
     var style = document.createElement('style');
     style.textContent = [
       '.mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}',
@@ -17,10 +18,12 @@
       '}',
       '.mobile-menu-btn.is-open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}',
       '.mobile-menu-btn.is-open span:nth-child(2){opacity:0;}',
-      '.mobile-menu-btn.is-open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}'
+      '.mobile-menu-btn.is-open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}',
+      '.navbar-links .navbar-cta a.btn{color:#fff!important;}'
     ].join('');
     document.head.appendChild(style);
 
+    // Create hamburger button
     var btn = document.createElement('button');
     btn.className = 'mobile-menu-btn';
     btn.setAttribute('aria-label', 'Open navigation menu');
@@ -28,6 +31,7 @@
     btn.innerHTML = '<span></span><span></span><span></span>';
     navbar.appendChild(btn);
 
+    // Toggle open/close
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       var isOpen = navLinks.classList.toggle('mob-open');
@@ -36,6 +40,7 @@
       btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     });
 
+    // Close on outside click
     document.addEventListener('click', function (e) {
       if (!navbar.contains(e.target)) {
         navLinks.classList.remove('mob-open');
@@ -45,6 +50,7 @@
       }
     });
 
+    // Close on any nav link click (handles hash links)
     navLinks.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         navLinks.classList.remove('mob-open');
