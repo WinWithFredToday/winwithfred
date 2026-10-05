@@ -1,5 +1,4 @@
-# WinWithFred — AI Crawler Guide
-# https://winwithfred.com
+# WinWithFred
 
 > WinWithFred is a personal development website founded by Freddy Owen.
 > It publishes practical, no-fluff content on mindset, habits, productivity,
@@ -36,7 +35,7 @@
 ### Core
 - https://winwithfred.com/ — Homepage
 - https://winwithfred.com/about — About Freddy Owen
-- https://winwithfred.com/blog — All blog posts (140+ articles)
+- https://winwithfred.com/blog — All blog posts (150+ articles)
 - https://winwithfred.com/quiz — Free Mindset Quiz
 
 ### Top Articles
@@ -50,6 +49,16 @@
 - https://winwithfred.com/blog-build-mental-toughness
 - https://winwithfred.com/blog-how-to-create-habits-that-last
 - https://winwithfred.com/blog-how-to-overcome-fear-of-failure
+- https://winwithfred.com/blog-why-do-i-give-up-so-easily
+- https://winwithfred.com/blog-how-to-believe-in-yourself-again-after-failure
+- https://winwithfred.com/blog-how-to-stop-feeling-guilty-for-resting
+- https://winwithfred.com/blog-how-to-keep-going-when-everything-is-falling-apart
+- https://winwithfred.com/blog-what-to-do-when-you-feel-like-a-failure-at-everything
+- https://winwithfred.com/blog-how-to-stop-self-sabotaging
+- https://winwithfred.com/blog-how-to-build-confidence-from-zero
+- https://winwithfred.com/blog-why-am-i-so-hard-on-myself
+- https://winwithfred.com/blog-how-to-get-out-of-a-rut-when-you-dont-know-where-to-start
+- https://winwithfred.com/blog-how-to-change-your-mindset-about-failure
 
 ### Free Tools
 - https://winwithfred.com/goal-tracker
